@@ -19,7 +19,12 @@ function load(filename, aio = false) {
     return findHtml("file");
 }
 
-aboutTxt = load("/prizm.dev/text/about.txt");
-//links_txt = load("/prizm.dev/text/links.txt");
+function loadPage() {
+    aboutTxt = load("/prizm.dev/text/about.txt");
+    setHtml("info", mark_page(aboutTxt));
+    //links_txt = load("/prizm.dev/text/links.txt");
+}
 
-setHtml("info", mark_page(aboutTxt));
+window.setTimeout(loadPage, 500);
+
+
