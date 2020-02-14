@@ -26,6 +26,6 @@ function loadPage() {
     setHtml("links", mark_page(linksTxt));
 }
 
-window.setTimeout(loadPage, 500);
+window.setTimeout(loadPage, 100);
 
 
