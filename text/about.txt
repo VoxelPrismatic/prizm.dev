@@ -1,1 +1,5 @@
+#] WHO AM I?
 
+I am a human [duh] that loves to code really much of anything. I made a discord
+bot [PRIZM] in about a month, while teaching myself _python_ in about the same
+time.

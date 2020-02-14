@@ -1,0 +1,60 @@
+* {
+    font-family: "Ubuntu";
+}
+
+#logo {
+    width: 100%;
+    text-align: center;
+}
+
+body {
+    text-align: center;
+    margin: auto;
+    color: #aaaaaa;
+}
+
+.bgcolor {
+    background-color: #112222;
+}
+
+.code {
+    background-color: #00000044;
+    font-family: "Ubuntu Mono" !important;
+}
+
+.sect {
+    width: 90vw;
+    border: 2px solid #00ffff;
+    border-bottom-color: #00000000;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #00ffff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.line {
+    height: 5px;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+    text-align: right;
+}
+
+.hide {
+    color: #001111;
+    background-color: #001111;
+}
+
+.unhide {
+    color: #aaaaaa;
+    background-color: #001111;
+}
