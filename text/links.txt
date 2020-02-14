@@ -1,0 +1,24 @@
+#] PRIZMATIC
+Hey! I'm making an API wrapper for Discord, Reddit, and Riot.IM! If you use any
+of these services, well you should also know the bot that I made. Soon, I will
+transition my bot to use this module, so I don't have to use this `discord.py`
+garbage that I'm currently using.
+
+<[DOCS]>(https://voxelprismatic.github.com/prizmatic.docs)
+<[REPO]>(https://github.com/voxelprismatic/prizmatic)
+
+#] PRIZM ;]
+Guess what? I also made a discord bot! You can find out where it is using the
+links below.
+
+<[THE BOT]>(https://discordapp.com/oauth2/authorize?client_id=555862187403378699&permissions=473296118&scope=bot)
+<[SUPPORT GUILD]>(https://discordapp.com/invite/Z84Nm6n)
+<[VOTE ON TOPGG]>(https://discordbots.org/bot/555862187403378699/vote)
+<[REPO]>(https://github.com/voxelprismatic/prizm)
+
+#] STALK ME ;[
+
+Follow me on <Twitter>(https://twitter.com/voxelprismatic)
+Watch me not use <Reddit>(https://reddit.com/user/ultimateredditcat)
+Find me on Discord: `PRIZ ;]#9244`
+Copy my code on <GitHub>(https://github.com/voxelprismatic)

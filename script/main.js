@@ -22,7 +22,8 @@ function load(filename, aio = false) {
 function loadPage() {
     aboutTxt = load("/prizm.dev/text/about.txt");
     setHtml("info", mark_page(aboutTxt));
-    //links_txt = load("/prizm.dev/text/links.txt");
+    linksTxt = load("/prizm.dev/text/links.txt");
+    setHtml("links", mark_page(linksTxt));
 }
 
 window.setTimeout(loadPage, 500);
