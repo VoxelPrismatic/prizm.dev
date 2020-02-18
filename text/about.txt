@@ -1,19 +1,19 @@
 #] WHO AM I?
 
-I am a human [duh] that loves to code really much of anything. I made a discord
-bot [PRIZM] in about a month, while teaching myself _python_ in about the same
+I am a human [duh] that loves to code really much of anything. I made a discord \
+bot [PRIZM] in about a month, while teaching myself _python_ in about the same \
 time.
 
-#] A BIT MORE ABOUT ME
+I love making music and creating neat code things just because I find it relaxing. \
+My favorite genre is ambient in case you wanted to know that.
 
-as a teen, my high school teachers hate me because i am the wierd guy who always
-does things the different way. for context, my AP CompSci teacher questions me
-when i use firefox instead of safari, or use intellij instead of bluej, or even
-why i use linux at home over macos or windows. basically, im truly the odd one
-out, but im proud of that!
+-~-
 
-i like doing anything, if i want to do it, i will do it. for example, see this
-text here? well, i made my own flavor of markdown cuz i dont want to stare at
-html garbage all the time. in the meantime, i need to make a brand-new website
-so i can be proud of what i made
+#] WHAT LANGUAGES DO I USE/KNOW?
 
+I am currently learning Java, with literally the worst teacher ever. I also know \
+a bit of JS, and ofc I use Python. Additionally, I use TI-BASIC, where I made RPN \
+for the TI-84+CE. I can learn any language very quickly, however.
+
+I also made my version of MarkDown in JS, so I can make pretty neat looking sites \
+such as the one you are seeing here.
