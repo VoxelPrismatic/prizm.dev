@@ -17,11 +17,6 @@ body {
     background-color: #112222;
 }
 
-.code {
-    background-color: #00000044;
-    font-family: "Ubuntu Mono" !important;
-}
-
 .sect {
     border: 2px solid #00ffff;
     border-bottom-color: #00000000;
