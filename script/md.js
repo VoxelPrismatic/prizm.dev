@@ -62,7 +62,7 @@ var line_regex = [
 function mark(st) {
     for(var r of line_regex) {
         if(typeof r[1] == "string" && !(r[1].startsWith("\\u")))
-            st = st.replace(r[0], "</span>"+r[1]+"<span>");
+            st = st.replace(r[0], r[1]);
         else
             st = st.replace(r[0], r[1]);
     }
