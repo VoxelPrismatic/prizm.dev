@@ -18,7 +18,13 @@
             PRIZM COMMAND INDEX ;]
         </h1>
         <div id="content">
-            <div id="index">
+            <div id="index" style="sect">
+                <textarea id="find_command" placeholder="Search for a command, you can also use /RegEx/"></textarea>
+                <button class="tab" onclick="locate_command(findVal('find_command'))" id="ok_btn">[OK]</button>
+            </div>
+            <div id="list" style="sect">
+            </div>
+            <div id="content" style="sect">
             </div>
         </div>
 
