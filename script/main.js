@@ -20,10 +20,13 @@ function load(filename, aio = false) {
 }
 
 function loadPage() {
-    aboutTxt = load("/prizm.dev/text/about.txt");
-    setHtml("info", mark_page(aboutTxt));
-    linksTxt = load("/prizm.dev/text/links.txt");
-    setHtml("links", mark_page(linksTxt));
+    var pages = ["about", "links"];
+    var html = "";
+    for(var page of pages) {
+        var txt = load("/prizm.dev/text/" + page + ".txt");
+        html += `<div id="${page}" class="sect">${txt}</div>`;
+    }
+    setHtml("content", html);
 }
 
 window.setTimeout(loadPage, 100);
