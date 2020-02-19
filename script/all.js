@@ -20,8 +20,8 @@ function swapColor(colorName) {
             rule.style.borderTopColor = color;
             rule.style.borderLeftColor = color;
             rule.style.borderRightColor = color;
-            if(rule.selectorText == ".sect")
-                rule.style.borderBotttomColor = color;
+            if(rule.selectorText == ".line")
+                rule.style.borderBottomColor = color;
         }
     }
     find("logo").src = `image/priz_${name}.png`;
