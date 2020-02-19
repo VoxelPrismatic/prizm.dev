@@ -2,7 +2,7 @@
     font-family: "Ubuntu";
 }
 
-#logo {
+#logo, #head {
     width: 100%;
     text-align: center;
 }
