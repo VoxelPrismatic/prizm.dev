@@ -53,31 +53,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hide {
-  border: 2px solid;
-  border-bottom-color: #00000000;
-  border-right-color: #334444;
-  border-left-color: #334444;
-  border-top-color: #334444;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-  margin: 5px;
-  padding: 5px;
-  background-color: #223333;
-  font-size: smaller;
-  margin: 2px;
-  padding: 2px;
-  color: #223333;
+    border: 2px solid;
+    border-bottom-color: #00000000;
+    border-right-color: #334444;
+    border-left-color: #334444;
+    border-top-color: #334444;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin: 5px;
+    padding: 5px;
+    background-color: #223333;
+    font-size: smaller;
+    margin: 2px;
+    padding: 2px;
+    color: #223333;
 }
 .hide:hover {
-  color: #ffffff;
+    color: #ffffff;
 }
 .hide:focus {
-  color: #ffffff;
+    color: #ffffff;
 }
 .hide.unhide {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .loading {
@@ -109,6 +109,7 @@ a {
     margin: 5px;
     padding: 5px;
     color: #aaaaaa;
+    font-family: "Ubuntu Mono";
 }
 span.code {
     margin: 2px;
