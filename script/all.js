@@ -1,11 +1,13 @@
 var colors = {
-    "cyan": ["#0ff", "#122", "blue"],
-    "pink": ["#f08", "#221115", "pink"],
-    "blue": ["#00f", "#112", "dark"],
+    "red": ["#f00", "#211", "red"],
+    "orange": ["#f80", "#221511", "orange"],
     "yellow": ["#ff0", "#221", "yellow"],
     "green": ["#0f0", "#121", "green"],
-    "orange": ["#f80", "#221511", "orange"],
-    "red": ["#f00", "#211", "red"]
+    "cyan": ["#0ff", "#122", "blue"],
+    "blue": ["#00f", "#112", "dark"],
+    "pink": ["#f08", "#221115", "pink"],
+    "grey": ["#aaa", "111", "grey"],
+    "white": ["#fff", "222", "white"],
 }
 
 function swapColor(colorName) {
@@ -24,7 +26,7 @@ function swapColor(colorName) {
                 rule.style.borderBottomColor = color;
         }
     }
-    find("logo").src = `image/priz_${name}.png`;
+    find("truelogo").src = `image/priz_${name}.png`;
 }
 
 function load(filename, aio = false) {
