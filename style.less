@@ -2,6 +2,23 @@
     font-family: "Ubuntu";
 }
 
+@screen = ~"@media only screen and"
+
+.border(@color) {
+    border: 2px solid @color;
+    border-bottom-color: #00000000;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.margin {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
 #logo, #head {
     width: 100%;
     text-align: center;
@@ -19,26 +36,20 @@ body {
 }
 
 .sect {
-    border: 2px solid #00ffff;
-    border-bottom-color: #00000000;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    .border(#00ffff);
+    .margin();
     text-align: justify;
     padding: 10px;
     width: 60vw;
 }
 
-@media only screen and (max-width: 640px) {
+@screen (max-width: 640px) {
     .sect {
         width: 90vw;
     }
 }
 
-@media only screen and (min-width: 1536px) {
+@screen (min-width: 1536px) {
     .sect {
         width: 80vw;
     }
@@ -60,15 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hide {
-    border: 2px solid;
-    border-bottom-color: #00000000;
-    border-right-color: #334444;
-    border-left-color: #334444;
-    border-top-color: #334444;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
+    .border(#334444);
     margin: 5px;
     padding: 5px;
     background-color: #223333;
@@ -103,15 +106,7 @@ a {
 }
 
 .code {
-    border: 2px solid;
-    border-bottom-color: #00000000;
-    border-right-color: #334444;
-    border-left-color: #334444;
-    border-top-color: #334444;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
+    .border(#334444);
     background-color: #223333;
     margin: 5px;
     padding: 5px;
