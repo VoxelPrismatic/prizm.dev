@@ -1,5 +1,13 @@
 * {
     font-family: "Ubuntu";
+} div {
+    line-height: 1.5;
+} #footer {
+    font-size: x-small;
+} a {
+    color: #aaffff;
+} .bgcolor {
+    background-color: #112222;
 }
 
 @screen = ~"@media only screen and";
@@ -31,10 +39,6 @@ body {
     color: #aaaaaa;
 }
 
-.bgcolor {
-    background-color: #112222;
-}
-
 .sect {
     .border(#00ffff);
     .margin();
@@ -51,7 +55,7 @@ body {
 
 @screen (min-width: 1536px) {
     .sect {
-        width: 80vw;
+        width: 50vw;
     }
 }
 
@@ -92,12 +96,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px;
-}
-
-#footer {
-    font-size: x-small;
-} a {
-    color: #aaffff;
 }
 
 .code {
