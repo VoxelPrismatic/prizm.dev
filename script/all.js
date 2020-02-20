@@ -6,8 +6,10 @@ var colors = {
     "cyan": ["#0ff", "#122", "blue"],
     "blue": ["#00f", "#112", "dark"],
     "pink": ["#f08", "#221115", "pink"],
-    "grey": ["#aaa", "111", "grey"],
-    "white": ["#fff", "222", "white"],
+    "grey": ["#aaa", "#111", "grey"],
+    "white": ["#fff", "#222", "white"],
+    "purple": ["#80f", "#151122", "purple"],
+    "blurple": ["#08f", "#111522", "blurple"],
 }
 
 function swapColor(colorName) {
