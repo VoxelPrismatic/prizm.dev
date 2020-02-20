@@ -1,3 +1,6 @@
 #] Pretty neat, eh?
 
-All of these features, with one dev and only a year of development.
+All of these features, with one dev and only a year of development. \
+The best bit is, this bot has a better uptime than Dyno, and more personality \
+than whatever the fuck YAGPDB is trying to do... I'm serious, the boomer devs \
+over at YAGPDB stole my idea of having relatable/funny statuses.
