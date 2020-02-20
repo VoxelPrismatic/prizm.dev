@@ -79,15 +79,12 @@ h1, h2, h3, h4, h5, h6 {
     margin: 2px;
     padding: 2px;
     color: #223333;
-}
-.hide:hover {
-    color: #ffffff;
-}
-.hide:focus {
-    color: #ffffff;
-}
-.hide.unhide {
-    color: #ffffff;
+    &:hover {
+        color: #ffffff;
+    }
+    &:focus {
+        color: #ffffff;
+    }
 }
 
 .loading {
@@ -99,9 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #footer {
     font-size: x-small;
-}
-
-a {
+} a {
     color: #aaffff;
 }
 
@@ -112,9 +107,9 @@ a {
     padding: 5px;
     color: #aaaaaa;
     font-family: "Ubuntu Mono";
-}
-span.code {
-    margin: 2px;
-    padding: 2px;
-    font-size: smaller;
+    span.& {
+        margin: 2px;
+        padding: 2px;
+        font-size: smaller;
+    }
 }
