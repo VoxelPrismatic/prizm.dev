@@ -12,13 +12,30 @@
     font-family: "Ubuntu Mono";
 }
 
-.border(@color) {
+textarea {
+    width: 90%;
+    .section(#223333);
+    color: #ffffff;
+}
+
+.pad(@px) {
+    margin: @px;
+    padding: @px;
+} .section(@color) {
+    .theme(@color);
+    .border(@color);
+} .theme(@color) {
+    color: @color;
+    background-color: fadeout(@color, 73.333%);
+    caret-color: tint(@color, 50%);
+} .border(@color) {
     border: 2px solid @color;
     border-bottom-color: #00000000;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
+    .pad(5px);
 }
 .margin {
     margin-left: auto;
