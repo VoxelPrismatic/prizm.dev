@@ -1,0 +1,52 @@
+.theme(@color) {
+    color: @color;
+    background-color: fadeout(@color, 73.333%);
+    caret-color: tint(@color, 50%);
+} .pad(@px) {
+    margin: @px;
+    padding: @px;
+} .border-radii(@tr, @tl, @br, @bl) {
+    border-top-right-radius: @tr;
+    border-top-left-radius: @tl;
+    border-bottom-right-radius: @br;
+    border-bottom-left-radius: @bl;
+} .border-colors(@t, @r, @b, @l) {
+    border-bottom-color: @b;
+    border-right-color: @r;
+    border-left-color: @l;
+    border-top-color: @t;
+} .border-thicc(@t, @r, @b, @l) {
+    border-bottom-width: @b;
+    border-right-width: @r;
+    border-left-width: @l;
+    border-top-width: @t;
+} .border-all(@t, @r, @b, @l) {
+    border-bottom: @b;
+    border-right: @r;
+    border-left: @l;
+    border-top: @t;
+} .border(@color) {
+    border: 2px solid;
+    .border-colors(@color, @color, #00000000, @color);
+    .border-radii(5px, 5px, 0px, 0px);
+    .pad(5px);
+} .section(@color) {
+    .theme(@color);
+    .border(@color);
+} .rangeW(@maxi, @mini) {
+    min-width: @mini;
+    max-width: @maxi;
+} .rangeH(@maxi, @mini) {
+    min-height: @mini;
+    max-height: @maxi;
+} .bg(@color) {
+    background-color: @color;
+} .align(@var) {
+    text-align: @var;
+} .lean(@var) {
+    float: @var;
+} .header(@color) {
+    color: @color !important;
+    font-size: x-large !important;
+    font-weight: bold !important;
+}
