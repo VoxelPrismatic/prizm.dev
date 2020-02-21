@@ -18,6 +18,46 @@ textarea {
     .section(#223333);
     color: #ffffff;
 }
+
+.collapser {
+    .section(#cccccc88);
+    border-color: #cccccc88;
+    color: #cccccc;
+    display: block;
+    .align(left);
+    &:hover {
+        .section(#ffffff88);
+        color: #ffffff;
+        border-color: #ffffff88;
+        background-color: #ffffff05;
+    }
+    min-height: 3vh;
+    &::before {
+        content: "[V]  ";
+        font-weight: bold;
+    }
+} .collopen {
+    .collapser();
+    .section(#ffffff88);
+    color: #ffffff;
+    border-color: #ffffff88;
+    background-color: #ffffff05;
+    &::before {
+        content: "[\039b]  "; // Lambda
+        font-weight: bold;
+    }
+} .collhover {
+    background-color: #00ffff11;
+    color: #aaffff;
+    border-color: #aaffff88;
+} .sel {
+    .lnk();
+    .section(#00ffff);
+    &:hover {
+        .section(#ff0088);
+    }
+} 
+
 .tab {
     text-align: center;
     padding: 5px;
