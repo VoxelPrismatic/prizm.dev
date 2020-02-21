@@ -12,6 +12,21 @@
     background-color: #112222;
 } .mono {
     font-family: "Ubuntu Mono";
+} .lnk {
+    .border(#008888);
+    color: #00ffff;
+    display: block;
+    .align(left);
+    &:hover {
+        .section(#00ff00);
+    }
+    min-height: 3vh;
+} .sel {
+    .lnk();
+    .section(#00ffff);
+    &:hover {
+        .section(#ff0088);
+    }
 }
 
 textarea {
