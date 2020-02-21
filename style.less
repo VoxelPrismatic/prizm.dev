@@ -15,19 +15,18 @@
 }
 
 textarea {
-    width: inherit;
     .section(#223333);
     color: #ffffff;
 }
 .tab {
     text-align: center;
     padding: 5px;
-    width: 100%;
     color: #aaaaaa;
     .border-colors(#00ffff, #00000000, #00000000, #00000000);
     .border-radii(0px, 0px, 0px, 0px);
     border-width: 2px;
     margin: none;
+    background-color: #00ffff00;
     &.tabbed {
         background-color: #00ffff44;
         color: #00ffff;
@@ -72,17 +71,20 @@ body {
     .margin();
     text-align: justify;
     padding: 10px;
+}
+
+.sect, textarea, .tab {
     width: 90vw;
 }
 
 @media only screen and (min-width: 640px) {
-    .sect {
+    .sect, textarea, .tab {
         width: 60vw;
     }
 }
 
 @media only screen and (min-width: 1024px) {
-    .sect {
+    .sect, textarea, .tab {
         width: 50vw;
     }
 }
