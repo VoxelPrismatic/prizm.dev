@@ -45,7 +45,8 @@ function loadPage() {
         for(var com of things.constructor.keys(things[cat])) {
             st += `<div id="COM_${com}" style="display: none" class="lnk" `;
             st += `onmouseover="setcoll(this)" onclick="collapser(this)">`
-            st += `${com}</div>`;
+            st += `<span class="invis">${commands[com].join(" ")} </span>`;
+            st += `<span>${com}</span></div>`;
             comindex += `<div id="${com}">${mark_page(things[cat][com])}</div>`;
         }
         st += "</div>";
