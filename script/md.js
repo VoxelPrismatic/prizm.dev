@@ -173,13 +173,13 @@ function mark_page(st) {
         if(line == "```") {
             incode = !incode;
             if(incode)
-                st += `<div class="code">`;
+                str += `<div class="code">`;
             else
-                st += `</div>`
+                str += `</div>`
             continue;
         }
         if(incode) {
-            st += line;
+            str += line;
             continue;
         }
         //Table
