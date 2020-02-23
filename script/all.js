@@ -181,7 +181,7 @@ function locate(thing, parent = find("list"), loc = "find_command") {
 }
 
 function locater(elem) {
-    locate(elem.value, elem, elem.id);
+    locate(elem.value, elem.parent, elem.id);
 }
 
 function locateId(id) {
