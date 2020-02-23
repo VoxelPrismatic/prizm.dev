@@ -22,7 +22,8 @@ function loadPage() {
     for(var cat of things.constructor.keys(things)) {
         st += `<div id="DROP_${cat}" class="collapser" onmouseover="setcoll(this)" onclick="collapser(this)">${cat}`;
         for(var com of things.constructor.keys(things[cat])) {
-            st += `<div id="COM_${com}" style="display: none" class="lnk">`;
+            st += `<div id="COM_${com}" style="display: none" class="lnk" `;
+            st += `onmouseover="setcoll(this)" onclick="collapser(this)">`
             st += `${com}</div>`;
             comindex += `<div id="${com}">${mark_page(things[cat][com])}</div>`;
         }
@@ -36,7 +37,7 @@ function loadPage() {
 window.setTimeout(loadPage, 100);
 
 
-function collsel(elem = find("nav")) {
+function collsel(elem = find("list")) {
     var ch = elem.children;
     var itm = null;
     for(var c of ch) {
@@ -76,7 +77,7 @@ function setjump(elem) {
     }
 }
 
-function colldesel(elem = find("nav")) {
+function colldesel(elem = find("list")) {
     var ch = elem.children;
     for(var c of ch) {
         if(c.className.includes("collhover"))
@@ -94,7 +95,7 @@ function collapser(elem, force = false) {
     window.setTimeout(function() {globalThis.timeout = false;}, 500);
     //Set timeout so multiple collapses cannot run at the same time
     if(elem.className.includes("lnk")) {
-        setHtml("com_help", findHtml(elem.id.slice(4));
+        setHtml("com_help", findHtml(elem.id.slice(4)));
         return;
     }
     if(elem == undefined || elem == null)
@@ -117,7 +118,7 @@ function collapser(elem, force = false) {
     elem.className = name;
 }
 
-function collall(parent = find("nav")) {
+function collall(parent = find("list")) {
     var child = parent.children;
     for(var c of child) {
         if(c.className.includes("collapser")) {collapser(c, true);
