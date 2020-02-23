@@ -7,12 +7,13 @@ function loadPage() {
         var div = `<div id="${com} ${index[com]["alias"].join(" ")}">`;
         var mark = `#] The \`${com.toUpperCase()}\` command\n`;
         mark += `#Category: #${index[com]["cat"]}\n`;
+        mark += `#Description: #${index[com]["desc"]}\n`
         if(index[com]["alias"].length)
             mark += `#Aliases: #\`${";]" + index[com]["alias"].join("`, `;]")}\`\n`;
         else
             mark += `#Aliases: #\`NONE\`\n`;
         mark += `#] Usage\n\`\`\`${index[com]["use"]}\`\`\`\n`;
-        mark += `#] More info\n\`\`\`${index[com]["desc"]}\`\`\`\n`;
+        mark += `#] Input info\n\`\`\`${index[com]["inp"]}\`\`\`\n`;
         mark += `#NOTICE:# The \`{arg}\` stuff is what to put, not what to write.\n`;
         mark += `#EXAMPLE:# \`;]help {?com}\` can be \`;]help\` or \`;]help ${com}\``;
         try {
