@@ -31,7 +31,7 @@ var desel = {
     "yellow": "cyan",
     "green": "cyan",
     "cyan": "pink",
-    "pink": "purple",
+    "pink": "orange",
     "purple": "red",
     "blurple": "orange",
     "white": "white",
@@ -73,15 +73,13 @@ function swapColor(colorName) {
                 tmp = colors["white"][0];
                 rule.style.backgroundColor = tmp + "1";
             }
-            if(ls1.slice(2).includes(rule.selectorText)) {
+            if(ls1.slice(2).includes(rule.selectorText) || rule.selectorText == ".line") {
                 rule.style.borderBottomColor = tmp;
                 rule.style.color = tmp;
             }
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
-            if(rule.selectorText == ".line")
-                rule.style.borderBottomColor = tmp;
         }
         if(rule.selectorText == ".tab") {
             rule.style.borderTopColor = color;
@@ -101,8 +99,7 @@ function swapColor(colorName) {
             rule.style.borderRightColor = tmp;
             if(rule.selectorText != ".lnk")
                 rule.style.backgroundColor = tmp + "4";
-            if(tmp != color)
-                rule.style.color = tmp.slice(0, 4);
+            rule.style.color = tmp.slice(0, 4);
         }
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
