@@ -5,7 +5,7 @@ function loadPage() {
     var comindex = "";
     for(var com of index.constructor.keys(index)) {
         var div = `<div id="${com} ${index[com]["alias"].join(" ")}">`;
-        var mark = `#] The \`${com.toUpper()}\` command\n`;
+        var mark = `#] The \`${com.toUpperCase()}\` command\n`;
         mark += `#Category: #${index[com]["cat"]}\n`;
         mark += `#Aliases: \`${";]" + index[com]["alias"].join("`, `;]" || "NONE")}\`\n`;
         mark += `#] Usage\n\`\`\`${index[com]["use"]}\`\`\`\n`;
