@@ -7,5 +7,3 @@ function loadPage() {
     }
     setHtml("content", html);
 }
-
-window.setTimeout(loadPage, 100);
