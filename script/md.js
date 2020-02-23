@@ -34,7 +34,6 @@ var line_regex = [
     [/^\*(.+?)\*/gm, "<i>$1</i>"],
     [/^\_(.+?)\_/gm, "<u>$1</u>"],
     [/^\~(.+?)\~/gm, "<s>$1</s>"],
-    [/^\`{3}((.|\n)+?)\`{3}/gm, `<div class="code">$1</div>`],
     [/^\`(.+?)\`/gm, `<span class="code">$1</span>`],
     [/^\^(.+?)\^/gm, "<sup>$1</sup>"],
     [/^\%(.+?)\%/gm, "<sub>$1</sub>"],
@@ -171,6 +170,18 @@ function mark_page(st) {
     var inul = false;
     var incode = false;
     for(var line of st.split("\n")) {
+        if(line == "```") {
+            incode = !incode;
+            if(incode)
+                st += `<div class="code">`;
+            else
+                st += `</div>`
+            continue;
+        }
+        if(incode) {
+            st += line;
+            continue;
+        }
         //Table
         if(line.replace(/^(\|.+)+\|$/gm, "") == "" && !intable && line != "") {
             intable = true;
