@@ -39,18 +39,35 @@ var desel = {
     "blue": "yellow"
 }
 
+var btncol = {
+    "red": "orange",
+    "orange": "yellow",
+    "yellow": "orange",
+    "green": "yellow",
+    "cyan": "blue",
+    "blue": "blurple",
+    "pink": "red",
+    "white": "grey",
+    "grey": "white",
+    "purple": "blue"
+}
+
 var ls1 = [
     ".line",
     ".sect",
     ".collapser",
     ".collapser:hover",
+    ".collapser:focus",
     ".collopen",
     ".collopen:hover",
+    ".collopen:focus",
 ];
 
 var ls2 = [
     ".lnk:hover",
+    ".lnk:focus",
     ".sel:hover",
+    ".sel:focus",
     ".sel",
     ".lnk"
 ];
@@ -59,21 +76,22 @@ function swapColor(colorName) {
     var color; var bg; var name;
     [color, bg, name] = colors[colorName];
     for(var rule of document.styleSheets[2].cssRules) {
-        if(rule.selectorText == "h1, h2, h3, h4, h5, h6")
+        var txt = rule.selectorText;
+        if(txt == "h1, h2, h3, h4, h5, h6")
             rule.style.color = color;
-        if(rule.selectorText == "a")
+        else if(rule.selectorText == "a")
             rule.style.color = color.replace(/0/gm, "a");
-        if(ls1.includes(rule.selectorText)) {
+        else if(ls1.includes(txt)) {
             var tmp = color;
-            if(rule.selectorText == ".collapser" || rule.selectorText == ".collopen") {
+            if(txt == ".collapser" || txt == ".collopen") {
                 tmp = colors["grey"][0];
                 rule.style.backgroundColor = tmp + "0";
             } 
-            if(rule.selectorText == ".collapser:hover" || rule.selectorText == ".collopen:hover") {
+            if(txt == ".collapser:hover" || txt == ".collopen:hover") {
                 tmp = colors["white"][0];
                 rule.style.backgroundColor = tmp + "1";
             }
-            if(ls1.slice(2).includes(rule.selectorText) || rule.selectorText == ".line") {
+            if(ls1.slice(2).includes(txt) || txt == ".line") {
                 rule.style.borderBottomColor = tmp;
                 rule.style.color = tmp;
             }
@@ -81,25 +99,40 @@ function swapColor(colorName) {
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
         }
-        if(rule.selectorText == ".tab") {
+        else if(txt == ".tab") {
             rule.style.borderTopColor = color;
         }
-        if(ls2.includes(rule.selectorText)) {
+        else if(ls2.includes(txt)) {
             var tmp;
-            if(rule.selectorText == ".lnk:hover")
+            if(txt == ".lnk:hover")
                 tmp = colors[swapped[colorName]][0];
-            if(rule.selectorText == ".sel")
+            if(txt == ".sel")
                 tmp = color;
-            if(rule.selectorText == ".sel:hover")
+            if(txt == ".sel:hover")
                 tmp = colors[desel[colorName]][0];
-            if(rule.selectorText == ".lnk")
+            if(txt == ".lnk")
                 tmp = color + "8";
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
-            if(rule.selectorText != ".lnk")
+            if(txt != ".lnk")
                 rule.style.backgroundColor = tmp + "4";
             rule.style.color = tmp.slice(0, 4);
+        }
+        else if(txt == ".btn") {
+            var tmp = btncol[colorName];
+            rule.style.borderTopColor = tmp;
+            rule.style.borderLeftColor = tmp;
+            rule.style.borderRightColor = tmp;
+            rule.style.color = tmp;
+            rule.style.backgroundColor = tmp + "4";
+        }
+        else if(txt == ".btn:hover" || txt == ".btn:focus") {
+            rule.style.borderTopColor = color;
+            rule.style.borderLeftColor = color;
+            rule.style.borderRightColor = color;
+            rule.style.color = color;
+            rule.style.backgroundColor = color + "4";
         }
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
