@@ -180,8 +180,10 @@ function locate(thing, parent = find("list"), loc = "find_command") {
     return nothidden;
 }
 
-function locater(elem, id = null) {
-    if(id == null)
-        id = elem.id;
-    locate(elem.value, elem, id);
+function locater(elem) {
+    locate(elem.value, elem, elem.id);
+}
+
+function locateId(id) {
+    locater(find(id));
 }
