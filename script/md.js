@@ -4,6 +4,8 @@ function trim(str) {
 
 var line_regex = [
     [/^ /gm, "\u200b \u200b"],
+    [/\&gt;/gm, ">"],
+    [/\&lt;/gm, "<"],
 
     [/\<(.+?)\>\((.+?)\)/gm, "<a href='$2' target='_blank'>$1</a>"],
     [/\((.+?)\)\<(.+?)\>/gm, "<a href='$2' target='_blank'><span class='btn'>$1</span></a>"],
