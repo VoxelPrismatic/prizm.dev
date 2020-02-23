@@ -179,3 +179,9 @@ function locate(thing, parent = find("list"), loc = "find_command") {
     }
     return nothidden;
 }
+
+function locater(elem, id = null) {
+    if(id == null)
+        id = elem.id;
+    locate(elem.value, elem, id);
+}
