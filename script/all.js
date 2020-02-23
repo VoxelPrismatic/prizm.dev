@@ -104,12 +104,14 @@ function collapser(elem, force = false) {
 function collall(parent = find("list")) {
     var child = parent.children;
     for(var c of child) {
-        if(c.className.includes("collapser")) {collapser(c, true);
-            if(c.className.includes("collopen")) {
-                collapser(c, true);
-            }
+        c.classList.remove("invis");
+        if(c.className.includes("collapser")) {
             collall(c);
-    	}
+            c.classList.remove("collopen"));
+        }
+        if(c.parent.className.includes("collapser")) {
+            c.style.display = "none";
+        }
     }
 }
 
@@ -155,7 +157,7 @@ function locate(thing, parent = find("list"), loc = "find_command") {
                 if(!page.className.includes("collopen")) {
                     collapser(page);
                 }
-                var donthideme = filter_docs(thing, page, loc);
+                var donthideme = locate(thing, page, loc);
                 if(!donthideme) {
                     page.style.display = "none";
                     page.classList.add("invis");
@@ -167,6 +169,7 @@ function locate(thing, parent = find("list"), loc = "find_command") {
                 rawtext += page.children.item(1).innerHTML;
                 if(rawtext.search(re) != -1) {
                     nothidden = true
+                    page.classList.remove("invis");
                 } else {
                     page.style.display = "none";
                     page.classList.add("invis");
