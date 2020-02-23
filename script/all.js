@@ -39,6 +39,21 @@ var desel = {
     "blue": "yellow"
 }
 
+var ls1 = [
+    ".line",
+    ".sect",
+    ".collapser",
+    ".collapser:hover",
+    ".collopen",
+    ".collopen:hover",
+];
+
+var ls2 = [
+    ".lnk:hover",
+    ".sel:hover",
+    ".sel"
+];
+
 function swapColor(colorName) {
     var color; var bg; var name;
     [color, bg, name] = colors[colorName];
@@ -47,30 +62,36 @@ function swapColor(colorName) {
             rule.style.color = color;
         if(rule.selectorText == "a")
             rule.style.color = color.replace(/0/gm, "a");
-        if(rule.selectorText == ".line" || rule.selectorText == ".sect") {
-            rule.style.borderTopColor = color;
-            rule.style.borderLeftColor = color;
-            rule.style.borderRightColor = color;
-            if(rule.selectorText == ".line")
-                rule.style.borderBottomColor = color;
-        }
-        if(rule.selectorText == ".lnk")
-            rule.style.borderTopColor = color;
-        if(rule.selectorText == ".lnk:hover") {
-            var tmp = colors[swapped[colorName]][0];
+        if(ls1.includes(rule.selectorText)) {
+            var tmp = color;
+            if(rule.selectorText == ".collapser" || rule.selectorText == ".collopen") {
+                tmp = colors["grey"][0];
+                rule.style.borderBottomColor = tmp;
+                rule.style.backgroundColor = tmp + "2";
+            } 
+            if(rule.selectorText == ".collapser:hover" || rule.selectorText == ".collopen:hover") {
+                tmp = colors["white"][0];
+                rule.style.borderBottomColor = tmp;
+                rule.style.backgroundColor = tmp + "2";
+            }
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
-            rule.style.backgroundColor = tmp + "4";
+            if(rule.selectorText == ".line")
+                rule.style.borderBottomColor = tmp;
         }
-        if(rule.selectorText == ".sel") {
+        if(rule.selectorText == ".lnk")
             rule.style.borderTopColor = color;
-            rule.style.borderLeftColor = color;
-            rule.style.borderRightColor = color;
-            rule.style.backgroundColor = color + "4";
-        }
-        if(rule.selectorText == ".sel:hover") {
-            var tmp = colors[desel[colorName]][0];
+        if(rule.selectorText == ".lnk:hover" || 
+           rule.selectorText == ".sel" || 
+           rule.selectorText == ".sel:hover") {
+            var tmp;
+            if(rule.selectorText == ".lnk:hover")
+                tmp = colors[swapped[colorName]][0];
+            if(rule.selectorText == ".sel")
+                tmp = color;
+            if(rule.selectorText == ".sel:hover")
+                tmp = colors[desel[colorName]][0];
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
