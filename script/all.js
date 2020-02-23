@@ -12,6 +12,33 @@ var colors = {
     "blurple": ["#08f", "#111522", "blurple"],
 }
 
+var swapped = {
+    "red": "green",
+    "orange": "blue",
+    "yellow": "cyan",
+    "green": "red",
+    "cyan": "yellow",
+    "pink": "blurple",
+    "grey": "white",
+    "white": "grey",
+    "purple": "pink",
+    "blurple": "purple"
+}
+
+var desel = {
+    "red": "yellow",
+    "orange": "green",
+    "yellow": "cyan",
+    "green": "cyan",
+    "cyan": "pink",
+    "pink": "purple",
+    "purple": "red",
+    "blurple": "orange",
+    "white": "white",
+    "grey": "grey",
+    "blue": "yellow"
+}
+
 function swapColor(colorName) {
     var color; var bg; var name;
     [color, bg, name] = colors[colorName];
@@ -27,6 +54,28 @@ function swapColor(colorName) {
             if(rule.selectorText == ".line")
                 rule.style.borderBottomColor = color;
         }
+        if(rule.selectorText == ".lnk")
+            rule.style.borderTopColor = color;
+        if(rule.selectorText == ".lnk:hover") {
+            var tmp = colors[swapped[colorName]][0];
+            rule.style.borderTopColor = tmp;
+            rule.style.borderLeftColor = tmp;
+            rule.style.borderRightColor = tmp;
+            rule.style.backgroundColor = tmp + "4";
+        }
+        if(rule.selectorText == ".sel") {
+            rule.style.borderTopColor = color;
+            rule.style.borderLeftColor = color;
+            rule.style.borderRightColor = color;
+            rule.style.backgroundColor = color + "4";
+        }
+        if(rule.selectorText == ".sel:hover") {
+            var tmp = colors[desel[colorName]][0];
+            rule.style.borderTopColor = tmp;
+            rule.style.borderLeftColor = tmp;
+            rule.style.borderRightColor = tmp;
+            rule.style.backgroundColor = tmp + "4";
+        }
     }
     find("truelogo").src = `image/priz_${name}.png`;
 }
@@ -37,7 +86,7 @@ function load(filename, aio = false) {
         if (this.readyState == 4 && this.status == 200) {
             var resp = f.responseText;
             resp = resp.trim() + "\n"
-            setHtml("file", resp.replace(/</gm, "&lt;").replace(/>/gm, "&gt;")
+            setHtml("file", resp.replace(/</gm, "&lt;").replace(/>/gm, "&gt;"));
         }
     }
     f.open("GET", filename, aio);
