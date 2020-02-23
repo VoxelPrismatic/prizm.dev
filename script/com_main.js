@@ -98,6 +98,11 @@ function collapser(elem, force = false) {
     window.setTimeout(function() {globalThis.timeout = false;}, 500);
     //Set timeout so multiple collapses cannot run at the same time
     if(elem.className.includes("lnk")) {
+        for(var cat of find("list").children)
+            for(var lnk of cat.children)
+                if(elem.className.includes("sel"))
+                   elem.classList.remove("sel");
+        elem.classList.add("sel");
         setHtml("com_help", findHtml(elem.id.slice(4)));
         return;
     }
