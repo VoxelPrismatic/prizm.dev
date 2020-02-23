@@ -145,10 +145,10 @@ function collall(parent = find("list")) {
     var child = parent.children;
     for(var c of child) {
         if(c.className.includes("collapser")) {collapser(c, true);
-        	if(c.className.includes("collopen")) {
-            	collapser(c, true);
-        	}
-        	collall(c);
+            if(c.className.includes("collopen")) {
+                collapser(c, true);
+            }
+            collall(c);
     	}
     }
 }
