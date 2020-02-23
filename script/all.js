@@ -37,7 +37,7 @@ function load(filename, aio = false) {
         if (this.readyState == 4 && this.status == 200) {
             var resp = f.responseText;
             resp = resp.trim() + "\n"
-            setHtml("file", resp)
+            setHtml("file", resp.replace(/</gm, "&lt;").replace(/>/gm, "&gt;")
         }
     }
     f.open("GET", filename, aio);
