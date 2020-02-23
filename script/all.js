@@ -98,7 +98,7 @@ function swapColor(colorName) {
             rule.style.backgroundColor = tmp + "4";
         }
     }
-    find("truelogo").src = `image/priz_${name}.png`;
+    find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
 }
 
 function load(filename, aio = false) {
