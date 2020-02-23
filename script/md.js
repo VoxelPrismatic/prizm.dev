@@ -179,7 +179,7 @@ function mark_page(st) {
             continue;
         }
         if(incode) {
-            str += line;
+            str += line + "\n";
             continue;
         }
         //Table
