@@ -67,17 +67,15 @@ function swapColor(colorName) {
             var tmp = color;
             if(rule.selectorText == ".collapser" || rule.selectorText == ".collopen") {
                 tmp = colors["grey"][0];
-                rule.style.borderBottomColor = tmp;
-                rule.style.color = tmp;
-                rule.style.backgroundColor = tmp + "1";
+                rule.style.backgroundColor = tmp + "0";
             } 
             if(rule.selectorText == ".collapser:hover" || rule.selectorText == ".collopen:hover") {
                 tmp = colors["white"][0];
+                rule.style.backgroundColor = tmp + "1";
             }
             if(ls1.slice(2).includes(rule.selectorText)) {
                 rule.style.borderBottomColor = tmp;
                 rule.style.color = tmp;
-                rule.style.backgroundColor = tmp + "1";
             }
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
@@ -97,7 +95,7 @@ function swapColor(colorName) {
             if(rule.selectorText == ".sel:hover")
                 tmp = colors[desel[colorName]][0];
             if(rule.selectorText == ".lnk")
-                tmp = color + "2";
+                tmp = color + "8";
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
