@@ -1,3 +1,17 @@
+var categories {
+    "fun": "Fun & Games",
+    "math": "Math & Calculators",
+    "pub": "Fun & Games",
+    "oth": "Other things",
+    "ai": "Artificial Intelligence",
+    "inf": "Informational content",
+    "mod": "Moderation stuff",
+    "music": "Sounds & Music",
+    "dis": "Discord & Meta",
+    "int": "Interative [between 2 people]",
+    
+}
+
 function loadPage() {
     var things = {}
     var index = JSON.parse(load("/prizm.dev/data/commands.json"));
@@ -6,7 +20,7 @@ function loadPage() {
     for(var com of index.constructor.keys(index)) {
         var div = `<div id="${com} ${index[com]["alias"].join(" ")}">`;
         var mark = `#] The \`${com.toUpperCase()}\` command\n`;
-        mark += `#Category: #${index[com]["cat"]}\n`;
+        mark += `#Category: #${categories[index[com]["cat"]]}\n`;
         mark += `#Description: #${index[com]["desc"]}\n`
         if(index[com]["alias"].length)
             mark += `#Aliases: #\`${";]" + index[com]["alias"].join("`, `;]")}\`\n`;
