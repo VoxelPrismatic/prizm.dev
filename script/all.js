@@ -67,11 +67,15 @@ function swapColor(colorName) {
             if(rule.selectorText == ".collapser" || rule.selectorText == ".collopen") {
                 tmp = colors["grey"][0];
                 rule.style.borderBottomColor = tmp;
+                rule.style.color = tmp;
                 rule.style.backgroundColor = tmp + "1";
             } 
             if(rule.selectorText == ".collapser:hover" || rule.selectorText == ".collopen:hover") {
                 tmp = colors["white"][0];
+            }
+            if(ls1.slice(2).includes(rule.selectorText)) {
                 rule.style.borderBottomColor = tmp;
+                rule.style.color = tmp;
                 rule.style.backgroundColor = tmp + "1";
             }
             rule.style.borderTopColor = tmp;
@@ -82,9 +86,7 @@ function swapColor(colorName) {
         }
         if(rule.selectorText == ".lnk")
             rule.style.borderTopColor = color;
-        if(rule.selectorText == ".lnk:hover" || 
-           rule.selectorText == ".sel" || 
-           rule.selectorText == ".sel:hover") {
+        if(ls2.includes(rule.selectorText)) {
             var tmp;
             if(rule.selectorText == ".lnk:hover")
                 tmp = colors[swapped[colorName]][0];
@@ -96,6 +98,8 @@ function swapColor(colorName) {
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
             rule.style.backgroundColor = tmp + "4";
+            if(tmp != color)
+                rule.style.color = tmp;
         }
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
