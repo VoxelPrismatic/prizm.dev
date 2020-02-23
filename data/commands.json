@@ -139,7 +139,7 @@
     },
     "roles": {
         "alias": [],
-        "inp": "MEMBER [MEMBER] - The target user, mention or name or ID\nROLE   [ROLE  ] - The target role, mention or name or ID\nREASON [TEXT  ] - The reason for the action DEFAULT: \"REQUESTED BY ] \<name\>\"\n*All roles given will toggle the role presence on ALL members given",
+        "inp": "MEMBER [MEMBER] - The target user, mention or name or ID\nROLE   [ROLE  ] - The target role, mention or name or ID\nREASON [TEXT  ] - The reason for the action DEFAULT: \"REQUESTED BY ] <name>\"\n*All roles given will toggle the role presence on ALL members given",
         "cat": "mod",
         "desc": "Adds or removes {role} from {user} for a {reason}",
         "use": ";]role {member1} {?member2} {...member} {role1} {?role2} {...role} {?reason}"
@@ -242,7 +242,7 @@
             "rdt",
             "red"
         ],
-        "inp": "SUBREDDIT [TEXT] - The name of the subredditm /r/ is optional\n> /u/ is required to redditor feeds\n> also can be a link to a submission\n> /m/\<multireddit\>#\<redditor\> is needed for multireddits\n> > eg /m/CoolMultireddit#Redditor1010\nSEARCH    [TEXT] - What to search for",
+        "inp": "SUBREDDIT [TEXT] - The name of the subredditm /r/ is optional\n> /u/ is required to redditor feeds\n> also can be a link to a submission\n> /m/<multireddit>#<redditor> is needed for multireddits\n> > eg /m/CoolMultireddit#Redditor1010\nSEARCH    [TEXT] - What to search for",
         "cat": "fun",
         "desc": "Gives you a random post from a given {subreddit}",
         "use": ";]reddit {?subreddit} {?search}"
@@ -366,7 +366,7 @@
         "inp": "FMT [TEXT] - The format to convert *to* eg \"pdf\"",
         "cat": "oth",
         "desc": "Converts a file to a {fmt} file!",
-        "use": ";]convert {fmt} \<attach a file or have an embedable link\>"
+        "use": ";]convert {fmt} <attach a file or have an embedable link>"
     },
     "clrto": {
         "alias": [],
