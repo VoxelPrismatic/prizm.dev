@@ -26,7 +26,7 @@ function loadPage() {
         else
             mark += `#Aliases: #\`NONE\`\n`;
         mark += `#] Usage\n\`\`\`${index[com]["use"]}\`\`\`\n`;
-        mark += `#] Input info\n\`\`\`${index[com]["inp"].replace(/\n/gm, "\\n")}\`\`\`\n`;
+        mark += `#] Input info\n\`\`\`${index[com]["inp"]}\`\`\`\n`;
         mark += `#NOTICE:# The \`{arg}\` stuff is what to put, not what to write.\n`;
         mark += `#EXAMPLE:# \`;]help {?com}\` can be \`;]help\` or \`;]help ${com}\``;
         try {
