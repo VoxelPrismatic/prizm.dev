@@ -22,8 +22,8 @@
             PRIZM COMMANDS ;]
         </h1>
         <div id="index" style="sect">
-            <textarea id="find_command" placeholder="Search for a command, you can also use /RegEx/"></textarea>
-            <button class="tab" onclick="locate_command(findVal('find_command'))" id="ok_btn">[SEARCH]</button>
+            <textarea id="find_command" placeholder="Search for a command, you can also use /RegEx/"
+                      onkeyup="locater(elem = this);"></textarea>
         </div>
         <div id="list" class="sect" style="max-height: 30vh; overflow-y: auto;">
             böther im loading.
