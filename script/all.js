@@ -4,7 +4,9 @@ function load(filename, aio = false) {
         if (this.readyState == 4 && this.status == 200) {
             var resp = f.responseText;
             resp = resp.trim() + "\n"
-            setHtml("file", resp.replace(/</gm, "&lt;").replace(/>/gm, "&gt;"));
+            resp = resp.replace(/</gm, "&lt;");
+            resp = resp.replace(/>/gm, "&gt;");
+            setHtml("file", resp);
         }
     }
     f.open("GET", filename, aio);
