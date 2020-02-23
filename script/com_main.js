@@ -11,12 +11,15 @@ var categories = {
     "int": "Interative [between 2 people]",
 }
 
+var commands = {};
+
 function loadPage() {
     var things = {}
     var index = JSON.parse(load("/prizm.dev/data/commands.json").replace(/\\\n/gm, "\\n"));
     var st = "";
     var comindex = "";
     for(var com of index.constructor.keys(index)) {
+        commands[com] = index[com]["alias"];
         var div = `<div id="${com} ${index[com]["alias"].join(" ")}">`;
         var mark = `#] The \`${com.toUpperCase()}\` command\n`;
         mark += `#Category: #${categories[index[com]["cat"]]}\n`;
