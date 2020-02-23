@@ -28,7 +28,6 @@ function collsel(elem = find("list")) {
     }
     return itm;
 }
-    
 
 function setcoll(elem) {
     colldesel();
@@ -76,8 +75,8 @@ function collapser(elem, force = false) {
     if(elem.className.includes("lnk")) {
         for(var cat of find("list").children)
             for(var lnk of cat.children)
-                if(elem.className.includes("sel"))
-                   elem.classList.remove("sel");
+                if(lnk.className.includes("sel"))
+                   lnk.classList.remove("sel");
         elem.classList.add("sel");
         setHtml("com_help", findHtml(elem.id.slice(4)));
         return;
