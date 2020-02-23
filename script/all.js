@@ -51,7 +51,8 @@ var ls1 = [
 var ls2 = [
     ".lnk:hover",
     ".sel:hover",
-    ".sel"
+    ".sel",
+    ".lnk"
 ];
 
 function swapColor(colorName) {
@@ -84,8 +85,9 @@ function swapColor(colorName) {
             if(rule.selectorText == ".line")
                 rule.style.borderBottomColor = tmp;
         }
-        if(rule.selectorText == ".lnk")
+        if(rule.selectorText == ".tab") {
             rule.style.borderTopColor = color;
+        }
         if(ls2.includes(rule.selectorText)) {
             var tmp;
             if(rule.selectorText == ".lnk:hover")
@@ -94,12 +96,15 @@ function swapColor(colorName) {
                 tmp = color;
             if(rule.selectorText == ".sel:hover")
                 tmp = colors[desel[colorName]][0];
+            if(rule.selectorText == ".lnk")
+                tmp = color + "2";
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
-            rule.style.backgroundColor = tmp + "4";
+            if(rule.selectorText != ".lnk")
+                rule.style.backgroundColor = tmp + "4";
             if(tmp != color)
-                rule.style.color = tmp;
+                rule.style.color = tmp.slice(0, 4);
         }
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
