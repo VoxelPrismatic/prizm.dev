@@ -105,5 +105,6 @@ function swapColor(colorName) {
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
 }
 
-window.setTimeout(loadPage, 100);
-window.setTimeout(swapColor, 100, theme);
+loadPage();
+
+window.setTimeout(swapColor, 200, theme);
