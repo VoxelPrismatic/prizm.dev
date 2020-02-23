@@ -101,15 +101,15 @@ function collapser(elem, force = false) {
     elem.className = name;
 }
 
-function collall(parent = find("list")) {
+function collall(parent = find("list"), sub = false) {
     var child = parent.children;
     for(var c of child) {
         c.classList.remove("invis");
         if(c.className.includes("collapser")) {
-            collall(c);
-            c.classList.remove("collopen"));
+            collall(c, true);
+            c.classList.remove("collopen");
         }
-        if(c.parent.className.includes("collapser")) {
+        if(sub) {
             c.style.display = "none";
         }
     }
