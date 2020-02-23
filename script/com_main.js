@@ -1,4 +1,4 @@
-var categories {
+var categories = {
     "fun": "Fun & Games",
     "math": "Math & Calculators",
     "pub": "Fun & Games",
@@ -9,12 +9,11 @@ var categories {
     "music": "Sounds & Music",
     "dis": "Discord & Meta",
     "int": "Interative [between 2 people]",
-    
 }
 
 function loadPage() {
     var things = {}
-    var index = JSON.parse(load("/prizm.dev/data/commands.json"));
+    var index = JSON.parse(load("/prizm.dev/data/commands.json").replace(/\\\n/gm, "\\n"));
     var st = "";
     var comindex = "";
     for(var com of index.constructor.keys(index)) {
@@ -38,7 +37,8 @@ function loadPage() {
         }
     }
     for(var cat of things.constructor.keys(things)) {
-        st += `<div id="DROP_${cat}" class="collapser" onmouseover="setcoll(this)" onclick="collapser(this)">${cat}`;
+        st += `<div id="DROP_${cat}" class="collapser" onmouseover="setcoll(this)" `;
+        st += `onclick="collapser(this)">${categories[cat]}`;
         for(var com of things.constructor.keys(things[cat])) {
             st += `<div id="COM_${com}" style="display: none" class="lnk" `;
             st += `onmouseover="setcoll(this)" onclick="collapser(this)">`
