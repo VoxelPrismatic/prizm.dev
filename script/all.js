@@ -67,12 +67,12 @@ function swapColor(colorName) {
             if(rule.selectorText == ".collapser" || rule.selectorText == ".collopen") {
                 tmp = colors["grey"][0];
                 rule.style.borderBottomColor = tmp;
-                rule.style.backgroundColor = tmp + "2";
+                rule.style.backgroundColor = tmp + "1";
             } 
             if(rule.selectorText == ".collapser:hover" || rule.selectorText == ".collopen:hover") {
                 tmp = colors["white"][0];
                 rule.style.borderBottomColor = tmp;
-                rule.style.backgroundColor = tmp + "2";
+                rule.style.backgroundColor = tmp + "1";
             }
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
