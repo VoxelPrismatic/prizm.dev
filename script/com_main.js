@@ -51,5 +51,3 @@ function loadPage() {
     setHtml("list", st);
     setHtml("com_help", "^ Choose a command");
 }
-
-window.setTimeout(loadPage, 100);
