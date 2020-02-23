@@ -10,7 +10,7 @@ function loadPage() {
         if(index[com]["alias"].length)
             mark += `#Aliases: #\`${";]" + index[com]["alias"].join("`, `;]")}\`\n`;
         else
-            mark += `#Aliases: #\`NONE\``;
+            mark += `#Aliases: #\`NONE\`\n`;
         mark += `#] Usage\n\`\`\`${index[com]["use"]}\`\`\`\n`;
         mark += `#] More info\n\`\`\`${index[com]["desc"]}\`\`\`\n`;
         mark += `#NOTICE:# The \`{arg}\` stuff is what to put, not what to write.\n`;
