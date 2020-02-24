@@ -202,12 +202,16 @@ function textPage(...pages) {
     setHtml("content", html);
 }
 
+function jumpToEdge() {
+    if(window.scrollY / window.scrollMaxY >= 0.5)
+        find("truelogo").scrollIntoView();
+    else
+        find("footer").scrollIntoView();
+}
+
 window.onscroll = function() {
-    if(window.scrollY / window.scrollMaxY >= 0.5) {
+    if(window.scrollY / window.scrollMaxY >= 0.5)
         setHtml("jumper", "[\u039b]");
-        find("jumper").onclick = function() {find("truelogo").scrollIntoView();};
-    } else {
+    else
         setHtml("jumper", "[V]");
-        find("jumper").onclick = function() {find("footer").scrollIntoView();};
-    }
 }
