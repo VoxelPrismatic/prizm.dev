@@ -56,18 +56,14 @@ var ls1 = [
     ".line",
     ".sect",
     ".collapser",
-    ".collapser:hover",
-    ".collapser:focus",
+    ".collapser:hover, .collapser:focus",
     ".collopen",
-    ".collopen:hover",
-    ".collopen:focus",
+    ".collopen:hover, .collopen:focus",
 ];
 
 var ls2 = [
-    ".lnk:hover",
-    ".lnk:focus",
-    ".sel:hover",
-    ".sel:focus",
+    ".lnk:hover, .lnk:focus",
+    ".sel:hover, .sel:focus",
     ".sel",
     ".lnk"
 ];
@@ -83,11 +79,11 @@ function swapColor(colorName) {
             rule.style.color = color.replace(/0/gm, "a");
         else if(ls1.includes(txt)) {
             var tmp = color;
-            if(txt == ".collapser" || txt == ".collopen") {
+            if(txt.includes(".collapser")) {
                 tmp = colors["grey"][0];
                 rule.style.backgroundColor = tmp + "0";
             } 
-            if(txt == ".collapser:hover" || txt == ".collopen:hover") {
+            if(txt.includes("coll") && txt.includes(":hover")) {
                 tmp = colors["white"][0];
                 rule.style.backgroundColor = tmp + "1";
             }
@@ -104,7 +100,7 @@ function swapColor(colorName) {
         }
         else if(ls2.includes(txt)) {
             var tmp;
-            if(txt == ".lnk:hover")
+            if(txt.includes(".lnk:hover"))
                 tmp = colors[swapped[colorName]][0];
             if(txt == ".sel")
                 tmp = color;
@@ -127,7 +123,7 @@ function swapColor(colorName) {
             rule.style.color = tmp;
             rule.style.backgroundColor = tmp + "4";
         }
-        else if(txt == ".btn:hover" || txt == ".btn:focus") {
+        else if(txt == ".btn:hover, .btn:focus") {
             rule.style.borderTopColor = color;
             rule.style.borderLeftColor = color;
             rule.style.borderRightColor = color;
