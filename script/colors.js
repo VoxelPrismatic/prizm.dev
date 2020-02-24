@@ -74,7 +74,7 @@ function swapColor(colorName) {
     var color; var bg; var name;
     [color, bg, name] = colors[colorName];
     for(var rule of document.styleSheets[2].cssRules) {
-        var txt = rule.selectorText;
+        let txt = rule.selectorText;
         if(txt == "h1, h2, h3, h4, h5, h6") {
             rule.style.color = color;
         }
