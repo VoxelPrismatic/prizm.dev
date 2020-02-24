@@ -117,14 +117,14 @@ function swapColor(colorName) {
             rule.style.borderRightColor = tmp;
             rule.style.color = tmp;
             rule.style.backgroundColor = tmp + "4";
-        }
-        else if(rule.selectorText.includes(".jumper")) {
+        } else if(rule.selectorText.includes("#jumper")) {
             var tmp = color;
             if(rule.selectorText.includes("hover"))
                 tmp = colors[swapped[colorName]][0];
             rule.style.backgroundColor = "inherit";
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
+            rule.style.color = tmp;
         }
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
