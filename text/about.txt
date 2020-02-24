@@ -1,7 +1,7 @@
 #] WHO AM I?
 
 I am a human [duh] that loves to code really much of anything. I made a discord \
-bot [PRIZM] in about a month, while teaching myself _python_ in about the same \
+bot [PRIZM] in about a month, while teaching myself #python# in about the same \
 time. I've actually been working on PRIZM for quite a while now, and am working on \
 a replacement for the dreaded `discord.py` that almost everybody I know despises.
 
@@ -17,18 +17,18 @@ the page ;]
 
 #] WHAT LANGUAGES DO I USE/KNOW?
 
-I am currently learning _Java_, with literally the worst teacher ever. I also know \
-a bit of _JS_, and ofc I use Python. Additionally, I use _TI-BASIC_, where I made RPN \
+I am currently learning #Java#, with literally the worst teacher ever. I also know \
+a bit of #JS#, and ofc I use Python. Additionally, I use #TI-BASIC#, where I made RPN \
 for the TI-84+CE. I can learn any language very quickly, however. I also made my \
-version of _MarkDown_ in JS, so I can make pretty neat looking sites such as the one \
+version of #MarkDown# in JS, so I can make pretty neat looking sites such as the one \
 you are seeing here. I can learn any language pretty quickly, however, mainly \
 because I can mentally switch between syntax and functions efficiently and with \
 great ease.
 
-I also know a small bit about _SQLite_, _JSON_, _HTML_, and _CSS/LESS_. With the \
+I also know a small bit about #SQLite#, #JSON#, #HTML#, and #CSS/LESS#. With the \
 power of CSS/LESS and HTML, I have successfully made a website UI that nobody likes \
 due to flashy colors, although those are the colors I have chosen for my logo and 
 people seem to like that.
 
-I've tried out a bit of _Swift_, but stopped that because Swift is based on Obj-C, \
+I've tried out a bit of #Swift#, but stopped that because Swift is based on Obj-C, \
 which is by Apple, which makes honestly the worst documentation for anything.
