@@ -4,9 +4,9 @@ function trim(str) {
 
 var hexs = [];
 
-function rngHex() {
+function rngHex(len = 16) {
     var st = "";
-    for(var x = 0; x < 16; x += 1)
+    for(var x = 0; x < len; x += 1)
         st += Math.floor(Math.random() * 16).toString(16)
     if(globalThis.hexs.includes(st))
         st = rngHex();
@@ -19,7 +19,7 @@ function head(m, p1) {
         if(m[x] != "#")
             break;
     var st = `<h${x} `;
-    st += `id="${rngHex()}">${"#".repeat(x)}] ${p1}</h${x}>`;
+    st += `id="${p1.replace(/[ ,._]/gm, "") + }">${"#".repeat(x)}] ${p1}</h${x}>`;
     return st;
 }
 
@@ -28,8 +28,10 @@ var line_regex = [
     [/\&gt;/gm, ">"],
     [/\&lt;/gm, "<"],
 
-    [/\<(.+?)\>\((.+?)\)/gm, "<u><a href='$2' target='\x5fblank'>$1</a></u>"],
-    [/\((.+?)\)\<(.+?)\>/gm, "<a href='$2' target='\x5fblank'><span class='btn'>$1</span></a>"],
+    [/\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2'>$1</a></u>"],
+    [/\[\[(.+?)\]\]\<(.+?)\>/gm, "<a href='$2'><span class='btn'>$1</span></a>"],
+    [/\+\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2' target='\x5fblank'>$1</a></u>"],
+    [/\+\[\[(.+?)\]\]\<(.+?)\>/gm, "<a href='$2' target='\x5fblank'><span class='btn'>$1</span></a>"],
     [/\@\[(.+?)\]\((.+?)\)/gm, "<img alt='$1' src='$2'>"],
     [/e<<(.+?)>>/gm, "<u><a href='mailto:$1>$1</a></u>"],
     [/p<<(.+?)>>/gm, "<u?<a href='tel:$1>$1</a></u>"],
