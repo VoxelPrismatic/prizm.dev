@@ -79,28 +79,12 @@ function swapColor(colorName) {
             rule.style.color = color;
         else if(txt == "a")
             rule.style.color = color.replace(/0/gm, "a");
-        else if(ls1.includes(txt)) {
-            var tmp = color;
-            if(txt.includes(".collapser")) {
-                tmp = colors["grey"][0];
-                rule.style.backgroundColor = tmp + "0";
-            } 
-            if(txt.includes("coll") && txt.includes(":hover")) {
-                tmp = colors["white"][0];
-                rule.style.backgroundColor = tmp + "1";
-            }
-            if(ls1.slice(2).includes(txt) || txt == ".line") {
-                rule.style.borderBottomColor = tmp;
-                rule.style.color = tmp;
-            }
-            rule.style.borderTopColor = tmp;
-            rule.style.borderLeftColor = tmp;
-            rule.style.borderRightColor = tmp;
-        }
-        else if(txt == ".tab") {
+        else if(txt == ".tab")
             rule.style.borderTopColor = color;
-        }
-        else if(ls2.includes(txt)) {
+    }
+    for(var rule of document.styleSheets[2].cssRules) {
+        var txt = rule.selectorText;
+        if(ls2.includes(txt)) {
             var tmp;
             if(txt.includes(".lnk:hover"))
                 tmp = colors[swapped[colorName]][0];
@@ -126,6 +110,24 @@ function swapColor(colorName) {
             rule.style.borderRightColor = tmp;
             rule.style.color = tmp;
             rule.style.backgroundColor = tmp + "4";
+        }
+        else if(ls1.includes(txt)) {
+            var tmp = color;
+            if(txt.includes(".collapser")) {
+                tmp = colors["grey"][0];
+                rule.style.backgroundColor = tmp + "0";
+            } 
+            if(txt.includes("coll") && txt.includes(":hover")) {
+                tmp = colors["white"][0];
+                rule.style.backgroundColor = tmp + "1";
+            }
+            if(ls1.slice(2).includes(txt) || txt == ".line") {
+                rule.style.borderBottomColor = tmp;
+                rule.style.color = tmp;
+            }
+            rule.style.borderTopColor = tmp;
+            rule.style.borderLeftColor = tmp;
+            rule.style.borderRightColor = tmp;
         }
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
