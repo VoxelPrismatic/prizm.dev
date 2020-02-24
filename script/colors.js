@@ -98,7 +98,8 @@ function swapColor(colorName) {
         else if(txt == ".tab") {
             rule.style.borderTopColor = color;
         }
-        else if(txt.includes(".jumper")) {
+        var txt = rule.selectorText; //It breaks here for some unknown reason
+        if(txt.includes(".jumper")) {
             var tmp = color;
             if(txt.includes("hover"))
                 tmp = colors[swapped[colorName]][0];
