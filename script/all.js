@@ -201,3 +201,13 @@ function textPage(...pages) {
     }
     setHtml("content", html);
 }
+
+window.onscroll = function() {
+    if(window.scrollY / window.scrollMaxY >= 0.5) {
+        setHtml("jumper", "[\u039b]");
+        find("jumper").onclick = function() {find("truelogo").scrollIntoView();};
+    } else {
+        setHtml("jumper", "[V]");
+        find("jumper").onclick = function() {find("footer").scrollIntoView();};
+    }
+}
