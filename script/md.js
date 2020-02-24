@@ -18,7 +18,7 @@ function head(m, p1) {
     for(var x = 0; x < 6; x += 1)
         if(m[x] != "#")
             break;
-    var st = `<h${x} id="${p1}_${rngHex()}">${"#".repeat(x)}] ${p1}</h${x}>`;
+    var st = `<h${x} id="${p1}\x5f${rngHex()}">${"#".repeat(x)}] ${p1}</h${x}>`;
     return st;
 }
 
