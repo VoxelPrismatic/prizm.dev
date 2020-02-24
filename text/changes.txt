@@ -159,7 +159,7 @@ xN, yN [ANY] - The XY coordinates [MAX - 127, MIN - 0]
 > The char command now gives more info
 > > When requesting one character, it tells you how to write it in many languages
 > > > Includes PY, JS, URI/URL, JAVA, C#, C++, C, HTML, RUBY, and SWIFT
-> > > If you want other languages, please visit the (#prizm_suggest)<https://discordapp.com/channels/533290351184707584/535507316775059516/> channel
+> > > If you want other languages, please visit the (#prizm\x5fsuggest)<https://discordapp.com/channels/533290351184707584/535507316775059516/> channel
 
 -~-
 
