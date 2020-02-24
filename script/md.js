@@ -24,10 +24,13 @@ function head(m, p1) {
 }
 
 var line_regex = [
+    
+    //Pre-Escape
     [/^ /gm, "\u200b \u200b"],
     [/\&gt;/gm, ">"],
     [/\&lt;/gm, "<"],
 
+    //Links
     [/\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2'>$1</a></u>"],
     [/\[\[(.+?)\]\]\<(.+?)\>/gm, "<a href='$2'><span class='btn'>$1</span></a>"],
     [/\+\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2' target='\x5fblank'>$1</a></u>"],
@@ -39,6 +42,7 @@ var line_regex = [
     [/p\[(.+?)]<(.+?)>/gm, "<u><a href='tel:$2'>$1</a></u>"],
     [/<<(.+?)>>/gm, "<u><a href='$1'>$1</a></u>"],
 
+    //Unicode Escape
     [/^\\x([A-Fa-f0-9]{2})/gm, "\\u{$1}"],
     [/^\\U([A-Fa-f0-9]{8})/gm, "\\u{$1}"],
     [/^\\u([A-Fa-f0-9]{4})/gm, "\\u{$1}"],
@@ -49,13 +53,15 @@ var line_regex = [
     [/([^\\])\\N\{(.+?)\}/gm, function(m, a, p) {return a+"\\u{"+unimap(p.toUpperCase())+"}";}],
     [/\\([^u])/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
 
+    //Headers
     [/^\#\] +(.+)$/gm, head],
     [/^\##\] +(.+)$/gm, head],
     [/^\###\] +(.+)$/gm, head],
     [/^\####\] +(.+)$/gm, head],
     [/^\#####\] +(.+)$/gm, head],
     [/^\######\] +(.+)$/gm, head],
-
+    
+    //Main MD
     [/^\#(.+?)\#/gm, "<b>$1</b>"],
     [/^\*(.+?)\*/gm, "<i>$1</i>"],
     [/^\_(.+?)\_/gm, "<u>$1</u>"],
@@ -64,11 +70,6 @@ var line_regex = [
     [/^\^(.+?)\^/gm, "<sup>$1</sup>"],
     [/^\%(.+?)\%/gm, "<sub>$1</sub>"],
     [/^\!\!(.+?)\!\!/gm, `<span class="hide" onclick="this.classList.toggle('unhide');">$1</span>`],
-    [/^\:\: (.+)$/gm, `<span class="md-com">\u200b \u200b$1</span>`],
-    [/^\:\{\:(.+)/gm, "<div style='text-align: left;'>$1</div>"],
-    [/^\:\}\:(.+)/gm, "<div style='text-align: right;'>$1</div>"],
-    [/^\:\;\:(.+)/gm, "<div style='text-align: center;'>$1</div>"],
-
     [/([^\\])\#(.+?)\#/gm, "$1<b>$2</b>"],
     [/([^\\])\*(.+?)\*/gm, "$1<i>$2</i>"],
     [/([^\\])\_(.+?)\_/gm, "$1<u>$2</u>"],
@@ -77,7 +78,18 @@ var line_regex = [
     [/([^\\])\^(.+?)\^/gm, "$1<sup>$2</sup>"],
     [/([^\\])\%(.+?)\%/gm, "$1<sub>$2</sub>"],
     [/([^\\])\!\!(.+?)\!\!/gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
+    [/^\:\: (.+)$/gm, `<span class="md-com">\u200b \u200b$1</span>`],
+    
+    //Alignment
+    [
+        /(.*)\:\^\:(.*)/gm, 
+        "<div style='float: left;'>$1</div><span class='dict'></span><div style='float: right;'>$2</div>"
+    ],
+    [/^\:\{\:(.+)/gm, "<div style='text-align: left;'>$1</div>"],
+    [/^\:\}\:(.+)/gm, "<div style='text-align: right;'>$1</div>"],
+    [/^\:\;\:(.+)/gm, "<div style='text-align: center;'>$1</div>"],
 
+    //Others
     [/\{\{(\w+?)\}\}(.+?) /gm, "<span class='$1'>$2 </span>"],
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div></br>"],
     [/\\ *$/gm, "</br>"], //New line escape
