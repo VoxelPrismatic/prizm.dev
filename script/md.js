@@ -7,8 +7,8 @@ var line_regex = [
     [/\&gt;/gm, ">"],
     [/\&lt;/gm, "<"],
 
-    [/\<(.+?)\>\((.+?)\)/gm, "<a href='$2' target='_blank'>$1</a>"],
-    [/\((.+?)\)\<(.+?)\>/gm, "_<a href='$2' target='_blank'><span class='btn'>$1</span></a>_"],
+    [/\<(.+?)\>\((.+?)\)/gm, "_<a href='$2' target='_blank'>$1</a>_"],
+    [/\((.+?)\)\<(.+?)\>/gm, "<a href='$2' target='_blank'><span class='btn'>$1</span></a>"],
     [/\@\[(.+?)\]\((.+?)\)/gm, "<img alt='$1' src='$2'>"],
     [/e<<(.+?)>>/gm, "_<a href='mailto:$1>$1</a>_"],
     [/p<<(.+?)>>/gm, "_<a href='tel:$1>$1</a>_"],
