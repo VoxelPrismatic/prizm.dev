@@ -192,3 +192,12 @@ function locater(elem) {
 function locateId(id) {
     locater(find(id));
 }
+
+function textPage(...pages) {
+    var html = "";
+    for(var page of pages) {
+        var txt = load("/prizm.dev/text/" + page + ".txt");
+        html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
+    }
+    setHtml("content", html);
+}
