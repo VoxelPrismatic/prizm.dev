@@ -22,7 +22,7 @@ function head(m, p1) {
     if(p1.includes("`")) 
         st += `id="${p1.split("\`")[1]}`;
     else 
-        st += `id="${p1}"`;
+        st += `id="${p1}`;
     st += `\x5f${rngHex()}">${"#".repeat(x)}] ${p1}</h${x}>`;
     return st;
 }
