@@ -136,4 +136,6 @@ function swapColor(colorName) {
 
 loadPage();
 
-window.setTimeout(swapColor, 200, theme);
+for(var x = 0; x <= 1000; x += 100) {
+    window.setTimeout(swapColor, x, theme);
+}
