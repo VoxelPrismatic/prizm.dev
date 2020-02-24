@@ -42,9 +42,9 @@ var line_regex = [
     [/^\%(.+?)\%/gm, "<sub>$1</sub>"],
     [/^\!\!(.+?)\!\!/gm, `<span class="hide" onclick="this.classList.toggle('unhide');">$1</span>`],
     [/^\:\: (.+)$/gm, `<span class="md-com">\u200b \u200b$1</span>`],
-    [/^\:\}\:(.+?)/gm, "<div style='text-align: left;'>$1</div>"],
-    [/^\:\{\:(.+?)/gm, "<div style='text-align: right;'>$1</div>"],
-    [/^\:\;\:(.+?)/gm, "<div style='text-align: center;'>$1</div>"],
+    [/^\:\{\:(.+)/gm, "<div style='text-align: left;'>$1</div>"],
+    [/^\:\}\:(.+)/gm, "<div style='text-align: right;'>$1</div>"],
+    [/^\:\;\:(.+)/gm, "<div style='text-align: center;'>$1</div>"],
 
     [/([^\\])\#(.+?)\#/gm, "$1<b>$2</b>"],
     [/([^\\])\*(.+?)\*/gm, "$1<i>$2</i>"],
