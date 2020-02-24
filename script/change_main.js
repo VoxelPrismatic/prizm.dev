@@ -6,7 +6,7 @@ function loadPage() {
             var tag = "";
             tag = `<div id="${elem.id}~" `;
             tag += `class="lnk" onclick="scroll(this.id.slice(0, -1))">`;
-            tag += `${elem.innerHTML.split(" ", 1)[1]}</div>`;
+            tag += `${elem.innerHTML.innerHTML.split(" ").slice(1).join(" ")}</div>`;
             st += tag;
         }
     }
