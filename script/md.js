@@ -2,6 +2,26 @@ function trim(str) {
     return str.replace(/<br>/gm, "\n").replace(/^([ \u200b\n]+)/, "").replace(/([ \u200b\n]+)$/, "").trim();
 }
 
+var hexs = [];
+
+function rngHex() {
+    var st = "";
+    for(var x = 0; x < 16; x += 1)
+        st += Math.floor(Math.random() * 16).toString(16)
+    if(globalThis.hexs.includes(st))
+        st = rngHex();
+    globalThis.hexs.push(st);
+    return st;
+}
+
+function head(m, p1) {
+    for(var x = 0; x < 6; x += 1)
+        if(m[x] != "#")
+            break;
+    var st = `<h${x} id="${p1}_${rngHex()}">${"#".repeat(x)}] ${p1}</h${x}>`;
+    return st;
+}
+
 var line_regex = [
     [/^ /gm, "\u200b \u200b"],
     [/\&gt;/gm, ">"],
@@ -26,12 +46,12 @@ var line_regex = [
     [/([^\\])\\N\{(.+?)\}/gm, function(m, a, p) {return a+"\\u{"+unimap(p.toUpperCase())+"}";}],
     [/\\([^u])/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
 
-    [/^\#\] +(.+)$/gm, "<h1>#] $1</h1></br>"],
-    [/^\~\] +(.+)$/gm, "<h2>~] $1</h2></br>"],
-    [/^\+\] +(.+)$/gm, "<h3>+] $1</h3></br>"],
-    [/^\-\] +(.+)$/gm, "<h4>-] $1</h4></br>"],
-    [/^\$\] +(.+)$/gm, "<h5>$] $1</h5></br>"],
-    [/^\%\] +(.+)$/gm, "<h6>%] $1</h6></br>"],
+    [/^\#\] +(.+)$/gm, head],
+    [/^\##\] +(.+)$/gm, head],
+    [/^\###\] +(.+)$/gm, head],
+    [/^\####\] +(.+)$/gm, head],
+    [/^\#####\] +(.+)$/gm, head],
+    [/^\######\] +(.+)$/gm, head],
 
     [/^\#(.+?)\#/gm, "<b>$1</b>"],
     [/^\*(.+?)\*/gm, "<i>$1</i>"],
