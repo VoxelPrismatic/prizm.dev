@@ -17,16 +17,18 @@ the page ;]
 
 #] WHAT LANGUAGES DO I USE/KNOW?
 
-I am currently learning Java, with literally the worst teacher ever. I also know \
-a bit of JS, and ofc I use Python. Additionally, I use TI-BASIC, where I made RPN \
+I am currently learning _Java_, with literally the worst teacher ever. I also know \
+a bit of _JS_, and ofc I use Python. Additionally, I use _TI-BASIC_, where I made RPN \
 for the TI-84+CE. I can learn any language very quickly, however. I also made my \
-version of MarkDown in JS, so I can make pretty neat looking sites such as the one \
+version of _MarkDown_ in JS, so I can make pretty neat looking sites such as the one \
 you are seeing here. I can learn any language pretty quickly, however, mainly \
 because I can mentally switch between syntax and functions efficiently and with \
 great ease.
 
-I also know a small bit about SQLite, JSON, HTML, and CSS/LESS. With the power of \
-CSS/LESS and HTML, I have successfully made a website UI that nobody likes due to \
-flashy colors, although those are the colors I have chosen for my logo and people \
-seem to like that. If you hate the color cyan [`#00FFFF` or `rgb(0, 255, 255)`], \
-then try switching to one of the other themes below ;]
+I also know a small bit about _SQLite_, _JSON_, _HTML_, and _CSS/LESS_. With the \
+power of CSS/LESS and HTML, I have successfully made a website UI that nobody likes \
+due to flashy colors, although those are the colors I have chosen for my logo and 
+people seem to like that.
+
+I've tried out a bit of _Swift_, but stopped that because Swift is based on Obj-C, \
+which is by Apple, which makes honestly the worst documentation for anything.
