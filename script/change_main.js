@@ -1,5 +1,5 @@
 function loadPage() {
-    setHtml("content", load("/prizm.dev/text/changes.txt"));
+    setHtml("content", mark_page(load("/prizm.dev/text/changes.txt")));
     var st = "";
     for(var elem of find("content").children) {
         if(elem.tagName == "h1") {
