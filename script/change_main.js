@@ -1,7 +1,7 @@
 function loadPage() {
-    setHtml("content", mark_page(load("/prizm.dev/text/changes.txt")));
+    setHtml("log", mark_page(load("/prizm.dev/text/changes.txt")));
     var st = "";
-    for(var elem of find("content").children) {
+    for(var elem of find("log").children) {
         if(elem.tagName == "h1") {
             st += `<div id="${elem.id}~ `;
             st += `class="collapser" onclick="scoll(this.id.slice(0, -1))"`;
