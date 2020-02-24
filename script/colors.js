@@ -98,6 +98,13 @@ function swapColor(colorName) {
         else if(txt == ".tab") {
             rule.style.borderTopColor = color;
         }
+        else if(txt.includes(".jumper")) {
+            var tmp = color;
+            if(txt.includes("hover"))
+                tmp = colors[swapped[colorName]][0];
+            rule.borderTopColor = tmp;
+            rule.borderLeftColor = tmp;
+        }
         else if(ls2.includes(txt)) {
             var tmp;
             if(txt.includes(".lnk:hover"))
@@ -115,21 +122,15 @@ function swapColor(colorName) {
                 rule.style.backgroundColor = tmp + "4";
             rule.style.color = tmp.slice(0, 4);
         }
-        else if(txt == ".btn") {
-            var tmp = colors[btncol[colorName]][0];
-            console.log("hi");
+        else if(txt.includes(".btn")) {
+            var tmp = color;
+            if(!txt.includes("hover"))
+                tmp = colors[btncol[colorName]][0];
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
             rule.style.color = tmp;
             rule.style.backgroundColor = tmp + "4";
-        }
-        else if(txt == ".btn:hover, .btn:focus") {
-            rule.style.borderTopColor = color;
-            rule.style.borderLeftColor = color;
-            rule.style.borderRightColor = color;
-            rule.style.color = color;
-            rule.style.backgroundColor = color + "4";
         }
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
