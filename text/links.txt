@@ -4,7 +4,7 @@ of these services, well you should also know the bot that I made. Soon, I will \
 transition my bot to use this module, so I don't have to use this `discord.py` \
 garbage that I'm currently using...
 
-:;:[<DOCS>(https://voxelprismatic.github.com/prizmatic.docs)] | \
+:;:[<DOCS>(/prizmatic.docs)] | \
 [<REPO>(https://github.com/voxelprismatic/prizmatic)] | \
 [<HELP>(https://discordapp.com/invite/Z84Nm6n)]
 
