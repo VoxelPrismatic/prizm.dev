@@ -103,8 +103,9 @@ function swapColor(colorName) {
             var tmp = color;
             if(txt.includes("hover"))
                 tmp = colors[swapped[colorName]][0];
-            rule.borderTopColor = tmp;
-            rule.borderLeftColor = tmp;
+            rule.style.backgroundColor = "inherit";
+            rule.style.borderTopColor = tmp;
+            rule.style.borderLeftColor = tmp;
         }
         else if(ls2.includes(txt)) {
             var tmp;
