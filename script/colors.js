@@ -136,6 +136,11 @@ function swapColor(colorName) {
 }
 
 loadPage();
+var blocks = find("content").children;
+addHtml(
+    blocks.item(blocks.length - 1), 
+    `<sub id="footer" style="text-align: center !important;"><br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br><br></sub>`
+);
 
 for(var x = 0; x <= 1000; x += 100) {
     window.setTimeout(swapColor, x, theme);
