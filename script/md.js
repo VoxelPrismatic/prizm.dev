@@ -7,9 +7,6 @@ var line_regex = [
     [/\&gt;/gm, ">"],
     [/\&lt;/gm, "<"],
 
-    [/^\:\[\:(.+?)/gm, "<div style='text-align: left;'>$1</div>"],
-    [/^\:\]\:(.+?)/gm, "<div style='text-align: right;'>$1</div>"],
-    [/^\:\|\:(.+?)/gm, "<div style='text-align: center;'>$1</div>"],
     [/\<(.+?)\>\((.+?)\)/gm, "<a href='$2' target='_blank'>$1</a>"],
     [/\((.+?)\)\<(.+?)\>/gm, "<a href='$2' target='_blank'><span class='btn'>$1</span></a>"],
     [/\@\[(.+?)\]\((.+?)\)/gm, "<img alt='$1' src='$2'>"],
@@ -45,6 +42,9 @@ var line_regex = [
     [/^\%(.+?)\%/gm, "<sub>$1</sub>"],
     [/^\!\!(.+?)\!\!/gm, `<span class="hide" onclick="this.classList.toggle('unhide');">$1</span>`],
     [/^\:\: (.+)$/gm, `<span class="md-com">\u200b \u200b$1</span>`],
+    [/^\:\[\:(.+?)/gm, "<div style='text-align: left;'>$1</div>"],
+    [/^\:\]\:(.+?)/gm, "<div style='text-align: right;'>$1</div>"],
+    [/^\:\|\:(.+?)/gm, "<div style='text-align: center;'>$1</div>"],
 
     [/([^\\])\#(.+?)\#/gm, "$1<b>$2</b>"],
     [/([^\\])\*(.+?)\*/gm, "$1<i>$2</i>"],
@@ -54,7 +54,6 @@ var line_regex = [
     [/([^\\])\^(.+?)\^/gm, "$1<sup>$2</sup>"],
     [/([^\\])\%(.+?)\%/gm, "$1<sub>$2</sub>"],
     [/([^\\])\!\!(.+?)\!\!/gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
-    [/([^\\])\:\: (.+)$/gm, `$1<span class="md-com">\u200b \u200b$2</span>`],
 
     [/\{\{(\w+?)\}\}(.+?) /gm, "<span class='$1'>$2 </span>"],
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div></br>"],
