@@ -11,6 +11,9 @@ var categories = {
     "int": "Interative [between 2 people]",
 }
 
+var footer = `<div style="text-align: center;"><sub id="footer" style="text-align: center !important;">`;
+footer += `<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br><br></sub></div>`
+
 var commands = {};
 
 function loadPage() {
@@ -47,7 +50,7 @@ function loadPage() {
             st += `onmouseover="setcoll(this)" onclick="collapser(this)">`
             st += `<span class="invis">${commands[com].join(" ")} ${cat} </span>`;
             st += `<span>${com}</span></div>`;
-            comindex += `<div id="${com}">${mark_page(things[cat][com])}</div>`;
+            comindex += `<div id="${com}">${mark_page(things[cat][com])}${footer}</div>`;
         }
         st += "</div>";
     }
