@@ -116,7 +116,8 @@ function swapColor(colorName) {
             rule.style.color = tmp.slice(0, 4);
         }
         else if(txt == ".btn") {
-            var tmp = colors[btncol[colorName]];
+            var tmp = colors[btncol[colorName]][0];
+            console.log("hi");
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
