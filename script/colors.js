@@ -137,9 +137,11 @@ function swapColor(colorName) {
 
 loadPage();
 var blocks = find("content").children;
+var footer = `<div style="text-align: center;"><sub id="footer" style="text-align: center !important;">`;
+footer += `<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br><br></sub></div>`
 addHtml(
     blocks.item(blocks.length - 1).id, 
-    `<sub id="footer" style="text-align: center !important;"><br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br><br></sub>`
+    footer
 );
 
 for(var x = 0; x <= 1000; x += 100) {
