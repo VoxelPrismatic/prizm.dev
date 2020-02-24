@@ -165,6 +165,7 @@ function mk_ul(st) {
 function mark_page(st) {
     if(!(st.endsWith("\n")))
        st += "\n";
+    st = st.replace(/\\ *\n/gm, "");
     var str = "";
     var py = "";
     var table = "";
