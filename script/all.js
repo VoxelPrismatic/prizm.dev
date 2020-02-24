@@ -215,3 +215,13 @@ window.onscroll = function() {
     else
         setHtml("jumper", "[V]");
 }
+
+
+var footer = `<div style="text-align: center;">`;
+footer += `<sub id="footer" style="text-align: center !important;">`;
+footer += `<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]`;
+if(document.URL.endsWith("prizm.dev") || document.URL.endsWith("prizm.dev/"))
+    footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
+else
+    footer += `<a href="/prizm.dev">Home page</a>`;
+footer += `<br><br></sub></div>`;
