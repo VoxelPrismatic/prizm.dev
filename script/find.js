@@ -1,4 +1,4 @@
-//Elem
+//Find
 function find_in(thing, ids) {
     var ls = [];
     for(var id of ids.split(" ")) {
@@ -85,4 +85,21 @@ function setHtml(thing, val) {
 
 function addHtml(thing, val) {
     find(thing).innerHTML += val;
+}
+
+//Find & Scroll
+function scroll(ids) {
+    find(ids).scrollIntoView();
+}
+
+function scrollIfNeeded(ids) {
+    find(ids).scrollIntoViewIfNeeded();
+}
+
+function scrollBy(ids, x, y) {
+    find(ids).scrollBy(x, y);
+}
+
+function scrollTo(ids, x, y) {
+    find(ids).scroll(x, y);
 }
