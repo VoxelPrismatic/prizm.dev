@@ -22,7 +22,8 @@ var swapped = {
     "grey": "white",
     "white": "grey",
     "purple": "pink",
-    "blurple": "purple"
+    "blurple": "purple",
+    "blue": "yellow"
 }
 
 var desel = {
@@ -49,7 +50,8 @@ var btncol = {
     "pink": "red",
     "white": "grey",
     "grey": "white",
-    "purple": "blue"
+    "purple": "blue",
+    "blurple": "blue"
 }
 
 var ls1 = [
@@ -75,7 +77,7 @@ function swapColor(colorName) {
         var txt = rule.selectorText;
         if(txt == "h1, h2, h3, h4, h5, h6")
             rule.style.color = color;
-        else if(rule.selectorText == "a")
+        else if(txt == "a")
             rule.style.color = color.replace(/0/gm, "a");
         else if(ls1.includes(txt)) {
             var tmp = color;
@@ -97,15 +99,6 @@ function swapColor(colorName) {
         }
         else if(txt == ".tab") {
             rule.style.borderTopColor = color;
-        }
-        var txt = rule.selectorText; //It breaks here for some unknown reason
-        if(txt.includes(".jumper")) {
-            var tmp = color;
-            if(txt.includes("hover"))
-                tmp = colors[swapped[colorName]][0];
-            rule.style.backgroundColor = "inherit";
-            rule.style.borderTopColor = tmp;
-            rule.style.borderLeftColor = tmp;
         }
         else if(ls2.includes(txt)) {
             var tmp;
@@ -137,7 +130,16 @@ function swapColor(colorName) {
     }
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
 }
-
+/*
+else if(txt.includes(".jumper")) {
+            var tmp = color;
+            if(txt.includes("hover"))
+                tmp = colors[swapped[colorName]][0];
+            rule.style.backgroundColor = "inherit";
+            rule.style.borderTopColor = tmp;
+            rule.style.borderLeftColor = tmp;
+        }
+*/
 loadPage();
 var blocks = find("content").children;
 var footer = `<div style="text-align: center;"><sub id="footer" style="text-align: center !important;">`;
