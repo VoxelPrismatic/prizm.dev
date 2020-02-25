@@ -11,9 +11,6 @@ var categories = {
     "int": "Interative [between 2 people]",
 }
 
-var footer = `<div style="text-align: center;"><sub id="footer" style="text-align: center !important;">`;
-footer += `<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br><br></sub></div>`
-
 var commands = {};
 
 function loadPage() {
