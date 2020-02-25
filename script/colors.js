@@ -85,7 +85,7 @@ function swapColor(colorName) {
             }  if(txt.includes("coll") && txt.includes(":hover")) {
                 tmp = colors["white"][0];
                 rule.style.backgroundColor = tmp + "0";
-            } if(ls1.slice(2).includes(txt) || txt == ".line") {
+            } if(ls1.slice(3).includes(txt) || txt == ".line" || txt == ".dict") {
                 rule.style.borderBottomColor = tmp;
                 rule.style.color = tmp;
             }
