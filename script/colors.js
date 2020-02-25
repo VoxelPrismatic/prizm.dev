@@ -48,6 +48,7 @@ let colors = {
     "blurple": "blue"
 }; let ls1 = [
     ".line",
+    ".dict",
     ".sect",
     ".collapser",
     ".collapser:hover, .collapser:focus",
@@ -127,19 +128,23 @@ function swapColor(colorName) {
             rule.style.color = tmp;
         }
     }
+    /*Resize dict
+    Key --------------------- Val
+    Twitter ----- @VoxelPrismatic
+    */
+    var sect = find(".sect")[0];
+    var width = sect.clientWidth - 24;
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
-}
-
-var sect = find(".sect")[0];
-var width = sect.clientWidth - 24;
-
-loadPage();
-for(var thing of find(".dict")) {
+    for(var thing of find(".dict")) {
     var thisWidth = width;
     thisWidth -= thing.nextElementSibling.clientWidth;
     thisWidth -= thing.previousElementSibling.clientWidth;
     thing.style.width = (thisWidth - 10) + "px";
 }
+
+
+
+loadPage();
 var blocks = find("content").children;
 addHtml(blocks.item(blocks.length - 1).id, footer);
 
