@@ -137,7 +137,7 @@ for(var thing of find(".dict")) {
     var thisWidth = width;
     thisWidth -= thing.nextElementSibling.clientWidth;
     thisWidth -= thing.previousElementSibling.clientWidth;
-    thing.style.width = thisWidth + "px";
+    thing.style.width = (thisWidth - 30) + "px";
 }
 var blocks = find("content").children;
 addHtml(blocks.item(blocks.length - 1).id, footer);
