@@ -4,19 +4,19 @@ let colors = {
     "yellow":  ["#ff0", "#221",    "yellow"],
     "green":   ["#0f0", "#121",    "green"],
     "cyan":    ["#0ff", "#122",    "blue"],
-    "blue":    ["#00f", "#112",    "dark"],
+    "blue":    ["#44f", "#112",    "dark"],
     "pink":    ["#f08", "#221115", "pink"],
     "grey":    ["#aaa", "#111",    "grey"],
     "white":   ["#fff", "#222",    "white"],
-    "purple":  ["#80f", "#151122", "purple"],
-    "blurple": ["#08f", "#111522", "blurple"]
+    "purple":  ["#a0f", "#151122", "purple"],
+    "blurple": ["#0af", "#111522", "blurple"]
 }; let swapped = {
     "red": "green",
     "orange": "blue",
     "yellow": "cyan",
     "green": "red",
     "cyan": "yellow",
-    "pink": "cyan",
+    "pink": "blurple",
     "grey": "white",
     "white": "grey",
     "purple": "pink",
@@ -73,7 +73,7 @@ function swapColor(colorName) {
         if(txt == "h1, h2, h3, h4, h5, h6") {
             rule.style.color = color;
         } else if(txt == "a") {
-            rule.style.color = color.replace(/0/gm, "a");
+            rule.style.color = color.replace(/[04]/gm, "a").replace(/[a]/gm, "c");
         } else if(txt == ".tab") {
             rule.style.borderTopColor = color;
         } else if(ls1.includes(txt)) {
