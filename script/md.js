@@ -32,10 +32,10 @@ var line_regex = [
     [/\&lt;/gm, "<"],
 
     //Links
-    [/\+\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2' target='\x5fblank'>$1</a></u>"],
     [/\+\[\[(.+?)\]\]\<(.+?)\>/gm, "<a href='$2' target='\x5fblank'><span class='btn'>$1</span></a>"],
-    [/\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2'>$1</a></u>"],
+    [/\+\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2' target='\x5fblank'>$1</a></u>"],
     [/\[\[(.+?)\]\]\<(.+?)\>/gm, "<a href='$2'><span class='btn'>$1</span></a>"],
+    [/\[(.+?)\]\<(.+?)\>/gm, "<u><a href='$2'>$1</a></u>"],
     [/\@\[(.+?)\]\((.+?)\)/gm, "<img alt='$1' src='$2'>"],
     [/e<<(.+?)>>/gm, "<u><a href='mailto:$1>$1</a></u>"],
     [/p<<(.+?)>>/gm, "<u?<a href='tel:$1>$1</a></u>"],
