@@ -208,7 +208,7 @@ ___
 > > > `[-] ` - Archived
 > > > `O-O ` - Link submission
 > > > `TXT ` - Text submission
-> > > `§ => ` - Edited
+> > > ` => ` - Edited
 > > > `[>\xa0- ` - Pinned
 > > > `[|\xa0|]` - Spoiled
 > > Now supports multireddits
