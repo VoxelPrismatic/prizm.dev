@@ -84,7 +84,7 @@ var line_regex = [
     //Alignment
     [
         /(.*)\:\^\:(.*)/gm, 
-        "<div style='float: left;'>$1</div><span class='dict'></span><div style='float: right;'>$2</div>"
+        "<div style='float: left;'>$1</div><div class='dict'></div><div style='float: right;'>$2</div>"
     ],
     [/^\:\{\:(.+)/gm, "<div style='text-align: left;'>$1</div>"],
     [/^\:\}\:(.+)/gm, "<div style='text-align: right;'>$1</div>"],
