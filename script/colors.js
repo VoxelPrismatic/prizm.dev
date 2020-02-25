@@ -130,14 +130,15 @@ function swapColor(colorName) {
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
 }
 
-var width = find(">DIV")[0].clientWidth;
+var sect = find(".sect")[0];
+var width = sect.clientWidth - 24;
 
 loadPage();
 for(var thing of find(".dict")) {
     var thisWidth = width;
     thisWidth -= thing.nextElementSibling.clientWidth;
     thisWidth -= thing.previousElementSibling.clientWidth;
-    thing.style.width = (thisWidth - 30) + "px";
+    thing.style.width = (thisWidth - 10) + "px";
 }
 var blocks = find("content").children;
 addHtml(blocks.item(blocks.length - 1).id, footer);
