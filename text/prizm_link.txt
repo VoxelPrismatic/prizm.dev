@@ -1,8 +1,8 @@
 #] Links to things
 
 :;:\[+[Invite me to your guild!]\
-<https://discordapp.com/oauth2/authorize?client_id=555862187403378699&permissions=473296118&scope=bot>]\ \
-\[+[Support guild]<https://discordapp.com/invite/Z84Nm6n>\] \
-\[+[GitHub Repo]<https://github.com/voxelprismatic/prizm>\] \
-\[+[Vote on TOP.GG]<https://discordbots.org/bot/555862187403378699/vote>\] \
+<https://discordapp.com/oauth2/authorize?client_id=555862187403378699&permissions=473296118&scope=bot>\] | \
+\[+[Support guild]<https://discordapp.com/invite/Z84Nm6n>\]
+:;:\[+[GitHub Repo]<https://github.com/voxelprismatic/prizm>\] | \
+\[+[Vote on TOP.GG]<https://discordbots.org/bot/555862187403378699/vote>\] | \
 \[[Command Index]<https://voxelprismatic.github.io/prizm.dev/prizm/commands>\]
