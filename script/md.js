@@ -95,7 +95,7 @@ var line_regex = [
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div></br>"],
     [/\\ *$/gm, "</br>"], //New line escape
     [/-~-/gm, "<div class='line'></div></br>"],
-    [/___/gm, "<div>"],
+    [/<u>_</u>/gm, "<div>"],
     [/===/gm, "</div>"],
 
     [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x"+p1);}],
