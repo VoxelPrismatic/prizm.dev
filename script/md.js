@@ -24,6 +24,7 @@ function head(m, p1) {
 }
 
 var line_regex = [
+    [/\\(.)/gm, function(m, p) {return "\\u{" + p.charCodeAt(0) + "}";}],
     
     //Pre-Escape
     [/^ /gm, "\u200b \u200b"],
