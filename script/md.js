@@ -18,8 +18,9 @@ function head(m, p1) {
     for(var x = 0; x < 6; x += 1)
         if(m[x] != "#")
             break;
-    var st = `<h${x} `;
-    st += `id="${p1.replace(/[^\w\d]/gm, "").trim()}">${"#".repeat(x)}] ${p1}</h${x}>`;
+    var id = p1.replace(/[^\w\d]/gm, "").trim();
+    var st = `<a href="#${id}"><h${x} `;
+    st += `id="${id}">${"#".repeat(x)}] ${p1}</h${x}></a>`;
     return st;
 }
 
