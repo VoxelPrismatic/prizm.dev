@@ -88,7 +88,7 @@ function addHtml(thing, val) {
 }
 
 //Find & Scroll
-function scrollTo(ids) {
+function scroll_(ids) {
     if(ids.endsWith("~"))
         ids = ids.slice(0, -1);
     find(ids).scrollIntoView();
