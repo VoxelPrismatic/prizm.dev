@@ -80,8 +80,6 @@ function Elm(typ, txt, params = {}, end = true) {
 
 //Edit Inner HTML
 function setHtml(thing, val) {
-    if(thing.endsWith("~"))
-        thing = thing.slice(0, -1);
     find(thing).innerHTML = val;
 }
 
@@ -91,6 +89,8 @@ function addHtml(thing, val) {
 
 //Find & Scroll
 function scroll(ids) {
+    if(ids.endsWith("~"))
+        ids = ids.slice(0, -1);
     find(ids).scrollIntoView();
 }
 
