@@ -216,6 +216,10 @@ window.onscroll = function() {
         setHtml("jumper", "[V]");
 }
 
+function linkMe(elem) {
+    find("hiddenLink").href = "#" + elem.id;
+    find("hiddenLink").click();
+}
 
 var footer = `<div style="text-align: center;">`;
 footer += `<sub id="footer" style="text-align: center !important;">`;
