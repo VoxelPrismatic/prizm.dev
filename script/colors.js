@@ -34,18 +34,6 @@ let colors = {
     "white": "white",
     "grey": "grey",
     "blue": "yellow"
-}; let btncol = {
-    "red": "orange",
-    "orange": "yellow",
-    "yellow": "orange",
-    "green": "yellow",
-    "cyan": "blue",
-    "blue": "blurple",
-    "pink": "red",
-    "white": "grey",
-    "grey": "white",
-    "purple": "blue",
-    "blurple": "blue"
 }; let ls1 = [
     ".line",
     ".sect",
@@ -110,8 +98,12 @@ function swapColor(colorName) {
             rule.style.color = tmp.slice(0, 4);
         } else if(txt.includes(".btn")) {
             var tmp = color;
-            if(!txt.includes("hover"))
-                tmp = colors[btncol[colorName]][0];
+            if(!txt.includes("hover")) {
+                tmp = tmp.replace(/[04]/gm, "2");
+                tmp = tmp.replace(/a/gm, "9");
+                tmp = tmp.replace(/f/gm, "a");
+                tmp = tmp.replace(/8/gm, "6");
+            }
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
             rule.style.borderRightColor = tmp;
