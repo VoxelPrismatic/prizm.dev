@@ -5,4 +5,6 @@
 +[[Support guild]]<https://discordapp.com/invite/Z84Nm6n>
 :;:\[+[GitHub Repo]<https://github.com/voxelprismatic/prizm>\] | \
 \[+[Vote on TOP.GG]<https://discordbots.org/bot/555862187403378699/vote>\] | \
-\[[Command Index]<https://voxelprismatic.github.io/prizm.dev/prizm/commands>\]
+\[[Command Index]<https://voxelprismatic.github.io/prizm.dev/prizm/commands>\] | \
+\[[Change log]</prizm.dev/prizm/changes>\]
+
