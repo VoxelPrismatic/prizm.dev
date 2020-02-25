@@ -19,7 +19,7 @@ function head(m, p1) {
         if(m[x] != "#")
             break;
     var st = `<h${x} `;
-    st += `id="${p1.replace(/[^\w\d]/gm, "")}">${"#".repeat(x)}] ${p1}</h${x}>`;
+    st += `id="${p1.replace(/[^\w\d]/gm, "").trim()}">${"#".repeat(x)}] ${p1}</h${x}>`;
     return st;
 }
 
