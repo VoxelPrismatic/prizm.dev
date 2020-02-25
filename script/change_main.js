@@ -5,7 +5,7 @@ function loadPage() {
         if(elem.tagName == "H1") {
             var tag = "";
             tag = `<div id="${elem.id}~" `;
-            tag += `class="lnk" onclick="scroll(this.id)">`;
+            tag += `class="lnk" onclick="scrollTo(this.id)">`;
             tag += `${elem.innerHTML.split(" ").slice(1).join(" ")}</div>`;
             st += tag;
         }
