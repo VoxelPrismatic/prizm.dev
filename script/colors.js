@@ -16,7 +16,7 @@ let colors = {
     "yellow": "cyan",
     "green": "red",
     "cyan": "yellow",
-    "pink": "blurple",
+    "pink": "cyan",
     "grey": "white",
     "white": "grey",
     "purple": "pink",
