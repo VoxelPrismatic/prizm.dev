@@ -136,10 +136,11 @@ function swapColor(colorName) {
     var width = sect.clientWidth - 24;
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
     for(var thing of find(".dict")) {
-    var thisWidth = width;
-    thisWidth -= thing.nextElementSibling.clientWidth;
-    thisWidth -= thing.previousElementSibling.clientWidth;
-    thing.style.width = (thisWidth - 10) + "px";
+        var thisWidth = width;
+        thisWidth -= thing.nextElementSibling.clientWidth;
+        thisWidth -= thing.previousElementSibling.clientWidth;
+        thing.style.width = (thisWidth - 10) + "px";
+    }
 }
 
 
