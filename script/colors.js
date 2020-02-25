@@ -130,7 +130,15 @@ function swapColor(colorName) {
     find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
 }
 
+var width = find(">DIV")[0].clientWidth;
+
 loadPage();
+for(var thing of find(".dict")) {
+    var thisWidth = width;
+    thisWidth -= thing.nextElementSibling.clientWidth;
+    thisWidth -= thing.previousElementSibling.clientWidth;
+    thing.style.width = thisWidth;
+}
 var blocks = find("content").children;
 addHtml(blocks.item(blocks.length - 1).id, footer);
 
