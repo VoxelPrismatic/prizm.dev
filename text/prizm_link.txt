@@ -7,4 +7,3 @@
 \[+[Vote on TOP.GG]<https://discordbots.org/bot/555862187403378699/vote>\] | \
 \[[Command Index]<https://voxelprismatic.github.io/prizm.dev/prizm/commands>\] | \
 \[[Change log]</prizm.dev/prizm/changes>\]
-
