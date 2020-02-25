@@ -80,6 +80,8 @@ function Elm(typ, txt, params = {}, end = true) {
 
 //Edit Inner HTML
 function setHtml(thing, val) {
+    if(thing.endsWith("~"))
+        thing = thing.slice(0, -1);
     find(thing).innerHTML = val;
 }
 
