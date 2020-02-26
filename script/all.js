@@ -1,11 +1,13 @@
-function load(filename, aio = false) {
+function load(filename, aio = false, strip = false) {
     var f = new XMLHttpRequest()
     f.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var resp = f.responseText;
             resp = resp.trim() + "\n"
             resp = resp.replace(/</gm, "&lt;");
-            resp = resp.replace(/>/gm, "&gt;");
+            resp = resp.replace(/>/gm, "&gt;")
+            if(strip)
+                resp = resp.trim();
             setHtml("file", resp);
         }
     }
