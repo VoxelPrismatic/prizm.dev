@@ -248,7 +248,7 @@ window.onresize = resizeDicts;
 var texts = [
     "haha dapa! can't stop the shrek!",
     "never gonna give you up! never gonna let you down!",
-    "where the ram gone?"
+    "where the ram gone?",
     "we're missing the motherboard m8",
     "don't you dare switch to light theme",
     "i need låmp, bröther",
