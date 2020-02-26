@@ -124,15 +124,7 @@ function swapColor(colorName) {
     Twitter ----- @VoxelPrismatic
     */
     var width = find(".sect")[0].clientWidth - 24;
-    find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
-    for(var thing of find(".dict")) {
-        var thisWidth = width;
-        thisWidth -= thing.nextElementSibling.clientWidth;
-        thisWidth -= thing.previousElementSibling.clientWidth;
-        thing.style.width = (thisWidth - 10) + "px";
-        thing.style.marginLeft = "5px";
-        thing.style.marginRight = "5px";
-    }
+    resizeDicts();
 }
 
 
