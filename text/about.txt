@@ -1,7 +1,7 @@
 #] WHO AM I?
 
 I am a human [duh] that loves to code really much of anything. I made a discord \
-bot [PRIZM] in about a month, while teaching myself #python# in about the same \
+bot [PRIZM] in about a month, while teaching myself #Python# in about the same \
 time. I've actually been working on PRIZM for quite a while now, and am working on \
 a replacement for the dreaded `discord.py` that almost everybody I know despises.
 
@@ -32,3 +32,6 @@ people seem to like that.
 
 I've tried out a bit of #Swift#, but stopped that because Swift is based on Obj-C, \
 which is by Apple, which makes honestly the worst documentation for anything.
+
+#TL;DR:# I've tried/am using `Java`, `Python`, `TI-BASIC`, `JS`, `MarkDown`, `SQLite`, \
+`JSON`, `HTML`, `LESS/CSS`, and `Swift`
