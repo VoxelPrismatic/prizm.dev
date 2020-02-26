@@ -223,8 +223,17 @@ function linkMe(elem) {
     find("hiddenLink").click();
 }
 
+function compSty(elem) {
+    try {
+        return window.getComputedStyle(find(elem));
+    } catch(err) {
+        return window.getComputedStyle(find(elem)[0]);
+    }
+}
+
 function resizeDicts() {
-    var width = find(".sect")[0].clientWidth - 25;
+    var height = compSty(">H1").style / 2;
+    var width = compSty(".sect").width - 25;
     for(var thing of find(".dict")) {
         var thisWidth = width;
         thisWidth -= thing.nextElementSibling.clientWidth;
@@ -232,6 +241,8 @@ function resizeDicts() {
         thing.style.width = (thisWidth - 10) + "px";
         thing.style.marginLeft = "5px";
         thing.style.marginRight = "5px";
+        thing.style.height = height + "px";
+        thing.style.lineHeight = height + "px";
     }
 }
 
