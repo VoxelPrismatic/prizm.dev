@@ -229,3 +229,17 @@ if(document.URL.endsWith("prizm.dev") || document.URL.endsWith("prizm.dev/"))
 else
     footer += `<a href="/prizm.dev">Home page</a>`;
 footer += `<br><br></sub></div>`;
+
+function resizeDicts() {
+    find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
+    for(var thing of find(".dict")) {
+        var thisWidth = width;
+        thisWidth -= thing.nextElementSibling.clientWidth;
+        thisWidth -= thing.previousElementSibling.clientWidth;
+        thing.style.width = (thisWidth - 10) + "px";
+        thing.style.marginLeft = "5px";
+        thing.style.marginRight = "5px";
+    }
+}
+
+window.onresize = resizeDicts;
