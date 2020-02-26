@@ -231,7 +231,7 @@ else
 footer += `<br><br></sub></div>`;
 
 function resizeDicts() {
-    var width = find(".sect")[0].clientWidth - 24;
+    var width = find(".sect")[0].clientWidth - 25;
     for(var thing of find(".dict")) {
         var thisWidth = width;
         thisWidth -= thing.nextElementSibling.clientWidth;
