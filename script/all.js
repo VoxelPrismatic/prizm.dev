@@ -246,7 +246,7 @@ window.onresize = resizeDicts;
 
 
 var texts = [
-    "haha dapa! can't stop the shrek!",
+    "haba dapa! can't stop the shrek!",
     "never gonna give you up! never gonna let you down!",
     "where the ram gone?",
     "we're missing the motherboard m8",
@@ -260,7 +260,20 @@ var texts = [
     "i totes got stiches from the edge of a toilet... thats true btw",
     "the dankest human alive",
     "nani help me",
-    "making rpn on the ti84ce"
+    "making rpn on the ti84ce",
+    "besides mate, you call 🔪 a knife? 🥄 is a knife",
+    "shrekpod pro",
+    "*insert personality here",
+    "fun stuff",
+    "you dont know how many babies this baby can baby",
+    "just a sec\u2122",
+    "listening to hdd clicking noises",
+    "ok zoomer",
+    "ok boomer",
+    "#dankpods",
+    "fun fact: this fact isnt very fun",
+    "mate",
+    "shrek is the best movie ever made"
 ];
 
 footer += texts[Math.floor(Math.random() * texts.length)];
