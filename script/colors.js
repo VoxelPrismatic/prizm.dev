@@ -48,7 +48,7 @@ let colors = {
     ".lnk"
 ];
 
-function swapColor(colorName) {
+function swapColor(colorName, swapImg = true) {
     var color;
     var bg; 
     var name;
@@ -119,11 +119,12 @@ function swapColor(colorName) {
             rule.style.color = tmp;
         }
     }
+    if(swapImg)
+        find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
     /*Resize dict
     Key --------------------- Val
     Twitter ----- @VoxelPrismatic
     */
-    var width = find(".sect")[0].clientWidth - 24;
     resizeDicts();
 }
 
@@ -134,7 +135,7 @@ var blocks = find("content").children;
 addHtml(blocks.item(blocks.length - 1).id, footer);
 
 for(var x = 0; x <= 1000; x += 100) {
-    window.setTimeout(swapColor, x, theme); // Sometimes it doesn't load right away
+    window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
 }
 
 console.log(`Theme '${theme}' loaded`);
