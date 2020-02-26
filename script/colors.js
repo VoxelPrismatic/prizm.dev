@@ -138,7 +138,10 @@ else
     footer += `<a href="/prizm.dev">Home page</a>`;
 footer += `<br>`;
 var texts = load("/prizm.dev/text/footer.txt", strip = true).split("\n");
-footer += texts[Math.floor(Math.random() * texts.length)];
+var theText = texts[Math.floor(Math.random() * texts.length)];
+while(theText == "")
+    theText = texts[Math.floor(Math.random() * texts.length)];
+footer += theText;
 footer += "<br><br></sub></div>";
 
 loadPage();
