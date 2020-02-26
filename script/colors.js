@@ -142,7 +142,9 @@ footer += "<br><br></sub></div>";
 
 loadPage();
 if(document.URL.includes("#")) {
-    window.setTimeout(scroll_, 100, document.URL.split("#")[1]);
+    for(var x = 0; x < 300; x += 100) {
+        window.setTimeout(scroll_, x, document.URL.split("#")[1]);
+    }
 }
 var blocks = find("content").children;
 addHtml(blocks.item(blocks.length - 1).id, footer);
