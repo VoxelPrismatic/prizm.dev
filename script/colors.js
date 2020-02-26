@@ -137,7 +137,7 @@ if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/"))
 else
     footer += `<a href="/prizm.dev">Home page</a>`;
 footer += `<br>`;
-var texts = load("/prizm.dev/text/footer.txt", strip = true).split("\n");
+var texts = load("/prizm.dev/text/footer.txt").split("\n");
 var theText = texts[Math.floor(Math.random() * texts.length)];
 while(theText == "")
     theText = texts[Math.floor(Math.random() * texts.length)];
