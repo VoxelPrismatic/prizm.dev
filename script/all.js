@@ -231,7 +231,7 @@ else
 footer += `<br><br></sub></div>`;
 
 function resizeDicts() {
-    find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
+    var width = find(".sect")[0].clientWidth - 24;
     for(var thing of find(".dict")) {
         var thisWidth = width;
         thisWidth -= thing.nextElementSibling.clientWidth;
