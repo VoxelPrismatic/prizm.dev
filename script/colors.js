@@ -128,7 +128,17 @@ function swapColor(colorName, swapImg = true) {
     resizeDicts();
 }
 
-
+var footer = `<div style="text-align: center;">`;
+footer += `<sub id="footer" style="text-align: center !important;">`;
+footer += `<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br>`;
+if(document.URL.endsWith("prizm.dev") || document.URL.endsWith("prizm.dev/"))
+    footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
+else
+    footer += `<a href="/prizm.dev">Home page</a>`;
+footer += `<br>`;
+var texts = load("/prizm.dev/text/footer.txt").split("\n");
+footer += texts[Math.floor(Math.random() * texts.length)];
+footer += "<br><br></sub></div>";
 
 loadPage();
 if(document.URL.includes("#")) {
