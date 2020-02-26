@@ -229,6 +229,9 @@ if(document.URL.endsWith("prizm.dev") || document.URL.endsWith("prizm.dev/"))
 else
     footer += `<a href="/prizm.dev">Home page</a>`;
 footer += `<br>`;
+var texts = load("/prizm.dev/text/footer.txt").split("\n");
+footer += texts[Math.floor(Math.random() * texts.length)];
+footer += "<br><br></sub></div>";
 
 function resizeDicts() {
     var width = find(".sect")[0].clientWidth - 25;
@@ -243,38 +246,3 @@ function resizeDicts() {
 }
 
 window.onresize = resizeDicts;
-
-
-var texts = [
-    "haba dapa! can't stop the shrek!",
-    "never gonna give you up! never gonna let you down!",
-    "where the ram gone?",
-    "we're missing the motherboard m8",
-    "don't you dare switch to light theme",
-    "i need låmp, bröther",
-    "system32 is a virus, please delete it",
-    "sudo rm -rf /",
-    "successfully deleted c:\\>",
-    "*still loading, just a sec",
-    "calling 911 on my ti84ce rn, their coming",
-    "i totes got stiches from the edge of a toilet... thats true btw",
-    "the dankest human alive",
-    "nani help me",
-    "making rpn on the ti84ce",
-    "besides mate, you call 🔪 a knife? 🥄 is a knife",
-    "shrekpod pro",
-    "*insert personality here",
-    "fun stuff",
-    "you dont know how many babies this baby can baby",
-    "just a sec\u2122",
-    "listening to hdd clicking noises",
-    "ok zoomer",
-    "ok boomer",
-    "#dankpods",
-    "fun fact: this fact isnt very fun",
-    "mate",
-    "shrek is the best movie ever made"
-];
-
-footer += texts[Math.floor(Math.random() * texts.length)];
-footer += "<br><br></sub></div>";
