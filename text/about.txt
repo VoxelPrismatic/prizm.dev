@@ -27,7 +27,7 @@ great ease.
 
 I also know a small bit about #SQLite#, #JSON#, #HTML#, and #CSS/LESS#. With the \
 power of CSS/LESS and HTML, I have successfully made a website UI that nobody likes \
-due to flashy colors, although those are the colors I have chosen for my logo and 
+due to flashy colors, although those are the colors I have chosen for my logo and \
 people seem to like that.
 
 I've tried out a bit of #Swift#, but stopped that because Swift is based on Obj-C, \
