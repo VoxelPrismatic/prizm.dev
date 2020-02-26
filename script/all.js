@@ -228,7 +228,7 @@ if(document.URL.endsWith("prizm.dev") || document.URL.endsWith("prizm.dev/"))
     footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
 else
     footer += `<a href="/prizm.dev">Home page</a>`;
-footer += `<br><br></sub></div>`;
+footer += `<br>`;
 
 function resizeDicts() {
     var width = find(".sect")[0].clientWidth - 25;
@@ -243,3 +243,25 @@ function resizeDicts() {
 }
 
 window.onresize = resizeDicts;
+
+
+var texts = [
+    "haha dapa! can't stop the shrek!",
+    "never gonna give you up! never gonna let you down!",
+    "where the ram gone?"
+    "we're missing the motherboard m8",
+    "don't you dare switch to light theme",
+    "i need låmp, bröther",
+    "system32 is a virus, please delete it",
+    "sudo rm -rf /",
+    "successfully deleted c:\\>",
+    "*still loading, just a sec",
+    "calling 911 on my ti84ce rn, their coming",
+    "i totes got stiches from the edge of a toilet... thats true btw",
+    "the dankest human alive",
+    "nani help me",
+    "making rpn on the ti84ce"
+];
+
+footer += texts[Math.floor(Math.random() * texts.length)];
+footer += "<br><br></sub></div>";
