@@ -287,6 +287,6 @@ function mark_page(st) {
             str += line+"\n";
     }
     str = str.replace(/\n/gm, "<br>");
-    str = str.replace(/\<\/h(\d)\>(\<br\>[ \n]*)+/gm, "</h$1><br>");
+    str = str.replace(/\<\/h(\d)\>(\<(div|span|h\d)\>)?(\<br\>[ \n]*)+/gm, "</h$1><br>");
     return str;
 }
