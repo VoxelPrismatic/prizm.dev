@@ -96,6 +96,7 @@ var line_regex = [
     [/^\:\;\:(.+)/gm, "<div style='text-align: center;'>$1</div>"],
 
     //Others
+    [/<\/h(\d)>(<br>){2,}/gm, "</h$1><br>"],
     [/\{\{(\w+?)\}\}(.+?) /gm, "<span class='$1'>$2 </span>"],
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div></br>"],
     [/\\ *$/gm, "</br>"], //New line escape
