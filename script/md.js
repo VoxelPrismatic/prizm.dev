@@ -286,7 +286,7 @@ function mark_page(st) {
         else
             str += line+"\n";
     }
-    str = str.replace(/\<\/h(\d)\>(\<br\>[ \n]*)+/gm, "</h$1><br>"),
     str = str.replace(/\n/gm, "<br>");
+    str = str.replace(/\<\/h(\d)\>(\<br\>[ \n]*)+/gm, "</h$1><br>");
     return str;
 }
