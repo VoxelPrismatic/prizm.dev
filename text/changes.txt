@@ -1,3 +1,10 @@
+#] feb 27, 2020
+___
+> Starting up fixed
+> > Now, if there is an issue with starting up, it still starts up fully instead of \
+stopping all commands from loading. Also, it says that it's broken in #is-prizm-online
+===
+
 #] feb 15, 2020
 ___
 > Backups are now easily made, just by using a simple command.
@@ -19,7 +26,9 @@ ___
 
 #] jan 27, 2020
 ___
-> When PRIZM joins a guild, it now actually has a prefix for that guild
+> Guild join bug fixed
+> > When PRIZM joins a guild, it now actually has a prefix for that guild instead of throwing \
+an error constantly
 ===
 
 -~-
