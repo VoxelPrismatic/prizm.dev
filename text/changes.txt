@@ -280,12 +280,12 @@ ___
 > > Adding `--zero` should give you the coordinates for when `y = 0`
 
 > The `;]sym` command has been updated
-> > Doing something like `;]sym 2x^2` shouldn't break it
+> > Doing something like `;]sym 2x^2^` shouldn't break it
 
 > Added the `;]sub` command
 > > Syntax ] `;]sub {num} {eq}`
 > > Allows you to substitute {num} in for X in {eq}
-> > Example ] `;]sub 206 x^2+34`
+> > Example ] `;]sub 206 x^2^+34`
 
 > The `;]calc` command now actually loads on startup
 ===
@@ -351,7 +351,7 @@ ___
 > Fixed very minor bugs with the simplify command
 
 > Updated the graph command
-> > The graph command now supports both-axis graphing [`x^2+y^2=4`]
+> > The graph command now supports both-axis graphing [`x^2^+y^2^=4`]
 > > It should now actually graph faster when using more equations
 > > Uses a new pallette that overall looks nicer
 > > Fixed a couple bugs
@@ -388,8 +388,8 @@ ___
 > > Useful if you don't know the exact amount of kessages to clear
 
 > Updated the graph command so you can now graph on the y axis too 
-> > [`x=y^2` and `y=x^2` are supported]
-> > Support for xy functions [`x^2+y^2`] has not been added yet, I'm working on it tho
+> > [`x=y^2^` and `y=x^2^` are supported]
+> > Support for xy functions [`x^2^+y^2^`] has not been added yet, I'm working on it tho
 ===
 
 -~-
