@@ -3,7 +3,7 @@ ___
 > Starting up fixed
 > > Now, if there is an issue with starting up, it still starts up fully instead of \
 stopping all commands from loading. Also, it says that it's broken in [#is-prizm-online]\
-(https://discordapp.com/channels/533290351184707584/556247032701124650)
+<https://discordapp.com/channels/533290351184707584/556247032701124650>
 
 > The react command now supports numbers too
 > > Eg `;]react t r y 1 m 8`
