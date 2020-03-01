@@ -234,7 +234,8 @@ function compSty(elem) {
 function resizeDicts() {
     var height = compSty(">H1").height.slice(0, -2) / 2;
     var width = find(".sect")[0].clientWidth - 25;
-    console.log(width);
+    console.log("Window resized to " + window.innerWidth + "x" + window.innerHeight);
+    console.log("Resizing elements");
     for(var thing of find(".dict")) {
         var thisWidth = width;
         var style = thing.style
