@@ -238,8 +238,6 @@ function resizeDicts() {
     if(width >= 540) {
         for(var thing of find(".dict")) {
             var thisWidth = width;
-            if(thing.nextElementSibling.innerHTML.endsWith("<br>"))
-                thing.nextElementSibling.innerHTML += thing.nextElementSibling.innerHTML.slice(0, -8);
             thisWidth -= thing.nextElementSibling.clientWidth;
             thisWidth -= thing.previousElementSibling.clientWidth;
             thing.style.width = (thisWidth - 10) + "px";
@@ -260,8 +258,6 @@ function resizeDicts() {
             thing.style.borderColor = "#0000";
         }
         for(var thing of find(".dict540")) {
-            if(!thing.previousElementSibling.innerHTML.endsWith("<br>"))
-                thing.previousElementSibling.innerHTML += "<br><br>";
             thing.style.display = "block";
             thing.innerHtml = " ";
             thing.style.height = "1px";
