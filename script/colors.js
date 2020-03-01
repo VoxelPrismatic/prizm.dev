@@ -142,6 +142,7 @@ var theText = texts[Math.floor(Math.random() * texts.length)];
 while(theText == "")
     theText = texts[Math.floor(Math.random() * texts.length)];
 footer += theText;
+console.log(theText);
 footer += "<br><br></sub></div>";
 
 loadPage();
