@@ -89,6 +89,7 @@ var line_regex = [
         "<div style='float: left;'>$1</div>" + 
         "<div class='dict'></div>" + 
         "<div style='float: right;'>$2</div>" + 
+        "<br style='display: none'>" +
         "<div class='dict540'></div>" + 
         "</div></br>"
     ],
