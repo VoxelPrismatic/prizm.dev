@@ -2,7 +2,7 @@
 ___
 > Starting up fixed
 > > Now, if there is an issue with starting up, it still starts up fully instead of \
-stopping all commands from loading. Also, it says that it's broken in [#is-prizm-online]\
+stopping all commands from loading. Also, it says that it's broken in +[\#is-prizm-online]\
 <https://discordapp.com/channels/533290351184707584/556247032701124650>
 
 > The react command now supports numbers too
@@ -199,7 +199,7 @@ ___
 > The char command now gives more info
 > > When requesting one character, it tells you how to write it in many languages
 > > > Includes PY, JS, URI/URL, JAVA, C#, C++, C, HTML, RUBY, and SWIFT
-> > > If you want other languages, please visit the +[\#prizm\_suggest]<https://discordapp.com/channels/533290351184707584/535507316775059516/> channel
+> > > If you want other languages, please visit the +[\#prizm-suggest]<https://discordapp.com/channels/533290351184707584/535507316775059516/> channel
 ===
 
 -~-
