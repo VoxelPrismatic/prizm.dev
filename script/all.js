@@ -254,9 +254,9 @@ function resizeDicts() {
     }
     if(width <= 540) {
         for(var thing of find(".dict")) {
-            thing.style.top = height + "px";
-            thing.parentElement.style.minHeight = (2 * height + 10) + "px";
-            thing.parentElement.style.height = (2 * height + 10) + "px";
+            thing.style.top = (height + 10) + "px";
+            thing.parentElement.style.minHeight = (2 * height + 20) + "px";
+            thing.parentElement.style.height = (2 * height + 20) + "px";
             thing.style.width = width + "px";
             thing.style.margin = "auto";
         }
