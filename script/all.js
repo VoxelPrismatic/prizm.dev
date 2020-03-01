@@ -250,11 +250,13 @@ function resizeDicts() {
         style.borderColor = "#444f";
         style.top = "";
         thing.parentElement.style.minHeight = height + "px";
+        thing.parentElement.style.height = height + "px";
     }
     if(width <= 540) {
         for(var thing of find(".dict")) {
             thing.style.top = height + "px";
-            thing.parentElement.style.minHeight = (2 * height) + "px";
+            thing.parentElement.style.minHeight = (2 * height + 10) + "px";
+            thing.parentElement.style.height = (2 * height + 10) + "px";
             thing.style.width = width + "px";
             thing.style.margin = "auto";
         }
