@@ -247,7 +247,6 @@ function resizeDicts() {
         thing.style.lineHeight = height + "px";
         thing.style.display = "inline-block";
         thing.style.borderColor = "#444f";
-        thing.style.margin = "none";
     }
     if(width <= 540) {
         for(var thing of find(".dict")) {
