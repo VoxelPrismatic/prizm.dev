@@ -235,35 +235,31 @@ function resizeDicts() {
     var height = compSty(">H1").height.slice(0, -2) / 2;
     var width = find(".sect")[0].clientWidth - 25;
     console.log(width);
-    if(width >= 540) {
+    for(var thing of find(".dict")) {
+        var thisWidth = width;
+        thisWidth -= thing.nextElementSibling.clientWidth;
+        thisWidth -= thing.previousElementSibling.clientWidth;
+        thing.style.width = (thisWidth - 10) + "px";
+        thing.style.marginLeft = "5px";
+        thing.style.marginRight = "5px";
+        thing.style.height = "1px";
+        thing.innerHtml = "";
+        thing.style.lineHeight = height + "px";
+        thing.style.display = "inline-block";
+        thing.style.borderColor = "#444f";
+        thing.style.margin = "none";
+    }
+    if(width <= 540) {
         for(var thing of find(".dict")) {
+            thing.style.top = height + "px";
             var thisWidth = width;
             thisWidth -= thing.nextElementSibling.clientWidth;
             thisWidth -= thing.previousElementSibling.clientWidth;
-            thing.style.width = (thisWidth - 10) + "px";
-            thing.style.marginLeft = "5px";
-            thing.style.marginRight = "5px";
-            thing.style.height = "1px";
-            thing.innerHtml = "";
-            thing.style.lineHeight = height + "px";
-            thing.style.display = "inline-block";
-            thing.style.borderColor = "#444f";
-            thing.nextElementSibling.nextElementSibling.style.display = "none";
-        }
-    } else {
-        for(var thing of find(".dict")) {
-            thing.style.display = "block";
-            thing.innerHtml = " ";
-            thing.style.height = height + "px";
-            thing.style.borderColor = "#0000";
-        }
-        for(var thing of find(".dict540")) {
-            thing.style.display = "block";
-            thing.innerHtml = " ";
-            thing.style.height = "1px";
-            thing.style.lineHeight = height + "px";
-            thing.style.width = (width - 10) + "px";
-            thing.style.top = height + "px";
+            thisWidth -= 10;
+            if(thisWidth < 10)
+                thing.style.top = (2 * height) + "px";
+            thing.style.width = width + "px";
+            thing.style.margin = "auto";
         }
     }
 }
