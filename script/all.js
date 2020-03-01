@@ -237,16 +237,18 @@ function resizeDicts() {
     console.log(width);
     for(var thing of find(".dict")) {
         var thisWidth = width;
+        var style = thing.style
         thisWidth -= thing.nextElementSibling.clientWidth;
         thisWidth -= thing.previousElementSibling.clientWidth;
-        thing.style.width = (thisWidth - 10) + "px";
-        thing.style.marginLeft = "5px";
-        thing.style.marginRight = "5px";
-        thing.style.height = "1px";
-        thing.innerHtml = "";
-        thing.style.lineHeight = height + "px";
-        thing.style.display = "inline-block";
-        thing.style.borderColor = "#444f";
+        style.width = (thisWidth - 10) + "px";
+        style.marginLeft = "5px";
+        style.marginRight = "5px";
+        style.height = "1px";
+        style.lineHeight = height + "px";
+        style.display = "inline-block";
+        style.borderColor = "#444f";
+        style.top = "";
+        thing.parentElement.style.minHeight = height + "px";
     }
     if(width <= 540) {
         for(var thing of find(".dict")) {
@@ -255,8 +257,10 @@ function resizeDicts() {
             thisWidth -= thing.nextElementSibling.clientWidth;
             thisWidth -= thing.previousElementSibling.clientWidth;
             thisWidth -= 10;
-            if(thisWidth < 10)
+            if(thisWidth < 10) {
                 thing.style.top = (2 * height) + "px";
+                thing.parentElement.style.minHeight = (2 * height) + "px";
+            }
             thing.style.width = width + "px";
             thing.style.margin = "auto";
         }
