@@ -164,4 +164,5 @@ function startLoading() {
 
 window.onresize = resizeDicts;
 window.onclick = changeFunnyTextThing;
+window.onauxclick = changeFunnyTextThing;
 window.onscroll = changeScrollingThingy;
