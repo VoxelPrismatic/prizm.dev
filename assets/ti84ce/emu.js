@@ -68,9 +68,6 @@ for(var y of range(10)) {
 
 //emulate();
 
-var letters = {};
-
-
 function drawScreen() {
     var borderColor = randInt(OFFGRAY, OFFWHITE);
     fullScreen = [];
