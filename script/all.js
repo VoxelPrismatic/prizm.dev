@@ -211,7 +211,9 @@ function jumpToEdge() {
         find("footer").scrollIntoView();
 }
 
-window.onscroll = function() {
+function changeScrollingThingy() {
+    if(Math.round(window.scrollY) % 10)
+        return;
     if(window.scrollY / window.scrollMaxY >= 0.5)
         setHtml("jumper", "[\u039b]");
     else
@@ -309,3 +311,4 @@ function startLoading() {
 
 window.onresize = resizeDicts;
 window.onclick = changeFunnyTextThing;
+window.onscroll = changeScrollingThingy;
