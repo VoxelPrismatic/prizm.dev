@@ -1,0 +1,98 @@
+for(letter of "ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
+    var st = load("/prizm.dev/ti84ce/font/big/caps/" + letter + ".txt");
+    var lt = ""
+    for(var line of st) {
+        var len = 0;
+        for(var ch of line) {
+            len += 1;
+            lt += ch;
+        }
+        for(var x = len; x <= 10; x += 1)
+            lt += " ";
+        lt += "\n";
+    }
+    letters[letter.toUpperCase()] = lt;
+}
+
+for(letter of "ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
+    var st = load("/prizm.dev/ti84ce/font/big/smol/" + letter + ".txt");
+    var lt = ""
+    for(var line of st) {
+        var len = 0;
+        for(var ch of line) {
+            len += 1;
+            lt += ch;
+        }
+        for(var x = len; x <= 10; x += 1)
+            lt += " ";
+        lt += "\n";
+    }
+    letters[letter.toLowerCase()] = lt;
+}
+
+for(letter of "0123456789") {
+    var st = load("/prizm.dev/ti84ce/font/big/num/" + letter + ".txt");
+    var lt = ""
+    for(var line of st) {
+        var len = 0;
+        for(var ch of line) {
+            len += 1;
+            lt += ch;
+        }
+        for(var x = len; x <= 10; x += 1)
+            lt += " ";
+        lt += "\n";
+    }
+    letters[letter] = lt;
+}
+
+let convert = {
+    "and": "&",
+    "angleclose": ">",
+    "angleopen": "<",
+    "at": "@",
+    "backslash": "\\",
+    "backtik": "`",
+    "bar": "|",
+    "colon": ":",
+    "comma": ",",
+    "curveclose": ")",
+    "curveopen": "(",
+    "dot": ".",
+    "doubleq": '"',
+    "equal": "=",
+    "exmark": "!",
+    "hardclose": "]",
+    "hardopen": "[",
+    "hash": "#",
+    "minus": "-",
+    "money": "$",
+    "percent": "%",
+    "plus": "+",
+    "power": "^",
+    "qmark": "?",
+    "semicolon": ";",
+    "singleq": "'",
+    "slash": "/",
+    "squiggleclose": "}",
+    "squiggleopen": "{",
+    "star": "*",
+    "tilde": "~",
+    "under": "_"
+}
+
+for(letter of convert.constructor.keys(convert)) {
+    var st = load("/prizm.dev/ti84ce/font/big/sym/" + letter + ".txt");
+    var lt = ""
+    for(var line of st) {
+        var len = 0;
+        for(var ch of line) {
+            len += 1;
+            lt += ch;
+        }
+        for(var x = len; x <= 10; x += 1)
+            lt += " ";
+        lt += "\n";
+    }
+    letters[convert[letter]] = lt;
+}

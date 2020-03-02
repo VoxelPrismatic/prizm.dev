@@ -8,6 +8,7 @@
 
 var graphScreen = [];
 var fullScreen = [];
+var output = [];
 
 var inGraph = false;
 
@@ -54,31 +55,45 @@ let OFFWHITE =  4;
 for(var y of range(165)) {
     graphScreen.push([]);
     for(var x of range(265)) {
-        graphScreen[graphScreen.length - 1].push(BLACK);
+        graphScreen[y].push(BLACK);
     }
 }
 
- //emulate();
+for(var y of range(10)) {
+    homeScreen.push([]);
+    for(var x of range(26)) {
+        homeScreen[y].push(" ");
+    }
+}
+
+//emulate();
+
+var letters = {};
+
 
 function drawScreen() {
     var borderColor = randInt(OFFGRAY, OFFWHITE);
+    fullScreen = [];
     for(var y of range(240)) {
         fullScreen.push([]);
         for(var x of range(320)) {
             if(y <= 30)
-                fullScreen[fullScreen.length - 1].push(DARKGRAY);
+                fullScreen[y].push(DARKGRAY);
             else if(inGraph)
-                fullScreen[fullScreen.length - 1].push(borderColor);
+                fullScreen[y].push(borderColor);
             else
-                fullScreen[fullScreen.length - 1].push(WHITE);
+                fullScreen[y].push(WHITE);
         }
     }
     
+
+
     if(inGraph) {
         for(var y of range(165))
             for(var x of range(265))
                 fullScreen[y + 32][x + 63] = graphScreen[y][x];
-    }
+    } else {
+        for(var y of 
 
     var screen = "";
 
