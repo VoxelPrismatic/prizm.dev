@@ -4,9 +4,9 @@ of these services, well you should also know the bot that I made. Soon, I will \
 transition my bot to use this module, so I don't have to use this `discord.py` \
 garbage that I'm currently using...
 
-:;:\[+[DOCS]</prizmatic.docs>\] \
-\[+[REPO]<https://github.com/voxelprismatic/prizmatic>\] \
-\[+[DISCORD]<https://discord.gg/Z84Nm6n>\]
+:;:+[\[DOCS\]]</prizmatic.docs> \
++[\[REPO\]]<https://github.com/voxelprismatic/prizmatic> \
++[\[DISCORD\]]<https://discord.gg/Z84Nm6n>
 
 -~-
 
@@ -17,12 +17,12 @@ links below.
 :;:+[[Invite PRIZM to your guild!]]\
 <https://discordapp.com/oauth2/authorize?client\_id=555862187403378699&permissions=473296118&scope=bot> \
 +[[Support guild]]<https://discordapp.com/invite/Z84Nm6n>
-:;:\[+[GitHub Repo]<https://github.com/voxelprismatic/prizm>\] \
-\[+[Vote on TOP.GG]<https://discordbots.org/bot/555862187403378699/vote>\] \
-\[[Command Index]<https://voxelprismatic.github.io/prizm.dev/prizm/commands>\] \
-\[[Change log]</prizm.dev/prizm/changes>\] \
-\[[Website]</prizm.dev/prizm>\] \
-\[+[Custom emojis]<https://discordapp.com/invite/eYMyfcd>\]
+:;:+[\[GitHub Repo\]]<https://github.com/voxelprismatic/prizm> \
++[\[Vote on TOP.GG\]]<https://discordbots.org/bot/555862187403378699/vote> \
+[\[Command Index\]]<https://voxelprismatic.github.io/prizm.dev/prizm/commands> \
+[\[Change log\]]</prizm.dev/prizm/changes> \
+[\[Website\]]</prizm.dev/prizm> \
++[\[Custom emojis\]]<https://discordapp.com/invite/eYMyfcd>
 
 -~-
 
