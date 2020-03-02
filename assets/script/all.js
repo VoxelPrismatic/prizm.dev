@@ -152,7 +152,7 @@ function startLoading() {
     var blocks = find("content").children;
     addHtml(blocks.item(blocks.length - 1).id, footer);
     
-    texts = load("/prizm.dev/content/text/footer.txt", false, true).split("\n");
+    texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
     changeFunnyTextThing();
 
     for(var x = 0; x <= 1000; x += 100) {
