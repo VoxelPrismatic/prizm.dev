@@ -8,13 +8,10 @@
 
 var graphScreen = [];
 var fullScreen = [];
-var output = [];
+var fullOutput = [];
+var graphOutput = [];
 
 var inGraph = false;
-
-function randInt(mn, mx) {
-    return Math.floor(Math.random() * Math.abs(mx - mn)) + Math.min(mn, mx);
-}
 
 function range(mn = 0, mx = null, step = 1) {
     var ls = [];
