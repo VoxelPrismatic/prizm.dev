@@ -50,4 +50,5 @@ legit at first, but what can I say?
 Lastly, mate, I've made many apple things but worse, over [here]</prizm.dev/apple>
 
 PS: View all my texts at the bottom of the page that you've probably never noticed/seen before \
-over [here]</prizm.dev/text/footer.txt> \[each message on a new line\]
+over [here]</prizm.dev/text/footer.txt> \[each message on a new line\] \[click anywhere to get a \
+new message, mate\]
