@@ -89,9 +89,13 @@ function addHtml(thing, val) {
 
 //Find & Scroll
 function scroll_(ids) {
-    if(ids.endsWith("~"))
-        ids = ids.slice(0, -1);
-    find(ids).scrollIntoView();
+    try {
+        if(ids.endsWith("~"))
+            ids = ids.slice(0, -1);
+        find(ids).scrollIntoView();
+    } catch(err) {
+        console.log(err);
+    }
 }
 
 function scrollIfNeeded(ids) {
