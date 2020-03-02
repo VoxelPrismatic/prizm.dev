@@ -110,6 +110,15 @@ function scrollXY(ids, x, y) {
     find(ids).scroll(x, y);
 }
 
+//Others
+
+function linkMe(elem) {
+    find("hiddenLink").href = "#" + elem.id;
+    find("hiddenLink").click();
+    window.setTimeout(setHtml, 10, "funnytextthing", "gg m8, you scrolled to #" + elem.id);
+    window.setTimeout(changeFunnyTextThing, 2010);
+}
+
 function locate(thing, parent = find("list"), loc = "find_command") {
     var pages = parent.children;
     re = regex(thing, loc);
