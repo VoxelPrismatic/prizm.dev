@@ -105,3 +105,51 @@ function scrollBy(ids, x, y) {
 function scrollXY(ids, x, y) {
     find(ids).scroll(x, y);
 }
+
+function locate(thing, parent = find("list"), loc = "find_command") {
+    var pages = parent.children;
+    re = regex(thing, loc);
+    var nothidden = false;
+    for(var page of pages) {
+        if(page.tagName != "DIV")
+            continue;
+        page.classList.remove("invis");
+        page.style.display = "block";
+        if(re != 1) {
+            if(page.className.includes("collapser")) {
+                if(!page.className.includes("collopen")) {
+                    collapser(page);
+                }
+                var donthideme = locate(thing, page, loc);
+                if(!donthideme) {
+                    page.style.display = "none";
+                    page.classList.add("invis");
+                    collapser(page);
+                }
+                nothidden = nothidden || donthideme;
+            } else {
+                var rawtext = page.children.item(0).innerHTML;
+                rawtext += page.children.item(1).innerHTML;
+                if(rawtext.search(re) != -1) {
+                    nothidden = true
+                    page.classList.remove("invis");
+                } else {
+                    page.style.display = "none";
+                    page.classList.add("invis");
+                }
+            }
+        }
+    }
+    if(re == 1) {
+        collall();
+    }
+    return nothidden;
+}
+
+function locater(elem) {
+    locate(elem.value, elem.parent, elem.id);
+}
+
+function locateId(id) {
+    locater(find(id));
+}
