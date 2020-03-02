@@ -20,105 +20,6 @@ function load(filename, aio = false, strip = false) {
     return findHtml("file");
 }
 
-function collsel(elem = find("list")) {
-    var ch = elem.children;
-    var itm = null;
-    for(var c of ch) {
-        if(c.className.includes("collhover"))
-            itm = null;
-        var tmp = collsel(c);
-        if(tmp != null) 
-            return itm
-    }
-    return itm;
-}
-
-function setcoll(elem) {
-    colldesel();
-    if(!elem.className.includes("collopen") && elem.className.includes("collapser")) {
-        var child = elem.children;
-        for(var c of child) {
-            if(c.style.display == "block" && !c.className.includes("invis")) {
-                collapser(elem);
-                break;
-            }
-        }
-    }
-}
-
-function setjump(elem) {
-    colldesel(find("sect"));
-    if(!elem.className.includes("collopen") && elem.className.includes("collapser")) {
-        var child = elem.children;
-        for(var c of child) {
-            if(c.style.display == "block" && !c.className.includes("invis")) {
-                collapser(elem);
-                break;
-            }
-        }
-    }
-}
-
-function colldesel(elem = find("list")) {
-    var ch = elem.children;
-    for(var c of ch) {
-        if(c.className.includes("collhover"))
-            collapser(c, true);
-        colldesel(c);
-    }
-}
-
-var timeout = false;
-
-function collapser(elem, force = false) {
-    if(globalThis.timeout && !force)
-        return;
-    globalThis.timeout = true;
-    window.setTimeout(function() {globalThis.timeout = false;}, 500);
-    //Set timeout so multiple collapses cannot run at the same time
-    if(elem.className.includes("lnk")) {
-        for(var cat of find("list").children)
-            for(var lnk of cat.children)
-                if(lnk.className.includes("sel"))
-                   lnk.classList.remove("sel");
-        elem.classList.add("sel");
-        setHtml("com_help", findHtml(elem.id.slice(4)));
-        return;
-    }
-    if(elem == undefined || elem == null)
-        return;
-    var disp = true;
-    var name = "collapser collopen";
-    if(elem.className.includes("collopen")) {
-        disp = false;
-        name = "collapser";
-    }
-    var thing = elem.children;
-    for(var child of thing) {
-        if(child.tagName != "DIV")
-            continue;
-        if(disp && !child.className.includes("invis"))
-            child.style.display = "block";
-        else
-            child.style.display = "none";
-    }
-    elem.className = name;
-}
-
-function collall(parent = find("list"), sub = false) {
-    var child = parent.children;
-    for(var c of child) {
-        c.classList.remove("invis");
-        if(c.className.includes("collapser")) {
-            collall(c, true);
-            c.classList.remove("collopen");
-        }
-        if(sub) {
-            c.style.display = "none";
-        }
-    }
-}
-
 function regex(st, id) {
     st = st.trim();
     find(id).style.color = "#ffffff";
@@ -147,58 +48,10 @@ function regex(st, id) {
     return RegExp(re, "gm");
 }
 
-function locate(thing, parent = find("list"), loc = "find_command") {
-    var pages = parent.children;
-    re = regex(thing, loc);
-    var nothidden = false;
-    for(var page of pages) {
-        if(page.tagName != "DIV")
-            continue;
-        page.classList.remove("invis");
-        page.style.display = "block";
-        if(re != 1) {
-            if(page.className.includes("collapser")) {
-                if(!page.className.includes("collopen")) {
-                    collapser(page);
-                }
-                var donthideme = locate(thing, page, loc);
-                if(!donthideme) {
-                    page.style.display = "none";
-                    page.classList.add("invis");
-                    collapser(page);
-                }
-                nothidden = nothidden || donthideme;
-            } else {
-                var rawtext = page.children.item(0).innerHTML;
-                rawtext += page.children.item(1).innerHTML;
-                if(rawtext.search(re) != -1) {
-                    nothidden = true
-                    page.classList.remove("invis");
-                } else {
-                    page.style.display = "none";
-                    page.classList.add("invis");
-                }
-            }
-        }
-    }
-    if(re == 1) {
-        collall();
-    }
-    return nothidden;
-}
-
-function locater(elem) {
-    locate(elem.value, elem.parent, elem.id);
-}
-
-function locateId(id) {
-    locater(find(id));
-}
-
 function textPage(...pages) {
     var html = "";
     for(var page of pages) {
-        var txt = load("/prizm.dev/assets/text/" + page + ".txt");
+        var txt = load("/prizm.dev/text/" + page + ".txt");
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
     }
     setHtml("content", html);
@@ -299,7 +152,7 @@ function startLoading() {
     var blocks = find("content").children;
     addHtml(blocks.item(blocks.length - 1).id, footer);
     
-    texts = load("/prizm.dev/text/footer.txt", false, true).split("\n");
+    texts = load("/prizm.dev/content/text/footer.txt", false, true).split("\n");
     changeFunnyTextThing();
 
     for(var x = 0; x <= 1000; x += 100) {
