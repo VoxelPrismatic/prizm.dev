@@ -1,0 +1,28 @@
+@import (reference) "/prizm.dev/css/fn.less";
+@import (reference) "/prizm.dev/css/media.less";
+
+#footer {
+    font-size: x-small;
+} #logo, #head {
+    width: 100%;
+    text-align: center;
+    font-size: xxx-large;
+} #jumper {
+    .section(#00ffff);
+    border-right-color: #00000000;
+    border-top-right-radius: 0px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-family: "Ubuntu Mono";
+    background-color: inherit;
+    margin: 0;
+    &:hover, &:focus {
+        .section(#00ff00);
+        border-right-color: #00000000;
+        border-top-right-radius: 0px;
+        margin: 0;
+        background-color: inherit;
+    }
+    z-index: 100;
+}
