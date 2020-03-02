@@ -263,4 +263,11 @@ function resizeDicts() {
     }
 }
 
+function changeFunnyTextThing() {
+    var theText = texts[Math.floor(Math.random() * texts.length)];
+    while(theText == "")
+        theText = texts[Math.floor(Math.random() * texts.length)];
+    setHtml("funnytextthing", theText);
+}
+
 window.onresize = resizeDicts;
