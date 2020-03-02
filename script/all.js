@@ -271,5 +271,39 @@ function changeFunnyTextThing() {
         theText = texts[Math.floor(Math.random() * texts.length)];
     setHtml("funnytextthing", theText);
 }
+var footer = `\
+<div style="text-align: center;">\
+<sub id="footer" style="text-align: center !important;">\
+<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br>`;
+var url = document.URL.split("#")[0];
+if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/"))
+    footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
+else
+    footer += `<a href="/prizm.dev">Home page</a>`;
+footer += `\
+<br><span id="funnytextthing">\
+</span><br><br></sub></div>`;
+
+function startLoading() {
+    let texts = load("/prizm.dev/text/footer.txt", false, true).split("\n");
+
+    loadPage();
+    if(document.URL.includes("#")) {
+        for(var x = 0; x < 300; x += 100) {
+            window.setTimeout(scroll_, x, document.URL.split("#")[1]);
+        }
+    }
+    var blocks = find("content").children;
+    addHtml(blocks.item(blocks.length - 1).id, footer);
+
+    changeFunnyTextThing();
+
+    for(var x = 0; x <= 1000; x += 100) {
+        window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
+    }
+
+    console.log(`Theme '${theme}' loaded`);
+}
 
 window.onresize = resizeDicts;
+window.onclick = changeFunnyTextThing;
