@@ -198,7 +198,7 @@ function locateId(id) {
 function textPage(...pages) {
     var html = "";
     for(var page of pages) {
-        var txt = load("/prizm.dev/text/" + page + ".txt");
+        var txt = load("/prizm.dev/assets/text/" + page + ".txt");
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
     }
     setHtml("content", html);
