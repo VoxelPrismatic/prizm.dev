@@ -20,13 +20,6 @@ And then you realized that we changed the charging port half-way through this li
 We changed the port on this device so many times to screw you over, and because it is super important that this \
 port has 13 pins instead of 7, or some shit like that. You may ask yourself, "Why?".... It’s because FUCK YOU, that’s why.
 
-#] MacBook 'Pro'
-Not even professional, defeats the purpose. So now it is just a thicker MacBook! 
-So you are screwed. It is so funny. And the best part is, we have cut your battery life in half, now just try to figure \
-out how to make this last longer. Also, we have limited the expansion slots to the point where there are none. 
-The solid state drive is now soldered in, but don’t drop this piece of shit, otherwise it will break, and you will have \
-to give us another $2000. Or $20000 to fix the damn thing, that we purposely made obsolete once your AppleCare is over.
-
 #] 'MacBook' Air
 Just air, literally. The name makes sense, perfect sense. So you are just wasting over $500 to get air. There is no charging port. \
 Oh, and you can not buy it from the store, it has to be shipped to you for over $9000. Look inside the box, and you will find Apple \
@@ -42,21 +35,10 @@ Absolutely massive, really defeats the name and purpose of this product. And why
 One that indicates the power status, one that indicates if it is looping, one that indicates if it is shuffling, and the last one \
 indicates the charging status. Just 4 tiny LEDs not even far-sighted people can see.
 
-#] iPod 'Shuffle'
-No headphone jack, including the charging part of the headphone jack. Now try doing anything with that product. 
-Also, it is now compatible with all devices, like Microsoft Windows! Also we have added a new feature, and removed one as well. \
-Instead of the shuffle mode, it is now permanently on looping mode! The iPod repeat is now available in all stores, \
-except for the ones that you will goto to find this thing.
-
 #] iMac '4k'
 By now, you would think that this product will not have a 4K display, but you're wrong. Instead, there are 4 kilobytes of RAM, \
 4 kilobytes of cache, and only 4 kilobytes of usable storage. The best part is, it runs Minecraft 4K \
 (4 kilobyte edition [Horrible graphics, horrible game play, no survival mode, no hot bar, no good, just random blocks here and there])
-
-#] iMac
-Only a camera. That's what you get, a FaceTime camera because iMac backwards is caMi, so there is a camera facing you, always filming.
-Now we know exactly what you did last night, and we offer you one nice piece of information, \
-DON’T START TOUCHING ANYTHING IN FRONT OF THIS DEVICE, BECAUSE WE DON’T WANT TO SEE THAT SHIT... or do we......?
 
 #] iPhone
 We've removed the most useless feature of the phone, the phone. Not only have removed a redundant feature, but we've also fixed \
