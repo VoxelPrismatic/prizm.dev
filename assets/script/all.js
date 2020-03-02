@@ -73,11 +73,6 @@ function changeScrollingThingy() {
         setHtml("jumper", "[V]");
 }
 
-function linkMe(elem) {
-    find("hiddenLink").href = "#" + elem.id;
-    find("hiddenLink").click();
-}
-
 function compSty(elem) {
     try {
         return window.getComputedStyle(find(elem));
