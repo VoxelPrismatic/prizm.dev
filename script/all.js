@@ -284,8 +284,9 @@ footer += `\
 <br><span id="funnytextthing">\
 </span><br><br></sub></div>`;
 
+var texts = [];
+
 function startLoading() {
-    let texts = load("/prizm.dev/text/footer.txt", false, true).split("\n");
 
     loadPage();
     if(document.URL.includes("#")) {
@@ -295,7 +296,8 @@ function startLoading() {
     }
     var blocks = find("content").children;
     addHtml(blocks.item(blocks.length - 1).id, footer);
-
+    
+    texts = load("/prizm.dev/text/footer.txt", false, true).split("\n");
     changeFunnyTextThing();
 
     for(var x = 0; x <= 1000; x += 100) {
