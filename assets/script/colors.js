@@ -63,7 +63,7 @@ function swapColor(colorName, swapImg = true) {
         } else if(txt == "a") {
             rule.style.color = color.replace(/[a]/gm, "c").replace(/[04]/gm, "a");
         } else if(txt == "a:hover, a:focus") {
-            rule.style.color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
+            rule.style.color = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
         } else if(txt == ".tab") {
             rule.style.borderTopColor = color;
         } else if(ls1.includes(txt)) {
