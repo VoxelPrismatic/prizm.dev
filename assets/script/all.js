@@ -190,10 +190,10 @@ function startLoading() {
         console.error(err);
     }
     updateSpacer();
+    if(find("jumper"))
+        window.onscroll = changeScrollingThingy;
 }
 
 window.onresize = resizeDicts;
 window.onclick = changeFunnyTextThing;
 window.onauxclick = changeFunnyTextThing;
-if(find("jumper"))
-    window.onscroll = changeScrollingThingy;
