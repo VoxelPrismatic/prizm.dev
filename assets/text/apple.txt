@@ -20,6 +20,10 @@ And then you realized that we changed the charging port half-way through this li
 We changed the port on this device so many times to screw you over, and because it is super important that this \
 port has 13 pins instead of 7, or some shit like that. You may ask yourself, "Why?".... It’s because FUCK YOU, that’s why.
 
+#2020 Update#
+The MacBook is so similar to the Air model, why innovate why we can just remove the product altogether?
+*~rip macbook~*
+
 #] 'MacBook' Air
 Just air, literally. The name makes sense, perfect sense. So you are just wasting over $500 to get air. There is no charging port. \
 Oh, and you can not buy it from the store, it has to be shipped to you for over $9000. Look inside the box, and you will find Apple \
@@ -46,14 +50,13 @@ all the bugs and problems that the phone app was responsible for! The battery in
 so your device \ will die at about 30%. Also it is still compatible with the MacBook, unless we change the charging port, again.
 Oh, and we absolutely fucking will.
 
-#] iOS, iPadOS
-#As of the OG iPad Pro#
+#] iOS
 We at apple have created our own version of multitasking. You know that blue phone, that Samsung Galaxy S3? Yeah, that one. \
 The latest firmware it supports is Android KitKat 4.4.2, which is about 3 years old. And that small little device, can somehow do \
 true multitasking, while our newest iPads, (not iPad pro) can't even do it. Yup, older androids are more powerful than our newest \
 iPads.
 
-#As of 2020#
+#] iPadOS
 So, we've released a version of iOS called iPadOS, which we claim can do actual multitasking, in which you can have up to 2 apps \
 open at the same time. Oh what bullshit we love saying. The Samsung Note Edge can handle 5 apps hovering, and 2 apps side-by-side \
 #SIMULTANIOUSLY!# Unfortunately, we do not have the processing power of a 5, 6 year old phone in our latest "pro" devices. Dang.
