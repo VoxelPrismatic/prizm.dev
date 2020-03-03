@@ -99,9 +99,9 @@ function swapColor(colorName, swapImg = true) {
             rule.style.borderRightColor = tmp;
             rule.style.color = tmp.slice(0, 4);
         } else if(txt.includes(".btn")) {
-            var tmp = color.replace(/[a]/gm, "c").replace(/[04]/gm, "a");
+            var tmp = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
             if(!txt.includes("hover")) {
-                tmp = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
+                tmp = color.replace(/[a]/gm, "c").replace(/[04]/gm, "a");
             }
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
