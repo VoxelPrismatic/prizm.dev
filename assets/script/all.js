@@ -137,24 +137,28 @@ footer += `\
 var texts = [];
 
 function startLoading() {
-
-    loadPage();
-    if(document.URL.includes("#")) {
-        for(var x = 0; x < 300; x += 100) {
-            window.setTimeout(scroll_, x, document.URL.split("#")[1]);
+    try {
+        loadPage();
+        if(document.URL.includes("#")) {
+            for(var x = 0; x < 300; x += 100) {
+                window.setTimeout(scroll_, x, document.URL.split("#")[1]);
+            }
         }
-    }
-    var blocks = find("content").children;
-    addHtml(blocks.item(blocks.length - 1).id, footer);
+        var blocks = find("content").children;
+        addHtml(blocks.item(blocks.length - 1).id, footer);
     
-    texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
-    changeFunnyTextThing();
+        texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
+        changeFunnyTextThing();
 
-    for(var x = 0; x <= 1000; x += 100) {
-        window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
+        for(var x = 0; x <= 1000; x += 100) {
+            window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
+        }
+
+        console.log(`Theme '${theme}' loaded`);
+    } catch(err) {
+        find(">BODY")[0].innerHTML = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
+        console.error(err);
     }
-
-    console.log(`Theme '${theme}' loaded`);
 }
 
 window.onresize = resizeDicts;
