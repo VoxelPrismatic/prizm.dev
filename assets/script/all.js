@@ -84,7 +84,7 @@ function compSty(elem) {
 
 function changeFunnyTextThing() {
     var theText = texts[Math.floor(Math.random() * texts.length)];
-    while(theText == "")
+    while(theText == "" || theText == findHtml("funnytextthing"))
         theText = texts[Math.floor(Math.random() * texts.length)];
     setHtml("funnytextthing", theText);
 }
