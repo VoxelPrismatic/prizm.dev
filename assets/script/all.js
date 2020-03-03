@@ -169,7 +169,9 @@ function startLoading() {
 
         console.log(`Theme '${theme}' loaded`);
     } catch(err) {
-        find(">BODY")[0].innerHTML = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
+        var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
+        html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
+        find(">BODY")[0].innerHTML = html;
         console.error(err);
     }
     updateSpacer();
