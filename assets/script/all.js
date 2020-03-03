@@ -65,12 +65,13 @@ function jumpToEdge() {
 }
 
 function changeScrollingThingy() {
-    if(Math.round(window.scrollY) % 10)
+    if(Math.round(window.scrollY) % 5)
         return;
     if(window.scrollY / window.scrollMaxY >= 0.5)
         setHtml("jumper", "[\u039b]");
     else
         setHtml("jumper", "[V]");
+    updateSpacer();
 }
 
 function compSty(elem) {
