@@ -61,7 +61,9 @@ function swapColor(colorName, swapImg = true) {
         if(txt == "h1, h2, h3, h4, h5, h6") {
             rule.style.color = color;
         } else if(txt == "a") {
-            rule.style.color = color.replace(/[04]/gm, "a").replace(/[a]/gm, "c");
+            rule.style.color = color.replace(/[a]/gm, "c").replace(/[04]/gm, "a");
+        } else if(txt == "a:hover, a:focus") {
+            rule.style.color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
         } else if(txt == ".tab") {
             rule.style.borderTopColor = color;
         } else if(ls1.includes(txt)) {
@@ -97,12 +99,9 @@ function swapColor(colorName, swapImg = true) {
             rule.style.borderRightColor = tmp;
             rule.style.color = tmp.slice(0, 4);
         } else if(txt.includes(".btn")) {
-            var tmp = color;
+            var tmp = color.replace(/[a]/gm, "c").replace(/[04]/gm, "a");
             if(!txt.includes("hover")) {
-                tmp = tmp.replace(/[04]/gm, "2");
-                tmp = tmp.replace(/a/gm, "9");
-                tmp = tmp.replace(/f/gm, "a");
-                tmp = tmp.replace(/8/gm, "6");
+                tmp = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
             }
             rule.style.borderTopColor = tmp;
             rule.style.borderLeftColor = tmp;
