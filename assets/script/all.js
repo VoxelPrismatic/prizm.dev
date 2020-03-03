@@ -113,6 +113,7 @@ function resizeDicts(log = true) {
             thing.style.margin = "auto";
         }
     }
+    updateSpacer();
 }
 
 function changeFunnyTextThing() {
@@ -122,7 +123,7 @@ function changeFunnyTextThing() {
     setHtml("funnytextthing", theText);
 }
 var footer = `\
-<div style="text-align: center;">\
+<div style="text-align: center;"><div id="spacer" style="height: 0px;"></div>\
 <sub id="footer" style="text-align: center !important;">\
 <br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br>`;
 var url = document.URL.split("#")[0];
@@ -135,6 +136,18 @@ footer += `\
 </span><br><br></sub></div>`;
 
 var texts = [];
+
+function updateSpacer() {
+    var docHeight = 0;
+    for(var elm of ["truelogo", "head", "content"]) {
+        var style = compSty(elm);
+        docHeight += style.height + style.marginTop + style.marginBottom;
+    }
+    var spaceHeight = window.innerHeight;
+    spaceHeight -= docHeight;
+    spaceHeight = Math.max(spaceHeight, 0);
+    find("spacer").style.height = spaceHeight + "px";
+}
 
 function startLoading() {
     try {
@@ -159,6 +172,7 @@ function startLoading() {
         find(">BODY")[0].innerHTML = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         console.error(err);
     }
+    updateSpacer();
 }
 
 window.onresize = resizeDicts;
