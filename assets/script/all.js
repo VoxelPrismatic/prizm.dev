@@ -65,7 +65,9 @@ function jumpToEdge() {
 }
 
 function changeScrollingThingy() {
-    if(Math.round(window.scrollY) % 5)
+    if(window.scrollY % 4)
+        return;
+    if(Math.abs(window.scrollMaxY - window.scrollY) < 20)
         return;
     if(window.scrollY / window.scrollMaxY >= 0.5)
         setHtml("jumper", "[\u039b]");
