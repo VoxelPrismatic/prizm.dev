@@ -15,7 +15,7 @@ var commands = {};
 
 function loadPage() {
     var things = {}
-    var index = JSON.parse(load("/prizm.dev/data/commands.json").replace(/\\\n/gm, "\\n"));
+    var index = JSON.parse(load("/prizm.dev/assets/data/commands.json").replace(/\\\n/gm, "\\n"));
     var st = "";
     var comindex = "";
     for(var com of index.constructor.keys(index)) {
