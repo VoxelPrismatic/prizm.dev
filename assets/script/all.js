@@ -81,7 +81,30 @@ function compSty(elem) {
     }
 }
 
+function changeFunnyTextThing() {
+    var theText = texts[Math.floor(Math.random() * texts.length)];
+    while(theText == "")
+        theText = texts[Math.floor(Math.random() * texts.length)];
+    setHtml("funnytextthing", theText);
+}
+var footer = `\
+<div style="text-align: center;"><div id="spacer" style="height: 0px;"></div>\
+<sub id="footer" style="text-align: center !important;">\
+<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br>`;
+var url = document.URL.split("#")[0];
+if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/"))
+    footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
+else
+    footer += `<a href="/prizm.dev">Home page</a>`;
+footer += `\
+<br><span id="funnytextthing">\
+</span><br><br></sub></div>`;
+
+var texts = [];
+
 function resizeDicts(log = true) {
+    if((window.innerWidth + "").includes("."))
+        return;
     var height = compSty(">H1").height.slice(0, -2) / 2;
     var width = find(".sect")[0].clientWidth - 25;
     if(log) {
@@ -116,37 +139,29 @@ function resizeDicts(log = true) {
     updateSpacer();
 }
 
-function changeFunnyTextThing() {
-    var theText = texts[Math.floor(Math.random() * texts.length)];
-    while(theText == "")
-        theText = texts[Math.floor(Math.random() * texts.length)];
-    setHtml("funnytextthing", theText);
+function getDocHeight() {
+    docHeight = 0;
+    for(var elm of ["truelogo", "head", "content"]) {
+        docHeight += getHeight(elm);
+    }
+    return docHeight;
 }
-var footer = `\
-<div style="text-align: center;"><div id="spacer" style="height: 0px;"></div>\
-<sub id="footer" style="text-align: center !important;">\
-<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br>`;
-var url = document.URL.split("#")[0];
-if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/"))
-    footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
-else
-    footer += `<a href="/prizm.dev">Home page</a>`;
-footer += `\
-<br><span id="funnytextthing">\
-</span><br><br></sub></div>`;
 
-var texts = [];
+function getHeight(elem) {
+    let style = compSty(elem);
+    var height = Number(style.height.slice(0, -2));
+    height += Number(style.marginTop.slice(0, -2));
+    height += Number(style.marginBottom.slice(0, -2));
+    return height;
+}
 
 function updateSpacer() {
-    var docHeight = 0;
-    for(var elm of ["truelogo", "head", "content"]) {
-        var style = compSty(elm);
-        docHeight += style.height + style.marginTop + style.marginBottom;
+    var height = window.innerHeight;
+    var x = 0;
+    while(getDocHeight() + 5 < height) {
+        find("spacer").style.height = x + "px";
+        x += 1;
     }
-    var spaceHeight = window.innerHeight;
-    spaceHeight -= docHeight;
-    spaceHeight = Math.max(spaceHeight, 0);
-    find("spacer").style.height = spaceHeight + "px";
 }
 
 function startLoading() {
@@ -174,6 +189,7 @@ function startLoading() {
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
         find(">BODY")[0].innerHTML = html;
+        swapColor("red");
         console.error(err);
     }
     updateSpacer();
