@@ -103,7 +103,7 @@ footer += `\
 var texts = [];
 
 function resizeDicts(log = true) {
-    if((window.innerWidth + "").includes("."))
+    if((window.innerHeight + "" + window.innerWidth).includes("."))
         return;
     var height = compSty(">H1").height.slice(0, -2) / 2;
     var width = find(".sect")[0].clientWidth - 25;
@@ -139,14 +139,6 @@ function resizeDicts(log = true) {
     updateSpacer();
 }
 
-function getDocHeight() {
-    docHeight = 0;
-    for(var elm of ["truelogo", "head", "content"]) {
-        docHeight += getHeight(elm);
-    }
-    return docHeight;
-}
-
 function getHeight(elem) {
     let style = compSty(elem);
     var height = Number(style.height.slice(0, -2));
@@ -156,10 +148,12 @@ function getHeight(elem) {
 }
 
 function updateSpacer() {
+    var spacer = find("spacer");
+    spacer.style.height = "0px";
     var height = window.innerHeight;
     var x = 0;
-    while(getDocHeight() + 5 < height) {
-        find("spacer").style.height = x + "px";
+    while(Number(compSty(">BODY").height.slice(0, -2)) + 5 < height) {
+        spacer.style.height = x + "px";
         x += 1;
     }
 }
