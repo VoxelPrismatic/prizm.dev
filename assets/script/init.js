@@ -9,19 +9,6 @@ var scripts = [
     "colors"
 ];
 
-function nextScript(index = 0) {
-    var section = document.getElementById("scripts");
-    var script = scripts[index];
-    if(script == undefined)
-        return ready();
-    var elem = document.createElement("script");
-    elem.type = "text/javascript";
-    elem.src = `/prizm.dev/assets/script/${script}.js`;
-    elem.onload = function(){nextScript(index + 1)};
-    section.appendChild(elem);
-    console.log(script + ".js loaded");
-}
-
 function ready() {
     startLoading();
     window.onresize = resizeDicts;
@@ -29,4 +16,21 @@ function ready() {
     window.onauxclick = changeFunnyTextThing;
 }
 
-nextScript();
+var numReady = 0;
+
+function maybeReady(name) {
+    console.log(name + ".js loaded");
+    if(numReady == scripts.length)
+        ready();
+}
+
+for(var script of scripts) {
+    var elem = document.createElement("script");
+    elem.type = "text/javascript";
+    elem.src = `/prizm.dev/assets/script/${script}.js`;
+    elem.onload = function() {
+        numReady += 1;
+        maybeReady(script);
+    };
+    section.appendChild(elem);
+}
