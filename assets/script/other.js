@@ -56,7 +56,3 @@ function compSty(elem) {
         return window.getComputedStyle(find(elem)[0]);
     }
 }
-
-window.onresize = resizeDicts;
-window.onclick = changeFunnyTextThing;
-window.onauxclick = changeFunnyTextThing;
