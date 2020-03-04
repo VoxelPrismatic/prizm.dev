@@ -14,6 +14,6 @@ var section = document.getElementById("scripts");
 for(var script of scripts) {
     var elem = `<script type="text/javascript" `;
     elem += `src="/prizm.dev/assets/script/${script}.js">`;
-    elem += "</script";
+    elem += "</script>";
     section.innerHTML += elem;
 }
