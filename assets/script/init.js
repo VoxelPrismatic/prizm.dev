@@ -24,8 +24,8 @@ function ready() {
 
 var numReady = 0;
 
-function maybeReady(name) {
-    console.log(name + ".js loaded");
+function maybeReady(index) {
+    console.log(scripts[index] + ".js loaded");
     if(numReady == scripts.length)
         ready();
 }
@@ -38,7 +38,7 @@ for(var script of scripts) {
     elem.src = `/prizm.dev/assets/script/${script}.js`;
     elem.onload = function() {
         numReady += 1;
-        maybeReady(script);
+        maybeReady(numReady - 1);
     };
     section.appendChild(elem);
 }
