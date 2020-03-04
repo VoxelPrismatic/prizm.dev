@@ -8,6 +8,10 @@ var scripts = [
     "colors"
 ];
 
+function loadPage() {
+    // In case of error/404 page
+}
+
 if(loader)
     scripts.push("content/" + loader);
 
