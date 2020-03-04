@@ -7,25 +7,26 @@ var scripts = [
     "load",
     "content/" + loader,
     "colors"
-]
+];
 
+function nextScript(index = 0) {
+    var section = document.getElementById("scripts");
+    var script = scripts[index];
+    if(script == undefined)
+        return ready();
+    var elem = document.createElement("script");
+    elem.type = "text/javascript";
+    elem.src = `/prizm.dev/assets/script/${script}.js`;
+    elem.onload = function(){nextScript(index + 1)};
+    section.appendChild(elem);
+    console.log(script + ".js loaded");
+}
 
-function ready(name) {
-    console.log(name + ".js loaded");
-    if(name != "colors")
-        return;
+function ready() {
     startLoading();
     window.onresize = resizeDicts;
     window.onclick = changeFunnyTextThing;
     window.onauxclick = changeFunnyTextThing;
 }
 
-var section = document.getElementById("scripts");
-
-for(var script of scripts) {
-    var elem = document.createElement("script");
-    elem.type = "text/javascript";
-    elem.src = `/prizm.dev/assets/script/${script}.js`;
-    elem.onload = function(){ready(script)};
-    section.appendChild(elem);
-}
+nextScript();
