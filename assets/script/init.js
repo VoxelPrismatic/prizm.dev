@@ -17,3 +17,10 @@ for(var script of scripts) {
     elem.src = `/prizm.dev/assets/script/${script}.js`;
     section.appendChild(elem);
 }
+
+
+startLoading();
+
+window.onresize = resizeDicts;
+window.onclick = changeFunnyTextThing;
+window.onauxclick = changeFunnyTextThing;
