@@ -126,5 +126,3 @@ function swapColor(colorName, swapImg = true) {
     */
     resizeDicts(false);
 }
-
-startLoading();
