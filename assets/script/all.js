@@ -91,8 +91,8 @@ function changeFunnyTextThing() {
 }
 var footer = `\
 <div style="text-align: center;"><div id="spacer" style="height: 0px;"></div>\
-<sub id="footer" style="text-align: center !important;">\
-<br><br>BY PRIZ WITH WINKY BRACKET FACE ;]<br>`;
+<sub id="footer" style="text-align: center !important;"><br><br>\
+<b><span style="font-size: larger">BY PRIZ WITH WINKY BRACKET FACE ;]</span></b><br>`;
 var url = document.URL.split("#")[0];
 if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/"))
     footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
