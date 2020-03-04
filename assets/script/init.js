@@ -24,6 +24,8 @@ function maybeReady(name) {
         ready();
 }
 
+var section = document.getElementById("scripts");
+
 for(var script of scripts) {
     var elem = document.createElement("script");
     elem.type = "text/javascript";
