@@ -5,9 +5,11 @@ var scripts = [
     "dynamic",
     "other",
     "load",
-    "content/" + loader,
     "colors"
 ];
+
+if(loader)
+    scripts.push("content/" + loader);
 
 function ready() {
     startLoading();
