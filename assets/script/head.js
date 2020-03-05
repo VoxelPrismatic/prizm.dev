@@ -1,5 +1,11 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
+function loadStyles() {
+    console.log("Stylesheet loaded");
+    swapColor(theme, false);
+    console.log(`Theme '${theme}' loaded`);
+}
+
 var elements = [
     {
         "tag": "link",
@@ -31,11 +37,7 @@ var elements = [
     }, {
         "tag": "script",
         "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js",
-        "onload": function() {
-            console.log("Stylesheet loaded");
-            swapColor(theme, false);
-            console.log(`Theme '${theme}' loaded`);
-        }
+        "onload": "loadStyles()"
     }, {
         "tag": "meta",
         "property": "og:url",
