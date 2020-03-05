@@ -20,11 +20,12 @@ function startLoading() {
 
         console.log(`Theme '${theme}' loaded`);
     } catch(err) {
+        console.info("The below error prevented the page from loading fully");
+        console.error(err);
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
-        find("content")[0].innerHTML = html;
+        find("content").innerHTML = html;
         swapColor("red");
-        console.error(err);
     }
     updateSpacer();
     if(find("jumper"))
