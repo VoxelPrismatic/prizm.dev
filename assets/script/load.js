@@ -22,7 +22,7 @@ function startLoading() {
     } catch(err) {
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
-        find(">BODY")[0].innerHTML = html;
+        find("content")[0].innerHTML = html;
         swapColor("red");
         console.error(err);
     }
