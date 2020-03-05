@@ -32,6 +32,7 @@ var elements = [
         "tag": "script",
         "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js",
         "onload": function() {
+            console.log("Stylesheet loaded");
             swapColor(theme, false);
             console.log(`Theme '${theme}' loaded`);
         }
