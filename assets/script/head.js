@@ -30,7 +30,11 @@ var elements = [
         "href": "/prizm.dev/assets/style.less"
     }, {
         "tag": "script",
-        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js"
+        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js",
+        "onload": function() {
+            swapColor(theme, false);
+            console.log(`Theme '${theme}' loaded`);
+        }
     }, {
         "tag": "meta",
         "property": "og:url",
