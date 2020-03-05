@@ -63,8 +63,10 @@ function tag(element) {
         if(property == "tag") {
             continue;
         }
-        if(property.search(/<\d+>/gm) == 0) {
+        if(property.search(/<[0-9A-Fa-f]+>/gm) == 0) {
             elem.appendChild(tag(element[property]))
+        } else if(property.search(/br[0-9A-Fa-f]*/gm) == 0) {
+            elem.appendChild(document.createElement("br"));
         } else if(property == "style") {
             for(var style of element[property].split(";")) {
                 if(!style)
@@ -73,7 +75,7 @@ function tag(element) {
                 style = style.split(":")[0].trim();
                 elem.style.setProperty(style, value);
             }
-        } else if(property.search(/#\d*/gm) == 0) {
+        } else if(property.search(/#[0-9A-Fa-f]*/gm) == 0) {
             elem.appendChild(document.createTextNode(element["#"]));
         } else {
             elem.setAttribute(property, element[property]);
