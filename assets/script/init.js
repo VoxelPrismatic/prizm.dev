@@ -25,7 +25,7 @@ function ready() {
 var numReady = 0;
 
 function maybeReady(index) {
-    console.log(scripts[index] + ".js loaded");
+    console.log(`Script '${scripts[index]}.js' loaded`);
     if(numReady == scripts.length)
         ready();
 }
