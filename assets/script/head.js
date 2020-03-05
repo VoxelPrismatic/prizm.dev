@@ -8,6 +8,7 @@ function loadStyles() {
     stylesheetLoaded = true;
     try {
         swapColor(theme, false);
+        resizeDicts();
         console.log(`Theme '${theme}' loaded`);
         swappedColors = true;
     } catch(err) {
