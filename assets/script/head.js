@@ -63,7 +63,6 @@ function tag(element) {
                     continue;
                 var value = style.split(":")[1].trim();
                 style = style.split(":")[0].trim();
-                console.log(style + "/" + value);
                 elem.style.setProperty(style, value);
             }
         } else if(property.search(/#\d*/gm) == 0) {
