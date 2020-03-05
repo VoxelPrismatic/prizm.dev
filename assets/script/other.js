@@ -20,38 +20,24 @@ var footTag = {
         "tag": "sub",
         "style": "text-align: center !important;",
         "id": "footer",
-        "<00>": {
-            "tag": "br"
-        },
-        "<01>": {
-            "tag": "br"
-        },
+        "br0": 2,
         "<0>": {
             "tag": "b",
             "style": "font-size: larger;",
             "#": "BY PRIZ WITH WINKY BRACKET FACE ;]"
         },
-        "<02>": {
-            "tag": "br"
-        },
+        "br1": 1,
         "<1>": {
             "tag": "a",
             "href": linkHref,
             "#": linkContent
         },
-        "<03>": {
-            "tag": "br"
-        },
+        "br2": 1,
         "<2>": {
             "tag": "span",
             "id": "funnytextthing"
         },
-        "<04>": {
-            "tag": "br"
-        },
-        "<05>": {
-            "tag": "br"
-        }
+        "br3": 2
     }
 }
 
