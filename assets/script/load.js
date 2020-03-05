@@ -8,7 +8,7 @@ function startLoading() {
         }
         if(!document.URL.includes("/error")) {
             var blocks = find("content").children;
-            addHtml(blocks.item(blocks.length - 1).id, footer);
+            blocks.item(blocks.length - 1).appendChild(footer);
         }
     
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
