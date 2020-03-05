@@ -66,7 +66,9 @@ function tag(element) {
         if(property.search(/<[0-9A-Fa-f]+>/gm) == 0) {
             elem.appendChild(tag(element[property]))
         } else if(property.search(/br[0-9A-Fa-f]*/gm) == 0) {
-            elem.appendChild(document.createElement("br"));
+            for(var x = 0; x < element[property]; x += 1) {
+                elem.appendChild(document.createElement("br"));
+            }
         } else if(property == "style") {
             for(var style of element[property].split(";")) {
                 if(!style)
