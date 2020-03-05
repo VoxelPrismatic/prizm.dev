@@ -1,16 +1,11 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
 var stylesheetLoaded = false;
-var swappedColors = false;
 
-function loadStyles() {
+function tryColor() {
     console.log("Stylesheet loaded");
-    stylesheetLoaded = true;
     try {
         swapColor(theme, false);
-        resizeDicts();
-        console.log(`Theme '${theme}' loaded`);
-        swappedColors = true;
     } catch(err) {
     }
 }
@@ -46,7 +41,8 @@ var elements = [
     }, {
         "tag": "script",
         "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js",
-        "onload": "loadStyles()"
+        "onload": "tryColor()",
+        "id": "lesscss"
     }, {
         "tag": "meta",
         "property": "og:url",
