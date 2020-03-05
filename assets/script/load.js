@@ -14,10 +14,10 @@ function startLoading() {
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
         
-        if(stylesheetLoaded && !swappedColors) {
-            swapColor(theme, false);
-            resizeDicts();
-            console.log(`Theme '${theme}' loaded`);
+        if(!stylesheetLoaded) {
+            find("lesscss").onload = "swapColor(theme)";
+        } else {
+            swapColor(theme);
         }
     } catch(err) {
         console.info("The below error prevented the page from loading fully");
