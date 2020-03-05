@@ -1,9 +1,11 @@
 var url = document.URL.split("#")[0];
 var linkContent = "Home page";
 var linkHref = "/prizm.dev";
+var linkTarget = "";
 if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/")) {
     linkHref = "https://github.com/VoxelPrismatic/prizm.dev";
     linkContent = "Website Repo";
+    linkTarget = "_blank";
 }
 
 var footTag = {
