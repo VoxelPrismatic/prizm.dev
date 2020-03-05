@@ -30,8 +30,7 @@ var elements = [
         "href": "/prizm.dev/assets/style.less"
     }, {
         "tag": "script",
-        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js",
-        "async": "async"
+        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js"
     }, {
         "tag": "meta",
         "property": "og:url",
