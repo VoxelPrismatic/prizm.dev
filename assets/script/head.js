@@ -1,9 +1,17 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
+var stylesheetLoaded = false;
+var swappedColors = false;
+
 function loadStyles() {
     console.log("Stylesheet loaded");
-    swapColor(theme, false);
-    console.log(`Theme '${theme}' loaded`);
+    stylesheetLoaded = true;
+    try {
+        swapColor(theme, false);
+        console.log(`Theme '${theme}' loaded`);
+        swappedColors = true;
+    } catch(err) {
+    }
 }
 
 var elements = [
