@@ -13,6 +13,11 @@ function startLoading() {
     
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
+        
+        if(stylesheetLoaded && !swappedColors) {
+            swapColor(theme, false);
+            console.log(`Theme '${theme}' loaded`);
+        }
     } catch(err) {
         console.info("The below error prevented the page from loading fully");
         console.error(err);
