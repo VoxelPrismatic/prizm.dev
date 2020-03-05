@@ -1,15 +1,45 @@
-var footer = `\
-<div style="text-align: center;"><div id="spacer" style="height: 0px;"></div>\
-<sub id="footer" style="text-align: center !important;"><br><br>\
-<b><span style="font-size: larger">BY PRIZ WITH WINKY BRACKET FACE ;]</span></b><br>`;
 var url = document.URL.split("#")[0];
-if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/"))
-    footer += `<a href="https://github.com/voxelprismatic/prizm.dev" target="_blank">Website Repo</a>`;
-else
-    footer += `<a href="/prizm.dev">Home page</a>`;
-footer += `\
-<br><span id="funnytextthing">\
-</span><br><br></sub></div>`;
+var linkContent = "Home page";
+var linkHref = "/prizm.dev";
+if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/")) {
+    linkHref = "https://github.com/VoxelPrismatic/prizm.dev";
+    linkContent = "Website Repo";
+}
+
+var footTag = {
+    "tag": "div",
+    "style": "text-align: center;",
+    "<0>": {
+        "tag": "div",
+        "style": "height: 0px;",
+        "id": "spacer"
+    },
+    "<1>": {
+        "tag": "sub",
+        "style": "text-align: center !important;",
+        "id": "footer",
+        "#0": "<br><br>",
+        "<0>": {
+            "tag": "b",
+            "style": "font-size: larger;",
+            "#": "BY PRIZ WITH WINKY BRACKET FACE"
+        },
+        "#1": "<br>",
+        "<1>": {
+            "tag": "a",
+            "href": linkHref,
+            "#": linkContent
+        },
+        "#2": "<br>",
+        "<2>": {
+            "tag": "span",
+            "id": "funnytextthing"
+        },
+        "#3": "<br><br>"
+    }
+}
+
+var footer = tag(footTag);
 
 var texts = [];
 
