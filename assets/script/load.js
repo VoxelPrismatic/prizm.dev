@@ -16,6 +16,7 @@ function startLoading() {
         
         if(stylesheetLoaded && !swappedColors) {
             swapColor(theme, false);
+            resizeDicts();
             console.log(`Theme '${theme}' loaded`);
         }
     } catch(err) {
