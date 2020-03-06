@@ -1,9 +1,11 @@
 var url = document.URL.split("#")[0];
 var linkContent = "Home page";
 var linkHref = "/prizm.dev";
+var linkTarget = "";
 if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/")) {
     linkHref = "https://github.com/VoxelPrismatic/prizm.dev";
     linkContent = "Website Repo";
+    linkTarget = "_blank";
 }
 
 var footTag = {
@@ -18,24 +20,24 @@ var footTag = {
         "tag": "sub",
         "style": "text-align: center !important;",
         "id": "footer",
-        "#0": "<br><br>",
+        "br0": 2,
         "<0>": {
             "tag": "b",
             "style": "font-size: larger;",
-            "#": "BY PRIZ WITH WINKY BRACKET FACE"
+            "#": "BY PRIZ WITH WINKY BRACKET FACE ;]"
         },
-        "#1": "<br>",
+        "br1": 1,
         "<1>": {
             "tag": "a",
             "href": linkHref,
             "#": linkContent
         },
-        "#2": "<br>",
+        "br2": 1,
         "<2>": {
             "tag": "span",
             "id": "funnytextthing"
         },
-        "#3": "<br><br>"
+        "br3": 2
     }
 }
 

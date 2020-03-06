@@ -8,23 +8,22 @@ function startLoading() {
         }
         if(!document.URL.includes("/error")) {
             var blocks = find("content").children;
-            addHtml(blocks.item(blocks.length - 1).id, footer);
+            blocks.item(blocks.length - 1).appendChild(footer);
         }
     
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
-
+        
         for(var x = 0; x <= 1000; x += 100) {
             window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
         }
-
-        console.log(`Theme '${theme}' loaded`);
     } catch(err) {
+        console.info("The below error prevented the page from loading fully");
+        console.error(err);
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
-        find(">BODY")[0].innerHTML = html;
+        find("content").innerHTML = html;
         swapColor("red");
-        console.error(err);
     }
     updateSpacer();
     if(find("jumper"))

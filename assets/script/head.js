@@ -1,5 +1,15 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
+var stylesheetLoaded = false;
+
+function tryColor() {
+    console.log("Stylesheet loaded");
+    try {
+        swapColor(theme, false);
+    } catch(err) {
+    }
+}
+
 var elements = [
     {
         "tag": "link",
@@ -30,7 +40,9 @@ var elements = [
         "href": "/prizm.dev/assets/style.less"
     }, {
         "tag": "script",
-        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js"
+        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js",
+        "onload": "tryColor()",
+        "id": "lesscss"
     }, {
         "tag": "meta",
         "property": "og:url",
@@ -51,18 +63,21 @@ function tag(element) {
         if(property == "tag") {
             continue;
         }
-        if(property.search(/<\d+>/gm) == 0) {
+        if(property.search(/<[0-9A-Fa-f]+>/gm) == 0) {
             elem.appendChild(tag(element[property]))
+        } else if(property.search(/br[0-9A-Fa-f]*/gm) == 0) {
+            for(var x = 0; x < element[property]; x += 1) {
+                elem.appendChild(document.createElement("br"));
+            }
         } else if(property == "style") {
             for(var style of element[property].split(";")) {
                 if(!style)
                     continue;
                 var value = style.split(":")[1].trim();
                 style = style.split(":")[0].trim();
-                console.log(style + "/" + value);
                 elem.style.setProperty(style, value);
             }
-        } else if(property.search(/#\d*/gm) == 0) {
+        } else if(property.search(/#[0-9A-Fa-f]*/gm) == 0) {
             elem.appendChild(document.createTextNode(element["#"]));
         } else {
             elem.setAttribute(property, element[property]);

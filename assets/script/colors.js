@@ -119,7 +119,7 @@ function swapColor(colorName, swapImg = true) {
         }
     }
     if(swapImg)
-        find("truelogo").src = `/prizm.dev/image/priz_${name}.png`;
+        find("truelogo").src = `/prizm.dev/assets/image/priz_${name}.png`;
     /*Resize dict
     Key --------------------- Val
     Twitter ----- @VoxelPrismatic
