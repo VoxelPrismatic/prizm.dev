@@ -94,7 +94,7 @@ function drawScreen() {
     for(var y of fullScreen) {
         screen += "<div>";
         for(var x of y) {
-            screen += `<div class="ti${x}"></div>`;
+            screen += `<span class="ti${x}"></span>`;
         }
         screen += "</div>";
     }
