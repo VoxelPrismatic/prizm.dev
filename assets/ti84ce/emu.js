@@ -86,8 +86,8 @@ function drawScreen() {
         for(var y of range(165))
             for(var x of range(265))
                 fullScreen[y + 32][x + 63] = graphScreen[y][x];
-    } else {
-        for(var y of 
+    } /*else {
+        for(var y of */
 
     var screen = "";
 
@@ -101,3 +101,5 @@ function drawScreen() {
     
     setHtml("ti84ce", screen);
 }
+
+window.setTimeout(drawScreen, 100);
