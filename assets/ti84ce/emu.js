@@ -42,10 +42,10 @@ let MEDGRAY =  22;
 let GRAY =     23;
 let DARKGRAY = 24;
 
-let OFFGRAY =   1;
-let MINT =      2;
-let OFFBLUE =   3;
-let OFFWHITE =  4;
+let OFFGRAY =   21;
+let MINT =      25;
+let OFFBLUE =   26;
+let OFFWHITE =  20;
 
 //Make Screen
 
