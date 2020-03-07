@@ -1,6 +1,7 @@
 var scripts = [
     "emu",
-    
+    "catalog",
+    "loadfont",
     "prgm/" + prgm
 ];
 
