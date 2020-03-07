@@ -54,9 +54,10 @@ let convert = {
     "under": "_"
 }
 
-var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzαβγ∆δεθλµπρΣφΩστχ∠√∫°ᴛ";
-chars += "ᵀ¿¡`\ß~!@#$%^&|_…;:wuv₀₁₂₃₄₅₆₇₈₉↑↓ŜáÁàÀâÂäÄéÉèÈêÊëËíÍìÌîÎïÏóÓòÒôÔöÖúÚùÙ";
-chars += "ûÛüÜñÑçÇṗ1234567890+-*/^(){}[]'ʳχʟŚ,.␣³√ˣ≠≥≤▫⁺•·⁻ʟẋȳṗ▯▯";
+var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzαβγδεθλµπρΣφΩστχŚ" +
+            "π°0123456789₀₁₂₃₄₅₆₇₈₉⌊²‘~!@#$%^&*()[]{}<>,./?;:'∠√∫°¿¡\\" +
+            "ß…␣­_-+=↑↓Ŝ▫⁺•·≠≥≤áÁàÀâÂäÄéÉèÈêÊëËíÍìÌîÎïÏóÓòÒôÔöÖúÚù" +
+            "ÙûÛüÜñÑçÇ⬚█×´`¨\"→▒";
 
 for(letter of "ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
     letters[letter.toUpperCase()] = grabChar("big/caps/", letter);
