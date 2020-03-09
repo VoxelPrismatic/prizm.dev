@@ -1,3 +1,3 @@
-function abs(n) {
+function _abs(n) {
     return Math.abs(n);
 }

@@ -1,15 +1,34 @@
-var scripts = [
+var emuScripts = [];
+
+let consts = [
+    "color",
+    "num"
+];
+
+let more = [
     "emu",
-    "catalog",
     "loadfont",
     "prgm/" + prgm
 ];
+
+for(var l of "abcdefghijklmnopqrstuvwxyz") {
+    emuScripts.push("catalog/fn/" + l + ".js");
+    emuScripts.push("catalog/bts/" + l + ".js");
+}
+
+for(var c of consts) {
+    emuScripts.push("catalog/const/" + c + ".js");
+}
+
+for(var m of more) {
+    emuScripts.push(m + ".js");
+}
 
 function run() {
     // In case of error/404 page
 }
 
-function ready() {
+function emuReady() {
     run();
     window.onresize = resizeDicts;
     window.onclick = changeFunnyTextThing;
@@ -18,21 +37,25 @@ function ready() {
 
 var numReady = 0;
 
-function maybeReady(index) {
+function maybeEmuReady(index) {
     console.log(`Script '${scripts[index]}.js' loaded`);
-    if(numReady == scripts.length)
+    if(numReady == emuScripts.length)
         ready();
 }
 
 var section = document.getElementById("scripts");
 
-for(var script of scripts) {
-    var elem = document.createElement("script");
-    elem.type = "text/javascript";
-    elem.src = `/prizm.dev/assets/script/${script}.js`;
-    elem.onload = function() {
-        numReady += 1;
-        maybeReady(numReady - 1);
-    };
-    section.appendChild(elem);
+function nextEmuReady() {
+    numReady += 1;
+    maybeReady(numReady - 1);
+};
+
+for(var script of emuScripts) {
+    var elem = {
+        "tag": "script",
+        "type": "text/javascript",
+        "src": `/prizm.dev/assets/ti84ce/${script}.js`,
+        "onload": "nextEmuReady();"
+    }
+    section.appendChild(tag(elem));
 }

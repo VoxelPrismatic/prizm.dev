@@ -32,13 +32,17 @@ function maybeReady(index) {
 
 var section = document.getElementById("scripts");
 
+function nextReady() {
+    numReady += 1;
+    maybeReady(numReady - 1);
+};
+
 for(var script of scripts) {
-    var elem = document.createElement("script");
-    elem.type = "text/javascript";
-    elem.src = `/prizm.dev/assets/script/${script}.js`;
-    elem.onload = function() {
-        numReady += 1;
-        maybeReady(numReady - 1);
-    };
-    section.appendChild(elem);
+    var elem = {
+        "tag": "script",
+        "type": "text/javascript",
+        "src": `/prizm.dev/assets/script/${script}.js`,
+        "onload": "nextReady()"
+    }
+    section.appendChild(tag(elem));
 }
