@@ -113,7 +113,7 @@ function scrollXY(ids, x, y) {
 //Others
 
 function linkMe(elem) {
-    find("hiddenLink").href = document.URL + "#" + elem.id;
+    find("hiddenLink").href = document.URL.split("#")[0] + "#" + elem.id;
     find("hiddenLink").click();
 }
 
