@@ -115,8 +115,6 @@ function scrollXY(ids, x, y) {
 function linkMe(elem) {
     find("hiddenLink").href = document.URL + "#" + elem.id;
     find("hiddenLink").click();
-    window.setTimeout(setHtml, 10, "funnytextthing", "gg m8, you scrolled to #" + elem.id);
-    window.setTimeout(changeFunnyTextThing, 2010);
 }
 
 function locate(thing, parent = find("list"), loc = "find_command") {
