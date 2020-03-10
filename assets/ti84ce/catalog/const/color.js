@@ -13,8 +13,10 @@ let LTGRAY =   21;
 let MEDGRAY =  22;
 let GRAY =     23;
 let DARKGRAY = 24;
+let PINK =     27;
+let BLURPLE =  28;
 
-let OFFGRAY =   21;
-let MINT =      25;
-let OFFBLUE =   26;
-let OFFWHITE =  20;
+let OFFGRAY =  21;
+let MINT =     25;
+let OFFBLUE =  26;
+let OFFWHITE = 20;
