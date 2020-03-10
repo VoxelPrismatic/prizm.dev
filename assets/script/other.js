@@ -30,7 +30,8 @@ var footTag = {
         "<1>": {
             "tag": "a",
             "href": linkHref,
-            "#": linkContent
+            "#": linkContent,
+            "target": linkTarget
         },
         "br2": 1,
         "<2>": {
