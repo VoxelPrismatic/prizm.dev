@@ -1,3 +1,8 @@
+#] mar 10, 2020
+___
+> Added the `;]hexdump` command
+===
+
 #] feb 27, 2020
 ___
 > Starting up fixed
