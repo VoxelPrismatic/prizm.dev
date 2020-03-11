@@ -54,6 +54,14 @@ var elements = [
     }
 ];
 
+if(window.location.protocol == "file:") {
+    elements.push({
+        "tag": "base",
+        "href": "https://voxelprismatic.github.io/"
+    })
+    window.alert("WARNING: This site is local only, some links may not link properly");
+}
+
 function tag(element) {
     var elem = document.createElement(element["tag"]);
     for(var property of element.constructor.keys(element)) {
