@@ -51,9 +51,6 @@ var elements = [
         "tag": "meta",
         "name": "author",
         "content": "PRIZ ;]"
-    }, {
-        "tag": "base",
-        "href": "https://voxelprismatic.github.io/"
     }
 ];
 
