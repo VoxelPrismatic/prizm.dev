@@ -1,3 +1,3 @@
 function loadPage() {
-    textPage("prizm", "prizm_link");
+    textPage("prizm", "prizm_link", "prizm_status");
 }
