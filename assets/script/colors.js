@@ -37,7 +37,7 @@ let colors = {
 }; let ls1 = [
     ".line",
     ".sect",
-    ".sect:hover, .sect:focus"
+    ".sect:hover, .sect:focus",
     ".collapser",
     ".collapser:hover, .collapser:focus",
     ".collopen",
@@ -71,13 +71,15 @@ function swapColor(colorName, swapImg = true) {
         } else if(ls1.includes(txt)) {
             var tmp = color;
             if(txt.includes(".sect")) {
-                var shadow = color + " 3px -1px 2px -2px, "
-                           + color + " 0px -3px 2px -2px, "
-                           + color + " -3px -1px 2px -2px";
+                var shadow = color + " 3px -2px 2px -2px,"
+                           + color + " -2px -3px 2px -2px,"
+                           + color + " 2px -3px 2px -2px,"
+                           + color + " -3px -2px 2px -2px";
                 if(txt.includes("hover"))
-                    shadow = color + " 4px -1px 2px -2px, "
-                           + color + " 0px -4px 2px -2px, "
-                           + color + " -4px -1px 2px -2px";
+                    shadow = color + " 4px -2px 2px -2px,"
+                           + color + " -2px -4px 2px -2px,"
+                           + color + " 2px -4px 2px -2px,"
+                           + color + " -4px -2px 2px -2px";
                 style.boxShadow = shadow;
             } if(txt.includes(".collapser")) {
                 tmp = colors["grey"][0];
@@ -85,7 +87,7 @@ function swapColor(colorName, swapImg = true) {
             } if(txt.includes("coll") && txt.includes(":hover")) {
                 tmp = colors["white"][0];
                 style.backgroundColor = tmp + "0";
-            } if(ls1.slice(2).includes(txt) || txt.includes(".line")) {
+            } if(ls1.slice(3).includes(txt) || txt.includes(".line")) {
                 style.borderBottomColor = tmp;
                 style.color = tmp;
                 if(txt.includes(".line")) {
