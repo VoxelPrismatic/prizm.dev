@@ -6,6 +6,10 @@ h1, h2, h3, h4, h5, h6 {
     transition: text-shadow ease 1s;
 }
 
+a {
+    white-space: nowrap;
+}
+
 @sel: a, h1, h2, h3, h4, h5, h6;
 each(@sel, {
     @{value}:hover, @{value}:focus {
@@ -125,5 +129,9 @@ each(@sel, {
     border-radius: 5px;
     width: 80%;
     margin: auto;
-    box-shadow: 0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
+    transition: box-shadow 2s;
+    box-shadow: 0px 0px 5px #00ffff, inset 0px 0px 5px #00ffff;
+    &:hover {
+        0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
+    }
 }
