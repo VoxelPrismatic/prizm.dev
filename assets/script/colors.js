@@ -128,13 +128,10 @@ function swapColor(colorName, swapImg = true) {
             style.color = tmp;
             style.backgroundColor = tmp + "4";
         } else if(rule.selectorText.includes("#jumper")) {
-            var tmp = color;
-            if(rule.selectorText.includes("hover"))
-                tmp = colors[swapped[colorName]][0];
-            style.backgroundColor = "inherit";
-            style.borderTopColor = tmp;
-            style.borderLeftColor = tmp;
-            style.color = tmp;
+            style.borderTopColor = color;
+            style.borderLeftColor = color;
+            style.color = color;
+            style.boxShadow = "0px 0px 4px " + color;
         }
     }
     if(swapImg)
