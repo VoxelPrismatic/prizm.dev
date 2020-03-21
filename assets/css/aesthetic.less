@@ -131,7 +131,7 @@ each(@sel, {
     margin: auto;
     transition: box-shadow 2s;
     box-shadow: 0px 0px 5px #00ffff, inset 0px 0px 5px #00ffff;
-    &:hover {
-        0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
+    &:hover, &:focus {
+        box-shadow: 0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
     }
 }
