@@ -49,7 +49,7 @@ let colors = {
     ".lnk"
 ];
 
-function swapColor(colorName, swapImg = true) {
+function swapColor(colorName, swapImg = true, transition = false) {
     var color;
     var bg; 
     var name;
@@ -133,8 +133,9 @@ function swapColor(colorName, swapImg = true) {
             style.color = color;
             style.boxShadow = "0px 0px 4px " + color;
         }
-        style.transition = "color ease 1s, box-shadow ease 1s, text-shadow ease 1s"; 
-        // ^ Doesn't glow the wrong color on page load now
+        if(transition)
+            style.transition = "color ease 1s, box-shadow ease 1s, text-shadow ease 1s"; 
+            // ^ Doesn't glow the wrong color on page load now
     }
     if(swapImg)
         find("truelogo").src = `/prizm.dev/assets/image/priz_${name}.png`;
