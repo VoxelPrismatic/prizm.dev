@@ -49,6 +49,13 @@ let colors = {
     ".lnk"
 ];
 
+function setTransitions() {
+    var rules = document.styleSheets[2].cssRules;
+    for(var rule of rules) {
+        rule.style.transition = "color ease 1s, box-shadow ease 1s, text-shadow ease 1s"; 
+    }
+}
+
 function swapColor(colorName, swapImg = true, transition = false) {
     var color;
     var bg; 
@@ -133,9 +140,6 @@ function swapColor(colorName, swapImg = true, transition = false) {
             style.color = color;
             style.boxShadow = "0px 0px 4px " + color;
         }
-        if(transition)
-            style.transition = "color ease 1s, box-shadow ease 1s, text-shadow ease 1s"; 
-            // ^ Doesn't glow the wrong color on page load now
     }
     if(swapImg)
         find("truelogo").src = `/prizm.dev/assets/image/priz_${name}.png`;
@@ -144,4 +148,6 @@ function swapColor(colorName, swapImg = true, transition = false) {
     Twitter ----- @VoxelPrismatic
     */
     resizeDicts(false);
+    if(transition)
+        window.setTimeout(setTransitions, 1000);
 }
