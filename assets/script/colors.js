@@ -58,29 +58,31 @@ function swapColor(colorName, swapImg = true) {
         let txt = rule.selectorText;
         if(txt == undefined)
             continue
+        var style = rule.style;
         if(txt == "h1, h2, h3, h4, h5, h6") {
-            rule.style.color = color;
+            style.color = color;
         } else if(txt == "a") {
-            rule.style.color = color.replace(/[a]/gm, "c").replace(/[04]/gm, "8");
+            style.color = color.replace(/[a]/gm, "c").replace(/[04]/gm, "8");
         } else if(txt == "a:hover, a:focus") {
-            rule.style.color = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
+            style.color = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
         } else if(txt == ".tab") {
-            rule.style.borderTopColor = color;
+            style.borderTopColor = color;
         } else if(ls1.includes(txt)) {
             var tmp = color;
             if(txt.includes(".collapser")) {
                 tmp = colors["grey"][0];
-                rule.style.backgroundColor = tmp + "0";
+                style.backgroundColor = tmp + "0";
             }  if(txt.includes("coll") && txt.includes(":hover")) {
                 tmp = colors["white"][0];
-                rule.style.backgroundColor = tmp + "0";
+                style.backgroundColor = tmp + "0";
             } if(ls1.slice(2).includes(txt) || txt == ".line") {
-                rule.style.borderBottomColor = tmp;
-                rule.style.color = tmp;
+                style.borderBottomColor = tmp;
+                style.color = tmp;
+                style.boxShadow = "0px 0px 10px " + tmp;
             }
-            rule.style.borderTopColor = tmp;
-            rule.style.borderLeftColor = tmp;
-            rule.style.borderRightColor = tmp;
+            style.borderTopColor = tmp;
+            style.borderLeftColor = tmp;
+            style.borderRightColor = tmp;
         } else if(ls2.includes(txt)) {
             var tmp;
             if(txt.includes(".lnk:hover")) {
@@ -94,28 +96,28 @@ function swapColor(colorName, swapImg = true) {
             } if(txt != ".lnk") {
                 rule.style.backgroundColor = tmp + "4";
             }
-            rule.style.borderTopColor = tmp;
-            rule.style.borderLeftColor = tmp;
-            rule.style.borderRightColor = tmp;
-            rule.style.color = tmp.slice(0, 4);
+            style.borderTopColor = tmp;
+            style.borderLeftColor = tmp;
+            style.borderRightColor = tmp;
+            style.color = tmp.slice(0, 4);
         } else if(txt.includes(".btn")) {
             var tmp = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
             if(!txt.includes("hover")) {
                 tmp = color.replace(/[a]/gm, "c").replace(/[04]/gm, "8");
             }
-            rule.style.borderTopColor = tmp;
-            rule.style.borderLeftColor = tmp;
-            rule.style.borderRightColor = tmp;
-            rule.style.color = tmp;
-            rule.style.backgroundColor = tmp + "4";
+            style.borderTopColor = tmp;
+            style.borderLeftColor = tmp;
+            style.borderRightColor = tmp;
+            style.color = tmp;
+            style.backgroundColor = tmp + "4";
         } else if(rule.selectorText.includes("#jumper")) {
             var tmp = color;
             if(rule.selectorText.includes("hover"))
                 tmp = colors[swapped[colorName]][0];
-            rule.style.backgroundColor = "inherit";
-            rule.style.borderTopColor = tmp;
-            rule.style.borderLeftColor = tmp;
-            rule.style.color = tmp;
+            style.backgroundColor = "inherit";
+            style.borderTopColor = tmp;
+            style.borderLeftColor = tmp;
+            style.color = tmp;
         }
     }
     if(swapImg)
