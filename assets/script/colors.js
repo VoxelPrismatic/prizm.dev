@@ -148,6 +148,4 @@ function swapColor(colorName, swapImg = true, transition = false) {
     Twitter ----- @VoxelPrismatic
     */
     resizeDicts(false);
-    if(transition)
-        window.setTimeout(setTransitions, 1000);
 }
