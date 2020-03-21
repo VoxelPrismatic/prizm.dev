@@ -78,7 +78,8 @@ function swapColor(colorName, swapImg = true) {
             } if(ls1.slice(2).includes(txt) || txt == ".line") {
                 style.borderBottomColor = tmp;
                 style.color = tmp;
-                style.boxShadow = "0px 0px 10px " + tmp;
+                var linetmp = "0px 0px 10px " + tmp;
+                style.boxShadow = linetmp + ", inset " + linetmp;
             }
             style.borderTopColor = tmp;
             style.borderLeftColor = tmp;
