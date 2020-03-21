@@ -75,11 +75,15 @@ function swapColor(colorName, swapImg = true) {
             }  if(txt.includes("coll") && txt.includes(":hover")) {
                 tmp = colors["white"][0];
                 style.backgroundColor = tmp + "0";
-            } if(ls1.slice(2).includes(txt) || txt == ".line") {
+            } if(ls1.slice(2).includes(txt) || txt.includes(".line")) {
                 style.borderBottomColor = tmp;
                 style.color = tmp;
-                var linetmp = "0px 0px 10px " + tmp;
-                style.boxShadow = linetmp + ", inset " + linetmp;
+                if(txt.includes(".line")) {
+                    var linetmp = "0px 0px 5px " + tmp;
+                    if(txt.includes("hover"))
+                        linetmp = "0px 0px 10px " + tmp;
+                    style.boxShadow = linetmp + ", inset " + linetmp;
+                }
             }
             style.borderTopColor = tmp;
             style.borderLeftColor = tmp;
