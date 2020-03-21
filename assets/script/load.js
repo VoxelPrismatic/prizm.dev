@@ -15,11 +15,9 @@ function startLoading() {
         changeFunnyTextThing();
         
         for(var x = 0; x <= 1000; x += 100) {
-            var transition = false;
-            if(x == 1000)
-                transition = true
-            window.setTimeout(swapColor, x, theme, false, transition); // Sometimes it doesn't load right away
+            window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
         }
+        window.setTimeout(setTransitions, 2000);
     } catch(err) {
         console.info("The below error prevented the page from loading fully");
         console.error(err);
