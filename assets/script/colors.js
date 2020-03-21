@@ -69,6 +69,12 @@ function swapColor(colorName, swapImg = true) {
             style.borderTopColor = color;
         } else if(ls1.includes(txt)) {
             var tmp = color;
+            if(txt == ".sect") {
+                style.boxShadow = color + " 2px -2px 2px -2px,"
+                                + color + " -2px -2px 2px -2px, "
+                                + color + "inset -2px 1px 2px -3px, " 
+                                + color + "inset 2px 1px 2px -3px";
+            }
             if(txt.includes(".collapser")) {
                 tmp = colors["grey"][0];
                 style.backgroundColor = tmp + "0";
