@@ -61,6 +61,7 @@ function swapColor(colorName, swapImg = true, transition = false) {
     var bg; 
     var name;
     [color, bg, name] = colors[colorName];
+    document.body.style.backgroundColor = bg;
     var rules = document.styleSheets[2].cssRules;
     for(var rule of rules) {
         let txt = rule.selectorText;
