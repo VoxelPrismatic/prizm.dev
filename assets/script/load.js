@@ -1,5 +1,10 @@
 function startLoading() {
     try {
+        for(var x = 0; x <= 1000; x += 100) {
+            window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
+        }
+        window.setTimeout(setTransitions, 1000)
+        
         loadPage();
         if(document.URL.includes("#")) {
             for(var x = 0; x < 300; x += 100) {
@@ -13,11 +18,6 @@ function startLoading() {
     
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
-        
-        for(var x = 0; x <= 1000; x += 100) {
-            window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
-        }
-        window.setTimeout(setTransitions, 2000);
     } catch(err) {
         console.info("The below error prevented the page from loading fully");
         console.error(err);
