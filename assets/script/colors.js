@@ -72,13 +72,11 @@ function swapColor(colorName, swapImg = true) {
             var tmp = color;
             if(txt.includes(".sect")) {
                 var shadow = color + " 3px -1px 2px -2px, "
-                           + color + " 1px -3px 2px -2px, "
-                           + color + " -1px -3px 2px -2px, "
+                           + color + " 0px -3px 2px -2px, "
                            + color + " -3px -1px 2px -2px";
                 if(txt.includes("hover"))
                     shadow = color + " 4px -1px 2px -2px, "
-                           + color + " 1px -4px 2px -2px, "
-                           + color + " -1px -4px 2px -2px, "
+                           + color + " 0px -4px 2px -2px, "
                            + color + " -4px -1px 2px -2px";
                 style.boxShadow = shadow;
             } if(txt.includes(".collapser")) {
