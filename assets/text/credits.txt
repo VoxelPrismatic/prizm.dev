@@ -1,0 +1,31 @@
+#] CREDITS
+
+Style/CSS :^: PRIZ ;]
+Scripts :^: PRIZ ;]
+Content :^: PRIZ ;]
+Fonts :^: Ubuntu
+Logo :^: PRIZ ;]
+Hosting :^: GitHub Pages
+
+#] MENTIONS
+
+- Thanks to Google for hosting the font files
+- Thanks to the LESS devs for making CSS more compact
+- Thanks to those that helped me out troubleshooting things
+
+-~-
+
+#] INFLUENCES
+
+#DankPods# 
+Just a hillarious guy who loves iPods
++[Twitter]<https://twitter.com/podsdank> :^: @PodsDank*
++[YouTube]<https://youtube.com/channel/UC7Jwj9fkrf1adN4fMmTkpug> :^: DankPods
+
+#Technology Connections#
+Who thought that learning could be fun? I sure didn't until I met him.
++[Twitter]<https://twitter.com/techconnectify> :^: @TechConnectify*
++[YouTube]<https://youtube.com/channel/UCy0tKL1T7wFoYcxCe0xjN6Q> :^: Technology Connections
++[Patreon]<https://patreon.com/technologyconnections> :^: TechnologyConnections
+
+*\*that's what happens when you're late to the party*
