@@ -91,6 +91,12 @@ function tag(element) {
     return elem;
 }
 
+function styler(element, styles) {
+    for(var property of styles.constructor.keys(styles)) {
+        element.style.setProperty(property, styles[property]);
+    }
+}
+
 var head = document.head;
 
 for(var element of elements) {
