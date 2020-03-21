@@ -75,12 +75,16 @@ function tag(element) {
                 elem.appendChild(document.createElement("br"));
             }
         } else if(property == "style") {
-            for(var style of element[property].split(";")) {
-                if(!style)
-                    continue;
-                var value = style.split(":")[1].trim();
-                style = style.split(":")[0].trim();
-                elem.style.setProperty(style, value);
+            if(typeof element[property] == "string") {
+                for(var style of element[property].split(";")) {
+                    if(!style)
+                        continue;
+                    var value = style.split(":")[1].trim();
+                    style = style.split(":")[0].trim();
+                    elem.style.setProperty(style, value);
+                }
+            } else {
+                styler(elem, element[property]);
             }
         } else if(property.search(/#[0-9A-Fa-f]*/gm) == 0) {
             elem.appendChild(document.createTextNode(element["#"]));
