@@ -47,7 +47,7 @@ function loadPage() {
             st += `onmouseover="setcoll(this)" onclick="collapser(this)">`
             st += `<span class="invis">${commands[com].join(" ")} ${cat} </span>`;
             st += `<span>${com}</span></div>`;
-            comindex += `<div id="${com}">${mark_page(things[cat][com])}${footer}</div>`;
+            comindex += `<div id="${com}">${mark_page(things[cat][com])}${footer.outerHTML}</div>`;
         }
         st += "</div>";
     }
