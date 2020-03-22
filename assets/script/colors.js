@@ -31,11 +31,11 @@ function setTransitions() {
     for(var rule of rules) {
         var txt = rule.selectorText;
         if(txt) {
-            var transition = "box-shadow ease 1s, text-shadow ease 1s, border ease 1s";
+            var transition = "box-shadow 1s ease, text-shadow 1s ease, border 1s ease";
             if(txt.startsWith(".a") || ls2.includes(txt) || ls1.includes(txt))
-                transition += ", color ease 1s";
+                transition += ", color 1s ease";
             if(ls2.includes(txt) || ls1.includes(txt))
-                transition += ", background-color ease 1s";
+                transition += ", background-color 1s ease";
             rule.style.transition = transition;
         }
     }
