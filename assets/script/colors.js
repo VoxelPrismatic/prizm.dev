@@ -57,7 +57,7 @@ function setTransitions() {
             var transition = "box-shadow ease 1s, text-shadow ease 1s";
             if(rule.selectorText.startsWith(".a"))
                 transition += ", color ease 1s";
-            if(ls2.slice(3).includes(rule.selectorText))
+            if(ls2.slice(5).includes(rule.selectorText))
                 transition += ", background-color ease 1s";
             rule.style.transition = transition;
         }
