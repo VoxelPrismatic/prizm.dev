@@ -32,7 +32,7 @@ function setTransitions() {
         var txt = rule.selectorText;
         if(txt) {
             var transition = "box-shadow 1s ease, text-shadow 1s ease, border 1s ease";
-            if(txt.startsWith(".a") || ls2.includes(txt) || ls1.includes(txt))
+            if(txt.startsWith("a") || ls2.includes(txt) || ls1.includes(txt))
                 transition += ", color 1s ease";
             if(ls2.includes(txt) || ls1.includes(txt))
                 transition += ", background-color 1s ease";
