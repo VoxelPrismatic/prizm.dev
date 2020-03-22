@@ -52,8 +52,14 @@ let colors = {
 function setTransitions() {
     var rules = document.styleSheets[2].cssRules;
     for(var rule of rules) {
-        if(rule.selectorText)
-            rule.style.transition = "color ease 1s, box-shadow ease 1s, text-shadow ease 1s"; 
+        if(rule.selectorText) {
+            var transition = "box-shadow ease 1s, text-shadow ease 1s";
+            if(rule.seletorText.startsWith(".a"))
+                transition += ", color ease 1s";
+            if(rule.selectorText.startsWith(".lnk") || rule.selectorText.startsWith(".sel"))
+                transition += ", background-color ease 1s";
+            rule.style.transition = transition;
+        }
     }
 }
 
