@@ -52,11 +52,12 @@ let colors = {
 function setTransitions() {
     var rules = document.styleSheets[2].cssRules;
     for(var rule of rules) {
-        rule.style.transition = "color ease 1s, box-shadow ease 1s, text-shadow ease 1s"; 
+        if(rule.selectorText)
+            rule.style.transition = "color ease 1s, box-shadow ease 1s, text-shadow ease 1s"; 
     }
 }
 
-function swapColor(colorName, swapImg = true, transition = false) {
+function swapColor(colorName, swapImg = true) {
     var color;
     var bg; 
     var name;
