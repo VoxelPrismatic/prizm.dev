@@ -46,7 +46,8 @@ let colors = {
     ".lnk:hover, .lnk:focus",
     ".sel:hover, .sel:focus",
     ".sel",
-    ".lnk"
+    ".lnk",
+    ".btn"
 ];
 
 function setTransitions() {
@@ -54,9 +55,9 @@ function setTransitions() {
     for(var rule of rules) {
         if(rule.selectorText) {
             var transition = "box-shadow ease 1s, text-shadow ease 1s";
-            if(rule.seletorText.startsWith(".a"))
+            if(rule.selectorText.startsWith(".a"))
                 transition += ", color ease 1s";
-            if(rule.selectorText.startsWith(".lnk") || rule.selectorText.startsWith(".sel"))
+            if(ls2.slice(3).includes(rule.selectorText))
                 transition += ", background-color ease 1s";
             rule.style.transition = transition;
         }
