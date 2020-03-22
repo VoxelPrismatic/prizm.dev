@@ -19,13 +19,16 @@ each(@sel, {
     .align(left);
     &:hover, &:focus {
         .section(#00ff00);
+        text-shadow: 0px 0px 5px;
     }
     min-height: 3vh;
 } .sel {
     .lnk();
     .section(#00ffff);
+    text-shadow: 0px 0px 10px;
     &:hover, &:focus {
         .section(#ff0088);
+        text-shadow: 0px 0px 15px;
     }
 }
 
@@ -36,6 +39,7 @@ each(@sel, {
     display: block;
     .align(left);
     &:hover, &:focus {
+        text-shadow: 0px 0px 5px;
         .section(#ffffff88);
         color: #ffffff;
         border-color: #ffffff88;
@@ -51,6 +55,7 @@ each(@sel, {
     .collapser();
     .section(#ffffff88);
     color: #ffffff;
+    text-shadow: 0px 0px 10px;
     border-color: #ffffff88;
     background-color: #ffffff05;
     &::before {
@@ -62,6 +67,7 @@ each(@sel, {
     background-color: #00ffff11;
     color: #aaffff;
     border-color: #aaffff88;
+    text-shadow: 0px 0px 10px;
 }
 
 .tab {
@@ -72,6 +78,7 @@ each(@sel, {
     .border-radii(0px, 0px, 0px, 0px);
     border-width: 2px;
     margin: none;
+    text-shadow: 0px 0px 10px;
     background-color: #00ffff00;
     &.tabbed {
         background-color: #00ffff44;
@@ -79,6 +86,7 @@ each(@sel, {
         .border-colors(#0fff, #0fff, #0000, #0fff);
         .border-radii(5px, 5px, 0px, 0px);
         &:hover, &:focus {
+            text-shadow: 0px 0px 15px;
             background-color: #ff008844;
             color: #ff0088;
             .border-colors(#f08f, #f08f, #0000, #f08f);
@@ -86,6 +94,7 @@ each(@sel, {
         }
     }
     &:hover, &:focus {
+        text-shadow: 0px 0px 10px;
         background-color: #00ff0044;
         color: #00ff00;
         .border-colors(#0f0f, #0f0f, #0000, #0f0f);
