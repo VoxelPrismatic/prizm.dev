@@ -29,11 +29,12 @@ let colors = {
 function setTransitions() {
     var rules = document.styleSheets[2].cssRules;
     for(var rule of rules) {
-        if(rule.selectorText) {
-            var transition = "box-shadow ease 1s, text-shadow ease 1s";
-            if(rule.selectorText.startsWith(".a"))
+        var txt = rule.selectorText;
+        if(txt) {
+            var transition = "box-shadow ease 1s, text-shadow ease 1s, border ease 1s";
+            if(txt.startsWith(".a") || ls2.includes(txt) || ls1.includes(txt))
                 transition += ", color ease 1s";
-            if(ls2.slice(5).includes(rule.selectorText))
+            if(ls2.includes(txt) || ls1.includes(txt))
                 transition += ", background-color ease 1s";
             rule.style.transition = transition;
         }
