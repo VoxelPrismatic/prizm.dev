@@ -10,30 +10,6 @@ let colors = {
     "white":   ["#fff", "#222",    "white"],
     "purple":  ["#a0f", "#151122", "purple"],
     "blurple": ["#0af", "#111522", "blurple"]
-}; let swapped = {
-    "red": "green",
-    "orange": "blue",
-    "yellow": "cyan",
-    "green": "red",
-    "cyan": "yellow",
-    "pink": "blurple",
-    "grey": "white",
-    "white": "grey",
-    "purple": "pink",
-    "blurple": "purple",
-    "blue": "yellow"
-}; let desel = {
-    "red": "yellow",
-    "orange": "green",
-    "yellow": "cyan",
-    "green": "cyan",
-    "cyan": "pink",
-    "pink": "orange",
-    "purple": "red",
-    "blurple": "orange",
-    "white": "white",
-    "grey": "grey",
-    "blue": "yellow"
 }; let ls1 = [
     ".line",
     ".sect",
@@ -119,15 +95,15 @@ function swapColor(colorName, swapImg = true) {
         } else if(ls2.includes(txt)) {
             var tmp;
             if(txt.includes(".lnk:hover")) {
-                tmp = colors[swapped[colorName]][0];
+                tmp = color.replace(/[a]/gm, "c").replace(/[04]/gm, "8") + "8";
             } else if(txt == ".sel") {
-                tmp = color;
+                tmp = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c") + "8";
             } else if(txt.includes(".sel:hover")) {
-                tmp = colors[desel[colorName]][0];
+                tmp = color + "a";
             } else if(txt == ".lnk") {
                 tmp = color + "8";
             } if(txt != ".lnk") {
-                rule.style.backgroundColor = tmp + "4";
+                rule.style.backgroundColor = color + "4";
             }
             style.borderTopColor = tmp;
             style.borderLeftColor = tmp;
@@ -136,7 +112,7 @@ function swapColor(colorName, swapImg = true) {
         } else if(txt.includes(".btn")) {
             var tmp = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
             if(!txt.includes("hover")) {
-                tmp = color.replace(/[a]/gm, "c").replace(/[04]/gm, "8");
+                tmp = color;
             }
             style.borderTopColor = tmp;
             style.borderLeftColor = tmp;
