@@ -11,7 +11,6 @@ let colors = {
     "purple":  ["#a0f", "#151122", "purple"],
     "blurple": ["#0af", "#111522", "blurple"]
 }; let ls1 = [
-    ".line",
     ".sect",
     ".sect:hover, .sect:focus",
     ".collapser",
@@ -80,19 +79,18 @@ function swapColor(colorName, swapImg = true) {
             } if(txt.includes("coll") && txt.includes(":hover")) {
                 tmp = colors["white"][0];
                 style.backgroundColor = tmp + "0";
-            } if(ls1.slice(3).includes(txt) || txt.includes(".line")) {
+            } if(ls1.slice(3).includes(txt)) {
                 style.borderBottomColor = tmp;
                 style.color = tmp;
-                if(txt.includes(".line")) {
-                    var linetmp = "0px 0px 5px " + tmp;
-                    if(txt.includes("hover"))
-                        linetmp = "0px 0px 10px " + tmp;
-                    style.boxShadow = linetmp + ", inset " + linetmp;
-                }
             }
             style.borderTopColor = tmp;
             style.borderLeftColor = tmp;
             style.borderRightColor = tmp;
+        } else if(txt.includes("line")) {
+            var linetmp = "0px 0px 5px " + color;
+            if(txt.includes("hover"))
+                linetmp = "0px 0px 10px " + color;
+            style.boxShadow = linetmp + ", inset " + linetmp;
         } else if(ls2.includes(txt)) {
             var tmp;
             if(txt.includes(".lnk:hover")) {
