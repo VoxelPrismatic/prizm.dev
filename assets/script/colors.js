@@ -30,6 +30,8 @@ function setTransitions() {
     for(var rule of rules) {
         var txt = rule.selectorText;
         if(txt) {
+            if(txt.includes(":"))
+                continue;
             var transition = "box-shadow 1s ease, text-shadow 1s ease, border 1s ease";
             if(txt.startsWith("a") || ls2.includes(txt) || ls1.includes(txt))
                 transition += ", color 1s ease";
