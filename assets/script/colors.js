@@ -30,7 +30,7 @@ function setTransitions() {
     for(var rule of rules) {
         var txt = rule.selectorText;
         if(txt) {
-            if(txt.includes(":"))
+            if(txt.includes("hover") || txt.includes("focus"))
                 continue;
             var transition = "box-shadow 1s ease, text-shadow 1s ease, border 1s ease";
             if(txt.startsWith("a") || ls2.includes(txt) || ls1.includes(txt))
