@@ -93,6 +93,7 @@ function swapColor(colorName, swapImg = true) {
             if(txt.includes("hover"))
                 linetmp = "0px 0px 10px " + color;
             style.boxShadow = linetmp + ", inset " + linetmp;
+            style.borderColor = color;
         } else if(ls2.includes(txt)) {
             var tmp;
             if(txt.includes(".lnk:hover")) {
