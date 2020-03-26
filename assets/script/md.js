@@ -20,7 +20,7 @@ function head(m, p1) {
             break;
     var id = p1.replace(/[^\w\d]/gm, "").trim();
     var st = `<h${x} onclick="linkMe(this);"`;
-    st += `id="${id}">${"#".repeat(x)}] ${p1}</h${x}>`;
+    st += `id="${id}">#] ${p1}</h${x}>`;
     return st;
 }
 
