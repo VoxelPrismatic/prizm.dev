@@ -92,7 +92,7 @@ function scroll_(ids) {
     try {
         if(ids.endsWith("~"))
             ids = ids.slice(0, -1);
-        find(ids).scrollIntoView();
+        find(ids).scrollIntoView({behavior: "smooth"});
     } catch(err) {
         console.log(err);
     }
