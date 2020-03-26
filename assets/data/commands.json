@@ -1,99 +1,17 @@
 {
-    "rpn": {
+    "quad": {
         "alias": [],
-        "inp": "EQ [STR] - The RPN equation\
-    ",
+        "inp": "A, B, C [NUMBER] - Corrosponds to \"Ax^2 + Bx + C\"",
         "cat": "math",
-        "desc": "Reverse Polish Notation [1 1 +]",
-        "use": ";]rpn {eq}"
+        "desc": "Solves the quadratic formula",
+        "use": ";]quad {A} {B} {C}"
     },
-    "factor": {
-        "alias": [
-            "fct"
-        ],
-        "inp": "NUM [NUMBER] - The number to find the factors of",
-        "cat": "math",
-        "desc": "Finds the factors and prime factors of {num}",
-        "use": ";]factor {num}"
-    },
-    "mock": {
+    "echo": {
         "alias": [],
-        "inp": "MESSAGE [MESSAGE] - The message you want me to mock, ID or URL\
-> Will use the latest message in chat if not specified",
+        "inp": "TEXT [TEXT] - What to echo",
         "cat": "fun",
-        "desc": "iM nOt MoCkInG yOu",
-        "use": ";]mock {?message}"
-    },
-    "dnd": {
-        "alias": [],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "fun",
-        "desc": "Rolls all the dice from DnD",
-        "use": ";]dnd"
-    },
-    "reddit": {
-        "alias": [
-            "rd",
-            "redd",
-            "rdt",
-            "red"
-        ],
-        "inp": "SUBREDDIT [TEXT] - The name of the subredditm /r/ is optional\
-> /u/ is required to redditor feeds\
-> also can be a link to a submission\
-> /m/<multireddit>#<redditor> is needed for multireddits\
-> > eg /m/CoolMultireddit#Redditor1010\
-SEARCH    [TEXT] - What to search for",
-        "cat": "fun",
-        "desc": "Gives you a random post from a given {subreddit}",
-        "use": ";]reddit {?subreddit} {?search}"
-    },
-    "nick": {
-        "alias": [],
-        "inp": "MEMBER   [MEMBER] - The target member, name or ping or ID\
-NICKNAME [TEXT  ] - The nickname",
-        "cat": "mod",
-        "desc": "Changes the nickname of a {member} to {this}",
-        "use": ";]nick {member} {nickname}"
-    },
-    "simple": {
-        "alias": [
-            "simp",
-            "simplify",
-            "sym"
-        ],
-        "inp": "EQ [TEXT] - The equation to simplify",
-        "cat": "math",
-        "desc": "Symplify complex equations",
-        "use": ";]simplify {eq}"
-    },
-    "audit": {
-        "alias": [],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "mod",
-        "desc": "Edits channels and things",
-        "use": ";]audit"
-    },
-    "snd": {
-        "alias": [
-            "send"
-        ],
-        "inp": "CHANNEL [CHANNEL] - The channel you want the message in, name or ping or ID\
-TEXT    [TEXT   ] - The text to send",
-        "cat": "fun",
-        "desc": "I send {text} to a given {channel}",
-        "use": ";]snd {channel} {text}"
-    },
-    "play": {
-        "alias": [],
-        "inp": "LINK [TEXT] - Link to some file, youtube video, or is a youtube search\
-> YOUTUBE SEARCH---\
-> > Syntax ] \";]play {vc} yt-{search}\"\
-> > Add \"-i={video number}\" to get that result playing\
-VC   [VC  ] - The VC I should join, name or ID",
-        "cat": "music",
-        "desc": "Plays Music",
-        "use": ";]play {vc} {link}"
+        "desc": "Echo echo echo!",
+        "use": ";]echo {text}"
     },
     "rad": {
         "alias": [
@@ -108,12 +26,20 @@ X [INT] - The radical, aka \"square root\" is 2 and \"cube root\" is 3\
         "desc": "Radical Reducers",
         "use": ";]rad {D} {X}"
     },
-    "bug": {
+    "kick": {
         "alias": [],
-        "inp": "TXT [STR] - The bug, preferably with the error and command",
-        "cat": "inf",
-        "desc": "Creates a bug report",
-        "use": ";]bug {txt}"
+        "inp": "MEMBERx [MEMBER] - The target member[s], name or ping or ID\
+REASON  [TEXT  ] - The reason for the ban",
+        "cat": "mod",
+        "desc": "Kicks {member} for {reason}",
+        "use": ";]kick {member1} {member2} {...} {memberX} {?reason}"
+    },
+    "audit": {
+        "alias": [],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "mod",
+        "desc": "Edits channels and things",
+        "use": ";]audit"
     },
     "blkjck": {
         "alias": [
@@ -125,13 +51,72 @@ X [INT] - The radical, aka \"square root\" is 2 and \"cube root\" is 3\
         "desc": "Virtual Black Jack",
         "use": ";]blkjck"
     },
-    "kick": {
+    "cuddle": {
         "alias": [],
-        "inp": "MEMBERx [MEMBER] - The target member[s], name or ping or ID\
-REASON  [TEXT  ] - The reason for the ban",
-        "cat": "mod",
-        "desc": "Kicks {member} for {reason}",
-        "use": ";]kick {member1} {member2} {...} {memberX} {?reason}"
+        "inp": "MEMBER [MEMBER] - The member you want to cuddle, name or ping or ID\
+REASON [TEXT  ] - The reason for the cuddle",
+        "cat": "int",
+        "desc": "Cuddle with a {member} for a {reason}!",
+        "use": ";]cuddle {member} {?reason}"
+    },
+    "git": {
+        "alias": [],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "inf",
+        "desc": "Shows the git repo",
+        "use": ";]git"
+    },
+    "ball8": {
+        "alias": [
+            "8b",
+            "8bl",
+            "8ball"
+        ],
+        "inp": "QUESTION [TEXT] What do you want me to answer",
+        "cat": "fun",
+        "desc": "I definitely predict the future",
+        "use": ";]8ball {question}"
+    },
+    "code": {
+        "alias": [
+            "exec"
+        ],
+        "inp": "LANG [STR] - The language to use\
+> 'js' for JavaScript\
+> 'py' for Python\
+> 'tr' for Boolean Logic\
+CODE [STR] - The code to execute",
+        "cat": "oth",
+        "desc": "A public exec command to test your code!",
+        "use": ";]code {lang} {code}"
+    },
+    "leave": {
+        "alias": [],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "music",
+        "desc": "Leaves the VC",
+        "use": ";]leave"
+    },
+    "draw": {
+        "alias": [
+            "paint",
+            "color",
+            "canvas",
+            "painting",
+            "drawing",
+            "coloring"
+        ],
+        "inp": "COLOR  [TEXT] - The color you want to place, MUST BE HEX\
+xN, yN [ANY ] - The XY coordinates [MAX - 127, MIN - 0]\
+> You can use ranges like 0-16\
+> You can be relative like ~1\
+> You can use relative ranges like ~9-26\
+*If no params are passed, the image is sent\
+*If only coordinates are passed, the color at that coordinate is sent along with the image\
+*ALL relative points are relative to YOUR last point",
+        "cat": "fun",
+        "desc": "Have fun drawing with others!",
+        "use": ";]draw {?color} {?x1} {?y1} {?x2} {?y2} {...} {?xN} {?yN}"
     },
     "calc": {
         "alias": [],
@@ -149,12 +134,31 @@ REASON  [TEXT  ] - The reason for the ban",
         "desc": "Factorial!",
         "use": ";]factorial {num}"
     },
-    "leave": {
+    "rto": {
+        "alias": [
+            "frac",
+            "ratio"
+        ],
+        "inp": "X [NUMBER] - The first number, or numerator\
+Y [NUMBER] - The second number, or denominator",
+        "cat": "math",
+        "desc": "Reduces the ratio between {x} and {y}",
+        "use": ";]rto {x} {y}"
+    },
+    "nick": {
         "alias": [],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "music",
-        "desc": "Leaves the VC",
-        "use": ";]leave"
+        "inp": "MEMBER   [MEMBER] - The target member, name or ping or ID\
+NICKNAME [TEXT  ] - The nickname",
+        "cat": "mod",
+        "desc": "Changes the nickname of a {member} to {this}",
+        "use": ";]nick {member} {nickname}"
+    },
+    "spam": {
+        "alias": [],
+        "inp": "NUM [NUMBER] - How many chars to spam",
+        "cat": "fun",
+        "desc": "Spams {num} chars!",
+        "use": ";]spam {?num}"
     },
     "mines": {
         "alias": [],
@@ -183,30 +187,46 @@ MINES [NUMBER] - How many mines",
         "desc": "Shows info about this guild",
         "use": ";]gi"
     },
-    "data": {
+    "hexdump": {
+        "alias": [
+            "hexedit"
+        ],
+        "inp": "FILE [ATTACHMENT] - The file to dump the hex data of",
+        "cat": "oth",
+        "desc": "A hex editor, without the editor",
+        "use": ";]hexdump"
+    },
+    "coin": {
+        "alias": [],
+        "inp": "COUNT [NUMBER] - How many times the coin should be flipped",
+        "cat": "fun",
+        "desc": "Flips a virtual coin {x} times!",
+        "use": ";]coin {?count}"
+    },
+    "learn": {
+        "alias": [],
+        "inp": "TEXT [TEXT] - Preset conversation, each message on new line",
+        "cat": "ai",
+        "desc": "You can help me learn!",
+        "use": ";]learn {?text}"
+    },
+    "pause": {
+        "alias": [
+            "resume",
+            "continue",
+            "stop"
+        ],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "music",
+        "desc": "Toggles the music",
+        "use": ";]pause"
+    },
+    "dnd": {
         "alias": [],
         "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "inf",
-        "desc": "Shows the data usage",
-        "use": ";]data"
-    },
-    "pre": {
-        "alias": [
-            "prefix"
-        ],
-        "inp": "PRE [TEXT] - The new prefix",
-        "cat": "mod",
-        "desc": "Changes the prefix to {pre}",
-        "use": ";]pre {pre}"
-    },
-    "rng": {
-        "alias": [],
-        "inp": "MIN   [NUMBER] - Minimum number\
-MAX   [NUMBER] - Maximum number\
-COUNT [NUMBER] - Number of numbers",
         "cat": "fun",
-        "desc": "Prints rng from {min} to {max}, {count} times!",
-        "use": ";]rng {min} {max} {?count}"
+        "desc": "Rolls all the dice from DnD",
+        "use": ";]dnd"
     },
     "slots": {
         "alias": [],
@@ -224,33 +244,6 @@ COUNT [NUMBER] - Number of numbers",
         "desc": "Converts binary to text, and text to binary",
         "use": ";]binary {text}"
     },
-    "mix": {
-        "alias": [],
-        "inp": "ACTION [TEXT] - [slot1, slot2, imgs, view, slots, kill]\
-> slot1 - Load an attached image into the \"image\" file\
-> slot2 - Load an attached image into the \"pattern\" file\
-> imgs  - View currently loaded images\
-> view  - View the status of the current mix\
-> slots - Start the mixing\
-> kill  - Kills the current process if you started it\
-ARGS   [TEXT] - [-iter=, -np]\
-> -iter= - Set the number of iterations [max 120, min 5]\
->    -np - Do not ping when finished",
-        "cat": "ai",
-        "desc": "A noise generator with 2 inputs",
-        "use": ";]mix {action} {?args}"
-    },
-    "pause": {
-        "alias": [
-            "resume",
-            "continue",
-            "stop"
-        ],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "music",
-        "desc": "Toggles the music",
-        "use": ";]pause"
-    },
     "enbl": {
         "alias": [
             "enable"
@@ -260,37 +253,72 @@ ARGS   [TEXT] - [-iter=, -np]\
         "desc": "Enables a {command}",
         "use": ";]enbl {command}"
     },
-    "ping": {
+    "throw": {
+        "alias": [],
+        "inp": "MEMBER [MEMBER] - The member you want to throw, name or ping or ID\
+REASON [TEXT  ] - The reason for the throw",
+        "cat": "int",
+        "desc": "Throws a {member} for a {reason}!",
+        "use": ";]throw {member} {?reason}"
+    },
+    "dsbl": {
+        "alias": [
+            "disable"
+        ],
+        "inp": "COMMAND [TEXT] - The name of the command you want to disable",
+        "cat": "mod",
+        "desc": "Disables a {command}",
+        "use": ";]dsbl {command}"
+    },
+    "convert": {
+        "alias": [
+            "change",
+            "converter"
+        ],
+        "inp": "FMT [TEXT] - The format to convert *to* eg \"pdf\"",
+        "cat": "oth",
+        "desc": "Converts a file to a {fmt} file! Supports 316 formats!",
+        "use": ";]convert {fmt} <attach a file or have an embedable link>"
+    },
+    "cool": {
+        "alias": [],
+        "inp": "MEMBER [MEMBER] - The member you want to surprise, ping or name or ID",
+        "cat": "fun",
+        "desc": "Gives someone a sneaky surprise",
+        "use": ";]cool {member}"
+    },
+    "hexadecimal": {
+        "alias": [
+            "hex"
+        ],
+        "inp": "TEXT [TEXT] - The stuff to convert to/from hex",
+        "cat": "fun",
+        "desc": "Converts hex to text, and text to hex",
+        "use": ";]hexadecimal {text}"
+    },
+    "pre": {
+        "alias": [
+            "prefix"
+        ],
+        "inp": "PRE [TEXT] - The new prefix",
+        "cat": "mod",
+        "desc": "Changes the prefix to {pre}",
+        "use": ";]pre {pre}"
+    },
+    "dir": {
+        "alias": [],
+        "inp": "?PATH [STR] - OPTIONAL: Path\
+    ",
+        "cat": "inf",
+        "desc": "C:\\> dir",
+        "use": ";]dir {?path}"
+    },
+    "asci": {
         "alias": [],
         "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "inf",
-        "desc": "Sends the ping time",
-        "use": ";]ping"
-    },
-    "_2048": {
-        "alias": [
-            "2048"
-        ],
-        "inp": "SIZE [NUMBER] - The size [is square] DEFAULT: 4",
         "cat": "fun",
-        "desc": "2048 but in Discord",
-        "use": ";]2048 {?size}"
-    },
-    "rev": {
-        "alias": [],
-        "inp": "PHRASE [TEXT] - The stuff to reverse",
-        "cat": "fun",
-        "desc": "esreveR",
-        "use": ";]rev {phrase}"
-    },
-    "hlep": {
-        "alias": [
-            "help"
-        ],
-        "inp": "COM [COMMAND NAME] - OPTIONAL: Brings up a help message for that specific command",
-        "cat": "inf",
-        "desc": "Brings up this message",
-        "use": ";]help {?com}"
+        "desc": "Just prints one of these cool ASCIImoji!",
+        "use": ";]asci"
     },
     "react": {
         "alias": [],
@@ -299,6 +327,13 @@ REACTIONS [ANY    ] - The reaction[s], can be letters, custom, or default",
         "cat": "fun",
         "desc": "Adds reactions quickly and easily",
         "use": ";]react {message} {reactions...}"
+    },
+    "stats": {
+        "alias": [],
+        "inp": "DATAx [NUMBER] - A number or a statistic",
+        "cat": "math",
+        "desc": "Gives statistics on inputed data",
+        "use": ";]stats {data1} {data2} {...}"
     },
     "substitute": {
         "alias": [
@@ -310,14 +345,12 @@ EQ  [TEXT  ] - The equation to solve",
         "desc": "Substitutes a number in for X",
         "use": ";]substitute {num} {eq}"
     },
-    "dsbl": {
-        "alias": [
-            "disable"
-        ],
-        "inp": "COMMAND [TEXT] - The name of the command you want to disable",
-        "cat": "mod",
-        "desc": "Disables a {command}",
-        "use": ";]dsbl {command}"
+    "char": {
+        "alias": [],
+        "inp": "CHARS [TEXT] - The characters you want data on",
+        "cat": "oth",
+        "desc": "Shows unicode info on {char}",
+        "use": ";]char {chars}"
     },
     "vox": {
         "alias": [],
@@ -336,20 +369,14 @@ EQ  [TEXT  ] - The equation to solve",
         "desc": "DONT Hang the man",
         "use": ";]hangman"
     },
-    "tag": {
-        "alias": [],
-        "inp": "ACTION [TEXT] - The action you want to take\
-> Use the tag name to view the tag\
-> Use ';]edit {name} {content}' to edit your tag\
-> Use ';]add {name} {content}' to create a tag\
-> Use ';]delete {name}' to delete your tag\
-NAME   [TEXT] - Only used when adding or editing a tag\
-DATA   [TEXT] - The content when adding or editing a tag\
-\
-    ",
-        "cat": "oth",
-        "desc": "Custom commands, kinda",
-        "use": ";]tag {action} {?name} {?data}"
+    "emji": {
+        "alias": [
+            "steal"
+        ],
+        "inp": "EMOJIx [EMOJI] - The emoji you want to steal, must be custom",
+        "cat": "fun",
+        "desc": "Steals an emoji for you",
+        "use": ";]emji {emoji1} {emoji2} {...}"
     },
     "roles": {
         "alias": [],
@@ -361,29 +388,22 @@ REASON [TEXT  ] - The reason for the action DEFAULT: \"REQUESTED BY ] <name>\"\
         "desc": "Adds or removes {role} from {user} for a {reason}",
         "use": ";]role {member1} {?member2} {...member} {role1} {?role2} {...role} {?reason}"
     },
-    "mng": {
+    "kiss": {
+        "alias": [],
+        "inp": "MEMBER [MEMBER] - The member you want to kiss, name or ping or ID\
+REASON [TEXT  ] - The reason for the kiss",
+        "cat": "int",
+        "desc": "Kisses a {member} for a {reason}!",
+        "use": ";]slap {member} {?reason}"
+    },
+    "hlep": {
         "alias": [
-            "manage",
-            "tor"
+            "help"
         ],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "mod",
-        "desc": "Brings up a management interface",
-        "use": ";]mng"
-    },
-    "captcha": {
-        "alias": [],
-        "inp": "MEMBER [MEMBER] - The member to test, they may fail",
-        "cat": "fun",
-        "desc": "Are you a bot?",
-        "use": ";]captcha {member}"
-    },
-    "poll": {
-        "alias": [],
-        "inp": "TEXT [TEXT] - The poll description",
-        "cat": "fun",
-        "desc": "Creates a poll",
-        "use": ";]poll {text}"
+        "inp": "COM [COMMAND NAME] - OPTIONAL: Brings up a help message for that specific command",
+        "cat": "inf",
+        "desc": "Brings up this message",
+        "use": ";]help {?com}"
     },
     "mi": {
         "alias": [
@@ -401,31 +421,22 @@ REASON [TEXT  ] - The reason for the action DEFAULT: \"REQUESTED BY ] <name>\"\
         "desc": "Shows info on a given {member}",
         "use": ";]mi {member}"
     },
-    "unpin": {
+    "rpn": {
         "alias": [],
-        "inp": "MESSAGE [MESSAGE] - The message you wish to unpin, ID or URL",
-        "cat": "mod",
-        "desc": "Pins a message for you, useful on mobile",
-        "use": ";]unpin {message}"
+        "inp": "EQ [STR] - The RPN equation\
+    ",
+        "cat": "math",
+        "desc": "Reverse Polish Notation [1 1 +]",
+        "use": ";]rpn {eq}"
     },
-    "hug": {
-        "alias": [],
-        "inp": "MEMBER [MEMBER] - The Member you want to hug, name or ping or ID\
-REASON [TEXT  ] - The reason for the hug",
-        "cat": "int",
-        "desc": "Hugs a {member} for a {reason}!",
-        "use": ";]hug {member} {?reason}"
-    },
-    "hlepmod": {
+    "factor": {
         "alias": [
-            "helpmod",
-            "modhelp",
-            "modhlep"
+            "fct"
         ],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "inf",
-        "desc": "Brings up the mod help message",
-        "use": ";]helpmod"
+        "inp": "NUM [NUMBER] - The number to find the factors of",
+        "cat": "math",
+        "desc": "Finds the factors and prime factors of {num}",
+        "use": ";]factor {num}"
     },
     "optn": {
         "alias": [
@@ -443,22 +454,24 @@ REASON [TEXT  ] - The reason for the hug",
         "desc": "In rememberance of DJ Quzingler [BOT]",
         "use": ";]djq"
     },
-    "convert": {
-        "alias": [
-            "change",
-            "converter"
-        ],
-        "inp": "FMT [TEXT] - The format to convert *to* eg \"pdf\"",
-        "cat": "oth",
-        "desc": "Converts a file to a {fmt} file!",
-        "use": ";]convert {fmt} <attach a file or have an embedable link>"
-    },
-    "pin": {
+    "mock": {
         "alias": [],
-        "inp": "MESSAGE [MESSAGE] - The message you wish to pin, ID or URL",
-        "cat": "mod",
-        "desc": "Pins a message for you, useful on mobile",
-        "use": ";]pin {message}"
+        "inp": "MESSAGE [MESSAGE] - The message you want me to mock, ID or URL\
+> Will use the latest message in chat if not specified",
+        "cat": "fun",
+        "desc": "iM nOt MoCkInG yOu",
+        "use": ";]mock {?message}"
+    },
+    "play": {
+        "alias": [],
+        "inp": "LINK [TEXT] - Link to some file, youtube video, or is a youtube search\
+> YOUTUBE SEARCH---\
+> > Syntax ] \";]play {vc} yt-{search}\"\
+> > Add \"-i={video number}\" to get that result playing\
+VC   [VC  ] - The VC I should join, name or ID",
+        "cat": "music",
+        "desc": "Plays Music",
+        "use": ";]play {vc} {link}"
     },
     "bf": {
         "alias": [
@@ -474,89 +487,64 @@ INP  [TEXT  ] - The input text\
         "desc": "PrizFuck, the better BrainFuck",
         "use": ";]bf {?l} {code} | {?inp}"
     },
-    "ti": {
+    "text": {
         "alias": [
-            "textinfo",
-            "infotext",
-            "texti",
-            "itext",
-            "txti",
-            "itxt"
+            "ai",
+            "chat",
+            ""
         ],
-        "inp": "MSG [MESSAGE] - The target message, ID or URL",
-        "cat": "dis",
-        "desc": "Displays info on a given {message}",
-        "use": ";]ti {message}"
+        "inp": "CONVO [TEXT] - The conversation",
+        "cat": "ai",
+        "desc": "You can have a conversation with me!",
+        "use": ";]text {convo}"
     },
-    "rick": {
+    "reddit": {
+        "alias": [
+            "rd",
+            "redd",
+            "rdt",
+            "red"
+        ],
+        "inp": "SUBREDDIT [TEXT] - The name of the subredditm /r/ is optional\
+> /u/ is required to redditor feeds\
+> also can be a link to a submission\
+> /m/<multireddit>#<redditor> is needed for multireddits\
+> > eg /m/CoolMultireddit#Redditor1010\
+SEARCH    [TEXT] - What to search for",
+        "cat": "fun",
+        "desc": "Gives you a random post from a given {subreddit}",
+        "use": ";]reddit {?subreddit} {?search}"
+    },
+    "data": {
         "alias": [],
         "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "fun",
-        "desc": "Never gonna give you up!",
-        "use": ";]rick"
-    },
-    "code": {
-        "alias": [
-            "exec"
-        ],
-        "inp": "LANG [STR] - The language to use\
-> 'js' for JavaScript\
-> 'py' for Python\
-> 'tr' for Boolean Logic\
-CODE [STR] - The code to execute",
-        "cat": "oth",
-        "desc": "A public exec command to test your code!",
-        "use": ";]code {lang} {code}"
-    },
-    "quad": {
-        "alias": [],
-        "inp": "A, B, C [NUMBER] - Corrosponds to \"Ax^2 + Bx + C\"",
-        "cat": "math",
-        "desc": "Solves the quadratic formula",
-        "use": ";]quad {A} {B} {C}"
-    },
-    "inv": {
-        "alias": [
-            "invite"
-        ],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
         "cat": "inf",
-        "desc": "Invite for me and my support server",
-        "use": ";]inv"
+        "desc": "Shows the data usage",
+        "use": ";]data"
     },
-    "echo": {
+    "md": {
         "alias": [],
-        "inp": "TEXT [TEXT] - What to echo",
+        "inp": "MESSAGE [MESSAGE] - The target message, ID or URL",
         "cat": "fun",
-        "desc": "Echo echo echo!",
-        "use": ";]echo {text}"
+        "desc": "Sends the escaped contents of {message}",
+        "use": ";]md {message}"
     },
-    "dir": {
-        "alias": [],
-        "inp": "?PATH [STR] - OPTIONAL: Path\
-    ",
-        "cat": "inf",
-        "desc": "C:\\> dir",
-        "use": ";]dir {?path}"
-    },
-    "cuddle": {
-        "alias": [],
-        "inp": "MEMBER [MEMBER] - The member you want to cuddle, name or ping or ID\
-REASON [TEXT  ] - The reason for the cuddle",
-        "cat": "int",
-        "desc": "Cuddle with a {member} for a {reason}!",
-        "use": ";]cuddle {member} {?reason}"
-    },
-    "ball8": {
+    "snd": {
         "alias": [
-            "8b",
-            "8bl",
-            "8ball"
+            "send"
         ],
-        "inp": "QUESTION [TEXT] What do you want me to answer",
+        "inp": "CHANNEL [CHANNEL] - The channel you want the message in, name or ping or ID\
+TEXT    [TEXT   ] - The text to send",
         "cat": "fun",
-        "desc": "I definitely predict the future",
-        "use": ";]8ball {question}"
+        "desc": "I send {text} to a given {channel}",
+        "use": ";]snd {channel} {text}"
+    },
+    "bug": {
+        "alias": [],
+        "inp": "TXT [STR] - The bug, preferably with the error and command",
+        "cat": "inf",
+        "desc": "Creates a bug report",
+        "use": ";]bug {txt}"
     },
     "triangle": {
         "alias": [
@@ -567,42 +555,16 @@ REASON [TEXT  ] - The reason for the cuddle",
         "desc": "Solves triangles",
         "use": ";]triangle"
     },
-    "git": {
-        "alias": [],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "inf",
-        "desc": "Shows the git repo",
-        "use": ";]git"
-    },
-    "draw": {
+    "simple": {
         "alias": [
-            "paint",
-            "color",
-            "canvas",
-            "painting",
-            "drawing",
-            "coloring"
+            "simp",
+            "simplify",
+            "sym"
         ],
-        "inp": "COLOR  [TEXT] - The color you want to place, MUST BE HEX\
-xN, yN [ANY ] - The XY coordinates [MAX - 127, MIN - 0]\
-> You can use ranges like 0-16\
-> You can be relative like ~1\
-> You can use relative ranges like ~9-26\
-*If no params are passed, the image is sent\
-*If only coordinates are passed, the color at that coordinate is sent along with the image\
-*ALL relative points are relative to YOUR last point",
-        "cat": "fun",
-        "desc": "Have fun drawing with others!",
-        "use": ";]draw {?color} {?x1} {?y1} {?x2} {?y2} {...} {?xN} {?yN}"
-    },
-    "ban": {
-        "alias": [],
-        "inp": "MEMBERx [MEMBER] - The target member[s], name or ping or ID\
-NUM     [NUMBER] - Delete messages from the past {x} days\
-REASON  [TEXT  ] - The reason for the ban",
-        "cat": "mod",
-        "desc": "Bans {member} for {reason} and deletes their messages from the past {x} days",
-        "use": ";]ban {member1} {member2} {...} {memberX} {?num} {?reason}"
+        "inp": "EQ [TEXT] - The equation to simplify",
+        "cat": "math",
+        "desc": "Symplify complex equations",
+        "use": ";]simplify {eq}"
     },
     "ri": {
         "alias": [
@@ -617,45 +579,60 @@ REASON  [TEXT  ] - The reason for the ban",
         "desc": "Displays info about a given {role}",
         "use": ";]rol {role}"
     },
-    "spam": {
+    "clr": {
         "alias": [],
-        "inp": "NUM [NUMBER] - How many chars to spam",
-        "cat": "fun",
-        "desc": "Spams {num} chars!",
-        "use": ";]spam {?num}"
+        "inp": "NUM [NUMBER] - The number of messages to clear",
+        "cat": "mod",
+        "desc": "Clears {num} messages from chat",
+        "use": ";]clr {num}"
     },
-    "rto": {
+    "clrin": {
+        "alias": [],
+        "inp": "MESSAGEx [MESSAGE] - The messages to clear between, ID or URL",
+        "cat": "mod",
+        "desc": "Clears messages from {message1} to {message2} in chat [exclusively]",
+        "use": ";]clrin {message1} {message2}"
+    },
+    "rng": {
+        "alias": [],
+        "inp": "MIN   [NUMBER] - Minimum number\
+MAX   [NUMBER] - Maximum number\
+COUNT [NUMBER] - Number of numbers",
+        "cat": "fun",
+        "desc": "Prints rng from {min} to {max}, {count} times!",
+        "use": ";]rng {min} {max} {?count}"
+    },
+    "hlepmod": {
         "alias": [
-            "frac",
-            "ratio"
+            "helpmod",
+            "modhelp",
+            "modhlep"
         ],
-        "inp": "X [NUMBER] - The first number, or numerator\
-Y [NUMBER] - The second number, or denominator",
-        "cat": "math",
-        "desc": "Reduces the ratio between {x} and {y}",
-        "use": ";]rto {x} {y}"
-    },
-    "coin": {
-        "alias": [],
-        "inp": "COUNT [NUMBER] - How many times the coin should be flipped",
-        "cat": "fun",
-        "desc": "Flips a virtual coin {x} times!",
-        "use": ";]coin {?count}"
-    },
-    "learn": {
-        "alias": [],
-        "inp": "TEXT [TEXT] - Preset conversation, each message on new line",
-        "cat": "ai",
-        "desc": "You can help me learn!",
-        "use": ";]learn {?text}"
-    },
-    "find": {
-        "alias": [],
-        "inp": "fID [STR] - The name or ID of the thing to find\
-    ",
+        "inp": "[NO INPUT FOR THIS COMMAND]",
         "cat": "inf",
-        "desc": "Finds a meta object given an ID or name",
-        "use": ";]find {fID}"
+        "desc": "Brings up the mod help message",
+        "use": ";]helpmod"
+    },
+    "clrto": {
+        "alias": [],
+        "inp": "MESSAGE [MESSAGE] - The message to clear to, ID or URL",
+        "cat": "mod",
+        "desc": "Clears all messages to a given {message} [exclusively]",
+        "use": ";]clrto {message}"
+    },
+    "info": {
+        "alias": [],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "inf",
+        "desc": "Shows aditional bot info",
+        "use": ";]info"
+    },
+    "ping": {
+        "alias": [],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "inf",
+        "desc": "Sends the ping time",
+        "use": ";]ping"
     },
     "chnl": {
         "alias": [
@@ -671,36 +648,21 @@ Y [NUMBER] - The second number, or denominator",
         "desc": "Shows info about a given {channel}",
         "use": ";]ci {channel}"
     },
-    "throw": {
+    "mix": {
         "alias": [],
-        "inp": "MEMBER [MEMBER] - The member you want to throw, name or ping or ID\
-REASON [TEXT  ] - The reason for the throw",
-        "cat": "int",
-        "desc": "Throws a {member} for a {reason}!",
-        "use": ";]throw {member} {?reason}"
-    },
-    "cool": {
-        "alias": [],
-        "inp": "MEMBER [MEMBER] - The member you want to surprise, ping or name or ID",
-        "cat": "fun",
-        "desc": "Gives someone a sneaky surprise",
-        "use": ";]cool {member}"
-    },
-    "clr": {
-        "alias": [],
-        "inp": "NUM [NUMBER] - The number of messages to clear",
-        "cat": "mod",
-        "desc": "Clears {num} messages from chat",
-        "use": ";]clr {num}"
-    },
-    "hexadecimal": {
-        "alias": [
-            "hex"
-        ],
-        "inp": "TEXT [TEXT] - The stuff to convert to/from hex",
-        "cat": "fun",
-        "desc": "Converts hex to text, and text to hex",
-        "use": ";]hexadecimal {text}"
+        "inp": "ACTION [TEXT] - [slot1, slot2, imgs, view, slots, kill]\
+> slot1 - Load an attached image into the \"image\" file\
+> slot2 - Load an attached image into the \"pattern\" file\
+> imgs  - View currently loaded images\
+> view  - View the status of the current mix\
+> slots - Start the mixing\
+> kill  - Kills the current process if you started it\
+ARGS   [TEXT] - [-iter=, -np]\
+> -iter= - Set the number of iterations [max 120, min 5]\
+>    -np - Do not ping when finished",
+        "cat": "ai",
+        "desc": "A noise generator with 2 inputs",
+        "use": ";]mix {action} {?args}"
     },
     "slap": {
         "alias": [],
@@ -710,30 +672,30 @@ REASON [STR   ] - The reason for the slap",
         "desc": "Slaps a {member} for a {reason}!",
         "use": ";]slap {member} {?reason}"
     },
-    "text": {
+    "_2048": {
         "alias": [
-            "ai",
-            "chat",
-            ""
+            "2048"
         ],
-        "inp": "CONVO [TEXT] - The conversation",
-        "cat": "ai",
-        "desc": "You can have a conversation with me!",
-        "use": ";]text {convo}"
-    },
-    "clrin": {
-        "alias": [],
-        "inp": "MESSAGEx [MESSAGE] - The messages to clear between, ID or URL",
-        "cat": "mod",
-        "desc": "Clears messages from {message1} to {message2} in chat [exclusively]",
-        "use": ";]clrin {message1} {message2}"
-    },
-    "asci": {
-        "alias": [],
-        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "inp": "SIZE [NUMBER] - The size [is square] DEFAULT: 4",
         "cat": "fun",
-        "desc": "Just prints one of these cool ASCIImoji!",
-        "use": ";]asci"
+        "desc": "2048 but in Discord",
+        "use": ";]2048 {?size}"
+    },
+    "inv": {
+        "alias": [
+            "invite"
+        ],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "inf",
+        "desc": "Invite for me and my support server",
+        "use": ";]inv"
+    },
+    "rev": {
+        "alias": [],
+        "inp": "PHRASE [TEXT] - The stuff to reverse",
+        "cat": "fun",
+        "desc": "esreveR",
+        "use": ";]rev {phrase}"
     },
     "ui": {
         "alias": [
@@ -748,50 +710,19 @@ REASON [STR   ] - The reason for the slap",
         "desc": "Shows info for a given {user}",
         "use": ";]ui {usr}"
     },
-    "clrto": {
+    "pin": {
         "alias": [],
-        "inp": "MESSAGE [MESSAGE] - The message to clear to, ID or URL",
+        "inp": "MESSAGE [MESSAGE] - The message you wish to pin, ID or URL",
         "cat": "mod",
-        "desc": "Clears all messages to a given {message} [exclusively]",
-        "use": ";]clrto {message}"
+        "desc": "Pins a message for you, useful on mobile",
+        "use": ";]pin {message}"
     },
-    "md": {
+    "unpin": {
         "alias": [],
-        "inp": "MESSAGE [MESSAGE] - The target message, ID or URL",
-        "cat": "fun",
-        "desc": "Sends the escaped contents of {message}",
-        "use": ";]md {message}"
-    },
-    "kiss": {
-        "alias": [],
-        "inp": "MEMBER [MEMBER] - The member you want to kiss, name or ping or ID\
-REASON [TEXT  ] - The reason for the kiss",
-        "cat": "int",
-        "desc": "Kisses a {member} for a {reason}!",
-        "use": ";]slap {member} {?reason}"
-    },
-    "stats": {
-        "alias": [],
-        "inp": "DATAx [NUMBER] - A number or a statistic",
-        "cat": "math",
-        "desc": "Gives statistics on inputed data",
-        "use": ";]stats {data1} {data2} {...}"
-    },
-    "hexdump": {
-        "alias": [
-            "hexedit"
-        ],
-        "inp": "FILE [ATTACHMENT] - The file to dump the hex data of",
-        "cat": "oth",
-        "desc": "A hex editor, without the editor",
-        "use": ";]hexdump"
-    },
-    "char": {
-        "alias": [],
-        "inp": "CHARS [TEXT] - The characters you want data on",
-        "cat": "oth",
-        "desc": "Shows unicode info on {char}",
-        "use": ";]char {chars}"
+        "inp": "MESSAGE [MESSAGE] - The message you wish to unpin, ID or URL",
+        "cat": "mod",
+        "desc": "Pins a message for you, useful on mobile",
+        "use": ";]unpin {message}"
     },
     "graph": {
         "alias": [
@@ -821,20 +752,88 @@ OPS    [TEXT   ] - Other arguments\
         "desc": "Sends info about a given {emoji}",
         "use": ";]ei {emoji}"
     },
-    "info": {
+    "tag": {
+        "alias": [],
+        "inp": "ACTION [TEXT] - The action you want to take\
+> Use the tag name to view the tag\
+> Use ';]edit {name} {content}' to edit your tag\
+> Use ';]add {name} {content}' to create a tag\
+> Use ';]delete {name}' to delete your tag\
+NAME   [TEXT] - Only used when adding or editing a tag\
+DATA   [TEXT] - The content when adding or editing a tag\
+\
+    ",
+        "cat": "oth",
+        "desc": "Custom commands, kinda",
+        "use": ";]tag {action} {?name} {?data}"
+    },
+    "mng": {
+        "alias": [
+            "manage",
+            "tor"
+        ],
+        "inp": "[NO INPUT FOR THIS COMMAND]",
+        "cat": "mod",
+        "desc": "Brings up a management interface",
+        "use": ";]mng"
+    },
+    "captcha": {
+        "alias": [],
+        "inp": "MEMBER [MEMBER] - The member to test, they may fail",
+        "cat": "fun",
+        "desc": "Are you a bot?",
+        "use": ";]captcha {member}"
+    },
+    "poll": {
+        "alias": [],
+        "inp": "TEXT [TEXT] - The poll description",
+        "cat": "fun",
+        "desc": "Creates a poll",
+        "use": ";]poll {text}"
+    },
+    "hug": {
+        "alias": [],
+        "inp": "MEMBER [MEMBER] - The Member you want to hug, name or ping or ID\
+REASON [TEXT  ] - The reason for the hug",
+        "cat": "int",
+        "desc": "Hugs a {member} for a {reason}!",
+        "use": ";]hug {member} {?reason}"
+    },
+    "find": {
+        "alias": [],
+        "inp": "name/id [TEXT] - The name or ID of the thing to find",
+        "cat": "inf",
+        "desc": "Finds a meta object given an ID or name",
+        "use": ";]find {name/id}"
+    },
+    "ban": {
+        "alias": [],
+        "inp": "MEMBERx [MEMBER] - The target member[s], name or ping or ID\
+NUM     [NUMBER] - Delete messages from the past {x} days\
+REASON  [TEXT  ] - The reason for the ban",
+        "cat": "mod",
+        "desc": "Bans {member} for {reason} and deletes their messages from the past {x} days",
+        "use": ";]ban {member1} {member2} {...} {memberX} {?num} {?reason}"
+    },
+    "ti": {
+        "alias": [
+            "textinfo",
+            "infotext",
+            "texti",
+            "itext",
+            "txti",
+            "itxt"
+        ],
+        "inp": "MSG [MESSAGE] - The target message, ID or URL",
+        "cat": "dis",
+        "desc": "Displays info on a given {message}",
+        "use": ";]ti {message}"
+    },
+    "rick": {
         "alias": [],
         "inp": "[NO INPUT FOR THIS COMMAND]",
-        "cat": "inf",
-        "desc": "Shows aditional bot info",
-        "use": ";]info"
-    },
-    "emji": {
-        "alias": [
-            "steal"
-        ],
-        "inp": "EMOJIx [EMOJI] - The emoji you want to steal, must be custom",
         "cat": "fun",
-        "desc": "Steals an emoji for you",
-        "use": ";]emji {emoji1} {emoji2} {...}"
+        "desc": "Never gonna give you up!",
+        "use": ";]rick"
     }
 }
