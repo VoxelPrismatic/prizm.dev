@@ -1,3 +1,41 @@
+#] mar 26, 2020
+___
+> The `;]convert` command has been updated
+> > Now supports 316 formats
+######] IMAGES [`Python Pillow`]
+bmp, dib, eps, gif, icns, ico, im, jpeg, jpg, j2k, msp, pcx, png, ppm, sgi, spider, tga, tiff, webp, xbm
+
+######] TEXT [`Changing Extension`]
+txt, py, pyc, js, java, cpp, rhtml, gpp, cs, c, asp, css, aspx, axd, asx, asmx, ashx, htm, html, xhtml, jhtml, jsp, jspx, wss, do, action, pl, php, php4, php3, phtml, rb, shtml, xml, rss, json, html5, css3, yaml, swift, vbs, scss, less, bat, ps1, bash, csv, less, csv, json, class, ctxt, rb
+
+######] AUDIO [`FFmpeg`]
+aa, aac, ac3, act, adts, aea, aiff, alsa, ape, aptx, aptx_hd, asf, asf, asf_o, asf_stream, ast, boa, caf, f32be, f32le, f64be, f64le, flac, ircam, jack, m4a, 3gp, 3g2, mj2, mp2, mp3, mpeg, opus, oss, ogg, oga, pulse, s16be, s16le, s24be, s24le, s32be, s32le, s8, sds, sndio, spx, u16be, u16le, u24be, u24le, u32be, u32le, u8, wav, wve, alaw, daud, dts, dtshd, epaf, eac3, oma, sln, tta
+
+######] VIDEO [`FFmpeg`]
+a64, avi, avm2, avr, bethsoftvid, cdg, cdxl, dv, dvd, ea, f4v, filmstrip, flic, flv, gdv, h261, h263, h264, hevc, hls, ipmovie, ipod, kmsgrab, m4v, matroska, webm, mjpeg, mjpeg_2000, mlv, mov, mp4, mpeg1video, mpeg2video, mpegvideo, nsv, nuv, ogv, ogg, swf, vc1, vcd, webm, webm_chunk, xv, gif, apng
+
+######] MORE [`FFmpeg`]
+apng, anm, alias_pix, bmp_pipe, gif, ico, image2, image2pipe, j2k_pipe, jpeg_pipe, jpegls_pipe, mpjpeg, png_pipe, psd_pipe, singlejpeg, webp, webp_pipe
+
+######] SPREADSHEET [`LibreOffice`]
+ods, sxc, xml, fods, uos, uof, xlsx, xlsb, xls, xlc, xlw, xlk, et, xlm, 123, wks, wk1, wb2, xlsm, numbers, cwk, gnm, gnumeric, wdb, wps, sdc, wk4, wk3, wb2, wq1, wq2, cmx, ots, stc, xltx, xltm, xlt, ett
+
+######] DOCUMENTS [`LibreOffice`]
+odt, sxw, xml, fodt, uot, uof, docx, doc, wps, lwp, rtf, 602, txt, wpd, docm, abw, zabw, pages, cwk, wri, mw, mcw, mwd, pdb, sdw, wn, nx^d, rtf, csv, html, xhtml, htm, pdf, pub, p65, pm, pm6, pmd, ott, stw, dotx, dotm, dot, wpt
+
+######] SLIDESHOW [`LibreOffice`]
+odp, sxi, fodp, xml, uop, uof, pptx, ppsx, ppt, dps, pps, pptm, key, cwk, sdd, otp, sti, potx, potm, pot, dpt
+
+######] EBOOK [`LibreOffice`]
+lrf, fb2, pdb
+
+######] DRAW [`LibreOffice`]
+odg, sxd, svg, pdf, fodg, xml, pct, pict, bmp, cwk, cdr, fh, fh1, fh2, fh3, fh4, fh5, fh6, fh7, fh8, fh9, fh10, fh11, pbm, pgm, png, ppm, psd, qxd, qxt, ras, sda, tga, tiff, tif, vdx, vsd, vsdm, vsdx, xbm, xpm, zmf, pcd
+
+######] MATH [`LibreOffice`]
+odf, sxm, mml
+===
+
 #] mar 10, 2020
 ___
 > Added the `;]hexdump` command
