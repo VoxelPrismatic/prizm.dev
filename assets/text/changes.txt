@@ -9,13 +9,13 @@ bmp, dib, eps, gif, icns, ico, im, jpeg, jpg, j2k, msp, pcx, png, ppm, sgi, spid
 txt, py, pyc, js, java, cpp, rhtml, gpp, cs, c, asp, css, aspx, axd, asx, asmx, ashx, htm, html, xhtml, jhtml, jsp, jspx, wss, do, action, pl, php, php4, php3, phtml, rb, shtml, xml, rss, json, html5, css3, yaml, swift, vbs, scss, less, bat, ps1, bash, csv, less, csv, json, class, ctxt, rb
 
 ###] AUDIO [`FFmpeg`]
-aa, aac, ac3, act, adts, aea, aiff, alsa, ape, aptx, aptx_hd, asf, asf, asf_o, asf_stream, ast, boa, caf, f32be, f32le, f64be, f64le, flac, ircam, jack, m4a, 3gp, 3g2, mj2, mp2, mp3, mpeg, opus, oss, ogg, oga, pulse, s16be, s16le, s24be, s24le, s32be, s32le, s8, sds, sndio, spx, u16be, u16le, u24be, u24le, u32be, u32le, u8, wav, wve, alaw, daud, dts, dtshd, epaf, eac3, oma, sln, tta
+aa, aac, ac3, act, adts, aea, aiff, alsa, ape, aptx, aptx\_hd, asf, asf, asf\_o, asf\_stream, ast, boa, caf, f32be, f32le, f64be, f64le, flac, ircam, jack, m4a, 3gp, 3g2, mj2, mp2, mp3, mpeg, opus, oss, ogg, oga, pulse, s16be, s16le, s24be, s24le, s32be, s32le, s8, sds, sndio, spx, u16be, u16le, u24be, u24le, u32be, u32le, u8, wav, wve, alaw, daud, dts, dtshd, epaf, eac3, oma, sln, tta
 
 ###] VIDEO [`FFmpeg`]
-a64, avi, avm2, avr, bethsoftvid, cdg, cdxl, dv, dvd, ea, f4v, filmstrip, flic, flv, gdv, h261, h263, h264, hevc, hls, ipmovie, ipod, kmsgrab, m4v, matroska, webm, mjpeg, mjpeg_2000, mlv, mov, mp4, mpeg1video, mpeg2video, mpegvideo, nsv, nuv, ogv, ogg, swf, vc1, vcd, webm, webm_chunk, xv, gif, apng
+a64, avi, avm2, avr, bethsoftvid, cdg, cdxl, dv, dvd, ea, f4v, filmstrip, flic, flv, gdv, h261, h263, h264, hevc, hls, ipmovie, ipod, kmsgrab, m4v, matroska, webm, mjpeg, mjpeg\_2000, mlv, mov, mp4, mpeg1video, mpeg2video, mpegvideo, nsv, nuv, ogv, ogg, swf, vc1, vcd, webm, webm\_chunk, xv, gif, apng
 
 ###] MORE [`FFmpeg`]
-apng, anm, alias_pix, bmp_pipe, gif, ico, image2, image2pipe, j2k_pipe, jpeg_pipe, jpegls_pipe, mpjpeg, png_pipe, psd_pipe, singlejpeg, webp, webp_pipe
+apng, anm, alias\_pix, bmp\_pipe, gif, ico, image2, image2pipe, j2k\_pipe, jpeg\_pipe, jpegls\_pipe, mpjpeg, png\_pipe, psd\_pipe, singlejpeg, webp, webp\_pipe
 
 ###] SPREADSHEET [`LibreOffice`]
 ods, sxc, xml, fods, uos, uof, xlsx, xlsb, xls, xlc, xlw, xlk, et, xlm, 123, wks, wk1, wb2, xlsm, numbers, cwk, gnm, gnumeric, wdb, wps, sdc, wk4, wk3, wb2, wq1, wq2, cmx, ots, stc, xltx, xltm, xlt, ett
