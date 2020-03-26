@@ -36,10 +36,15 @@ odg, sxd, svg, pdf, fodg, xml, pct, pict, bmp, cwk, cdr, fh, fh1, fh2, fh3, fh4,
 odf, sxm, mml
 ===
 
+-~-
+
 #] mar 10, 2020
 ___
 > Added the `;]hexdump` command
+> > Who needs a hex editor now?
 ===
+
+-~-
 
 #] feb 27, 2020
 ___
@@ -51,6 +56,8 @@ stopping all commands from loading. Also, it says that it's broken in +[\#is-pri
 > The react command now supports numbers too
 > > Eg `;]react t r y 1 m 8`
 ===
+
+-~-
 
 #] feb 15, 2020
 ___
