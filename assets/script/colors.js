@@ -30,7 +30,7 @@ function setTransitions() {
     for(var rule of rules) {
         var txt = rule.selectorText;
         if(txt) {
-            if(txt.includes("hover") || txt.includes("focus"))
+            if(txt.includes("hover") || txt.includes("focus") || txt == "div")
                 continue;
             rule.style.transition = "all ease 1s";
         }
@@ -51,6 +51,8 @@ function swapColor(colorName, swapImg = true) {
         var style = rule.style;
         if(txt == "h1, h2, h3, h4, h5, h6") {
             style.color = color;
+        } else if(txt == "#logo:hover") {
+            style.filter = "drop-shadow(0px 0px 5px " + color + ")";
         } else if(txt == "a") {
             style.color = color.replace(/[a]/gm, "c").replace(/[04]/gm, "8");
         } else if(txt == "a:hover, a:focus") {
