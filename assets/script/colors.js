@@ -30,7 +30,7 @@ function setTransitions() {
     for(var rule of rules) {
         var txt = rule.selectorText;
         if(txt) {
-            if(txt.includes("hover") || txt.includes("focus") || txt == "div")
+            if(txt.includes("hover") || txt.includes("focus") || txt == "div" || txt == "*")
                 continue;
             rule.style.transition = "all ease 1s";
         }
