@@ -27,13 +27,18 @@ let colors = {
 
 function setTransitions() {
     var rules = document.styleSheets[2].cssRules;
+    var stuffs = [];
     for(var rule of rules) {
         var txt = rule.selectorText;
-        if(txt) {
-            if(txt.includes("hover") || txt.includes("focus") || txt == "div" || txt == "*")
-                continue;
-            rule.style.transition = "all ease 1s";
-        }
+        if(txt && (txt.includes("hover") || txt.includes("focus")))
+            stuffs.push(txt.split(":")[0]);
+    }
+    for(var rule of rules) {
+        var txt = rule.selectorText;
+        if(txt)
+            for(var stuff of stuffs)
+                if(rule == stuff)
+                    rule.style.transition = "all ease 1s";
     }
 }
 
@@ -46,7 +51,7 @@ function swapColor(colorName, swapImg = true) {
     var rules = document.styleSheets[2].cssRules;
     for(var rule of rules) {
         let txt = rule.selectorText;
-        if(txt == undefined)
+        if(!txt)
             continue
         var style = rule.style;
         if(txt == "h1, h2, h3, h4, h5, h6") {
