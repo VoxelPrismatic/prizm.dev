@@ -64,18 +64,7 @@ function swapColor(colorName, swapImg = true) {
             style.borderTopColor = color;
         } else if(ls1.includes(txt)) {
             var tmp = color;
-            if(txt.includes(".sect")) {
-                var shadow = color + " 3px -2px 2px -2px,"
-                           + color + " -2px -3px 2px -2px,"
-                           + color + " 2px -3px 2px -2px,"
-                           + color + " -3px -2px 2px -2px";
-                if(txt.includes("hover"))
-                    shadow = color + " 4px -2px 2px -2px,"
-                           + color + " -2px -4px 2px -2px,"
-                           + color + " 2px -4px 2px -2px,"
-                           + color + " -4px -2px 2px -2px";
-                style.boxShadow = shadow;
-            } if(txt.includes(".collapser")) {
+            if(txt.includes(".collapser")) {
                 tmp = colors["grey"][0];
                 style.backgroundColor = tmp + "0";
             } if(txt.includes("coll") && txt.includes(":hover")) {
