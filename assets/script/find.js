@@ -99,15 +99,20 @@ function scroll_(ids) {
 }
 
 function scrollIfNeeded(ids) {
-    find(ids).scrollIntoViewIfNeeded();
+    find(ids).scrollIntoViewIfNeeded({behavior: "smooth"});
 }
 
 function scrollBy(ids, x, y) {
-    find(ids).scrollBy(x, y);
+    find(ids).scrollBy(x, y, {behavior: "smooth"});
 }
 
 function scrollXY(ids, x, y) {
-    find(ids).scroll(x, y);
+    find(ids).scroll(x, y, {behavior: "smooth"});
+}
+
+function scrollToHash(elem) {
+    elem.scrollIntoView({behavior: "smooth"});
+    window.location = "#" + elem.id;
 }
 
 //Others
