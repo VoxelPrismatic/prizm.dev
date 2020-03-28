@@ -112,7 +112,7 @@ function scrollXY(ids, x, y) {
 
 function scrollToHash(elem) {
     elem.scrollIntoView({behavior: "smooth"});
-    window.location = "#" + elem.id;
+    window.location = elem.id;
 }
 
 //Others
