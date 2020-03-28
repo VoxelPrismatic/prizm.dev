@@ -32,12 +32,7 @@ function setTransitions() {
         if(txt) {
             if(txt.includes("hover") || txt.includes("focus"))
                 continue;
-            var transition = "box-shadow 1s ease, text-shadow 1s ease, border 1s ease";
-            if(txt.startsWith("a") || ls2.includes(txt) || ls1.includes(txt))
-                transition += ", color 1s ease";
-            if(ls2.includes(txt) || ls1.includes(txt))
-                transition += ", background-color 1s ease";
-            rule.style.transition = transition;
+            rule.style.transition = "all ease 1s";
         }
     }
 }
