@@ -114,10 +114,6 @@ function scrollXY(ids, x, y) {
 
 function linkMe(elem) {
     elem.scrollIntoView({behavior: "smooth"});
-    window.setTimeout(clickIt, 1000, elem);
-}
-
-function clickIt(elem) {
     var id = elem.id;
     if(id[0] != "#") {
         id = "#" + id;
