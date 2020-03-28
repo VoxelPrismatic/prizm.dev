@@ -110,16 +110,19 @@ function scrollXY(ids, x, y) {
     find(ids).scroll(x, y, {behavior: "smooth"});
 }
 
-function scrollToHash(elem) {
-    elem.scrollIntoView({behavior: "smooth"});
-    window.location = elem.id;
-}
-
 //Others
 
 function linkMe(elem) {
-    find("hiddenLink").href = "#" + elem.id;
-    find("hiddenLink").click();
+    elem.scrollIntoView({behavior: "smooth"});
+    window.setTimeout(clickIt, 1000, elem);
+}
+
+function clickIt(elem) {
+    var id = elem.id;
+    if(id[0] != "#") {
+        id = "#" + id;
+    }
+    window.history.replaceState(window.history.state, document.title, id);
 }
 
 function locate(thing, parent = find("list"), loc = "find_command") {
