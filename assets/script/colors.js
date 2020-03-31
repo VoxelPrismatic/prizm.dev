@@ -30,7 +30,7 @@ function setTransitions() {
     var stuffs = [];
     for(var rule of rules) {
         var txt = rule.selectorText;
-        if(txt && (txt.includes("hover") || txt.includes("focus"))) {
+        if(txt && (txt.includes("hover") || txt.includes("focus")) && !txt.includes(".sect")) {
             stuffs.push(txt.split(":")[0]);
         }
     }
@@ -40,7 +40,10 @@ function setTransitions() {
             for(var stuff of stuffs) {
                 if(txt.includes(stuff)) {
                     rule.style.transition = "all ease 1s";
+                    break;
                 }
+            } else {
+                rule.style.transition = "none";
             }
         }
     }
