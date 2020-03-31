@@ -8,6 +8,21 @@ if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/")) {
     linkTarget = "_blank";
 }
 
+function log(text, color, size = "unset", bold = false, italic = false, strike = false, under = false) {
+    var style = `color: ${color}; font-size: ${size};`;
+    if(bold)
+        style += "font-weight: bold;";
+    if(italic)
+        style += "font-style: italic;";
+    if(under && !strike)
+        style += "text-decoration: underline;";
+    else if(!under && strike)
+        style += "text-decoration: line-through;";
+    else if(under && strike)
+        style += "text-decoration: underline line-through;";
+    console.log("%c" + text, style);
+}
+
 var footTag = {
     "tag": "div",
     "style": "text-align: center;",
