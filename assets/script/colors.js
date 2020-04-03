@@ -65,7 +65,7 @@ function swapColor(colorName, swapImg = true) {
         var style = rule.style;
         if(txt == "h1, h2, h3, h4, h5, h6") {
             style.color = color;
-        } else if(txt == "#logo:hover") {
+        } else if(txt == "#logo:hover, #logo:focus") {
             style.filter = "drop-shadow(0px 0px 5px " + color + ")";
         } else if(txt == "a") {
             style.color = color.replace(/[a]/gm, "c").replace(/[04]/gm, "8");
