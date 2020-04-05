@@ -11,5 +11,5 @@ function didntRedirect() {
 var head = document.getElementsByTagName("head")[0];
 var meta = document.createElement("meta");
 meta.httpEquiv = "refresh";
-meta.content = "0.5; URL=" + url
+meta.content = "0; URL=" + url
 head.appendChild(meta);
