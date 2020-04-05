@@ -19,7 +19,16 @@ if(document.URL.includes("?url=")) {
     url = urls[tmp];
     text = tmp;
   } else {
-    alert(`The redirect page '${tmp}' is invalid`);
+    url += "/418";
+    text = "http/418";
+  }
+} else if(document.URL.includes("?link=")) {
+  if(shorts[tmp]) {
+    url = shorts[tmp];
+    text = tmp;
+  } else {
+    url += "/418";
+    text = "http/418";
   }
 }
 window.location = url;
