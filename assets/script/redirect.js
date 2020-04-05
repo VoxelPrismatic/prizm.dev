@@ -8,8 +8,4 @@ function didntRedirect() {
   st += "</a>, try allowing redirects... especially if you are using Firefox ;]</div>";
   document.body.innerHTML = st;
 }
-var head = document.getElementsByTagName("head")[0];
-var meta = document.createElement("meta");
-meta.httpEquiv = "refresh";
-meta.content = "0; URL=" + url
-head.appendChild(meta);
+window.location = url;
