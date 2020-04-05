@@ -1,12 +1,12 @@
 var scripts = [
     "find",
-    "md",
-    "collapse",
-    "dynamic",
+    "aesthetic/md",
+    "aesthetic/collapse",
+    "aesthetic/dynamic",
     "other",
     "load",
-    "colors",
-    "redirect/urls.js"
+    "aesthetic/colors",
+    "redirect/urls"
 ];
 
 function loadPage() {
