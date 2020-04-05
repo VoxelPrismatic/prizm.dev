@@ -8,7 +8,7 @@
                 url = decodeUriCompontent(document.URL.split("?url=")[1]);
                 text = url;
             } else if(document.URL.includes("?page=")) {
-                var tmp = document.URL.split("?page=");
+                var tmp = document.URL.split("?page=")[1];
                 if(urls[tmp]) {
                     url = urls[tmp];
                     text = tmp;
