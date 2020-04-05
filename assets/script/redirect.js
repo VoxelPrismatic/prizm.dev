@@ -1,6 +1,12 @@
-document.body.innerHTML = "<h1>#] REDIRECT ;]</h1><div>Hey mate, I'm redirecting you to " + 
-                          `<a href="${url}">${url}</a>, try allowing redirects... ` + 
-                          "especially if you are using Firefox ;]</div>";
+var st = `<h1>#] REDIRECT ;]</h1><div>Hey mate, I'm redirecting you to <a href="${url}">`
+try {
+  st += text;
+} catch(err) {
+  st += url;
+} 
+st += "</a>, try allowing redirects... especially if you are using Firefox ;]</div>";
+
+document.body.innerHTML = st;
 
 var head = document.getElementsByTagName("head")[0];
 var meta = document.createElement("meta");
