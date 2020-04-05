@@ -5,7 +5,8 @@ var scripts = [
     "dynamic",
     "other",
     "load",
-    "colors"
+    "colors",
+    "redirect/urls.js"
 ];
 
 function loadPage() {
