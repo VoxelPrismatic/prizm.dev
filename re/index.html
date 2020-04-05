@@ -9,8 +9,8 @@
                 text = url;
             } else if(document.URL.includes("?page=")) {
                 var tmp = document.URL.split("?page=");
-                if(sources[tmp]) {
-                    url = sources[tmp];
+                if(urls[tmp]) {
+                    url = urls[tmp];
                     text = tmp;
                 }
             }
