@@ -40,8 +40,13 @@ function getUrl(re, block) {
     }
     var url;
     var text;
+    var append = "";
+    if(tmp.includes("+")) {
+        append = tmp.split("+")[1];
+        tmp = tmp.split("+")[0];
+    }
     if(block[tmp]) {
-        url = block[tmp];
+        url = block[tmp] + append;
         text = tmp;
     } else {
         url = "https://voxelprismatic.github.io/prizm.dev/418";
