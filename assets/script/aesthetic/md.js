@@ -14,6 +14,10 @@ function rngHex(len = 16) {
     return st;
 }
 
+function esc(st) {
+    return "\\" + st.split('').join('\\');
+}
+
 function head(m, p1) {
     for(var x = 0; x < 6; x += 1)
         if(m[x] != "#")
@@ -22,7 +26,7 @@ function head(m, p1) {
     var st = `<h${x} onclick="linkMe(this);"`;
     st += `id="${id}">#] ${p1}</h${x}>`;
     return st;
-}
+}           
 
 var line_regex = [
     [/\\([^uUNh])/gm, function(m, p) {return "\\u{" + p.charCodeAt(0).toString(16) + "}";}],
@@ -33,16 +37,57 @@ var line_regex = [
     [/\&lt;/gm, "<"],
 
     //Links
-    [/\+\[\[(.+?)\]\]\<(.+?)\>/gm, "<a href='$2' target='\x5fblank'><span class='btn'>$1</span></a>"],
-    [/\+\[(.+?)\]\<(.+?)\>/gm, "<a href='$2' target='\x5fblank'>$1</a>"],
-    [/\[\[(.+?)\]\]\<(.+?)\>/gm, "<a href='$2'><span class='btn'>$1</span></a>"],
-    [/\[(.+?)\]\<(.+?)\>/gm, "<a href='$2'>$1</a>"],
-    [/\@\[(.+?)\]\((.+?)\)/gm, "<img alt='$1' src='$2'>"],
-    [/e<<(.+?)>>/gm, "<a href='mailto:$1>$1</a>"],
-    [/p<<(.+?)>>/gm, "<a href='tel:$1>$1</a>"],
-    [/e\[(.+?)]<(.+?)>/gm, "<a href='mailto:$2'>$1</a>"],
-    [/p\[(.+?)]<(.+?)>/gm, "<a href='tel:$2'>$1</a>"],
-    [/<<(.+?)>>/gm, "<a href='$1'>$1</a>"],
+    [
+        /\+\[\[(.+?)\]\]\<(.+?)\>/gm, 
+        function(m, p1, p2) {
+            `<a href="${esc(p2)}" target='\x5fblank'><span class='btn'>${esc(p1)}</span></a>`;
+        }
+    ], [
+        /\+\[(.+?)\]\<(.+?)\>/gm, 
+        function(m, p1, p2) {
+            `<a href="${esc(p2)}" target='\x5fblank'>${esc(p1)}</a>`;
+        }
+    ], [
+        /\[\[(.+?)\]\]\<(.+?)\>/gm,
+        function(m, p1, p2) {
+            `<a href="${esc(p2)}"><span class='btn'>${esc(p1)}</span></a>`;
+        }
+    ], [
+        /\[(.+?)\]\<(.+?)\>/gm, 
+        function(m, p1, p2) {
+            `<a href="${esc(p2)}" target='\x5fblank'>${esc(p1)}</a>`;
+        }
+    ], [
+        /\@\[(.+?)\]\((.+?)\)/gm,
+        function(m, p1, p2) {
+            return `<img alt="${esc(mark(p1))}" src="${esc(p2)}"`;
+        }
+    ], [
+        /e<<(.+?)>>/gm, 
+        function(m, p1) {
+            return `<a href="mailto:${esc(p1)}>${esc(p1)}</a>`
+        }
+    ], [
+        /p<<(.+?)>>/gm, 
+        function(m, p1) {
+            return `<a href="tel:${esc(p1)}>${esc(p1)}</a>`
+        }
+    ], [
+        /e\[(.+?)]<(.+?)>/gm, 
+        function(m, p1, p2) {
+            return `<a href="mailto:${esc(p2)}>${esc(p1)}</a>`
+        }
+    ], [
+        /p\[(.+?)]<(.+?)>/gm,
+        function(m, p1, p2) {
+            return `<a href="tel:${esc(p2)}>${esc(p1)}</a>`
+        }
+    ], [
+        /<<(.+?)>>/gm, 
+        function(m, p1) {
+            return `<a href="${esc(p1)}>${esc(p1)}</a>`
+        }
+    ],
 
     //Unicode Escape
     [/^\\x([A-Fa-f0-9]{2})/gm, "\\u{$1}"],
