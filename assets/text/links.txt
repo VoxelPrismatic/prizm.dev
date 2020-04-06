@@ -5,8 +5,8 @@ transition my bot to use this module, so I don't have to use this `discord.py` \
 garbage that I'm currently using...
 
 :;:+[\[DOCS\]]</prizmatic.docs> \
-+[\[REPO\]]<https://github.com/voxelprismatic/prizmatic> \
-+[\[DISCORD\]]<https://discord.gg/Z84Nm6n>
++[\[REPO\]]</prizm.dev/re?p=github+/prizmatic> \
++[\[DISCORD\]]</prizm.dev/re?p=discord>
 
 -~-
 
@@ -14,26 +14,25 @@ garbage that I'm currently using...
 Guess what? I made a discord bot! You can find out where it is using the \
 links below.
 
-:;:+[[Invite PRIZM to your guild!]]\
-<https://discordapp.com/oauth2/authorize?client\_id=555862187403378699&permissions=473296118&scope=bot> \
-+[[Support guild]]<https://discordapp.com/invite/Z84Nm6n>
-:;:+[\[GitHub Repo\]]<https://github.com/voxelprismatic/prizm> \
-+[\[Vote on TOP.GG\]]<https://discordbots.org/bot/555862187403378699/vote> \
-[\[Command Index\]]<https://voxelprismatic.github.io/prizm.dev/prizm/commands> \
+:;:+[[Invite PRIZM to your guild!]]\</prizm.dev/re?p=bot> \
++[[Support guild]]</prizm.dev/re?p=discord>
+:;:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
++[\[Vote on TOP.GG\]]</prizm.dev/re?p=topgg+/vote> \
+[\[Command Index\]]</prizm.dev/prizm/commands> \
 [\[Change log\]]</prizm.dev/prizm/changes> \
 [\[Website\]]</prizm.dev/prizm> \
-+[\[Custom emojis\]]<https://discordapp.com/invite/eYMyfcd>
++[\[Custom emojis\]]</prizm.dev/re?p=emoji>
 
 -~-
 
 #] STALK ME ;[
 
-Follow me on +[Twitter]<https://twitter.com/voxelprismatic> :^: @#VoxelPrismatic#
-Watch me not use +[Reddit]<https://reddit.com/user/ultimateredditcat> :^: /u/#UltimateRedditCat#
-Find me on +[Discord]<https://discordapp.com/channels/@me/481591703959240706> :^: #PRIZ ;]#\#9244
-Copy my code on +[GitHub]<https://github.com/voxelprismatic> :^: github/#VoxelPrismatic#
-Listen to ambience on +[BandCamp]<https://przm.bandcamp.com> :^: #przm#.bandcamp
+Follow me on +[Twitter]</prizm.dev/re?p=twitter> :^: @#VoxelPrismatic#
+Watch me not use +[Reddit]</prizm.dev/re?p=reddit> :^: /u/#UltimateRedditCat#
+Find me on +[Discord]</prizm.dev/re?p=dm_dis> :^: #PRIZ ;]#\#9244
+Copy my code on +[GitHub]</prizm.dev/re?p=github> :^: github/#VoxelPrismatic#
+Listen to ambience on +[BandCamp]</prizm.dev/re?p=bandcamp> :^: #przm#.bandcamp
 View my website [here]<\#STALKME> :^: voxelprismatic.github.io/#prizm.dev#
-Support me on +[Patreon]<https://www.patreon.com/VoxelPrismatic> :^: patreon/#VoxelPrismatic#
+Support me on +[Patreon]</prizm.dev/re?p=patreon> :^: patreon/#VoxelPrismatic#
 Email [me]<mailto:bruh@no.xyz> :^: #bruh@no.xyz#
 Literally stalk me :^: Somewhere in the #Universe#
