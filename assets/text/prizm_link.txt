@@ -1,10 +1,10 @@
 #] Links to things
 
-:;:+[[Invite PRIZM to your guild!]]\
-<https://discordapp.com/oauth2/authorize?client\_id=555862187403378699&permissions=473296118&scope=bot> \
-+[[Support guild]]<https://discordapp.com/invite/Z84Nm6n>
-:;:+[\[GitHub Repo\]]<https://github.com/voxelprismatic/prizm> \
-+[\[Vote on TOP.GG\]]<https://discordbots.org/bot/555862187403378699/vote> \
-[\[Command Index\]]<https://voxelprismatic.github.io/prizm.dev/prizm/commands> \
+:;:+[[Invite PRIZM to your guild!]]\</prizm.dev/re?p=bot> \
++[[Support guild]]</prizm.dev/re?p=discord>
+:;:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
++[\[Vote on TOP.GG\]]</prizm.dev/re?p=topgg+/vote> \
+[\[Command Index\]]</prizm.dev/prizm/commands> \
 [\[Change log\]]</prizm.dev/prizm/changes> \
-+[\[Custom emojis\]]<https://discordapp.com/invite/eYMyfcd>
+[\[Website\]]</prizm.dev/prizm> \
++[\[Custom emojis\]]</prizm.dev/re?p=emoji>
