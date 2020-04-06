@@ -17,7 +17,7 @@ function load(filename, aio = false, strip = false) {
         return new Promise(resolve => {
             setTimeout(() => {resolve(document.getElementById("file").innerHTML);}, 100)
         });
-    return document.getElementById("file").innerHTML.replace(/\&amp/gm, "&");
+    return document.getElementById("file").innerHTML.replace(/\&amp;/gm, "&");
 }
 
 function didntRedirect() {
