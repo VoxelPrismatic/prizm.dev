@@ -73,6 +73,6 @@ if(URL.includes("?url=")) {
         "?s=",
         "#"
     ];
-    [url, text] = getUrl(re, urls);
+    [url, text] = getUrl(re, shorts);
 }
 window.location = url;
