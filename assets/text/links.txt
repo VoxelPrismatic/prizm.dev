@@ -14,7 +14,7 @@ garbage that I'm currently using...
 Guess what? I made a discord bot! You can find out where it is using the \
 links below.
 
-:;:+[[Invite PRIZM to your guild!]]\</prizm.dev/re?p=bot> \
+:;:+[[Invite PRIZM to your guild!]]</prizm.dev/re?p=bot> \
 +[[Support guild]]</prizm.dev/re?p=discord>
 :;:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
 +[\[Vote on TOP.GG\]]</prizm.dev/re?p=topgg+/vote> \
