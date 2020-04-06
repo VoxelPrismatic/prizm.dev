@@ -31,6 +31,24 @@ function didntRedirect() {
     document.body.innerHTML = st;
 }
 
+function getUrl(re, block) {
+    for(var r of re) {
+        if(document.URL.includes(re)) {
+            var tmp = document.URL.split(re)[1];
+        }
+    }
+    var url;
+    var text;
+    if(block[tmp]) {
+        url = block[tmp];
+        text = tmp;
+    } else {
+        url = "https://voxelprismatic.github.io/prizm.dev/418";
+        text = "http/418";
+    }
+    return [url, text];
+}
+
 eval(load("https://raw.githubusercontent.com/VoxelPrismatic/prizm.dev/master/assets/script/redirect/urls.js"));
 eval(load("https://raw.githubusercontent.com/VoxelPrismatic/prizm.dev/master/assets/script/redirect/shorts.js"));
 
@@ -41,22 +59,19 @@ if(URL.includes("?url=")) {
     url = decodeUriCompontent(URL.split("?url=")[1]);
     text = url;
 } else if(URL.includes(/\?(page|p)=/gm)) {
-    var tmp = URL.split(/\?(page|p)=/gm)[1]
-    if(urls[tmp]) {
-        url = urls[tmp];
-        text = tmp;
-    } else {
-        url += "/418";
-        text = "http/418";
-    }
-} else if(URL.includes(/\?(link|l|short|s)=/gm)) {
-    var tmp = URL.split(/\?(link|l|short|s)=/gm)[1];
-    if(shorts[tmp]) {
-        url = shorts[tmp];
-        text = tmp;
-    } else {
-        url += "/418";
-        text = "http/418";
-    }
+    var re = [
+        "?page=",
+        "?p="
+    ];
+    [url, text] = getUrl(re, urls);
+} else if(URL.includes(/(\?(link|l|short|s)=|\#)/gm)) {
+    var re = [
+        "?link=",
+        "?l=",
+        "?short=",
+        "?s=",
+        "#"
+    ];
+    [url, text] = getUrl(re, urls);
 }
 window.location = url;
