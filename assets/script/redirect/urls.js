@@ -7,5 +7,6 @@ var urls = {
   "bot": "https://discordapp.com/oauth2/authorize?client_id=555862187403378699&permissions=473296118&scope=bot",
   "reddit": "https://reddit.com/r/u_UltimateRedditCat",
   "github": "https://github.com/VoxelPrismatic",
-  "bandcamp": "https://przm.bandcamp.com/"
+  "bandcamp": "https://przm.bandcamp.com",
+  "topgg": "https://discordbots.org/bot/555862187403378699",
 };
