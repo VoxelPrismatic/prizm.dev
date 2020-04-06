@@ -101,12 +101,7 @@ var line_regex = [
     [/\\([^u])/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
 
     //Headers
-    [/^\#\] +(.+)$/gm, head],
-    [/^\##\] +(.+)$/gm, head],
-    [/^\###\] +(.+)$/gm, head],
-    [/^\####\] +(.+)$/gm, head],
-    [/^\#####\] +(.+)$/gm, head],
-    [/^\######\] +(.+)$/gm, head],
+    [/^\#{1,6}\] +(.+)$/gm, head],
     
     //Main MD
     [/^\#(.+?)\#/gm, "<b>$1</b>"],
@@ -136,6 +131,7 @@ var line_regex = [
         "<div style='float: right;'>$2</div>" + 
         "</div></br>"
     ],
+    
     [/^\:\{\:(.+)/gm, "<div style='text-align: left;'>$1</div>"],
     [/^\:\}\:(.+)/gm, "<div style='text-align: right;'>$1</div>"],
     [/^\:\;\:(.+)/gm, "<div style='text-align: center;'>$1</div>"],
@@ -148,7 +144,7 @@ var line_regex = [
     [/(<u>_<\/u>|___)/gm, "<div>"],
     [/===/gm, "</div>"],
 
-    [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x"+p1);}],
+    [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x" + p1);}],
 ];
 
 function mark(st) {
