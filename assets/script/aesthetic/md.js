@@ -15,7 +15,7 @@ function rngHex(len = 16) {
 }
 
 function esc(st) {
-    return "\\" + st.split('').join('\\');
+    return "\\" + st.replace(/\\/gm, "").split('').join('\\');
 }
 
 function head(m, p1) {
