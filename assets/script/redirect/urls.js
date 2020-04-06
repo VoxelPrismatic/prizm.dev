@@ -10,4 +10,5 @@ var urls = {
   "github": "https://github.com/VoxelPrismatic",
   "bandcamp": "https://przm.bandcamp.com",
   "topgg": "https://discordbots.org/bot/555862187403378699",
+  "emoji": "https://discordapp.com/invite/eYMyfcd"
 };
