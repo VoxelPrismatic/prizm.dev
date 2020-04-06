@@ -49,12 +49,13 @@ if(document.URL.includes("?url=")) {
         text = "http/418";
     }
 } else if(document.URL.includes("?link=")) {
+    var tmp = document.URL.split("?link=")[1];
     if(shorts[tmp]) {
         url = shorts[tmp];
         text = tmp;
-  } else {
-    url += "/418";
-    text = "http/418";
-  }
+    } else {
+        url += "/418";
+        text = "http/418";
+    }
 }
 window.location = url;
