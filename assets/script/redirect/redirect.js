@@ -32,9 +32,10 @@ function didntRedirect() {
 }
 
 function getUrl(re, block) {
+    var tmp;
     for(var r of re) {
-        if(document.URL.includes(re)) {
-            var tmp = document.URL.split(re)[1];
+        if(document.URL.includes(r)) {
+            tmp = document.URL.split(r)[1];
         }
     }
     var url;
