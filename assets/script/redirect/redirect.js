@@ -58,13 +58,13 @@ var URL = document.URL;
 if(URL.includes("?url=")) {
     url = decodeUriCompontent(URL.split("?url=")[1]);
     text = url;
-} else if(URL.includes(/\?(page|p)=/gm)) {
+} else if(URL.indexOf(/\?(page|p)=/gm) != -1) {
     var re = [
         "?page=",
         "?p="
     ];
     [url, text] = getUrl(re, urls);
-} else if(URL.includes(/(\?(link|l|short|s)=|\#)/gm)) {
+} else if(URL.indexOf(/(\?(link|l|short|s)=|\#)/gm) != -1) {
     var re = [
         "?link=",
         "?l=",
