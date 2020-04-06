@@ -36,11 +36,12 @@ eval(load("https://raw.githubusercontent.com/VoxelPrismatic/prizm.dev/master/ass
 
 var url = "https://voxelprismatic.github.io/prizm.dev";
 var text = "home";
-if(document.URL.includes("?url=")) {
-    url = decodeUriCompontent(document.URL.split("?url=")[1]);
+var URL = document.URL;
+if(URL.includes("?url=")) {
+    url = decodeUriCompontent(URL.split("?url=")[1]);
     text = url;
-} else if(document.URL.includes("?page=")) {
-    var tmp = document.URL.split("?page=")[1];
+} else if(URL.includes(/\?(page|p)=/gm)) {
+    var tmp = URL.split(/\?(page|p)=/gm)[1]
     if(urls[tmp]) {
         url = urls[tmp];
         text = tmp;
@@ -48,8 +49,8 @@ if(document.URL.includes("?url=")) {
         url += "/418";
         text = "http/418";
     }
-} else if(document.URL.includes("?link=")) {
-    var tmp = document.URL.split("?link=")[1];
+} else if(URL.includes(/\?(link|l|short|s)=/gm)) {
+    var tmp = URL.split(/\?(link|l|short|s)=/gm)[1];
     if(shorts[tmp]) {
         url = shorts[tmp];
         text = tmp;
