@@ -45,12 +45,12 @@ var line_regex = [
     [
         /\+\[\[(.+?)\]\]\<(.+?)\>/gm, 
         function(m, p1, p2) {
-            return `<a href="${esc(p2)}" target='\x5fblank'><span class='btn'>${esc(p1)}</span></a>`;
+            return `<a href="${esc(p2)}" target='\\x5fblank'><span class='btn'>${esc(p1)}</span></a>`;
         }
     ], [
         /\+\[(.+?)\]\<(.+?)\>/gm, 
         function(m, p1, p2) {
-            return `<a href="${esc(p2)}" target='\x5fblank'>${esc(p1)}</a>`;
+            return `<a href="${esc(p2)}" target='\\x5fblank'>${esc(p1)}</a>`;
         }
     ], [
         /\[\[(.+?)\]\]\<(.+?)\>/gm,
@@ -60,7 +60,7 @@ var line_regex = [
     ], [
         /\[(.+?)\]\<(.+?)\>/gm, 
         function(m, p1, p2) {
-            return `<a href="${esc(p2)}" target='\x5fblank'>${esc(p1)}</a>`;
+            return `<a href="${esc(p2)}">${esc(p1)}</a>`;
         }
     ], [
         /\@\[(.+?)\]\((.+?)\)/gm,
