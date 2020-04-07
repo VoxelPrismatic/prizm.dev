@@ -12,8 +12,22 @@ each(@sel, {
     }
 });
 
-#logo:hover, #logo:focus {
-    filter: drop-shadow(0px 0px 5px #0ff);
+#logo {
+    position: relative; 
+    top: 20px;
+    &:hover, &:focus {
+        filter: drop-shadow(0px 0px 5px #0ff);
+    }
+}
+
+#head {
+    position: relative;
+    top: -80px;
+    transform: rotate(-14deg);
+    text-shadow: 0px 0px 5px, 0px 0px 20px black;
+    &:hover, &:focus {
+        text-shadow: 0px 0px 10px, 0px 0px 40px black;
+    }
 }
 
 .lnk {
@@ -112,7 +126,7 @@ each(@sel, {
     .margin();
     text-align: justify;
     padding: 10px;
-}
+} 
 
 .btn {
     .section(#0088ff);
