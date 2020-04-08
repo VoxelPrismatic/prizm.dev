@@ -65,8 +65,7 @@ var line_regex = [
     ], [
         /\@\[(.+?)\]\((.+?)\)/gm,
         function(m, p1, p2) {
-            p1 = p1.replace(/"/gm, "'");
-            return `<img alt="${esc(mark(p1))}" src="${esc(p2)}">`;
+            return `<img alt="${esc(mark(p1).replace(/"/gm, "\\\""))}" src="${esc(p2)}">`;
         }
     ], [
         /e<<(.+?)>>/gm, 
