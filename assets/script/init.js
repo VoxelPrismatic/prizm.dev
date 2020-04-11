@@ -5,8 +5,10 @@ var scripts = [
     "aesthetic/dynamic",
     "other",
     "load",
+    "aesthetic/colors_func",
     "aesthetic/colors",
-    "redirect/urls"
+    "redirect/urls",
+    "redirect/shorts",
 ];
 
 function loadPage() {
