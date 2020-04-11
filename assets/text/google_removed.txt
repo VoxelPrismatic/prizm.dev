@@ -1,8 +1,9 @@
 #] A list of things that Google has killed
 *that I actually used/am using, on android mostly
 
-###] 1. AMOLED Dark theme
-"Wait! That exists in Android 8.0+!"
+###] AMOLED Dark theme
+*"Wait! That exists in Android 8.0+!"*
+
 But what you don't know is that my phone from 2011 has it too. Not as an option, \
 but literally as the only theme it has. There is no light mode, only dark. Google \
 actually removed dark mode in Android 5.0 [Lollipop]
@@ -10,20 +11,37 @@ actually removed dark mode in Android 5.0 [Lollipop]
 In Google HQ: "Only plebians with eyes need dark mode, so they don't burn their \
 eyes out"
 
-###] 2. File Transfer
-"Wait, you can share over bluetooth!"
+###] Bluetooth File Transfer
+*"Wait, you can share over bluetooth!"*
+
 But did you know that back in 2011, with Android 2.3 [Gingerbread], you can view \
 the entire contents of the SD card... over bluetooth... with any trusted device. \
-No joke, it's like the SD card is in the computer, except it's in read-only. You \
-can still transfer stuff to it over bluetooth, just not into the directory you \
-want.
+No joke, it's like the SD card is in the computer, except it's really slow. With \
+Linux, all you have to do is install `obexftp` and now you can even write to it \
+remotely!
 
-Instead, in Android 4.4 [KitKat] at least, you can only send files to it, and it \
-has this weird bluetooth wifi thing that doesn't even work.
+Instead, in Android 4.4 [KitKat] at least, you can only send files to it via \
+bluetooth sharing, and it has this weird bluetooth wifi thing that doesn't even work.
 
-###] 3. UnZipping files locally
-"Wait you can do that!"
-Not in Android 4.4 [KitKat] you can't. In Android 2.3 [Gingerbread], you can.
+###] UnZipping files locally
+*"Wait you can do that!"*
+
+Not in Android 4.4 [KitKat] you can't. In Android 2.3 [Gingerbread], you can. \
+Idk why this feature was removed, it literally makes no sense.
+
+###] The MENU button
+*"Who needs the menu button? It's in settings anyway"*
+
+Well sometimes I don't want to reach the top of the screen to click 3 dots, \
+and sometimes they aren't even there!
+
+###] The SEARCH button
+*"Bruh you have eyes"*
+
+Bruh Android 2.3 has spotlight search, like in iOS. And when supported, \
+I can just type using a physical keyboard and it will automatically search through \
+a list! Like in the music app, just start typing, and it will filter down the items. \
+Works in managing apps and even more!
 
 #] Google's tag-line
-"Features", the one thing that is *meant* to be removed.
+"Features", the one thing that is #*meant*# to be removed.
