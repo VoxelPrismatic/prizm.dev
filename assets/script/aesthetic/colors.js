@@ -73,6 +73,17 @@ function swapColor(colorName, swapImg = true) {
             style.color = color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
         } else if(txt == ".tab") {
             style.borderTopColor = color;
+        } else if(txt == "th") {
+            style.backgroundColor = color + "4";
+            style.borderTopColor = color;
+            style.borderLeftColor = color;
+            style.borderRightColor = color;
+            style.color = color;
+        } else if(txt == "tr:nth-child(even)") {
+            style.backgroundColor = color + "1";
+        } else if(txt == "td, tr") {
+            style.borderLeftColor = color;
+            style.borderRightColor = color;
         } else if(ls1.includes(txt)) {
             var tmp = color;
             if(txt.includes(".collapser")) {
