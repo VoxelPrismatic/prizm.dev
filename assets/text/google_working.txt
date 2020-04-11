@@ -1,0 +1,23 @@
+#] So what still works?
+*for android 2.3.6 on my SPH-M580 from 2011
+**what I use
+
+| Website/App | Pros | Cons |
+| YouTube | Little to no ads! And, no ad-breaks whatsoever | Only in the browser, and no video resume |
+| Google Authenticator | Dark theme, and light on storage | None at all |
+| Reddit | None | Uses 'Diode', which can't view Multireddits |
+| Email | Dark theme | None |
+| Google itself | None | None |
+| Maps | None | None |
+| Hotspot | None | None |
+| Google Play Store | None | Eats up all of your storage, literally |
+| Phone/Text/VoiceMail | None | VoiceMail is non-visual |
+
+#] So what doesn't work anymore?
+
+> The YouTube app
+> News/Weather
+> Most websites that use SSL/TLS will not work, like GitHub Pages
+> > BUT! Opera Mini solves that issue just fine
+> The Market that it comes with
+> Discord, unfortunately.
