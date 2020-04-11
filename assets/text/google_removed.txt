@@ -1,0 +1,29 @@
+#] A list of things that Google has killed
+*that I actually used/am using, on android mostly
+
+###] 1. AMOLED Dark theme
+"Wait! That exists in Android 8.0+!"
+But what you don't know is that my phone from 2011 has it too. Not as an option, \
+but literally as the only theme it has. There is no light mode, only dark. Google \
+actually removed dark mode in Android 5.0 [Lollipop]
+
+In Google HQ: "Only plebians with eyes need dark mode, so they don't burn their \
+eyes out"
+
+###] 2. File Transfer
+"Wait, you can share over bluetooth!"
+But did you know that back in 2011, with Android 2.3 [Gingerbread], you can view \
+the entire contents of the SD card... over bluetooth... with any trusted device. \
+No joke, it's like the SD card is in the computer, except it's in read-only. You \
+can still transfer stuff to it over bluetooth, just not into the directory you \
+want.
+
+Instead, in Android 4.4 [KitKat] at least, you can only send files to it, and it \
+has this weird bluetooth wifi thing that doesn't even work.
+
+###] 3. UnZipping files locally
+"Wait you can do that!"
+Not in Android 4.4 [KitKat] you can't. In Android 2.3 [Gingerbread], you can.
+
+#] Google's tag-line
+"Features", the one thing that is *meant* to be removed.
