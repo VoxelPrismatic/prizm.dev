@@ -45,7 +45,11 @@ function tag_th(style, color) {
     style.color = color;
 }
 
-function tag_tr_nthchild(style, color) {
+function tag_tr_nthchild_even(style, color) {
+    style.backgroundColor = color + "1";
+}
+
+function tag_tr_nthchild_odd(style, color) {
     style.backgroundColor = color + "1";
 }
 
