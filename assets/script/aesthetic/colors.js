@@ -79,7 +79,7 @@ function swapColor(colorName, swapImg = true) {
             style.borderLeftColor = color;
             style.borderRightColor = color;
             style.color = color;
-        } else if(txt == "tr:nth-child(even)") {
+        } else if(txt == "tr:nth-child(2n)") {
             style.backgroundColor = color + "1";
         } else if(txt == "td, tr") {
             style.borderLeftColor = color;
