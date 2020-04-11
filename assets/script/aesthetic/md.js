@@ -222,7 +222,7 @@ function mk_table(st) {
         str += "</tr>";
     }
     str += "</table>";
-    return "</span>"+str+"<span>";
+    return str.replace(/<br><\/t(d|h)>/gm, "</t$1>");
 }
 
 function mk_ol(st) {
