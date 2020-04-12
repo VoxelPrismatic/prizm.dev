@@ -7,7 +7,7 @@ function a11y() {
     }
 
     for(var elem of find(">span")) {
-        if(span.className.includes("hide")) {
+        if(elem.className.includes("hide")) {
             elem.tabIndex = "0";
             elem.onkeydown = elem.onclick;
         } else {
