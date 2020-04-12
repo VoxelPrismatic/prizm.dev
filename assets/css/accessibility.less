@@ -3,8 +3,8 @@
 }
 
 // Non-selectable
-@noselect: #head, div, span, img;
-each(@noselect, {
+@nosel: #head, div, span, img;
+each(@nosel, {
     @{value}:hover, @{value}:focus {
         cursor: default;
         outline: none;
@@ -12,8 +12,8 @@ each(@noselect, {
 });
 
 // Selectable
-@select: a, h1, h2, h3, h4, h5, h6, .hide, button, .collapser, .lnk, #jumper;
-each(@select, {
+@sel: a, h1, h2, h3, h4, h5, h6, .hide, button, .collapser, .lnk, #jumper;
+each(@sel, {
     @{value}:hover:focus {
         cursor: pointer;
         outline: thin dotted;
