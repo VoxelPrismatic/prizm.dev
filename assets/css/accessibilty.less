@@ -1,0 +1,25 @@
+*:focus, *:hover {
+    outline: none;
+}
+
+// Non-selectable
+@noselect: #head, div, span, img;
+each(@noselect, {
+    @{value}:hover, @{value}:focus {
+        cursor: default;
+        outline: none;
+    }
+});
+
+// Selectable
+@select: a, h1, h2, h3, h4, h5, h6, .hide, button, .collapser, .lnk, #jumper;
+each(@select, {
+    @{value}:hover {
+        cursor: pointer;
+        outline: #aaa8 thin dotted;
+    }
+    @{value}:focus {
+        cursor: default;
+        outline: none;
+    }
+});
