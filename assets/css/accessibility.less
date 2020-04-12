@@ -14,12 +14,8 @@ each(@noselect, {
 // Selectable
 @select: a, h1, h2, h3, h4, h5, h6, .hide, button, .collapser, .lnk, #jumper;
 each(@select, {
-    @{value}:hover {
+    @{value}:hover:focus {
         cursor: pointer;
-        outline: #aaa8 thin dotted;
-    }
-    @{value}:focus {
-        cursor: default;
-        outline: none;
+        outline: thin dotted;
     }
 });
