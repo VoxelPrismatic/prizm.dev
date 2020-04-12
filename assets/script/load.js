@@ -29,6 +29,7 @@ function startLoading() {
     updateSpacer();
     if(find("jumper"))
         window.onscroll = changeScrollingThingy;
+    a11y();
 }
 
 function textPage(...pages) {
