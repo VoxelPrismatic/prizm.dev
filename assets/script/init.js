@@ -51,13 +51,11 @@ elements = [
     }
 ];
 
+document.getElementById("head").innerHTML = document.getElementById("title").content;
 
-var scripts = document.getElementById("scripts");
 for(var element of elements) {
-    scripts.appendChild(tag(element));
+    section.appendChild(tag(element));
 }
-
-document.getElementById("head").innerHTML = document.title;
 
 for(var script of scripts) {
     var elem = {

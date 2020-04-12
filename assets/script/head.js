@@ -12,8 +12,8 @@ function tryColor() {
 
 var elements = [
     {
-        "tag": "head",
-        "#0": document.getElementById("title").content
+        "tag": "title",
+        "#": document.getElementById("title").content
     }, {
         "tag": "link",
         "rel": "icon",
@@ -90,7 +90,7 @@ function tag(element) {
                 styler(elem, element[property]);
             }
         } else if(property.search(/#[0-9A-Fa-f]*/gm) == 0) {
-            elem.appendChild(document.createTextNode(element["#"]));
+            elem.appendChild(document.createTextNode(element[property]));
         } else {
             elem.setAttribute(property, element[property]);
         }
