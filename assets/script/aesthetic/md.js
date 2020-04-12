@@ -70,27 +70,32 @@ var line_regex = [
     ], [
         /e<<(.+?)>>/gm, 
         function(m, p1) {
-            return `<a href="mailto:${esc(p1)}>${esc(p1)}</a>`
+            return `<a href="mailto:${esc(p1)}>${esc(p1)}</a>`;
         }
     ], [
         /p<<(.+?)>>/gm, 
         function(m, p1) {
-            return `<a href="tel:${esc(p1)}>${esc(p1)}</a>`
+            return `<a href="tel:${esc(p1)}>${esc(p1)}</a>`;
         }
     ], [
-        /e\[(.+?)]<(.+?)>/gm, 
+        /e\[(.+?)\]<(.+?)>/gm, 
         function(m, p1, p2) {
-            return `<a href="mailto:${esc(p2)}>${esc(mark(p1))}</a>`
+            return `<a href="mailto:${esc(p2)}>${esc(mark(p1))}</a>`;
         }
     ], [
-        /p\[(.+?)]<(.+?)>/gm,
+        /p\[(.+?)\]<(.+?)>/gm,
         function(m, p1, p2) {
-            return `<a href="tel:${esc(p2)}>${esc(mark(p1))}</a>`
+            return `<a href="tel:${esc(p2)}>${esc(mark(p1))}</a>`;
+        }
+    ], [
+        /\?\[(.+?)\]<(.+)>/gm,
+        function(m, p1, p2) {
+            return `<span title="${p2}>${esc(mark(p1))}</span>`;
         }
     ], [
         /<<(.+?)>>/gm, 
         function(m, p1) {
-            return `<a href="${esc(p1)}>${esc(p1)}</a>`
+            return `<a href="${esc(p1)}>${esc(p1)}</a>`;
         }
     ],
 
