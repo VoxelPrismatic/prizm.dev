@@ -30,12 +30,11 @@ function a11y() {
 }
 
 function addFocus(evt, elem) {
-    console.log(evt, elem);
     for(var thing of find(".focusing")) {
         thing.classList.remove("focusing");
     }
     elem.classList.add("focusing");
-    window.setTimeout(removeFocus, 3000, elem);
+    window.setTimeout(removeFocus, 1000, elem);
     if(evt.key == "Enter" || elem.nodeName.startsWith("H")) {
         elem.click();
     }
@@ -45,5 +44,6 @@ function removeFocus(elem) {
     try {
         elem.classList.remove("focusing");
     } catch(err) {
+        console.log(err);
     }
 }
