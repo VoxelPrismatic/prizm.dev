@@ -9,6 +9,7 @@ var scripts = [
     "aesthetic/colors",
     "redirect/urls",
     "redirect/shorts",
+    "accessibilty"
 ];
 
 function loadPage() {
