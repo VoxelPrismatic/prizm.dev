@@ -1,13 +1,13 @@
 function startLoading() {
     try {
-        for(var x = 0; x <= 5000; x += 100) {
+        for(var x = 0; x <= 3000; x += 100) {
             window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
         }
         window.setTimeout(setTransitions, 1000);
         
         loadPage();
         if(document.URL.includes("#")) {
-            for(var x = 0; x < 300; x += 100) {
+            for(var x = 0; x < 500; x += 100) {
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
             }
         }
