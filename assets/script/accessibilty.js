@@ -27,6 +27,9 @@ function a11y() {
             elem.tabIndex = "-1";
         }
     }
+    
+    find("head").tabIndex = "-1";
+    find("truelogo").tabIndex = "-1";
 }
 
 function addFocus(evt, elem) {
