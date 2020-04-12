@@ -45,17 +45,17 @@ var line_regex = [
     [
         /e\[(.+?)\]<(.+?)>/gm, 
         function(m, p1, p2) {
-            return `<a href="mailto:${esc(p2)}>${esc(mark(p1))}</a>`;
+            return `<a href="mailto:${esc(p2)}">${esc(mark(p1))}</a>`;
         }
     ], [
         /p\[(.+?)\]<(.+?)>/gm,
         function(m, p1, p2) {
-            return `<a href="tel:${esc(p2)}>${esc(mark(p1))}</a>`;
+            return `<a href="tel:${esc(p2)}">${esc(mark(p1))}</a>`;
         }
     ], [
-        /\?\[(.+?)\]<(.+)>/gm,
+        /\?\[(.+?)\]<(.+?)>/gm,
         function(m, p1, p2) {
-            return `<span title="${p2}" class="def">${esc(mark(p1))}</span>`;
+            return `<span title="${esc(p2)}" class="def">${esc(mark(p1))}</span>`;
         }
     ], [
         /\@\[(.+?)\]<(.+?)>/gm,
