@@ -5,10 +5,8 @@
 // Non-selectable
 @nosel: #head, div, span, img;
 each(@nosel, {
-    @{value}:hover {
+    @{value}:hover, @{value}:focus {
         cursor: default;
-    }
-    @{value}:focus {
         outline: none;
     }
 });
