@@ -63,6 +63,7 @@ function getHeight(elem) {
 
 function updateSpacer() {
     var spacer = find("spacer");
+    spacer.style.transition = "none";
     spacer.style.height = "0px";
     var height = window.innerHeight;
     var x = 0;
