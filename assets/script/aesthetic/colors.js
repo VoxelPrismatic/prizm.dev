@@ -51,35 +51,6 @@ function setTransitions() {
     }
 }
 
-
-var selectors = {
-    "h1, h2, h3, h4, h5, h6": tag_h1_h2_h3_h4_h5_h6,
-    "#logo:hover, #logo:focus": id_logo_hover,
-    "a": tag_a,
-    "a:hover, a:focus": tag_a_hover,
-    ".tab": cls_tab,
-    "th": tag_th,
-    "tr:nthchild(2n)": tag_tr_nthchild_even,
-    "tr:nthchild(2n+1)": tag_tr_nthchild_odd,
-    "td, tr": tag_td_tr,
-    ".sect": cls_sect,
-    ".collapser": cls_collapser,
-    ".collapser:hover, .collapser:focus": cls_collapser_hover,
-    ".collopen": cls_collopen,
-    ".collopen:hover, .collopen:focus": cls_collopen_hover,
-    ".line": cls_line,
-    ".line:hover, .line:focus": cls_line_hover,
-    ".lnk:hover, .lnk:focus": cls_lnk_hover,
-    ".sel": cls_sel,
-    ".sel:hover, .sel:focus": cls_sel_hover,
-    ".lnk": cls_lnk,
-    ".btn": cls_btn,
-    ".btn:hover, .btn:focus": cls_btn_hover,
-    "#jumper": id_jumper
-}
-    
-
-
 function swapColor(colorName, swapImg = true) {
     var color;
     var bg; 
