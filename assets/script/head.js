@@ -12,6 +12,9 @@ function tryColor() {
 
 var elements = [
     {
+        "tag": "head",
+        "#0": document.getElementById("title").content
+    }, {
         "tag": "link",
         "rel": "icon",
         "type": "image/png",

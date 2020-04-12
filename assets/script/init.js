@@ -41,6 +41,24 @@ function nextReady() {
     maybeReady(numReady - 1);
 };
 
+elements = [
+    {
+        "tag": "div",
+        "id": "file"
+    }, {
+        "tag": "a",
+        "id": "hiddenlink",
+    }
+];
+
+
+var scripts = document.getElementById("scripts");
+for(var element of elements) {
+    scripts.appendChild(tag(element));
+}
+
+document.getElementById("head").innerHTML = document.title;
+
 for(var script of scripts) {
     var elem = {
         "tag": "script",
