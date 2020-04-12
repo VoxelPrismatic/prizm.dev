@@ -130,7 +130,7 @@ function cls_lnk(style, color) {
 function cls_btn(style, color) {
     border_colors(style, color, "tlr");
     style.color = color;
-    style.backgroundColor = color;
+    style.backgroundColor = color + "4";
 }
 
 function cls_btn_hover(style, color) {
