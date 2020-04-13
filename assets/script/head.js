@@ -10,11 +10,13 @@ function tryColor() {
     }
 }
 
+try {
+    document.title = document.getElementById("title").content;
+} catch(err) {
+}
+
 var elements = [
     {
-        "tag": "title",
-        "#": document.getElementById("title").content
-    }, {
         "tag": "link",
         "rel": "icon",
         "type": "image/png",
