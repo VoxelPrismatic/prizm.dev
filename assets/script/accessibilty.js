@@ -38,7 +38,7 @@ function addFocus(evt, elem) {
     }
     try {
         elem.classList.add("focusing");
-        window.setTimeout(removeFocus, 3000, elem);
+        window.setTimeout(removeFocus, 1000, elem);
         if(evt.key == "Enter" || elem.nodeName.startsWith("H") && evt.key == "Tab") {
             elem.click();
         }
