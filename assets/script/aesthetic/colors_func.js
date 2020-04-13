@@ -12,11 +12,11 @@ function border_colors(style, color, borders) {
 }
 
 function link_color(color) {
-    return color.replace(/[a]/gm, "c").replace(/[04]/gm, "8");
+    return color.replace(/[a]/gm, "c").replace(/[8]/gm, "a").replace(/[04]/gm, "8");
 }
 
 function hover_color(color) {
-    return color.replace(/[a]/gm, "e").replace(/[04]/gm, "c");
+    return color.replace(/[a]/gm, "e").replace(/[8]/gm, "c").replace(/[04]/gm, "a");
 }
 
 function tag_h1_h2_h3_h4_h5_h6(style, color) {
