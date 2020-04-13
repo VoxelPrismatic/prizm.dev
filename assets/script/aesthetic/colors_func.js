@@ -108,12 +108,12 @@ function group_ls2(style, color) {
 }
 
 function cls_lnk(style, color) {
-    group_ls2(style, color + "8");
+    group_ls2(style, color);
     style.backgroundColor = "";
 }
 
 function cls_lnk_hover(style, color) {
-    color = link_color(color) + "8";
+    color = link_color(color);
     group_ls2(style, color);
 }
 
