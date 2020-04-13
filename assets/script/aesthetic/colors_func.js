@@ -57,7 +57,6 @@ function tag_td_tr(style, color) {
     border_colors(style, color, "lr");
 }
 
-
 function group_ls1(style, color) {
     border_colors(style, color, "tlr");
 }
@@ -68,13 +67,13 @@ function cls_sect(style, color) {
 
 function cls_collapser(style, color) {
     color = colors["grey"][0];
-    style.backgroundColor = color;
+    style.backgroundColor = color + "2";
     group_ls1(style, color);
 }
 
 function cls_collapser_hover(style, color) {
     color = colors["white"][0];
-    style.backgroundColor = color;
+    style.backgroundColor = color + "4";
     group_ls1(style, color);
 }
 
@@ -105,7 +104,12 @@ function cls_line_hover(style, color) {
 function group_ls2(style, color) {
     border_colors(style, color, "tlr");
     style.color = color.slice(0, 4);
-    style.backgroundColor = color + "4";
+    style.backgroundColor = color + "2";
+}
+
+function cls_lnk(style, color) {
+    group_ls2(style, color + "8");
+    style.backgroundColor = "";
 }
 
 function cls_lnk_hover(style, color) {
@@ -114,17 +118,12 @@ function cls_lnk_hover(style, color) {
 }
 
 function cls_sel(style, color) {
-    color = hover_color(color) + "8";
+    color = hover_color(color);
     group_ls2(style, color);
 }
 
 function cls_sel_hover(style, color) {
-    group_ls2(style, color + "a");
-}
-
-function cls_lnk(style, color) {
-    group_ls2(style, color + "8");
-    style.backgroundColor = "";
+    group_ls2(style, color);
 }
 
 function cls_btn(style, color) {
