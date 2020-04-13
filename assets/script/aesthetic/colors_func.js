@@ -67,13 +67,13 @@ function cls_sect(style, color) {
 
 function cls_collapser(style, color) {
     color = colors["grey"][0];
-    style.backgroundColor = color + "2";
+    style.backgroundColor = color + "1";
     group_ls1(style, color);
 }
 
 function cls_collapser_hover(style, color) {
     color = colors["white"][0];
-    style.backgroundColor = color + "4";
+    style.backgroundColor = color + "2";
     group_ls1(style, color);
 }
 
