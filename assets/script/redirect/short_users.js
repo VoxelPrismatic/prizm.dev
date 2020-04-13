@@ -1,4 +1,4 @@
 var users = {
-    "lUF0e8CrFIgkG1Hr": "PRIZ ;]#9244",
-    "O-HJa9YcLqgmYO2Q": "PRIZ ;]#9244"
+    "lUF0e8CrFIgkG1Hr": 481591703959240706,
+    "O-HJa9YcLqgmYO2Q": 481591703959240706
 }
