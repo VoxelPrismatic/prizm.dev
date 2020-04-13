@@ -8,7 +8,7 @@ function a11y() {
         }
     }
     
-    for(var thing of [">a", ">img"]) {
+    for(var thing of [">a", ">img", ".lnk"]) {
         for(var elem of find(thing)) {
             elem.tabIndex = "0";
             elem.onkeyup = function(evt) {
