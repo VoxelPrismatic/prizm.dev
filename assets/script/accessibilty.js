@@ -36,9 +36,12 @@ function addFocus(evt, elem) {
     for(var thing of find(".focusing")) {
         thing.classList.remove("focusing");
     }
-    elem.classList.add("focusing");
-    window.setTimeout(removeFocus, 1000, elem);
-    if(evt.key == "Enter" || elem.nodeName.startsWith("H")) {
+    try {
+        elem.classList.add("focusing");
+    } catch(err) {
+    }
+    window.setTimeout(removeFocus, 3000, elem);
+    if(evt.key == "Enter" || elem.nodeName.startsWith("H") && evt.key == "Tab") {
         elem.click();
     }
 }
