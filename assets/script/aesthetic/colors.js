@@ -30,8 +30,11 @@ function setTransitions() {
     var stuffs = [];
     for(var rule of rules) {
         var txt = rule.selectorText;
-        if(txt && (txt.includes("hover") || txt.includes("focus")) && !txt.includes(".sect")) {
-            stuffs.push(txt.split(":")[0]);
+        if(txt && (txt.includes("hover") || txt.includes("focus"))) {
+            if(txt.includes(".sect"))
+                rule.style.transition = "none !important";
+            else
+                stuffs.push(txt.split(":")[0]);
         }
     }
     for(var rule of rules) {
@@ -48,6 +51,10 @@ function setTransitions() {
                 rule.style.transition = "none";
             }
         }
+    }
+    for(var css of [".sect", ".dict"]) {
+        for(var elem of find(css))
+            elem.style.transition = "none";
     }
 }
 
