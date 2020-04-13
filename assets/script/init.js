@@ -51,7 +51,12 @@ elements = [
     }
 ];
 
-document.getElementById("head").innerHTML = document.getElementById("title").content;
+
+try {
+    document.title = document.getElementById("title").content;
+    document.getElementById("head").innerHTML = document.title;
+} catch(err) {
+}
 
 for(var element of elements) {
     section.appendChild(tag(element));
