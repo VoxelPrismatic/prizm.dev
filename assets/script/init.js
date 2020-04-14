@@ -18,14 +18,13 @@ function loadPage() {
 
 if(loader) {
     scripts.push("content/" + loader);
-}
-
-if(loader != "404") {
-    document.body.appendChild(tag({
-        "id": "jumper",
-        "onclick": "jumpToEdge()",
-        "#": "[V]"
-    }));
+    if(loader != "404") {
+        document.body.appendChild(tag({
+            "id": "jumper",
+            "onclick": "jumpToEdge()",
+            "#": "[V]"
+        }));
+    }
 }
 
 function ready() {
