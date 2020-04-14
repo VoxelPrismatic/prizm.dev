@@ -68,7 +68,7 @@ function updateSpacer() {
     spacer.style.height = "0px";
     var height = window.innerHeight;
     var x = 0;
-    while(Number(compSty(">BODY").height.slice(0, -2)) + 5 < height) {
+    while(Number(compSty(">BODY").height.slice(0, -2)) + 7 < height) {
         spacer.style.height = x + "px";
         x += 1;
     }
