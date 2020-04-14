@@ -7,7 +7,7 @@ function loadFooter() {
         var blocks = find("content").children;
         var section = blocks[0];
         for(var child of blocks) {
-            if(child.className.includes(".sect")) {
+            if(child.className.includes("sect")) {
                 section = child;
             }
         }
