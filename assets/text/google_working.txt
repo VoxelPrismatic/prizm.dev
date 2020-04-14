@@ -12,6 +12,7 @@
 | Hotspot | None | None |
 | Google Play Store | None | Eats up all of your storage, literally |
 | Phone/Text/VoiceMail | None | VoiceMail is non-visual |
+| Twitter | Loads very quickly | Have to use Opera Mini |
 
 #] So what doesn't work anymore?
 
