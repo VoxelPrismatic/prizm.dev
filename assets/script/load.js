@@ -1,5 +1,9 @@
 function loadFooter() {
     if(!document.URL.includes("/error")) {
+        try {
+            find("spacer").remove();
+        } catch(err) {
+        }
         var blocks = find("content").children;
         var section = blocks[0];
         for(var child of blocks) {
