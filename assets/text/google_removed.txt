@@ -16,9 +16,11 @@ eyes out"
 
 But did you know that back in 2011, with Android 2.3 [Gingerbread], you can view \
 the entire contents of the SD card... over bluetooth... with any trusted device. \
-No joke, it's like the SD card is in the computer, except it's really slow. With \
-Linux, all you have to do is install `obexftp` and now you can even write to it \
-remotely!
+No joke, it's like the SD card is in the computer, except it's really slow. Granted, \
+you can't exactly rename files out of the box, but otherwise it works just fine! \
+Think about it, syncing your music or photos or contacts completely wirelessly... \
+that thing Apple is aiming for. All you have to do is go back to 2011 and you already \
+have it!
 
 Instead, in Android 4.4 [KitKat] at least, you can only send files to it via \
 bluetooth sharing, and it has this weird bluetooth wifi thing that doesn't even work.
@@ -27,7 +29,10 @@ bluetooth sharing, and it has this weird bluetooth wifi thing that doesn't even 
 *"Wait you can do that!"*
 
 Not in Android 4.4 [KitKat] you can't. In Android 2.3 [Gingerbread], you can. \
-Idk why this feature was removed, it literally makes no sense.
+Idk why this feature was removed, it literally makes no sense. Keep in mind that \
+v2.3 had a storage limit of 160 megabytes... and that isn't a typo. #160mb#. \
+Somehow google put that functionality in there, but couldn't make it work in a device \
+that has over 4gb of storage.
 
 ###] The MENU button
 *"Who needs the menu button? It's in settings anyway"*
@@ -41,7 +46,7 @@ and sometimes they aren't even there!
 Bruh Android 2.3 has spotlight search, like in iOS. And when supported, \
 I can just type using a physical keyboard and it will automatically search through \
 a list! Like in the music app, just start typing, and it will filter down the items. \
-Works in managing apps and even more!
+Works in managing apps and even more.
 
 #] Google's tag-line
 "Features", the one thing that is #*meant*# to be removed.
