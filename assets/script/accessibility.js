@@ -12,7 +12,7 @@ function a11y() {
         }
     }
     
-    for(var thing of [">a", ">img", ".lnk", "button", ".collapser"]) {
+    for(var thing of [">a", ">img", ".lnk", ">button", ".collapser"]) {
         try {
             for(var elem of find(thing)) {
                 elem.tabIndex = "0";
