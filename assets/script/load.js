@@ -21,7 +21,7 @@ function startLoading() {
                     section = child;
                 }
             }
-            child.appendChild(footer);
+            section.appendChild(footer);
         }
     
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
