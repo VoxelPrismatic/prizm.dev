@@ -62,14 +62,7 @@ function getHeight(elem) {
 }
 
 function updateSpacer() {
-    try {
-        var spacer = find("spacer");
-        if(!spacer) {
-            loadFooter();
-        }
-    } catch(err) {
-        loadFooter();
-    }
+    loadFooter();
     spacer = find("spacer");
     spacer.style.transition = "none";
     spacer.style.height = "0px";
