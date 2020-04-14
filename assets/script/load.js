@@ -15,7 +15,13 @@ function startLoading() {
         }
         if(!document.URL.includes("/error")) {
             var blocks = find("content").children;
-            blocks.item(blocks.length - 1).appendChild(footer);
+            var section = blocks[0];
+            for(var child of blocks) {
+                if(child.className.includes(".sect")) {
+                    section = child;
+                }
+            }
+            child.appendChild(footer);
         }
     
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
