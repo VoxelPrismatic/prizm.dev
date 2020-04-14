@@ -5,6 +5,12 @@ function jumpToEdge() {
         find("footer").scrollIntoView({behavior: "smooth"});
 }
 
+function resetUpdate() {
+    shouldUpdate = true;
+}
+
+shouldUpdate = true;
+
 function changeScrollingThingy() {
     if(window.scrollY % 2)
         return;
@@ -12,8 +18,11 @@ function changeScrollingThingy() {
         setHtml("jumper", "[\u039b]");
     else
         setHtml("jumper", "[V]");
-    if(window.scrollMaxY - window.scrollY <= 50)
+    if(shouldUpdate) {
         updateSpacer();
+        shouldUpdate = false;
+        window.setTimeout(resetUpdate, 500);
+    }
 }
 
 function resizeDicts(log = true) {
