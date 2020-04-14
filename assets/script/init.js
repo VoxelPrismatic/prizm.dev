@@ -16,8 +16,17 @@ function loadPage() {
     // In case of error/404 page
 }
 
-if(loader)
+if(loader) {
     scripts.push("content/" + loader);
+}
+
+if(loader != "404") {
+    document.body.appendChild(tag({
+        "id": "jumper",
+        "onclick": "jumpToEdge()",
+        "#": "[V]"
+    }));
+}
 
 function ready() {
     startLoading();
@@ -47,7 +56,7 @@ elements = [
         "id": "file"
     }, {
         "tag": "a",
-        "id": "hiddenlink",
+        "id": "hiddenlink"
     }
 ];
 
