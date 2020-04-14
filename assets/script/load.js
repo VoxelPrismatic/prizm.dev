@@ -1,3 +1,16 @@
+function loadFooter() {
+    if(!document.URL.includes("/error")) {
+        var blocks = find("content").children;
+        var section = blocks[0];
+        for(var child of blocks) {
+            if(child.className.includes(".sect")) {
+                section = child;
+            }
+        }
+        section.appendChild(footer);
+    }
+}
+
 function startLoading() {
     try {
         for(var x = 0; x <= 3000; x += 100) {
@@ -13,16 +26,8 @@ function startLoading() {
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
             }
         }
-        if(!document.URL.includes("/error")) {
-            var blocks = find("content").children;
-            var section = blocks[0];
-            for(var child of blocks) {
-                if(child.className.includes(".sect")) {
-                    section = child;
-                }
-            }
-            section.appendChild(footer);
-        }
+        
+        loadFooter();
     
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
