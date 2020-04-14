@@ -1,30 +1,42 @@
 function a11y() {
     for(var header of ["1", "2", "3", "4", "5", "6"]) {
-        for(var elem of find(">h" + header)) {
-            elem.tabIndex = "0";
-            elem.onkeyup = function(evt) {
-                addFocus(evt, this);
+        try {
+            for(var elem of find(">h" + header)) {
+                elem.tabIndex = "0";
+                elem.onkeyup = function(evt) {
+                    addFocus(evt, this);
+                }
             }
+        } catch(err) {
+            console.error(err);
         }
     }
     
     for(var thing of [">a", ">img", ".lnk", "button", ".collapser"]) {
-        for(var elem of find(thing)) {
-            elem.tabIndex = "0";
-            elem.onkeyup = function(evt) {
-                addFocus(evt, this);
+        try {
+            for(var elem of find(thing)) {
+                elem.tabIndex = "0";
+                elem.onkeyup = function(evt) {
+                    addFocus(evt, this);
+                }
             }
+        } catch(err) {
+            console.error(err);
         }
     }
 
     for(var elem of find(">span")) {
-        if(elem.className.includes("hide")) {
-            elem.tabIndex = "0";
-            elem.onkeyup = function(evt) {
-                addFocus(evt, this);
+        try {
+            if(elem.className.includes("hide")) {
+                elem.tabIndex = "0";
+                elem.onkeyup = function(evt) {
+                    addFocus(evt, this);
+                }
+            } else {
+                elem.tabIndex = "-1";
             }
-        } else {
-            elem.tabIndex = "-1";
+        } catch(err) {
+            console.error(err);
         }
     }
     
