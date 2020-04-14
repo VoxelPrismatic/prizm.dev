@@ -1,14 +1,7 @@
 function loadPage() {
     var data = JSON.parse(load("/prizm.dev/assets/data/404.json").replace(/\\\n/gm, "\\n"));
     var thing = document.URL.split("/prizm.dev/")[1].split("?")[0].split("#")[0];
-    var stuff = null;
-    if(data.includes(thing)) {
-        stuff = data[thing];
-    }
-    thing = thing.slice(0, -1);
-    if(data.includes(thing)) {
-        stuff = data[thing];
-    }
+    var stuff = data[thing] || data[thing.slice(0, -1)];
     if(stuff) {
         setHtml("404", `\
 <h1>#] Hey mate, you shouldn't be here.</h1>
