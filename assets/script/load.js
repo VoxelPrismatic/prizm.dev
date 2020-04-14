@@ -1,7 +1,7 @@
 function loadFooter() {
     if(!document.URL.includes("/error")) {
         try {
-            find("spacer").remove();
+            find("footer").parentElement.remove();
         } catch(err) {
         }
         var blocks = find("content").children;
