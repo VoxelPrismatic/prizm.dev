@@ -149,7 +149,7 @@ var line_regex = [
     [/\{\{(\w+?)\}\}(.+?) /gm, "<span class='$1'>$2 </span>"],
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div></br>"],
     [/\\ *$/gm, "</br>"], //New line escape
-    [/-~-/gm, "<div class='line'></div></br>"],
+    [/^-~-$/gm, "<div class='line'></div></br>"],
     [/(<u>_<\/u>|___)/gm, "<div>"],
     [/===/gm, "</div>"],
 
