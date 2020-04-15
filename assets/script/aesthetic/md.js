@@ -292,7 +292,7 @@ function mark_page(st) {
         }
         if(inquoted) {
             inquoted = false;
-            str += "<blockquote>" + mark_page(quoted) + "</blockquote>";
+            str += "<blockquote>" + mark_page(quoted.slice(0, -1)) + "</blockquote>";
             quoted = "";
         }
         
