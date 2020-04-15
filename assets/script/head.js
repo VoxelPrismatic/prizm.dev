@@ -64,6 +64,18 @@ if(document.URL.includes("/prizm.dev/disqus")) {
         "tag": "meta",
         "http-equiv": "Access-Control-Allow-Origin",
         "content": "https://disqus.com/"
+    }, {
+        "tag": "meta",
+        "http-equiv": "Access-Control-Allow-Methods",
+        "content": "POST, GET, OPTIONS"
+    }, {
+        "tag": "meta",
+        "http-equiv": "Access-Control-Allow-Headers",
+        "content": "X-PINGOTHER"
+    }, {
+        "tag": "meta",
+        "http-equiv": "Access-Control-Max-Age",
+        "content": "1728000"
     });
 }
 
