@@ -119,17 +119,17 @@ var line_regex = [
     [/^\_(.+?)\_/gm, "<u>$1</u>"],
     [/^\~(.+?)\~/gm, "<s>$1</s>"],
     [/^\`(.+?)\`/gm, `<span class="code">$1</span>`],
-    [/^\^(.+?)\^/gm, "<sup>$1</sup>"],
-    [/^\%(.+?)\%/gm, "<sub>$1</sub>"],
-    [/^\!\!(.+?)\!\!/gm, `<span class="hide" onclick="this.classList.toggle('unhide');">$1</span>`],
+    [/^\>\^(.+?)\^\</gm, "<sup>$1</sup>"],
+    [/^\>\%(.+?)\%\</gm, "<sub>$1</sub>"],
+    [/^\>\!(.+?)\!\</gm, `<span class="hide" onclick="this.classList.toggle('unhide');">$1</span>`],
     [/([^\\])\#(.+?)\#/gm, "$1<b>$2</b>"],
     [/([^\\])\*(.+?)\*/gm, "$1<i>$2</i>"],
     [/([^\\])\_(.+?)\_/gm, "$1<u>$2</u>"],
     [/([^\\])\~(.+?)\~/gm, "$1<s>$2</s>"],
     [/([^\\])\`(.+?)\`/gm, `$1<span class="code">$2</span>`],
-    [/([^\\])\^(.+?)\^/gm, "$1<sup>$2</sup>"],
-    [/([^\\])\%(.+?)\%/gm, "$1<sub>$2</sub>"],
-    [/([^\\])\!\!(.+?)\!\!/gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
+    [/([^\\])\>\^(.+?)\^\</gm, "$1<sup>$2</sup>"],
+    [/([^\\])\>\%(.+?)\%\</gm, "$1<sub>$2</sub>"],
+    [/([^\\])\>\!(.+?)\!\</gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
     
     //Alignment
     [
