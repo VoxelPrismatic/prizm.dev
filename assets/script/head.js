@@ -59,12 +59,12 @@ var elements = [
     }
 ];
 
-if(window.location.protocol == "file:") {
+if(document.URL.includes("/prizm.dev/disqus")) {
     elements.push({
-        "tag": "base",
-        "href": "https://voxelprismatic.github.io/"
-    })
-    window.alert("WARNING: This site is local only, some links may not link properly");
+        "tag": "meta",
+        "http-equiv": "Access-Control-Allow-Origin",
+        "content": "https://disqus.com/"
+    });
 }
 
 function tag(element) {
