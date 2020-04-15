@@ -285,9 +285,9 @@ function mark_page(st) {
         }
         
         //Block Quote
-        if(line.startsWith("::")) {
+        if(line.startsWith(":: ")) {
             inquoted = true;
-            quoted += line + "\n";
+            quoted += line.slice(3) + "\n";
             continue;
         }
         if(inquoted) {
