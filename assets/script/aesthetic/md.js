@@ -130,7 +130,6 @@ var line_regex = [
     [/([^\\])\^(.+?)\^/gm, "$1<sup>$2</sup>"],
     [/([^\\])\%(.+?)\%/gm, "$1<sub>$2</sub>"],
     [/([^\\])\!\!(.+?)\!\!/gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
-    [/^\:\: (.+)$/gm, `<span class="md-com">\u200b \u200b$1</span>`],
     
     //Alignment
     [
@@ -264,11 +263,13 @@ function mark_page(st) {
     var table = "";
     var ol = "";
     var ul = "";
+    var quoted = "";
     var inpy = false;
     var intable = false;
     var inol = false;
     var inul = false;
     var incode = false;
+    var inquoted = false;
     for(var line of st.split("\n")) {
         if(line == "```") {
             incode = !incode;
@@ -282,6 +283,19 @@ function mark_page(st) {
             str += line + "\n";
             continue;
         }
+        
+        //Block Quote
+        if(line.startsWith("::"))) {
+            inquoted = true;
+            quoted += line + "\n";
+            continue;
+        }
+        if(inquoted) {
+            inquoted = false;
+            str += "<blockquote>" + mark_page(quoted) + "</blockquote>";
+            quoted = "";
+        }
+        
         //Table
         if(line.replace(/^(\|.+)+\|$/gm, "") == "" && !intable && line != "") {
             intable = true;
