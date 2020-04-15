@@ -16,4 +16,14 @@ line v `-~-`
 :: :: :: again!
 :: :: :: :: bruh
 :: :: :: :: :: how long can this go?
-:: :: :: :: :: :: idk
+:: :: :: :: :: :: \:\: forever based on my implementation...
+
+|:tables |:are:| neat:|
+|are|they|not?|
+
+```
+code block
+
+|:tables |:are:| neat:|
+|are|they|not?|
+```
