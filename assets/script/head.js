@@ -59,26 +59,6 @@ var elements = [
     }
 ];
 
-if(document.URL.includes("/prizm.dev/disqus")) {
-    elements.push({
-        "tag": "meta",
-        "http-equiv": "Access-Control-Allow-Origin",
-        "content": "https://disqus.com/"
-    }, {
-        "tag": "meta",
-        "http-equiv": "Access-Control-Allow-Methods",
-        "content": "POST, GET, OPTIONS"
-    }, {
-        "tag": "meta",
-        "http-equiv": "Access-Control-Allow-Headers",
-        "content": "X-PINGOTHER"
-    }, {
-        "tag": "meta",
-        "http-equiv": "Access-Control-Max-Age",
-        "content": "1728000"
-    });
-}
-
 function tag(element) {
     var elem = document.createElement(element["tag"]);
     for(var property of element.constructor.keys(element)) {
