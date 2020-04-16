@@ -91,10 +91,9 @@ function mark_page(st) {
             str += line+"\n";
     }
     str = str.replace(/\n/gm, "<br>");
-    //Only one <br> after ending block
-    str = str.replace(/\<(\/(h\d|div))\>([ \n]*\<br\>[ \n]*)+/gm, "<$1><br>");
-    //No <br> after starting block
-    str = str.replace(/\<(div|h\d)\>([ \n]*\<br\>[ \n]*)+/gm, "<$1>");
+    //Only one <br> after start/end tag
+    str = str.replace(/\<((\/)?(h\d|div|ol|ul))\>([ \n]*\<br\>[ \n]*)+/gm, "<$1$2><br>");
+    str = str.replace(/([ \n]*\<br\>[ \n]*)+\<((\/)?(h\d|div|ol|ul))\>/gm, "<br><$2$3>");
     str = str.replace(/(<br>)*?<(\/)blockquote>(<br>)*?/gm, "<$2blockquote>");
     return str;
 }
