@@ -76,7 +76,7 @@ var line_regex = [
     [/\\([^u])/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
 
     //Headers
-    [/^\#{1,6}\] +(.+)$/gm, head],
+    [/^\#{1,6}\] +(.+)$/gm, mk_head],
 
     //Main MD
     [/^\#(.+?)\#/gm, "<b>$1</b>"],
