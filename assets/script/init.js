@@ -6,7 +6,6 @@ var scripts = [
     "md/mk/ol",
     "md/mk/ul",
     "md/mark",
-    "md/re",
     "aesthetic/collapse",
     "aesthetic/dynamic",
     "other",
@@ -15,7 +14,8 @@ var scripts = [
     "aesthetic/colors",
     "redirect/urls",
     "redirect/shorts",
-    "accessibility"
+    "accessibility",
+    "md/re"
 ];
 
 function loadPage() {
