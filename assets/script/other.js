@@ -94,6 +94,7 @@ function changeFunnyTextThing() {
     while(theText == "" || theText == findHtml("funnytextthing"))
         theText = texts[Math.floor(Math.random() * texts.length)];
     setHtml("funnytextthing", theText);
+    window.setTimeout(updateSpacer, 50);
 }
 
 
