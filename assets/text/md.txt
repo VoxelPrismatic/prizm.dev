@@ -7,7 +7,7 @@
 
 #\#bold\## *\*ital\** _\_under\__ ~\~strike\~~
 >!\>\!spoil\!\<!< >^\>\^sup\^\<^< >v\>\v sub \v\<v<
-`code`
+`\`code\`` ?[hover over me]<\?\[hover over me\]\<...\>>
 
 line v `-~-`
 
