@@ -3,5 +3,8 @@ function loadPage() {
     var style = thread.style;
     thread.className = "sect";
     style.paddingTop = "0px";
-    thread.onload = window.onresize
+    thread.onload = delayUpdateSpacer;
+    thread.onresize = delayUpdateSpacer;
+    style.overflow = "";
+    style.height = "";
 }
