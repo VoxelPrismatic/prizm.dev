@@ -292,7 +292,7 @@ function mark_page(st) {
         }
         if(inquoted) {
             inquoted = false;
-            str += "<blockquote>" + mark_page(quoted.slice(0, -1)) + "</blockquote>";
+            str += "<blockquote>" + mark_page(quoted.slice(0, -1)).slice(0, -4) + "</blockquote>";
             quoted = "";
         }
         
@@ -356,5 +356,6 @@ function mark_page(st) {
     str = str.replace(/\<(\/(h\d|div))\>([ \n]*\<br\>[ \n]*)+/gm, "<$1><br>");
     //No <br> after starting block
     str = str.replace(/\<(div|h\d)\>([ \n]*\<br\>[ \n]*)+/gm, "<$1>");
+    str = str.replace(/(<br>)*?<(\/)blockquote>(<br>)*?/gm, "<$2blockquote>");
     return str;
 }
