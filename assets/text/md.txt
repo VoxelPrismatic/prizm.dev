@@ -5,13 +5,11 @@
 #####] H5
 ######] H6
 
-#\#bold\## *\*ital\** _\_under\__ ~\~strike\~~
->!\>\!spoil\!\<!< >^\>\^sup\^\<^< >v\>\v sub \v\<v<
-`\`code\`` ?[hover over me]<\?\[hover over me\]\<...\>>
 
-line v `-~-`
+###] Basics
+#\#bold\## *\*ital\** _\_under\__ ~\~strike\~~ >!\>\!spoil\!\<!< >^\>\^sup\^\<^< >v\>\v sub \v\<v< \
+`\`code\`` 
 
--~-
 
 :: block quote
 :: :: nested!
@@ -20,25 +18,59 @@ line v `-~-`
 :: :: :: :: :: how long can this go?
 :: :: :: :: :: :: \:\: forever based on my implementation...
 
+
+###] Links and similar format
+?[hover over me]<\?\[hover over me\]\<...\>> 
++[\+\[open in new tab\]\<url\>]<#>
+[\[open in this tab\]\<url\>]<#>
+e[\e\[email me!\]\<lol@no.pls\>]<lol@no.pls>
+p[\p\[maybe a call?\]\<+1-337-420-6969\>]<+1-337-420-6969>
+?[@[sorry mate, this is an image]</prizm.dev/assets/image/priz_blue.png>]<\@\[alt text\]\<url\>>
+[[\[\[BUTTON LINKS!!!\]\]\<url\>]]<#>
++[[\+\[\[IN NEW TABS!!!\]\]\<url\>]]<#>
+
+
+###] Advanced
+
+line v `-~-`
+
+-~-
+
 |:tables |:are:| neat:|
 |are|they|not?|
 
 ```
+\`\`\`
 code block
 
 |:tables |:are:| neat:|
 |are|they|not?|
+\`\`\`
 ```
 
 - \- unordered lists
 - \- are pretty cool
 
 1. \1\. same with ordered
-2. \1\. but less cool
+2. \2\. but less cool
 
-:<: \:<\: LEFT!
-:v: \:v\: CENTER!
-:>: \:>\: RIGHT!
+:<: \:<\: LEFT! \
+:v: \:v\: CENTER! \
+:>: \:>\: RIGHT! \
 *normally justified
 
 Key :^: \:^\: Value
+
+###] Unicode interpreting
+
+| Written    :|:Output     |
+| \\U00000041 | \U00000041 |
+| \\u0042     | \u0042     |
+| \\u{43}     | \u{43}     |
+| \\x44       | \x44       |
+| \\N{LATIN CAPITAL LETTER E} | \N{LATIN CAPITAL LETTER E} |
+*when using the \\N{...} stuff, the page will take longer to load simply because \
+it has to load the 1mb lookup table, then turn that into nice JSON data.
+
+###] Escaping
+You can put a `\\` anywhere you like!
