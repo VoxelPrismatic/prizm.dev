@@ -17,6 +17,7 @@ var scripts = [
     "redirect/shorts",
     "accessibility",
     "unidata",
+    "delay",
 ];
 
 function loadPage() {
