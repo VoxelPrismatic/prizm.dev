@@ -11,6 +11,6 @@ function load_unicode_index() {
     console.log("Finished loading unicode index");
 }
 
-function unidata(st) {
+function unimap(st) {
     return uni[st.toUpperCase()];
 }
