@@ -82,5 +82,5 @@ function load(filename, aio = false, strip = false) {
         return new Promise(resolve => {
             setTimeout(() => {resolve(findHtml("file"));}, 100)
         });
-    return findHtml("file");
+    return findHtml("file").replace(/\&lt\;/gm, "<").replace(/\&gt\;/gm, ">");
 }
