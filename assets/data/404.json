@@ -110,5 +110,13 @@
     "assets/data": [
         "JSON files",
         "JSON for indexes, and that's about it."
+    ],
+    "assets/md": [
+        "markdown interpreter",
+        "JS for working with my custom markdown flavor, and that's about it."
+    ],
+    "assets/md/mk": [
+        "markdown sub-interpreters",
+        "JS for working with sub markdown things, like tables and lists."
     ]
 }

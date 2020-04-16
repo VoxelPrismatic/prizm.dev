@@ -26,7 +26,7 @@ function didntRedirect() {
         st += text;
     } catch(err) {
         st += url;
-    } 
+    }
     st += "</a>, try allowing redirects... especially if you are using Firefox ;]</div>";
     document.body.innerHTML = st;
 }

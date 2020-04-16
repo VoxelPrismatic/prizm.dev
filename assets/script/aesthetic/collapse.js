@@ -5,7 +5,7 @@ function collsel(elem = find("list")) {
         if(c.className.includes("collhover"))
             itm = null;
         var tmp = collsel(c);
-        if(tmp != null) 
+        if(tmp != null)
             return itm
     }
     return itm;

@@ -60,7 +60,7 @@ function setTransitions() {
 
 function swapColor(colorName, swapImg = true) {
     var color;
-    var bg; 
+    var bg;
     var name;
     [color, bg, name] = colors[colorName];
     document.body.style.backgroundColor = bg;

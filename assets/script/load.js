@@ -30,9 +30,9 @@ function startLoading() {
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
             }
         }
-        
+
         loadFooter();
-    
+
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
         window.onkeydown = delayUpdateSpacer;

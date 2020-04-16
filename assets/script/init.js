@@ -1,6 +1,11 @@
 var scripts = [
     "find",
-    "aesthetic/md",
+    "md/fn",
+    "md/re",
+    "md/mk/table",
+    "md/mk/ol",
+    "md/mk/ul",
+    "md/mark",
     "aesthetic/collapse",
     "aesthetic/dynamic",
     "other",

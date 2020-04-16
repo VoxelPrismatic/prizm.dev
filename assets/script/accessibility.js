@@ -11,7 +11,7 @@ function a11y() {
             console.error(err);
         }
     }
-    
+
     for(var thing of [">a", ">img", ".lnk", ">button", ".collapser"]) {
         try {
             for(var elem of find(thing)) {
@@ -39,7 +39,7 @@ function a11y() {
             console.error(err);
         }
     }
-    
+
     find("head").tabIndex = "-1";
     find("truelogo").tabIndex = "-1";
 }
