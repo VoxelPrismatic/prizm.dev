@@ -81,7 +81,7 @@ for(var element of elements) {
 section.appendChild(tag({
     "tag": "!",
     "#": "NOTICE: This has a bunch of scripts that aren't organized. Enjoy looking though here!"
-});
+}));
 
 for(var script of scripts) {
     var elem = {
