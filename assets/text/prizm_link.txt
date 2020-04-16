@@ -1,8 +1,8 @@
 #] Links to things
 
-:;:+[[Invite PRIZM to your guild!]]</prizm.dev/re?p=bot> \
+:v:+[[Invite PRIZM to your guild!]]</prizm.dev/re?p=bot> \
 +[[Support guild]]</prizm.dev/re?p=discord>
-:;:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
+:v:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
 +[\[Vote on TOP.GG\]]</prizm.dev/re?p=topgg+/vote> \
 [\[Command Index\]]</prizm.dev/prizm/commands> \
 [\[Change log\]]</prizm.dev/prizm/changes> \
