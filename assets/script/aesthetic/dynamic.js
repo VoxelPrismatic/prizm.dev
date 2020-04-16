@@ -82,9 +82,3 @@ function updateSpacer() {
         x += 1;
     }
 }
-
-function delayUpdateSpacer() {
-    for(var x = 0; x < 100; x += 25) {
-        window.setTimeout(updateSpacer, x);
-    }
-}
