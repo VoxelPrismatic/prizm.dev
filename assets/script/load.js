@@ -21,7 +21,7 @@ function startLoading() {
             window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
         }
         for(var x = 1000; x <= 4000; x += 100) {
-            window.setTimeout(setTransitions, 1000);
+            window.setTimeout(setTransitions, x);
         }
         document.getElementById("head").innerHTML = document.title;
         loadPage();
