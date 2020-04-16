@@ -1,4 +1,2 @@
-# prizm.dev
-An info website for me
-
-[view](https://voxelprismatic.github.io/prizm.dev)
+# [#\] PRIZM.DEV ;\]](https://voxelprismatic.github.io/prizm.dev/)
+^click that
