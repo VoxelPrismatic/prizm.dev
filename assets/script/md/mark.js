@@ -84,7 +84,7 @@ function mark_page(st) {
             ul += line.slice(2) + "\n";
             continue;
         }
-        if(inol) {
+        if(inul) {
             str += mk_ul(ul.slice(0, -1)).slice(0, -4);
             ul = "";
             inul = false;
