@@ -143,6 +143,10 @@ function id_jumper(style, color) {
     style.boxShadow = "0px 0px 4px " + color;
 }
 
+function tag_blockquote(style, color) {
+    style.borderLeftColor = color;
+}
+
 var selectors = {
     "h1, h2, h3, h4, h5, h6": tag_h1_h2_h3_h4_h5_h6,
     "#logo:hover, #logo:focus": id_logo_hover,
@@ -166,5 +170,6 @@ var selectors = {
     ".lnk": cls_lnk,
     ".btn": cls_btn,
     ".btn:hover, .btn:focus": cls_btn_hover,
-    "#jumper": id_jumper
+    "#jumper": id_jumper,
+    "blockquote": tag_blockquote
 }
