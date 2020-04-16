@@ -120,7 +120,7 @@ var line_regex = [
     [/^\~(.+?)\~/gm, "<s>$1</s>"],
     [/^\`(.+?)\`/gm, `<span class="code">$1</span>`],
     [/^\>\^(.+?)\^\</gm, "<sup>$1</sup>"],
-    [/^\>\v(.+?)\v\</gm, "<sub>$1</sub>"],
+    [/^\>v(.+?)v\</gm, "<sub>$1</sub>"],
     [/^\>\!(.+?)\!\</gm, `<span class="hide" onclick="this.classList.toggle('unhide');">$1</span>`],
     [/([^\\])\#(.+?)\#/gm, "$1<b>$2</b>"],
     [/([^\\])\*(.+?)\*/gm, "$1<i>$2</i>"],
@@ -128,7 +128,7 @@ var line_regex = [
     [/([^\\])\~(.+?)\~/gm, "$1<s>$2</s>"],
     [/([^\\])\`(.+?)\`/gm, `$1<span class="code">$2</span>`],
     [/([^\\])\>\^(.+?)\^\</gm, "$1<sup>$2</sup>"],
-    [/([^\\])\>\v(.+?)\v\</gm, "$1<sub>$2</sub>"],
+    [/([^\\])\>v(.+?)v\</gm, "$1<sub>$2</sub>"],
     [/([^\\])\>\!(.+?)\!\</gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
     
     //Alignment
