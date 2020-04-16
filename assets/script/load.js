@@ -24,6 +24,7 @@ function startLoading() {
             window.setTimeout(setTransitions, x);
         }
         document.getElementById("head").innerHTML = document.title;
+        set_regex();
         loadPage();
         if(document.URL.includes("#")) {
             for(var x = 0; x < 500; x += 100) {
@@ -37,7 +38,10 @@ function startLoading() {
         changeFunnyTextThing();
         window.onkeydown = delayUpdateSpacer;
     } catch(err) {
-        console.info("The below error prevented the page from loading fully");
+        console.info(
+            "%cThe below error prevented the page from loading fully",
+            "font-weight: bold; color: #f00; background-color: #211; font-size: larger"
+        );
         console.error(err);
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");

@@ -1,11 +1,12 @@
 var scripts = [
     "find",
     "md/fn",
+    "md/re"
+    "md/mark",
     "md/mk/head",
     "md/mk/table",
     "md/mk/ol",
     "md/mk/ul",
-    "md/mark",
     "aesthetic/collapse",
     "aesthetic/dynamic",
     "other",
@@ -15,7 +16,6 @@ var scripts = [
     "redirect/urls",
     "redirect/shorts",
     "accessibility",
-    "md/re"
 ];
 
 function loadPage() {
