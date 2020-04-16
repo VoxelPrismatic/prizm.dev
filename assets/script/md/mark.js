@@ -66,7 +66,7 @@ function mark_page(st) {
             continue;
         }
         if(ol) {
-            str += mk_ol(ol.slice(0, -1)).slice(0, -4);
+            str += mk_ol(ol.slice(0, -1));
             ol = "";
         }
 
@@ -76,7 +76,7 @@ function mark_page(st) {
             continue;
         }
         if(ul) {
-            str += mk_ul(ul.slice(0, -1)).slice(0, -4);
+            str += mk_ul(ul.slice(0, -1));
             ul = "";
         }
 
