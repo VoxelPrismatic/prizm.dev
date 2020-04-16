@@ -60,6 +60,9 @@ var elements = [
 ];
 
 function tag(element) {
+    if(element["tag"] == "!") {
+        return document.createComment(element["#"]);
+    }
     var elem = document.createElement(element["tag"]);
     for(var property of element.constructor.keys(element)) {
         if(property == "tag") {
