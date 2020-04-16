@@ -58,6 +58,9 @@ function textPage(...pages) {
     var html = "";
     for(var page of pages) {
         var txt = load("/prizm.dev/assets/text/" + page + ".txt");
+        if(txt.match(/\\N\{[a-zA-Z1-9 ]+\}/gm)) {
+           load_unicode_index();
+        }
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
     }
     setHtml("content", html);
