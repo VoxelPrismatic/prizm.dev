@@ -5,6 +5,7 @@ var scripts = [
     "md/mk/table",
     "md/mk/ol",
     "md/mk/ul",
+    "md/mk/head",
     "md/mark",
     "aesthetic/collapse",
     "aesthetic/dynamic",
