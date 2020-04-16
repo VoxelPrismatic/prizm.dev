@@ -37,14 +37,24 @@
     }
 } tr:nth-child(even) {
     background-color: #00ffff05;
+} th:nth-child(1) {
+    border-radius: 5px 0px 0px 0px;
+    border-right-color: #0000;
+} th:nth-last-child(1) {
+    border-radius: 0px 5px 0px 0px;
+    border-left-color: #0000;
+} td:nth-child(1) {
+    border-right-color: #0000;
+} td:nth-last-child(1) {
+    border-left-color: #0000;
 } td, tr {
     .pad(5px);
     border-width: 2px;
     .border-colors(#0000, #0ff, #0000, #0ff);
     border-style: solid;
-}
-
-blockquote {
+} table {
+    width: 100%;
+} blockquote {
     margin: 5px;
     padding: 5px;
     border-left: #0ff 2px solid;
