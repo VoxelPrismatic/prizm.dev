@@ -33,5 +33,12 @@ code block
 - \- unordered lists
 - \- are pretty cool
 
-1. same with ordered
-2. but less cool
+1. \1\. same with ordered
+2. \1\. but less cool
+
+:<: \:<\: LEFT!
+:v: \:v\: CENTER!
+:>: \:>\: RIGHT!
+*normally justified
+
+Key :^: \:^\: Value
