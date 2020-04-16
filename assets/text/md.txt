@@ -10,7 +10,9 @@
 `code`
 
 line v `-~-`
+
 -~-
+
 :: block quote
 :: :: nested!
 :: :: :: again!
@@ -27,3 +29,9 @@ code block
 |:tables |:are:| neat:|
 |are|they|not?|
 ```
+
+- \- unordered lists
+- \- are pretty cool
+
+1. same with ordered
+2. but less cool
