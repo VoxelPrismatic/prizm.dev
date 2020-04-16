@@ -1,11 +1,16 @@
-function unidata() {
+var uni = {};
+
+function load_unicode_index() {
     console.log("Loading unicode index... this may take a while");
-    var lines = read("/prizmatic.docs/script/uni.txt").split("\n");
-    var uni = {}
+    var lines = read("/prizm.dev/assets/text/unicode_index.txt").split("\n");
     for(var line of lines) {
         if(line.trim() == "")
             continue;
         uni[line.split("\t")[1].trim().toUpperCase()] = line.split("\t")[0].trim().toUpperCase();
     }
     console.log("Finished loading unicode index");
+}
+
+function unidata(st) {
+    return uni[st.toUpperCase()];
 }
