@@ -4,7 +4,7 @@ of these services, well you should also know the bot that I made. Soon, I will \
 transition my bot to use this module, so I don't have to use this `discord.py` \
 garbage that I'm currently using...
 
-:;:+[\[DOCS\]]</prizmatic.docs> \
+:v:+[\[DOCS\]]</prizmatic.docs> \
 +[\[REPO\]]</prizm.dev/re?p=github+/prizmatic> \
 +[\[DISCORD\]]</prizm.dev/re?p=discord>
 
@@ -14,9 +14,9 @@ garbage that I'm currently using...
 Guess what? I made a discord bot! You can find out where it is using the \
 links below.
 
-:;:+[[Invite PRIZM to your guild!]]</prizm.dev/re?p=bot> \
+:v:+[[Invite PRIZM to your guild!]]</prizm.dev/re?p=bot> \
 +[[Support guild]]</prizm.dev/re?p=discord>
-:;:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
+:v:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
 +[\[Vote on TOP.GG\]]</prizm.dev/re?p=topgg+/vote> \
 [\[Command Index\]]</prizm.dev/prizm/commands> \
 [\[Change log\]]</prizm.dev/prizm/changes> \
