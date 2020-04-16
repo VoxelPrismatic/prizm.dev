@@ -84,7 +84,7 @@ function updateSpacer() {
 }
 
 function delayUpdateSpacer() {
-    for(var x = 0; x < 250; x += 50) {
+    for(var x = 0; x < 250; x += 25) {
         window.setTimeout(updateSpacer, x);
     }
 }
