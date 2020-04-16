@@ -19,12 +19,8 @@ function mark_page(st) {
     var ol = "";
     var ul = "";
     var quoted = "";
-    var inpy = false;
-    var intable = false;
-    var inol = false;
-    var inul = false;
     var incode = false;
-    var inquoted = false;
+    var intable = false;
 
     for(var line of st.split("\n")) {
         if(line == "```") {
@@ -42,18 +38,16 @@ function mark_page(st) {
 
         //Block Quote
         if(line.startsWith(":: ")) {
-            inquoted = true;
             quoted += line.slice(3) + "\n";
             continue;
         }
-        if(inquoted) {
-            inquoted = false;
+        if(quoted) {
             str += "<blockquote>" + mark_page(quoted.slice(0, -1)).slice(0, -4) + "</blockquote>";
             quoted = "";
         }
 
         //Table
-        if(line.replace(/^(\|.+)+\|$/gm, "") == "" && !intable && line != "") {
+        if(line && line.replace(/^(\|.+)+\|$/gm, "") == "" && !intable) {
             intable = true;
         }
         if((line == "---" || line == "" || line.replace(/^(\|.+)+\|$/gm, "") != "") && intable) {
@@ -67,28 +61,23 @@ function mark_page(st) {
             continue;
         }
         
-        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
-            inol = true;
+        if(line && line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
             ol += line.replace(/^\d+[\]\)\.\-] /gm, "") + "\n";
             continue;
         }
-        if(inol) {
+        if(ol) {
             str += mk_ol(ol.slice(0, -1)).slice(0, -4);
             ol = "";
-            inol = false;
         }
 
         // Unordered list
-        if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "") {
-            inul = true;
+        if(line && line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "") {
             ul += line.slice(2) + "\n";
             continue;
         }
-        if(inul) {
+        if(ul) {
             str += mk_ul(ul.slice(0, -1)).slice(0, -4);
             ul = "";
-            inul = false;
-            continue;
         }
 
         line = mark(line);
