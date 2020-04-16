@@ -1,7 +1,7 @@
 var scripts = [
     "find",
     "md/fn",
-    "md/re"
+    "md/re",
     "md/mark",
     "md/mk/head",
     "md/mk/table",
