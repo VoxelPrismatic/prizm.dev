@@ -66,40 +66,34 @@ function mark_page(st) {
             table += line + "\n";
             continue;
         }
-
-        // Ordered list
-        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "" && !inol && line != "") {
+        
+        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
             inol = true;
-        }
-        if((line == "---" || line == "" || line.replace(/^\d+[\]\)\.\-] .*$/gm, "") != "") && inol) {
-            str += mk_ol(ol);
-            ol = "";
-            inol = false;
+            ol += line.replace(/^\d+[\]\)\.\-] /gm, "") + "\n";
             continue;
         }
         if(inol) {
-            ol += line + "\n";
-            continue;
+            str += mk_ol(ol.slice(0, -1)).slice(0, -4);
+            ol = "";
+            inol = false;
         }
 
         // Unordered list
-        if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "" && !inul && line != "") {
+        if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "") {
             inul = true;
-        }
-        if((line == "---" || line == "" || line.replace(/^[\+\]\)\-] .*$/gm, "") != "") && inul) {
-            str += mk_ul(ul);
-            ul = "";
-            inul = false;
+            ul += line.slice(2) + "\n";
             continue;
         }
-        if(inul) {
-            ul += line + "\n";
+        if(inol) {
+            str += mk_ul(ul.slice(0, -1)).slice(0, -4);
+            ul = "";
+            inul = false;
             continue;
         }
 
         line = mark(line);
         if(line.endsWith("<br>"))
-            str += line.slice(0, -4) + "</span><br></span>";
+            str += line.slice(0, -4) + "<br>";
         else if(line.endsWith("§"))
             str += line.slice(0, -1);
         else if(line.includes("</br>"))
