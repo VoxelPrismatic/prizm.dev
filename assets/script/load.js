@@ -17,12 +17,8 @@ function loadFooter() {
 
 function startLoading() {
     try {
-        for(var x = 0; x <= 3000; x += 100) {
-            window.setTimeout(swapColor, x, theme, false); // Sometimes it doesn't load right away
-        }
-        for(var x = 1000; x <= 4000; x += 100) {
-            window.setTimeout(setTransitions, x);
-        }
+        delaySwapColor(theme, false);
+        delaySetTransitions();
         document.getElementById("head").innerHTML = document.title;
         set_regex();
         loadPage();
@@ -38,15 +34,15 @@ function startLoading() {
         changeFunnyTextThing();
         window.onkeydown = delayUpdateSpacer;
     } catch(err) {
-        console.info(
-            "%cThe below error prevented the page from loading fully",
-            "font-weight: bold; color: #f00; background-color: #211; font-size: larger"
+        console.warn(
+            "%cThe following error broke the page",
+            "font-weight: bold; color: #ff0; font-size: large"
         );
         console.error(err);
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
         find("content").innerHTML = html;
-        swapColor("red");
+        delaySwapColor("red");
     }
     updateSpacer();
     if(find("jumper"))

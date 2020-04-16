@@ -2,7 +2,7 @@ var line_regex = [];
 
 function set_regex() {
     line_regex = [
-        [/\\([^uUNh])/gm, function(m, p) {return "\\u{" + p.charCodeAt(0).toString(16) + "}";}],
+        [/\\([^uUNx])/gm, function(m, p) {return "\\u{" + p.charCodeAt(0).toString(16) + "}";}],
 
         //Pre-Escape
         [/^ /gm, "\u200b \u200b"],
