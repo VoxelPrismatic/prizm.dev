@@ -25,16 +25,17 @@ function changeScrollingThingy() {
     }
 }
 
-function resizeDicts(log = true) {
+function resizeDicts(log = true, times = 0) {
     if((window.innerHeight + "" + window.innerWidth).includes("."))
         return;
     var height = compSty(">H1").height.slice(0, -2) / 2;
-    var width = find(".sect")[0].clientWidth - 25;
     if(log) {
         console.log("Window resized to " + window.innerWidth + "x" + window.innerHeight);
         console.log("Resizing elements");
     }
     for(var thing of find(".dict")) {
+        var parent = thing.parentElement;
+        var width = parent.clientWidth - 5;
         var thisWidth = width;
         var style = thing.style
         style.transition = "none !important";
@@ -50,15 +51,18 @@ function resizeDicts(log = true) {
         style.top = "";
         thing.parentElement.style.minHeight = height + "px";
         thing.parentElement.style.height = height + "px";
-    }
-    if(width <= 540) {
-        for(var thing of find(".dict")) {
-            thing.style.top = (height + 10) + "px";
-            thing.parentElement.style.minHeight = (2 * height + 20) + "px";
-            thing.parentElement.style.height = (2 * height + 20) + "px";
-            thing.style.width = width + "px";
-            thing.style.margin = "auto";
+        if(width <= 540) {
+            for(var thing of find(".dict")) {
+                thing.style.top = (height + 10) + "px";
+                thing.parentElement.style.minHeight = (2 * height + 20) + "px";
+                thing.parentElement.style.height = (2 * height + 20) + "px";
+                thing.style.width = width + "px";
+                thing.style.margin = "auto";
+            }
         }
+    }
+    if(times < 3) {
+        window.setTimeout(resizeDicts, 100, log, times + 1);
     }
     updateSpacer();
 }
