@@ -9,6 +9,7 @@ var scripts = [
     "md/mk/ul",
     "aesthetic/collapse",
     "aesthetic/dynamic",
+    "aesthetic/tables",
     "other",
     "load",
     "aesthetic/colors_func",
