@@ -9,7 +9,7 @@ function loadPage() {
             "#": "#] Try it out for yourself!",
             "id": "Tryitoutforyourself",
             "onclick": "linkMe(this)",
-            "br1": 1
+            "br1": 2
         },
         "<1>": {
             "tag": "div",
