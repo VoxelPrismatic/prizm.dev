@@ -27,9 +27,9 @@ function set_regex() {
                 return `<span title="${esc(p2)}" class="def">${esc(mark(p1))}</span>`;
             }
         ], [
-            /\@\[(.+?)\]<(.+?)>/gm,
-            function(m, p1, p2) {
-                return `<img alt="${esc(mark(p1).replace(/"/gm, "'"))}" src="${esc(p2)}">`;
+            /\@\[(.+?)\]<(.+?)>\((.*)\)/gm,
+            function(m, p1, p2, p3) {
+                return `<img alt="${esc(mark(p1).replace(/"/gm, "'"))}" width="${p3}" src="${esc(p2)}">`;
             }
         ], [
             /\+\[\[(.+?)\]\]\<(.+?)\>/gm,
