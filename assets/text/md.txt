@@ -54,9 +54,9 @@ code block
 1. \1\. same with ordered
 2. \2\. but less cool
 
-:<: \:<\: LEFT! \
-:v: \:v\: CENTER! \
-:>: \:>\: RIGHT! \
+:<: \:<\: LEFT!
+:v: \:v\: CENTER!
+:>: \:>\: RIGHT!
 *normally justified
 
 Key :^: \:^\: Value
