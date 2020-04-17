@@ -4,6 +4,6 @@ function mk_head(m, p1) {
             break;
     var id = p1.replace(/[^\w\d]/gm, "").trim();
     var st = `<h${x} onclick="linkMe(this);"`;
-    st += `id="${id}">#] ${p1}</h${x}>`;
+    st += `id="${id}">#] ${esc(p1)}</h${x}>`;
     return st;
 }

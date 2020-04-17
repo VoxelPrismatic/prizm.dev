@@ -38,6 +38,11 @@ which is by Apple, which makes honestly the worst documentation for anything.
 #TL;DR:# I've tried/am using `Java`, `Python`, `TI-BASIC`, `JS`, `MarkDown`, `SQLite`, \
 `JSON`, `HTML`, `LESS/CSS`, and `Swift`
 
+###] MarkDown
+
+All of these pages use my own flavor of MarkDown in some way. You can +[try it out]</prizm.dev/md> \
+yourself, and even add it to your own website as well!
+
 -~-
 
 #] MY COMEDY

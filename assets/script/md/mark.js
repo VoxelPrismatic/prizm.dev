@@ -9,6 +9,9 @@ function mark(st) {
 }
 
 function mark_page(st) {
+    if(!line_regex.length) {
+        set_regex();
+    }
     if(!(st.endsWith("\n")))
        st += "\n";
     st = st.replace(/\\ *\n/gm, "");
@@ -60,7 +63,7 @@ function mark_page(st) {
             table += line + "\n";
             continue;
         }
-        
+
         if(line && line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
             ol += line.replace(/^\d+[\]\)\.\-] /gm, "") + "\n";
             continue;
