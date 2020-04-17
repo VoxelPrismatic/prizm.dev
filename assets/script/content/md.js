@@ -6,7 +6,9 @@ function loadPage() {
         "id": "markdown_interpreter",
         "<2>": {
             "tag": "h1",
-            "#": "#] Try it out for yourself!"
+            "#": "#] Try it out for yourself!",
+            "id": "Tryitoutforyourself",
+            "onclick": "linkMe(this)"
         },
         "<3>": {
             "tag": "div",
