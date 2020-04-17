@@ -70,6 +70,7 @@ Key :^: \:^\: Value
 | \\u{43}     | \u{43}     |
 | \\x44       | \x44       |
 | \\N{LATIN CAPITAL LETTER E} | \N{LATIN CAPITAL LETTER E} |
+
 *when using the \\N{...} stuff, the page will take longer to load simply because \
 it has to load the 1mb lookup table, then turn that into nice JSON data.
 
