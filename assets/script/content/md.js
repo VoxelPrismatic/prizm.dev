@@ -4,6 +4,14 @@ function loadPage() {
         "tag": "div",
         "class": "sect",
         "id": "markdown_interpreter",
+        "<2>": {
+            "tag": "h1",
+            "#": "#] Try it out for yourself!"
+        },
+        "<3>": {
+            "tag": "div",
+            "#": mark("any `key :^: val` things will take longer to properly display")
+        },
         "<1>": {
             "tag": "div",
             "style": "text-align: center",
