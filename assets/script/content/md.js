@@ -10,7 +10,7 @@ function loadPage() {
             "<1>": {
                 "tag": "textarea",
                 "placeholder": "Type anything in here! See the output below",
-                "onkeyup": "find('markdown_output').innerHTML = mark_page(this.value)"
+                "onkeyup": "interpret(this)"
             }
         }, 
         "<2>": {
@@ -18,4 +18,11 @@ function loadPage() {
             "id": "markdown_output"
         }
     }));
+}
+
+function interpret(elem) {
+    find('markdown_output').innerHTML = mark_page(elem.value);
+    if(elem.value.includes(":^:")) {
+        delayResizeDicts();
+    }
 }
