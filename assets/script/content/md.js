@@ -27,7 +27,8 @@ function loadPage() {
             "<1>": {
                 "tag": "textarea",
                 "placeholder": "Type anything in here! See the output below",
-                "onkeyup": "interpret(this)"
+                "onkeyup": "interpret(this)",
+                "style": "font-family: 'Ubuntu Mono'"
             }
         },
         "<3>": {
