@@ -8,13 +8,10 @@ function styleTables() {
                 for(var td of ti) {
                     td.classList.remove("tr-l");
                     td.classList.remove("tr-r");
-                    td.classList.remove("tr-m");
                     if(n < ti.length / 2) {
                         td.classList.add("tr-l");
                     } else if(n > length) {
                         td.classList.add("tr-r");
-                    } else {
-                        td.classList.add("tr-m");
                     }
                     n += 1;
                 }
