@@ -22,6 +22,9 @@ function startLoading() {
         document.getElementById("head").innerHTML = document.title;
         set_regex();
         loadPage();
+        if(find(">table")) {
+            styleTables();
+        }
         if(document.URL.includes("#")) {
             for(var x = 0; x < 500; x += 100) {
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
