@@ -25,8 +25,8 @@
 [\[open in this tab\]\<url\>]<#>
 e[\e\[email me!\]\<lol@no.pls\>]<lol@no.pls>
 p[\p\[maybe a call?\]\<+1-337-420-6969\>]<+1-337-420-6969>
-@[sorry mate, this is an image]</prizm.dev/assets/image/priz_blue.png>
-^`\@\[alt text\]\<image src\>`
+@[sorry mate, this is an image]</prizm.dev/assets/image/priz_blue.png>(10%)
+^`\@\[alt text\]\<image src\>(size)`
 [[\[\[BUTTON LINKS!!!\]\]\<url\>]]<#>
 +[[\+\[\[IN NEW TABS!!!\]\]\<url\>]]<#>
 
