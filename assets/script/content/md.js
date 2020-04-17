@@ -8,9 +8,9 @@ function loadPage() {
             "tag": "h1",
             "#": "#] Try it out for yourself!",
             "id": "Tryitoutforyourself",
-            "onclick": "linkMe(this)",
-            "br1": 2
+            "onclick": "linkMe(this)"
         },
+        "br0": 1,
         "<1>": {
             "tag": "div",
             "#0": "any ",
