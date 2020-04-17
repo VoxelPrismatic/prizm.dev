@@ -32,6 +32,11 @@ function set_regex() {
                 return `<img alt="${esc(mark(p1).replace(/"/gm, "'"))}" width="${p3}" src="${esc(p2)}">`;
             }
         ], [
+            /\@\[(.+?)\]<(.+?)>/gm,
+            function(m, p1, p2) {
+                return `<img alt="${esc(mark(p1).replace(/"/gm, "'"))}" src="${esc(p2)}">`;
+            }
+        ], [
             /\+\[\[(.+?)\]\]\<(.+?)\>/gm,
             function(m, p1, p2) {
                 return `<a href="${esc(p2)}" target='\\x5fblank'><span class='btn'>${esc(mark(p1))}</span></a>`;
