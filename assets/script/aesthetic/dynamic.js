@@ -33,12 +33,12 @@ function resizeDicts(log = true, times = 0) {
         console.log("Window resized to " + window.innerWidth + "x" + window.innerHeight);
         console.log("Resizing elements");
     }
+    var tooSmol = false;
     for(var thing of find(".dict")) {
         var parent = thing.parentElement;
         var width = parent.clientWidth - 5;
         var thisWidth = width;
-        var style = thing.style
-        style.transition = "none !important";
+        var style = thing.style;
         thisWidth -= thing.nextElementSibling.clientWidth;
         thisWidth -= thing.previousElementSibling.clientWidth;
         style.width = (thisWidth - 10) + "px";
@@ -49,22 +49,46 @@ function resizeDicts(log = true, times = 0) {
         style.display = "inline-block";
         style.borderColor = "#444f";
         style.top = "";
+        if(thisWidth < 100) {
+            tooSmol = true;
+        }
         thing.parentElement.style.minHeight = height + "px";
         thing.parentElement.style.height = height + "px";
-        if(width <= 540) {
-            for(var thing of find(".dict")) {
-                thing.style.top = (height + 10) + "px";
-                thing.parentElement.style.minHeight = (2 * height + 20) + "px";
-                thing.parentElement.style.height = (2 * height + 20) + "px";
-                thing.style.width = width + "px";
-                thing.style.margin = "auto";
-            }
+        var func = dictsPerfect;
+    }
+    if(tooSmol) {
+        for(var thing of find(".dict")) {
+            var parent = thing.parentElement;
+            var width = parent.clientWidth - 5;
+            thing.style.top = (height + 10) + "px";
+            thing.parentElement.style.minHeight = (2 * height + 20) + "px";
+            thing.parentElement.style.height = (2 * height + 20) + "px";
+            thing.style.width = width + "px";
+            thing.style.margin = "auto";
         }
+        var func = dictsTooSmol;
     }
-    if(times < 3) {
-        window.setTimeout(resizeDicts, 100, log, times + 1);
-    }
+    delayFunction(func, 0, 4000, 1000);
     updateSpacer();
+}
+
+function dictsTooSmol() {
+    for(var thing of find(".dict")) {
+        var parent = thing.parentElement;
+        var width = parent.clientWidth - 5;
+        thing.style.width = width + "px";
+    }
+}
+
+function dictsPerfect() {
+    for(var thing of find(".dict")) {
+        var parent = thing.parentElement;
+        var width = parent.clientWidth - 5;
+        var thisWidth = width;
+        thisWidth -= thing.nextElementSibling.clientWidth;
+        thisWidth -= thing.previousElementSibling.clientWidth;
+        thing.style.width = (thisWidth - 10) + "px";
+    }
 }
 
 function getHeight(elem) {
