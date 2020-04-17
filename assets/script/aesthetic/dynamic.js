@@ -37,6 +37,7 @@ function resizeDicts(log = true) {
     for(var thing of find(".dict")) {
         var thisWidth = width;
         var style = thing.style
+        style.transition = "none !important";
         thisWidth -= thing.nextElementSibling.clientWidth;
         thisWidth -= thing.previousElementSibling.clientWidth;
         style.width = (thisWidth - 10) + "px";
