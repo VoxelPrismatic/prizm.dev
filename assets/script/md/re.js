@@ -8,6 +8,7 @@ function set_regex() {
         [/^ /gm, "\u200b \u200b"],
         [/\&gt;/gm, ">"],
         [/\&lt;/gm, "<"],
+        [/\&amp;/gm, "&"],
 
         //Links
         [
@@ -121,6 +122,18 @@ function set_regex() {
         [/(<u>_<\/u>|___)/gm, "<div>"],
         [/===/gm, "</div>"],
 
-        [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x" + p1);}],
+        [
+            /\\u\{([a-fA-F0-9]+)\}/gm, 
+            function(m, p1) {
+                var st = String.fromCharCode("0x" + p1);
+                if(st == "<")
+                    return "&lt;"
+                if(st == ">")
+                    return "&gt;"
+                if(st == "&")
+                    return "&amp;"
+                return st;
+            }
+        ],
     ];
 }
