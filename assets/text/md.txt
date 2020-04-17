@@ -40,12 +40,12 @@ line v `-~-`
 |are|they|not?|
 
 ```
-\`\`\`
+​```
 code block
 
 |:tables |:are:| neat:|
 |are|they|not?|
-\`\`\`
+​```
 ```
 
 - \- unordered lists
