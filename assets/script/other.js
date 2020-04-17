@@ -85,8 +85,12 @@ function changeFunnyTextThing() {
 
 function compSty(elem) {
     try {
-        return window.getComputedStyle(find(elem));
+        return window.getComputedStyle(elem);
     } catch(err) {
-        return window.getComputedStyle(find(elem)[0]);
+        try {
+            return window.getComputedStyle(find(elem));
+        } catch(err) {
+            return window.getComputedStyle(find(elem)[0]);
+        }
     }
 }
