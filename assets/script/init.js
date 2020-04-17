@@ -1,5 +1,11 @@
 var scripts = [
     "find",
+    "other",
+    "load",
+    "unidata",
+    "delay",
+    "accessibility",
+
     "md/fn",
     "md/re",
     "md/mark",
@@ -7,18 +13,16 @@ var scripts = [
     "md/mk/table",
     "md/mk/ol",
     "md/mk/ul",
-    "aesthetic/collapse",
+    "md/elem/tables",
+    "md/elem/collapse",
+    "md/elem/dicts",
+
     "aesthetic/dynamic",
-    "aesthetic/tables",
-    "other",
-    "load",
     "aesthetic/colors_func",
     "aesthetic/colors",
+
     "redirect/urls",
     "redirect/shorts",
-    "accessibility",
-    "unidata",
-    "delay",
 ];
 
 function loadPage() {
