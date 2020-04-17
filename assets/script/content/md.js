@@ -8,7 +8,8 @@ function loadPage() {
             "tag": "h1",
             "#": "#] Try it out for yourself!",
             "id": "Tryitoutforyourself",
-            "onclick": "linkMe(this)"
+            "onclick": "linkMe(this)",
+            "br1": 1
         },
         "<1>": {
             "tag": "div",
