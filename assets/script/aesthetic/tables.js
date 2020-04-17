@@ -3,7 +3,7 @@ function styleTables() {
         for(var tbody of table.children) {
             for(var tr of tbody.children) {
                 var ti = tr.children;
-                var length = ti.length;
+                var length = Math.floor(ti.length);
                 var n = 0;
                 for(var td of ti) {
                     td.classList.remove("tr-l");
