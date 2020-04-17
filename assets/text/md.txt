@@ -78,8 +78,10 @@ it has to load the 1mb lookup table, then turn that into nice JSON data.
 You can put a `\\` anywhere you like!
 
 ###] Notes
-Some things do break, but I will fix them only when I encounter them myself, because \
-this is my website. Also, the different sections with the borders and things are only \
+The different sections with the borders and things are only \
 created as a result of a different text file. No joke. Go to the \
 +[text]<https://github.com/VoxelPrismatic/prizm.dev/tree/master/assets/text> folder \
 to see proof of that.
+
+Want to add it to your own website? View the source +[here]<https://github.com/voxelprismatic/priz.md/> \
+Enjoy!
