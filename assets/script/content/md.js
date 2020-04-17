@@ -4,17 +4,23 @@ function loadPage() {
         "tag": "div",
         "class": "sect",
         "id": "markdown_interpreter",
-        "<2>": {
+        "<0>": {
             "tag": "h1",
             "#": "#] Try it out for yourself!",
             "id": "Tryitoutforyourself",
             "onclick": "linkMe(this)"
         },
-        "<3>": {
-            "tag": "div",
-            "#": mark("any `key :^: val` things will take longer to properly display")
-        },
         "<1>": {
+            "tag": "div",
+            "#0": "any ",
+            "<0>": {
+                "tag": "span",
+                "class": "code",
+                "#": "key :^: val"
+            },
+            "#1": " things will take longer to properly display"
+        },
+        "<2>": {
             "tag": "div",
             "style": "text-align: center",
             "<1>": {
@@ -22,8 +28,8 @@ function loadPage() {
                 "placeholder": "Type anything in here! See the output below",
                 "onkeyup": "interpret(this)"
             }
-        }, 
-        "<2>": {
+        },
+        "<3>": {
             "tag": "div",
             "id": "markdown_output"
         }
