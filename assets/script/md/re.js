@@ -130,8 +130,6 @@ function set_regex() {
                     return "&lt;"
                 if(st == ">")
                     return "&gt;"
-                if(st == "&")
-                    return "&amp;"
                 return st;
             }
         ],
