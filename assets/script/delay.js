@@ -16,7 +16,6 @@ function delayUpdateSpacer() {
     delayFunction(updateSpacer, 0, 100, 25);
 }
 
-
 function delayResizeDicts() {
-    delayFunction(resizeDicts, 0, 100, 25);
+    delayFunction(resizeDicts, 0, 100, 25, false);
 }
