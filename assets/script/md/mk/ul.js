@@ -3,8 +3,11 @@ function mk_ul(st, thing = "ul") {
     st = mark_page(st);
     for(var line of st.split("<br>")) {
         if(line) {
-            if(line.startsWith("<ul>") || line.startsWith("<ol>"))
-            str += "<li class='hidden-marker'>" + line + "</li>";
+            var extra = "";
+            if(line.startsWith("<ul>") || line.startsWith("<ol>")) {
+                extra = ' class="hidden-marker"';
+            }
+            str += `<li${extra}>` + line + "</li>";
         }
     }
     return str + `</${thing}><br>`;
