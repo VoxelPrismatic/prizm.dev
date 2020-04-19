@@ -22,6 +22,19 @@ function set_regex() {
                 return `<a href="tel:${esc(p2)}">${esc(mark(p1))}</a>`;
             }
         ], [
+            /\%\[(.+?)\]<(.+?)>/gm,
+            function(m, p2, p1) {
+                p1 = p1.toLowerCase();
+                var st = "<span class='";
+                if(p1.includes("h")) {
+                    st += "flip-h ";
+                }
+                if(p1.includes("v")) {
+                    st += "flip-v ";
+                }
+                var st = st.slice(0, -1) + "'>" + p2 + "</span>";
+
+        ], [
             /\?\[(.+?)\]<(.+?)>/gm,
             function(m, p1, p2) {
                 return `<span title="${esc(p2)}" class="def">${esc(mark(p1))}</span>`;
@@ -152,7 +165,7 @@ function set_regex() {
                 }
             }
         ],
-
+            
         [
             /\\u\{([a-fA-F0-9]+)\}/gm, 
             function(m, p1) {
