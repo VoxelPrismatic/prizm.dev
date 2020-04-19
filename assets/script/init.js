@@ -9,6 +9,7 @@ var scripts = [
     "md/fn",
     "md/re",
     "md/mark",
+    "md/accent",
     "md/mk/head",
     "md/mk/table",
     "md/mk/ol",
