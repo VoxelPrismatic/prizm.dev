@@ -114,10 +114,10 @@ function set_regex() {
             "<div style='float: right;'>$2</div>" +
             "</div></br>"
         ],
-
         [/^\:\<\:(.+)/gm, "<div style='text-align: left;'>$1</div>"],
         [/^\:\>\:(.+)/gm, "<div style='text-align: right;'>$1</div>"],
         [/^\:v\:(.+)/gm, "<div style='text-align: center;'>$1</div>"],
+        [/^\:=\:(.+)/gm, "<div style='text-align: justified;'>$1</div>"],
 
         //Others
         [/\{\{(\w+?)\}\}(.+?) /gm, "<span class='$1'>$2 </span>"],
