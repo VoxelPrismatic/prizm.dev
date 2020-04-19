@@ -1,9 +1,9 @@
-#] H1
-##] H2
-###] H3
-####] H4
-#####] H5
-######] H6
+#] \#\] H1
+##] \#\#\] H2
+###] \#\#\#\] H3
+####] \#\#\#\#\] H4
+#####] \#\#\#\#\#] H5
+######] \#\#\#\#\#\#] H6
 
 
 ###] Basics
@@ -51,6 +51,7 @@ code block
 
 - \- unordered lists
 - \- are pretty cool
+- - \- \- You can even do nested ones
 
 1. \1\. same with ordered
 2. \2\. but less cool
@@ -58,7 +59,9 @@ code block
 :<: \:<\: LEFT!
 :v: \:v\: CENTER!
 :>: \:>\: RIGHT!
-*normally justified
+:=: \:=\: JUSTIFIED!
+
+*only at the start of each line
 
 Key :^: \:^\: Value
 
@@ -75,7 +78,9 @@ Key :^: \:^\: Value
 it has to load the 1mb lookup table, then turn that into nice JSON data.
 
 ###] Escaping
-You can put a `\\` anywhere you like!
+You can put a `\\` anywhere you like! Put a `\\` at the end of a line to continue it \
+on the next line. Otherwise it will \*doesn't put a `\\` here\*
+break the sentence in the middle and won't look nice.
 
 ###] Notes
 The different sections with the borders and things are only \
@@ -83,5 +88,5 @@ created as a result of a different text file. No joke. Go to the \
 +[text]<https://github.com/VoxelPrismatic/prizm.dev/tree/master/assets/text> folder \
 to see proof of that.
 
-Want to add it to your own website? View the source +[here]<https://github.com/voxelprismatic/priz.md/> \
+Want to add it to your own website? View the source +[here]<https://github.com/voxelprismatic/priz.md/>. \
 Enjoy!
