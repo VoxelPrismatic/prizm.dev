@@ -127,7 +127,7 @@ function set_regex() {
         [/(<u>_<\/u>|___)/gm, "<div>"],
         [/===/gm, "</div>"],
         [
-            /\$(.*)\;/gm,
+            /\$(.*?)\;/gm,
             function(m, p1) {
                 try {
                     var accent = accents[p1];
