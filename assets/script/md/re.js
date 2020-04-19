@@ -129,7 +129,18 @@ function set_regex() {
         [
             /\$(.*)\;/gm,
             function(m, p1) {
-                return accents[p1][1] || "";
+                try {
+                    var accent = accents[p1];
+                    var cls = "";
+                    if(accent[1] == "+") {
+                        cls = "accent-h";
+                    } else if(accent[1] == "-") {
+                        cls = "accent-l";
+                    }
+                    return `<span class='${cls}'>` + accent[0].slice(1, 2) + "</span>";
+                } catch(err) {
+                    return "";
+                }
             }
         ],
 
