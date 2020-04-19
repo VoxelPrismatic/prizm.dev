@@ -126,6 +126,12 @@ function set_regex() {
         [/^-~-$/gm, "<div class='line'></div></br>"],
         [/(<u>_<\/u>|___)/gm, "<div>"],
         [/===/gm, "</div>"],
+        [
+            /\$(.*)\;/gm,
+            function(m, p1) {
+                return accents[p1] || "";
+            }
+        ],
 
         [
             /\\u\{([a-fA-F0-9]+)\}/gm, 
