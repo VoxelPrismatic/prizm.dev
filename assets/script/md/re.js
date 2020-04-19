@@ -129,7 +129,7 @@ function set_regex() {
         [
             /\$(.*)\;/gm,
             function(m, p1) {
-                return accents[p1] || "";
+                return accents[p1][1] || "";
             }
         ],
 
