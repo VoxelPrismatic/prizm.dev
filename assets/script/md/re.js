@@ -127,21 +127,26 @@ function set_regex() {
         [/(<u>_<\/u>|___)/gm, "<div>"],
         [/===/gm, "</div>"],
         [
-            /(.)$(.*?)\;/gm,
+            /(.)\$(.*?)\;/gm,
             function(m, p2, p1) {
                 try {
                     var accent = accents[p1];
                     var cls = "";
+                    var sty = "";
                     if(accent[1] == "+") {
                         cls = "accent-h";
                     } else if(accent[1] == "-") {
                         cls = "accent-l";
-                    } if(p1.match(/[a-z]/gm)) {
+                    } if(p2.match(/[a-z]/gm)) {
                         cls += " accent-lc";
                     } if(accent[2]) {
-                        cls += " accent-hook";
+                        if(accent[2] == "0px") {
+                            sty = " style='left: 0px'";
+                        } else {
+                            cls += " accent-hook";
+                        }
                     }
-                    return `<span class='${cls}'>` + accent[0].slice(1, 2) + "</span>";
+                    return `${p2}<span class='${cls}'${sty}>` + accent[0].slice(1, 2) + "</span>";
                 } catch(err) {
                     return "";
                 }
