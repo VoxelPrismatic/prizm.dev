@@ -45,7 +45,7 @@ function startLoading() {
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
         find("content").innerHTML = html;
-        window.setTimeout(delaySwapColor, 3000, "red", false);
+        window.setTimeout(delaySwapColor, 3000, "red");
     }
     updateSpacer();
     if(find("jumper"))
