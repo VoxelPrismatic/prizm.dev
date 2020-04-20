@@ -29,6 +29,9 @@ p[\p\[maybe a call?\]\<+1-337-420-6969\>]<+1-337-420-6969>
 ^`\@\[alt text\]\<image src\>(size)`
 [[\[\[BUTTON LINKS!!!\]\]\<url\>]]<#>
 +[[\+\[\[IN NEW TABS!!!\]\]\<url\>]]<#>
+%[horizontal flip]<h> `%[horizontal flip]<h>`
+%[horizontal flip]<h> `%[horizontal flip]<h>`
+%[horiz+vert flip]<hv> `%[horiz+vert flip]<hv>`
 
 
 ###] Advanced
