@@ -81,6 +81,19 @@ Key :^: \:^\: Value
 *when using the \\N{...} stuff, the page will take longer to load simply because \
 it has to load the 1mb lookup table, then turn that into nice JSON data.
 
+###] Accents
+
+| Written      :| Output   |
+| a\$+\\\\;     | a$+\\;   |
+| b\$+/;        | b$+/;    |
+| c\$+^;        | c$+^;    |
+| d\$+v;        | d$+v;    |
+| e\$+//;       | e$+//;   |
+| f\$+\\\\\\\\; | f$+\\\\; |
+| g\$+~;        | g$+~;    |
+| h\$+.;        | h$+.;    |
+
+
 ###] Escaping
 You can put a `\\` anywhere you like! Put a `\\` at the end of a line to continue it \
 on the next line. Otherwise it will \*doesn't put a `\\` here\*
