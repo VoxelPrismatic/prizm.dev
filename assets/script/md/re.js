@@ -159,6 +159,14 @@ function set_regex() {
                         } else {
                             cls += " accent-hook";
                         }
+                    } if(p2.match(/[ijltfIJLT]/)) {
+                        if(sty) {
+                            sty = " style='left: 3px'";
+                        } else if(cls.includes("hook")) {
+                            sty = " style='left: 0px'";
+                        } else {
+                            sty = " style='left: -2px'";
+                        }
                     }
                     return `${p2}<span class='${cls}'${sty}>` + accent[0].slice(1, 2) + "</span>";
                 } catch(err) {
