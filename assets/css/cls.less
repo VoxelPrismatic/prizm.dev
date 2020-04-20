@@ -54,7 +54,11 @@
 } .accent-hook {
     left: -3px;
 } .flip-h { 
-    transform: scale(-1, 1); 
+    transform: scaleX(-100%); 
+    display: inline-block;
 } .flip-v {
-    transform: scale(1, -1);
+    transform: scaleY(-100%);
+    display: inline-block;
+} .flip-h.flip-v {
+    transform: scale(-100%, -100%);
 }
