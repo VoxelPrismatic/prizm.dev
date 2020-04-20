@@ -84,14 +84,19 @@ it has to load the 1mb lookup table, then turn that into nice JSON data.
 ###] Accents
 
 | Written      :| Output   |
-| a\$+\\\\;     | a$+\\;   |
+| a\$+\</;      | a$+\\;   |
 | b\$+/;        | b$+/;    |
 | c\$+^;        | c$+^;    |
 | d\$+v;        | d$+v;    |
 | e\$+//;       | e$+//;   |
-| f\$+\\\\\\\\; | f$+\\\\; |
+| f\$+\<//;     | f$+<//;  |
 | g\$+~;        | g$+~;    |
 | h\$+.;        | h$+.;    |
+| i\$+..;       | i$+..;   |
+| j\$+u;        | j$+u;    |
+| k\$+);        | k$+);    |
+| l\$-:;        | l$-:;    |
+| m\$+_;        | m$+_;    |
 
 
 ###] Escaping
