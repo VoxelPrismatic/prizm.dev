@@ -33,7 +33,7 @@ function set_regex() {
                     st += "flip-v ";
                 }
                 var st = st.slice(0, -1) + "'>" + p2 + "</span>";
-
+            }
         ], [
             /\?\[(.+?)\]<(.+?)>/gm,
             function(m, p1, p2) {
