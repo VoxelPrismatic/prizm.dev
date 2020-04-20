@@ -151,7 +151,7 @@ function set_regex() {
                         cls = "accent-h";
                     } else if(accent[1] == "-") {
                         cls = "accent-l";
-                    } if(p2.match(/[a-z]/gm)) {
+                    } if(p2.match(/[acegmnopqrsuvwxyz]/gm)) { // bdfhijklt are too tall
                         cls += " accent-lc";
                     } if(accent[2]) {
                         if(accent[2] == "0px") {
