@@ -39,12 +39,31 @@ function a11y() {
             console.error(err);
         }
     }
-
-    find("head").tabIndex = "-1";
-    find("truelogo").tabIndex = "-1";
+    
+    for(var thing of ["head", "truelogo", ".dropper"]) {
+        try {
+            for(var elem of find(thing)) {
+                elem.tabIndex = "-1";
+                elem.onkeyup = null;
+            }
+        } catch(err) {
+            try {
+                find(thing).tabIndex = "-1";
+            } catch(err) {
+                console.error(err);
+            }
+        }
+    }
 }
 
+var focus_timeout = false;
+
 function addFocus(evt, elem) {
+    if(focus_timeout) {
+        return;
+    }
+    focus_timeout = true;
+    window.setTimeout(function(){focus_timeout = false}, 100)
     for(var thing of find(".focusing")) {
         thing.classList.remove("focusing");
     }
