@@ -4,10 +4,11 @@ function linkMe(elem) {
     if(id[0] != "#") {
         id = "#" + id;
     }
-    if(elem.className.includes("h-dropper")) {
-        elem.classList.toggle("h-dropper-closed");
-        elem.parentElement.classList.toggle("dropper-closed");
-        resizeDicts(false, elem.parentElement);
-    }
     window.history.replaceState(window.history.state, document.title, id);
+}
+
+function toggleDrop(elem) {
+    elem.classList.toggle("h-dropper-closed");
+    elem.parentElement.parentElement.classList.toggle("dropper-closed");
+    resizeDicts(false, elem.parentElement.parentElement);
 }
