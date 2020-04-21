@@ -143,35 +143,21 @@ function set_regex() {
         [
             /(.)\$(.+?)\;/gm,
             function(m, p2, p1) {
-                try {
-                    var accent = accents[p1];
-                    var cls = "";
-                    var sty = "";
-                    if(accent[1] == "+") {
-                        cls = "accent-h";
-                    } else if(accent[1] == "-") {
-                        cls = "accent-l";
-                    } if(p2.match(/[acegmnopqrsuvwxyz]/gm)) { // bdfhijklt are too tall
-                        cls += " accent-lc";
-                    } if(accent[2]) {
-                        if(accent[2] == "0px") {
-                            sty = " style='left: 0px'";
-                        } else {
-                            cls += " accent-hook";
-                        }
-                    } if(p2.match(/[ijltfIJLT]/)) {
-                        if(sty) {
-                            sty = " style='left: 3px'";
-                        } else if(cls.includes("hook")) {
-                            sty = " style='left: 0px'";
-                        } else {
-                            sty = " style='left: -2px'";
-                        }
-                    }
-                    return `${p2}<span class='${cls}'${sty}>` + accent[0].slice(1, 2) + "</span>";
-                } catch(err) {
-                    return "";
+                var st = "";
+                var accent = accents[p1] || "";
+                if(p2 == "i")
+                    p2 = "ı";
+                if(p2 == "j")
+                    p2 = "ȷ";
+                st += p2;
+                if(p1.startsWith("-") || p1.startsWith("2-")) {
+                    st += "<span style='position: relative; top: 4px;'>" + accent + "</span>";
+                } else if(p2.match(/([A-Zbdfhklt]|[^\w\d])/gm)) {
+                    st += "<span style='position: relative; top: -4px;'>" + accent + "</span>";
+                } else {
+                    st += accent;
                 }
+                return st;
             }
         ],
             
