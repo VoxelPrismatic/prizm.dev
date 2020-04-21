@@ -131,7 +131,7 @@ ___
 ___
 > Logging now #ACTUALLY# works!!!!
 > > The issue was that the `bot` logging was actually a switch to turn the entire system off
-    
+
 > Updated most logging things
 > > Now is cleaner and always attaches a file [when available] with additional context
 ===
@@ -195,7 +195,7 @@ ___
 > > > Audio ] `MP3`, `M4A`, `WAV`, `AIFF` and all other `FFmpeg` formats
 > > > Video ] `MP4`, `OGV`, `M4V`, and all other `FFmpeg` formats
 > > Syntax ] `;]convert {output format} <attach a file to the message>`
-> Use the `;]bug` command to report any issues. 
+> Use the `;]bug` command to report any issues.
 > One is known ] FFmpeg doesn't always work
 ===
 
@@ -437,7 +437,7 @@ ___
 > Added the `;]clrto` command, it clears all messages to a given message ID
 > > Useful if you don't know the exact amount of kessages to clear
 
-> Updated the graph command so you can now graph on the y axis too 
+> Updated the graph command so you can now graph on the y axis too
 > > [`x=y^2^` and `y=x^2^` are supported]
 > > Support for xy functions [`x^2^+y^2^`] has not been added yet, I'm working on it tho
 ===
@@ -448,7 +448,7 @@ ___
 ___
 > Added an actually decent AI [`;]text hello`]
 
-> Fixed a bug where "no" would register as a bool and break it 
+> Fixed a bug where "no" would register as a bool and break it
 
 > Fixed a bug where smart quotes [`‘’“”`] would register as a bool break it
 

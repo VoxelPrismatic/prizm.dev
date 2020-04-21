@@ -147,6 +147,10 @@ function tag_blockquote(style, color) {
     style.borderLeftColor = color;
 }
 
+function sel_cls_dropper_gt_tag_div(style, color) {
+    style.borderLeftColor = color;
+}
+
 var selectors = {
     "h1, h2, h3, h4, h5, h6": tag_h1_h2_h3_h4_h5_h6,
     "#logo:hover, #logo:focus": id_logo_hover,
@@ -171,5 +175,6 @@ var selectors = {
     ".btn": cls_btn,
     ".btn:hover, .btn:focus": cls_btn_hover,
     "#jumper": id_jumper,
-    "blockquote": tag_blockquote
+    "blockquote": tag_blockquote,
+    ".dropper > div": sel_cls_dropper_gt_tag_div
 }

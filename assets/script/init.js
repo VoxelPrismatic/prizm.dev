@@ -18,6 +18,7 @@ var scripts = [
     "md/elem/tables",
     "md/elem/collapse",
     "md/elem/dicts",
+    "md/elem/head",
 
     "aesthetic/dynamic",
     "aesthetic/colors_func",

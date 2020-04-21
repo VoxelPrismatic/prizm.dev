@@ -1,4 +1,4 @@
-function mk_head(m, p1, escape = true) {
+function mk_head(m, p1, escape = true, cls = "") {
     for(var x = 0; x < 6; x += 1)
         if(m[x] != "#")
             break;
@@ -8,6 +8,9 @@ function mk_head(m, p1, escape = true) {
     if(!escape) {
         thing = "#";
     }
-    st += `id="${id}">${thing}] ${p1}</h${x}>`;
+    if(cls) {
+        st += ` class="${cls}"`;
+    }
+    st += ` id="${id}">${thing}] ${p1}</h${x}>`;
     return st;
 }

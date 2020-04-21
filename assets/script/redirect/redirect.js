@@ -5,7 +5,7 @@ function load(filename, aio = false, strip = false) {
             var resp = f.responseText;
             resp = resp.trim() + "\n"
             resp = resp.replace(/</gm, "&lt;");
-            resp = resp.replace(/>/gm, "&gt;")
+            resp = resp.replace(/>/gm, "&gt;");
             if(strip)
                 resp = resp.trim();
             document.getElementById("file").innerHTML = resp;
