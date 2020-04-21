@@ -43,7 +43,5 @@ function interpret(elem) {
     if(elem.value.includes(":^:")) {
         delayResizeDicts();
     }
-    if(find("markdown_output").innerHTML.includes("<table>")) {
-        styleTables();
-    }
+    sub_styles();
 }
