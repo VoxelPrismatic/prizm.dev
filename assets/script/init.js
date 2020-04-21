@@ -14,6 +14,7 @@ var scripts = [
     "md/mk/table",
     "md/mk/ol",
     "md/mk/ul",
+    "md/mk/dropper",
     "md/elem/tables",
     "md/elem/collapse",
     "md/elem/dicts",
