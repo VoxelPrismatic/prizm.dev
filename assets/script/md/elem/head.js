@@ -8,7 +8,11 @@ function linkMe(elem) {
 }
 
 function toggleDrop(elem) {
-    elem.classList.toggle("h-dropper-closed");
+    if(elem.classList.toggle("h-dropper-closed")) {
+        elem.innerHTML = "[V]";
+    } else {
+        elem.innerHTML = "[\u039b]";
+    }
     elem.parentElement.parentElement.classList.toggle("dropper-closed");
     resizeDicts(false, elem.parentElement.parentElement);
     elem.scrollIntoView({behavior: "smooth"});
