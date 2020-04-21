@@ -1,4 +1,4 @@
-function style_accent() {
+function style_accents() {
     for(var acc of find(".accent")) {
         var char = acc.previousElementSibling;
         char.style.display = "inline-block";
