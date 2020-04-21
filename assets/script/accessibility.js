@@ -27,7 +27,7 @@ function a11y() {
 
     for(var elem of find(">span")) {
         try {
-            if(elem.className.includes("hide")) {
+            if(elem.className.match(/(hide|dropper)/gm)) {
                 elem.tabIndex = "0";
                 elem.onkeyup = function(evt) {
                     addFocus(evt, this);
