@@ -10,6 +10,7 @@ function mk_head(m, p1, escape = true, cls = "") {
     var thing = "\\u{23}";
     if(!escape) {
         thing = "#";
+        p1 = mark(p1);
     }
     if(cls) {
         st += ` class="${cls}"`;
