@@ -63,13 +63,13 @@
     transform: scale(-100%, -100%);
 } .dropper-closed > div {
     display: none;
-} .dropper {
+} .h-dropper {
     &::before {
         content: "[\039b]  "; // Lambda
         font-weight: bold;
         font-family: "Ubuntu Mono";
     }
-} .dropper-closed {
+} .h-dropper-closed {
     &::before {
         content: "[V]  ";
         font-weight: bold;
@@ -77,4 +77,5 @@
     }
 } .dropper > div {
     border-left: 2px #0ff solid;
+    padding-left: 5px;
 }
