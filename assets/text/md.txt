@@ -31,9 +31,8 @@ p[\p\[maybe a call?\]\<+1-337-420-6969\>]<+1-337-420-6969>
 [[\[\[BUTTON LINKS!!!\]\]\<url\>]]<#>
 +[[\+\[\[IN NEW TABS!!!\]\]\<url\>]]<#>
 %[horizontal flip]<h> `%\[horizontal flip]<h>`
-%[horizontal flip]<h> `%\[horizontal flip]<h>`
+%[vertical flip]<v> `%\[vertical flip]<v>`
 %[horiz+vert flip]<hv> `%\[horiz+vert flip]<hv>`
-
 
 ###] Advanced
 
@@ -69,6 +68,14 @@ code block
 
 Key :^: \:^\: Value
 
+>>[###] Collapsible section]<<
+```
+>>[###] Collapsible section]<<
+content
+--- 
+```
+---
+
 ###] Unicode interpreting
 
 | Written    :|:Output     |
@@ -84,7 +91,7 @@ it has to load the 1mb lookup table, then turn that into nice JSON data.
 ###] Accents
 
 | Written      :| Output   |
-| a\$+\</;      | a$+\\;   |
+| a\$+\</;      | a$+</;   |
 | b\$+/;        | b$+/;    |
 | c\$+^;        | c$+^;    |
 | d\$+v;        | d$+v;    |
