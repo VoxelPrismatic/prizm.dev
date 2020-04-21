@@ -2,6 +2,8 @@ function mk_head(m, p1, escape = true, cls = "") {
     if(cls == m) {
         cls = "";
     }
+    if(escape + "" != "false" && escape + "" != "true")
+        escape = true;
     for(var x = 0; x < 6; x += 1)
         if(m[x] != "#")
             break;
@@ -10,7 +12,7 @@ function mk_head(m, p1, escape = true, cls = "") {
     var thing = "\\u{23}";
     if(!escape) {
         thing = "#";
-        p1 = mark(p1);
+        p1 = mark(p1)
     }
     if(cls) {
         st += ` class="${cls}"`;
