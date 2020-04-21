@@ -143,21 +143,12 @@ function set_regex() {
         [
             /(.)\$(.+?)\;/gm,
             function(m, p2, p1) {
-                var st = "";
                 var accent = accents[p1] || "";
                 if(p2 == "i")
                     p2 = "ı";
                 if(p2 == "j")
                     p2 = "ȷ";
-                st += p2;
-                if(p1.startsWith("-") || p1.startsWith("2-")) {
-                    st += "<span style='position: relative; top: 4px;'>" + accent + "</span>";
-                } else if(p2.match(/([A-Zbdfhklt]|[^\w\d])/gm)) {
-                    st += "<span style='position: relative; top: -4px;'>" + accent + "</span>";
-                } else {
-                    st += accent;
-                }
-                return st;
+                return `<span>${p2}</span><span class="accent">${p1}</span>`;
             }
         ],
             
