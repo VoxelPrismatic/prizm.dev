@@ -28,10 +28,11 @@ function mark_page(st) {
     var intable = false;
 
     for(var line of st.split("\n")) {
-        if(line && line.replace(/^\>\>\[.*\]\<\<$/gm, "") == "") {
+        // Collapsible section
+        if(!incode && line && line.replace(/^\>\>\[.*\]\<\<$/gm, "") == "") {
             indropper = true;
         }
-        if(line == "---") {
+        if(!incode && line == "---" && indropper) {
             indropper = false;
             str += mk_dropper(dropper.slice(0, -1));
             dropper = "";
@@ -42,6 +43,7 @@ function mark_page(st) {
             continue;
         }
         
+        // Code block
         if(line == "```") {
             incode = !incode;
             if(incode)
