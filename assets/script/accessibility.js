@@ -57,6 +57,7 @@ function a11y() {
 }
 
 var focus_timeout = false;
+var focusing = 0;
 
 function addFocus(evt, elem) {
     if(focus_timeout) {
@@ -64,6 +65,7 @@ function addFocus(evt, elem) {
     }
     focus_timeout = true;
     window.setTimeout(function(){focus_timeout = false}, 100)
+    focusing += 1;
     for(var thing of find(".focusing")) {
         thing.classList.remove("focusing");
     }
@@ -78,9 +80,12 @@ function addFocus(evt, elem) {
 }
 
 function removeFocus(elem) {
-    try {
-        elem.classList.remove("focusing");
-    } catch(err) {
-        console.log(err);
+    focusing -= 1;
+    if(!focusing) {
+        try {
+            elem.classList.remove("focusing");
+        } catch(err) {
+            console.log(err);
+        }
     }
 }
