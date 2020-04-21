@@ -90,21 +90,34 @@ it has to load the 1mb lookup table, then turn that into nice JSON data.
 
 ###] Accents
 
-| Written      :| Output   |
-| a\$+\</;      | a$+</;   |
-| b\$+/;        | b$+/;    |
-| c\$+^;        | c$+^;    |
-| d\$+v;        | d$+v;    |
-| e\$+//;       | e$+//;   |
-| f\$+\<//;     | f$+<//;  |
-| g\$+~;        | g$+~;    |
-| h\$+.;        | h$+.;    |
-| i\$+..;       | i$+..;   |
-| j\$+u;        | j$+u;    |
-| k\$+);        | k$+);    |
-| l\$-:;        | l$-:;    |
-| m\$+_;        | m$+_;    |
+| Written  :| Output   |
+| a\$+\</;  | a$+</;   |
+| b\$+/;    | b$+/;    |
+| c\$+^;    | c$+^;    |
+| d\$+v;    | d$+v;    |
+| e\$+//;   | e$+//;   |
+| f\$+\<//; | f$+<//;  |
+| g\$+~;    | g$+~;    |
+| h\$+.;    | h$+.;    |
+| i\$+..;   | i$+..;   |
+| j\$+u;    | j$+u;    |
+| k\$+);    | k$+);    |
+| l\$-:;    | l$-:;    |
+| m\$+_;    | m$+_;    |
+| n\$-_;    | n$-_;    |
+| o\$>:;    | o$>:;    |
+| p\$>.;    | p$>.;    |
+| q\$>~;    | p$>~;    |
+| r\$+o;    | r$+o;    |
+| s\$+';    | s$+';    |
+| t\$>';    | t$>';    |
+| u\$-,;    | u$-,;    |
+| v\$-);    | v$-);    |
+| w\$>c;    | w$>c;    |
+| x\$-];    | x$-];    |
+| y\$-[;    | y$-[;    |
 
+*you can put accents on characters that don't support it, but it will look weird.
 
 ###] Escaping
 You can put a `\\` anywhere you like! Put a `\\` at the end of a line to continue it \
