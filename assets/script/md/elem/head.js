@@ -7,6 +7,7 @@ function linkMe(elem) {
     if(elem.className.includes("h-dropper")) {
         elem.classList.toggle("h-dropper-closed");
         elem.parentElement.classList.toggle("dropper-closed");
+        resizeDicts(false, elem.parentElement);
     }
     window.history.replaceState(window.history.state, document.title, id);
 }
