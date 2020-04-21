@@ -64,19 +64,13 @@
 } .dropper-closed > div {
     display: none;
 } .h-dropper {
-    &::before {
-        content: "[\039b]  "; // Lambda
-        font-weight: bold;
-        font-family: "Ubuntu Mono";
-        float: right;
-        cursor: n-resize;
-    }
+    font-weight: bold;
+    font-family: "Ubuntu Mono";
+    float: right;
+    cursor: n-resize;
 } .h-dropper-closed {
-    &::before {
-        content: "[V]  ";
-        font-weight: bold;
-        font-family: "Ubuntu Mono";
-        float: right;
-        cursor: s-resize;
-    }
+    font-weight: bold;
+    font-family: "Ubuntu Mono";
+    float: right;
+    cursor: s-resize;
 }
