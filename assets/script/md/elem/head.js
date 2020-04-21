@@ -11,4 +11,5 @@ function toggleDrop(elem) {
     elem.classList.toggle("h-dropper-closed");
     elem.parentElement.parentElement.classList.toggle("dropper-closed");
     resizeDicts(false, elem.parentElement.parentElement);
+    elem.scrollIntoView({behavior: "smooth"});
 }
