@@ -1,4 +1,4 @@
-function resizeDicts(log = true, times = 0) {
+function resizeDicts(log = true, element = document) {
     if((window.innerHeight + "" + window.innerWidth).includes("."))
         return;
     var height = compSty(">H1").height.slice(0, -2) / 2;
@@ -7,8 +7,11 @@ function resizeDicts(log = true, times = 0) {
         console.log("Resizing elements");
     }
     var tooSmol = false;
-    for(var thing of find(".dict")) {
+    for(var thing of find_in(element, ".dict")) {
         var parent = thing.parentElement;
+        if(parent.clientWidth == 0) {
+            continue;
+        }
         var width = parent.clientWidth - 5;
         var thisWidth = width;
         var style = thing.style;
