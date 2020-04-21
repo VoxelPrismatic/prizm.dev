@@ -148,7 +148,7 @@ function set_regex() {
                     p2 = "ı";
                 if(p2 == "j")
                     p2 = "ȷ";
-                return `<span>${p2}</span><span class="accent">${p1}</span>`;
+                return `<span>${p2}</span><span class="accent">${accent}</span>`;
             }
         ],
             
