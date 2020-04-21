@@ -22,23 +22,23 @@ function mark_page(st) {
     var ol = "";
     var ul = "";
     var quoted = "";
-    var collapse = "";
+    var dropper = "";
     var incode = false;
-    var incollapse = false;
+    var indropper = false;
     var intable = false;
 
     for(var line of st.split("\n")) {
         if(line && line.replace(/^\>\>\[.*\]\<\<$/gm, "") == "") {
-            incollapse = true;
+            indropper = true;
         }
         if(line == "---") {
-            incollapse = false;
-            str += mk_collapse(collapse.slice(0, -1));
-            collapse = "";
+            indropper = false;
+            str += mk_dropper(dropper.slice(0, -1));
+            dropper = "";
             continue;
         }
-        if(incollapse) {
-            collapse += line + "\n";
+        if(indropper) {
+            dropper += line + "\n";
             continue;
         }
         
