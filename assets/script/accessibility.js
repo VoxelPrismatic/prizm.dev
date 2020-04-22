@@ -1,17 +1,21 @@
-function flickery() {
-    delayFunction(function(h){h.style.transition = "none";}, 1000, 1001, 1000, this);
+function flickery_element(h) {
+    delayFunction(function(h){h.style.transition = "none";}, 1000, 1001, 1000, h);
     var shown = true;
     for(var x = 1500; x <= 2500; x += Math.floor(Math.random() * 150) + 50) {
         shown = !shown;
         if(shown) {
-            delayFunction(function(h){h.style.textShadow = "";}, x, x + 1, x, this);
+            delayFunction(function(h){h.style.textShadow = "";}, x, x + 1, x, h);
         } else {
-            delayFunction(function(h){h.style.textShadow = "none";}, x, x + 1, x, this);
+            delayFunction(function(h){h.style.textShadow = "none";}, x, x + 1, x, h);
         }
     }
-    delayFunction(function(h){h.style.transition = "";}, x - 25, x, 5, this);
-    delayFunction(function(h){h.style.textShadow = "none";}, x - 50, x - 49, x, this);
-    delayFunction(function(h){h.style.textShadow = "";}, x, x + 1, x, this);
+    delayFunction(function(h){h.style.transition = "";}, x - 25, x, 5, h);
+    delayFunction(function(h){h.style.textShadow = "none";}, x - 50, x - 49, x, h);
+    delayFunction(function(h){h.style.textShadow = "";}, x, x + 1, x, h);
+}
+
+function flickery() {
+    flickery_element(this);
 }
 
 function a11y() {
@@ -106,3 +110,5 @@ function removeFocus(elem) {
         }
     }
 }
+
+window.setTimeout(function(){find("head").focus()}, 5000);
