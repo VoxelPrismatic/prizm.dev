@@ -1,3 +1,19 @@
+function flickery() {
+    delayFunction(function(h){h.style.transition = "none";}, 1000, 1001, 1000, this);
+    var shown = true;
+    for(var x = 1500; x <= 2500; x += Math.floor(Math.random() * 50) + 50) {
+        shown = !shown;
+        if(shown) {
+            delayFunction(function(h){h.style.textShadow = "";}, x, x + 1, x, this);
+        } else {
+            delayFunction(function(h){h.style.textShadow = "none";}, x, x + 1, x, this);
+        }
+    }
+    delayFunction(function(h){h.style.transition = "";}, x - 25, x, 5, this);
+    delayFunction(function(h){h.style.textShadow = "none";}, x - 50, x - 49, x, this);
+    delayFunction(function(h){h.style.textShadow = "";}, x, x + 1, x, this);
+}
+
 function a11y() {
     for(var header of ["1", "2", "3", "4", "5", "6"]) {
         try {
@@ -6,6 +22,7 @@ function a11y() {
                 elem.onkeyup = function(evt) {
                     addFocus(evt, this);
                 }
+                elem.onfocus = flickery;
             }
         } catch(err) {
             console.error(err);
