@@ -1,7 +1,7 @@
 function flickery() {
     delayFunction(function(h){h.style.transition = "none";}, 1000, 1001, 1000, this);
     var shown = true;
-    for(var x = 1500; x <= 2500; x += Math.floor(Math.random() * 50) + 50) {
+    for(var x = 1500; x <= 2500; x += Math.floor(Math.random() * 150) + 50) {
         shown = !shown;
         if(shown) {
             delayFunction(function(h){h.style.textShadow = "";}, x, x + 1, x, this);
