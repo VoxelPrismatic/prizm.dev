@@ -24,6 +24,7 @@ var scripts = [
     "aesthetic/dynamic",
     "aesthetic/colors_func",
     "aesthetic/colors",
+    "aesthetic/flicker",
 
     "redirect/urls",
     "redirect/shorts",
