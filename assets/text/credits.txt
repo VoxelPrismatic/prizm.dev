@@ -6,6 +6,7 @@ Content :^: PRIZ ;]
 Fonts :^: Ubuntu
 Logo :^: PRIZ ;]
 Hosting :^: GitHub Pages
+Flickering headers idea :^: meduimdock#5345
 
 #] MENTIONS
 
