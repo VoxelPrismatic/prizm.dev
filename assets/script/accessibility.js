@@ -112,5 +112,3 @@ function removeFocus(elem) {
         }
     }
 }
-
-window.setTimeout(function(){find("head").focus()}, 5000);
