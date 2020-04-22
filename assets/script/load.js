@@ -22,6 +22,9 @@ function sub_styles() {
     if(find(".accent")) {
         style_accents();
     }
+    if(find(".dict")) {
+        resizeDicts();
+    }
 }
 
 function startLoading() {

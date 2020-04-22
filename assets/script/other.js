@@ -82,7 +82,6 @@ function changeFunnyTextThing() {
     delayUpdateSpacer();
 }
 
-
 function compSty(elem) {
     try {
         return window.getComputedStyle(elem);
