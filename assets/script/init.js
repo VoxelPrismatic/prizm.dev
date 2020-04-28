@@ -49,7 +49,6 @@ if(loader) {
 
 function ready() {
     startLoading();
-    window.onresize = resizeDicts;
     window.onclick = changeFunnyTextThing;
     window.onauxclick = changeFunnyTextThing;
 }

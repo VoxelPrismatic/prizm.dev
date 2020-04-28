@@ -29,7 +29,7 @@ function sub_styles() {
 
 function startLoading() {
     try {
-        delaySwapColor(theme, false);
+        var swapDelay = delaySwapColor(theme, false);
         delaySetTransitions();
         document.getElementById("head").innerHTML = document.title;
         loadPage();
@@ -46,6 +46,7 @@ function startLoading() {
         changeFunnyTextThing();
         window.onkeydown = delayUpdateSpacer;
     } catch(err) {
+        stopDelay(swapDelay);
         console.warn(
             "%cThe following error broke the page",
             "font-weight: bold; color: #ff0; font-size: large"
@@ -54,7 +55,7 @@ function startLoading() {
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
         find("content").innerHTML = html;
-        window.setTimeout(delaySwapColor, 3000, "red");
+        delaySwapColor("red");
     }
     updateSpacer();
     if(find("jumper"))
