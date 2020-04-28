@@ -10,23 +10,16 @@ let colors = {
     "white":   ["#fff", "#222",    "white"],
     "purple":  ["#a0f", "#151122", "purple"],
     "blurple": ["#0af", "#111522", "blurple"]
-}; let ls1 = [
-    ".sect",
-    ".sect:hover, .sect:focus",
-    ".collapser",
-    ".collapser:hover, .collapser:focus",
-    ".collopen",
-    ".collopen:hover, .collopen:focus"
-]; let ls2 = [
-    ".lnk:hover, .lnk:focus",
-    ".sel:hover, .sel:focus",
-    ".sel",
-    ".lnk",
-    ".btn"
-];
+};
+
+function getRules() {
+    for(var ruleset of document.styleSheets)
+        if(ruleset.ownerNode.id.includes("less:"))
+            return ruleset.cssRules;
+}
 
 function setTransitions() {
-    var rules = document.styleSheets[2].cssRules;
+    var rules = getRules();
     var stuffs = [];
     for(var rule of rules) {
         var txt = rule.selectorText;
@@ -64,7 +57,7 @@ function swapColor(colorName, swapImg = true) {
     var name;
     [color, bg, name] = colors[colorName];
     document.body.style.backgroundColor = bg;
-    var rules = document.styleSheets[2].cssRules;
+    var rules = getRules();
     for(var rule of rules) {
         let txt = rule.selectorText;
         if(!txt)

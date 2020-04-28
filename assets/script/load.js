@@ -32,7 +32,6 @@ function startLoading() {
         delaySwapColor(theme, false);
         delaySetTransitions();
         document.getElementById("head").innerHTML = document.title;
-        set_regex();
         loadPage();
         sub_styles();
         if(document.URL.includes("#")) {
