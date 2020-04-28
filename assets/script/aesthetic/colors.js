@@ -73,5 +73,9 @@ function swapColor(colorName, swapImg = true) {
     Key --------------------- Val
     Twitter ----- @VoxelPrismatic
     */
-    resizeDicts(false);
+    try {
+        resizeDicts(false);
+    } catch(err) {
+        console.log(err);
+    }
 }
