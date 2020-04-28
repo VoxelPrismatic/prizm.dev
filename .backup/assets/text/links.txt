@@ -1,0 +1,46 @@
+#] PRIZMATIC
+Hey! I'm making an API wrapper for Discord, Reddit, and Riot.IM! If you use any \
+of these services, well you should also know the bot that I made. Soon, I will \
+transition my bot to use this module, so I don't have to use this `discord.py` \
+garbage that I'm currently using...
+
+:v:+[\[DOCS\]]</prizmatic.docs> \
++[\[REPO\]]</prizm.dev/re?p=github+/prizmatic> \
++[\[DISCORD\]]</prizm.dev/re?p=discord>
+
+-~-
+
+#] PRIZM ;]
+Guess what? I made a discord bot! You can find out where it is using the \
+links below.
+
+:v:+[[Invite PRIZM to your guild!]]</prizm.dev/re?p=bot> \
++[[Support guild]]</prizm.dev/re?p=discord>
+:v:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizm> \
++[\[Vote on TOP.GG\]]</prizm.dev/re?p=topgg+/vote> \
+[\[Command Index\]]</prizm.dev/prizm/commands> \
+[\[Change log\]]</prizm.dev/prizm/changes> \
+[\[Website\]]</prizm.dev/prizm> \
++[\[Custom emojis\]]</prizm.dev/re?p=emoji>
+
+-~-
+
+#] STALK ME ;[
+
+Follow me on +[Twitter]</prizm.dev/re?p=twitter> :^: @#VoxelPrismatic#
+Watch me not use +[Reddit]</prizm.dev/re?p=reddit> :^: /u/#UltimateRedditCat#
+Find me on +[Discord]</prizm.dev/re?p=dm_dis> :^: #PRIZ ;]#\#9244
+Copy my code on +[GitHub]</prizm.dev/re?p=github> :^: github/#VoxelPrismatic#
+Listen to ambience on +[BandCamp]</prizm.dev/re?p=bandcamp> :^: #przm#.bandcamp
+View my website [here]<#STALKME> :^: voxelprismatic.github.io/#prizm.dev#
+Support me on +[Patreon]</prizm.dev/re?p=patreon> :^: patreon/#VoxelPrismatic#
+Email [me]<mailto:bruh@no.xyz> :^: #bruh@no.xyz#
+Literally stalk me :^: Somewhere in the #Universe#
+
+###] Don't use any of those?
+
+I now have Disqus! You can chat with everybody in the community [here]</prizm.dev/disqus>! \
+No account needed, so chat all you want!
+
+###] Want to stalk more?
+Try stalking the people that helped me out or I generally like! Visit the [credits]</prizm.dev/credits>.

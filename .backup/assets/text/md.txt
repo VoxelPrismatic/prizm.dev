@@ -1,0 +1,134 @@
+#] \#\] H1
+##] \#\#\] H2
+###] \#\#\#\] H3
+####] \#\#\#\#\] H4
+#####] \#\#\#\#\#] H5
+######] \#\#\#\#\#\#] H6
+
+
+###] Basics
+#\#bold\## *\*ital\** _\_under\__ ~\~strike\~~ >!\>\!spoil\!\<!< >^\>\^sup\^\<^< >v\>\v sub \v\<v< \
+`\`code\`` 
+
+
+:: block quote
+:: :: nested!
+:: :: :: again!
+:: :: :: :: bruh
+:: :: :: :: :: how long can this go?
+:: :: :: :: :: :: \:\: forever based on my implementation...
+
+
+###] Links and similar format
+
+?[hover over me]<\?\[hover over me\]\<...\>> 
++[\+\[open in new tab\]\<url\>]<#>
+[\[open in this tab\]\<url\>]<#>
+e[\e\[email me!\]\<lol@no.pls\>]<lol@no.pls>
+p[\p\[maybe a call?\]\<+1-337-420-6969\>]<+1-337-420-6969>
+@[sorry mate, this is an image]</prizm.dev/assets/image/priz_blue.png>(10%)
+^`\@\[alt text\]\<image src\>(size)`
+[[\[\[BUTTON LINKS!!!\]\]\<url\>]]<#>
++[[\+\[\[IN NEW TABS!!!\]\]\<url\>]]<#>
+%[horizontal flip]<h> `%\[horizontal flip]<h>`
+%[vertical flip]<v> `%\[vertical flip]<v>`
+%[horiz+vert flip]<hv> `%\[horiz+vert flip]<hv>`
+
+###] Advanced
+
+line v `-~-`
+
+-~-
+
+|:tables |:are:| neat:|
+|are|they|not?|
+
+```
+​```
+code block
+
+|:tables |:are:| neat:|
+|are|they|not?|
+​```
+```
+
+- \- unordered lists
+- \- are pretty cool
+- - \- \- You can even do nested ones
+
+1. \1\. same with ordered
+2. \2\. but less cool
+
+:<: \:<\: LEFT!
+:v: \:v\: CENTER!
+:>: \:>\: RIGHT!
+:=: \:=\: JUSTIFIED!
+
+*only at the start of each line
+
+Key :^: \:^\: Value
+
+>>[###] Collapsible section]<<
+```
+>>[###] Collapsible section]<<
+content
+--- 
+```
+---
+
+###] Unicode interpreting
+
+| Written    :|:Output     |
+| \\U00000041 | \U00000041 |
+| \\u0042     | \u0042     |
+| \\u{43}     | \u{43}     |
+| \\x44       | \x44       |
+| \\N{LATIN CAPITAL LETTER E} | \N{LATIN CAPITAL LETTER E} |
+
+*when using the \\N{...} stuff, the page will take longer to load simply because \
+it has to load the 1mb lookup table, then turn that into nice JSON data.
+
+###] Accents
+
+| Written  :| Output   |
+| a\$+\</;  | a$+</;   |
+| b\$+/;    | b$+/;    |
+| c\$+^;    | c$+^;    |
+| d\$+v;    | d$+v;    |
+| e\$+//;   | e$+//;   |
+| f\$+\<//; | f$+<//;  |
+| g\$+~;    | g$+~;    |
+| h\$+.;    | h$+.;    |
+| i\$+..;   | i$+..;   |
+| j\$+u;    | j$+u;    |
+| k\$+);    | k$+);    |
+| l\$-:;    | l$-:;    |
+| m\$+_;    | m$+_;    |
+| n\$-_;    | n$-_;    |
+| o\$>:;    | o$>:;    |
+| p\$>.;    | p$>.;    |
+| q\$>~;    | p$>~;    |
+| r\$+o;    | r$+o;    |
+| s\$+';    | s$+';    |
+| t\$>';    | t$>';    |
+| u\$-,;    | u$-,;    |
+| v\$-);    | v$-);    |
+| w\$>c;    | w$>c;    |
+| x\$-];    | x$-];    |
+| y\$-[;    | y$-[;    |
+
+*you can put accents on characters that don't support it, but it will look weird.
+
+###] Escaping
+You can put a `\\` anywhere you like! Put a `\\` at the end of a line to continue it \
+on the next line. Otherwise it will \*doesn't put a `\\` here\*
+break the sentence in the middle and won't look nice.
+
+###] Notes
+The different sections with the borders and things are only \
+created as a result of a different text file. No joke. Go to the \
++[text]<https://github.com/VoxelPrismatic/prizm.dev/tree/master/assets/text> folder \
+to see proof of that.
+
+Want to add it to your own website? View the source +[here]<https://github.com/voxelprismatic/priz.md/>. \
+Enjoy!

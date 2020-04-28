@@ -1,0 +1,64 @@
+@import (reference) "/prizm.dev/assets/css/fn.less";
+@import (reference) "/prizm.dev/assets/css/media.less";
+
+* {
+    font-family: "Ubuntu";
+} div {
+    line-height: 1.5;
+} a {
+    color: #aaffff;
+    text-decoration: none;
+    white-space: nowrap;
+    &:hover, &:focus {
+        color: #ccffff;
+    }
+} textarea {
+    .section(#223333);
+    color: #ffffff;
+    width: 90%;
+} body {
+    text-align: center;
+    margin: auto;
+    color: #aaaaaa;
+} h1, h2, h3, h4, h5, h6 {
+    color: #00ffff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+} span.code {
+    margin: 2px;
+    padding: 2px;
+    font-size: smaller;
+} th {
+    .section(#0088ff);
+    border-radius: 0px;
+    text-shadow: 0px 0px 5px;
+    &:hover, &:focus {
+        text-shadow: 0px 0px 10px;
+    }
+} tr:nth-child(even) {
+    background-color: #00ffff05;
+} th:nth-child(1) {
+    border-radius: 5px 0px 0px 0px;
+} th:nth-last-child(1) {
+    border-radius: 0px 5px 0px 0px;
+} td, tr {
+    .pad(5px);
+    border-width: 2px;
+    .border-colors(#0000, #0ff, #0000, #0ff);
+    border-style: solid;
+} table {
+    width: 100%;
+} blockquote {
+    margin: 0px 5px -5px 5px;
+    padding: 5px;
+    border-left: #0ff 2px solid;
+} ol, ul {
+    margin: 0px;
+    padding-top: 0px;
+} ul {
+  list-style-type: "> "; 
+} ul > li::marker, ol > li::marker {
+  font-family: "Ubuntu Mono";
+  color: #8888;
+}

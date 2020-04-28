@@ -1,5 +1,5 @@
-@import (reference) "/prizm.dev/assets/css/fn.less";
-@import (reference) "/prizm.dev/assets/css/media.less";
+@import (reference) "./fn.less";
+@import (reference) "./media.less";
 
 * {
     font-family: "Ubuntu";
@@ -53,12 +53,21 @@
     margin: 0px 5px -5px 5px;
     padding: 5px;
     border-left: #0ff 2px solid;
-} ol, ul {
+} al {
+    // Copy OL but with lower-alpha as the style
+    display: block;
+    list-style-type: lower-alpha;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+} ol, ul, al {
     margin: 0px;
     padding-top: 0px;
 } ul {
-  list-style-type: "> "; 
-} ul > li::marker, ol > li::marker {
-  font-family: "Ubuntu Mono";
+  list-style-type: "> ";
+} ul > li::marker, ol > li::marker, al > li::marker {
+  .mono-font();
   color: #8888;
 }

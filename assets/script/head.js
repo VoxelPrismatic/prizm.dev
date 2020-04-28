@@ -39,6 +39,10 @@ var elements = [
         "type": "text/css",
         "href": fonts + "Ubuntu:400,400i,500,500i,700,700i&display=swap"
     }, {
+        "tag": "script",
+        "src": "https://voxelprismatic.github.io/priz.md/markup.js",
+        "id": "priz_script"
+    }, {
         "tag": "link",
         "rel": "stylesheet/less",
         "type": "text/css",

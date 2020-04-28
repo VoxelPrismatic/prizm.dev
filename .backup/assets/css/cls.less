@@ -1,0 +1,67 @@
+@import (reference) "/prizm.dev/assets/css/fn.less";
+@import (reference) "/prizm.dev/assets/css/media.less";
+
+.list {
+    max-height: 30vh;
+    overflow-y: auto;
+    text-align: center !important;
+} .margin {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+} .sect, .tab {
+    width: 90vw;
+} .hide {
+    .border(#334444);
+    margin: 5px;
+    padding: 5px;
+    background-color: #223333;
+    font-size: smaller;
+    margin: 2px;
+    padding: 2px;
+    color: #223333;
+    &:hover, &:focus {
+        color: #ffffff;
+    }
+} .loading {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+} .code {
+    .border(#334444);
+    background-color: #222;
+    margin: 5px;
+    padding: 5px;
+    color: #aaaaaa;
+    font-family: "Ubuntu Mono";
+} .invis {
+    display: none;
+} .bgcolor {
+    background-color: #112222;
+} .mono {
+    font-family: "Ubuntu Mono";
+} .hidden-marker::marker {
+    color: #0000;
+} .flip-h {
+    transform: scaleX(-100%);
+    display: inline-block;
+} .flip-v {
+    transform: scaleY(-100%);
+    display: inline-block;
+} .flip-h.flip-v {
+    transform: scale(-100%, -100%);
+} .dropper-closed > div {
+    display: none;
+} .h-dropper {
+    font-weight: bold;
+    font-family: "Ubuntu Mono";
+    float: right;
+    cursor: n-resize;
+} .h-dropper-closed {
+    font-weight: bold;
+    font-family: "Ubuntu Mono";
+    float: right;
+    cursor: s-resize;
+}

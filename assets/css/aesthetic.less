@@ -1,5 +1,5 @@
-@import (reference) "/prizm.dev/assets/css/fn.less";
-@import (reference) "/prizm.dev/assets/css/media.less";
+@import (reference) "./fn.less";
+@import (reference) "./media.less";
 
 h1, h2, h3, h4, h5, h6 {
     text-shadow: 0px 0px 5px;
@@ -17,7 +17,7 @@ each(@sel, {
 }
 
 #logo {
-    position: relative; 
+    position: relative;
     top: 20px;
     &:hover, &:focus {
         filter: drop-shadow(0px 0px 5px #0ff);
@@ -72,7 +72,7 @@ each(@sel, {
     &::before {
         content: "[V]  ";
         font-weight: bold;
-        font-family: "Ubuntu Mono";
+        .mono-font();
     }
 } .collopen {
     .collapser();
@@ -84,7 +84,7 @@ each(@sel, {
     &::before {
         content: "[\039b]  "; // Lambda
         font-weight: bold;
-        font-family: "Ubuntu Mono";
+        .mono-font();
     }
 } .collhover {
     background-color: #00ffff11;
@@ -131,7 +131,7 @@ each(@sel, {
     .margin();
     text-align: justify;
     padding: 10px;
-} 
+}
 
 .btn {
     .section(#0088ff);

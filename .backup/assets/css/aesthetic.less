@@ -1,0 +1,169 @@
+@import (reference) "/prizm.dev/assets/css/fn.less";
+@import (reference) "/prizm.dev/assets/css/media.less";
+
+h1, h2, h3, h4, h5, h6 {
+    text-shadow: 0px 0px 5px;
+}
+
+@sel: a, h1, h2, h3, h4, h5, h6;
+each(@sel, {
+    @{value}:hover, @{value}:focus {
+        text-shadow: 0px 0px 10px;
+    }
+});
+
+.unhide {
+    color: #fff !important;
+}
+
+#logo {
+    position: relative; 
+    top: 20px;
+    &:hover, &:focus {
+        filter: drop-shadow(0px 0px 5px #0ff);
+    }
+}
+
+#head {
+    position: relative;
+    top: -80px;
+    transform: rotate(-14deg);
+    text-shadow: 0px 0px 5px, 0px 0px 20px black;
+    &:hover, &:focus {
+        text-shadow: 0px 0px 10px, 0px 0px 40px black;
+    }
+    font-style: italic;
+}
+
+.lnk {
+    .border(#008888);
+    color: #00ffff;
+    display: block;
+    .align(left);
+    &:hover, &:focus {
+        .section(#00ff00);
+        text-shadow: 0px 0px 5px;
+    }
+    min-height: 3vh;
+} .sel {
+    .lnk();
+    .section(#00ffff);
+    text-shadow: 0px 0px 10px;
+    &:hover, &:focus {
+        .section(#ff0088);
+        text-shadow: 0px 0px 15px;
+    }
+}
+
+.collapser {
+    .section(#cccccc88);
+    border-color: #cccccc88;
+    color: #cccccc;
+    display: block;
+    .align(left);
+    &:hover, &:focus {
+        text-shadow: 0px 0px 5px;
+        .section(#ffffff88);
+        color: #ffffff;
+        border-color: #ffffff88;
+        background-color: #ffffff05;
+    }
+    min-height: 3vh;
+    &::before {
+        content: "[V]  ";
+        font-weight: bold;
+        font-family: "Ubuntu Mono";
+    }
+} .collopen {
+    .collapser();
+    .section(#ffffff88);
+    color: #ffffff;
+    text-shadow: 0px 0px 10px;
+    border-color: #ffffff88;
+    background-color: #ffffff05;
+    &::before {
+        content: "[\039b]  "; // Lambda
+        font-weight: bold;
+        font-family: "Ubuntu Mono";
+    }
+} .collhover {
+    background-color: #00ffff11;
+    color: #aaffff;
+    border-color: #aaffff88;
+    text-shadow: 0px 0px 10px;
+}
+
+.tab {
+    text-align: center;
+    padding: 5px;
+    color: #aaaaaa;
+    .border-colors(#0fff, #0000, #0000, #0000);
+    .border-radii(0px, 0px, 0px, 0px);
+    border-width: 2px;
+    margin: none;
+    text-shadow: 0px 0px 10px;
+    background-color: #00ffff00;
+    &.tabbed {
+        background-color: #00ffff44;
+        color: #00ffff;
+        .border-colors(#0fff, #0fff, #0000, #0fff);
+        .border-radii(5px, 5px, 0px, 0px);
+        &:hover, &:focus {
+            text-shadow: 0px 0px 15px;
+            background-color: #ff008844;
+            color: #ff0088;
+            .border-colors(#f08f, #f08f, #0000, #f08f);
+            .border-radii(5px, 5px, 0px, 0px);
+        }
+    }
+    &:hover, &:focus {
+        text-shadow: 0px 0px 10px;
+        background-color: #00ff0044;
+        color: #00ff00;
+        .border-colors(#0f0f, #0f0f, #0000, #0f0f);
+        .border-radii(5px, 5px, 0px, 0px);
+    }
+}
+
+
+.sect {
+    .border(#00ffff);
+    .margin();
+    text-align: justify;
+    padding: 10px;
+} 
+
+.btn {
+    .section(#0088ff);
+    .pad(2px);
+    &:hover, &:focus {
+        .section(#00ffff);
+        .pad(2px);
+    }
+}
+
+.dict {
+    display: inline-block;
+    width: 0px;
+    border: 2px solid #444444;
+    border-radius: 2px;
+    height: 0px !important;
+    position: relative;
+    top: 10px;
+} .line {
+    height: 5px;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+    box-shadow: 0px 0px 5px #00ffff, inset 0px 0px 5px #00ffff;
+    &:hover, &:focus {
+        box-shadow: 0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
+    }
+}
+
+.tr-l {
+    border-right-color: #0000;
+} .tr-r {
+    border-left-color: #0000;
+}

@@ -1,0 +1,16 @@
+#] Pretty neat, eh?
+
+All of these features, with one dev and only a year of development. \
+The best bit is, this bot has a better uptime than Dyno, and more personality \
+than whatever the fuck YAGPDB is trying to do... I'm serious, the boomer devs \
+over at YAGPDB stole my idea of having relatable/funny statuses.
+
+#PRIZM ;]# v6.2.1
+
+-~-
+
+#] Notice
+
+Development on PRIZM is now slow because of my development on my PRIZMATIC \
+module, which is a replacement for `discord.py`. I will always fix bugs whenever \
+I see them, as I want to make sure PRIZM is stable.

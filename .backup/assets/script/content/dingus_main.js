@@ -1,0 +1,3 @@
+function loadPage() {
+    textPage("toilet");
+}
