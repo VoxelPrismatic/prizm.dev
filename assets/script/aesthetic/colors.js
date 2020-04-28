@@ -67,15 +67,13 @@ function swapColor(colorName, swapImg = true) {
             selectors[txt](style, color);
         }
     }
-    if(swapImg)
-        find("truelogo").src = `/prizm.dev/assets/image/priz_${name}.png`;
+    var img = find("truelogo");
+    var src = `/prizm.dev/assets/image/priz_${name}.png`;
+    if(img.src != src)
+        img.src = src;
     /*Resize dict
     Key --------------------- Val
     Twitter ----- @VoxelPrismatic
     */
-    try {
-        resizeDicts(false);
-    } catch(err) {
-        console.log(err);
-    }
+    logFunc(resizeDicts, false);
 }

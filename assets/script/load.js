@@ -29,7 +29,7 @@ function sub_styles() {
 
 function startLoading() {
     try {
-        var swapDelay = delaySwapColor(theme, false);
+        var swapDelay = delaySwapColor(theme);
         delaySetTransitions();
         document.getElementById("head").innerHTML = document.title;
         loadPage();
