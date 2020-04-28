@@ -6,22 +6,6 @@ var scripts = [
     "delay",
     "accessibility",
 
-/*
-    "md/fn",
-    "md/re",
-    "md/mark",
-    "md/accent",
-    "md/mk/head",
-    "md/mk/table",
-    "md/mk/ol",
-    "md/mk/ul",
-    "md/mk/dropper",
-    "md/elem/tables",
-    "md/elem/collapse",
-    "md/elem/dicts",
-    "md/elem/head",
-    "md/elem/accent", */
-
     "aesthetic/dynamic",
     "aesthetic/colors_func",
     "aesthetic/colors",

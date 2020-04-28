@@ -27,3 +27,11 @@ function stopDelay(timeouts) {
         window.clearTimeout(timeout);
     }
 }
+
+function logFunc(func, ...args) {
+    try {
+        func(...args);
+    } catch(err) {
+        console.error(err);
+    }
+}

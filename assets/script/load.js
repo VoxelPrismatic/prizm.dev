@@ -17,13 +17,13 @@ function loadFooter() {
 
 function sub_styles() {
     if(find(">table")) {
-        styleTables();
+        logFunc(styleTables);
     }
     if(find(".accent")) {
-        style_accents();
+        logFunc(style_accents);
     }
     if(find(".dict")) {
-        resizeDicts();
+        logFunc(resizeDicts);
     }
 }
 
@@ -41,10 +41,10 @@ function startLoading() {
         }
 
         loadFooter();
-
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
         window.onkeydown = delayUpdateSpacer;
+        window.onresize = sub_styles;
     } catch(err) {
         stopDelay(swapDelay);
         console.warn(
@@ -55,7 +55,7 @@ function startLoading() {
         var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
         html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
         find("content").innerHTML = html;
-        delaySwapColor("red");
+        swapColor("red");
     }
     updateSpacer();
     if(find("jumper"))

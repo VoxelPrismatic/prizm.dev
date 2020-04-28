@@ -1,6 +1,0 @@
-#] Status bits...
-
-:v:@[\[#STATUS#: Probably Online\]]<https://top.gg/api/widget/status/555862187403378699.svg> \
-@[\[#GUILDS#: 1+\]]<https://top.gg/api/widget/servers/555862187403378699.svg> \
-@[\[#LIB#: `discord.py`\]]<https://top.gg/api/widget/lib/555862187403378699.svg> \
-@[\[#UPVOTES#: 1+\]]<https://top.gg/api/widget/upvotes/555862187403378699.svg>

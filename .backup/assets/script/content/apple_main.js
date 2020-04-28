@@ -1,3 +1,0 @@
-function loadPage() {
-    textPage("apple");
-}
