@@ -1,8 +1,7 @@
 function delayFunction(func, start, end, interval, ...args) {
     var timeouts = [];
-    for(var x = start; x < end; x += interval) {
+    for(var x = start; x < end; x += interval)
         timeouts.push(window.setTimeout(func, x, ...args));
-    }
     return timeouts
 }
 
@@ -23,9 +22,8 @@ function delayResizeDicts() {
 }
 
 function stopDelay(timeouts) {
-    for(var timeout of timeouts) {
+    for(var timeout of timeouts)
         window.clearTimeout(timeout);
-    }
 }
 
 function logFunc(func, ...args) {

@@ -9,10 +9,10 @@ var scripts = [
     "aesthetic/colors",
     "aesthetic/flicker",
     "aesthetic/dynamic",
-    
+
     "redirect/urls",
     "redirect/shorts",
-    
+
     "load",
 ];
 
@@ -26,14 +26,13 @@ function mark_page() {
 
 if(loader) {
     scripts.push("content/" + loader);
-    if(loader != "404") {
+    if(loader != "404")
         document.body.appendChild(tag({
             "tag": "div",
             "id": "jumper",
             "onclick": "jumpToEdge()",
             "#": "[V]"
         }));
-    }
 }
 
 function ready() {
@@ -74,9 +73,8 @@ try {
 } catch(err) {
 }
 
-for(var element of elements) {
+for(var element of elements)
     section.appendChild(tag(element));
-}
 
 section.appendChild(tag({
     "tag": "!",

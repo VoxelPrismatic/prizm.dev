@@ -13,23 +13,28 @@ function find_in(thing, ids) {
     }
     return ls;
 }
+
+function findProperty_in(thing, ids, prop) {
+    var ls = [];
+    var elm = find_in(thing, ids);
+    try {
+        for(var e of elm)
+            ls.push(e[prop]);
+    } catch(err) {
+        return elm[prop]; // Not iterable
+    }
+    if(ls.length == 1)
+        return ls[0]
+    return ls;
+}
+
 function find(ids) {
     return find_in(document, ids);
 }
 
 //Inner HTML
 function findHtml_in(thing, ids) {
-    var ls = [];
-    var elm = find_in(thing, ids);
-    try {
-        for(var e of elm)
-            ls.push(e.innerHTML);
-    } catch(err) {
-        return elm.innerHTML; // Not iterable
-    }
-    if(ls.length == 1)
-        return ls[0]
-    return ls;
+    return findProperty_in(thing, ids, "innerHTML");
 }
 function findHtml(ids) {
     return findHtml_in(document, ids);
@@ -37,15 +42,7 @@ function findHtml(ids) {
 
 //Outer HTML
 function findOHtml_in(thing, ids) {
-    var ls = [];
-    var elm = find_in(thing, ids);
-    try {
-        for(var e of elm)
-            ls.push(e.outerHTML);
-    } catch(err) {
-        return elm.outerHTML; // Not iterable
-    }
-    return ls;
+    return findProperty_in(thing, ids, "outerHTML");
 }
 function findOHtml(ids) {
     return findOHtml_in(document, ids);
@@ -53,15 +50,7 @@ function findOHtml(ids) {
 
 //Value
 function findVal_in(thing, ids) {
-    var ls = [];
-    var elm = find_in(thing, ids);
-    try {
-        for(var e of elm)
-            ls.push(e.value);
-    } catch(err) {
-        return elm.value; // Not iterable
-    }
-    return ls;
+    return findProperty_in(thing, ids, "value");
 }
 function findVal(ids) {
     return findVal_in(document, ids);
@@ -123,9 +112,8 @@ function locate(thing, parent = find("list"), loc = "find_command") {
         page.style.display = "block";
         if(re != 1) {
             if(page.className.includes("collapser")) {
-                if(!page.className.includes("collopen")) {
+                if(!page.className.includes("collopen"))
                     collapser(page);
-                }
                 var donthideme = locate(thing, page, loc);
                 if(!donthideme) {
                     page.style.display = "none";
@@ -138,9 +126,9 @@ function locate(thing, parent = find("list"), loc = "find_command") {
                 if(page.children.length) {
                     rawtext = page.children.item(0).innerHTML;
                     rawtext += page.children.item(1).innerHTML;
-                } else {
-                    rawtext = page.innerHTML;
                 }
+                else
+                    rawtext = page.innerHTML;
                 if(rawtext.search(re) != -1) {
                     nothidden = true
                     page.classList.remove("invis");
@@ -151,9 +139,8 @@ function locate(thing, parent = find("list"), loc = "find_command") {
             }
         }
     }
-    if(re == 1) {
+    if(re == 1)
         collall();
-    }
     return nothidden;
 }
 

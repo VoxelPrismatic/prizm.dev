@@ -33,11 +33,9 @@ function didntRedirect() {
 
 function getUrl(re, block) {
     var tmp;
-    for(var r of re) {
-        if(document.URL.includes(r)) {
+    for(var r of re)
+        if(document.URL.includes(r))
             tmp = document.URL.split(r)[1];
-        }
-    }
     var url;
     var text;
     var append = "";
@@ -55,10 +53,11 @@ function getUrl(re, block) {
     return [url, text];
 }
 
-eval(load("https://raw.githubusercontent.com/VoxelPrismatic/prizm.dev/master/assets/script/redirect/urls.js"));
-eval(load("https://raw.githubusercontent.com/VoxelPrismatic/prizm.dev/master/assets/script/redirect/shorts.js"));
+var raw = "https://raw.githubusercontent.com/VoxelPrismatic/prizm.dev/master/assets/script/redirect/";
+eval(load(raw + "urls.js"));
+eval(load(raw + "shorts.js"));
 
-var url = "https://voxelprismatic.github.io/prizm.dev";
+var url = "https://voxelprismatic.github.io/prizm.dev/";
 var text = "home";
 var URL = document.URL;
 if(URL.includes("?url=")) {

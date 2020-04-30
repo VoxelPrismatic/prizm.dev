@@ -4,10 +4,7 @@ var stylesheetLoaded = false;
 
 function tryColor() {
     console.log("Stylesheet loaded");
-    try {
-        swapColor(theme, false);
-    } catch(err) {
-    }
+    logFunc(swapColor, theme, false);
 }
 
 try {
@@ -64,21 +61,21 @@ var elements = [
 ];
 
 function tag(element) {
-    if(element["tag"] == "!") {
+    if(element["tag"] == "!")
         return document.createComment(element["#"]);
-    }
     var elem = document.createElement(element["tag"]);
     for(var property of element.constructor.keys(element)) {
-        if(property == "tag") {
+        if(property == "tag")
             continue;
-        }
-        if(property.search(/<[0-9A-Fa-f]+>/gm) == 0) {
+
+        if(property.search(/<[0-9A-Fa-f]+>/gm) == 0)
             elem.appendChild(tag(element[property]))
-        } else if(property.search(/br[0-9A-Fa-f]*/gm) == 0) {
-            for(var x = 0; x < element[property]; x += 1) {
+
+        else if(property.search(/br[0-9A-Fa-f]*/gm) == 0)
+            for(var x = 0; x < element[property]; x += 1)
                 elem.appendChild(document.createElement("br"));
-            }
-        } else if(property == "style") {
+
+        else if(property == "style") {
             if(typeof element[property] == "string") {
                 for(var style of element[property].split(";")) {
                     if(!style)
@@ -87,26 +84,26 @@ function tag(element) {
                     style = style.split(":")[0].trim();
                     elem.style.setProperty(style, value);
                 }
-            } else {
-                styler(elem, element[property]);
             }
-        } else if(property.search(/#[0-9A-Fa-f]*/gm) == 0) {
-            elem.appendChild(document.createTextNode(element[property]));
-        } else {
-            elem.setAttribute(property, element[property]);
+            else
+                styler(elem, element[property]);
         }
+
+        else if(property.search(/#[0-9A-Fa-f]*/gm) == 0)
+            elem.appendChild(document.createTextNode(element[property]));
+
+        else
+            elem.setAttribute(property, element[property]);
     }
     return elem;
 }
 
 function styler(element, styles) {
-    for(var property of styles.constructor.keys(styles)) {
+    for(var property of styles.constructor.keys(styles))
         element.style.setProperty(property, styles[property]);
-    }
 }
 
 var head = document.head;
 
-for(var element of elements) {
+for(var element of elements)
     head.appendChild(tag(element));
-}

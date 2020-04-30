@@ -64,11 +64,9 @@ function regex(st, id) {
     for(var ch of st) {
         var lc = ch.toLowerCase().charCodeAt(0).toString(16);
         var uc = ch.toUpperCase().charCodeAt(0).toString(16);
-        while(lc.length < 4)
-            lc = "0" + lc;
-        while(uc.length < 4)
-            uc = "0" + uc;
-        re += `[\\u${lc}\\u${uc}\\u200b\\\\]`; //Escape chars
+        lc.padStart(4, "0");
+        uc.padStart(4, "0");
+        re += `[\\u${lc}\\u${uc}\\u200b\\\\]`; // Escape chars
     }
     re += ")";
     return RegExp(re, "gm");

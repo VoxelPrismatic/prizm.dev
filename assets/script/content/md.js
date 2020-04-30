@@ -40,8 +40,5 @@ function loadPage() {
 
 function interpret(elem) {
     find('markdown_output').innerHTML = mark_page(elem.value);
-    if(elem.value.includes(":^:")) {
-        delayResizeDicts();
-    }
     sub_styles();
 }

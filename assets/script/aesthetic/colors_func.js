@@ -1,14 +1,13 @@
 function border_colors(style, color, borders) {
     borders = borders.toLowerCase();
-    if(borders.includes("l")) {
+    if(borders.includes("l"))
         style.borderLeftColor = color;
-    } if(borders.includes("r")) {
+    if(borders.includes("r"))
         style.borderRightColor = color;
-    } if(borders.includes("t")) {
+    if(borders.includes("t"))
         style.borderTopColor = color;
-    } if(borders.includes("b")) {
+    if(borders.includes("b"))
         style.borderBottomColor = color;
-    }
 }
 
 function link_color(color) {

@@ -12,19 +12,19 @@ function loadFooter() {
             }
         }
         section.appendChild(footer);
+        updateSpacer()
     }
 }
 
 function sub_styles() {
-    if(find(">table")) {
+    if(find(">table"))
         logFunc(styleTables);
-    }
-    if(find(".accent")) {
+    if(find(".accent"))
         logFunc(style_accents);
-    }
-    if(find(".dict")) {
+    if(find(".dict"))
         logFunc(resizeDicts);
-    }
+    if(find("spacer").style.height != "0px")
+        logFunc(updateSpacer);
 }
 
 function startLoading() {
@@ -34,11 +34,9 @@ function startLoading() {
         document.getElementById("head").innerHTML = document.title;
         loadPage();
         sub_styles();
-        if(document.URL.includes("#")) {
-            for(var x = 0; x < 500; x += 100) {
+        if(document.URL.includes("#"))
+            for(var x = 0; x < 500; x += 100)
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
-            }
-        }
 
         loadFooter();
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
@@ -69,22 +67,21 @@ function textPage(...pages) {
     var html = "";
     for(var page of pages) {
         var txt = load("/prizm.dev/assets/text/" + page + ".txt");
-        if(txt.match(/\\N\{[a-zA-Z1-9 ]+\}/gm)) {
+        if(txt.match(/\\N\{[a-zA-Z1-9 ]+\}/gm))
            load_unicode_index();
-        }
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
     }
     setHtml("content", html);
 }
 
 function load(filename, aio = false, strip = false) {
-    var f = new XMLHttpRequest()
+    var f = new XMLHttpRequest();
     f.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var resp = f.responseText;
-            resp = resp.trim() + "\n"
+            resp = resp.trim() + "\n";
             resp = resp.replace(/</gm, "&lt;");
-            resp = resp.replace(/>/gm, "&gt;")
+            resp = resp.replace(/>/gm, "&gt;");
             if(strip)
                 resp = resp.trim();
             setHtml("file", resp);
@@ -94,7 +91,7 @@ function load(filename, aio = false, strip = false) {
     f.send();
     if(aio)
         return new Promise(resolve => {
-            setTimeout(() => {resolve(findHtml("file"));}, 100)
+            setTimeout(() => {resolve(findHtml("file"));}, 100);
         });
     return findHtml("file").replace(/\&lt\;/gm, "<").replace(/\&gt\;/gm, ">");
 }
