@@ -28,6 +28,10 @@ function sub_styles() {
 }
 
 function startLoading() {
+    if(loadPage.toString().replace(/\n* *\/\/.*\n*/gm, "").includes("{}")) {
+        // If that function is empty
+        return;
+    }
     try {
         var swapDelay = delaySwapColor(theme);
         delaySetTransitions();
