@@ -48,9 +48,9 @@ function maybeReady(elem, index) {
 
 var section = document.getElementById("scripts");
 
-function nextReady() {
+function nextReady(elem) {
     numReady += 1;
-    maybeReady(this, numReady);
+    maybeReady(elem, numReady);
 };
 
 elements = [
@@ -84,7 +84,7 @@ for(var script of scripts) {
         "tag": "script",
         "type": "text/javascript",
         "src": `/prizm.dev/assets/script/${script}.js`,
-        "onload": nextReady,
+        "onload": "nextReady(this)",
         "id": `${script}.js`
     }
     section.appendChild(tag(elem));
