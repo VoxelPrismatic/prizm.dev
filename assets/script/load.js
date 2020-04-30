@@ -28,10 +28,6 @@ function sub_styles() {
 }
 
 function startLoading() {
-    if(loadPage.toString().replace(/\n* *\/\/.*\n*/gm, "").includes("{}")) {
-        // If that function is empty
-        return;
-    }
     try {
         var swapDelay = delaySwapColor(theme);
         delaySetTransitions();
@@ -50,16 +46,18 @@ function startLoading() {
         window.onkeydown = delayUpdateSpacer;
         window.onresize = sub_styles;
     } catch(err) {
-        stopDelay(swapDelay);
-        console.warn(
-            "%cThe following error broke the page",
-            "font-weight: bold; color: #ff0; font-size: large"
-        );
-        console.error(err);
-        var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
-        html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
-        find("content").innerHTML = html;
-        swapColor("red");
+        if(!loadPage.toString().replace(/\n* *\/\/.*\n*/gm, "").includes("{}")) {
+            stopDelay(swapDelay);
+            console.warn(
+                "%cThe following error broke the page",
+                "font-weight: bold; color: #ff0; font-size: large"
+            );
+            console.error(err);
+            var html = load("/prizm.dev/error.html").replace(/\&gt;/gm, ">").replace(/\&lt;/gm, "<");
+            html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
+            find("content").innerHTML = html;
+            swapColor("red");
+        }
     }
     updateSpacer();
     if(find("jumper"))
