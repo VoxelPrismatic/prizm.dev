@@ -1,7 +1,6 @@
 var scripts = [
     "find",
     "other",
-    "load",
     "unidata",
     "delay",
     "accessibility",
@@ -13,6 +12,8 @@ var scripts = [
     
     "redirect/urls",
     "redirect/shorts",
+    
+    "load",
 ];
 
 function loadPage() {
