@@ -6,11 +6,11 @@ var scripts = [
     "delay",
     "accessibility",
 
-    "aesthetic/dynamic",
     "aesthetic/colors_func",
     "aesthetic/colors",
     "aesthetic/flicker",
-
+    "aesthetic/dynamic",
+    
     "redirect/urls",
     "redirect/shorts",
 ];
