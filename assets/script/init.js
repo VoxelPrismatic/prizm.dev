@@ -40,8 +40,8 @@ function ready() {
 
 var numReady = 0;
 
-function maybeReady(index) {
-    console.log(`Script '${scripts[index]}.js' loaded`);
+function maybeReady(elem, index) {
+    console.log(`Script '${elem.id}' loaded`);
     if(numReady == scripts.length)
         ready();
 }
@@ -50,7 +50,7 @@ var section = document.getElementById("scripts");
 
 function nextReady() {
     numReady += 1;
-    maybeReady(numReady - 1);
+    maybeReady(this, numReady);
 };
 
 elements = [
@@ -84,7 +84,8 @@ for(var script of scripts) {
         "tag": "script",
         "type": "text/javascript",
         "src": `/prizm.dev/assets/script/${script}.js`,
-        "onload": "nextReady()"
+        "onload": "nextReady()",
+        "id": `${script}.js`
     }
     section.appendChild(tag(elem));
 }
