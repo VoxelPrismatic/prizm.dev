@@ -84,7 +84,7 @@ for(var script of scripts) {
         "tag": "script",
         "type": "text/javascript",
         "src": `/prizm.dev/assets/script/${script}.js`,
-        "onload": nextReady(),
+        "onload": nextReady,
         "id": `${script}.js`
     }
     section.appendChild(tag(elem));
