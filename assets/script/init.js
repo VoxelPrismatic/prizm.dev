@@ -20,6 +20,10 @@ function loadPage() {
     // In case of error/404 page
 }
 
+function mark_page() {
+    // In case the external markdown doesn't load right away
+}
+
 if(loader) {
     scripts.push("content/" + loader);
     if(loader != "404") {
