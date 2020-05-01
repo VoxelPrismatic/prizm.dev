@@ -17,14 +17,19 @@ function loadFooter() {
 }
 
 function sub_styles() {
-    if(find(">table"))
+    if(find(">table")) {
+        var styleTables = styleTables || undefined;
         logFunc(styleTables);
-    if(find(".accent"))
+    } if(find(".accent")) {
+        var style_accents = style_accents || undefined;
         logFunc(style_accents);
-    if(find(".dict"))
+    } if(find(".dict")) {
+        var resizeDicts = resizeDicts || undefined;
         logFunc(resizeDicts);
-    if(find("spacer").style.height != "0px")
+    } if(find("spacer").style.height != "0px") {
+        var updateSpacer = updateSpacer || undefined;
         logFunc(updateSpacer);
+    }
 }
 
 function startLoading() {
