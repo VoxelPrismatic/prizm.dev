@@ -49,6 +49,6 @@ function swapColor(colorName, swapImg = true) {
     try {
         resizeDicts(false);
     } catch(err) {
-        console.error(err);
+        // Not important
     }
 }

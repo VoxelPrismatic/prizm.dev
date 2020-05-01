@@ -49,7 +49,7 @@ function updateSpacer(dontLoad = false) {
 
 
 function sub_styles() {
-    console.group("Reformatting page");
+    console.groupCollapsed("Reformatting page");
     if(find(">table")) {
         console.log("Styling tables")
         var styleTables = styleTables || undefined;
@@ -68,7 +68,7 @@ function sub_styles() {
             logFunc(updateSpacer);
         }
     } catch(err) {
-        console.log(err);
+        console.error(err);
     }
     console.groupEnd("Reformatting page")
 }

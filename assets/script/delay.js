@@ -9,7 +9,6 @@ function delaySwapColor(theme, ...args) {
     try {
         return delayFunction(swapColor, 0, 3000, 100, theme, ...args);
     } catch(err) {
-        console.error(err);
         return [];
     }
 }
@@ -18,7 +17,6 @@ function delaySetTransitions() {
     try {
         return delayFunction(setTransitions, 1000, 4000, 100);
     } catch(err) {
-        console.error(err);
         return [];
     }
 }
@@ -27,7 +25,6 @@ function delayUpdateSpacer() {
     try {
         return delayFunction(updateSpacer, 0, 100, 25);
     } catch(err) {
-        console.error(err);
         return [];
     }
 }
@@ -36,7 +33,6 @@ function delayResizeDicts() {
     try {
         return delayFunction(resizeDicts, 0, 100, 25, false);
     } catch(err) {
-        console.error(err);
         return [];
     }
 }
