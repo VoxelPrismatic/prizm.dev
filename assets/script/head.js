@@ -4,7 +4,11 @@ var stylesheetLoaded = false;
 
 function tryColor() {
     console.log("Stylesheet loaded");
-    logFunc(swapColor, theme, false);
+    try {
+        swapColor(theme, false);
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 try {
