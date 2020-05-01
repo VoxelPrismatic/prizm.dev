@@ -12,7 +12,7 @@ function loadFooter() {
             }
         }
         section.appendChild(footer);
-        updateSpacer();
+        updateSpacer(true);
     }
 }
 
