@@ -39,6 +39,7 @@ function ready() {
     startLoading();
     window.onclick = changeFunnyTextThing;
     window.onauxclick = changeFunnyTextThing;
+    window.ontouch = changeFunnyTextThing;
 }
 
 var numReady = 0;

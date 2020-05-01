@@ -18,11 +18,9 @@ function loadFooter() {
 
 function startLoading() {
     try {
-        var swapDelay = delaySwapColor(theme);
         delaySetTransitions();
         $("#head")[0].innerHTML = document.title;
         loadPage();
-        sub_styles();
         if(document.URL.includes("#"))
             for(var x = 0; x < 500; x += 100)
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
@@ -30,8 +28,9 @@ function startLoading() {
         loadFooter();
         texts = load("/prizm.dev/assets/text/footer.txt", false, true).split("\n");
         changeFunnyTextThing();
-        window.onkeydown = delayUpdateSpacer;
+        window.onkeydown = sub_styles;
         window.onresize = sub_styles;
+        var swapDelay = delaySwapColor(theme);
     } catch(err) {
         if(!loadPage.toString().replace(/\n* *\/\/.*\n*/gm, "").includes("{}")) {
             stopDelay(swapDelay);
@@ -46,9 +45,12 @@ function startLoading() {
             swapColor("red");
         }
     }
+    sub_styles();
     updateSpacer();
-    if(find("jumper"))
+    if(find("jumper")) {
         window.onscroll = changeScrollingThingy;
+        window.ontouchmove = changeScrollingThingy;
+    }
     a11y();
 }
 
