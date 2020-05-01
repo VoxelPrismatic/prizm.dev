@@ -26,9 +26,13 @@ function sub_styles() {
     } if(find(".dict")) {
         var resizeDicts = resizeDicts || undefined;
         logFunc(resizeDicts);
-    } if(find("spacer").style.height != "0px") {
-        var updateSpacer = updateSpacer || undefined;
-        logFunc(updateSpacer);
+    } try {
+        if(find("spacer").style.height != "0px") {
+            var updateSpacer = updateSpacer || undefined;
+            logFunc(updateSpacer);
+        }
+    } catch(err) {
+        console.log(err);
     }
 }
 
