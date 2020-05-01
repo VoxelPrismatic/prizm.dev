@@ -50,5 +50,9 @@ function swapColor(colorName, swapImg = true) {
         resizeDicts(false);
     } catch(err) {
         // Not important
+    } try {
+        setTransitions(false);
+    } catch(err) {
+        // Not important
     }
 }
