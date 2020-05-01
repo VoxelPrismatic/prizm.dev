@@ -22,6 +22,7 @@ function loadPage() {
 
 function mark_page() {
     // In case the external markdown doesn't load right away
+    return "<i>*still loading</i>";
 }
 
 if(loader) {
