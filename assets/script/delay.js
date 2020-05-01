@@ -22,6 +22,8 @@ function delayResizeDicts() {
 }
 
 function stopDelay(timeouts) {
+    if(timeouts == undefined)
+        return;
     for(var timeout of timeouts)
         window.clearTimeout(timeout);
 }
