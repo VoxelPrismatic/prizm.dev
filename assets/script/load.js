@@ -47,6 +47,7 @@ function startLoading() {
     }
     sub_styles();
     updateSpacer();
+    window.setTimeout(sub_styles, 1000);
     if(find("jumper")) {
         window.onscroll = changeScrollingThingy;
         window.ontouchmove = changeScrollingThingy;
