@@ -4,7 +4,7 @@ let colors = {
     "yellow":  ["#ff0", "#221",    "yellow"],
     "nuclear": ["#8f0", "#152211", "nuclear"],
     "green":   ["#0f0", "#121",    "green"],
-    "sea":     ["#0f8", "#112215", "sea"]
+    "sea":     ["#0f8", "#112215", "sea"],
     "cyan":    ["#0ff", "#122",    "blue"],
     "blurple": ["#4af", "#111522", "blurple"],
     "blue":    ["#44f", "#112",    "dark"],

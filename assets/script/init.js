@@ -44,9 +44,13 @@ function ready() {
 var numReady = 0;
 
 function maybeReady(elem, index) {
+    if(index == 0)
+        console.group("Loading scripts");
     console.log(`Script '${elem.id}' loaded`);
-    if(numReady == scripts.length)
+    if(numReady == scripts.length) {
+        console.groupEnd("Loading scripts");
         ready();
+    }
 }
 
 var section = document.getElementById("scripts");
@@ -58,9 +62,6 @@ function nextReady(elem) {
 
 elements = [
     {
-        "tag": "div",
-        "id": "file"
-    }, {
         "tag": "a",
         "id": "hiddenlink"
     }
@@ -68,8 +69,8 @@ elements = [
 
 
 try {
-    document.title = document.getElementById("title").content;
-    document.getElementById("head").innerHTML = document.title;
+    document.title = $("#title")[0].content;
+    $("#head")[0].innerHTML = document.title;
 } catch(err) {
 }
 

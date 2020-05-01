@@ -3,7 +3,7 @@ function load(filename, aio = false, strip = false) {
     f.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var resp = f.responseText;
-            resp = resp.trim() + "\n"
+            resp = resp.trim() + "\n";
             resp = resp.replace(/</gm, "&lt;");
             resp = resp.replace(/>/gm, "&gt;");
             if(strip)
@@ -13,10 +13,6 @@ function load(filename, aio = false, strip = false) {
     }
     f.open("GET", filename, aio);
     f.send();
-    if(aio)
-        return new Promise(resolve => {
-            setTimeout(() => {resolve(document.getElementById("file").innerHTML);}, 100)
-        });
     return document.getElementById("file").innerHTML.replace(/\&amp;/gm, "&");
 }
 
@@ -66,7 +62,8 @@ if(URL.includes("?url=")) {
 } else if(URL.match(/\?(page|p)=/gm)) {
     var re = [
         "?page=",
-        "?p="
+        "?p=",
+        "$"
     ];
     [url, text] = getUrl(re, urls);
 } else if(URL.match(/(\?(link|l|short|s)=|\#)/gm)) {

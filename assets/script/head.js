@@ -18,6 +18,10 @@ var elements = [
         "src": "https://voxelprismatic.github.io/priz.md/markup.js",
         "id": "priz_script"
     }, {
+        "tag": "script",
+        "src": "/prizm.dev/assets/script/external/$.js",
+        "id": "jQuery"
+    }, {
         "tag": "link",
         "rel": "icon",
         "type": "image/png",
@@ -46,7 +50,7 @@ var elements = [
         "href": "/prizm.dev/assets/style.less"
     }, {
         "tag": "script",
-        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.0/less.min.js",
+        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js",
         "onload": "tryColor()",
         "id": "lesscss"
     }, {
@@ -69,11 +73,11 @@ function tag(element) {
             continue;
 
         if(property.search(/<[0-9A-Fa-f]+>/gm) == 0)
-            elem.appendChild(tag(element[property]))
+            elem.append(tag(element[property]))
 
         else if(property.search(/br[0-9A-Fa-f]*/gm) == 0)
             for(var x = 0; x < element[property]; x += 1)
-                elem.appendChild(document.createElement("br"));
+                elem.append(document.createElement("br"));
 
         else if(property == "style") {
             if(typeof element[property] == "string") {
@@ -90,7 +94,7 @@ function tag(element) {
         }
 
         else if(property.search(/#[0-9A-Fa-f]*/gm) == 0)
-            elem.appendChild(document.createTextNode(element[property]));
+            elem.append(document.createTextNode(element[property]));
 
         else
             elem.setAttribute(property, element[property]);

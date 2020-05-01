@@ -12,7 +12,7 @@ function loadFooter() {
             }
         }
         section.appendChild(footer);
-        updateSpacer()
+        updateSpacer();
     }
 }
 
@@ -31,7 +31,7 @@ function startLoading() {
     try {
         var swapDelay = delaySwapColor(theme);
         delaySetTransitions();
-        document.getElementById("head").innerHTML = document.title;
+        $("#head")[0].innerHTML = document.title;
         loadPage();
         sub_styles();
         if(document.URL.includes("#"))
@@ -75,23 +75,18 @@ function textPage(...pages) {
 }
 
 function load(filename, aio = false, strip = false) {
-    var f = new XMLHttpRequest();
-    f.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var resp = f.responseText;
-            resp = resp.trim() + "\n";
-            resp = resp.replace(/</gm, "&lt;");
-            resp = resp.replace(/>/gm, "&gt;");
-            if(strip)
-                resp = resp.trim();
-            setHtml("file", resp);
-        }
-    }
-    f.open("GET", filename, aio);
-    f.send();
-    if(aio)
+    if(aio) {
         return new Promise(resolve => {
-            setTimeout(() => {resolve(findHtml("file"));}, 100);
+            resp = await fetch(filename);
+            text = await resp.text();
+            if(strip)
+                text = text.trim();
+            resolve(text);
         });
-    return findHtml("file").replace(/\&lt\;/gm, "<").replace(/\&gt\;/gm, ">");
+    } else {
+        text = $.ajax(filename, {async: false}).responseText;
+    } if(strip) {
+        text = text.trim();
+    }
+    return text;
 }
