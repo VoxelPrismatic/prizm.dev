@@ -21,6 +21,8 @@ function getRules() {
             return ruleset.cssRules;
 }
 
+var selectors__ = selectors__ || [];
+
 function swapColor(colorName, swapImg = true) {
     var color;
     var bg;

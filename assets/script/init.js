@@ -5,7 +5,6 @@ var scripts = [
     "delay",
     "accessibility",
 
-    "aesthetic/colors_func",
     "aesthetic/colors",
     "aesthetic/flicker",
     "aesthetic/dynamic",
