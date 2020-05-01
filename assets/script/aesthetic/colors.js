@@ -24,6 +24,8 @@ function getRules() {
 function setTransitions() {
     var rules = getRules();
     var stuffs = [];
+    if(!rules)
+        return;
     for(var rule of rules) {
         var txt = rule.selectorText;
         if(txt && (txt.includes("hover") || txt.includes("focus"))) {

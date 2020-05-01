@@ -44,7 +44,7 @@ function ready() {
 var numReady = 0;
 
 function maybeReady(elem, index) {
-    if(index == 0)
+    if(index == 1)
         console.group("Loading scripts");
     console.log(`Script '${elem.id}' loaded`);
     if(numReady == scripts.length) {
