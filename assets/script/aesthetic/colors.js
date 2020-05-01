@@ -9,7 +9,7 @@ let colors = {
     "blurple": ["#4af", "#111522", "blurple"],
     "blue":    ["#44f", "#112",    "dark"],
     "purple":  ["#a4f", "#151122", "purple"],
-    "magenta": ["#f0f", "#212",    "magenta"]
+    "magenta": ["#f0f", "#212",    "magenta"],
     "pink":    ["#f08", "#221115", "pink"],
     "grey":    ["#aaa", "#111",    "grey"],
     "white":   ["#fff", "#222",    "white"],
