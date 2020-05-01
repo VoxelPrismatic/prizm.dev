@@ -34,7 +34,7 @@ function getHeight(elem) {
 }
 
 function updateSpacer(dontLoad = false) {
-    if(dontLoad)
+    if(!dontLoad)
         loadFooter();
     spacer = find("spacer");
     spacer.style.transition = "none";
