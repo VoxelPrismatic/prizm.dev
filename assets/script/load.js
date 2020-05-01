@@ -76,7 +76,7 @@ function textPage(...pages) {
 
 function load(filename, aio = false, strip = false) {
     if(aio) {
-        return new Promise(resolve => {
+        return new Promise(async resolve => {
             resp = await fetch(filename);
             text = await resp.text();
             if(strip)
