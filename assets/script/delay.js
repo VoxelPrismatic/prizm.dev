@@ -27,6 +27,8 @@ function stopDelay(timeouts) {
 }
 
 function logFunc(func, ...args) {
+    if(func == undefined)
+        return
     try {
         func(...args);
     } catch(err) {
