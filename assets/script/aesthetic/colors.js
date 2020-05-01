@@ -21,39 +21,6 @@ function getRules() {
             return ruleset.cssRules;
 }
 
-function setTransitions() {
-    var rules = getRules();
-    var stuffs = [];
-    if(!rules)
-        return;
-    for(var rule of rules) {
-        var txt = rule.selectorText;
-        if(txt && (txt.includes("hover") || txt.includes("focus"))) {
-            if(txt.includes(".sect"))
-                rule.style.transition = "none !important";
-            else
-                stuffs.push(txt.split(":")[0]);
-        }
-    }
-    for(var rule of rules) {
-        var txt = rule.selectorText;
-        if(txt  && !(txt.includes("hover") || txt.includes("focus"))) {
-            var incl = false;
-            for(var stuff of stuffs) {
-                if(txt.includes(stuff)) {
-                    rule.style.transition = "all ease 1s";
-                    incl = true;
-                    break;
-                }
-            } if(!incl)
-                rule.style.transition = "none";
-        }
-    }
-    for(var css of [".sect", ".dict"])
-        for(var elem of find(css))
-            elem.style.transition = "none";
-}
-
 function swapColor(colorName, swapImg = true) {
     var color;
     var bg;
@@ -64,11 +31,8 @@ function swapColor(colorName, swapImg = true) {
     if(rules) {
         for(var rule of rules) {
             let txt = rule.selectorText;
-            if(!txt)
-                continue
-            var style = rule.style;
-            if(selectors[txt])
-                selectors[txt](style, color);
+            if(txt && selectors__[txt])
+                selectors__[txt](rule.style, color, bg);
         }
     }
     var img = find("truelogo");

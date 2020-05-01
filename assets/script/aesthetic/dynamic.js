@@ -46,3 +46,29 @@ function updateSpacer(dontLoad = false) {
         x += 1;
     }
 }
+
+
+function sub_styles() {
+    console.group("Reformatting page");
+    if(find(">table")) {
+        console.log("Styling tables")
+        var styleTables = styleTables || undefined;
+        logFunc(styleTables);
+    } if(find(".accent")) {
+        console.log("Moving accents")
+        var style_accents = style_accents || undefined;
+        logFunc(style_accents);
+    } if(find(".dict")) {
+        var resizeDicts = resizeDicts || undefined;
+        logFunc(resizeDicts);
+    } try {
+        if(find("spacer").style.height != "0px") {
+            console.log("Resizing spacer");
+            var updateSpacer = updateSpacer || undefined;
+            logFunc(updateSpacer);
+        }
+    } catch(err) {
+        console.log(err);
+    }
+    console.groupEnd("Reformatting page")
+}

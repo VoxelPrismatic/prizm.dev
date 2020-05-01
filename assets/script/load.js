@@ -16,26 +16,6 @@ function loadFooter() {
     }
 }
 
-function sub_styles() {
-    if(find(">table")) {
-        var styleTables = styleTables || undefined;
-        logFunc(styleTables);
-    } if(find(".accent")) {
-        var style_accents = style_accents || undefined;
-        logFunc(style_accents);
-    } if(find(".dict")) {
-        var resizeDicts = resizeDicts || undefined;
-        logFunc(resizeDicts);
-    } try {
-        if(find("spacer").style.height != "0px") {
-            var updateSpacer = updateSpacer || undefined;
-            logFunc(updateSpacer);
-        }
-    } catch(err) {
-        console.log(err);
-    }
-}
-
 function startLoading() {
     try {
         var swapDelay = delaySwapColor(theme);
