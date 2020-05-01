@@ -37,11 +37,6 @@ if(loader) {
 
 function ready() {
     startLoading();
-    window.setTimeout(function() {
-        window.onclick = changeFunnyTextThing;
-        window.onauxclick = changeFunnyTextThing;
-        window.ontouchend = changeFunnyTextThing;
-    }, 1000);
 }
 
 var numReady = 0;

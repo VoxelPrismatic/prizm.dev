@@ -52,6 +52,9 @@ function startLoading() {
         window.onscroll = changeScrollingThingy;
         window.ontouchmove = changeScrollingThingy;
     }
+    window.onclick = changeFunnyTextThing;
+    window.onauxclick = changeFunnyTextThing;
+    window.ontouchend = changeFunnyTextThing;
     a11y();
 }
 
