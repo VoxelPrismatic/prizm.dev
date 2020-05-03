@@ -67,8 +67,8 @@ elements = [
 
 
 try {
-    document.title = $("#title")[0].content;
-    $("#head")[0].innerHTML = document.title;
+    document.title = document.getElementById("title").content;
+    document.getElementById("head").innerHTML = document.title;
 } catch(err) {
 }
 

@@ -19,7 +19,7 @@ function loadFooter() {
 async function startLoading() {
     try {
         delaySetTransitions();
-        $("#head")[0].innerHTML = document.title;
+        find("head")[0].innerHTML = document.title;
         loadPage();
         if(document.URL.includes("#"))
             for(var x = 0; x < 500; x += 100)
