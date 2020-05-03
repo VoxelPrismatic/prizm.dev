@@ -19,7 +19,7 @@ function loadFooter() {
 async function startLoading() {
     try {
         delaySetTransitions();
-        find("head")[0].innerHTML = document.title;
+        find("head").innerHTML = document.title;
         loadPage();
         if(document.URL.includes("#"))
             for(var x = 0; x < 500; x += 100)
@@ -42,7 +42,7 @@ async function startLoading() {
             html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
             find("content").innerHTML = html;
             swapColor("red");
-            find("head")[0].innerHTML = "ERROR ;[";
+            find("head").innerHTML = "ERROR ;[";
         }
     }
     sub_styles();
