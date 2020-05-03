@@ -42,6 +42,7 @@ async function startLoading() {
             html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
             find("content").innerHTML = html;
             swapColor("red");
+            find("head")[0].innerHTML = "ERROR ;[";
         }
     }
     sub_styles();
