@@ -22,10 +22,6 @@ var elements = [
         "src": "https://voxelprismatic.github.io/priz.md/markup.js",
         "id": "priz_script"
     }, {
-        "tag": "script",
-        "src": "/prizm.dev/assets/script/external/$.js",
-        "id": "jQuery"
-    }, {
         "tag": "link",
         "rel": "icon",
         "type": "image/png",

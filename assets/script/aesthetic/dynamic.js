@@ -14,15 +14,15 @@ shouldUpdate = true;
 function changeScrollingThingy() {
     if(window.scrollY % 2)
         return;
-    if(window.scrollY / window.scrollMaxY >= 0.5)
-        setHtml("jumper", "[\u039b]");
-    else
-        setHtml("jumper", "[V]");
     if(shouldUpdate) {
         updateSpacer();
         shouldUpdate = false;
         window.setTimeout(resetUpdate, 500);
     }
+    if(window.scrollY / window.scrollMaxY >= 0.5)
+        setHtml("jumper", "[\u039b]");
+    else
+        setHtml("jumper", "[V]");
 }
 
 function getHeight(elem) {
@@ -47,28 +47,22 @@ function updateSpacer(dontLoad = false) {
     }
 }
 
-
 function sub_styles() {
     console.groupCollapsed("Reformatting page");
-    if(find(">table")) {
-        console.log("Styling tables")
-        var styleTables = styleTables || undefined;
+    if(find("spacer")) {
+        console.log("Resizing spacer");
+        logFunc(updateSpacer);
+    } if(find(">table")) {
+        console.log("Styling tables");
         logFunc(styleTables);
     } if(find(".accent")) {
-        console.log("Moving accents")
-        var style_accents = style_accents || undefined;
+        console.log("Moving accents");
         logFunc(style_accents);
     } if(find(".dict")) {
-        var resizeDicts = resizeDicts || undefined;
         logFunc(resizeDicts);
-    } try {
-        if(find("spacer").style.height != "0px") {
-            console.log("Resizing spacer");
-            var updateSpacer = updateSpacer || undefined;
-            logFunc(updateSpacer);
-        }
-    } catch(err) {
-        console.error(err);
+    } if(find("spacer")) {
+        console.log("Resizing spacer");
+        logFunc(updateSpacer);
     }
     console.groupEnd("Reformatting page")
 }
