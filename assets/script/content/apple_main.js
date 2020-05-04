@@ -1,3 +1,3 @@
-function loadPage() {
-    textPage("apple");
+async function loadPage() {
+    await textPage("apple");
 }

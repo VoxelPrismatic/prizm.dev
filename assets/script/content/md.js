@@ -1,5 +1,5 @@
-function loadPage() {
-    textPage("md");
+async function loadPage() {
+    await textPage("md");
     find("content").appendChild(tag({
         "tag": "div",
         "class": "sect",

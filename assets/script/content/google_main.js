@@ -1,3 +1,3 @@
-function loadPage() {
-    textPage("google_removed", "google_working");
+async function loadPage() {
+    await textPage("google_removed", "google_working");
 }

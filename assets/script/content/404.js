@@ -1,5 +1,5 @@
-function loadPage() {
-    var data = JSON.parse(load("/prizm.dev/assets/data/404.json").replace(/\\\n/gm, "\\n"));
+async function loadPage() {
+    var data = await load("/prizm.dev/assets/data/404.json", {json: true});
     var thing = document.URL.split("/prizm.dev/")[1].split("?")[0].split("#")[0];
     var stuff = data[thing] || data[thing.slice(0, -1)];
     if(stuff) {

@@ -13,9 +13,9 @@ var categories = {
 
 var commands = {};
 
-function loadPage() {
-    var things = {}
-    var index = JSON.parse(load("/prizm.dev/assets/data/commands.json").replace(/\\\n/gm, "\\n"));
+async function loadPage() {
+    var things = {};
+    var index = await load("/prizm.dev/assets/data/commands.json", {json: true});
     var st = "";
     var comindex = "";
     for(var com of index.constructor.keys(index)) {

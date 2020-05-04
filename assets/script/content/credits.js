@@ -1,3 +1,3 @@
-function loadPage() {
-    textPage("credits");
+async function loadPage() {
+    await textPage("credits");
 }

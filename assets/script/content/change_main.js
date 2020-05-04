@@ -1,5 +1,6 @@
-function loadPage() {
-    setHtml("log", mark_page(load("/prizm.dev/assets/text/changes.txt")));
+async function loadPage() {
+    var content = await load("/prizm.dev/assets/text/changes.txt");
+    setHtml("log", mark_page(content));
     var st = "";
     for(var elem of find("log").children) {
         if(elem.tagName == "H1") {

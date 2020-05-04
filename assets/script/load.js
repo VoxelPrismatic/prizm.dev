@@ -6,11 +6,9 @@ function loadFooter() {
         }
         var blocks = find("content").children;
         var section = blocks[0];
-        for(var child of blocks) {
-            if(child.className.includes("sect")) {
+        for(var child of blocks)
+            if(child.className.includes("sect"))
                 section = child;
-            }
-        }
         section.appendChild(footer);
         updateSpacer(true);
     }
@@ -20,14 +18,13 @@ async function startLoading() {
     try {
         delaySetTransitions();
         find("head").innerHTML = document.title;
-        loadPage();
+        await loadPage();
         if(document.URL.includes("#"))
             for(var x = 0; x < 500; x += 100)
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
 
         loadFooter();
-        var content = await load("/prizm.dev/assets/text/footer.txt",  true);
-        texts = content.split("\n");
+        var texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
         changeFunnyTextThing();
         var swapDelay = delaySwapColor(theme);
     } catch(err) {
@@ -72,10 +69,14 @@ async function textPage(...pages) {
     setHtml("content", html);
 }
 
-async function load(filename, strip = false) {
+async function load(filename, strip = false, json = false, list = false) {
     var resp = await fetch(filename);
     var content = await resp.text();
-    if(strip)
+    if(strip || list || json)
         content = content.trim();
+    if(json)
+        return JSON.parse(content.replace(/\\\n/gm, "\\n"));
+    if(list)
+        return content.split("\n");
     return content;
 }
