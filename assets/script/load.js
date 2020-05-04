@@ -24,7 +24,7 @@ async function startLoading() {
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
 
         loadFooter();
-        var texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
+        globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
         changeFunnyTextThing();
         var swapDelay = delaySwapColor(theme);
     } catch(err) {
