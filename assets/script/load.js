@@ -15,6 +15,7 @@ function loadFooter() {
 }
 
 async function startLoading() {
+    console.groupCollapsed("Loading page");
     try {
         delaySetTransitions();
         find("head").innerHTML = document.title;
@@ -22,19 +23,20 @@ async function startLoading() {
         if(document.URL.includes("#"))
             for(var x = 0; x < 500; x += 100)
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
-
-        loadFooter();
+            loadFooter();
         globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
         changeFunnyTextThing();
         var swapDelay = delaySwapColor(theme);
     } catch(err) {
         if(!loadPage.toString().replace(/\n* *\/\/.*\n*/gm, "").includes("{}")) {
             stopDelay(swapDelay);
+            console.groupEnd("Loading page");
             console.warn(
                 "%cThe following error broke the page",
                 "font-weight: bold; color: #ff0; font-size: large"
             );
             console.error(err);
+            console.groupCollapsed("Loading page");
             var html = await load("/prizm.dev/error.html");
             html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
             find("content").innerHTML = html;
@@ -46,6 +48,7 @@ async function startLoading() {
     updateSpacer();
     window.setTimeout(sub_styles, 1000);
     delayFunction(function() {
+        console.log("Updating listeners");
         if(find("jumper")) {
             window.onscroll = changeScrollingThingy;
             window.ontouchmove = changeScrollingThingy;
@@ -56,6 +59,7 @@ async function startLoading() {
         window.onresize = sub_styles;
     }, 0, 5000, 1000);
     a11y();
+    window.setTimeout(() => console.groupEnd("Loading page"), 1000);
 }
 
 async function textPage(...pages) {
@@ -70,6 +74,7 @@ async function textPage(...pages) {
 }
 
 async function load(filename, strip = false, json = false, list = false) {
+    console.log("Reading " + filename);
     if(strip.list)
         list = true;
     if(strip.json)
