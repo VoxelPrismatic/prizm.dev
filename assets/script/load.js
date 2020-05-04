@@ -70,6 +70,10 @@ async function textPage(...pages) {
 }
 
 async function load(filename, strip = false, json = false, list = false) {
+    if(strip.list)
+        list = true;
+    if(strip.json)
+        json = true;
     var resp = await fetch(filename);
     var content = await resp.text();
     if(strip || list || json)
