@@ -4,16 +4,14 @@ function load(filename, aio = false, strip = false) {
         if (this.readyState == 4 && this.status == 200) {
             var resp = f.responseText;
             resp = resp.trim() + "\n";
-            resp = resp.replace(/</gm, "&lt;");
-            resp = resp.replace(/>/gm, "&gt;");
             if(strip)
                 resp = resp.trim();
-            document.getElementById("file").innerHTML = resp;
+            globalThis.resp__ = resp;
         }
     }
     f.open("GET", filename, aio);
     f.send();
-    return document.getElementById("file").innerHTML.replace(/\&amp;/gm, "&");
+    return globalThis.resp__;
 }
 
 function didntRedirect() {
