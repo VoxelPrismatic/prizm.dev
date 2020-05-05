@@ -52,7 +52,6 @@ ___
 > > Now, if there is an issue with starting up, it still starts up fully instead of \
 stopping all commands from loading. Also, it says that it's broken in +[\#is-prizm-online]\
 <https://discordapp.com/channels/533290351184707584/556247032701124650>
-
 > The react command now supports numbers too
 > > Eg `;]react t r y 1 m 8`
 ===
@@ -100,11 +99,8 @@ ___
 > All math commands have been refreshed with new RegEx
 > > Also all math equations are now parsed by the same parser
 > > All math commands now have their answers unparsed as well so `1j` will be `1i`
-
 > Added new statuses
-
 > Fixed a bug where none of the math commands actually worked
-
 > Still working on the new `PRIZMATIC` module
 ===
 
@@ -114,13 +110,10 @@ ___
 ___
 > Logging was fixed yet again
 > > Edited messages now works, but roles supposedly don't
-
 > Added the `;]triangle` command
 > > Solves your triangles
-
 > The graph command has been updated
 > > More colors and themes
-
 > Some math commands have been updated
 > > Better RegEx for equations and things
 ===
@@ -131,7 +124,6 @@ ___
 ___
 > Logging now #ACTUALLY# works!!!!
 > > The issue was that the `bot` logging was actually a switch to turn the entire system off
-
 > Updated most logging things
 > > Now is cleaner and always attaches a file [when available] with additional context
 ===
@@ -160,14 +152,12 @@ ___
 > > > Honestly too many ill just paste the source code instead online
 > > > Emulation only changes colors, screen ratio/size, and graph step
 > > Added asymptote detection, add `--det` or `--asym` to the end of the equation
-
 > All commands have been updated
 > > They now have better documentation for non techies
 > > > `INT` and `FLOAT` have been changed to `NUMBER`
 > > > `STR` has been changed to `TEXT`
 > > > `ROLE`, `MESSAGE`, `MEMBER`, `CHANNEL`, and more provide info on how to obtain/input that data
 > > > `[NO ARGS...` has been changed to `[NO INPUT...`
-
 > Renamed a few commands
 > > `;]emj` --> `;]ei`
 > > `;]gld` --> `;]gi`
@@ -176,10 +166,8 @@ ___
 > > `;]rol` --> `;]ri`
 > > `;]usr` --> `;]ui`
 > > `;]mbr` --> `;]mi`
-
 > Fixed a few commands
 > > `;]rng` and `;]coin` now actually work
-
 > Added the `;]colors` command
 > > Displays a random color or displays a sample of a hex color provided
 ===
@@ -204,9 +192,7 @@ ___
 #] oct 18, 2019
 ___
 > Added many more faces like `;]` and `;O`
-
 > Added many more status texts
-
 > Updated the `;]char` command to have bytes for python
 ===
 
@@ -217,6 +203,7 @@ ___
 > The `;]draw` command is now a thing!
 > > Draw whatever you want in a 128x128 grid!
 > > Will be upscaled to a 1024x1024 image when sending to prevent blurriness
+
 ```
 #] HELP FOR DRAW [CATAGORY: fun]
 =] Have fun drawing with others!
@@ -268,12 +255,12 @@ ___
 > The `;]reddit` command has been updated
 > > Now looks much cleaner
 > > Attributes---
-> > > `[-] ` - Archived
-> > > `O-O ` - Link submission
-> > > `TXT ` - Text submission
-> > > ` => ` - Edited
-> > > `[>\xa0- ` - Pinned
-> > > `[|\xa0|]` - Spoiled
+> > > `[-]` - Archived
+> > > `O-O` - Link submission
+> > > `TXT` - Text submission
+> > > ` =>` - Edited
+> > > `[>-` - Pinned
+> > > `[||]` - Spoiled
 > > Now supports multireddits
 > > Now loads so much faster
 > > Direct links now work
@@ -297,7 +284,6 @@ ___
 > The `;]quad` command should work now...
 > > Should load faster
 > > Shouls give the *right* answer...
-
 > Logging now #should# work
 > > Logging works on my own server, so...
 ===
@@ -328,10 +314,8 @@ ___
 > > Adding `--max` to the end of the equation should give you the maximum coordinates shown
 > > Adding `--min` to the end of the equation should give you the minimum coordinates shown
 > > Adding `--zero` should give you the coordinates for when `y = 0`
-
 > The `;]sym` command has been updated
 > > Doing something like `;]sym 2x^2^` shouldn't break it
-
 > Added the `;]sub` command
 > > Syntax ] `;]sub {num} {eq}`
 > > Allows you to substitute {num} in for X in {eq}
@@ -357,9 +341,7 @@ ___
 #] sep 22, 2019
 ___
 > Logging now actually works
-
 > You can now create, edit, delete, and view tags with no issues
-
 > All `;]mng` features now work
 ===
 
@@ -378,13 +360,9 @@ ___
 ___
 > Switched the database from `JSON` to `SQLITE3`
 > > This is a pretty big change, please submit any and all bugs via the `;]bug` command or via DMs
-
 > The `;]audit` command has been refreshed
-
 > All commands have been updated to use the new database
-
 > Removed the guild listener because it was useless
-
 > Fixed several bugs
 ===
 
@@ -395,11 +373,8 @@ ___
 > Added a public exec command
 > > Fixed a bug where newlines wouldn't actually go through
 > > I heard about some issues with encoding but I can't verify that rn
-
 > Fixed the aliases of the help command [again]
-
 > Fixed very minor bugs with the simplify command
-
 > Updated the graph command
 > > The graph command now supports both-axis graphing [`x^2^+y^2^=4`]
 > > It should now actually graph faster when using more equations
@@ -417,12 +392,9 @@ ___
 #] sep 09, 2019
 ___
 > Added the simplify command
-
 > Added more features to that command
-
 > Fixed bugs with the help command
 > > All aliases after the first one would have a `.` in front
-
 > Added the calc command
 > > Added more functions
 > > Why did it take so long? I was trying to prevent injection, and I'm fairly certain I succeeded
@@ -431,12 +403,9 @@ ___
 
 #] aug 26, 2019
 > Cleaned up files and code to make it more readable
-
 > Added help text for the `;]clrin` command
-
 > Added the `;]clrto` command, it clears all messages to a given message ID
 > > Useful if you don't know the exact amount of kessages to clear
-
 > Updated the graph command so you can now graph on the y axis too
 > > [`x=y^2^` and `y=x^2^` are supported]
 > > Support for xy functions [`x^2^+y^2^`] has not been added yet, I'm working on it tho
@@ -447,37 +416,21 @@ ___
 #] aug 22, 2019
 ___
 > Added an actually decent AI [`;]text hello`]
-
 > Fixed a bug where "no" would register as a bool and break it
-
 > Fixed a bug where smart quotes [`‘’“”`] would register as a bool break it
-
 > Fixed a bug where any colons would register as a dict and break it
-
 > Now responds before it re-analyses
-
 > New logic will come soon, it currently only chooses the best response
-
 > Removed old files
-
 > Updated GitHub
-
 > Removed old AIs because they were trash
-
 > Updated main file to not be trash
-
 > Cleaned up so much code it's not even funny
-
 > Added docs to other things
-
 > Added a learning command
-
 > Updated more files
-
 > Updated the inv command to be dynamic
-
 > Working on a better audit command
-
 > Fixed bugs and things
 ===
 
@@ -487,9 +440,7 @@ ___
 ___
 > Added the `;]reddit` command
 > > Fixed some bugs with that
-
 > Added the `;]captcha` command
-
 > Added the `;]8ball` command
 ===
 
@@ -511,10 +462,8 @@ ___
 > Added 2048
 > > Fixed some bugs
 > > Added to the help command
-
 > Updated the help command to change the prefix in the page
 > > Fixed bugs
-
 > Updated the `;]inv` command to comply with new permission requirements
 > Added this site link to the inv command
 ===
@@ -524,11 +473,8 @@ ___
 #] aug 13, 2019
 ___
 > Updated the help command to be automatic documentation
-
 > Updated the help command so you can now do `;]help {command name}`
-
 > Added new interactive commands [cuddle, kiss, throw]
-
 > Added music capabilities
 ===
 
@@ -545,15 +491,10 @@ ___
 #] jun 26, 2019
 ___
 > Added the `embedify` utility
-
 > Moved module loading to a seperate file
-
 > Removed some useless things
 > > Like `bot.lock = False` which I literally never used
-
 > Moved custom faces and texts into a different file
-
 > Moved command re/un/loading to a different file
-
 > Added a paginator
 ===
