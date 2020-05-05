@@ -25,7 +25,12 @@ async function startLoading() {
                 window.setTimeout(scroll_, x, document.URL.split("#")[1]);
             loadFooter();
         globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
-        changeFunnyTextThing();
+        try {
+            changeFunnyTextThing();
+        } catch(err) {
+            console.error(err);
+            window.setTimeout(changeFunnyTextThing, 1000);
+        }
         var swapDelay = delaySwapColor(theme);
     } catch(err) {
         if(!loadPage.toString().replace(/\n* *\/\/.*\n*/gm, "").includes("{}")) {
