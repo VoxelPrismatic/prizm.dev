@@ -1,0 +1,38 @@
+#] Music
+You see, I'm not an audiophile, however, there is one thing that I cannot stand \
+when listening to music: listening to an ad every 3 songs. This is infuriating. \
+Why listen to ads when you can just download your music? We have #512GB# phones, \
+I think we have enough storage to handle it.
+
+#] My tech
+I'm still stuck in 2012. Let me tell you why.
+
+##] Phone
+This is my ?[Samsung Replenish]<Model: SPH-M580>:
+:v: @[The Samsung Replenish]</prizm.dev/assets/image/SPH-M580.jpeg>(25%)
+You may be asking why I still use it in 2020+... And the answer is: why not, \
+bro$+..;ther? I can still watch YouTube, and access Twitter. I honestly can't \
+remember the last time I listened to an ad on this thing. With YouTube, you get \
+an ad before the video once every 10 videos or so, with no midrolls ever [the \
+thing just can't support it anyway]. It also boasts a wopping #INFINITE# amount \
+of storage, given you have a large enough micro sd card to put in it. Granted, \
+it's very slow [with only 300mb of RAM] and has a shitty cammera, and ?[cannot \
+tolerate water whatsoever]<No really, you drop it in snow and then the charging \
+circuit is killed>
+
+##] Laptop
+This is my HP Probook 6570b:
+:v: @[The HP Probook 6570b]</prizm.dev/assets/image/Probook-6570b.jpg>(30%)
+Let's compare it with HP's best offering: The HP ZBook 15U
+design. Now, we have the following spekths on the HP ZBook 15U, a laptop so \
+embarrassed by it's design it literally doesn't say it's model number anywhere.
+
+| Spekths | HP ZBook 15U [2018?] | HP Probook 6570b [2012] |
+| RAM | 32gb DDR4 Sodimm | 16gb DDR3 Sodimm |
+| Storage | 500gb HDD | 500gb HDD |
+| USB | 2x USB 3 [thats it] | 3x USB 2 + 2x USB 3 |
+| CPU | i7 6600U @2.60GHZ [Turbo @3.40GHz]<br>*Not replaceable<br>*Regularly \
+reaches over 80c | i5-3210M @2.50GHz [Turbo @3.10GHz]<br>Is replaceable<br>\
+*Properly cooled [never over 60c] |
+| Fan | Wait it has one? | Breezy |
+| Percieved speed | None at all | I can't believe this thing is from 2011 |
