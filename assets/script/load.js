@@ -51,7 +51,7 @@ async function startLoading() {
     }
     sub_styles();
     updateSpacer();
-    window.setTimeout(sub_styles, 1000);
+    window.setTimeout(sub_styles, 1000, false);
     delayFunction(function() {
         console.log("Updating listeners");
         if(find("jumper")) {
@@ -61,7 +61,7 @@ async function startLoading() {
         window.onclick = changeFunnyTextThing;
         window.onauxclick = changeFunnyTextThing;
         window.ontouchend = changeFunnyTextThing;
-        window.onresize = sub_styles;
+        window.onresize = function() {sub_styles(false)};
     }, 0, 5000, 1000);
     a11y();
     window.setTimeout(() => console.groupEnd("Loading page"), 1000);
