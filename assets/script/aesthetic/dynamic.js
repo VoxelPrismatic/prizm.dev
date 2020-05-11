@@ -47,15 +47,15 @@ function updateSpacer(dontLoad = false) {
     }
 }
 
-function sub_styles() {
+function sub_styles(all = true) {
     console.groupCollapsed("Reformatting page");
-    if(find("spacer")) {
+    if(all && find("spacer")) {
         console.log("Resizing spacer");
         logFunc(updateSpacer);
-    } if(find(">table")) {
+    } if(all && find(">table")) {
         console.log("Styling tables");
         logFunc(styleTables);
-    } if(find(".accent")) {
+    } if(all && find(".accent")) {
         console.log("Moving accents");
         logFunc(style_accents);
     } if(find(".dict")) {
@@ -64,5 +64,5 @@ function sub_styles() {
         console.log("Resizing spacer");
         logFunc(updateSpacer);
     }
-    console.groupEnd("Reformatting page")
+    console.groupEnd("Reformatting page");
 }

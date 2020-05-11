@@ -1,7 +1,6 @@
 var scripts = [
     "find",
     "other",
-    "unidata",
     "delay",
     "accessibility",
 
@@ -56,7 +55,7 @@ var section = document.getElementById("scripts");
 function nextReady(elem) {
     numReady += 1;
     maybeReady(elem, numReady);
-};
+}
 
 elements = [
     {
@@ -86,6 +85,7 @@ for(var script of scripts) {
         "type": "text/javascript",
         "src": `/prizm.dev/assets/script/${script}.js`,
         "onload": "nextReady(this)",
+        "onerror": "nextReady(this)",
         "id": `${script}.js`
     }
     section.appendChild(tag(elem));
