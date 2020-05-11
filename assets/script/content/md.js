@@ -13,7 +13,7 @@ async function loadPage() {
         "br0": 1,
         "<1>": {
             "tag": "div",
-            "#0": "any ",
+            "#0": "Note: any ",
             "<0>": {
                 "tag": "span",
                 "class": "code",
