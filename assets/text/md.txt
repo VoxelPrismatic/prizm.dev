@@ -77,7 +77,7 @@ Key :^: \:^\: Value
 ```
 >>[###] Collapsible section]<<
 content
-\---
+---
 ```
 ---
 
