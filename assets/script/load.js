@@ -71,8 +71,6 @@ async function textPage(...pages) {
     var html = "";
     for(var page of pages) {
         var txt = await load("/prizm.dev/assets/text/" + page + ".txt");
-        if(txt.match(/\\N\{[a-zA-Z1-9 ]+\}/gm))
-           await load_unicode_index();
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
     }
     setHtml("content", html);
