@@ -15,8 +15,7 @@ async function loadPage() {
             "tag": "div",
             "#0": "Note: any ",
             "<0>": {
-                "tag": "span",
-                "class": "code",
+                "tag": "codeline",
                 "#": "key :^: val"
             },
             "#1": " things will take longer to properly display"
