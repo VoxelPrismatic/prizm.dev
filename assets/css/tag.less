@@ -1,3 +1,12 @@
+/* ------------- PRIZ.md - a markdown processor ------------- *
+ * [C] 2020 @VoxelPrismatic *not putting my name out there    *
+ *                                                            *
+ * This program is licensed under GPLv2. Feel free to modify  *
+ * it, but all projects modifying it must also remain         *
+ * opensource. No warranty is provided.                       *
+ * For more info go to https://tiny.cc/priz-md/               *
+ * ---------------------------------------------------------- */
+
 @import (reference) "./fn.less";
 @import (reference) "./media.less";
 
@@ -26,10 +35,6 @@
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: left;
-} span.code {
-    margin: 2px;
-    padding: 2px;
-    font-size: smaller;
 } th {
     .section(#0088ff);
     border-radius: 0px;
@@ -71,4 +76,53 @@
 } ul > li::marker, ol > li::marker, al > li::marker {
   .mono-font();
   color: #8888;
+} spoil {
+    .border(#334444);
+    margin: 5px;
+    padding: 5px;
+    background-color: #223333;
+    font-size: smaller;
+    margin: 2px;
+    padding: 2px;
+    color: #223333;
+    &:hover, &:focus {
+        color: #ffffff;
+    }
+} codeblock {
+    .border(#334444);
+    background-color: #222;
+    margin: 5px;
+    padding: 5px;
+    color: #aaaaaa;
+    .mono-font();
+    cursor: auto;
+    white-space: pre-wrap;
+} codeblock * {
+    .mono-font();
+} codeline {
+    margin: 2px;
+    padding: 2px;
+    font-size: smaller;
+} align-left {
+    display: block;
+    text-align: left;
+} align-right {
+    display: block;
+    text-align: right;
+} align-mid {
+    display: block;
+    text-align: center;
+} align-just {
+    display: block;
+    text-align: justified;
+} line {
+    height: 5px;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+    box-shadow: 0px 0px 5px #00ffff, inset 0px 0px 5px #00ffff;
+    &:hover, &:focus {
+        box-shadow: 0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
+    }
 }

@@ -1,3 +1,12 @@
+/* ------------- PRIZ.md - a markdown processor ------------- *
+ * [C] 2020 @VoxelPrismatic *not putting my name out there    *
+ *                                                            *
+ * This program is licensed under GPLv2. Feel free to modify  *
+ * it, but all projects modifying it must also remain         *
+ * opensource. No warranty is provided.                       *
+ * For more info go to https://tiny.cc/priz-md/               *
+ * ---------------------------------------------------------- */
+
 @import (reference) "./fn.less";
 @import (reference) "./media.less";
 
@@ -131,9 +140,7 @@ each(@sel, {
     .margin();
     text-align: justify;
     padding: 10px;
-}
-
-.btn {
+} .btn {
     .section(#0088ff);
     .pad(2px);
     &:hover, &:focus {
@@ -142,7 +149,7 @@ each(@sel, {
     }
 }
 
-.dict {
+dict {
     display: inline-block;
     width: 0px;
     border: 2px solid #444444;
@@ -150,16 +157,6 @@ each(@sel, {
     height: 0px !important;
     position: relative;
     top: 10px;
-} .line {
-    height: 5px;
-    border: 2px solid #00ffff;
-    border-radius: 5px;
-    width: 80%;
-    margin: auto;
-    box-shadow: 0px 0px 5px #00ffff, inset 0px 0px 5px #00ffff;
-    &:hover, &:focus {
-        box-shadow: 0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
-    }
 }
 
 .tr-l {
