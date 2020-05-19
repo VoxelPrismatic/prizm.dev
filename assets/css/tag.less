@@ -36,25 +36,23 @@
     margin-bottom: 5px;
     text-align: left;
 } th {
-    .section(#0088ff);
+    .section(#08f);
     border-radius: 0px;
     text-shadow: 0px 0px 5px;
     &:hover, &:focus {
         text-shadow: 0px 0px 10px;
     }
+    border-radius: 2px 2px 0px 2px;
 } tr:nth-child(even) {
     background-color: #00ffff05;
-} th:nth-child(1) {
-    border-radius: 5px 0px 0px 0px;
-} th:nth-last-child(1) {
-    border-radius: 0px 5px 0px 0px;
 } td, tr {
     .pad(5px);
-    border-width: 2px;
+    border-width: 0px 2px;
     .border-colors(#0000, #0ff, #0000, #0ff);
     border-style: solid;
 } table {
     width: 100%;
+    border-spacing: 0px;
 } blockquote {
     margin: 0px 5px -5px 5px;
     padding: 5px;
@@ -125,4 +123,6 @@
     &:hover, &:focus {
         box-shadow: 0px 0px 10px #00ffff, inset 0px 0px 10px #00ffff;
     }
+} accent {
+    position: relative;
 }
