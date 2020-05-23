@@ -15,12 +15,6 @@ let colors = {
     "white":   ["#fff", "#222",    "white"],
 };
 
-function getRules() {
-    for(var ruleset of document.styleSheets)
-        if(ruleset.ownerNode.id.includes("less:"))
-            return ruleset.cssRules;
-}
-
 var selectors__ = selectors__ || [];
 
 function swapColor(colorName, swapImg = true) {
