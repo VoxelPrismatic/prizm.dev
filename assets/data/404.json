@@ -1,8 +1,4 @@
 {
-    "assets/css": [
-        "styles",
-        "CSS, and that's about it."
-    ],
     "assets": [
         "assets",
         "CSS, JS, PNGs, TXTs, and more!"
@@ -110,17 +106,5 @@
     "assets/data": [
         "JSON files",
         "JSON for indexes, and that's about it."
-    ],
-    "assets/script/md": [
-        "markdown interpreter",
-        "JS for working with my custom markdown flavor, and that's about it."
-    ],
-    "assets/script/md/mk": [
-        "markdown sub-interpreters",
-        "JS for working with sub markdown things, like tables and lists."
-    ],
-    "assets/script/md/elem": [
-        "markdown helpers",
-        "JS for helping with style things"
     ]
 }

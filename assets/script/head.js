@@ -44,16 +44,6 @@ var elements = [
         "type": "text/css",
         "href": fonts + "Ubuntu:400,400i,500,500i,700,700i&display=swap"
     }, {
-        "tag": "link",
-        "rel": "stylesheet/less",
-        "type": "text/css",
-        "href": "/prizm.dev/assets/style.less"
-    }, {
-        "tag": "script",
-        "src": "https://cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js",
-        "onload": "tryColor()",
-        "id": "lesscss"
-    }, {
         "tag": "meta",
         "property": "og:url",
         "content": document.URL.split("#")[0]

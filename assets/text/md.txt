@@ -73,13 +73,11 @@ code block
 
 Key :^: \:^\: Value
 
->>[###] Collapsible section]<<
-```
->>[###] Collapsible section]<<
-content
----
-```
----
+[>] ###] Collapsible section
+| ```
+| [>] ###] Collapsible section
+| | content
+| ```
 
 ###] Unicode interpreting
 
