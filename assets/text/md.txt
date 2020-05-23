@@ -93,34 +93,69 @@ Key :^: \:^\: Value
 it has to load the 1mb lookup table, then turn that into nice JSON data.
 #PRIZ.md now supports Twemoji# [the emojis that Twitter uses]
 
-###] Accents
-
-| Written  :| Output   |
-| a\$+\</;  | a$+</;   |
-| b\$+/;    | b$+/;    |
-| c\$+^;    | c$+^;    |
-| d\$+v;    | d$+v;    |
-| e\$+//;   | e$+//;   |
-| f\$+\<//; | f$+<//;  |
-| g\$+~;    | g$+~;    |
-| h\$+.;    | h$+.;    |
-| i\$+..;   | i$+..;   |
-| j\$+u;    | j$+u;    |
-| k\$+);    | k$+);    |
-| l\$-:;    | l$-:;    |
-| m\$+_;    | m$+_;    |
-| n\$-_;    | n$-_;    |
-| o\$>:;    | o$>:;    |
-| p\$>.;    | p$>.;    |
-| q\$>~;    | p$>~;    |
-| r\$+o;    | r$+o;    |
-| s\$+';    | s$+';    |
-| t\$>';    | t$>';    |
-| u\$-,;    | u$-,;    |
-| v\$-);    | v$-);    |
-| w\$>c;    | w$>c;    |
-| x\$-];    | x$-];    |
-| y\$-[;    | y$-[;    |
+[>] ###] Accents
+| [>] #####] Grave accents [`\``]
+| | | Written   :| Output    | Name |
+| | | a\$+</;    | a$+</;    | Grave |
+| | | b\$-</;    | b$-</;    | Grave below |
+| | | c\$+</</;  | c$+</</;  | Double grave |
+| | | d\$+</_;   | d$+</_;   | Grave + macron |
+| | | e\$+.</.;  | e$+.</.;  | Dotted grave |
+| | | f\$+_</;   | f$+_</;   | Macron + grave |
+| | | g\$+<//</; | g$+<//</; | Grave + acute + grave |
+|-
+| [>] #####] Acute accents [!`%[\`]<h>`]
+| | | Written   :| Output    | Name |
+| | | a\$+/;     | a$+/;     | Acute |
+| | | b\$-/;     | b$-/;     | Acute below |
+| | | c\$+//;    | c$+//;    | Double acute |
+| | | d\$+/_;    | d$+/_;    | Acute + macron |
+| | | e\$+./.;   | e$+./.;   | Dotted acute |
+| | | f\$+_/;    | f$+_/;    | Macron + acute |
+| | | g\$+/<//;  | g$+/<//;  | Acute + grave + acute |
+|-
+| [>] #####] Circumflex and caron accents [`^`, !`%[^]<v>`]
+| | | Written   :| Output    | Name |
+| | | a\$+^;     | a$+^;     | Circumflex |
+| | | b\$-^;     | b$-^;     | Circumflex below |
+| | | c\$+^^;    | c$+^^;    | Double circumflex |
+| | | d\$+v;     | d$+v;     | Caron |
+| | | e\$-v;     | e$-v;     | Caron below |
+|-
+| [>] #####] Tilde accents [`~`]
+| | | Written   :| Output    | Name |
+| | | a\$+~;     | a$+~;     | Tilde |
+| | | b\$-~;     | b$-~;     | Tilde below |
+| | | c\$:~;     | c$:~;     | Tilde overlay |
+| | | d\$+^~;    | d$+^~;    | Vertical tilde |
+| | | e\$+!~;    | e$+!~;    | Not tilde |
+|-
+| [>] #####] Dot accents [`.`]
+| | | Written   :| Output    | Name |
+| | | a\$+.;     | a$+.;     | Overdot |
+| | | b\$-.;     | b$-.;     | Underdot |
+| | | c\$-..;    | c$-..;    | Diaeresis below |
+| | | d\$+..;    | d$+..;    | Diaeresis |
+| | | e\$+>.;    | e$+>.;    | Overdot right |
+|-
+| [>] #####] Breve accents [!`>^U^<`]
+| | | Written   :| Output    | Name |
+| | | a\$+u;     | a$+u;     | Breve |
+| | | b\$-u;     | b$-u;     | Breve below |
+| | | c\$+^u;    | c$+^u;    | Inverted breve |
+| | | d\$-^u;    | d$-^u;    | Inverted breve below |
+| | | e\$+u_;    | e$+u_;    | Breve + macron |
+| | | f\$+_u;    | f$+_u;    | Macron + breve |
+|-
+| [>] #####] Ring accents [`o`]
+| | *in progress
+|-
+| [>] #####] Macron accents [`-`]
+| | *in progress
+|-
+| [>] #####] Other accents
+| | *in progress
+|-
 
 *you can put accents on characters that don't support it, but it will look weird.
 
