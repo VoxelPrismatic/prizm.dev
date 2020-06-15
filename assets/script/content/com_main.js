@@ -22,7 +22,7 @@ async function loadPage() {
     for(var com of index.constructor.keys(index)) {
         commands[com] = index[com]["alias"];
         var div = `<div id="${com} ${index[com]["alias"].join(" ")}">`;
-        var mark = `#] The \`${com.toUpperCase()}\` command\n`;
+        var mark = `#] The \`${com.toUpperCase().replace(/_/gm, "\\_")}\` command\n`;
         mark += `#Category: #${categories[index[com]["cat"]]}\n`;
         mark += `#Description: #${index[com]["desc"]}\n`
         if(index[com]["alias"].length)
@@ -30,7 +30,7 @@ async function loadPage() {
         else
             mark += `#Aliases: #\`NONE\`\n`;
         mark += `#] Usage\n\`\`\`\n${index[com]["use"]}\n\`\`\`\n`;
-        mark += `#] Input info\n\`\`\`\n${index[com]["inp"]}\n\`\`\`\n`;
+        mark += `#] Input info\n\`\`\`\n${index[com]["inp"]}\n\`\`\`\n\n`;
         mark += `#NOTICE:# The \`{arg}\` stuff is what to put, not what to write.\n`;
         mark += `#EXAMPLE:# \`;]help {?com}\` can be \`;]help\` or \`;]help ${com}\``;
         try {
