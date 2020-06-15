@@ -1,0 +1,57 @@
+#] Linux Sucks 2020
+[View the video]<https://youtu.be/cZN5n6C9gM4>
+
+I have some issues with this, so I'll be the "Fedora" guy in the front seat.
+
+##] Linux is buggy
+Yes, it is. I mean, all OSs first released are buggy, look at how Windows 10 \
+deleted thousands of important documents due to a bug while updating. Linux is \
+no different. That's why people contribute to it, to improve and to remove bugs.
+
+##] Linux on servers
+Thanks for mentioning, I would've gone off on that one.
+
+##] Linux on mobile
+Android is fairly open source to my knowledge. Also mobile OSs don't resemble \
+desktop OSs. Look at iOS and macOS or Windows Phone and Windows and XBOX. \
+Different platforms need different UIs, that's just how it is.
+
+##] Market share
+Well no duh. It's a viscous circle. Less people search for it because less \
+people find a reason to use it, so less people install it, and again.
+
+##] Backwards compatibility
+Virtual machine? Honestly I don't use old software so I can't say anything.
+
+##] AppImage
+I fully agree. I tried installing an AppImage program, hell.
+
+##] Linux people are dumb
+Nah mate. Linux people are *stubborn*, not dumb.
+
+##] Committees
+You lost me, genuinely. A couple of examples could've helped.
+
+##] Mega-Corps
+Absolutely. Fork it. If an app doesn't work for one company, fork the app \
+and make a new version.
+Now what competitors do you speak of? Linux is funded by many companies, \
+so all of them want the best for Linux. Is one trying to buy Linux over another? \
+I don't understand.
+
+##] The presentation on a Mac
+Lol.
+About the developer conferences: makes a bit more sense. If you are adding \
+a feature that currently doesn't exist in your OS or are editing that feature \
+it's best not to use it in case of bugs.
+The only reason why I could think that most Linux devs use Macs to program is \
+because Linux and Mac are very similar in the way you interact with them in the \
+command line.
+
+##] We kick out people with different opinions
+That is a reason why we are dumb, yes.
+
+##] Thanks
+I want to thank Bryan Lunduke for being brave enough to talk about this. I \
+cannot wait for Linux Sucks 2021 so I can make another one of these. This was \
+fun.

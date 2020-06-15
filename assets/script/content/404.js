@@ -1,14 +1,16 @@
 async function loadPage() {
     var url = document.URL.split("#")[0].split("?")[0];
-    if(url.endsWith("/")) {
+    if(url.endsWith("/"))
         url = url.slice(0, -1);
-    }
     url += document.URL.split(url)[1].slice(1);
     var subpage = await load(url);
     var not_found_page = await load("/prizm.dev/404");
-    if(subpage != not_found_page) {
+    if(subpage != not_found_page)
         window.location = url;
-    }
+    url += ".html";
+    var subpage = await load(url);
+    if(subpage != not_found_page)
+        window.location = url;
     var data = await load("/prizm.dev/assets/data/404.json", {json: true});
     var thing = document.URL.split("/prizm.dev/")[1].split("?")[0].split("#")[0];
     var stuff = data[thing] || data[thing.slice(0, -1)];
