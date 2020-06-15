@@ -47,7 +47,12 @@ function updateSpacer(dontLoad = false) {
     }
 }
 
+var sub_styles_timeout = false;
+
 function sub_styles(all = true) {
+    if(globalThis.sub_styles_timeout)
+        return;
+    globalThis.sub_styles_timeout = true;
     console.groupCollapsed("Reformatting page");
     if(all && find("spacer")) {
         console.log("Resizing spacer");
@@ -65,4 +70,5 @@ function sub_styles(all = true) {
         logFunc(updateSpacer);
     }
     console.groupEnd("Reformatting page");
+    window.setTimeout(() => globalThis.sub_styles_timeout = false, 100);
 }
