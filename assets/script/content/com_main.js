@@ -56,7 +56,7 @@ async function loadPage() {
     setHtml("list", st);
     setHtml("com_help", "^ Choose a command");
     try {
-        document.getElementById(target_command).click();
+        document.getElementById("COM_" + target_command).click();
     } catch(err) {
     }
 }
