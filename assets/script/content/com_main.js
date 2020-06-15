@@ -14,6 +14,7 @@ var categories = {
 var commands = {};
 
 async function loadPage() {
+    var target_command = document.URL.split("?command=")[1].split("&")[0];
     var things = {};
     var index = await load("/prizm.dev/assets/data/commands.json", {json: true});
     var st = "";
@@ -44,7 +45,7 @@ async function loadPage() {
         st += `onclick="collapser(this)">${categories[cat]}`;
         for(var com of things.constructor.keys(things[cat])) {
             st += `<div id="COM_${com}" style="display: none" class="lnk" `;
-            st += `onmouseover="setcoll(this)" onclick="collapser(this)">`
+            st += `onmouseover="setcoll(this)" onclick="collapser(this, false, '?command=${com}')">`
             st += `<span class="invis">${commands[com].join(" ")} ${cat} </span>`;
             st += `<span>${com}</span></div>`;
             comindex += `<div id="${com}">${mark_page(things[cat][com])}${footer.outerHTML}</div>`;
@@ -54,4 +55,8 @@ async function loadPage() {
     setHtml("command_index", comindex);
     setHtml("list", st);
     setHtml("com_help", "^ Choose a command");
+    try {
+        document.getElementById(target_command).click();
+    } catch(err) {
+    }
 }
