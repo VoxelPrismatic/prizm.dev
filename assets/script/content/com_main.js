@@ -45,9 +45,9 @@ async function loadPage() {
         st += `onclick="collapser(this)">${categories[cat]}`;
         for(var com of things.constructor.keys(things[cat])) {
             st += `<div id="COM_${com}" style="display: none" class="lnk" `;
-            st += `onmouseover="setcoll(this)" onclick="collapser(this, false, '?command=${com}')">`
-            st += `<span class="invis">${commands[com].join(" ")} ${cat} </span>`;
-            st += `<span>${com}</span></div>`;
+            st += `onmouseover="setcoll(this)" onclick="collapser(this, false, '?command=${com}')" `;
+            st += `search-terms="${com} ${commands[com].join(" ")} ${cat}">`;
+            st += `${com}</div>`;
             comindex += `<div id="${com}">${mark_page(things[cat][com])}${footer.outerHTML}</div>`;
         }
         st += "</div>";
