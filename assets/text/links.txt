@@ -41,7 +41,7 @@ Listen to ambience on +[BandCamp]</prizm.dev/re?p=bandcamp> :^: #przm#.bandcamp
 View my website [here]<#STALKME> :^: voxelprismatic.github.io/#prizm.dev#
 Support me on +[Patreon]</prizm.dev/re?p=patreon> :^: patreon/#VoxelPrismatic#
 Email [me]<mailto:prizmdev@outlook.com> :^: #prizmdev@outlook.com#
-Call [me]<tel:+1-337-420-6969> :^: +1 [337] 420 6969
+Call [me]<tel:+1-337-420-6969> :^: +1 #[337] 420 6969#
 Literally stalk me :^: Somewhere in the #Universe#
 
 ###] Don't use any of those?
