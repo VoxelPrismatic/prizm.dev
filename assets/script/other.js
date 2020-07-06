@@ -28,21 +28,17 @@ var footTag = {
         },
         "br1": 1,
         "<1>": {
-            "tag": "a",
-            "href": linkHref,
-            "#": linkContent,
-            "target": linkTarget
-        },
-        "#": " // ",
-        "<2>": {
-            "tag": "a",
-            "href": "",
-            "id": "page_source",
-            "#": "View source",
-            "target": "_blank"
-        },
+            "tag": "span",
+            "id": "links_and_sources",
+            "<1>": {
+                "tag": "a",
+                "href": linkHref,
+                "#": linkContent,
+                "target": linkTarget
+            }
+        }
         "br2": 1,
-        "<3>": {
+        "<2>": {
             "tag": "span",
             "id": "funnytextthing"
         },
