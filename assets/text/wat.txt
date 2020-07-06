@@ -12,20 +12,24 @@ Some background is necessary.
 `{}` is an object, could be literally anything.
 `NaN` is "Not a number"
 ###] Equals
-So, lets talk about this: `==`. This makes no sense. In every single language,
-it means "is it equal?", but in JS, this is calculated as a percentage for some reason.
+So, lets talk about this: `==`. This makes no sense. In every single language, \
+it means "is it equal?", but in JS, this is calculated as a percentage for some reason. \
+I'm serious. In Python it's either equal or not equal. In JS, however, it's kinda equal? \
+I don't know how equal it is but it must be between 0% and 100% equal. If it isn't *not* \
+equal [0%, thus isn't equal], then it must be equal [anywhere from 1% to 100%, thus is equal].
 ```js
 // JavaScript
 >>> 1 == "1"
 true
 ```
-So, how do you get the operator that most langauges use? Well, add another `=` to the end!
+I just want to see how equal things can get, though.
 ```js
 // JavaScript
 >>> 1 === "1"
 false
 ```
-So, that means the more equal signs I add, the more I can check how equal two values are, right?
+I see, now it can tell me if it's equal or not equal. \
+So, that means the more equal signs I add, the more the more equal it can check, right?
 ```js
 // JavaScript
 >>> 1 ==== "1"
