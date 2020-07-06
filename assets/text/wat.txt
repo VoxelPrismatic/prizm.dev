@@ -1,4 +1,4 @@
-#] WTF is wrong with coding?
+#] WTF is wrong with code?
 No, I'm serious. Some shit really does not make sense.
 #Note:# I was inspired to make this page by +[this]<https://www.destroyallsoftware.com/talks/wat> page.
 #Note:# These code blocks are typed by hand. The interpreter on your machine will most likely look \
