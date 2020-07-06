@@ -36,7 +36,7 @@ var footTag = {
                 "#": linkContent,
                 "target": linkTarget
             }
-        }
+        },
         "br2": 1,
         "<2>": {
             "tag": "span",
