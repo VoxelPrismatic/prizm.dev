@@ -148,7 +148,7 @@ Um, `a` is `nil` now I guess.
 nil
 ```
 I have no idea what it means, but lets add a question mark
-```
+```rb
 # Ruby
 >>> nil?
 false
