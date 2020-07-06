@@ -74,7 +74,7 @@ async function textPage(...pages) {
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
         if(!find("page_source_" + page))
             find("links_and_sources").innerHTML +=
-                ` // <a id="page_source_${page}" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/assets/text/${page}.txt">View source [${page}]</a>`
+                ` // <a id="page_source_${page}" target="_blank" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/assets/text/${page}.txt">View source [${page}]</a>`
     }
     setHtml("content", html);
 }
