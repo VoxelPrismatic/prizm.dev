@@ -5,7 +5,7 @@ No, I'm serious. Some shit really does not make sense.
 different than what is shown. Additionally, terminal based interpreters do not have syntax highlighting. \
 I added that here so people who don't code have an idea of what is what kinda.
 
-#] JavaScript.
+#] JavaScript
 Let's talk about JavaScript.
 Some background is necessary.
 `[]` is an array, a list.
