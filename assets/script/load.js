@@ -72,6 +72,7 @@ async function textPage(...pages) {
     for(var page of pages) {
         var txt = await load("/prizm.dev/assets/text/" + page + ".txt");
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
+        find("page_source").href = "https://github.com/VoxelPrismatic/prizm.dev/blob/master/assets/text/" + page + ".txt"
     }
     setHtml("content", html);
 }
