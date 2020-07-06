@@ -40,7 +40,7 @@ var footTag = {
             "id": "page_source",
             "#": "View source",
             "target": "_blank"
-        }
+        },
         "br2": 1,
         "<3>": {
             "tag": "span",
