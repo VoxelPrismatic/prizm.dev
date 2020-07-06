@@ -115,7 +115,7 @@ Nice, I cannot input a decimal and expect it to come out as an integer. JavaScri
 allows this just fine, probably because strings are also numbers too.
 
 #] Ruby
-Let's talk about Ruby. Note: I do not have syntax highlighting for ruby yet, I will get to it soon.
+Let's talk about Ruby.
 
 ###] Assigning variables
 If a variable is not defined, it should throw an error. 
