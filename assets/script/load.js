@@ -35,6 +35,7 @@ async function startLoading() {
     } catch(err) {
         if(!loadPage.toString().replace(/\n* *\/\/.*\n*/gm, "").includes("{}")) {
             stopDelay(swapDelay);
+            swapColor("red");
             console.groupEnd("Loading page");
             console.warn(
                 "%cThe following error broke the page",
@@ -45,8 +46,6 @@ async function startLoading() {
             var html = await load("/prizm.dev/error.html");
             html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
             find("content").innerHTML = html;
-            swapColor("red");
-            find("head").innerHTML = "ERROR ;[";
         }
     }
     sub_styles();
@@ -80,6 +79,10 @@ async function textPage(...pages) {
 }
 
 async function load(filename, strip = false, json = false, list = false) {
+    if(!filename.endsWith("error.html"))
+        find("head").innerHTML = document.title;
+    else
+        find("head").innerHTML = "ERROR ;[";
     console.log("Reading " + filename);
     if(strip.list)
         list = true;
