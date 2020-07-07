@@ -7,6 +7,7 @@ Fonts :^: Ubuntu
 Logo :^: PRIZ ;]
 Hosting :^: GitHub Pages
 Flickering headers idea :^: meduimdock#5345
+Markdown interpreter :^: PRIZ ;]
 
 #] MENTIONS
 
@@ -15,7 +16,7 @@ Flickering headers idea :^: meduimdock#5345
 - Thanks to those that helped me out troubleshooting things
 - Thanks to everybody that thinks the colors are blinding, I don't actually care \
 about that... obviously
-- Thanks to the literally 0 people supporting me on Patreon!
+- Thanks to the literally 0 people supporting me on +[Patreon]<https://patreon.com/voxelprismatic>!
 
 -~-
 
