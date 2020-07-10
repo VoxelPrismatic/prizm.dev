@@ -34,6 +34,9 @@ v2.3 had a storage limit of 160 megabytes... and that isn't a typo. #160mb#. \
 Somehow google put that functionality in there, but couldn't make it work in a device \
 that has over 4gb of storage.
 
+#UPDATE:# This feature isn't built in to Android 2.3.6. However, the ThinkFree Office \
+app is. Do with that what you will.
+
 ###] The MENU button
 *"Who needs the menu button? It's in settings anyway"*
 
