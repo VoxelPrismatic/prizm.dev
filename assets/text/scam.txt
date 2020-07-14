@@ -1,0 +1,60 @@
+#] SCAMS
+Here is a list of spams, scams, or shams that I've seen. I've also included some explanations. \
+Click the `[V]` on the left to see it.
+
+[>] ##] DMCA.com
+| Okay, a couple things with this site.
+| 
+| ###] Issue \#1
+| This site doesn't end with `.gov`. That means that it is in no way related to the government \
+whatsoever. It doesn't include the "An official website of the United States government" banner \
+at the top, and it doesn't even link to `usa.gov` anywhere.
+| 
+| ###] Issue \#2
+| You can 'steal' the badges with no reprucussions. There are issues with those badges. Lets take \
+a look at a common example of what is provided with their HTML badge:
+| ```html
+| <a href="//www.dmca.com/Protection/Status.aspx?id&equals;3565817c-5335-4796-a1c0-a5f5f91cdfbb" \
+title="DMCA.com&#x20;Protection&#x20;Status" class="dmca-badge"> \
+<img src="//images.dmca.com/Badges/dmca-badge-w100-1x1-03.png?ID&equals;3565817c-5335-4796-a1c0-a5f5f91cdfbb" \
+alt="DMCA.com&#x20;Protection&#x20;Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+| ```
+| Let's get this straight right away. The `?id=3565817c-5335-4796-a1c0-a5f5f91cdfbb` means nothing whatsoever. \
+| You can remove it and the asset will still be visibile. There is also a script, \
+| `//images.dmca.com/Badges/DMCABadgeHelper.min.js`. A file ending in `.min.js` means that there isn't any starting \
+spaces or indents on any line. Thus, it takes up less space, it's #min#imized. Let's take a look at that file:
+| ```js
+| (function () {
+|    document.addEventListener("DOMContentLoaded", function () {
+|        var e = "dmca-badge";
+|        var t = "refurl";
+|        var n = document.querySelectorAll('a.'+e);
+|        if (n[0].getAttribute('href').indexOf('refurl') < 0) {
+|            for (var r = 0; r < n.length; r++) {
+|                var i = n[r];
+|                i.href = i.href + (i.href.indexOf('?') === -1 ? '?' : '&') + t + '=' + document.location
+|            }
+|        }
+|    }, false)
+| }
+| )()
+| ```
+| Oh look, there are starting spaces. There is no meaning behind the `.min.js`. Let's condense the code a bit, \
+like actual condensing not minimizing.
+| ```js
+| (function() {
+|     document.addEventListener("DOMContentLoaded", () => {
+|         var n = document.querySelecterAll('a.dmca-badge');
+|         if(n[0].href.indexOf('refurl') == -1)
+|             for(var i of n)
+|                 i.href = i.href + (i.href.indexOf('&') == -1 : '?' : '&') + "refurl=" + document.URL;
+|     }, false);
+| })();
+| ```
+| Okay, I've analyzed the code a bit, made it actually usable, and you get the idea. Want to know what this \
+#massive# heap of code does? Well, simple! It adds `&refurl=&lt;URL&gt;` to the end of every DMCA badge link. \
+No joke.
+
+[>] ##] EssayService.com
+| Look, I'm lazy. I already talked about this on my Twitter.
+| Here's a link: +[click me!]<https://twitter.com/VoxelPrismatic/status/1283076208717180934>
