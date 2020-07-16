@@ -14,12 +14,16 @@ var categories = {
 var commands = {};
 
 async function loadPage() {
-    var target_command = document.URL.split("?command=")[1].split("&")[0];
+    try {
+        var target_command = document.URL.split("?command=")[1].split("&")[0];
+    } catch(err) {
+        var target_command = null;
+    }
     var things = {};
     var index = await load("/prizm.dev/assets/data/commands.json", {json: true});
     var st = "";
     var comindex = "";
-    for(var com of index.constructor.keys(index)) {
+    for(var com of Object.keys(index)) {
         commands[com] = index[com]["alias"];
         var div = `<div id="${com} ${index[com]["alias"].join(" ")}">`;
         var mark = `#] The \`${com.toUpperCase().replace(/_/gm, "\\_")}\` command\n`;
@@ -40,7 +44,7 @@ async function loadPage() {
             things[index[com]["cat"]][com] = mark;
         }
     }
-    for(var cat of things.constructor.keys(things)) {
+    for(var cat of Object.keys(things)) {
         st += `<div id="DROP_${cat}" class="collapser" onmouseover="setcoll(this)" `;
         st += `onclick="collapser(this)">${categories[cat]}`;
         for(var com of things.constructor.keys(things[cat])) {
