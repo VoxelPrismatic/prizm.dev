@@ -25,9 +25,9 @@ links below.
 
 -~-
 
-#] DARKERcord
-Let's make Discord darker!
-:v:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/darkercord> +[\[Download\]]</prizm.dev/re?p=github+/darkercord/releases>
+#] PRIZcord
+Let's make Discord darker! [Plus bonus features]
+:v:+[\[GitHub Repo\]]</prizm.dev/re?p=github+/prizcord> +[\[Download\]]</prizm.dev/re?p=github+/prizcord/releases/latest>
 
 -~-
 
