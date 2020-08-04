@@ -1,6 +1,6 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
-console.log(document.URL);
+console.log(window.parent);
 
 var stylesheetLoaded = false;
 
