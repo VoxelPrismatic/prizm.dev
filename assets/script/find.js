@@ -1,3 +1,14 @@
+//Query
+function $_in(thing, ...args) {
+    return thing.querySelector(...args);
+} function $all_in(thing, ...args) {
+    return thing.querySelectorAll(...args);
+} function $(...args) {
+    return $_in(document, ...args);
+} function $all(...args) {
+    return $all_in(document, ...args);
+}
+
 //Find
 function find_in(thing, ids) {
     var ls = [];

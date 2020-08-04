@@ -66,14 +66,32 @@ async function startLoading() {
     window.setTimeout(() => console.groupEnd("Loading page"), 1000);
 }
 
+link_queue_ready = true;
+link_queue = [];
+function queue_links() {
+    link_queue_ready = false;
+    try {
+        page = link_queue[0];
+        if(!find("page_source_" + page)) {
+            link = ` // <a id="page_source_${page}" target="_blank" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/assets/text/${page}.txt">View source [${page}]</a>`
+            find("links_and_sources").innerHTML += link;
+        }
+        link_queue = link_queue.slice(1);
+        link_queue_ready = !link_queue.length;
+    } catch(err) {
+        console.error(err);
+        window.setTimeout(queue_links, 100);
+    }
+}
+
 async function textPage(...pages) {
     var html = "";
     for(var page of pages) {
         var txt = await load("/prizm.dev/assets/text/" + page + ".txt");
         html += `<div id="${page}" class="sect">${mark_page(txt)}</div>`;
-        if(!find("page_source_" + page))
-            find("links_and_sources").innerHTML +=
-                ` // <a id="page_source_${page}" target="_blank" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/assets/text/${page}.txt">View source [${page}]</a>`
+        link_queue.push(page);
+        if(link_queue_ready)
+            queue_links();
     }
     setHtml("content", html);
 }
