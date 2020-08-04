@@ -4,8 +4,11 @@ try {
     i = {};
     Object.assign(i, window.parent.location);
     console.log(i);
-    window.parent.location.host
+    console.log(window.parent.location);
+    console.log(window.parent.location.toString());
+    window.parent.location.host;
 } catch(err) {
+    console.log(err);
     //window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
 }
 var stylesheetLoaded = false;
