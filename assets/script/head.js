@@ -1,7 +1,11 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
-console.log(window.parent.location);
-
+try {
+    if(window.parent.location.host == "prizmdev.tk")
+        window.parent.location = "https://voxelprismatic.github.io/prizm.dev/" + window.parent.location.href.split("prizmdev.tk/")[1]
+} catch(err) {
+    console.error(err);
+}
 var stylesheetLoaded = false;
 
 function tryColor() {
