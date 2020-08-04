@@ -1,10 +1,13 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
 try {
+    console.log(document.referrer);
     window.parent.location.host;
 } catch(err) {
     console.log(err);
+    // window.parent.location = "https://voxelprismatic.github.io/prizm.dev/"
 }
+
 var stylesheetLoaded = false;
 
 function tryColor() {
