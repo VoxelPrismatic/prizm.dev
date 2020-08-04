@@ -2,7 +2,7 @@ let fonts = "https://fonts.googleapis.com/css?family=";
 
 try {
     i = {};
-    Object.assign(i, window.parent.location);
+    Object.assign(i, window.parent);
     console.log(i);
     console.log(window.parent.location);
     console.log(window.parent.location.toString());
