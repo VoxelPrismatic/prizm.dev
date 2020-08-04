@@ -1,10 +1,14 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
 try {
-    if(window.parent.location.host == "prizmdev.tk")
-        window.parent.location = "https://voxelprismatic.github.io/prizm.dev/" + window.parent.location.href.split("prizmdev.tk/")[1]
+    window.parent.location.host
 } catch(err) {
     console.error(err);
+    try {
+        window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
+    } catch(err) {
+        console.error(err);
+    }
 }
 var stylesheetLoaded = false;
 
