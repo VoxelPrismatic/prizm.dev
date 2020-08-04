@@ -4,7 +4,7 @@ try {
     console.log(window.parent);
     window.parent.location.host
 } catch(err) {
-    window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
+    //window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
 }
 var stylesheetLoaded = false;
 
