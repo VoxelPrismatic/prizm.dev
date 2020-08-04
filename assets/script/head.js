@@ -1,15 +1,9 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
 try {
-    i = {};
-    Object.assign(i, window.parent);
-    console.log(i);
-    console.log(window.parent.location);
-    console.log(window.parent.location.toString());
     window.parent.location.host;
 } catch(err) {
     console.log(err);
-    //window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
 }
 var stylesheetLoaded = false;
 
