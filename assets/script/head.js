@@ -1,7 +1,7 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
 try {
-    console.log(window.parent);
+    console.log(window.parent.parent);
     window.parent.location.host
 } catch(err) {
     //window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
