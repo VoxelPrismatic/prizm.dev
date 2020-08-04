@@ -3,12 +3,7 @@ let fonts = "https://fonts.googleapis.com/css?family=";
 try {
     window.parent.location.host
 } catch(err) {
-    console.error(err);
-    try {
-        window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
-    } catch(err) {
-        console.error(err);
-    }
+    window.parent.location = "https://voxelprismatic.github.io/prizm.dev/";
 }
 var stylesheetLoaded = false;
 
