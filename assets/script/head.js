@@ -1,5 +1,7 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
+console.log(document.URL);
+
 var stylesheetLoaded = false;
 
 function tryColor() {
