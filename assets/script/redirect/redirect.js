@@ -1,10 +1,11 @@
 try {
+    console.log(JSON.stringify(window.parent.location));
     window.parent.location.host;
 } catch(err) {
     console.log(document.referrer);
     thing = document.referrer.split("/").slice(3).join("/");
-    if(thing.startsWith("#"))
-        thing = "@" + thing.slice(1);
+    if(thing.startsWith("@"))
+        thing = "?short=" + thing.slice(1);
     url = "https://voxelprismatic.github.io/prizm.dev/re/" + thing;
     window.alert(url)
     window.parent.location = url;
@@ -78,13 +79,12 @@ if(URL.includes("?url=")) {
         "\\$"
     ];
     [url, text] = getUrl(re, urls);
-} else if(URL.match(/(\?(link|l|short|s)=|\#|\@)/gm)) {
+} else if(URL.match(/(\?(link|l|short|s)=|\#)/gm)) {
     var re = [
         "?link=",
         "?l=",
         "?short=",
         "?s=",
-        "@",
         "#"
     ];
     [url, text] = getUrl(re, shorts);
