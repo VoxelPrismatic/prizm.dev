@@ -1,5 +1,4 @@
 try {
-    console.log(document.location);
     window.parent.location.host;
 } catch(err) {
     console.error(err);
@@ -8,7 +7,6 @@ try {
     if(thing.startsWith("@"))
         thing = "?short=" + thing.slice(1);
     url = "https://voxelprismatic.github.io/prizm.dev/re/" + thing;
-    window.alert(url)
     window.parent.location = url;
 }
 
