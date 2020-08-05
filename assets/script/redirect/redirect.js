@@ -2,6 +2,7 @@ try {
     console.log(JSON.stringify(window.parent.location));
     window.parent.location.host;
 } catch(err) {
+    console.error(err);
     console.log(document.referrer);
     thing = document.referrer.split("/").slice(3).join("/");
     if(thing.startsWith("@"))
