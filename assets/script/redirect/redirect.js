@@ -1,7 +1,10 @@
 try {
     window.parent.location.host;
 } catch(err) {
-    url = "https://voxelprismatic.github.io/prizm.dev/re/" + document.referrer.split("/").slice(3).join("/");
+    thing = document.referrer.split("/").slice(3).join("/");
+    if(thing.startsWith("#"))
+        thing = "@" + thing.slice(1);
+    url = "https://voxelprismatic.github.io/prizm.dev/re/" + thing;
     window.alert(url)
     window.parent.location = url;
 }
@@ -63,23 +66,24 @@ eval(load(raw + "shorts.js"));
 var url = "https://voxelprismatic.github.io/prizm.dev/";
 var uri = url;
 var text = "home";
-var URL = document.URL
+var URL = document.URL;
 if(URL.includes("?url=")) {
     url = decodeUriCompontent(URL.split("?url=")[1]);
     text = url;
-} else if(URL.match(/\?(page|p)=/gm)) {
+} else if(URL.match(/(\?(page|p)|\$)=/gm)) {
     var re = [
         "?page=",
         "?p=",
         "\\$"
     ];
     [url, text] = getUrl(re, urls);
-} else if(URL.match(/(\?(link|l|short|s)=|\#)/gm)) {
+} else if(URL.match(/(\?(link|l|short|s)=|\#|\@)/gm)) {
     var re = [
         "?link=",
         "?l=",
         "?short=",
         "?s=",
+        "@",
         "#"
     ];
     [url, text] = getUrl(re, shorts);
