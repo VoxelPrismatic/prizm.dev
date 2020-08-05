@@ -59,6 +59,7 @@ eval(load(raw + "urls.js"));
 eval(load(raw + "shorts.js"));
 
 var url = "https://voxelprismatic.github.io/prizm.dev/";
+var uri = url;
 var text = "home";
 var URL = document.URL
 if(URL.includes("?url=")) {
