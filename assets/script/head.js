@@ -3,7 +3,7 @@ let fonts = "https://fonts.googleapis.com/css?family=";
 try {
     window.parent.location.host;
 } catch(err) {
-    window.parent.location = "https://voxelprismatic.github.io/prizm.dev/" + document.referrer.split("/").slice(4).join("/");
+    window.parent.location = "https://voxelprismatic.github.io/prizm.dev/" + document.referrer.split("/").slice(3).join("/");
 }
 
 var stylesheetLoaded = false;
