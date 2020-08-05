@@ -1,11 +1,9 @@
 let fonts = "https://fonts.googleapis.com/css?family=";
 
 try {
-    console.log(document.referrer);
     window.parent.location.host;
 } catch(err) {
-    console.log(err);
-    // window.parent.location = "https://voxelprismatic.github.io/prizm.dev/"
+    window.parent.location = "https://voxelprismatic.github.io/prizm.dev/" + document.referrer.split("/").slice(4).join("/");
 }
 
 var stylesheetLoaded = false;
