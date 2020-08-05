@@ -60,7 +60,7 @@ eval(load(raw + "shorts.js"));
 
 var url = "https://voxelprismatic.github.io/prizm.dev/";
 var text = "home";
-var URL = document.referrer || document.URL;
+var URL = document.URL
 if(URL.includes("?url=")) {
     url = decodeUriCompontent(URL.split("?url=")[1]);
     text = url;
