@@ -68,7 +68,7 @@ if(URL.includes("?url=")) {
     var re = [
         "?page=",
         "?p=",
-        "$"
+        "\\$"
     ];
     [url, text] = getUrl(re, urls);
 } else if(URL.match(/(\?(link|l|short|s)=|\#)/gm)) {
