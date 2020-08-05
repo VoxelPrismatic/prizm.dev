@@ -1,5 +1,5 @@
 try {
-    console.log(window.parent.location);
+    console.log(document.location);
     window.parent.location.host;
 } catch(err) {
     console.error(err);
