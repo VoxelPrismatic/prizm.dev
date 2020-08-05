@@ -1,5 +1,5 @@
 try {
-    console.log(JSON.stringify(window.parent.location));
+    console.log(window.parent.location);
     window.parent.location.host;
 } catch(err) {
     console.error(err);
