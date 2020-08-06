@@ -28,13 +28,13 @@ function load(filename, aio = false, strip = false) {
 }
 
 function didntRedirect() {
-    var st = `<h1>#] REDIRECT ;]</h1><div>Hey mate, I'm redirecting you to <a href="${url}">`
+    var st = `<h1>#] REDIRECT</h1><div>I'm redirecting you to <a href="${url}">`
     try {
-        st += text;
+        st += text || url;
     } catch(err) {
         st += url;
     }
-    st += "</a>, try allowing redirects... especially if you are using Firefox ;]</div>";
+    st += "</a></div>";
     document.body.innerHTML = st;
 }
 
