@@ -28,7 +28,7 @@ function load(filename, aio = false, strip = false) {
 }
 
 function didntRedirect() {
-    var st = `<h1>#] REDIRECT</h1><div>I'm redirecting you to <a href="${url}" class="color: #fff">`
+    var st = `<h1>#] REDIRECT</h1><div>I'm redirecting you to <a href="${url}" style="color: #fff">`
     st += "this link"
     st += "</a>, try allowing redirects for this site.<br>";
     st += "<sub>This is a shortlink subpage, all links are public.</sub></div>";
