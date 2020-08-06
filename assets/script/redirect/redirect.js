@@ -34,7 +34,7 @@ function didntRedirect() {
     } catch(err) {
         st += url;
     }
-    st += "</a></div>";
+    st += "</a>, try allowing redirects for this site.</div>";
     document.body.innerHTML = st;
 }
 
