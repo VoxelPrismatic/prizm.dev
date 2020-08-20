@@ -11,6 +11,10 @@ async function loadPage() {
     var subpage = await load(url);
     if(subpage != not_found_page)
         window.location = url;
+    url = url.replace("/re/", "/");
+    var subpage = await load(url);
+    if(subpage != not_found_page)
+        window.location = url;
     var data = await load("/prizm.dev/assets/data/404.json", {json: true});
     var thing = document.URL.split("/prizm.dev/")[1].split("?")[0].split("#")[0];
     var stuff = data[thing] || data[thing.slice(0, -1)];
