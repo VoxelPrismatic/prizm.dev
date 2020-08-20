@@ -11,7 +11,7 @@ async function loadPage() {
     var subpage = await load(url);
     if(subpage != not_found_page)
         window.location = url;
-    url = url.replace("/re/", "/");
+    url = document.URL.replace("/re/", "/");
     var subpage = await load(url);
     if(subpage != not_found_page)
         window.location = url;
