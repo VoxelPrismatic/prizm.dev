@@ -1,3 +1,16 @@
+#] aug 23, 2020
+___
+#STARBOARD#
+Yes, PRIZM now has a starboard. Enjoy.
+*How do you set it up?*
+Use the `;]manage` command, and you can set up other things in there too
+===
+
+#] null 00, 0000
+___
+Just bug fixes and things rather than new updates
+===
+
 #] mar 26, 2020
 ___
 > The `;]convert` command has been updated
