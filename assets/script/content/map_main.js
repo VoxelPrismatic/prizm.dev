@@ -10,6 +10,7 @@ var map = {
         "error",
         "google",
         "linux-sucks",
+        "map",
         "md",
         "tech",
         "toilet",
