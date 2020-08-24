@@ -37,16 +37,17 @@ var map = {
 };
 
 function setup(object, root = "") {
-    var st = "<blockquote>";
+    var st = ""
     for(var obj of object) {
         if(obj.constructor.name == "Object") {
             st += `<h1>${Object.keys(obj)[0]}</h1>`
+            st += "<blockquote>";
             st += setup(obj[Object.keys(obj)[0]], Object.keys(obj)[0]);
+            st += "</blockquote>";
         } else {
             st += `<a href="${root + obj}">${obj}</a><br>`;
         }
     }
-    st += "</blockquote>";
     return st;
 }
 
