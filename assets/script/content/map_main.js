@@ -45,7 +45,7 @@ function setup(object, root = "") {
             st += setup(obj[Object.keys(obj)[0]], Object.keys(obj)[0]);
             st += "</blockquote>";
         } else {
-            st += `<a href="${root + obj}">${obj}</a><br>`;
+            st += `<a href="/prizm.dev${root + obj}">${obj}</a><br>`;
         }
     }
     return st;
