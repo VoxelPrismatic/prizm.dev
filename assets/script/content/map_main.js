@@ -46,7 +46,7 @@ function setup(object, root = "") {
             st += `<a href="${root + obj}">${obj}</a><br>`;
         }
     }
-    st += "</blockquote>
+    st += "</blockquote>";
     return st;
 }
 
