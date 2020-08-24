@@ -8,6 +8,13 @@ if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/")) {
     linkTarget = "";
 }
 
+if(url.endsWith("prizm.dev/map") || url.endsWith("prizm.dev/map.html")) {
+    linkHref = "https://github.com/voxelprismatic/prizm.dev/";
+    linkContent = "Website repo";
+    linkTarget = "_blank";
+}
+
+
 var footTag = {
     "tag": "div",
     "style": "text-align: center;",
