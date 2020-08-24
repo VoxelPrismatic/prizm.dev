@@ -3,9 +3,9 @@ var linkContent = "Home page";
 var linkHref = "/prizm.dev";
 var linkTarget = "";
 if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/")) {
-    linkHref = "https://github.com/VoxelPrismatic/prizm.dev";
-    linkContent = "Website Repo";
-    linkTarget = "_blank";
+    linkHref = "/prizm.dev/map";
+    linkContent = "Site map";
+    linkTarget = "";
 }
 
 var footTag = {
