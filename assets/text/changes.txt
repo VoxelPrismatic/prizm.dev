@@ -1,16 +1,21 @@
 #] aug 25, 2020
-#MODERATION#
+###] MODERATION
 The `;]enable` and `;]disable` commands now support turning off groups of commands rather than one command at a time
-#PAYING RESPECTS#
+###] PAYING RESPECTS
 Pressing `F` has never been cleaner
+###] BUGS
+Fixed a bug where some commands couldn't be en/disabled
+For those who want to know why: I was not checking the bot commands but instead the files in which the commands were located. Some files have multiple commands, that's why it didn't work.
 
 -~-
 
 #] aug 23, 2020
-#STARBOARD#
+###] STARBOARD
 Yes, PRIZM now has a starboard. Enjoy.
 *How do you set it up?*
 Use the `;]manage` command, and you can set up other things in there too
+###] MANAGEMENT
+The starboard management now stays open until a timeout or you exit. Pretty easy.
 
 -~-
 
