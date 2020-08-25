@@ -1,0 +1,58 @@
+#] PERMISSIONS EXPLANATION
+Permissions integer as of aug 25, 2020: `473296118`
+
+###] KICK_MEMBERS
+Self explanitory
+
+###] BAN_MEMBERS
+Self explanitory
+
+###] MANAGE_CHANNELS
+This bot does not manage anything unless using the `;]audit` command.
+That command is an in-chat editor for things, allowing you to edit stuff like \
+the NSFW status on iOS.
+
+###] MANAGE_GUILD
+Same as `MANAGE_CHANNELS`
+
+###] ADD_REACTIONS
+For the interface stuff
+
+###] VIEW_AUDIT_LOG
+For logging
+
+###] VIEW_CHANNEL
+Fairly obvious now isn't it
+
+###] SEND_MESSAGES
+Self explanitory
+
+###] MANAGE_MESSAGES
+For clearing messages out and stuff
+
+###] EMBED_LINKS
+For embeds like every other bot
+
+###] ATTACH_FILES
+For extra logging info or other commands
+
+###] READ_MESSAGE_HISTORY
+Self explanitory
+
+###] USE_EXTERNAL_EMOJIS
+I have a custom emoji server. Please allow this otherwise the bot may not function properly
+
+###] CONNECT
+Connect to VC
+
+###] SPEAK
+Play music. The music command is not as developed as dedicated music bots.
+
+###] CHANGE_NICKNAME
+Not necessary, I don't know why I added it but I'm too lazy to change it.
+
+###] MANAGE_NICKNAMES
+So you can manage nicknames much more easily using the `;]nick` command
+
+###] MANAGE_ROLES
+Same as `MANAGE_CHANNELS`
