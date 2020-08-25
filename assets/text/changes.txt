@@ -1,18 +1,25 @@
+#] aug 25, 2020
+#MODERATION#
+The `;]enable` and `;]disable` commands now support turning off groups of commands rather than one command at a time
+#PAYING RESPECTS#
+Pressing `F` has never been cleaner
+
+-~-
+
 #] aug 23, 2020
-___
 #STARBOARD#
 Yes, PRIZM now has a starboard. Enjoy.
 *How do you set it up?*
 Use the `;]manage` command, and you can set up other things in there too
-===
+
+-~-
 
 #] null 00, 0000
-___
 Just bug fixes and things rather than new updates
-===
+
+-~-
 
 #] mar 26, 2020
-___
 > The `;]convert` command has been updated
 > > Now supports 316 formats
 ###] IMAGES [`Python Pillow`]
@@ -47,80 +54,64 @@ odg, sxd, svg, pdf, fodg, xml, pct, pict, bmp, cwk, cdr, fh, fh1, fh2, fh3, fh4,
 
 ###] MATH [`LibreOffice`]
 odf, sxm, mml
-===
 
 -~-
 
 #] mar 10, 2020
-___
 > Added the `;]hexdump` command
 > > Who needs a hex editor now?
-===
 
 -~-
 
 #] feb 27, 2020
-___
 > Starting up fixed
 > > Now, if there is an issue with starting up, it still starts up fully instead of \
 stopping all commands from loading. Also, it says that it's broken in +[\#is-prizm-online]\
 <https://discordapp.com/channels/533290351184707584/556247032701124650>
 > The react command now supports numbers too
 > > Eg `;]react t r y 1 m 8`
-===
 
 -~-
 
 #] feb 15, 2020
-___
 > Backups are now easily made, just by using a simple command.
 > > Only I, PRIZ, can use this command as it contains PRIZM's token, which is the username, \
 password, and other things I'm sure.
 > > It uploads directly to discord, and that's why only I can use it.
 > The command docs can easily be made too, and only I can use it because I made it that way.
-===
 
 -~-
 
 #] feb 09, 2020
-___
 > The `;]graph` command now supports polars!
 > > *Don't graph too many or it won't graph some properly... idk why
-===
 
 -~-
 
 #] jan 27, 2020
-___
 > Guild join bug fixed
 > > When PRIZM joins a guild, it now actually has a prefix for that guild instead of throwing \
 an error constantly
-===
 
 -~-
 
 #] dec 30, 2019
-___
 > The AI command has been updated, and no longer supports symbols because it doesn't under \
 stand them in the first place
-===
 
 -~-
 
 #] dec 28, 2019
-___
 > All math commands have been refreshed with new RegEx
 > > Also all math equations are now parsed by the same parser
 > > All math commands now have their answers unparsed as well so `1j` will be `1i`
 > Added new statuses
 > Fixed a bug where none of the math commands actually worked
 > Still working on the new `PRIZMATIC` module
-===
 
 -~-
 
 #] nov 30, 2019
-___
 > Logging was fixed yet again
 > > Edited messages now works, but roles supposedly don't
 > Added the `;]triangle` command
@@ -129,34 +120,28 @@ ___
 > > More colors and themes
 > Some math commands have been updated
 > > Better RegEx for equations and things
-===
 
 -~-
 
 #] oct 30, 2019
-___
 > Logging now #ACTUALLY# works!!!!
 > > The issue was that the `bot` logging was actually a switch to turn the entire system off
 > Updated most logging things
 > > Now is cleaner and always attaches a file [when available] with additional context
-===
 
 -~-
 
 #] oct 29, 2019
-___
 > The following commands have been fixed and work for all mods
 > > `;]pre`
 > > `;]mng`
 > > `;]dsbl`
 > > `;]enbl`
 > > `;]audit`
-===
 
 -~-
 
 #] oct 27, 2019
-___
 > Updated the `;]graph` command
 > > Now parses quickly
 > > Now won't break when commands contain `e`
@@ -183,12 +168,10 @@ ___
 > > `;]rng` and `;]coin` now actually work
 > Added the `;]colors` command
 > > Displays a random color or displays a sample of a hex color provided
-===
 
 -~-
 
 #] oct 21, 2019
-___
 > Added the `;]convert` command!
 > > You can now convert your 4mb files to any format you like!
 > > What it currently supports ---
@@ -198,21 +181,17 @@ ___
 > > Syntax ] `;]convert {output format} <attach a file to the message>`
 > Use the `;]bug` command to report any issues.
 > One is known ] FFmpeg doesn't always work
-===
 
 -~-
 
 #] oct 18, 2019
-___
 > Added many more faces like `;]` and `;O`
 > Added many more status texts
 > Updated the `;]char` command to have bytes for python
-===
 
 -~-
 
 #] oct 17, 2019
-___
 > The `;]draw` command is now a thing!
 > > Draw whatever you want in a 128x128 grid!
 > > Will be upscaled to a 1024x1024 image when sending to prevent blurriness
@@ -232,39 +211,31 @@ xN, yN [ANY] - The XY coordinates [MAX - 127, MIN - 0]
 *ALL relative points are relative to the previously drawn point IN THE SAME MESSAGE
 *^ Any starting relative points will be relative to 0, 0
 ```
-===
 
 -~-
 
 #] oct 16, 2019
-___
 > Added the `;]draw` command
 > > Still working on it, and will be greatly improved tomorrow
-===
 
 -~-
 
 #] oct 14, 2019
-___
 > The char command now gives more info
 > > When requesting one character, it tells you how to write it in many languages
 > > > Includes PY, JS, URI/URL, JAVA, C#, C++, C, HTML, RUBY, and SWIFT
 > > > If you want other languages, please visit the +[\#prizm-suggest]<https://discordapp.com/channels/533290351184707584/535507316775059516/> channel
-===
 
 -~-
 
 #] oct 13, 2019
-___
 > The `;]reddit` command has been updated
 > > Now properly states whether or not the post is archived
 > > Now states whether or not the `[IMAGE]` button should be pressed
-===
 
 -~-
 
 #] oct 11, 2019
-___
 > The `;]reddit` command has been updated
 > > Now looks much cleaner
 > > Attributes---
@@ -277,51 +248,41 @@ ___
 > > Now supports multireddits
 > > Now loads so much faster
 > > Direct links now work
-===
 
 -~-
 
 #] oct 08, 2019
-___
 > The `;]graph` command has new features
 > > Adding `--zero` to the end of the equation now shows the true zeros
 > > Adding `--yint` to the end will show the y-intercept
 > > `--max`, `--min`, `--zero`, `--yint` will be shown next to the equation in the legend, and everything else should work as normal...
 #Please use the `;]bug` command if you experience any issues#
-===
 
 -~-
 
 #] oct 03, 2019
-___
 > The `;]quad` command should work now...
 > > Should load faster
 > > Shouls give the *right* answer...
 > Logging now #should# work
 > > Logging works on my own server, so...
-===
 
 -~-
 
 #] oct 02, 2019
-___
 > Just realized, the logging features are broken again
 > > All `;]mng` features should still be funtional though
-===
 
 -~-
 
 #] oct 01, 2019
-___
 > The `;]graph` command now actually works [mostly]
 > > Fixed `--max` and `--min` to not show up with `[nan, nan]`
 > > Fixed `--zero` to actually show some zeros, except not the correct ones...
-===
 
 -~-
 
 #] sep 29, 2019
-___
 > The `;]graph` command now has been refreshed
 > > The new syntax ] `;]graph {?window} {eq1} | {eq2} | {eq3} | {eqX}`
 > > Adding `--max` to the end of the equation should give you the maximum coordinates shown
@@ -335,54 +296,44 @@ ___
 > > Example ] `;]sub 206 x^2^+34`
 
 > The `;]calc` command now actually loads on startup
-===
 
 -~-
 
 #] sep 23, 2019
-___
 > The `;]graph` command now doesnt need xmin or xmax, but now also has options for ymin and ymax
 > > `;]graph x` - ymin, ymax, xmin, xmax = -10, 10, -10, 10
 > > `;]graph -3 x` - ymin, ymax, xmin, xmax = -10, 10, -3, 10
 > > `;]graph -3 3 x` - ymin, ymax, xmin, xmax = -10, 10, -3, 3
 > > `;]graph -3 3 -5 x` - ymin, ymax, xmin, xmax = -5, 10, -3, 3
 > > `;]graph -3 3 -5 5 x` - ymin, ymax, xmin, xmax = -5, 5, -3, 3
-===
 
 -~-
 
 #] sep 22, 2019
-___
 > Logging now actually works
 > You can now create, edit, delete, and view tags with no issues
 > All `;]mng` features now work
-===
 
 -~-
 
 #] sep 16, 2019
-___
 > Fixed the `;]mng` command
 > > The logging section now actually loads
 > > The moderator section now doesn't throw an error
-===
 
 -~-
 
 #] sep 15, 2019
-___
 > Switched the database from `JSON` to `SQLITE3`
 > > This is a pretty big change, please submit any and all bugs via the `;]bug` command or via DMs
 > The `;]audit` command has been refreshed
 > All commands have been updated to use the new database
 > Removed the guild listener because it was useless
 > Fixed several bugs
-===
 
 -~-
 
 #] sep 12, 2019
-___
 > Added a public exec command
 > > Fixed a bug where newlines wouldn't actually go through
 > > I heard about some issues with encoding but I can't verify that rn
@@ -398,12 +349,10 @@ ___
 > > Now won't break when the vars are uppercase
 > > Should actually parse faster and break less when doing so
 > > Shouldn't break with `x=...` or `y=...`
-===
 
 -~-
 
 #] sep 09, 2019
-___
 > Added the simplify command
 > Added more features to that command
 > Fixed bugs with the help command
@@ -422,12 +371,10 @@ ___
 > Updated the graph command so you can now graph on the y axis too
 > > [`x=y^2^` and `y=x^2^` are supported]
 > > Support for xy functions [`x^2^+y^2^`] has not been added yet, I'm working on it tho
-===
 
 -~-
 
 #] aug 22, 2019
-___
 > Added an actually decent AI [`;]text hello`]
 > Fixed a bug where "no" would register as a bool and break it
 > Fixed a bug where smart quotes [`‘’“”`] would register as a bool break it
@@ -445,33 +392,27 @@ ___
 > Updated the inv command to be dynamic
 > Working on a better audit command
 > Fixed bugs and things
-===
 
 -~-
 
 #] aug 20, 2019
-___
 > Added the `;]reddit` command
 > > Fixed some bugs with that
 > Added the `;]captcha` command
 > Added the `;]8ball` command
-===
 
 -~-
 
 #] aug 19, 2019
-___
 > Fixed the `;]2048` command
 > > Now groups properly when not moving right
 > > Now doesn't break when there are multiple instances
 > > Doesn't edit twice
 > > Now ends the game properly, whereas before it would end if it couldn't add any new tiles
-===
 
 -~-
 
 #] aug 18, 2019
-___
 > Added 2048
 > > Fixed some bugs
 > > Added to the help command
@@ -479,30 +420,24 @@ ___
 > > Fixed bugs
 > Updated the `;]inv` command to comply with new permission requirements
 > Added this site link to the inv command
-===
 
 -~-
 
 #] aug 13, 2019
-___
 > Updated the help command to be automatic documentation
 > Updated the help command so you can now do `;]help {command name}`
 > Added new interactive commands [cuddle, kiss, throw]
 > Added music capabilities
-===
 
 -~-
 
 #] null 00, 0000
-___
 > This bit here was lost in time...
 > > Rest assured, the bot was being developed :D
-===
 
 -~-
 
 #] jun 26, 2019
-___
 > Added the `embedify` utility
 > Moved module loading to a seperate file
 > Removed some useless things
@@ -510,4 +445,3 @@ ___
 > Moved custom faces and texts into a different file
 > Moved command re/un/loading to a different file
 > Added a paginator
-===
