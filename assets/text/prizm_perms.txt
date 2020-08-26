@@ -1,5 +1,6 @@
 #] PERMISSIONS EXPLANATION
 Permissions integer as of aug 25, 2020: `473296118`
+Understand the permissions. Transparency is the key to trust.
 
 ###] KICK\_MEMBERS
 Self explanitory
