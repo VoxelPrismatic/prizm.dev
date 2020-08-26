@@ -19,7 +19,8 @@ var map = {
             "/prizm/": [
                 ".",
                 "changes",
-                "commands"
+                "commands",
+                "perms"
             ]
         },
         {
