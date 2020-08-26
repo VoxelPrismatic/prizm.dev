@@ -1,45 +1,45 @@
 #] PERMISSIONS EXPLANATION
 Permissions integer as of aug 25, 2020: `473296118`
 
-###] KICK_MEMBERS
+###] KICK\_MEMBERS
 Self explanitory
 
-###] BAN_MEMBERS
+###] BAN\_MEMBERS
 Self explanitory
 
-###] MANAGE_CHANNELS
+###] MANAGE\_CHANNELS
 This bot does not manage anything unless using the `;]audit` command.
 That command is an in-chat editor for things, allowing you to edit stuff like \
 the NSFW status on iOS.
 
-###] MANAGE_GUILD
+###] MANAGE\_GUILD
 Same as `MANAGE_CHANNELS`
 
-###] ADD_REACTIONS
+###] ADD\_REACTIONS
 For the interface stuff
 
-###] VIEW_AUDIT_LOG
+###] VIEW\_AUDIT\_LOG
 For logging
 
-###] VIEW_CHANNEL
+###] VIEW\_CHANNEL
 Fairly obvious now isn't it
 
-###] SEND_MESSAGES
+###] SEND\_MESSAGES
 Self explanitory
 
-###] MANAGE_MESSAGES
+###] MANAGE\_MESSAGES
 For clearing messages out and stuff
 
-###] EMBED_LINKS
+###] EMBED\_LINKS
 For embeds like every other bot
 
-###] ATTACH_FILES
+###] ATTACH\_FILES
 For extra logging info or other commands
 
-###] READ_MESSAGE_HISTORY
+###] READ\_MESSAGE\_HISTORY
 Self explanitory
 
-###] USE_EXTERNAL_EMOJIS
+###] USE\_EXTERNAL\_EMOJIS
 I have a custom emoji server. Please allow this otherwise the bot may not function properly
 
 ###] CONNECT
@@ -48,11 +48,11 @@ Connect to VC
 ###] SPEAK
 Play music. The music command is not as developed as dedicated music bots.
 
-###] CHANGE_NICKNAME
+###] CHANGE\_NICKNAME
 Not necessary, I don't know why I added it but I'm too lazy to change it.
 
-###] MANAGE_NICKNAMES
+###] MANAGE\_NICKNAMES
 So you can manage nicknames much more easily using the `;]nick` command
 
-###] MANAGE_ROLES
+###] MANAGE\_ROLES
 Same as `MANAGE_CHANNELS`
