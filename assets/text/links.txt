@@ -31,6 +31,14 @@ Let's make Discord darker! [Plus bonus features]
 
 -~-
 
+#] PRIZ PLAYER ;]
+PRIZ PLAYER is a next gen player that has a terminal aesthetic and works amazingly well. Built and designed for *LINUX* but \
+may or may not run on Windows / Mac, I haven't tested those yet. Should work on mac much better than windows though, due to \
+the similar architecture and interaction level.
+:v:+[\[GitHub Repo\]]</prizm.dev/re/?p=github+/prizplayer> +[\[Tag your music\]]</prizm.dev/re/?p=github+/prizplayer/wiki/tagging>
+
+-~-
+
 #] STALK ME ;[
 
 Follow me on +[Twitter]</prizm.dev/re?p=twitter> :^: @#VoxelPrismatic#
