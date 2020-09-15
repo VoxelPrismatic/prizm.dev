@@ -2,6 +2,7 @@ var urls = {
   "twitter": "https://twitter.com/voxelprismatic",
   "home": "https://voxelprismatic.github.io/prizm.dev",
   "patreon": "https://patreon.com/voxelprismatic",
+  "kofi": "https://ko-fi.com/voxelprismatic",
   "github": "https://github.com/voxelprismatic",
   "discord": "https://discord.gg/Z84Nm6n",
   "dm_dis": "https://discordapp.com/channels/@me/481591703959240706",
