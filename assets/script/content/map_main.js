@@ -15,6 +15,7 @@ var map = {
         "tech",
         "toilet",
         "wat",
+        "ileies",
         {
             "/prizm/": [
                 ".",
@@ -31,7 +32,8 @@ var map = {
                 "github",
                 "patreon",
                 "reddit",
-                "twitter"
+                "twitter",
+                "kofi",
             ]
         }
     ]
