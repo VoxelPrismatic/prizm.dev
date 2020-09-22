@@ -1,10 +1,12 @@
 #] PRIZMATIC
+*Kinda stalled because discord doesn't ever update their documentation and its a pain to work with
+
 Hey! I'm making an API wrapper for Discord, Reddit, and Riot.IM! If you use any \
 of these services, well you should also know the bot that I made. Soon, I will \
 transition my bot to use this module, so I don't have to use this `discord.py` \
 garbage that I'm currently using...
 
-:v:+[\[DOCS\]]</prizmatic.docs> \
+:v:+[\[Documentation\]]</prizmatic.docs> \
 +[\[REPO\]]</prizm.dev/re?p=github+/prizmatic> \
 +[\[DISCORD\]]</prizm.dev/re?p=discord>
 
