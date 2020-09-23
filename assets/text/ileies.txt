@@ -15,6 +15,7 @@ have made an app similar to discord, but the two links he gave me resulted in a 
 quite bland page, and some encryptor which nobody has access to unless they have the link.
 
 @[Screenshot 1]</prizm.dev/assets/image/ileies/Screenshot_20200922_174232.png>
+
 Disclaimer: The original message of:
 `Have you ever heard about w3schools.com? [...] programming website.`
 said `programming language` instead.
@@ -23,9 +24,13 @@ said `programming language` instead.
 
 @[Screenshot 2]</prizm.dev/assets/image/ileies/Screenshot_20200922_174246.png>
 
+Fun fact: You also have to download Node.JS on Windows, macOS, and Linux. Just so happens \
+you have an interpreter in your browser, but that's all you get.
+
 -~-
 
 @[Screenshot 3]</prizm.dev/assets/image/ileies/Screenshot_20200922_174300.png>
+
 Disclaimer: The edited message saying that I was a mainstream programmer was edited to include \
 that bit. I knew they weren't serious about it.
 
