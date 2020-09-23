@@ -8,6 +8,12 @@ How else could we experience the finest programmer in the world talking down to 
 Yes I know that I may seem toxic myself, but you have to understand that he jumped in to shit on me \
 because I use python rather than JS, PHP, or C.
 
+I small history about ileies:
+On sep-9-2020, he joined the C418 server. He saw that I made a music player and asked if i was \
+indeed a programmer. I said yes, and he started shitting on me for using python. He claims to \
+have made an app similar to discord, but the two links he gave me resulted in a nonfunctional and \
+quite bland page, and some encryptor which nobody has access to unless they have the link.
+
 @[Screenshot 1]</prizm.dev/assets/image/ileies/Screenshot_20200922_174232.png>
 Disclaimer: The original message of:
 `Have you ever heard about w3schools.com? [...] programming website.`
@@ -20,6 +26,8 @@ said `programming language` instead.
 -~-
 
 @[Screenshot 3]</prizm.dev/assets/image/ileies/Screenshot_20200922_174300.png>
+Disclaimer: The edited message saying that I was a mainstream programmer was edited to include \
+that bit. I knew they weren't serious about it.
 
 -~-
 
