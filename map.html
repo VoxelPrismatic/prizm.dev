@@ -24,6 +24,12 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700,700i&amp;display=swap" />
         <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/map" />
         <meta name="author" content="PRIZ ;]" />
+        <style type="text/css">
+            #head {
+                top: -100px !important;
+            }
+            #foot 
+        </style>
     </head>
     <body class="bgcolor" style="background-color: rgb(34, 17, 34);">
         <div id="logo">
@@ -72,12 +78,14 @@
                 <div style="text-align: center;">
                     <div style="height: 0px; transition: none 0s ease 0s;" id="spacer"></div>
                     <sub id="footer">
-                        <br />
-                        <br />
-                        <b style="font-size: larger;">BY PRIZ WITH WINKY BRACKET FACE ;]</b><br />
-                        <span id="links_and_sources" tabindex="-1"><a href="https://github.com/voxelprismatic/prizm.dev/" target="_blank" tabindex="0">Website repo</a></span><br />
-                        <span id="funnytextthing" tabindex="-1">*loading funny text thing</span><br />
-                        <br />
+                        <br>
+                        <br>
+                        <b style="font-size: larger;">BY PRIZ WITH WINKY BRACKET FACE ;]</b><br>
+                        <span id="links_and_sources" tabindex="-1">
+                            <a href="https://github.com/voxelprismatic/prizm.dev/" target="_blank" tabindex="0">Website repo</a>
+                        </span><br>
+                        <span id="funnytextthing" tabindex="-1">*loading funny text thing</span><br>
+                        <br>
                     </sub>
                 </div>
             </div>
@@ -97,18 +105,9 @@
             <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/colors.js" id="aesthetic/colors.js"></script>
             <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/flicker.js" id="aesthetic/flicker.js"></script>
             <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/dynamic.js" id="aesthetic/dynamic.js"></script>
-            <script type="text/javascript" src="/prizm.dev/assets/script/load.js" id="load.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/load-min.js" id="load.js"></script>
             <script type="text/javascript" defer>
-                swapColor(theme);
-                if(find("jumper")) {
-                    window.onscroll = changeScrollingThingy;
-                    window.ontouchmove = changeScrollingThingy;
-                }
-                window.onclick = changeFunnyTextThing;
-                window.onauxclick = changeFunnyTextThing;
-                window.ontouchend = changeFunnyTextThing;
-                changeFunnyTextThing();
-                window.onresize = function() {sub_styles(false)};
+                loadNow();
             </script>
         </div>
         <div id="jumper" onclick="jumpToEdge()">[V]</div>
