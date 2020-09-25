@@ -76,7 +76,7 @@
                         <br />
                         <b style="font-size: larger;">BY PRIZ WITH WINKY BRACKET FACE ;]</b><br />
                         <span id="links_and_sources" tabindex="-1"><a href="https://github.com/voxelprismatic/prizm.dev/" target="_blank" tabindex="0">Website repo</a></span><br />
-                        <span id="funnytextthing" tabindex="-1">bootlegs are neat</span><br />
+                        <span id="funnytextthing" tabindex="-1">*loading funny text thing</span><br />
                         <br />
                     </sub>
                 </div>
@@ -100,6 +100,15 @@
             <script type="text/javascript" src="/prizm.dev/assets/script/load.js" id="load.js"></script>
             <script type="text/javascript" defer>
                 swapColor(theme);
+                if(find("jumper")) {
+                    window.onscroll = changeScrollingThingy;
+                    window.ontouchmove = changeScrollingThingy;
+                }
+                window.onclick = changeFunnyTextThing;
+                window.onauxclick = changeFunnyTextThing;
+                window.ontouchend = changeFunnyTextThing;
+                changeFunnyTextThing();
+                window.onresize = function() {sub_styles(false)};
             </script>
         </div>
         <div id="jumper" onclick="jumpToEdge()">[V]</div>
