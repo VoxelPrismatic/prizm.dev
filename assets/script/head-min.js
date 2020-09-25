@@ -1,19 +1,5 @@
 /* This file is not meant to be minimized, just less resource intensive */
 
-try {
-    document.title = document.getElementById("title").content;
-} catch(err) {
-}
-
-function tryColor() {
-    console.log("Stylesheet loaded");
-    try {
-        swapColor(theme, false);
-    } catch(err) {
-        console.error(err);
-    }
-}
-
 function tag(element) {
     if(element["tag"] == "!")
         return document.createComment(element["#"]);
