@@ -54,6 +54,7 @@ function linkMe(elem) {
         id = "#" + id;
     }
     window.history.replaceState(window.history.state, document.title, id);
+    flickery_element(elem);
 }
 
 function flickery_element(h) {
