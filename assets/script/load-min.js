@@ -111,7 +111,7 @@ function resizeDicts(log = true, element = document) {
             var parent = thing.parentElement;
             var width = parent.clientWidth - 5;
             thing.classList.add("smol-dict");
-            thing.style.top = (height + 5) + "px";
+            thing.style.top = (height + 6) + "px";
             thing.parentElement.style.minHeight = (2 * height + 20) + "px";
             thing.parentElement.style.height = (2 * height + 20) + "px";
         }
