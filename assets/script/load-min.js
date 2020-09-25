@@ -96,7 +96,7 @@ function resizeDicts(log = true, element = document) {
         style.transition = "none";
         style.width = (thisWidth - 10) + "px";
         style.lineHeight = height + "px";
-        style.top = "";
+        style.top = "-4px";
         thing.classList.remove("smol-dict");
         if(thisWidth < 100) {
             tooSmol = true;
