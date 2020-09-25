@@ -123,8 +123,9 @@ function resizeDicts(log = true, element = document) {
 function dictsPerfect() {
     for(var thing of find(">dict")) {
         var parent = thing.parentElement;
-        var width = parent.clientWidth - 5;v
-        ar thisWidth = width;thisWidth -= thing.nextElementSibling.clientWidth;
+        var width = parent.clientWidth - 5;
+        var thisWidth = width;
+        thisWidth -= thing.nextElementSibling.clientWidth;
         thisWidth -= thing.previousElementSibling.clientWidth;
         thing.style.width = (thisWidth - 10) + "px";
     }
