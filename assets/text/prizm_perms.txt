@@ -1,0 +1,64 @@
+#] PERMISSIONS EXPLANATION
+Permissions integer as of aug 25, 2020: `473296118`
+Understand the permissions. Transparency is the key to trust.
+Convert permissions integers +[here]</discord_perms/>
+
+###] KICK\_MEMBERS
+Self explanitory. Only used with the `;]kick` command. User permissions are checked beforehand.
+
+###] BAN\_MEMBERS
+Self explanitory. Only used with the `;]ban` command. User permissions are checked beforehand.
+
+###] MANAGE\_CHANNELS
+This bot does not manage any channels unless using the `;]audit` command.
+That command is an in-chat editor for things, allowing you to edit stuff like \
+the NSFW status on iOS. Only specified user moderators are allowed to use `;]audit`.
+
+###] MANAGE\_GUILD
+This bot does not manage the guild unless using the `;]audit` command.
+That command is an in-chat editor for things, allowing you to edit stuff like \
+the NSFW status on iOS. Only specified user moderators are allowed to use `;]audit`.
+
+###] ADD\_REACTIONS
+For the interface stuff, like `;]audit`, `;]manage`, etc. Keep this enabled for PRIZM to function properly.
+
+###] VIEW\_AUDIT\_LOG
+For logging purposes. Logging isn't enabled by default.
+
+###] VIEW\_CHANNEL
+Fairly obvious now isn't it. This should be kept enabled so PRIZM can see messages as they come.
+
+###] SEND\_MESSAGES
+Self explanitory. PRIZM can't do much of anything without it.
+
+###] MANAGE\_MESSAGES
+For clearing messages out and stuff. User permissions are checked beforehand.
+
+###] EMBED\_LINKS
+For embeds like every other bot. Used for much of everything.
+
+###] ATTACH\_FILES
+For extra logging info or other commands. Leave this enabled.
+
+###] READ\_MESSAGE\_HISTORY
+Self explanitory. Keep this enabled so PRIZM can manage messages after occasional restarts.
+
+###] USE\_EXTERNAL\_EMOJIS
+I have a custom emoji server. Please allow this otherwise the bot may not function properly.
+
+###] CONNECT
+Connect to VC. Used only for music.
+
+###] SPEAK
+Play music. The music command is not as developed as dedicated music bots.
+
+###] CHANGE\_NICKNAME
+Not necessary, I don't know why I added it but I'm too lazy to change it.
+
+###] MANAGE\_NICKNAMES
+So you can manage nicknames much more easily using the `;]nick` command. User permissions are checked beforehand.
+
+###] MANAGE\_ROLES
+This bot does not manage roles unless using the `;]audit` command.
+That command is an in-chat editor for things, allowing you to edit stuff like \
+the NSFW status on iOS. Only specified user moderators are allowed to use `;]audit`.

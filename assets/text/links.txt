@@ -1,10 +1,12 @@
 #] PRIZMATIC
+*Kinda stalled because discord doesn't ever update their documentation and its a pain to work with
+
 Hey! I'm making an API wrapper for Discord, Reddit, and Riot.IM! If you use any \
 of these services, well you should also know the bot that I made. Soon, I will \
 transition my bot to use this module, so I don't have to use this `discord.py` \
 garbage that I'm currently using...
 
-:v:+[\[DOCS\]]</prizmatic.docs> \
+:v:+[\[Documentation\]]</prizmatic.docs> \
 +[\[REPO\]]</prizm.dev/re?p=github+/prizmatic> \
 +[\[DISCORD\]]</prizm.dev/re?p=discord>
 
@@ -31,6 +33,14 @@ Let's make Discord darker! [Plus bonus features]
 
 -~-
 
+#] PRIZ PLAYER ;]
+PRIZ PLAYER is a next gen player that has a terminal aesthetic and works amazingly well. Built and designed for *LINUX* but \
+may or may not run on Windows / Mac, I haven't tested those yet. Should work on mac much better than windows though, due to \
+the similar architecture and interaction level.
+:v:+[\[GitHub Repo\]]</prizm.dev/re/?p=github+/prizplayer> +[\[Tag your music\]]</prizm.dev/re/?p=github+/prizplayer/wiki/tagging>
+
+-~-
+
 #] STALK ME ;[
 
 Follow me on +[Twitter]</prizm.dev/re?p=twitter> :^: @#VoxelPrismatic#
@@ -40,6 +50,7 @@ Copy my code on +[GitHub]</prizm.dev/re?p=github> :^: github/#VoxelPrismatic#
 Listen to ambience on +[BandCamp]</prizm.dev/re?p=bandcamp> :^: #przm#.bandcamp
 View my website [here]<#STALKME> :^: voxelprismatic.github.io/#prizm.dev#
 Support me on +[Patreon]</prizm.dev/re?p=patreon> :^: patreon/#VoxelPrismatic#
+Donate to me on +[Ko-Fi]</prizm.dev/re?p=kofi> :^: ko-fi/#VoxelPrismatic#
 Email [me]<mailto:prizmdev@outlook.com> :^: #prizmdev@outlook.com#
 Call [me]<tel:+1-337-420-6969> :^: +1 #[337] 420 6969#
 Literally stalk me :^: Somewhere in the #Universe#

@@ -28,14 +28,12 @@ function load(filename, aio = false, strip = false) {
 }
 
 function didntRedirect() {
-    var st = `<h1>#] REDIRECT ;]</h1><div>Hey mate, I'm redirecting you to <a href="${url}">`
-    try {
-        st += text;
-    } catch(err) {
-        st += url;
-    }
-    st += "</a>, try allowing redirects... especially if you are using Firefox ;]</div>";
-    document.body.innerHTML = st;
+    document.body.innerHTML = `<h1>#] REDIRECT</h1><div>I'm redirecting you to <a href="${url}" style="color: #fff">
+this link</a>, try allowing redirects for this site.<br><br>
+<sub>This is a shortlink subpage, all links are public.<br><br>
+<sub>Note: if <u>.github.io</u> isn't in the URL, DO NOT ALLOW REDIRECTS.
+Google Chrome redirects to the website home page rather than to the
+destination. Thanks for your understanding</sub></sub></div>`;
 }
 
 function getUrl(re, block) {

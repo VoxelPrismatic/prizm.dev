@@ -3,10 +3,17 @@ var linkContent = "Home page";
 var linkHref = "/prizm.dev";
 var linkTarget = "";
 if(url.endsWith("prizm.dev") || url.endsWith("prizm.dev/")) {
-    linkHref = "https://github.com/VoxelPrismatic/prizm.dev";
-    linkContent = "Website Repo";
+    linkHref = "/prizm.dev/map";
+    linkContent = "Site map";
+    linkTarget = "";
+}
+
+if(url.endsWith("prizm.dev/map") || url.endsWith("prizm.dev/map.html")) {
+    linkHref = "https://github.com/voxelprismatic/prizm.dev/";
+    linkContent = "Website repo";
     linkTarget = "_blank";
 }
+
 
 var footTag = {
     "tag": "div",
