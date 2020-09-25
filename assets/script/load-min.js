@@ -10,6 +10,13 @@ async function loadNow() {
     window.ontouchend = changeFunnyTextThing;
     changeFunnyTextThing();
     window.onresize = function() {sub_styles(false)};
+    for(var thing of [1, 2, 3, 4, 5, 6]) {
+        for(var elem of $all("h" + thing)) {
+            elem.onclick = function() {
+                linkMe(this);
+            }
+        }
+    }
 }
 
 async function load(filename, strip = false, json = false, list = false) {
