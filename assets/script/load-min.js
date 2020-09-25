@@ -32,3 +32,6 @@ async function load(filename, strip = false, json = false, list = false) {
         return content.split("\n");
     return content;
 }
+
+function loadFooter() {
+}
