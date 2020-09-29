@@ -139,3 +139,17 @@ function dictsTooSmol() {
         thing.style.width = width + "px";
     }
 }
+
+function toggleDrop(elem) {
+    if(elem.classList.toggle("h-dropper-closed")) {
+        elem.innerHTML = "[V]";
+    } else {
+        elem.innerHTML = "[\u039b]";
+    }
+    target = elem.nextElementSibling;
+    if(!target)
+        target = elem.parentElement.nextElementSibling
+    target.classList.toggle("invis");
+    resizeDicts(false, target);
+    elem.scrollIntoView({behavior: "smooth"});
+}
