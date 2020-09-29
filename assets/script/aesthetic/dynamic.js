@@ -11,18 +11,25 @@ function resetUpdate() {
 
 shouldUpdate = true;
 
-function changeScrollingThingy() {
-    if(window.scrollY % 2)
-        return;
+function changeScrollingThingy(evt = null) {
+    if(evt == null) {
+        if(window.scrollY % 2)
+            return;
+        if(window.scrollY / window.scrollMaxY >= 0.5)
+            setHtml("jumper", "[\u039b]");
+        else
+            setHtml("jumper", "[V]");
+    } else {
+        if(evt.deltaY < 0)
+            setHtml("jumper", "[\u039b]");
+        else
+            setHtml("jumper", "[V]");
+    }
     if(shouldUpdate) {
         updateSpacer();
         shouldUpdate = false;
         window.setTimeout(resetUpdate, 500);
     }
-    if(window.scrollY / window.scrollMaxY >= 0.5)
-        setHtml("jumper", "[\u039b]");
-    else
-        setHtml("jumper", "[V]");
 }
 
 function getHeight(elem) {
