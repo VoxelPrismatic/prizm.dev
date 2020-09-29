@@ -2,8 +2,21 @@ async function loadNow() {
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
     swapColor(theme);
     if(find("jumper")) {
-        window.onwheel = (evt) => changeScrollingThingy(evt);
+        if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent))
+            window.onscroll = changeScrollingThingy;
+        else
+            window.onwheel = (evt) => changeScrollingThingy(evt);
         window.ontouchmove = changeScrollingThingy;
+    }
+    window.onkeydown = (evt) => {
+        if(!(evt.ctrlKey == true && evt.key == "I"))
+            return;
+        if(/Edge/i.test(window.navigator.userAgent))
+            console.warn("Is this the old edge? Wow.");
+        else if(/Chrome/i.test(window.navigator.userAgent))
+            console.warn("Try out Firefox sometime, you'll be impressed!");
+        if(/(Linux x86_64|Ubuntu)/i.test(window.navigator.userAgent))
+            console.warn("Thanks for using the best operating system there is");
     }
     window.onclick = changeFunnyTextThing;
     window.onauxclick = changeFunnyTextThing;
