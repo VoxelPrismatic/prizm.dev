@@ -1,8 +1,9 @@
 function jumpToEdge() {
-    if(window.scrollY / window.scrollMaxY >= 0.5)
+    if(find("jumper").innerHTML == "[\u039b]")
         find("truelogo").scrollIntoView({behavior: "smooth"});
     else
         find("footer").scrollIntoView({behavior: "smooth"});
+    changeScrollingThingy()
 }
 
 function resetUpdate() {
