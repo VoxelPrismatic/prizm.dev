@@ -1,5 +1,11 @@
 /* This file is not meant to be minimized, just less resource intensive */
 
+try {
+    window.parent.location.host;
+} catch(err) {
+    window.parent.location = "https://voxelprismatic.github.io/prizm.dev/" + document.referrer.split("/").slice(3).join("/");
+}
+
 function tag(element) {
     if(element["tag"] == "!")
         return document.createComment(element["#"]);
