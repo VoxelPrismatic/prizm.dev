@@ -12,7 +12,7 @@ function resetUpdate() {
 shouldUpdate = true;
 
 function changeScrollingThingy(evt = null) {
-    if(evt == null) {
+    if(evt == null || evt.deltaY == undefined) {
         if(window.scrollY % 2)
             return;
         if(window.scrollY / window.scrollMaxY >= 0.5)
