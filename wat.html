@@ -55,119 +55,89 @@
                 So, lets talk about this: <codeline>==</codeline>. This makes no sense. In every single language, it means "is it equal?", but in JS, this is calculated as a percentage for some reason. I'm serious. In Python it's either
                 equal or not equal. In JS, however, it's kinda equal? I don't know how equal it is but it must be between 0% and 100% equal. If it isn't <i>not</i> equal [0%, thus isn't equal], then it must be equal [anywhere from 1% to
                 100%, thus is equal].<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; <span class="var" tabindex="-1">1</span> == <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
-                    <span class="cls" tabindex="-1">true</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; <span class="var" tabindex="-1">1</span> == <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
+<span class="cls" tabindex="-1">true</span><br />
+<br /></codeblock>
                 I just want to see how equal things can get, though.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; <span class="var" tabindex="-1">1</span> === <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
-                    <span class="cls" tabindex="-1">false</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; <span class="var" tabindex="-1">1</span> === <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
+<span class="cls" tabindex="-1">false</span><br />
+<br /></codeblock>
                 I see, now it can tell me if it's equal or not equal. So, that means the more equal signs I add, the more the more equal it can check, right?<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; <span class="var" tabindex="-1">1</span> ==== <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
-                    <span class="err" tabindex="-1">SyntaxError</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; <span class="var" tabindex="-1">1</span> ==== <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
+<span class="err" tabindex="-1">SyntaxError</span><br />
+<br /></codeblock>
                 Of course not.<br />
                 Strings are not integers, and should not be treated as such. This is silly.<br />
                 <br />
                 <h3 onclick="linkMe(this);" id="Lists" tabindex="0">#] Lists</h3>
                 <br />
                 In all languages, you can make two lists by appending the contents of one list to another using the <codeline>+</codeline> operator.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1"># Python </span><br />
-                    &gt;&gt;&gt; [<span class="var" tabindex="-1">1</span>, <span class="var" tabindex="-1">2</span>, <span class="var" tabindex="-1">3</span>] + [<span class="var" tabindex="-1">4</span>,
-                    <span class="var" tabindex="-1">5</span>, <span class="var" tabindex="-1">6</span>]<br />
-                    [<span class="var" tabindex="-1">1</span>, <span class="var" tabindex="-1">2</span>, <span class="var" tabindex="-1">3</span>, <span class="var" tabindex="-1">4</span>, <span class="var" tabindex="-1">5</span>,
-                    <span class="var" tabindex="-1">6</span>]<br />
-                    &gt;&gt;&gt; [] + []<br />
-                    []<br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1"># Python </span><br />
+&gt;&gt;&gt; [<span class="var" tabindex="-1">1</span>, <span class="var" tabindex="-1">2</span>, <span class="var" tabindex="-1">3</span>] + [<span class="var" tabindex="-1">4</span>,
+<span class="var" tabindex="-1">5</span>, <span class="var" tabindex="-1">6</span>]<br />
+[<span class="var" tabindex="-1">1</span>, <span class="var" tabindex="-1">2</span>, <span class="var" tabindex="-1">3</span>, <span class="var" tabindex="-1">4</span>, <span class="var" tabindex="-1">5</span>,
+<span class="var" tabindex="-1">6</span>]<br />
+&gt;&gt;&gt; [] + []<br />
+[]<br />
+<br /></codeblock>
                 Makes sense, right? Add one list to another to make a larger list, like we do in real life. Let's see what happens in JS.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; [] + []<br />
-                    <span class="str" tabindex="-1">""</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; [] + []<br />
+<span class="str" tabindex="-1">""</span><br />
+<br /></codeblock>
                 OF COURSE FUCKING NOT. <i>Let's be different.</i> Subtracting, however, shouldn't work. What would you remove, where? JavaScript has a solution.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; [] - []<br />
-                    <span class="var" tabindex="-1">0</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; [] - []<br />
+<span class="var" tabindex="-1">0</span><br />
+<br /></codeblock>
                 <br />
                 <h3 onclick="linkMe(this);" id="Objects" tabindex="0">#] Objects</h3>
                 <br />
                 This should be quite simple. Let's see what happens when we add an object and a list together. They are completely incompatible data types, so it should throw a TypeError or something like that.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; [] + {}<br />
-                    <span class="str" tabindex="-1">"[object <span class="cls" tabindex="-1">Object</span>]"</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; [] + {}<br />
+<span class="str" tabindex="-1">"[object <span class="cls" tabindex="-1">Object</span>]"</span><br />
+<br /></codeblock>
                 Well, if that works, then let's try reversing it because that's how addition works afterall. And of course, we get the same thing.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; {} + []<br />
-                    <span class="var" tabindex="-1">0</span><br />
-                    &gt;&gt;&gt; {} - []<br />
-                    <span class="var" tabindex="-1">-0</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; {} + []<br />
+<span class="var" tabindex="-1">0</span><br />
+&gt;&gt;&gt; {} - []<br />
+<span class="var" tabindex="-1">-0</span><br />
+<br /></codeblock>
                 Makes sense to me. I love negative zero. Let's try adding two objects.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; {} + {}<br />
-                    <span class="cls" tabindex="-1">NaN</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; {} + {}<br />
+<span class="cls" tabindex="-1">NaN</span><br />
+<br /></codeblock>
                 Not a number. I see.<br />
                 <br />
                 <h3 onclick="linkMe(this);" id="Strings" tabindex="0">#] Strings</h3>
                 <br />
                 A string is text. Like "hi". Most languages do not automatically convert datatypes without explicit instruction. JavaScript is one of those exceptions. So, adding will concatonate, or append to the end of the string.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; <span class="var" tabindex="-1">12</span> + <span class="str" tabindex="-1">"<span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
-                    <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span><span class="var" tabindex="-1">2</span><span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; <span class="var" tabindex="-1">12</span> + <span class="str" tabindex="-1">"<span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
+<span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span><span class="var" tabindex="-1">2</span><span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
+<br /></codeblock>
                 So, let's try subtracting. Shouldn't work because strings aren't numbers, right?<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1">// JavaScript </span><br />
-                    &gt;&gt;&gt; <span class="var" tabindex="-1">12</span> - <span class="str" tabindex="-1">"<span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
-                    <span class="var" tabindex="-1">-22</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1">// JavaScript </span><br />
+&gt;&gt;&gt; <span class="var" tabindex="-1">12</span> - <span class="str" tabindex="-1">"<span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
+<span class="var" tabindex="-1">-22</span><br />
+<br /></codeblock>
                 Well of course I was wrong. When did JS ever make sense?<br />
                 <br />
                 <h1 onclick="linkMe(this);" id="Python" tabindex="0">#] Python</h1>
                 <br />
                 Python is a very sane language, relatively speaking to JavaScript of course. Python accepts inputs directly from the console. Let's input a number.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1"># Python </span><br />
-                    &gt;&gt;&gt; <span class="fn" tabindex="-1"><span class="cls" tabindex="-1">int</span></span>(<span class="fn" tabindex="-1">input</span>(<span class="str" tabindex="-1">"Input a number ] "</span>))
-                    <span class="comm" tabindex="-1"># Convert to an integer [no decimals] </span><br />
-                    Input a number ]
-                    <b>
-                        <u>
-                            <span class="fn" tabindex="-1"><span class="var" tabindex="-1">2</span></span>.<span class="var" tabindex="-1">5</span>
-                        </u>
-                    </b>
-                    <br />
-                    <span class="err" tabindex="-1">ValueError</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1"># Python </span><br />
+&gt;&gt;&gt; <span class="fn" tabindex="-1"><span class="cls" tabindex="-1">int</span></span>(<span class="fn" tabindex="-1">input</span>(<span class="str" tabindex="-1">"Input a number ] "</span>))
+<span class="comm" tabindex="-1"># Convert to an integer [no decimals] </span><br />
+Input a number ] <b><u><span class="fn" tabindex="-1"><span class="var" tabindex="-1">2</span></span>.<span class="var" tabindex="-1">5</span></u></b><br />
+<span class="err" tabindex="-1">ValueError</span><br />
+<br /></codeblock>
                 Nice, I cannot input a decimal and expect it to come out as an integer. JavaScript, the insane language as described previously, allows this just fine, probably because strings are also numbers too.<br />
                 <br />
                 <h1 onclick="linkMe(this);" id="Ruby" tabindex="0">#] Ruby</h1>
@@ -177,46 +147,36 @@
                 <h3 onclick="linkMe(this);" id="Assigning-variables" tabindex="0">#] Assigning variables</h3>
                 <br />
                 If a variable is not defined, it should throw an error. <br />
-                <codeblock>
-                    <span class="comm" tabindex="-1"># Ruby </span><br />
-                    &gt;&gt;&gt; a<br />
-                    <span class="err" tabindex="-1">NameError</span><br />
-                    &gt;&gt;&gt; b<br />
-                    <span class="err" tabindex="-1">NameError</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1"># Ruby </span><br />
+&gt;&gt;&gt; a<br />
+<span class="err" tabindex="-1">NameError</span><br />
+&gt;&gt;&gt; b<br />
+<span class="err" tabindex="-1">NameError</span><br />
+<br /></codeblock>
                 Great, all works as expected. Let's try assigning a variable with an unknown variable. This shouldn't work either.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1"># Ruby </span><br />
-                    &gt;&gt;&gt; a = b<br />
-                    <span class="err" tabindex="-1">NameError</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1"># Ruby </span><br />
+&gt;&gt;&gt; a = b<br />
+<span class="err" tabindex="-1">NameError</span><br />
+<br /></codeblock>
                 Nice, but now let's try assigning an undefined variable to itself.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1"># Ruby </span><br />
-                    &gt;&gt;&gt; a = a<br />
-                    <span class="cls" tabindex="-1">nil</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1"># Ruby </span><br />
+&gt;&gt;&gt; a = a<br />
+<span class="cls" tabindex="-1">nil</span><br />
+<br /></codeblock>
                 Um, <codeline>a</codeline> is <codeline>nil</codeline> now I guess.<br />
                 <br />
                 <h3 onclick="linkMe(this);" id="Funky-types" tabindex="0">#] Funky types.</h3>
                 <br />
                 <codeline>nil</codeline> is <codeline>null</codeline>, or literally nothing. Absolutely no data is stored. Therefore, <codeline>nil</codeline> should always be <codeline>nil</codeline>.<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1"># Ruby </span><br />
-                    &gt;&gt;&gt; <span class="cls" tabindex="-1">nil</span><br />
-                    <span class="cls" tabindex="-1">nil</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1"># Ruby </span><br />
+&gt;&gt;&gt; <span class="cls" tabindex="-1">nil</span><br />
+<span class="cls" tabindex="-1">nil</span><br />
+<br /></codeblock>
                 I have no idea what it means, but lets add a question mark<br />
-                <codeblock>
-                    <span class="comm" tabindex="-1"># Ruby </span><br />
-                    &gt;&gt;&gt; <span class="cls" tabindex="-1">nil?</span><br />
-                    <span class="cls" tabindex="-1">false</span><br />
-                    <br />
-                </codeblock>
+<codeblock><span class="comm" tabindex="-1"># Ruby </span><br />
+&gt;&gt;&gt; <span class="cls" tabindex="-1">nil?</span><br />
+<span class="cls" tabindex="-1">false</span><br />
+<br /></codeblock>
                 <br />
                 <div style="text-align: center;">
                     <div style="height: 0px; transition: none 0s ease 0s;" id="spacer"></div>
