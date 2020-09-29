@@ -2,7 +2,7 @@ async function loadNow() {
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
     swapColor(theme);
     if(find("jumper")) {
-        window.onscroll = changeScrollingThingy;
+        window.onwheel = (evt) => changeScrollingThingy(evt);
         window.ontouchmove = changeScrollingThingy;
     }
     window.onclick = changeFunnyTextThing;
