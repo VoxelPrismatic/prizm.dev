@@ -1,39 +1,263 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
     <head>
         <!-- DYNAMIC BETWEEN PAGES -->
-        <meta property="og:title" content="WAT ;[" id="title">
-        <meta property="og:description"
-              content="Wtf is wrong with code? Genuinely.">
-        <meta name="description"
-              content="Wtf is wrong with code? Genuinely.">
+        <meta property="og:title" content="WAT ;[" id="title" />
+        <meta property="og:description" content="Wtf is wrong with code? Genuinely." />
+        <meta name="description" content="Wtf is wrong with code? Genuinely." />
 
         <!-- STATIC BETWEEN PAGES -->
-        <meta property="og:type" content="website">
-        <meta property="og:image" content="/prizm.dev/assets/image/favicon.png">
-        <meta property="og:image:type" content="image/png">
-        <meta property="og:image:width" content="256">
-        <meta property="og:image:height" content="256">
-        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/">
-        <script src="/prizm.dev/assets/script/head.js" type="text/javascript"></script>
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/prizm.dev/assets/image/favicon.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
+        <script src="/prizm.dev/assets/script/head-min.js" type="text/javascript"></script>
+        <title>WAT ;[</title>
+        <link rel="stylesheet" type="text/css" id="priz_neon_css" href="https://voxelprismatic.github.io/priz.md/out/style.min.css" />
+        <link rel="icon" type="image/png" href="/prizm.dev/assets/image/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/wat" />
+        <meta name="author" content="PRIZ ;]" />
+        <link rel="stylesheet" type="text/css" href="https://voxelprismatic.github.io/priz.md/out/syntax.min.css" />
+        <style type="text/css">
+            #head {
+                top: -100px !important;
+            }
+        </style>
     </head>
-    <body class="bgcolor">
+
+    <body class="bgcolor" style="background-color: rgb(17, 34, 21);">
         <div id="logo">
-            <img src="/prizm.dev/assets/image/priz_sea.png" alt="[prizm logo]" width="128em" id="truelogo">
+            <img src="/prizm.dev/assets/image/priz_sea.png" alt="[prizm logo]" id="truelogo" tabindex="-1" width="128em" />
         </div>
-        <h1 id="head"></h1>
+        <h1 id="head" tabindex="-1">WAT ;[</h1>
         <div id="content">
-            <div class="sect">
-                böther im loading.
-                do you have extra låmp?
+            <div id="wat" class="sect" style="transition: none 0s ease 0s;">
+                <h1 onclick="linkMe(this);" id="WTF-is-wrong-with-code" tabindex="0">#] WTF is wrong with code?</h1>
+                <br />
+                No, I'm serious. Some shit really does not make sense.<br />
+                <b>Note:</b> I was inspired to make this page by <a href="https://www.destroyallsoftware.com/talks/wat" target="_blank" tabindex="0">this</a> page.<br />
+                <b>Note:</b> These code blocks are typed by hand. The interpreter on your machine will most likely look different than what is shown. Additionally, terminal based interpreters do not have syntax highlighting. I added that
+                here so people who don't code have an idea of what is what kinda.<br />
+                <br />
+                <h1 onclick="linkMe(this);" id="JavaScript" tabindex="0">#] JavaScript</h1>
+                <br />
+                Let's talk about JavaScript.<br />
+                Some background is necessary.<br />
+                <codeline>[]</codeline> is an array, a list.<br />
+                <codeline>{}</codeline> is an object, could be literally anything.<br />
+                <codeline>NaN</codeline> is "Not a number"<br />
+                <h3 onclick="linkMe(this);" id="Equals" tabindex="0">#] Equals</h3>
+                <br />
+                So, lets talk about this: <codeline>==</codeline>. This makes no sense. In every single language, it means "is it equal?", but in JS, this is calculated as a percentage for some reason. I'm serious. In Python it's either
+                equal or not equal. In JS, however, it's kinda equal? I don't know how equal it is but it must be between 0% and 100% equal. If it isn't <i>not</i> equal [0%, thus isn't equal], then it must be equal [anywhere from 1% to
+                100%, thus is equal].<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; <span class="var" tabindex="-1">1</span> == <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
+                    <span class="cls" tabindex="-1">true</span><br />
+                    <br />
+                </codeblock>
+                I just want to see how equal things can get, though.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; <span class="var" tabindex="-1">1</span> === <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
+                    <span class="cls" tabindex="-1">false</span><br />
+                    <br />
+                </codeblock>
+                I see, now it can tell me if it's equal or not equal. So, that means the more equal signs I add, the more the more equal it can check, right?<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; <span class="var" tabindex="-1">1</span> ==== <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span>"</span><br />
+                    <span class="err" tabindex="-1">SyntaxError</span><br />
+                    <br />
+                </codeblock>
+                Of course not.<br />
+                Strings are not integers, and should not be treated as such. This is silly.<br />
+                <br />
+                <h3 onclick="linkMe(this);" id="Lists" tabindex="0">#] Lists</h3>
+                <br />
+                In all languages, you can make two lists by appending the contents of one list to another using the <codeline>+</codeline> operator.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1"># Python </span><br />
+                    &gt;&gt;&gt; [<span class="var" tabindex="-1">1</span>, <span class="var" tabindex="-1">2</span>, <span class="var" tabindex="-1">3</span>] + [<span class="var" tabindex="-1">4</span>,
+                    <span class="var" tabindex="-1">5</span>, <span class="var" tabindex="-1">6</span>]<br />
+                    [<span class="var" tabindex="-1">1</span>, <span class="var" tabindex="-1">2</span>, <span class="var" tabindex="-1">3</span>, <span class="var" tabindex="-1">4</span>, <span class="var" tabindex="-1">5</span>,
+                    <span class="var" tabindex="-1">6</span>]<br />
+                    &gt;&gt;&gt; [] + []<br />
+                    []<br />
+                    <br />
+                </codeblock>
+                Makes sense, right? Add one list to another to make a larger list, like we do in real life. Let's see what happens in JS.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; [] + []<br />
+                    <span class="str" tabindex="-1">""</span><br />
+                    <br />
+                </codeblock>
+                OF COURSE FUCKING NOT. <i>Let's be different.</i> Subtracting, however, shouldn't work. What would you remove, where? JavaScript has a solution.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; [] - []<br />
+                    <span class="var" tabindex="-1">0</span><br />
+                    <br />
+                </codeblock>
+                <br />
+                <h3 onclick="linkMe(this);" id="Objects" tabindex="0">#] Objects</h3>
+                <br />
+                This should be quite simple. Let's see what happens when we add an object and a list together. They are completely incompatible data types, so it should throw a TypeError or something like that.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; [] + {}<br />
+                    <span class="str" tabindex="-1">"[object <span class="cls" tabindex="-1">Object</span>]"</span><br />
+                    <br />
+                </codeblock>
+                Well, if that works, then let's try reversing it because that's how addition works afterall. And of course, we get the same thing.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; {} + []<br />
+                    <span class="var" tabindex="-1">0</span><br />
+                    &gt;&gt;&gt; {} - []<br />
+                    <span class="var" tabindex="-1">-0</span><br />
+                    <br />
+                </codeblock>
+                Makes sense to me. I love negative zero. Let's try adding two objects.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; {} + {}<br />
+                    <span class="cls" tabindex="-1">NaN</span><br />
+                    <br />
+                </codeblock>
+                Not a number. I see.<br />
+                <br />
+                <h3 onclick="linkMe(this);" id="Strings" tabindex="0">#] Strings</h3>
+                <br />
+                A string is text. Like "hi". Most languages do not automatically convert datatypes without explicit instruction. JavaScript is one of those exceptions. So, adding will concatonate, or append to the end of the string.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; <span class="var" tabindex="-1">12</span> + <span class="str" tabindex="-1">"<span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
+                    <span class="str" tabindex="-1">"<span class="var" tabindex="-1">1</span><span class="var" tabindex="-1">2</span><span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
+                    <br />
+                </codeblock>
+                So, let's try subtracting. Shouldn't work because strings aren't numbers, right?<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1">// JavaScript </span><br />
+                    &gt;&gt;&gt; <span class="var" tabindex="-1">12</span> - <span class="str" tabindex="-1">"<span class="var" tabindex="-1">3</span><span class="var" tabindex="-1">4</span>"</span><br />
+                    <span class="var" tabindex="-1">-22</span><br />
+                    <br />
+                </codeblock>
+                Well of course I was wrong. When did JS ever make sense?<br />
+                <br />
+                <h1 onclick="linkMe(this);" id="Python" tabindex="0">#] Python</h1>
+                <br />
+                Python is a very sane language, relatively speaking to JavaScript of course. Python accepts inputs directly from the console. Let's input a number.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1"># Python </span><br />
+                    &gt;&gt;&gt; <span class="fn" tabindex="-1"><span class="cls" tabindex="-1">int</span></span>(<span class="fn" tabindex="-1">input</span>(<span class="str" tabindex="-1">"Input a number ] "</span>))
+                    <span class="comm" tabindex="-1"># Convert to an integer [no decimals] </span><br />
+                    Input a number ]
+                    <b>
+                        <u>
+                            <span class="fn" tabindex="-1"><span class="var" tabindex="-1">2</span></span>.<span class="var" tabindex="-1">5</span>
+                        </u>
+                    </b>
+                    <br />
+                    <span class="err" tabindex="-1">ValueError</span><br />
+                    <br />
+                </codeblock>
+                Nice, I cannot input a decimal and expect it to come out as an integer. JavaScript, the insane language as described previously, allows this just fine, probably because strings are also numbers too.<br />
+                <br />
+                <h1 onclick="linkMe(this);" id="Ruby" tabindex="0">#] Ruby</h1>
+                <br />
+                Let's talk about Ruby.<br />
+                <br />
+                <h3 onclick="linkMe(this);" id="Assigning-variables" tabindex="0">#] Assigning variables</h3>
+                <br />
+                If a variable is not defined, it should throw an error. <br />
+                <codeblock>
+                    <span class="comm" tabindex="-1"># Ruby </span><br />
+                    &gt;&gt;&gt; a<br />
+                    <span class="err" tabindex="-1">NameError</span><br />
+                    &gt;&gt;&gt; b<br />
+                    <span class="err" tabindex="-1">NameError</span><br />
+                    <br />
+                </codeblock>
+                Great, all works as expected. Let's try assigning a variable with an unknown variable. This shouldn't work either.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1"># Ruby </span><br />
+                    &gt;&gt;&gt; a = b<br />
+                    <span class="err" tabindex="-1">NameError</span><br />
+                    <br />
+                </codeblock>
+                Nice, but now let's try assigning an undefined variable to itself.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1"># Ruby </span><br />
+                    &gt;&gt;&gt; a = a<br />
+                    <span class="cls" tabindex="-1">nil</span><br />
+                    <br />
+                </codeblock>
+                Um, <codeline>a</codeline> is <codeline>nil</codeline> now I guess.<br />
+                <br />
+                <h3 onclick="linkMe(this);" id="Funky-types" tabindex="0">#] Funky types.</h3>
+                <br />
+                <codeline>nil</codeline> is <codeline>null</codeline>, or literally nothing. Absolutely no data is stored. Therefore, <codeline>nil</codeline> should always be <codeline>nil</codeline>.<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1"># Ruby </span><br />
+                    &gt;&gt;&gt; <span class="cls" tabindex="-1">nil</span><br />
+                    <span class="cls" tabindex="-1">nil</span><br />
+                    <br />
+                </codeblock>
+                I have no idea what it means, but lets add a question mark<br />
+                <codeblock>
+                    <span class="comm" tabindex="-1"># Ruby </span><br />
+                    &gt;&gt;&gt; <span class="cls" tabindex="-1">nil?</span><br />
+                    <span class="cls" tabindex="-1">false</span><br />
+                    <br />
+                </codeblock>
+                <br />
+                <div style="text-align: center;">
+                    <div style="height: 0px; transition: none 0s ease 0s;" id="spacer"></div>
+                    <sub id="footer">
+                        <br />
+                        <br />
+                        <b style="font-size: larger;">BY PRIZ WITH WINKY BRACKET FACE ;]</b><br />
+                        <span id="links_and_sources" tabindex="-1">
+                            <a href="/prizm.dev" target="" tabindex="0">Home page</a> //
+                            <a id="page_source_wat" target="_blank" rel="noreferrer" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/wat.html" tabindex="0">View source</a>
+                        </span>
+                        <br />
+                        <span id="funnytextthing" tabindex="-1">the dankest human alive</span><br />
+                        <br />
+                    </sub>
+                </div>
             </div>
         </div>
 
-        <div style="display: none" id="scripts">
+        <div style="display: none;" id="scripts">
             <script type="text/javascript">
                 var theme = "sea";
                 var loader = "wat_main";
             </script>
-            <script src="/prizm.dev/assets/script/init.js" type="text/javascript"></script>
+            <a id="hiddenlink" tabindex="0"></a>
+            <!--NOTICE: This has a bunch of scripts that aren't organized. Enjoy looking though here!-->
+            <script type="text/javascript" src="/prizm.dev/assets/script/find.js" id="find.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/other.js" id="other.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/delay.js" id="delay.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/accessibility.js" id="accessibility.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/colors.js" id="aesthetic/colors.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/flicker.js" id="aesthetic/flicker.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/dynamic.js" id="aesthetic/dynamic.js"></script>
+            <script src="https://voxelprismatic.github.io/priz.md/out/more/neon.min.js" id="priz_neon_js" type="text/javascript"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/load-min.js" id="load.js"></script>
+            <script type="text/javascript" defer>
+                loadNow();
+            </script>
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i&amp;display=swap" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700,700i&amp;display=swap" />
         </div>
+        <div id="jumper" onclick="jumpToEdge()">[V]</div>
     </body>
 </html>
