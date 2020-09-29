@@ -1,9 +1,11 @@
 function jumpToEdge() {
-    if(find("jumper").innerHTML == "[\u039b]")
+    if(find("jumper").innerHTML == "[\u039b]") {
         find("truelogo").scrollIntoView({behavior: "smooth"});
-    else
+        setHtml("jumper", "[V]");
+    } else {
         find("footer").scrollIntoView({behavior: "smooth"});
-    changeScrollingThingy()
+        setHtml("jumper", "[\u039b]");
+    }
 }
 
 function resetUpdate() {
