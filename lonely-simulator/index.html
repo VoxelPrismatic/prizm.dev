@@ -22,7 +22,7 @@
         <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
         <meta name="author" content="PRIZ ;]" />
         <style type="text/css">
-                        #head {
+            #head {
                 top: -100px !important;
             } .lonely-message {
                 font-family: "Ubuntu Mono" !important;
@@ -232,7 +232,7 @@
                     listen_to_keypress(evt)
                 }
                 
-                history = ""
+                text_history = ""
                 lastEnd = 0;
                 
                 function listen_to_keypress(evt) {
@@ -261,19 +261,20 @@
                         thing.value = v.slice(0, selSt) + "<spoil>" + v.slice(selSt, selEnd) + "</spoil>" + v.slice(selEnd);
                         offset = selEnd + 7;
                     } else if(evt.code == "KeyZ" && evt.ctrlKey && history) {
-                        thing.value = history;
+                        thing.value = text_history;
                         offset = lastEnd;
                     } else if(evt.code == "Enter" && !mobile) {
-                        history = ""
+                        text_history = ""
                         lastEnd = 0;
                         if(evt.shiftKey)
                             return;
                         submit_to_chat();
                     } else {
-                        history = ""
+                        text_history = ""
+                        lastEnd = 0;
                         return
                     }
-                    history = v;
+                    text_history = v;
                     lastEnd = selEnd;
                     thing.focus();
                     thing.selectionEnd = offset;
