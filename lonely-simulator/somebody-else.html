@@ -424,6 +424,14 @@
                         window.setTimeout(toggle_typing, Math.random() * 30000, other);
                     else
                         window.setTimeout(toggle_typing, Math.random() * 10000, other);
+                    
+                    clrs = [
+                        "#f00", "#f08", "#f80", "#f0f", "#ff0", 
+                        "#0f0", "#8f0", "#0f8", "#ff0",
+                        "#44f", "#80f", "#08f"
+                    ];
+                    for(var x = 0; x < Math.random() * 10; x += 1)
+                        clrs = clrs.sort(function() {return 0.5 - Math.random()})
                     colors = {
                         1: "#0f0",
                         2: "#f08",
