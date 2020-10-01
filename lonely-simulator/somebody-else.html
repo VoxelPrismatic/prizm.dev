@@ -444,7 +444,7 @@
                     prefix += `<div style="color: ${colors[other]};"><b>${names[other]} [`;
                     if(document.getElementById("other-" + other + "-typing")) {
                         d = new Date();
-                        if(last_typed != 0 || Number(new Date()) - time_typed >= 60000) {
+                        if(last_typed != other || Number(new Date()) - time_typed >= 60000) {
                             prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
                             prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
                             prefix += `</b></div><div style="color: #ccc; min-height: 36px;">`;
