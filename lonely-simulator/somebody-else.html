@@ -296,6 +296,7 @@
                         allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
                         while(allowed.length) {
                             n = allowed[Math.floor(Math.random() * allowed.length)];
+                            console.log(n);
                             if(!other_players.includes(n)) {
                                 other_players.push(n);
                                 window.history.replaceState("/", null, "/prizm.dev/lonely-simulator/somebody-else?players=" + other_players.join(","));
