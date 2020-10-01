@@ -463,7 +463,9 @@
                 }
                 
                 for(var x = 0; x < others; x += 1) {
-                    window.setTimeout(toggle_typing, Math.random() * 60000, x + 1);
+                    ms = toggle_typing, Math.random() * 60000
+                    console.log("'human'", x + 1, "will be joining in", (ms / 1000) + "s"
+                    window.setTimeout(ms, x + 1);
                 }
             </script>
             <a id="hiddenlink" tabindex="0"></a>
