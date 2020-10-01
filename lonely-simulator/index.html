@@ -233,6 +233,7 @@
                 }
                 
                 history = ""
+                lastEnd = 0;
                 
                 function listen_to_keypress(evt) {
                     offset = 0;
@@ -259,8 +260,12 @@
                     } else if(evt.code == "KeyH" && evt.ctrlKey) {
                         thing.value = v.slice(0, selSt) + "<spoil>" + v.slice(selSt, selEnd) + "</spoil>" + v.slice(selEnd);
                         offset = selEnd + 7;
+                    } else if(evt.code == "KeyZ" && evt.ctrlKey && history) {
+                        thing.value = history;
+                        offset = lastEnd;
                     } else if(evt.code == "Enter" && !mobile) {
                         history = ""
+                        lastEnd = 0;
                         if(evt.shiftKey)
                             return;
                         submit_to_chat();
@@ -269,6 +274,7 @@
                         return
                     }
                     history = v;
+                    lastEnd = selEnd;
                     thing.focus();
                     thing.selectionEnd = offset;
                     if(evt.preventDefault) {
