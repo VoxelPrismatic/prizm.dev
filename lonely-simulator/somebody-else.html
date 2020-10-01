@@ -457,15 +457,30 @@
                 
                 if(document.URL.includes("?others=")) {
                     others = Number(document.URL.split("?others=")[1].split("&")[0]);
+                    for(var x = 0; x < others; x += 1) {
+                       ms = Math.floor(Math.random() * 60000)
+                        console.log("'human'", x + 1, "will be joining in", (ms / 1000) + "s");
+                        window.setTimeout(toggle_typing, ms, x + 1);
+                    }
+                } else if(document.URL.includes("?players=")) {
+                    others = Number(document.URL.split("?others=")[1].split("&")[0]);
+                    players = others.split(",");
+                    others = players.length;
+                    for(var x of players) {
+                        x = Number(x)
+                        ms = Math.floor(Math.random() * 60000)
+                        console.log("'human'", x + 1, "will be joining in", (ms / 1000) + "s");
+                        window.setTimeout(toggle_typing, ms, x + 1);
+                        players += 1
+                    }
                 } else {
                     others = 1;
                     window.history.replaceState("/prizm.dev/lonely-simulator/somebody-else", null, "/prizm.dev/lonely-simulator/somebody-else?others=1");
-                }
-                
-                for(var x = 0; x < others; x += 1) {
-                    ms = Math.floor(Math.random() * 60000)
-                    console.log("'human'", x + 1, "will be joining in", (ms / 1000) + "s");
-                    window.setTimeout(toggle_typing, ms, x + 1);
+                    for(var x = 0; x < others; x += 1) {
+                        ms = Math.floor(Math.random() * 60000)
+                        console.log("'human'", x + 1, "will be joining in", (ms / 1000) + "s");
+                        window.setTimeout(toggle_typing, ms, x + 1);
+                    }
                 }
             </script>
             <a id="hiddenlink" tabindex="0"></a>
