@@ -414,6 +414,7 @@
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b>--> <u>${names[other]}</u> joined the chat ;]</b></div><br>`;
                         chat.scrollTop = chat.scrollHeight;
+                        last_typed = -1
                         return;
                     }
                     if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing") && (other != 12 || never_gonna_give_you_up.length == 0)) {
@@ -421,6 +422,7 @@
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
                         chat.scrollTop = chat.scrollHeight;
+                        last_typed = -1
                         return;
                     }
                     var prefix = `<div class="lonely-message">`
