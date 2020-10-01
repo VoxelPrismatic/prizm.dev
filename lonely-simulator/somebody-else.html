@@ -419,48 +419,49 @@
                 
                 the_song = never_gonna_give_you_up.concat([]);
                 
+                clrs = [
+                    "#f00", "#f08", "#f80", "#f0f", "#ff0", 
+                    "#0f0", "#8f0", "#0f8", "#ff0",
+                    "#44f", "#80f", "#08f"
+                ];
+                for(var x = 0; x < Math.random() * 10; x += 1)
+                    clrs = clrs.sort(function() {return 0.5 - Math.random()})
+                colors = {
+                    1: clrs.pop(),
+                    2: clrs.pop(),
+                    3: clrs.pop(),
+                    4: clrs.pop(),
+                    5: clrs.pop(),
+                    6: clrs.pop(),
+                    7: clrs.pop(),
+                    8: clrs.pop(),
+                    9: clrs.pop(),
+                    10: clrs.pop(),
+                    11: clrs.pop(),
+                    12: clrs.pop(),
+                }
+
+                names = {
+                    1: "Somebody else",
+                    2: "A third human",
+                    3: "Joke's getting old",
+                    4: "Mate",
+                    5: "They",
+                    6: "The 6th",
+                    7: "lol",
+                    8: "nani",
+                    9: "the man/woman him/herself",
+                    10: "...",
+                    11: "i need lamp",
+                    12: "rick astley."
+                }
+                
                 function toggle_typing(other) {
                     if(other != 12 || never_gonna_give_you_up.length == 0)
                         window.setTimeout(toggle_typing, Math.random() * 30000, other);
                     else
                         window.setTimeout(toggle_typing, Math.random() * 10000, other);
                     
-                    clrs = [
-                        "#f00", "#f08", "#f80", "#f0f", "#ff0", 
-                        "#0f0", "#8f0", "#0f8", "#ff0",
-                        "#44f", "#80f", "#08f"
-                    ];
-                    for(var x = 0; x < Math.random() * 10; x += 1)
-                        clrs = clrs.sort(function() {return 0.5 - Math.random()})
-                    colors = {
-                        1: clrs.pop(),
-                        2: clrs.pop(),
-                        3: clrs.pop(),
-                        4: clrs.pop(),
-                        5: clrs.pop(),
-                        6: clrs.pop(),
-                        7: clrs.pop(),
-                        8: clrs.pop(),
-                        9: clrs.pop(),
-                        10: clrs.pop(),
-                        11: clrs.pop(),
-                        12: clrs.pop(),
-                    }
-                    
-                    names = {
-                        1: "Somebody else",
-                        2: "A third human",
-                        3: "Joke's getting old",
-                        4: "Mate",
-                        5: "They",
-                        6: "The 6th",
-                        7: "lol",
-                        8: "nani",
-                        9: "the man/woman him/herself",
-                        10: "...",
-                        11: "i need lamp",
-                        12: "rick astley."
-                    }
                     if(never_gonna_give_you_up.length == 0)
                         never_gonna_give_you_up = the_song.concat([]);
                     if(!joined.includes(other)) {
