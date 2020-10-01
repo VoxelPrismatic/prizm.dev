@@ -231,6 +231,7 @@
                         11: "nov",
                         12: "dec"
                     };
+                    var scroll = chat.scrollTop == chat.scrollMaxTop;
                     if(last_typed != 0 || Number(new Date()) - time_typed >= 60000) {
                         prefix += `<div style="color: #0ff;"><b>You [`;
                         d = new Date();
@@ -248,7 +249,8 @@
                         }
                     }
                     thing.value = "";
-                    chat.scrollTop = chat.scrollHeight;
+                    if(scroll)
+                        chat.scrollTop = chat.scrollHeight;
                     words.push(...chat.children[chat.childElementCount - 2].lastChild.textContent.split());
                     last_typed = 0;
                     time_typed = Number(new Date());
@@ -465,11 +467,13 @@
                     var colors = globalThis.chat_colors;
                     if(never_gonna_give_you_up.length == 0)
                         never_gonna_give_you_up = the_song.concat([]);
+                    var scroll = chat.scrollTop == chat.scrollMaxTop;
                     if(!joined.includes(other)) {
                         joined.push(other);
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b>--> <u>${names[other]}</u> joined the chat ;]</b></div><br>`;
-                        chat.scrollTop = chat.scrollHeight;
+                        if(scroll)
+                            chat.scrollTop = chat.scrollHeight;
                         last_typed = -1
                         return;
                     }
@@ -477,7 +481,8 @@
                         joined = joined.filter((t) => t != other)
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
-                        chat.scrollTop = chat.scrollHeight;
+                        if(scroll)
+                            chat.scrollTop = chat.scrollHeight;
                         last_typed = -1
                         return;
                     }
@@ -527,7 +532,8 @@
                     }
                     prefix += `</div></div></br>`
                     chat.innerHTML += prefix;
-                    chat.scrollTop = chat.scrollHeight;
+                    if(scroll)
+                        chat.scrollTop = chat.scrollHeight;
                 }
                 
                 other_players = []
