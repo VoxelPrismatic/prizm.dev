@@ -217,10 +217,8 @@
                         prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
                         prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
                         prefix += `</b></div>`
-                    } else {
-                        chat.lastChild.remove();
                     }
-                    prefix += `<div style="color: #ccc; min-height: 28px;">`
+                    prefix += `<div style="color: #ccc;">`
                     prefix += thing.value.trim().replace(/\n/g, "\n<br>");
                     prefix += `</div></div></br>`
                     chat.innerHTML += prefix;
@@ -447,10 +445,9 @@
                         if(last_typed != other || Number(new Date()) - time_typed >= 60000) {
                             prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
                             prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
-                            prefix += `</b></div><div style="color: #ccc; min-height: 28px;">`;
+                            prefix += `</b></div><div style="color: #ccc;">`;
                         } else {
-                            chat.lastChild.remove();
-                            prefix = `<div class="lonely-message"><div style="color: #ccc; min-height: 38px;">`
+                            prefix = `<div class="lonely-message"><div style="color: #ccc;">`
                         }
                         ree = document.getElementById("other-" + other + "-typing").parentElement.parentElement.parentElement;
                         ree.nextElementSibling.remove();
