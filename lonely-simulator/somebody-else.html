@@ -376,7 +376,10 @@
                 ]
                 
                 function toggle_typing(other) {
-                    window.setTimeout(toggle_typing, Math.random() * 30000, other);
+                    if(other != 12 || never_gonna_give_you_up.length == 0)
+                        window.setTimeout(toggle_typing, Math.random() * 30000, other);
+                    else
+                        window.setTimeout(toggle_typing, Math.random() * 50000, other);
                     colors = {
                         1: "#0f0",
                         2: "#f08",
@@ -413,7 +416,7 @@
                         chat.scrollTop = chat.scrollHeight;
                         return;
                     }
-                    if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing")) {
+                    if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing") && (other != 12 || never_gonna_give_you_up.length == 0)) {
                         joined = joined.filter((t) => t != other)
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
