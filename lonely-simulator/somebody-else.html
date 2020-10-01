@@ -343,12 +343,14 @@
                         joined.push(other);
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b>--> ${names[other]} joined the chat ;]</b></div><br>`;
+                        chat.scrollTop = chat.scrollHeight;
                         return;
                     }
                     if(Math.floor(Math.random() * 10) == 0) {
                         joined = joined.filter((t) => t != other)
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- ${names[other]} left the chat ;[</b></div><br>`;
+                        chat.scrollTop = chat.scrollHeight;
                         return;
                     }
                     var prefix = `<div class="lonely-message">`
@@ -384,6 +386,7 @@
                     }
                     prefix += `</div></div></br>`
                     chat.innerHTML += prefix;
+                    chat.scrollTop = chat.scrollHeight;
                 }
                 
                 if(document.URL.includes("?others=")) {
