@@ -22,7 +22,7 @@
         <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
         <meta name="author" content="PRIZ ;]" />
         <style type="text/css">
-            #head {
+                        #head {
                 top: -100px !important;
             } .lonely-message {
                 font-family: "Ubuntu Mono" !important;
@@ -31,11 +31,9 @@
             } .lonely-chat {
                 border: 2px solid #0ff; 
                 border-radius: 5px;
-                max-height: 70vh; 
-                height: 70vh; 
+                max-height: 50vh; 
+                height: 50vh; 
                 padding: 5px 10px;
-                overflow: auto;
-                word-wrap: anywhere;
             } .lonely-text {
                 border-radius: 5px; 
                 border: 2px solid #0ff; 
@@ -45,7 +43,7 @@
                 display: inline-block;
                 color: #ccc;
                 padding: 5px 10px;
-                height: 100%;
+                height: 50px;
             } .lonely-submit {
                 border-radius: 5px; 
                 border: 2px solid #0f0;
@@ -57,7 +55,7 @@
                 margin-top: 5px;
                 margin-bottom: 5px;
                 text-align: center;
-                height: 100%;
+                height: 83%;
                 flex-grow: 1;
                 background-color: #112211;
             } .lonely-submit:hover {
@@ -206,7 +204,7 @@
                     prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getYear() + " ";
                     prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
                     prefix += `</b></div><div style="color: #ccc;">`
-                    prefix += thing.value.replace(/\n/g, "<br>");
+                    prefix += thing.value.trim().replace(/\n/g, "<br>");
                     prefix += `</div></div></br>`
                     document.getElementById("chat").innerHTML += prefix;
                     if(thing.value.includes("<spoil>")) {
