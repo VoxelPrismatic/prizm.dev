@@ -97,7 +97,7 @@
             <div id="about" class="sect" style="transition: none 0s ease 0s;">
                 <div id="chat" class="lonely-chat">
                     <div class="lonely-message" style="color: #0ff;">
-                        <b>--> You joined the chat ;]</b>
+                        <b>--> <u>You</u> joined the chat ;]</b>
                     </div><br>
                 </div>
                 <div style="display: flex; gap: 5px;">
@@ -401,14 +401,14 @@
                     if(!joined.includes(other)) {
                         joined.push(other);
                         document.getElementById("chat").innerHTML += 
-                            `<div class="lonely-message" style="color: ${colors[other]};"><b>--> ${names[other]} joined the chat ;]</b></div><br>`;
+                            `<div class="lonely-message" style="color: ${colors[other]};"><b>--> <u>${names[other]}</u> joined the chat ;]</b></div><br>`;
                         chat.scrollTop = chat.scrollHeight;
                         return;
                     }
                     if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing")) {
                         joined = joined.filter((t) => t != other)
                         document.getElementById("chat").innerHTML += 
-                            `<div class="lonely-message" style="color: ${colors[other]};"><b><-- ${names[other]} left the chat ;[</b></div><br>`;
+                            `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
                         chat.scrollTop = chat.scrollHeight;
                         return;
                     }
