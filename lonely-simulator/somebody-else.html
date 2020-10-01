@@ -157,7 +157,7 @@
                             <div class="lonely-fn" onclick="fake_key_press('N', 0, 1)">Add somebody else ;]</div>
                         </div>
                     </div>
-                    <br><br>
+                    <br>
                     <div style="height: 27.75px; min-height: 27.75px;">
                         <f-l><span class="lonely-message">CTRL + B</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
                         <f-r><b>Bold</b></f-r>
@@ -187,7 +187,6 @@
                         <f-r>Undo format</f-r>
                     </div>
                 </div>
-                "somebody else" will be coming soon...
                 <br />
                 <div style="text-align: center;">
                     <div style="height: 0px; transition: none 0s ease 0s;" id="spacer"></div>
@@ -554,13 +553,11 @@
                         other_players.push(x);
                     }
                 } else {
-                    others = 1;
-                    other_players = [1];
-                    for(var x = 0; x < others; x += 1) {
-                        ms = Math.floor(Math.random() * 60000)
-                        console.log("'human'", x + 1, "will be joining in", (ms / 1000) + "s");
-                        window.setTimeout(toggle_typing, ms, x + 1);
-                    }
+                    others = Math.floor(Math.random() * 12) + 1;
+                    other_players = [other];
+                    ms = Math.floor(Math.random() * 60000)
+                    console.log("'human'", other, "will be joining in", (ms / 1000) + "s");
+                    window.setTimeout(toggle_typing, ms, other);
                 }
                 window.history.replaceState("/", null, "/prizm.dev/lonely-simulator/somebody-else?players=" + other_players.join(","));
             </script>
