@@ -211,11 +211,14 @@
                         11: "nov",
                         12: "dec"
                     };
-                    prefix += `<div style="color: #0ff;"><b>You [`;
-                    d = new Date();
-                    prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
-                    prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
-                    prefix += `</b></div><div style="color: #ccc;">`
+                    if(last_typed != 0 || Number(new Date()) - time_typed >= 60) {
+                        prefix += `<div style="color: #0ff;"><b>You [`;
+                        d = new Date();
+                        prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
+                        prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
+                        prefix += `</b></div>`
+                    }
+                    prefix += `<div style="color: #ccc;">`
                     prefix += thing.value.trim().replace(/\n/g, "\n<br>");
                     prefix += `</div></div></br>`
                     chat.innerHTML += prefix;
@@ -318,6 +321,9 @@
                     "am",
                     "biking",
                 ];
+                
+                last_typed = 0;
+                time_typed = 0;
                 
                 the_roll = [
                     "never gonna give you up!",
@@ -431,15 +437,19 @@
                     prefix += `<div style="color: ${colors[other]};"><b>${names[other]} [`;
                     if(document.getElementById("other-" + other + "-typing")) {
                         d = new Date();
-                        prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
-                        prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
-                        prefix += `</b></div><div style="color: #ccc;">`
+                        if(last_typed != 0 || Number(new Date()) - time_typed >= 60) {
+                            prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
+                            prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
+                            prefix += `</b></div><div style="color: #ccc;">`;
+                        } else {
+                            prefix = `<div class="lonely-message"><div style="color: #ccc;">`
+                        }
                         ree = document.getElementById("other-" + other + "-typing").parentElement.parentElement.parentElement;
                         ree.nextElementSibling.remove();
                         ree.remove();
                         var st = "";
                         if(other != 12 || never_gonna_give_you_up.length == 0) {
-                            for(var x = 0; x < Math.floor(Math.random() + 5) * 10; x += 1) {
+                            for(var x = 0; x < Math.floor(Math.random() * 10) * 5; x += 1) {
                                 st += words[Math.floor(Math.random() * words.length)] + " ";
                             }
                         } else {
