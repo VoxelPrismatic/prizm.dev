@@ -126,6 +126,10 @@
                         <div style="flex-grow: 1;">
                             <div class="lonely-fn" onclick="fake_key_press('K', 0, 1)"><a><u>Link</u></a></div>
                         </div>
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('Z', 0, 1)">Undo</div>
+                        </div>
+
                     </div>
                     <br><br>
                 </div>
@@ -153,6 +157,10 @@
                     <div style="height: 27.75px; min-height: 27.75px;">
                         <f-l><span class="lonely-message">CTRL + K</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
                         <f-r><a href="#">Link</a></f-r>
+                    </div>
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + Z</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r><a href="#">Undo format</a></f-r>
                     </div>
                 </div>
                 "somebody else" will be coming soon...
@@ -224,37 +232,43 @@
                     listen_to_keypress(evt)
                 }
                 
+                history = ""
+                
                 function listen_to_keypress(evt) {
                     offset = 0;
-                    thing = document.getElementById("text")
+                    thing = document.getElementById("text");
+                    v = thing.value;
                     selEnd = thing.selectionEnd;
                     selSt = thing.selectionStart;
                     if(evt.code == "KeyB" && evt.ctrlKey) {
-                        thing.value = thing.value.slice(0, selSt) + "<b>" + thing.value.slice(selSt, selEnd) + "</b>" + thing.value.slice(selEnd);
+                        thing.value = v.slice(0, selSt) + "<b>" + v.slice(selSt, selEnd) + "</b>" + v.slice(selEnd);
                         offset = selEnd + 3;
                     } else if(evt.code == "KeyI" && evt.ctrlKey) {
-                        thing.value = thing.value.slice(0, selSt) + "<i>" + thing.value.slice(selSt, selEnd) + "</i>" + thing.value.slice(selEnd);
+                        thing.value = v.slice(0, selSt) + "<i>" + v.slice(selSt, selEnd) + "</i>" + v.slice(selEnd);
                         offset = selEnd + 3;
                     } else if(evt.code == "KeyU" && evt.ctrlKey) {
-                        thing.value = thing.value.slice(0, selSt) + "<u>" + thing.value.slice(selSt, selEnd) + "</u>" + thing.value.slice(selEnd);
+                        thing.value = v.slice(0, selSt) + "<u>" + v.slice(selSt, selEnd) + "</u>" + v.slice(selEnd);
                         offset = selEnd + 3;
                     } else if(evt.code == "KeyK" && evt.ctrlKey) {
                         h = `<a href="link to url">${selSt == selEnd ? 'link text' : ''}`
-                        thing.value = thing.value.slice(0, selSt) + h + thing.value.slice(selSt, selEnd) + "</a>" + thing.value.slice(selEnd);
+                        thing.value = v.slice(0, selSt) + h + v.slice(selSt, selEnd) + "</a>" + v.slice(selEnd);
                         offset = selEnd + h.length;
                     } else if(evt.code == "KeyS" && evt.ctrlKey) {
-                        thing.value = thing.value.slice(0, selSt) + "<s>" + thing.value.slice(selSt, selEnd) + "</s>" + thing.value.slice(selEnd);
+                        thing.value = v.slice(0, selSt) + "<s>" + v.slice(selSt, selEnd) + "</s>" + v.slice(selEnd);
                         offset = selEnd + 3;
                     } else if(evt.code == "KeyH" && evt.ctrlKey) {
-                        thing.value = thing.value.slice(0, selSt) + "<spoil>" + thing.value.slice(selSt, selEnd) + "</spoil>" + thing.value.slice(selEnd);
+                        thing.value = v.slice(0, selSt) + "<spoil>" + v.slice(selSt, selEnd) + "</spoil>" + v.slice(selEnd);
                         offset = selEnd + 7;
                     } else if(evt.code == "Enter" && !mobile) {
+                        history = ""
                         if(evt.shiftKey)
                             return;
                         submit_to_chat();
                     } else {
+                        history = ""
                         return
                     }
+                    history = v;
                     thing.focus();
                     thing.selectionEnd = offset;
                     if(evt.preventDefault) {
