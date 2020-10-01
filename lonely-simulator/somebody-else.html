@@ -384,7 +384,7 @@
                     others = Number(document.URL.split("?others=")[1].split("&")[0]);
                 } else {
                     others = 1;
-                    window.history.replace("/", null, "?others=1");
+                    window.history.replaceState("/", null, "?others=1");
                 }
                 
                 for(var x = 0; x < others; x += 1) {
