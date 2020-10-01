@@ -229,7 +229,9 @@
                     }
                     thing.value = "";
                     chat.scrollTop = chat.scrollHeight;
-                    words.push(...chat.children[chat.childElementCount - 2].lastChild.textContent.split())
+                    words.push(...chat.children[chat.childElementCount - 2].lastChild.textContent.split());
+                    last_typed = 0;
+                    time_typed = Number(new Date());
                 }
                 
                 function fake_key_press(key, shift, ctrl) {
@@ -463,6 +465,8 @@
                     prefix += `</div></div></br>`
                     chat.innerHTML += prefix;
                     chat.scrollTop = chat.scrollHeight;
+                    last_typed = other;
+                    time_typed = Number(new Date());
                 }
                 
                 if(document.URL.includes("?others=")) {
