@@ -107,7 +107,7 @@
                 </div>
                 <br><br>
                 <div id="mobile-keys" style="display: none;">
-                    <div style="display: flex; height: 30px; gap: 0px 5px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 0px 5px; flex-wrap: wrap;">
                         <div style="flex-grow: 1;">
                             <div class="lonely-fn" onclick="fake_key_press('B', 0, 1)"><b>Bold</b></div>
                         </div>
@@ -260,10 +260,11 @@
                     } else {
                         return
                     }
-                    if(prevent) {
+                    thing.focus();
+                    thing.selectionEnd = thing.value.length - offset;
+                    if(prevent && evt.preventDefault) {
                         evt.preventDefault();
                     }
-                    thing.selectionEnd = thing.value.length - offset;
                 }
                 
                 document.getElementById("text").onkeydown = (evt) => listen_to_keypress(evt);
