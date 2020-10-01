@@ -367,14 +367,14 @@
                         prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getYear() + " ";
                         prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
                         prefix += `</b></div><div style="color: #ccc;">`
-                        document.getElementById("other-" + other + "-typing").parentElement.remove();
+                        document.getElementById("other-" + other + "-typing").parentElement.parentElement.remove();
                         var st = "";
                         for(var x = 0; x < Math.floor(Math.random() + 5) * 10; x += 1) {
                             st += words[Math.floor(Math.random() * words.length)] + " ";
                         }
                         prefix += st.trim().replace(/\n/g, "<br>");
                     } else {
-                        prefix += "[typing...]"
+                        prefix += `<span id="other-${other}-typing">typing...]</span>`;
                     }
                     prefix += `</div></div></br>`
                     chat.innerHTML += prefix;
@@ -384,7 +384,7 @@
                     others = Number(document.URL.split("?others=")[1].split("&")[0]);
                 } else {
                     others = 1;
-                    window.history.replaceState("/prizm.dev/lonely-simulator/somebody-else", null, "?others=1");
+                    window.history.replaceState("/prizm.dev/lonely-simulator/somebody-else", null, "/prizm.dev/lonely-simulator/somebody-else?others=1");
                 }
                 
                 for(var x = 0; x < others; x += 1) {
