@@ -34,6 +34,7 @@
                 max-height: 50vh; 
                 height: 50vh; 
                 padding: 5px 10px;
+                overflow: auto;
             } .lonely-text {
                 border-radius: 5px; 
                 border: 2px solid #0ff; 
@@ -346,7 +347,7 @@
                         chat.scrollTop = chat.scrollHeight;
                         return;
                     }
-                    if(Math.floor(Math.random() * 10) == 0) {
+                    if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing")) {
                         joined = joined.filter((t) => t != other)
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- ${names[other]} left the chat ;[</b></div><br>`;
