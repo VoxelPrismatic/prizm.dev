@@ -464,14 +464,14 @@
                             never_gonna_give_you_up = never_gonna_give_you_up.slice(1);
                         }
                         prefix += st.trim().replace(/\n/g, "<br>");
+                        last_typed = other;
+                        time_typed = Number(new Date());
                     } else {
                         prefix += `<span id="other-${other}-typing">typing...]</span>`;
                     }
                     prefix += `</div></div></br>`
                     chat.innerHTML += prefix;
                     chat.scrollTop = chat.scrollHeight;
-                    last_typed = other;
-                    time_typed = Number(new Date());
                 }
                 
                 if(document.URL.includes("?others=")) {
