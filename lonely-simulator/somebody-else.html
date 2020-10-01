@@ -98,6 +98,20 @@
                     <div class="lonely-message" style="color: #0ff;">
                         <b>--> <u>You</u> joined the chat ;]</b>
                     </div><br>
+                    
+                    <div class="lonely-message" id="sys-message" style="color: #0ff;">
+                        <div style="color: #fff;">
+                            <b>SYSTEM [jan-01-1970 12:00:00]</b>
+                        </div>
+                        <div style="color: #ccc;">
+                            We have notified everybody using the PRIZernet that this chat is now open. <br>
+                            Please allow up to a full minute for others to start arriving.<br>
+                            In the meantime, enjoy having this room to yourself!
+                        </div><br>
+                        <script type="text/javascript">
+                            window.setTimeout(() => { document.getElementById("sys-message").remove() }, 60000);
+                        </script>
+                    </div>
                 </div>
                 <div style="display: flex; gap: 5px;">
                     <div style="width: 75%">
@@ -294,6 +308,7 @@
                         }
                         if(allowed.length == 0) {
                             window.alert("The maximum capacity of the chat has been reached");
+                        }
                     } else if(evt.code == "Enter" && !mobile) {
                         text_history = ""
                         lastEnd = 0;
