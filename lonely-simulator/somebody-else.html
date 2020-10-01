@@ -426,7 +426,7 @@
                 ];
                 for(var x = 0; x < Math.random() * 10; x += 1)
                     clrs = clrs.sort(function() {return 0.5 - Math.random()})
-                colors = {
+                chat_colors = {
                     1: clrs.pop(),
                     2: clrs.pop(),
                     3: clrs.pop(),
@@ -461,7 +461,7 @@
                         window.setTimeout(toggle_typing, Math.random() * 30000, other);
                     else
                         window.setTimeout(toggle_typing, Math.random() * 10000, other);
-                    
+                    var colors = globalThis.chat_colors;
                     if(never_gonna_give_you_up.length == 0)
                         never_gonna_give_you_up = the_song.concat([]);
                     if(!joined.includes(other)) {
