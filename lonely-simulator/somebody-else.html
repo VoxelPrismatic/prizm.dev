@@ -381,7 +381,7 @@
                 }
                 
                 if(document.URL.includes("?others=")) {
-                    others = Number(document.URL.split("?others=")[1].split("&")[0];
+                    others = Number(document.URL.split("?others=")[1].split("&")[0]);
                 } else {
                     others = 1;
                     window.history.replace("/", null, "?others=1");
