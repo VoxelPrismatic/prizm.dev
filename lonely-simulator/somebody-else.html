@@ -479,8 +479,8 @@
                     for(var x of players) {
                         x = Number(x)
                         ms = Math.floor(Math.random() * 60000)
-                        console.log("'human'", x + 1, "will be joining in", (ms / 1000) + "s");
-                        window.setTimeout(toggle_typing, ms, x + 1);
+                        console.log("'human'", x, "will be joining in", (ms / 1000) + "s");
+                        window.setTimeout(toggle_typing, ms, x);
                         players += 1
                     }
                 } else {
