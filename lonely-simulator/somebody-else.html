@@ -302,6 +302,12 @@
                                 ms = Math.floor(Math.random() * 10000)
                                 console.log("'human'", n, "will be joining in", (ms / 1000) + "s");
                                 window.setTimeout(toggle_typing, ms, n);
+                                thing.focus();
+                                thing.selectionEnd = offset;
+                                if(evt.preventDefault) {
+                                    evt.preventDefault();
+                                }
+                                return;
                             } else {
                                 allowed = allowed.filter((t) => t == n)
                             }
