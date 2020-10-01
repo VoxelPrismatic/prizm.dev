@@ -124,7 +124,7 @@
                             <div class="lonely-fn" onclick="fake_key_press('S', 0, 1)"><s>Strike</s></div>
                         </div>
                         <div style="flex-grow: 1;">
-                            <div class="lonely-fn" onclick="fake_key_press('K', 0, 1)"><a href="#">Link</a></div>
+                            <div class="lonely-fn" onclick="fake_key_press('K', 0, 1)"><a><u>Link</u></a></div>
                         </div>
                     </div>
                     <br><br>
@@ -226,43 +226,38 @@
                 
                 function listen_to_keypress(evt) {
                     offset = 0;
-                    prevent = false;
                     thing = document.getElementById("text")
+                    selEnd = thing.selectionEnd;
+                    selSt = thing.selectionStart;
                     if(evt.code == "KeyB" && evt.ctrlKey) {
-                        thing.value += "<b></b>"
-                        offset = 4;
-                        prevent = true;
+                        thing.value = thing.value.slice(0, selSt) + "<b>" + thing.value.slice(selSt, selEnd) + "</b>" + thing.value.slice(selEnd);
+                        offset = selEnd + 3;
                     } else if(evt.code == "KeyI" && evt.ctrlKey) {
-                        thing.value += "<i></i>"
-                        offset = 4;
-                        prevent = true;
+                        thing.value = thing.value.slice(0, selSt) + "<i>" + thing.value.slice(selSt, selEnd) + "</i>" + thing.value.slice(selEnd);
+                        offset = selEnd + 3;
                     } else if(evt.code == "KeyU" && evt.ctrlKey) {
-                        thing.value += "<u></u>"
-                        offset = 4;
-                        prevent = true;
+                        thing.value = thing.value.slice(0, selSt) + "<u>" + thing.value.slice(selSt, selEnd) + "</u>" + thing.value.slice(selEnd);
+                        offset = selEnd + 3;
                     } else if(evt.code == "KeyK" && evt.ctrlKey) {
-                        thing.value += `<a href="link to url">link text</a>`
-                        offset = 4;
-                        prevent = true;
+                        h = `<a href="link to url">${selSt == selEnd ? 'link text' : ''}`
+                        thing.value = thing.value.slice(0, selSt) + h + thing.value.slice(selSt, selEnd) + "</a>" + thing.value.slice(selEnd);
+                        offset = selEnd + h.length;
                     } else if(evt.code == "KeyS" && evt.ctrlKey) {
-                        thing.value += "<s></s>"
-                        offset = 4;
-                        prevent = true;
+                        thing.value = thing.value.slice(0, selSt) + "<s>" + thing.value.slice(selSt, selEnd) + "</s>" + thing.value.slice(selEnd);
+                        offset = selEnd + 3;
                     } else if(evt.code == "KeyH" && evt.ctrlKey) {
-                        thing.value += "<spoil></spoil>"
-                        offset = 8;
-                        prevent = true;
+                        thing.value = thing.value.slice(0, selSt) + "<spoil>" + thing.value.slice(selSt, selEnd) + "</spoil>" + thing.value.slice(selEnd);
+                        offset = selEnd + 7;
                     } else if(evt.code == "Enter" && !mobile) {
                         if(evt.shiftKey)
                             return;
                         submit_to_chat();
-                        prevent = true;
                     } else {
                         return
                     }
                     thing.focus();
-                    thing.selectionEnd = thing.value.length - offset;
-                    if(prevent && evt.preventDefault) {
+                    thing.selectionEnd = offset;
+                    if(evt.preventDefault) {
                         evt.preventDefault();
                     }
                 }
