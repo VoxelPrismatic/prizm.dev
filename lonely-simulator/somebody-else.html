@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <!-- DYNAMIC BETWEEN PAGES -->
+        <base href="https://voxelprismatic.github.io/"/>
+        <meta property="og:title" content="LONELY SIMULATOR ;]" id="title" />
+        <meta property="og:description" content="The simulator that allows you to make real life connections" />
+        <meta name="description" content="The simulator that allows you to make real life connections" />
+        
+        <!-- STATIC BETWEEN PAGES -->
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/prizm.dev/assets/image/favicon.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
+        <title>LONELY SIMULATOR ;]</title>
+        <link rel="stylesheet" type="text/css" id="priz_neon_css" href="https://voxelprismatic.github.io/priz.md/out/style.min.css" />
+        <link rel="icon" type="image/png" href="/prizm.dev/assets/image/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
+        <meta name="author" content="PRIZ ;]" />
+        <style type="text/css">
+            #head {
+                top: -100px !important;
+            } .lonely-message {
+                font-family: "Ubuntu Mono" !important;
+            } .lonely-message * {
+                font-family: "Ubuntu Mono" !important;
+            } .lonely-chat {
+                border: 2px solid #0ff; 
+                border-radius: 5px;
+                max-height: 50vh; 
+                height: 50vh; 
+                padding: 5px 10px;
+            } .lonely-text {
+                border-radius: 5px; 
+                border: 2px solid #0ff; 
+                width: 95%; 
+                max-width: 95%; 
+                min-width: 95%;
+                display: inline-block;
+                color: #ccc;
+                padding: 5px 10px;
+                height: 100% !important;
+            } .lonely-submit {
+                border-radius: 5px; 
+                border: 2px solid #0f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #0f0;
+                padding: 5px 10px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                text-align: center;
+                height: 100%;
+                flex-grow: 1;
+                background-color: #112211;
+                tranisition: all 0.1s ease;
+            } .lonely-submit:hover {
+                background-color: #223322;
+            } .lonely-submit:active {
+                border-color: #008800;
+                background-color: #112211;
+            } .lonely-fn {
+                border-radius: 5px; 
+                border: 2px solid #f08;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #f08;
+                padding: 5px 10px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                text-align: center;
+                height: 50%;
+                flex-grow: 1;
+                background-color: #221115;
+                transition: all 0.1s ease;
+            } .lonely-fn:hover {
+                background-color: #332225;
+            } .lonely-fn:active {
+                border-color: #880044;
+                background-color: #221115;
+            }
+        </style>
+    </head>
+    <body class="bgcolor" style="background-color: rgb(17, 34, 34);">
+        <div id="logo">
+            <img src="/prizm.dev/assets/image/priz_blue.png" alt="[prizm logo]" id="truelogo" tabindex="-1" width="128em" />
+        </div>
+        <h1 id="head" tabindex="-1">LONELY SIMULATOR ;]</h1>
+        <div id="content">
+            <div id="about" class="sect" style="transition: none 0s ease 0s;">
+                <div id="chat" class="lonely-chat">
+                    <div class="lonely-message" style="color: #0ff;">
+                        <b>--> You joined the chat</b>
+                    </div><br>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <div style="width: 75%">
+                        <textarea id="text" class="lonely-text lonely-message" placeholder="Type a message and hit enter, your message will show up above. HTML supported. Markdown NOT supported."></textarea>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <div class="lonely-submit" onclick="submit_to_chat()">send</div>
+                    </div>
+                </div>
+                <br><br>
+                <div id="mobile-keys" style="display: none;">
+                    <div style="display: flex; gap: 0px 5px; flex-wrap: wrap;">
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('B', 0, 1)"><b>Bold</b></div>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('I', 0, 1)"><i>Italic</i></div>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('U', 0, 1)"><u>Underline</u></div>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('H', 0, 1)"><spoil>Spoilers</spoil></div>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('S', 0, 1)"><s>Strike</s></div>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('K', 0, 1)"><a><u>Link</u></a></div>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <div class="lonely-fn" onclick="fake_key_press('Z', 0, 1)">Undo</div>
+                        </div>
+
+                    </div>
+                    <br><br>
+                </div>
+                <div id="shortcut-keys" style="display: none;">
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + B</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r><b>Bold</b></f-r>
+                    </div>
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + I</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r><i>Italics</i></f-r>
+                    </div>
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + U</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r><u>Underline</u></f-r>
+                    </div>
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + S</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r><s>Strike</s></f-r>
+                    </div>
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + H</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r><spoil onclick="this.classList.toggle('unhide')">Spoilers</spoil></f-r>
+                    </div>
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + K</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r><a href="#">Link</a></f-r>
+                    </div>
+                    <div style="height: 27.75px; min-height: 27.75px;">
+                        <f-l><span class="lonely-message">CTRL + Z</span></f-l><dict style="transition: none 0s ease 0s; width: 197px; line-height: 27.75px; top: -4px;"></dict>
+                        <f-r>Undo format</f-r>
+                    </div>
+                </div>
+                "somebody else" will be coming soon...
+                <br />
+                <div style="text-align: center;">
+                    <div style="height: 0px; transition: none 0s ease 0s;" id="spacer"></div>
+                    <sub id="footer">
+                        <br />
+                        <br />
+                        <b style="font-size: larger;">BY PRIZ WITH WINKY BRACKET FACE ;]</b><br />
+                        <span id="links_and_sources" tabindex="-1">
+                            <a href="/prizm.dev/" target="" tabindex="0">Home page</a> //
+                            <a id="page_source_about" target="_blank" rel="noreferrer" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/lonely-simulator/index.html" tabindex="0">View source</a>
+                        <br />
+                        <span id="funnytextthing" tabindex="-1">*loading funny text thing</span><br />
+                        <br />
+                    </sub>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: none;" id="scripts">
+            <script type="text/javascript">
+                var theme = "cyan";
+                var loader = "main";
+            </script>
+            <script type="text/javascript">
+                function submit_to_chat() {
+                    thing = document.getElementById("text");
+                    if(!thing.value.trim())
+                        return;
+                    var prefix = `<div class="lonely-message">`
+                    chat = document.getElementById("chat")
+                    months = {
+                        1: "jan",
+                        2: "feb",
+                        3: "mar",
+                        4: "apr",
+                        5: "may",
+                        6: "jun",
+                        7: "jul",
+                        8: "aug",
+                        9: "sept",
+                        10: "oct",
+                        11: "nov",
+                        12: "dec"
+                    };
+                    prefix += `<div style="color: #0ff;"><b>You [`;
+                    d = new Date();
+                    prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getYear() + " ";
+                    prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
+                    prefix += `</b></div><div style="color: #ccc;">`
+                    prefix += thing.value.trim().replace(/\n/g, "\n<br>");
+                    prefix += `</div></div></br>`
+                    chat.innerHTML += prefix;
+                    if(thing.value.includes("<spoil>")) {
+                        for(var elem of document.querySelector("spoil")) {
+                            elem.onclick = function() { this.classList.toggle('unhide'); }
+                        }
+                    }
+                    thing.value = "";
+                    chat.scrollTop = chat.scrollHeight;
+                    words.push(...chat.children[chat.childElementCount - 2].lastChild.textContent.split())
+                }
+                
+                function fake_key_press(key, shift, ctrl) {
+                    evt = {}
+                    evt.code = "Key" + key;
+                    evt.shiftKey = shift;
+                    evt.ctrlKey = ctrl;
+                    listen_to_keypress(evt)
+                }
+                
+                text_history = ""
+                lastEnd = 0;
+                
+                function listen_to_keypress(evt) {
+                    offset = 0;
+                    thing = document.getElementById("text");
+                    v = thing.value;
+                    selEnd = thing.selectionEnd;
+                    selSt = thing.selectionStart;
+                    if(evt.code == "KeyB" && evt.ctrlKey) {
+                        thing.value = v.slice(0, selSt) + "<b>" + v.slice(selSt, selEnd) + "</b>" + v.slice(selEnd);
+                        offset = selEnd + 3;
+                    } else if(evt.code == "KeyI" && evt.ctrlKey) {
+                        thing.value = v.slice(0, selSt) + "<i>" + v.slice(selSt, selEnd) + "</i>" + v.slice(selEnd);
+                        offset = selEnd + 3;
+                    } else if(evt.code == "KeyU" && evt.ctrlKey) {
+                        thing.value = v.slice(0, selSt) + "<u>" + v.slice(selSt, selEnd) + "</u>" + v.slice(selEnd);
+                        offset = selEnd + 3;
+                    } else if(evt.code == "KeyK" && evt.ctrlKey) {
+                        h = `<a href="link to url">${selSt == selEnd ? 'link text' : ''}`
+                        thing.value = v.slice(0, selSt) + h + v.slice(selSt, selEnd) + "</a>" + v.slice(selEnd);
+                        offset = selEnd + h.length;
+                    } else if(evt.code == "KeyS" && evt.ctrlKey) {
+                        thing.value = v.slice(0, selSt) + "<s>" + v.slice(selSt, selEnd) + "</s>" + v.slice(selEnd);
+                        offset = selEnd + 3;
+                    } else if(evt.code == "KeyH" && evt.ctrlKey) {
+                        thing.value = v.slice(0, selSt) + "<spoil>" + v.slice(selSt, selEnd) + "</spoil>" + v.slice(selEnd);
+                        offset = selEnd + 7;
+                    } else if(evt.code == "KeyZ" && evt.ctrlKey && history) {
+                        thing.value = text_history;
+                        offset = lastEnd;
+                    } else if(evt.code == "Enter" && !mobile) {
+                        text_history = ""
+                        lastEnd = 0;
+                        if(evt.shiftKey)
+                            return;
+                        submit_to_chat();
+                    } else {
+                        text_history = ""
+                        lastEnd = 0;
+                        return
+                    }
+                    text_history = v;
+                    lastEnd = selEnd;
+                    thing.focus();
+                    thing.selectionEnd = offset;
+                    if(evt.preventDefault) {
+                        evt.preventDefault();
+                    }
+                }
+                
+                document.getElementById("text").onkeydown = (evt) => listen_to_keypress(evt);
+                
+                mobile = false;
+                
+                if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent)) {
+                    document.getElementById("mobile-keys").style.display = "";
+                    mobile = true;
+                } else {
+                    document.getElementById("shortcut-keys").style.display = "";
+                }
+                
+                joined = []
+                
+                words = [
+                    "never gonna give you up!",
+                    "never gonna let you down!",
+                    "never gonna run around, and, desert you!",
+                    "never gonna make you cry!",
+                    "never gonna say good bye!"
+                ]
+                
+                function toggle_typing(other) {
+                    setTimeout(toggle_typing, Math.random() * 30000 * others, other);
+                    colors = {
+                        1: "#0f0",
+                        2: "#f08",
+                        3: "#f80",
+                        4: "#44f",
+                        5: "#08f",
+                        6: "#ff0",
+                        7: "#f0f",
+                        8: "#80f",
+                        9: "#fff",
+                        10: "#8f0",
+                        11: "#0f8",
+                        12: "#f00"
+                    }
+                    
+                    names = {
+                        1: "Somebody else",
+                        2: "A third human",
+                        3: "Joke's getting old",
+                        4: "Mate",
+                        5: "They",
+                        6: "The 6th",
+                        7: "lol",
+                        8: "nani",
+                        9: "the man/woman him/herself",
+                        10: "...",
+                        11: "i need lamp",
+                        12: "never gonna give you up!"
+                    }
+                    if(!joined.includes(other)) {
+                        joined.push(other);
+                        document.getElementById("chat").innerHTML += 
+                            `<div class="lonely-message" style="color: ${colors[other]};"><b>--> ${names[other]} joined the chat</b></div><br>`;
+                        return;
+                    }
+                    var prefix = `<div class="lonely-message">`
+                    chat = document.getElementById("chat")
+                    months = {
+                        1: "jan",
+                        2: "feb",
+                        3: "mar",
+                        4: "apr",
+                        5: "may",
+                        6: "jun",
+                        7: "jul",
+                        8: "aug",
+                        9: "sept",
+                        10: "oct",
+                        11: "nov",
+                        12: "dec"
+                    };
+                    prefix += `<div style="color: ${colors[other]};"><b>${names[other]} [`;
+                    if(document.getElementById("other-" + other + "-typing")) {
+                        d = new Date();
+                        prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getYear() + " ";
+                        prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
+                        prefix += `</b></div><div style="color: #ccc;">`
+                        document.getElementById("other-" + other + "-typing").parentElement.remove();
+                        var st = "";
+                        for(var x = 0; x < Math.floor(Math.random() + 5) * 10; x += 1) {
+                            st += words[Math.floor(Math.random() * words.length] + " ";
+                        }
+                        prefix += st.trim().replace(/\n/g, "<br>");
+                    } else {
+                        prefix += "[typing...]"
+                    }
+                    prefix += `</div></div></br>`
+                    chat.innerHTML += prefix;
+                }
+                
+                if(document.URL.includes("?others=")) {
+                    others = Number(document.URL.split("?others=")[1].split("&")[0];
+                } else {
+                    others = 1;
+                    window.history.replace("/", null, "?others=1");
+                }
+                
+                for(var x = 0; x < others; x += 1) {
+                    window.setTimeout(toggle_typing, Math.random() * 60000, x + 1);
+                }
+            </script>
+            <a id="hiddenlink" tabindex="0"></a>
+            <!--NOTICE: This has a bunch of scripts that aren't organized. Enjoy looking though here!-->
+            <script src="/prizm.dev/assets/script/head-min.js" type="text/javascript"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/find.js" id="find.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/other.js" id="other.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/delay.js" id="delay.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/accessibility.js" id="accessibility.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/colors.js" id="aesthetic/colors.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/flicker.js" id="aesthetic/flicker.js"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/aesthetic/dynamic.js" id="aesthetic/dynamic.js"></script>
+            <script src="https://voxelprismatic.github.io/priz.md/out/more/neon.min.js" id="priz_neon_js" type="text/javascript"></script>
+            <script type="text/javascript" src="/prizm.dev/assets/script/load-min.js" id="load.js"></script>
+            <script type="text/javascript" defer>
+                loadNow();
+            </script>
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i&amp;display=swap" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700,700i&amp;display=swap" />
+        </div>
+    </body>
+</html>
