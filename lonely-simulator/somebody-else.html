@@ -293,27 +293,26 @@
                         thing.value = text_history;
                         offset = lastEnd;
                     } else if(evt.code == "KeyN" && evt.ctrlKey) {
+                        allowed = []
+                        for(var x = 1; x <= 12; x += 1)
+                            if(!other_players.includes(x))
+                                allowed.push(x)
+                        console.log(allowed);
                         allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-                        while(allowed.length) {
+                        if(allowed.length) {
                             n = allowed[Math.floor(Math.random() * allowed.length)];
-                            console.log(n);
-                            if(!other_players.includes(n)) {
-                                other_players.push(n);
-                                window.history.replaceState("/", null, "/prizm.dev/lonely-simulator/somebody-else?players=" + other_players.join(","));
-                                ms = Math.floor(Math.random() * 10000)
-                                console.log("'human'", n, "will be joining in", (ms / 1000) + "s");
-                                window.setTimeout(toggle_typing, ms, n);
-                                thing.focus();
-                                thing.selectionEnd = offset;
-                                if(evt.preventDefault) {
-                                    evt.preventDefault();
-                                }
-                                return;
-                            } else {
-                                allowed = allowed.filter((t) => t == n)
+                            other_players.push(n);
+                            window.history.replaceState("/", null, "/prizm.dev/lonely-simulator/somebody-else?players=" + other_players.join(","));
+                            ms = Math.floor(Math.random() * 10000)
+                            console.log("'human'", n, "will be joining in", (ms / 1000) + "s");
+                            window.setTimeout(toggle_typing, ms, n);
+                            thing.focus();
+                            thing.selectionEnd = offset;
+                            if(evt.preventDefault) {
+                                evt.preventDefault();
                             }
-                        }
-                        if(allowed.length == 0) {
+                            return;
+                        } else {
                             window.alert("The maximum capacity of the chat has been reached");
                         }
                     } else if(evt.code == "Enter" && !mobile) {
