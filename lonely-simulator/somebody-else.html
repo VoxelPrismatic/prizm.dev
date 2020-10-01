@@ -375,7 +375,8 @@
                         prefix += months[d.getMonth()] + "-" + (d.getDate() + "-").padStart(3, "0") + d.getFullYear() + " ";
                         prefix += (d.getHours() + ":").padStart(3, "0") + (d.getMinutes() + ":").padStart(3, "0") + (d.getSeconds() + "]:").padStart(4, "0")
                         prefix += `</b></div><div style="color: #ccc;">`
-                        document.getElementById("other-" + other + "-typing").parentElement.parentElement.remove();
+                        chat.lastChild.remove()
+                        chat.lastChild.remove()
                         var st = "";
                         for(var x = 0; x < Math.floor(Math.random() + 5) * 10; x += 1) {
                             st += words[Math.floor(Math.random() * words.length)] + " ";
