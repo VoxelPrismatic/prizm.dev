@@ -415,7 +415,9 @@
                     
                     ...the_roll,
                     ...the_roll,
-                ]
+                ];
+                
+                the_song = never_gonna_give_you_up.concat([]);
                 
                 function toggle_typing(other) {
                     if(other != 12 || never_gonna_give_you_up.length == 0)
@@ -451,6 +453,8 @@
                         11: "i need lamp",
                         12: "rick astley."
                     }
+                    if(never_gonna_give_you_up.length == 0)
+                        never_gonna_give_you_up = the_song.concat([]);
                     if(!joined.includes(other)) {
                         joined.push(other);
                         document.getElementById("chat").innerHTML += 
@@ -459,7 +463,7 @@
                         last_typed = -1
                         return;
                     }
-                    if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing") && (other != 12 || never_gonna_give_you_up.length == 0)) {
+                    if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing") && other != 12) {
                         joined = joined.filter((t) => t != other)
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
@@ -497,7 +501,7 @@
                         ree.nextElementSibling.remove();
                         ree.remove();
                         var st = "";
-                        if(other != 12 || never_gonna_give_you_up.length == 0) {
+                        if(other != 12) {
                             for(var x = 0; x < Math.floor(Math.random() * 10) * 5; x += 1) {
                                 st += words[Math.floor(Math.random() * words.length)] + " ";
                             }
