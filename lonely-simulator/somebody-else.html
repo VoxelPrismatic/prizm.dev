@@ -302,12 +302,70 @@
                 joined = [];
                 
                 words = [
+                    "hello",
+                    "bye",
+                    "my",
+                    "name",
+                    "is",
+                    "fuck",
+                    "you",
+                    "music",
+                    "bio",
+                    "maths",
+                    "physics",
+                    "running",
+                    "i",
+                    "am",
+                    "biking",
+                ];
+                
+                the_roll = [
                     "never gonna give you up!",
                     "never gonna let you down!",
                     "never gonna run around, and, desert you!",
                     "never gonna make you cry!",
-                    "never gonna say good bye!"
-                ];
+                    "never gonna say good bye!",
+                    "never gonna tell a lie, and, hurt you!"
+                ]
+                
+                never_gonna_give_you_up = [
+                    "we're no stangers... to love...",
+                    "you know the rules, and, so do i!",
+                    "a full commitment's what im thinking of",
+                    "you wouldn't get this from any other guy!",
+                    
+                    "iiiiiii just wanna tell you how im feelin'",
+                    "gotta make you understand!",
+                    
+                    ...the_roll,
+                    
+                    "we've known each other, for so long",
+                    "your heart's been achin' but you're too shy to say it",
+                    "inside we both know what's been going on",
+                    "we know the game, and we're gonna play it!",
+                    
+                    "aaaaand if you ask me how im feelin'",
+                    "don't tell me you're too blind to see!",
+                    
+                    ...the_roll,
+                    ...the_roll,
+                    
+                    "never gonna give, never gonna give!",
+                    "[give you up!]",
+                    "[ooh] never gonna give, never gonna give!",
+                    "[give you up!]",
+                    
+                    "we've known each other, for so long",
+                    "your heart's been achin' but you're too shy to say it",
+                    "inside we both know what's been going on",
+                    "we know the game, and we're gonna play it!",
+                    
+                    "iiiiiii just wanna tell you how im feelin'",
+                    "gotta make you understand!",
+                    
+                    ...the_roll,
+                    ...the_roll,
+                ]
                 
                 function toggle_typing(other) {
                     setTimeout(toggle_typing, Math.random() * 30000 * others, other);
@@ -338,7 +396,7 @@
                         9: "the man/woman him/herself",
                         10: "...",
                         11: "i need lamp",
-                        12: "never gonna give you up!"
+                        12: "rick astley."
                     }
                     if(!joined.includes(other)) {
                         joined.push(other);
@@ -379,8 +437,13 @@
                         chat.lastChild.remove()
                         chat.lastChild.remove()
                         var st = "";
-                        for(var x = 0; x < Math.floor(Math.random() + 5) * 10; x += 1) {
-                            st += words[Math.floor(Math.random() * words.length)] + " ";
+                        if(other != 12 || never_gonna_give_you_up.length == 0) {
+                            for(var x = 0; x < Math.floor(Math.random() + 5) * 10; x += 1) {
+                                st += words[Math.floor(Math.random() * words.length)] + " ";
+                            }
+                        } else {
+                            st = never_gonna_give_you_up[0];
+                            never_gonna_give_you_up = never_gonna_give_you_up.slice(1);
                         }
                         prefix += st.trim().replace(/\n/g, "<br>");
                     } else {
