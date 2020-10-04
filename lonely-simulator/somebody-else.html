@@ -469,6 +469,8 @@
                         never_gonna_give_you_up = the_song.concat([]);
                     var scroll = chat.scrollTop == chat.scrollMaxTop;
                     console.log(`Will${scroll ? ' ' : ' not '}scroll`);
+                    if(!scroll)
+                        console.log(chat.scrollTop, chat.scrollMaxTop);
                     if(!joined.includes(other)) {
                         joined.push(other);
                         document.getElementById("chat").innerHTML += 
