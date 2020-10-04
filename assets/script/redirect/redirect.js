@@ -86,7 +86,9 @@ if(URL.includes("?url=")) {
     ];
     [url, text] = getUrl(re, shorts);
 }
+
 window.parent.location = url;
+window.location = url;
 
 for(var x = 0; x < 9; x += 1) {
     var meta = document.createElement("meta");
