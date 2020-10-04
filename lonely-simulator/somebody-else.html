@@ -249,8 +249,7 @@
                         }
                     }
                     thing.value = "";
-                    if(scroll)
-                        chat.scrollTop = chat.scrollHeight;
+                    chat.scrollTop = chat.scrollHeight;
                     words.push(...chat.children[chat.childElementCount - 2].lastChild.textContent.split());
                     last_typed = 0;
                     time_typed = Number(new Date());
@@ -467,16 +466,16 @@
                     var colors = globalThis.chat_colors;
                     if(never_gonna_give_you_up.length == 0)
                         never_gonna_give_you_up = the_song.concat([]);
-                    var scroll = chat.scrollTop == chat.scrollMaxTop;
-                    console.log(`Will${scroll ? ' ' : ' not '}scroll`);
-                    if(!scroll)
-                        console.log(chat.scrollTop, chat.scrollMaxTop);
+                    var scroll = chat.scrollTop == chat.scrollTopMax;
+                    //console.log(`Will${scroll ? ' ' : ' not '}scroll`);
+                    //if(!scroll)
+                    //    console.log(chat.scrollTop, chat.scrollTopMax);
                     if(!joined.includes(other)) {
                         joined.push(other);
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b>--> <u>${names[other]}</u> joined the chat ;]</b></div><br>`;
                         if(scroll)
-                            chat.scrollTop = chat.scrollMaxTop;
+                            chat.scrollTop = chat.scrollTopMax;
                         last_typed = -1
                         return;
                     }
@@ -485,7 +484,7 @@
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
                         if(scroll)
-                            chat.scrollTop = chat.scrollMaxTop;
+                            chat.scrollTop = chat.scrollTopMax;
                         last_typed = -1
                         return;
                     }

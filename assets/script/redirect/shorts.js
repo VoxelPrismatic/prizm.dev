@@ -8,5 +8,6 @@ var shorts = {
     "b61k": "https://discordapp.com/channels/533290351184707584/569698278271090728/740364007923253258",
     "udu2": "https://hacks.mozilla.org/2020/08/changes-to-samesite-cookie-behavior/?utm_source=dev-newsletter&utm_medium=email&utm_campaign=Aug6-2020&utm_content=samesitecookie",
     "VvVN": "https://github.com/Marda33/SkeuoCord/releases/latest",
-    "EzgI": "help"
+    "EzgI": "help",
+    "aSVV": "https://github.com/Benricheson101/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 }
