@@ -27,15 +27,6 @@ function load(filename, aio = false, strip = false) {
     return globalThis.resp__;
 }
 
-function didntRedirect() {
-    document.body.innerHTML = `<h1>#] REDIRECT</h1><div>I'm redirecting you to <a href="${url}" style="color: #fff">
-this link</a>, try allowing redirects for this site.<br><br>
-<sub>This is a shortlink subpage, all links are public.<br><br>
-<sub>Note: if <u>.github.io</u> isn't in the URL, DO NOT ALLOW REDIRECTS.
-Google Chrome redirects to the website home page rather than to the
-destination. Thanks for your understanding</sub></sub></div>`;
-}
-
 function getUrl(re, block) {
     var tmp;
     for(var r of re)
@@ -59,8 +50,7 @@ function getUrl(re, block) {
 }
 
 var raw = "https://raw.githubusercontent.com/VoxelPrismatic/prizm.dev/master/assets/script/redirect/";
-eval(load(raw + "urls.js"));
-eval(load(raw + "shorts.js"));
+var raw2 = "https://voxelprismatic.github.io/prizm.dev/assets/script/redirect/";
 
 var url = "https://voxelprismatic.github.io/prizm.dev/";
 var uri = url;
@@ -70,6 +60,11 @@ if(URL.includes("?url=")) {
     url = decodeUriCompontent(URL.split("?url=")[1]);
     text = url;
 } else if(URL.match(/(\?(page|p)|\$)=/gm)) {
+    try {
+        eval(load(raw + "urls.js"));
+    } catch(err) {
+        eval(load(raw2 + "urls.js"));
+    }
     var re = [
         "?page=",
         "?p=",
@@ -77,6 +72,11 @@ if(URL.includes("?url=")) {
     ];
     [url, text] = getUrl(re, urls);
 } else if(URL.match(/(\?(link|l|short|s)=|\#)/gm)) {
+    try {
+        eval(load(raw + "shorts.js"));
+    } catch(err) {
+        eval(load(raw2 + "shorts.js"));
+    }
     var re = [
         "?link=",
         "?l=",
@@ -87,3 +87,19 @@ if(URL.includes("?url=")) {
     [url, text] = getUrl(re, shorts);
 }
 window.parent.location = url;
+
+for(var x = 0; x < 9; x += 1) {
+    var meta = document.createElement("meta");
+    meta.setAttribute("http-equiv", "refresh");
+    meta.setAttribute("content", `${x}; url='${url}`);
+    document.head.appendChild(meta);
+}
+
+function didntRedirect() {
+    document.body.innerHTML = `<h1>#] REDIRECT</h1><div>I'm redirecting you to <a href="${url}" style="color: #fff">
+this link</a>, try allowing redirects for this site.<br><br>
+<sub>This is a shortlink subpage, all links are public.<br><br>
+<sub>Note: if <u>.github.io</u> isn't in the URL, DO NOT ALLOW REDIRECTS.
+Google Chrome redirects to the website home page rather than to the
+destination. Thanks for your understanding</sub></sub></div>`;
+}
