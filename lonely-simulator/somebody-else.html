@@ -560,7 +560,7 @@
                     }
                 } else {
                     others = Math.floor(Math.random() * 12) + 1;
-                    other_players = [other];
+                    other_players = [others];
                     ms = Math.floor(Math.random() * 60000)
                     console.log("'human'", other, "will be joining in", (ms / 1000) + "s");
                     window.setTimeout(toggle_typing, ms, other);
