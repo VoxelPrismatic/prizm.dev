@@ -468,12 +468,13 @@
                     if(never_gonna_give_you_up.length == 0)
                         never_gonna_give_you_up = the_song.concat([]);
                     var scroll = chat.scrollTop == chat.scrollMaxTop;
+                    console.log(`Will${scroll ? ' ' : ' not '}scroll`);
                     if(!joined.includes(other)) {
                         joined.push(other);
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b>--> <u>${names[other]}</u> joined the chat ;]</b></div><br>`;
                         if(scroll)
-                            chat.scrollTop = chat.scrollHeight;
+                            chat.scrollTop = chat.scrollMaxTop;
                         last_typed = -1
                         return;
                     }
@@ -482,7 +483,7 @@
                         document.getElementById("chat").innerHTML += 
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
                         if(scroll)
-                            chat.scrollTop = chat.scrollHeight;
+                            chat.scrollTop = chat.scrollMaxTop;
                         last_typed = -1
                         return;
                     }
