@@ -564,8 +564,8 @@
                     others = Math.floor(Math.random() * 12) + 1;
                     other_players = [others];
                     ms = Math.floor(Math.random() * 60000)
-                    console.log("'human'", other, "will be joining in", (ms / 1000) + "s");
-                    window.setTimeout(toggle_typing, ms, other);
+                    console.log("'human'", others, "will be joining in", (ms / 1000) + "s");
+                    window.setTimeout(toggle_typing, ms, others);
                 }
                 window.history.replaceState("/", null, "/prizm.dev/lonely-simulator/somebody-else?players=" + other_players.join(","));
             </script>
