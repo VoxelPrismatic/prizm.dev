@@ -1,6 +1,11 @@
 async function loadNow() {
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
-    swapColor(theme);
+    if(document.URL.endsWith("/prizm.dev/") && (new Date()).getMonth() == 9) {
+        swapColor("orange");
+        find("truelogo").src = "/prizm.dev/assets/image/priz_spook.png";
+    } else {
+        swapColor(theme);
+    }
     if(find("jumper")) {
         if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent))
             window.onscroll = changeScrollingThingy;
