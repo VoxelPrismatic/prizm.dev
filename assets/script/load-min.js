@@ -3,7 +3,7 @@ async function loadNow() {
     if(document.URL.endsWith("/prizm.dev/") && (new Date()).getMonth() == 9) {
         swapColor("orange");
         find("truelogo").src = "/prizm.dev/assets/image/priz_orange.png";
-        find("head").innerHTML = "SPOOKY PRIZ ;]";
+        find("head").innerHTML = "SPOOK ;]";
     } else {
         swapColor(theme);
     }
