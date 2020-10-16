@@ -2,7 +2,8 @@ async function loadNow() {
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
     if(document.URL.endsWith("/prizm.dev/") && (new Date()).getMonth() == 9) {
         swapColor("orange");
-        find("truelogo").src = "/prizm.dev/assets/image/priz_spook.png";
+        find("truelogo").src = "/prizm.dev/assets/image/priz_orange.png";
+        find("head").innerHTML = "SPOOKY DEV ;]";
     } else {
         swapColor(theme);
     }
