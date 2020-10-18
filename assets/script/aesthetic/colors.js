@@ -21,7 +21,7 @@ function swapColor(colorName, swapImg = true) {
     var color;
     var bg;
     var name;
-    [color, bg, name] = colors[colorName];
+    [color, bg, name] = colors[colorName || "cyan"];
     document.body.style.backgroundColor = bg;
     var rules = getRules();
     if(rules) {
