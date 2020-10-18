@@ -1,9 +1,51 @@
 async function loadNow() {
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
-    if(document.URL.endsWith("/prizm.dev/") && (new Date()).getMonth() == 9) {
-        swapColor("orange");
-        find("truelogo").src = "/prizm.dev/assets/image/priz_orange.png";
-        find("head").innerHTML = "SPOOK ;]";
+    if(document.URL.endsWith("/prizm.dev/")) {
+        var d = new Date();
+        var day = d.getDate();
+        switch(d.getMonth()) {
+            case 0: // January
+                break;
+            case 1: // February
+                if(day == 14) {
+                    swapColor("pink");
+                    find("truelogo").src = "/prizm.dev/assets/image/priz_heart.png";
+                    find("head").innerHTML = "LOVE ;]";
+                }
+                break;
+            case 2: // March
+                break;
+            case 3: // April
+                break;
+            case 4: // May
+                break;
+            case 5: // June
+                break;
+            case 6: // July
+                break;
+            case 7: // August
+                break;
+            case 8: // September
+                break;
+            case 9: // October
+                swapColor("orange");
+                find("truelogo").src = "/prizm.dev/assets/image/priz_spook.png";
+                find("head").innerHTML = "SPOOK ;]";
+                break;
+            case 10: // November
+                if(day == 11) {
+                    find("truelogo").src = "/prizm.dev/assets/image/priz_spook.png";
+                    find("head").innerHTML = "BDAY ;]";
+                }
+                break;
+            case 11:
+                // December -- Festive
+                find("truelogo").src = "/prizm.dev/assets/image/priz_xmas.png";
+                find("head").innerHTML = "FESTIVE ;]";
+                break;
+            default:
+                find("head").innerHTML = "13th MONTH?";
+        }
     } else {
         swapColor(theme);
     }
