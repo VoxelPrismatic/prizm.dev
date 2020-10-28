@@ -6,12 +6,9 @@ async function try_url(url, not_found_page) {
 
 async function loadPage() {
     var url = document.URL.split("#")[0].split("?")[0];
-    if(url.endsWith("/")) {
-        url = url.slice(0, -1);
-        window.location = url + "#";
-        return;
-    }
     var not_found_page = await load("/prizm.dev/404");
+    if(url.endsWith("/"))
+        await try_url(url.slice(0, -1), not_found_page) 
     url += document.URL.split(url)[1].slice(1);
     try_url(url, not_found_page);
     url += ".html";
