@@ -7,14 +7,17 @@ async function try_url(url, not_found_page) {
 async function loadPage() {
     var url = document.URL.split("#")[0].split("?")[0];
     var not_found_page = await load("/prizm.dev/404");
-    if(url.endsWith("/"))
-        await try_url(url.slice(0, -1), not_found_page) 
-    url += document.URL.split(url)[1].slice(1);
-    try_url(url, not_found_page);
-    url += ".html";
-    try_url(url, not_found_page);
-    url = document.URL.replace("/re/", "/");
-    await try_url(url, not_found_page);
+    // check for ending /, so index.html/ --> index.html
+    if(document.URL.includes("/re/")) {
+        url = document.URL.replace("/re/", "/");
+        await try_url(url, not_found_page);
+    } if(url.endsWith("/")) {
+        url = url.slice(0, -1);
+        await try_url(url, not_found_page) 
+    } if(!url.endswith(".html")) {
+        url += ".html";
+        try_url(url, not_found_page);
+    }
     var data = await load("/prizm.dev/assets/data/404.json", {json: true});
     var thing = document.URL.split("/prizm.dev/")[1].split("?")[0].split("#")[0];
     var stuff = data[thing] || data[thing.slice(0, -1)];
