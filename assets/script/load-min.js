@@ -34,7 +34,7 @@ async function loadNow() {
                 break;
             case 10: // November
                 if(day == 11) {
-                    find("truelogo").src = "/prizm.dev/assets/image/holi/priz_spook.png";
+                    find("truelogo").src = "/prizm.dev/assets/image/holi/priz_bday.png";
                     find("head").innerHTML = "BDAY ;]";
                 }
                 break;
