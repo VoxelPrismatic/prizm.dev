@@ -8,7 +8,7 @@ async function loadPage() {
     var url = document.URL.split("#")[0].split("?")[0];
     if(url.endsWith("/")) {
         url = url.slice(0, -1);
-        window.location = url;
+        window.location = url + "#";
         return;
     }
     var not_found_page = await load("/prizm.dev/404");
