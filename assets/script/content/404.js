@@ -14,7 +14,7 @@ async function loadPage() {
     } if(url.endsWith("/")) {
         url = url.slice(0, -1);
         await try_url(url, not_found_page) 
-    } if(!url.endswith(".html")) {
+    } if(!url.endsWith(".html")) {
         url += ".html";
         try_url(url, not_found_page);
     }
