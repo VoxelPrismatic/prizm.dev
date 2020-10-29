@@ -34,16 +34,19 @@ async function loadNow() {
                 break;
             case 10: // November
                 if(day == 11) {
+                    swapColor("cyan");
                     find("truelogo").src = "/prizm.dev/assets/image/holi/priz_bday.png";
                     find("head").innerHTML = "BDAY ;]";
                 }
                 break;
             case 11:
                 // December -- Festive
+                swapColor("cyan");
                 find("truelogo").src = "/prizm.dev/assets/image/priz_xmas.png";
                 find("head").innerHTML = "FESTIVE ;]";
                 break;
             default:
+                swapColor("red");
                 find("head").innerHTML = "13th MONTH?";
         }
     } else {
