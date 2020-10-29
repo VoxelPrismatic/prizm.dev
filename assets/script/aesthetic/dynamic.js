@@ -2,9 +2,11 @@ function jumpToEdge() {
     if(find("jumper").innerHTML == "[\u039b]") {
         find("truelogo").scrollIntoView({behavior: "smooth"});
         setHtml("jumper", "[V]");
+        lastPosition = -10;
     } else {
         find("footer").scrollIntoView({behavior: "smooth"});
         setHtml("jumper", "[\u039b]");
+        lastPosition = window.scrollMaxY + 10;
     }
 }
 
