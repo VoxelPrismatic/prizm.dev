@@ -1,6 +1,6 @@
 function jumpToEdge(delayed = 0) {
-    window.navigator.vibrate([500]);
-    window.setTimeout((e) => {globalThis.lastPosition = e}, 1000, window.scrollY);
+    window.navigator.vibrate([200]);
+    window.setTimeout((e) => {globalThis.lastPosition = e}, 2000, window.scrollY);
     if(find("jumper").innerHTML == "[\u039b]") {
         find("truelogo").scrollIntoView({behavior: "smooth"});
         setHtml("jumper", "[V]");
