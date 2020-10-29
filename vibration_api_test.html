@@ -1,10 +1,21 @@
 <h1>Vibration API test</h1>
 <h3>Just testing stuff</h3>
-<div id="ms"></div>
+<div id="ms">0ms</div>
+<div id="err">~</div>
+<div id="err2">~</div>
 <script>
   window.setInterval(() => {
     n = Math.floor(Math.random() * 1000);
     document.getElementById("ms").innerHTML = n + "ms";
-    navigator.vibrate(n);
+    try {
+      navigator.vibrate(n);
+    } catch(err) {
+      document.getElementById("err").innerHTML = err
+    }
+    try {
+      navigator.mozVibrate(n);
+    } catch(err) {
+      document.getElementById("err2").innerHTML = err
+    }
   }, 1000)
 </script>
