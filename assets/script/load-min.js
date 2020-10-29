@@ -195,6 +195,7 @@ function dictsTooSmol() {
         var parent = thing.parentElement;
         parent.classList.add("dict-smol");
         parent.classList.remove("dict-good");
+        thing.style.top = (Number(thing.style.lineHeight.slice(0, -2)) + 5) + "px";
     }
 }
 
