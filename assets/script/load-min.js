@@ -101,6 +101,24 @@ async function loadNow() {
             }
         }
     }
+    var h1 = $("h1#head");
+    fS = getComputedStyle(h1).fontSize
+    if(fS != "48px") {
+        var scales = {
+            "38.4px": "60px"
+        }
+        if(scales[fS]) {
+            h1.style.fontSize = scales[fS];
+        } else {
+            n = Math.round(fS.slice(0, -2));
+            while(Number(getComputedStyle(h1).fontSize.slice(0, -2)) < 48) {
+                n += 1;
+                h1.style.fontSize = n + "px";
+            }
+        }
+    } if (h1.clientHeight > 54) {
+        h1.style.setAttribute("top", (-h1.clientHeight/2 - 54) + "px", "important");
+    }
     window.setInterval(flickery_element, 15000, $("h1#head"));
 }
 
