@@ -227,4 +227,5 @@ function toggleDrop(elem) {
     target.classList.toggle("invis");
     resizeDicts(false, target);
     elem.scrollIntoView({behavior: "smooth"});
+    lastPosition = window.scrollMaxY + 10;
 }
