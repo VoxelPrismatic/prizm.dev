@@ -3,19 +3,21 @@
 <div id="ms">0ms</div>
 <div id="err">~</div>
 <div id="err2">~</div>
+<div id="yn">~</div>
 <script>
   window.setInterval(() => {
     n = Math.floor(Math.random() * 1000);
     document.getElementById("ms").innerHTML = n + "ms";
     try {
-      navigator.vibrate(n);
+      yn = navigator.vibrate(n);
     } catch(err) {
       document.getElementById("err").innerHTML = err
     }
     try {
-      navigator.mozVibrate(n);
+      yn = navigator.mozVibrate(n);
     } catch(err) {
       document.getElementById("err2").innerHTML = err
     }
+    document.getElementById("yn").innerHTML = yn
   }, 1000)
 </script>
