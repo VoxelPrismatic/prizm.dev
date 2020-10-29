@@ -1,3 +1,10 @@
 <h1>Vibration API test</h1>
 <h3>Just testing stuff</h3>
-<script>window.setInterval(() => {navigator.vibrate(Math.floor(Math.random() * 1000));}, 1000)</script>
+<div id="ms"></div>
+<script>
+  window.setInterval(() => {
+    n = Math.floor(Math.random() * 1000);
+    document.getElementById("ms").innerHTML = n + "ms";
+    navigator.vibrate(n);
+  }, 1000)
+</script>
