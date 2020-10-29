@@ -9,12 +9,12 @@
     n = Math.floor(Math.random() * 1000);
     document.getElementById("ms").innerHTML = n + "ms";
     try {
-      yn = navigator.vibrate(n);
+      yn = navigator.vibrate([n]);
     } catch(err) {
       document.getElementById("err").innerHTML = err
     }
     try {
-      yn = navigator.mozVibrate(n);
+      yn = navigator.mozVibrate([n]);
     } catch(err) {
       document.getElementById("err2").innerHTML = err
     }
