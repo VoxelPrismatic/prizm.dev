@@ -47,6 +47,12 @@ var footTag = {
         "br2": 1,
         "<2>": {
             "tag": "span",
+            "id": "copyright",
+            "#": "© PRIZ ;] 2020"
+        },
+        "br2": 1,
+        "<3>": {
+            "tag": "span",
             "id": "funnytextthing"
         },
         "br3": 2
