@@ -177,7 +177,7 @@ function resizeDicts(log = true, element = document) {
         }
         var func = dictsTooSmol;
     }
-    delayFunction(func, 0, 4000, 1000);
+    delayFunction(func, 0, 1000, 500);
     updateSpacer();
 }
 
