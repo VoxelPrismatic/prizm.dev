@@ -32,7 +32,7 @@ function swapColor(colorName, swapImg = true) {
         }
     }
     var img = find("truelogo");
-    var src = `/prizm.dev/assets/image/priz_${name}.png`;
+    var src = `/prizm.dev/assets/image/webp/priz_${name}.webp`;
     if(img.src != src)
         img.src = src; // Change source if different
 

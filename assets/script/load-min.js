@@ -9,7 +9,7 @@ async function loadNow() {
             case 1: // February
                 if(day == 14) {
                     swapColor("pink");
-                    find("truelogo").src = "/prizm.dev/assets/image/holi/priz_heart.png";
+                    find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_heart.webp";
                     find("head").innerHTML = "LOVE ;]";
                 }
                 break;
@@ -29,20 +29,20 @@ async function loadNow() {
                 break;
             case 9: // October
                 swapColor("orange");
-                find("truelogo").src = "/prizm.dev/assets/image/holi/priz_spook.png";
+                find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_spook.webp";
                 find("head").innerHTML = "SPOOK ;]";
                 break;
             case 10: // November
                 if(day == 11) {
                     swapColor("cyan");
-                    find("truelogo").src = "/prizm.dev/assets/image/holi/priz_bday.png";
+                    find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_bday.webp";
                     find("head").innerHTML = "BDAY ;]";
                 }
                 break;
             case 11:
                 // December -- Festive
                 swapColor("cyan");
-                find("truelogo").src = "/prizm.dev/assets/image/priz_xmas.png";
+                find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_xmas.webp";
                 find("head").innerHTML = "FESTIVE ;]";
                 break;
             default:
