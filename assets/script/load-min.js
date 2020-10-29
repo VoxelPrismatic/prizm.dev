@@ -1,3 +1,17 @@
+var lastPosition = 0;
+
+function checkScrollPosition() {
+    var y = window.scrollY;
+    if(y == lastPosition)
+        return;
+    var elem = $("#jumper");
+    if(y > lastPosition)
+        elem.innerHTML = "[V]";
+    else
+        elem.innerHTML = "[\u039b]";
+    lastPosition = y;
+}
+
 async function loadNow() {
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
     if(document.URL.endsWith("/prizm.dev/")) {
@@ -9,8 +23,8 @@ async function loadNow() {
             case 1: // February
                 if(day == 14) {
                     swapColor("pink");
-                    find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_heart.webp";
-                    find("head").innerHTML = "LOVE ;]";
+                    $("#truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_heart.webp";
+                    $("#head").innerHTML = "LOVE ;]";
                 }
                 break;
             case 2: // March
@@ -29,8 +43,8 @@ async function loadNow() {
                 break;
             case 9: // October
                 swapColor("orange");
-                find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_spook.webp";
-                find("head").innerHTML = "SPOOK ;]";
+                $("#truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_spook.webp";
+                $("#head").innerHTML = "SPOOK ;]";
                 break;
             case 10: // November
                 if(day == 11) {
@@ -42,21 +56,23 @@ async function loadNow() {
             case 11:
                 // December -- Festive
                 swapColor("cyan");
-                find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_xmas.webp";
-                find("head").innerHTML = "FESTIVE ;]";
+                $("#truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_xmas.webp";
+                $("#head").innerHTML = "FESTIVE ;]";
                 break;
             default:
                 swapColor("red");
-                find("head").innerHTML = "13th MONTH?";
+                $("#head").innerHTML = "13th MONTH?";
         }
     } else {
         swapColor(theme);
     }
     if(find("jumper")) {
-        if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent))
+        if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent)) {
             window.onscroll = changeScrollingThingy;
-        else
+            window.setInterval(checkScrollPosition, 100);
+        } else {
             window.onwheel = (evt) => changeScrollingThingy(evt);
+        }
         window.ontouchmove = changeScrollingThingy;
     }
     window.onkeydown = (evt) => {
@@ -169,7 +185,7 @@ function resizeDicts(log = true, element = document) {
         var func = dictsPerfect;
     }
     if(tooSmol) {
-        for(var thing of find(">dict")) {
+        for(var thing of $$("dict")) {
             thing.classList.add("smol-dict");
             thing.style.top = n2;
             thing.parentElement.style.minHeight = n;
@@ -191,7 +207,7 @@ function dictsPerfect() {
 }
 
 function dictsTooSmol() {
-    for(var thing of find(">dict")) {
+    for(var thing of $$("dict")) {
         var parent = thing.parentElement;
         parent.classList.add("dict-smol");
         parent.classList.remove("dict-good");
