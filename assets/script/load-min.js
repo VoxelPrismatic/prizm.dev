@@ -70,7 +70,6 @@ async function loadNow() {
         if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent)) {
             window.onscroll = changeScrollingThingy;
             $("#jumper").style.fontSize = "200%";
-            alert("Sorry for the inconvenience, this is a mobile test message");
             window.setInterval(checkScrollPosition, 100);
         } else {
             window.onwheel = (evt) => changeScrollingThingy(evt);
