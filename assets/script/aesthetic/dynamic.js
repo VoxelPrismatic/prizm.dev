@@ -1,5 +1,7 @@
-function jumpToEdge() {
-    window.navigator.vibrate(200);
+function jumpToEdge(delayed = 0) {
+    if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent) && !delayed) {
+        return window.setTimeout(jumpToEdge, 100, 1);
+    window.navigator.vibrate([200, 500, 100, 200]);
     if(find("jumper").innerHTML == "[\u039b]") {
         find("truelogo").scrollIntoView({behavior: "smooth"});
         setHtml("jumper", "[V]");
