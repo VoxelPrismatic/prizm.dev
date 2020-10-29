@@ -1,15 +1,12 @@
 function jumpToEdge(delayed = 0) {
-    if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent) && !delayed)
-        return window.setTimeout(jumpToEdge, 100, 1);
-    window.navigator.vibrate([200, 500, 100, 200]);
+    window.navigator.vibrate([500]);
+    window.setTimeout((e) => {globalThis.lastPosition = e}, 1000, window.scrollY);
     if(find("jumper").innerHTML == "[\u039b]") {
         find("truelogo").scrollIntoView({behavior: "smooth"});
         setHtml("jumper", "[V]");
-        lastPosition = -10;
     } else {
         find("footer").scrollIntoView({behavior: "smooth"});
         setHtml("jumper", "[\u039b]");
-        lastPosition = window.scrollMaxY + 10;
     }
 }
 
