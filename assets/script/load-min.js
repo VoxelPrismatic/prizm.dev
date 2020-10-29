@@ -115,6 +115,10 @@ async function loadNow() {
                 n += 1;
                 h1.style.fontSize = n + "px";
             }
+            while(Number(getComputedStyle(h1).fontSize.slice(0, -2)) > 56) {
+                n -= 1;
+                h1.style.fontSize = n + "px";
+            }
         }
     } if (h1.clientHeight > 54) {
         h1.style.setAttribute("top", (-h1.clientHeight/2 - 54) + "px", "important");
