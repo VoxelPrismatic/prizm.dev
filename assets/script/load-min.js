@@ -104,20 +104,31 @@ async function loadNow() {
         }
     }
     var h1 = $("h1#head");
-    fS = getComputedStyle(h1).fontSize
+    var fS = getComputedStyle(h1).fontSize
     if(fS != "48px") {
-        var scales = {
-            "38.4px": "60px"
+        if(navigator.userAgent.includes("Android")) {
+            var scales = {
+                "38.4px": "60px",
+                "43.2px": "54px",
+                "52.8px": "47px",
+                "62.4px": "40px",
+                "72px": "34px",
+                "81.6px": "30px",
+                "96px": "26px"
+            }
+            if(scales[fS]) {
+                h1.style.fontSize = scales[fS];
+            } 
+            fS = getComputedStyle(h1).fontSize;
         }
-        if(scales[fS]) {
-            h1.style.fontSize = scales[fS];
-        } else {
+        var fN = Number(fS.slice(0, -2))
+        if(fN < 48 || fN > 52) {
             n = Math.round(fS.slice(0, -2));
             while(Number(getComputedStyle(h1).fontSize.slice(0, -2)) < 48) {
                 n += 1;
                 h1.style.fontSize = n + "px";
             }
-            while(Number(getComputedStyle(h1).fontSize.slice(0, -2)) > 56) {
+            while(Number(getComputedStyle(h1).fontSize.slice(0, -2)) > 52) {
                 n -= 1;
                 h1.style.fontSize = n + "px";
             }
