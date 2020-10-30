@@ -5,7 +5,9 @@ function checkScrollPosition() {
     if(y == lastPosition)
         return;
     var elem = $("#jumper");
-    if(y > lastPosition)
+    if(y >= window.scrollMaxY - 10)
+        elem.innerHTML = "[\u039b]";
+    else if(y > lastPosition || y <= 10)
         elem.innerHTML = "[V]";
     else
         elem.innerHTML = "[\u039b]";
