@@ -35,34 +35,34 @@ Think I'm joking?
 
 ###] C-U0003
 
-@[C-U0003]</prizm.dev/assets/image/nano/C-U0003.png>(500px)
+@[C-U0003]</prizm.dev/assets/image/nano/C-U0003.png>(200px)
 
 ###] C-U0007
 
-@[Old C-U0007]</prizm.dev/assets/image/nano/C-U0007-old.png>(500px) \
-@[New C-U0007]</prizm.dev/assets/image/nano/C-U0007-new.png>(500px) \
-@[G613]</prizm.dev/assets/image/nano/C-U0007-G613.png>(500px)
+@[Old C-U0007]</prizm.dev/assets/image/nano/C-U0007-old.png>(200px) \
+@[New C-U0007]</prizm.dev/assets/image/nano/C-U0007-new.png>(200px) \
+@[G613]</prizm.dev/assets/image/nano/C-U0007-G613.png>(200px)
 
 ###] C-U0008
 
-@[New C-U0008]</prizm.dev/assets/image/nano/C-U0008-new.png>(500px) \
-@[G502]</prizm.dev/assets/image/nano/C-U0008-G502.png>(500px) \
-@[G603]</prizm.dev/assets/image/nano/C-U0008-G603.png>(500px) \
-@[G703]</prizm.dev/assets/image/nano/C-U0008-G703.png>(500px) \
-@[G900]</prizm.dev/assets/image/nano/C-U0008-G900.png>(500px) \
-@[G903]</prizm.dev/assets/image/nano/C-U0008-G903.png>(500px)
+@[New C-U0008]</prizm.dev/assets/image/nano/C-U0008-new.png>(200px) \
+@[G502]</prizm.dev/assets/image/nano/C-U0008-G502.png>(200px) \
+@[G603]</prizm.dev/assets/image/nano/C-U0008-G603.png>(200px) \
+@[G703]</prizm.dev/assets/image/nano/C-U0008-G703.png>(200px) \
+@[G900]</prizm.dev/assets/image/nano/C-U0008-G900.png>(200px) \
+@[G903]</prizm.dev/assets/image/nano/C-U0008-G903.png>(200px)
 
 ###] C-U0010
 
-@[C-U0010]</prizm.dev/assets/image/nano/C-U0010.png>(500px) \
-@[G403]</prizm.dev/assets/image/nano/C-U0010-G403.png>(500px) \
-@[PRO]</prizm.dev/assets/image/nano/C-U0010-PRO.png>(500px) \
-@[500Hz]</prizm.dev/assets/image/nano/C-U0010-500hz.png>(500px)
+@[C-U0010]</prizm.dev/assets/image/nano/C-U0010.png>(200px) \
+@[G403]</prizm.dev/assets/image/nano/C-U0010-G403.png>(200px) \
+@[PRO]</prizm.dev/assets/image/nano/C-U0010-PRO.png>(200px) \
+@[500Hz]</prizm.dev/assets/image/nano/C-U0010-500hz.png>(200px)
 
 ###] C-U0012
 
-@[C-U0012]</prizm.dev/assets/image/nano/C-U0012-slim.png>(500px)
+@[C-U0012]</prizm.dev/assets/image/nano/C-U0012-slim.png>(200px)
 
 ###] C-UDB58
 
-@[C-UDB58]</prizm.dev/assets/image/nano/C-UDB58.png>(500px)
+@[C-UDB58]</prizm.dev/assets/image/nano/C-UDB58.png>(200px)
