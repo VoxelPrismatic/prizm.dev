@@ -1,0 +1,68 @@
+#] List of Logitech Nano Recievers
+
+###] Unifying USB Reciever
+
+**Note:** This one is special, but only works with keyboards and mice.
+- Old style: `C-U0007`
+- New style: `C-U0007`, `C-U0008`
+- Slim style: `C-U0012`
+
+###] Nano Reciever
+
+**Note:** This one is red, and only works with keyboards and mice. 
+- `C-U0003`
+- `C-UBD58`
+- `C-U0010`
+- `C-UDB58`
+- "PRO": `C-U0010`
+- "500Hz": `C-U0010`
+- G403: `C-U0010`
+- G502: `C-U0008`
+- G603: `C-U0008`
+- G613: `C-U0007`
+- G703: `C-U0008`
+- G900: `C-U0008`
+- G903: `C-U0008`
+
+###] Nano Reciever
+
+**Note:** This one is blue, and only works with audio gear.
+- I can't find a clear image of the model number ;-;
+
+#] Collection
+
+Think I'm joking?
+
+###] C-U0003
+
+@[C-U0003]</prizm.dev/assets/image/nano/C-U0003.png>
+
+###] C-U0007
+
+@[Old C-U0007]</prizm.dev/assets/image/nano/C-U0007-old.png>
+@[New C-U0007]</prizm.dev/assets/image/nano/C-U0007-new.png>
+@[G613]</prizm.dev/assets/image/nano/C-U0007-G613.png>
+
+###] C-U0008
+
+@[New C-U0008]</prizm.dev/assets/image/nano/C-U0008-new.png>
+@[G502]</prizm.dev/assets/image/nano/C-U0008-G502.png>
+@[G603]</prizm.dev/assets/image/nano/C-U0008-G603.png>
+@[G703]</prizm.dev/assets/image/nano/C-U0008-G703.png>
+@[G900]</prizm.dev/assets/image/nano/C-U0008-G900.png>
+@[G903]</prizm.dev/assets/image/nano/C-U0008-G903.png>
+
+###] C-U0010
+
+@[C-U0010]</prizm.dev/assets/image/nano/C-U0010.png>
+@[G403]</prizm.dev/assets/image/nano/C-U0010-G403.png>
+@[PRO]</prizm.dev/assets/image/nano/C-U0010-PRO.png>
+@[500Hz]</prizm.dev/assets/image/nano/C-U0010-500hz.png>
+
+###] C-U0012
+
+@[C-U0012]</prizm.dev/assets/image/nano/C-U0012-slim.png>
+
+###] C-UDB58
+
+@[C-UDB58]</prizm.dev/assets/image/nano/C-UDB58.png>
