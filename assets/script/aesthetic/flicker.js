@@ -1,4 +1,9 @@
 function flickery_element(h) {
+    if (h == $("h1#head") && h.clientHeight > 54) {
+        console.log(h.clientHeight);
+        console.log(h);
+        h.style.setProperty("top", (-h.clientHeight/2 - 54) + "px", "important");
+    }
     delayFunction(function(h){h.style.transition = "none";}, 1000, 1001, 1000, h);
     var shown = true;
     var halfOpacity = compSty(h).color;
@@ -19,4 +24,4 @@ function flickery() {
     flickery_element(this);
 }
 
-window.setInterval(function(){flickery_element(find("head"));}, 15000);
+//window.setInterval(function(){flickery_element(find("head"));}, 15000);
