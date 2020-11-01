@@ -16,32 +16,42 @@ function checkScrollPosition() {
 
 async function loadNow() {
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
-    if(document.URL.endsWith("/prizm.dev/")) {
+    if(document.URL.split("#")[0].split("?")[0].endsWith("/prizm.dev/")) {
         var d = new Date();
         var day = d.getDate();
         switch(d.getMonth()) {
             case 0: // January
+                swapColor("cyan");
                 break;
             case 1: // February
                 if(day == 14) {
                     swapColor("pink");
                     $("#truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_heart.webp";
                     $("#head").innerHTML = "LOVE ;]";
+                } else {
+                    swapColor("cyan");
                 }
                 break;
             case 2: // March
+                swapColor("cyan");
                 break;
             case 3: // April
+                swapColor("cyan");
                 break;
             case 4: // May
+                swapColor("cyan");
                 break;
             case 5: // June
+                swapColor("cyan");
                 break;
             case 6: // July
+                swapColor("cyan");
                 break;
             case 7: // August
+                swapColor("cyan");
                 break;
             case 8: // September
+                swapColor("cyan");
                 break;
             case 9: // October
                 swapColor("orange");
@@ -49,8 +59,8 @@ async function loadNow() {
                 $("#head").innerHTML = "SPOOK ;]";
                 break;
             case 10: // November
+                swapColor("cyan");
                 if(day == 11) {
-                    swapColor("cyan");
                     find("truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_bday.webp";
                     find("head").innerHTML = "BDAY ;]";
                 }
