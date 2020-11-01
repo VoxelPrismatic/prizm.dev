@@ -144,6 +144,7 @@ async function loadNow() {
             }
         }
     } if (h1.clientHeight > 54) {
+        console.log(h1.clientHeight);
         h1.style.setProperty("top", (-h1.clientHeight/2 - 54) + "px", "important");
     }
     window.setInterval(flickery_element, 15000, $("h1#head"));
