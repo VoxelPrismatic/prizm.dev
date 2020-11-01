@@ -143,11 +143,13 @@ async function loadNow() {
                 h1.style.fontSize = n + "px";
             }
         }
-    } if (h1.clientHeight > 54) {
-        console.log(h1.clientHeight);
-        console.log(h1);
-        h1.style.setProperty("top", (-h1.clientHeight/2 - 54) + "px", "important");
-    }
+    } window.setTimeout(() => {
+        if (h1.clientHeight > 54) {
+            console.log(h1.clientHeight);
+            console.log(h1);
+            h1.style.setProperty("top", (-h1.clientHeight/2 - 54) + "px", "important");
+        }
+    }, 100);
     window.setInterval(flickery_element, 15000, $("h1#head"));
 }
 
