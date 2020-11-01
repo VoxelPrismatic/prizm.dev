@@ -145,7 +145,6 @@ async function loadNow() {
         }
     }
     window.setInterval(flickery_element, 15000, $("h1#head"));
-    flickery_element(h1);
 }
 
 async function load(filename, strip = false, json = false, list = false) {
