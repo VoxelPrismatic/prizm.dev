@@ -221,7 +221,7 @@ function resizeDicts(log = true, element = document) {
         var func = dictsPerfect;
     }
     if(tooSmol) {
-        for(var thing of $$("dict")) {
+        for(var thing of $all("dict")) {
             thing.classList.add("smol-dict");
             thing.style.top = n2;
             thing.parentElement.style.minHeight = n;
@@ -234,7 +234,7 @@ function resizeDicts(log = true, element = document) {
 }
 
 function dictsPerfect() {
-    for(var thing of find(">dict")) {
+    for(var thing of $all("dict")) {
         var parent = thing.parentElement;
         parent.classList.add("dict-good");
         parent.classList.remove("dict-smol");
@@ -243,7 +243,7 @@ function dictsPerfect() {
 }
 
 function dictsTooSmol() {
-    for(var thing of $$("dict")) {
+    for(var thing of $all("dict")) {
         var parent = thing.parentElement;
         parent.classList.add("dict-smol");
         parent.classList.remove("dict-good");
