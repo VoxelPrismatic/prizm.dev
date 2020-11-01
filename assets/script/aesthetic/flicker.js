@@ -24,4 +24,4 @@ function flickery() {
     flickery_element(this);
 }
 
-//window.setInterval(function(){flickery_element(find("head"));}, 15000);
+window.setInterval(function(){flickery_element(find("head"));}, 15000);
