@@ -143,15 +143,9 @@ async function loadNow() {
                 h1.style.fontSize = n + "px";
             }
         }
-    } window.setTimeout(() => {
-        var h1 = $("h1#head");
-        if (h1.clientHeight > 54) {
-            console.log(h1.clientHeight);
-            console.log(h1);
-            h1.style.setProperty("top", (-h1.clientHeight/2 - 54) + "px", "important");
-        }
-    }, 1000);
+    }
     window.setInterval(flickery_element, 15000, $("h1#head"));
+    flickery_element(h1);
 }
 
 async function load(filename, strip = false, json = false, list = false) {
