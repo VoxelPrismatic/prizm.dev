@@ -1,3 +1,9 @@
+#] nov 2, 2020
+> Help command formatting is largely fixed
+> Graph bug fixed
+> Triangle solving big fixed
+
+
 #] aug 25, 2020
 ###] MODERATION
 The `;]enable` and `;]disable` commands now support turning off groups of commands rather than one command at a time
