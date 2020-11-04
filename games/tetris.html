@@ -43,7 +43,7 @@
             } .board td {
                 height: 18px;
                 width: 18px;
-                border: 2px #0000 solid;
+                /*border: 2px #122 solid;*/
             } .board.main td {
                 background-color: #233;
                 border: 2px #122 solid;
@@ -441,6 +441,9 @@ ______________________
                     bag = ["I", "J", "L", "O", "S", "T", "Z"]
                     draw_next_piece();
                     next_piece_on_board();
+                    w = $("#floating").clientWidth + "px";
+                    $("#grid").style.width = w;
+                    $("#predict").style.width = w;
 
                 }
 
