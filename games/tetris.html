@@ -548,8 +548,22 @@ ______________________
                         for(var x = posX; x < posX + grid[0].length; x += 1) {
                             s = table1.rows[y].cells[x].className
                             if(invalidX.includes(x) || invalidY.includes(y)) {
-                                if(s)
-                                    return true;
+                                if(s) {
+                                    if(invalidY.includes(y)) {
+                                        if([0, 1, 2, 3].includes(y))
+                                            posY += (4 - y);
+                                        else
+                                            return true;
+                                    }
+                                    if(invalidX.includes(x)) {
+                                        if([0, 1, 2, 3].includes(x))
+                                            posX += (4 - x);
+                                        else
+                                            posX -= (5 - (maxX - x))
+                                    }
+                                    redraw_piece(table1);
+                                    return false;
+                                }
                             } else if(table2.rows[y].cells[x].className && s) {
                                 return true;
                             } /*if(table2.rows[y].cells[x].className) {
@@ -710,6 +724,22 @@ ______________________
                     predict();
                 }
 
+                function kick_off_wall() {
+                    var st = ""
+                    invalidX = [0, 1, 2, 3, maxX - 4, maxX - 3, maxX - 2, maxX - 1]
+                    invalidY = [0, 1, 2, 3, maxY - 4, maxY - 3, maxY - 2, maxY - 1]
+                    for(var y = posY; y < posY + grid.length; y += 1) {
+                        for(var x = posX; x < posX + grid[0].length; x += 1) {
+                            s = table1.rows[y].cells[x].className
+                            if(invalidX.includes(x) || invalidY.includes(y)) {
+                                if(s) {
+
+                                }
+                            }
+                        }
+                    }
+                }
+
                 function fix_cleared() {
                     table = $("#grid")
                     cleared = 0
@@ -790,10 +820,10 @@ ______________________
 //                                 console.log(cleared)
                         }
                         next_piece_on_board();
+                        predict();
                         window.setTimeout(fix_cleared, 500)
                         return true;
                     }
-                    predict();
                     return false;
                 }
 
