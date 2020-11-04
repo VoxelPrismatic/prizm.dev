@@ -44,36 +44,66 @@
                 height: 18px;
                 width: 18px;
                 border: 2px #0000 solid;
+                transition: all 0.25s cubic-bezier(0, 0.5, 0, 1);
             } .board.main td {
                 background-color: #233;
                 border: 2px #122 solid;
             } .cyan {
                 background-color: #0ff !important;
                 border: 2px #0ff solid !important;
+                transition: none !important;
+            } .nuclear {
+                background-color: #8f0 !important;
+                border: 2px #8f0 solid !important;
+                transition: none !important;
+            } .magenta {
+                background-color: #f0f !important;
+                border: 2px #f0f solid !important;
+                transition: none !important;
+            } .purple {
+                background-color: #80f !important;
+                border: 2px #80f solid !important;
+                transition: none !important;
+            } .seafoam {
+                background-color: #0f8 !important;
+                border: 2px #0f8 solid !important;
+                transition: none !important;
+            } .seawater {
+                background-color: #08f !important;
+                border: 2px #08f solid !important;
+                transition: none !important;
             } .blue {
-                background-color: #44f !important;
-                border: 2px #44f solid !important;
+                background-color: #00f !important;
+                border: 2px #00f solid !important;
+                transition: none !important;
             } .orange {
                 background-color: #f80 !important;
                 border: 2px #f80 solid !important;
+                transition: none !important;
             } .yellow {
                 background-color: #ff0 !important;
                 border: 2px #ff0 solid !important;
+                transition: none !important;
             } .green {
                 background-color: #0f0 !important;
                 border: 2px #0f0 solid !important;
+                transition: none !important;
             } .red {
                 background-color: #f00 !important;
                 border: 2px #f00 solid !important;
+                transition: none !important;
             } .pink {
                 background-color: #f08 !important;
                 border: 2px #f08 solid !important;
+                transition: none !important;
             } .garbage {
                 background-color: #666 !important;
                 border: 2px #666 solid !important;
+                transition: none !important;
             } .cleared td {
                 background-color: #fff !important;
                 border: 2px #fff solid !important;
+                transition: none !important;
             } h1, h3, details {
                 color: #0ff;
                 text-align: center;
@@ -199,8 +229,12 @@ ______________________
                                    onchange="interval=this.value;change_interval();localStorage.setItem('speed', this.value)"></input></td>
                     </tr>
                     <tr>
-                        <td>Ghost piece</td>
+                        <td>Ghost tetrimino</td>
                         <td><input type="checkbox" id="ghost" onchange="localStorage.setItem('ghost', Number($('#predict').classList.toggle('noopac')))" checked=''></input></td>
+                    </tr>
+                    <tr>
+                        <td>Funky tetriminos</td>
+                        <td><input type="checkbox" id="extras" onchange="extra_bits=this.checked;localStorage.setItem('extras', Number(extra_bits))"></input></td>
                     </tr>
                     <tr>
                         <td>Width<br><sub><i>*Will reset the game</i></sub></td>
@@ -398,6 +432,136 @@ ______________________
                             "## ",
                             "#  "
                         ]
+                    },
+                    "Q": {
+                        0: [
+                            "    ",
+                            " # #",
+                            "# # ",
+                            "    "
+                        ],
+                        1: [
+                            " #  ",
+                            "  # ",
+                            " #  ",
+                            "  # "
+                        ],
+                        2: [
+                            "    ",
+                            " # #",
+                            "# # ",
+                            "    "
+                        ],
+                        3: [
+                            " #  ",
+                            "  # ",
+                            " #  ",
+                            "  # "
+                        ]
+                    },
+                    "P": {
+                        0: [
+                            "    ",
+                            "# # ",
+                            " # #",
+                            "    "
+                        ],
+                        1: [
+                            "  # ",
+                            " #  ",
+                            "  # ",
+                            " #  "
+                        ],
+                        2: [
+                            "    ",
+                            "# # ",
+                            " # #",
+                            "    "
+                        ],
+                        3: [
+                            "  # ",
+                            " #  ",
+                            "  # ",
+                            " #  "
+                        ]
+                    },
+                    "/": {
+                        0: [
+                            "    ",
+                            "  ##",
+                            "##  ",
+                            "    "
+                        ],
+                        1: [
+                            " #  ",
+                            " #  ",
+                            "  # ",
+                            "  # "
+                        ],
+                        2: [
+                            "    ",
+                            "  ##",
+                            "##  ",
+                            "    "
+                        ],
+                        3: [
+                            " #  ",
+                            " #  ",
+                            "  # ",
+                            "  # "
+                        ]
+                    },
+                    "\\": {
+                        0: [
+                            "    ",
+                            "##  ",
+                            "  ##",
+                            "    "
+                        ],
+                        1: [
+                            "  # ",
+                            "  # ",
+                            " #  ",
+                            " #  "
+                        ],
+                        2: [
+                            "    ",
+                            "##  ",
+                            "  ##",
+                            "    "
+                        ],
+                        3: [
+                            "  # ",
+                            "  # ",
+                            " #  ",
+                            " #  "
+                        ]
+                    },
+                    "=": {
+                        0: [
+                            "    ",
+                            "#  #",
+                            "#  #",
+                            "    "
+                        ],
+                        1: [
+                            " ## ",
+                            "    ",
+                            "    ",
+                            " ## "
+                        ],
+                        2: [
+                            "    ",
+                            "#  #",
+                            "#  #",
+                            "    "
+                        ],
+                        3: [
+                            " ## ",
+                            "    ",
+                            "    ",
+                            " ## "
+                        ]
                     }
                 }
                 let colors = {
@@ -407,9 +571,20 @@ ______________________
                     "O": "yellow",
                     "S": "green",
                     "T": "pink",
-                    "Z": "red"
+                    "Z": "red",
+                    "/": "magenta",
+                    "\\": "purple",
+                    "Q": "seafoam",
+                    "P": "nuclear",
+                    "=": "seawater"
                 }
-                var bag = ["I", "J", "L", "O", "S", "T", "Z"]
+                var bag = [];
+                var extra_bits = false;
+                function fillbag() {
+                    bag = ["I", "J", "L", "O", "S", "T", "Z"]
+                    if(extra_bits)
+                        bag.push("P", "/", "\\", "Q", "=")
+                }
                 var next_piece
                 var current_piece
                 var score = 0;
@@ -426,19 +601,24 @@ ______________________
                     ]
                     board_st = ""
                     for(y = 0; y < maxY; y += 1) {
-                        l = "<tr> "
+                        board_st += "<tr> "
                         for(var x = 0; x < maxX; x += 1)
-                            l += "<td></td> "
-                        board_st += l + "</tr>\n"
+                            board_st += "<td></td> "
+                        board_st += "</tr>\n"
                     }
                     for(var t of tables) {
+                        try {
+                            for(var y = 0; y < maxY; y += 1)
+                                t.rows[0].remove();
+                        } catch(err) {
+                        }
                         t.innerHTML = board_st;
                     }
 
                     localStorage.setItem("width", maxX)
                     localStorage.setItem("height", maxY)
                     score = 0;
-                    bag = ["I", "J", "L", "O", "S", "T", "Z"]
+                    fillbag();
                     draw_next_piece();
                     next_piece_on_board();
                     w = $("#floating").clientWidth + "px";
@@ -454,20 +634,23 @@ ______________________
                     table = $("#next_piece");
                     grid = pieces[next_piece][0]
                     color = colors[next_piece]
+                    offset = 0
+                    if(grid[0] == "    ")
+                        offset = 1
                     for(var y = 0; y < 2; y += 1) {
                         for(var x = 0; x < 4; x += 1) {
                             cell = table.rows[y].cells[x]
                             if(x < grid[0].length)
-                                cell.className = (grid[y][x] == " " ? "" : color)
+                                cell.className = (grid[y + offset][x] == " " ? "" : color)
                             else
-                                cell.className = ""
+                                cell.removeAttribute("class")
                         }
                     }
                 }
 
                 function draw_next_piece() {
                     if(bag.length == 0)
-                        bag = ["I", "J", "L", "O", "S", "T", "Z"]
+                        fillbag();
                     next_piece = bag[Math.floor(Math.random() * bag.length)]
                     bag = bag.filter((i) => {return i != next_piece})
                     redraw_next_piece();
@@ -481,7 +664,8 @@ ______________________
                 var level = 1;
 
                 function redraw_piece(table = $("#floating")) {
-                    table.innerHTML = board_st;
+                    for(var elem of table.querySelectorAll("td[class]"))
+                        elem.className = ""
                     grid = pieces[current_piece][posR]
                     color = colors[current_piece]
                     for(var y = 0; y < grid.length; y += 1) {
@@ -687,10 +871,11 @@ ______________________
                 function game_over() {
                     alert("Game over!\nScore: " + score)
                     for(table of [$("#grid"), $("#floating"), $("#predict")]) {
-                        table.innerHTML = board_st
+                        for(var elem of table.querySelectorAll("td[class]"))
+                            elem.className = ""
                     }
                     score = 0;
-                    bag = ["I", "J", "L", "O", "S", "T", "Z"]
+                    fillbag();
                     draw_next_piece();
                     next_piece_on_board();
                 }
@@ -722,22 +907,6 @@ ______________________
                         redraw_piece()
                     }
                     predict();
-                }
-
-                function kick_off_wall() {
-                    var st = ""
-                    invalidX = [0, 1, 2, 3, maxX - 4, maxX - 3, maxX - 2, maxX - 1]
-                    invalidY = [0, 1, 2, 3, maxY - 4, maxY - 3, maxY - 2, maxY - 1]
-                    for(var y = posY; y < posY + grid.length; y += 1) {
-                        for(var x = posX; x < posX + grid[0].length; x += 1) {
-                            s = table1.rows[y].cells[x].className
-                            if(invalidX.includes(x) || invalidY.includes(y)) {
-                                if(s) {
-
-                                }
-                            }
-                        }
-                    }
                 }
 
                 function fix_cleared() {
@@ -835,6 +1004,11 @@ ______________________
                     predict();
                 }
 
+                function drop_piece() {
+                    for(var x = 0; x <= preY - posY; x += 1)
+                        window.setTimeout(move_piece_down, 10 * x)
+                }
+
                 window.onkeydown = (evt) => {
                     switch(evt.key) {
                         case "ArrowUp":
@@ -874,8 +1048,7 @@ ______________________
                             break;
                         case "Enter":
                         case " ":
-                            posY = preY;
-                            move_piece_down();
+                            drop_piece();
                             evt.preventDefault();
                             break;
                         case "C":
@@ -924,9 +1097,15 @@ ______________________
                 } else {
                     maxX = 18;
                     $("#width").value = maxX - 8;
+                } if(Number(localStorage.getItem("extras"))) {
+                    extra_bits = Number(localStorage.getItem("extras"));
+                    $("#extras").checked = extra_bits;
+                } else {
+                    extra_bits = false;
+                    $("#extras").checked = extra_bits;
                 }
-                board_size();
 
+                board_size();
                 change_interval();
             </script>
         </div>
