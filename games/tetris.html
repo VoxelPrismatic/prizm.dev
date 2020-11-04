@@ -43,7 +43,7 @@
             } .board td {
                 height: 18px;
                 width: 18px;
-                /*border: 2px #122 solid;*/
+                border: 2px #0000 solid;
             } .board.main td {
                 background-color: #233;
                 border: 2px #122 solid;
@@ -442,8 +442,11 @@ ______________________
                     draw_next_piece();
                     next_piece_on_board();
                     w = $("#floating").clientWidth + "px";
+                    h = $("#floating").clientHeight + "px";
                     $("#grid").style.width = w;
                     $("#predict").style.width = w;
+                    $("#grid").style.height = h;
+                    $("#predict").style.height = h;
 
                 }
 
