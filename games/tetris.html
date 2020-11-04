@@ -85,6 +85,17 @@
                 opacity: 0 !important;
             } summary h3 {
                 display: inline-block;
+            } button {
+                background-color: #0ff4;
+                border: 2px solid #0ff;
+                color: #0ff;
+                border-radius: 4px;
+                padding: 5px;
+                margin: 2px;
+                height: 32px;
+                width: 32px;
+                font-size: 18px;
+                font-weight: bold;
             }
 
             .board.ed td:first-child,
@@ -109,6 +120,12 @@
                 border: none !important;
                 background-color: #0000 !important;
                 display: none;
+            }
+
+            #fuckme {
+                line-height: 8px;
+                font-size: 75%;
+                height: 20px;
             }
         </style>
     </head>
@@ -212,6 +229,12 @@ ______________________
 
             <table class='board ed' style='position: relative; z-index: 100;' id="floating">
             </table>
+
+            <div style="text-align: center;">
+                <button onclick='rotate_piece(-1)'>&lt;O</button><button onclick='rotate_piece()'>&Lambda;</button><button onclick='rotate_piece()'>O&gt;</button> <br>
+                <button onclick='move_piece_left()'>&lt;</button><button onclick='move_piece_down()'>V</button><button onclick='move_piece_right()'>&gt;</button> <br>
+                <button onclick='add_garbage()'>.:</button><button onclick='posY=preY;move_piece_down()'>VV</button><button onclick='swap_piece()'><div id='fuckme'><--<br>--></div></button>
+            </div>
 
         </div>
         <div id="content">
@@ -472,13 +495,13 @@ ______________________
                         }
                         if(clean) {
                             t.rows[y].remove();
-                            t.insertRow(maxY - 3);
+                            t.insertRow(maxY - 5);
                             for(var x = 0; x < 4; x += 1)
                                 t.rows[maxY - 5].insertCell();
                             for(var x = 4; x < maxX - 4; x += 1) {
-                                t.rows[maxY - 3].insertCell();
+                                t.rows[maxY - 5].insertCell();
                                 if(Math.floor(Math.random() * 2))
-                                    t.rows[maxY - 3].cells[x].className = "garbage"
+                                    t.rows[maxY - 5].cells[x].className = "garbage"
                             }
                             for(var x = 0; x < 4; x += 1)
                                 t.rows[maxY - 5].insertCell();
@@ -493,9 +516,9 @@ ______________________
 
                 function predict() {
                     ogY = posY
-                    posY = maxY - 2
-                    while(conflicting($("#predict")))
-                        posY -= 1;
+                    while(!conflicting($("#predict")))
+                        posY += 1;
+                    posY -= 1;
                     preY = posY;
                     redraw_piece($("#predict"))
                     posY = ogY
@@ -540,6 +563,8 @@ ______________________
                     posR += dir
                     if(posR == 4)
                         posR = 0
+                    else if(posR == -1)
+                        posR = 3
                     redraw_piece();
                     if(!conflicting()) {
                         predict();
@@ -768,6 +793,12 @@ ______________________
 
                 function move_piece_right() { move_piece_left(-1) }
 
+                function swap_piece() {
+                    [current_piece, next_piece] = [next_piece, current_piece]
+                    next_piece_on_board(true)
+                    predict();
+                }
+
                 window.onkeydown = (evt) => {
                     switch(evt.key) {
                         case "ArrowUp":
@@ -814,9 +845,7 @@ ______________________
                         case "C":
                         case "c":
                         case "Control":
-                            [current_piece, next_piece] = [next_piece, current_piece]
-                            next_piece_on_board(true)
-                            predict();
+                            swap_piece();
                             evt.preventDefault();
                             break;
                         case "g":
