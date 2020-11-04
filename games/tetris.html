@@ -83,16 +83,26 @@
                 transform: translateX(-50%);
             } .noopac {
                 opacity: 0 !important;
+            } summary h3 {
+                display: inline-block;
             }
 
             .board.ed td:first-child,
             .board.ed td:last-child,
             .board.ed td:nth-child(2),
             .board.ed td:nth-last-child(2),
+            .board.ed td:nth-child(3),
+            .board.ed td:nth-last-child(3),
+            .board.ed td:nth-child(4),
+            .board.ed td:nth-last-child(4),
             .board.ed tr:first-child td,
             .board.ed tr:last-child td,
             .board.ed tr:nth-child(2) td,
-            .board.ed tr:nth-last-child(2) td {
+            .board.ed tr:nth-last-child(2) td,
+            .board.ed tr:nth-child(3) td,
+            .board.ed tr:nth-last-child(3) td,
+            .board.ed tr:nth-child(4) td,
+            .board.ed tr:nth-last-child(4) td  {
                 height: 0px;
                 width: 0px;
                 padding: 0px;
@@ -115,46 +125,49 @@ ______________________
 <i>~priz edition~</i>
         </pre>
         <div style="text-align: center">
-            <table style="color: #ccc; margin: auto;" id="keys">
-                <tr>
-                    <th>Key</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
-                    <td>&Lambda;, W, E</td>
-                    <td>Rotate piece right</td>
-                </tr>
-                <tr>
-                    <td>/, Q, Z</td>
-                    <td>Rotate piece left</td>
-                </tr>
-                <tr>
-                    <td>&lt;, A</td>
-                    <td>Move piece right</td>
-                </tr>
-                <tr>
-                    <td>&gt;, D</td>
-                    <td>Move piece left</td>
-                </tr>
-                <tr>
-                    <td>V, S</td>
-                    <td>Move piece down</td>
-                </tr>
-                <tr>
-                    <td>Space, Enter</td>
-                    <td>Drop piece to bottom</td>
-                </tr>
-                <tr>
-                    <td>C, CTRL</td>
-                    <td>Swap piece</td>
-                </tr>
-                <tr>
-                    <td>G</td>
-                    <td>Add garbage</td>
-            </table>
             <details>
-                <summary>Settings</summary>
-                <table style='color: #ccc; margin: auto;'>
+                <summary><h3>Key map</h3></summary>
+                <table style="color: #ccc; margin: auto;" id="keys">
+                    <tr>
+                        <th>Key</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>&Lambda;, W, E</td>
+                        <td>Rotate piece right</td>
+                    </tr>
+                    <tr>
+                        <td>/, Q, Z</td>
+                        <td>Rotate piece left</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;, A</td>
+                        <td>Move piece right</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;, D</td>
+                        <td>Move piece left</td>
+                    </tr>
+                    <tr>
+                        <td>V, S</td>
+                        <td>Move piece down</td>
+                    </tr>
+                    <tr>
+                        <td>Space, Enter</td>
+                        <td>Drop piece to bottom</td>
+                    </tr>
+                    <tr>
+                        <td>C, CTRL</td>
+                        <td>Swap piece</td>
+                    </tr>
+                    <tr>
+                        <td>G</td>
+                        <td>Add garbage</td>
+                </table>
+            </details>
+            <details>
+                <summary><h3>Settings</h3></summary>
+                <table style='color: #ccc; margin: auto;' id="keys">
                     <tr>
                         <th>Option</th>
                         <th>Value</th>
@@ -172,6 +185,14 @@ ______________________
                         <td>Ghost piece</td>
                         <td><input type="checkbox" id="ghost" onchange="localStorage.setItem('ghost', Number($('#predict').classList.toggle('noopac')))" checked=''></input></td>
                     </tr>
+                    <tr>
+                        <td>Width<br><sub><i>*Will reset the game</i></sub></td>
+                        <td><input type="number" id="width" min="5" value="10" onchange="maxX=Number(this.value)+8;board_size()"></input></td>
+                    </tr>
+                    <tr>
+                        <td>Height<br><sub><i>*Will reset the game</i></sub></td>
+                        <td><input type="number" id="height" min="10" value="20" onchange="maxY=Number(this.value)+8;board_size()"></input></td>
+                    </tr>
                 </table>
             </details>
         </div>
@@ -184,99 +205,12 @@ ______________________
             <h3>Score: <span id='score'>0</span> // Level: <span id='level'>1</span></h3>
             <h1>-- Board --</h1>
             <table class='board main ed mid' id="grid">
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
             </table>
 
             <table class='board ed mid' style='opacity: 50%' id="predict">
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
             </table>
 
             <table class='board ed' style='position: relative; z-index: 100;' id="floating">
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
-                <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
             </table>
 
         </div>
@@ -459,6 +393,33 @@ ______________________
                 var cleared_total = 0;
                 var garbage_enabled = false;
                 var interval = 0;
+                var board_st = ""
+
+                function board_size() {
+                    tables = [
+                        $("#grid"),
+                        $("#predict"),
+                        $("#floating")
+                    ]
+                    board_st = ""
+                    for(y = 0; y < maxY; y += 1) {
+                        l = "<tr> "
+                        for(var x = 0; x < maxX; x += 1)
+                            l += "<td></td> "
+                        board_st += l + "</tr>\n"
+                    }
+                    for(var t of tables) {
+                        t.innerHTML = board_st;
+                    }
+
+                    localStorage.setItem("width", maxX)
+                    localStorage.setItem("height", maxY)
+                    score = 0;
+                    bag = ["I", "J", "L", "O", "S", "T", "Z"]
+                    draw_next_piece();
+                    next_piece_on_board();
+
+                }
 
                 function redraw_next_piece() {
                     table = $("#next_piece");
@@ -484,21 +445,14 @@ ______________________
                     return next_piece
                 }
 
-                draw_next_piece()
                 var posX = 0 // X position
                 var posY = 0 // Y position
                 var posR = 0 // Rotation
                 var preY = 0 // Predict Y position
                 var level = 1;
-                let maxY = $("#grid").rows.length;
-                let maxX = $("#grid").rows[0].cells.length;
 
                 function redraw_piece(table = $("#floating")) {
-                    for(var y = 0; y < maxY; y += 1) {
-                        for(var x = 0; x < maxX; x += 1) {
-                            table.rows[y].cells[x].className = ""
-                        }
-                    }
+                    table.innerHTML = board_st;
                     grid = pieces[current_piece][posR]
                     color = colors[current_piece]
                     for(var y = 0; y < grid.length; y += 1) {
@@ -510,7 +464,7 @@ ______________________
 
                 function add_garbage() {
                     t = $("#grid")
-                    for(var y = 2; y < maxY - 2; y += 1) {
+                    for(var y = 4; y < maxY - 4; y += 1) {
                         clean = true;
                         for(var x = 0; x < maxX; x += 1) {
                             if(t.rows[y].cells[x].className)
@@ -519,11 +473,15 @@ ______________________
                         if(clean) {
                             t.rows[y].remove();
                             t.insertRow(maxY - 3);
-                            for(var x = 0; x < maxX; x += 1) {
+                            for(var x = 0; x < 4; x += 1)
+                                t.rows[maxY - 5].insertCell();
+                            for(var x = 4; x < maxX - 4; x += 1) {
                                 t.rows[maxY - 3].insertCell();
-                                if(![0, 1, maxX - 2, maxX - 1].includes(x) && Math.floor(Math.random() * 2))
+                                if(Math.floor(Math.random() * 2))
                                     t.rows[maxY - 3].cells[x].className = "garbage"
                             }
+                            for(var x = 0; x < 4; x += 1)
+                                t.rows[maxY - 5].insertCell();
                             predict();
                             if(conflicting())
                                 game_over()
@@ -535,9 +493,9 @@ ______________________
 
                 function predict() {
                     ogY = posY
-                    while(!conflicting($("#predict")))
-                        posY += 1;
-                    posY -= 1
+                    posY = maxY - 2
+                    while(conflicting($("#predict")))
+                        posY -= 1;
                     preY = posY;
                     redraw_piece($("#predict"))
                     posY = ogY
@@ -555,8 +513,8 @@ ______________________
                     }
                     grid = pieces[current_piece][posR]
                     var st = ""
-                    invalidX = [0, 1, maxX - 2, maxX - 1]
-                    invalidY = [0, 1, maxY - 2, maxY - 1]
+                    invalidX = [0, 1, 2, 3, maxX - 4, maxX - 3, maxX - 2, maxX - 1]
+                    invalidY = [0, 1, 2, 3, maxY - 4, maxY - 3, maxY - 2, maxY - 1]
                     for(var y = posY; y < posY + grid.length; y += 1) {
                         for(var x = posX; x < posX + grid[0].length; x += 1) {
                             s = table1.rows[y].cells[x].className
@@ -683,15 +641,11 @@ ______________________
 
                 function game_over() {
                     alert("Game over!\nScore: " + score)
-                    bag = ["I", "J", "L", "O", "S", "T", "Z"]
                     for(table of [$("#grid"), $("#floating"), $("#predict")]) {
-                        for(var y = 0; y < maxY; y += 1) {
-                            for(var x = 0; x < maxX; x += 1) {
-                                table.rows[y].cells[x].className = ""
-                            }
-                        }
+                        table.innerHTML = board_st
                     }
                     score = 0;
+                    bag = ["I", "J", "L", "O", "S", "T", "Z"]
                     draw_next_piece();
                     next_piece_on_board();
                 }
@@ -704,7 +658,7 @@ ______________________
                         draw_next_piece()
                     }
                     posX = Math.floor((maxX - pieces[current_piece][0].length) / 2)
-                    posY = 1
+                    posY = 3
                     posR = 0
                     if(conflicting()) {
                         posY += 1
@@ -718,7 +672,7 @@ ______________________
 
                 function move_piece_left(dir = 1) {
                     posX -= dir
-                    if(conflicting()) {
+                    while(conflicting()) {
                         posX += dir
                         redraw_piece()
                     }
@@ -799,7 +753,7 @@ ______________________
                                 if(cell.className)
                                     cleared += 1;
                             }
-                            if(cleared == maxX - 4)
+                            if(cleared == maxX - 8)
                                 row.className = "cleared"
 //                             else if(cleared)
 //                                 console.log(cleared)
@@ -834,14 +788,14 @@ ______________________
                             evt.preventDefault();
                             break;
                         case "ArrowLeft":
-                        case "d":
-                        case "D":
+                        case "a":
+                        case "A":
                             move_piece_left();
                             evt.preventDefault();
                             break;
                         case "ArrowRight":
-                        case "a":
-                        case "A":
+                        case "d":
+                        case "D":
                             move_piece_right();
                             evt.preventDefault();
                             break;
@@ -873,8 +827,6 @@ ______________________
                     }
                 }
 
-                next_piece_on_board()
-
                 if(Number(localStorage.getItem("garbage"))) {
                     $("#garbage").checked = true;
                     garbage_enabled = true;
@@ -894,7 +846,21 @@ ______________________
                     }
                 } else {
                     $("#ghost").checked = true;
+                } if(Number(localStorage.getItem("height"))) {
+                    maxY = Number(localStorage.getItem("height"))
+                    $("#height").value = maxY - 8;
+                } else {
+                    maxY = 28;
+                    $("#height").value = maxY - 8;
+                } if(Number(localStorage.getItem("width"))) {
+                    maxX = Number(localStorage.getItem("width"))
+                    console.log(maxX)
+                    $("#width").value = maxX - 8;
+                } else {
+                    maxX = 18;
+                    $("#width").value = maxX - 8;
                 }
+                board_size();
 
                 change_interval();
             </script>
