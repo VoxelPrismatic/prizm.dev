@@ -818,7 +818,7 @@ ______________________
                             case 0: // 0 -> R
                                 tests = [
                                     [-2, 0],
-                                    [1, 1],
+                                    [1, 0],
                                     [-2, -1],
                                     [1, 2]
                                 ]
@@ -863,8 +863,9 @@ ______________________
                         }
                     }
                     posR -= dir;
-                    posY = ogY
-                    posX = ogX
+                    posY = ogY;
+                    posX = ogX;
+                    redraw_piece();
                     predict();
                 }
 
@@ -964,19 +965,18 @@ ______________________
                 }
 
                 function move_piece_down() {
-                    posY += 1
-                    if(conflicting()) {
-                        posY -= 1;
-                        redraw_piece();
+                    if(posY == preY) {
                         table1 = $("#floating")
                         table2 = $("#grid")
-                        for(var y = 0; y < maxY; y += 1) {
-                            for(var x = 0; x < maxX; x += 1) {
+                        for(var y = posY; y < posY + pieces[current_piece][posR].length; y += 1) {
+                            for(var x = posX; x < posX + pieces[current_piece][posR][0].length; x += 1) {
                                 c = table1.rows[y].cells[x]
                                 if(c.className)
                                     table2.rows[y].cells[x].className = c.className;
                             }
                         }
+                        next_piece_on_board();
+                        predict();
                         for(var row of table2.rows) {
                             cleared = 0;
                             for(var cell of row.cells) {
@@ -988,11 +988,11 @@ ______________________
 //                             else if(cleared)
 //                                 console.log(cleared)
                         }
-                        next_piece_on_board();
-                        predict();
                         window.setTimeout(fix_cleared, 500)
                         return true;
                     }
+                    posY += 1
+                    redraw_piece();
                     return false;
                 }
 
