@@ -42,7 +42,7 @@
                 border-spacing: 0px;
             } .board td {
                 border: 2px #122 solid;
-                transition: all 0.25s cubic-bezier(0, 0.5, 0, 1);
+                transition: all 0.1s cubic-bezier(0, 0.5, 0, 1);
             } table.block {
                 margin: auto;
             } .board > tbody > tr > td {
@@ -84,21 +84,21 @@
             } .red {
                 background-color: #f004 !important;
                 border: 4px solid #f00 !important;
-                transition: all 0.2s !important;
+                transition: all 0.1s !important;
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
             } .highlighted {
                 background-color: #0ff4 !important;
                 border: 4px solid #0ff !important;
-                transition: all 0.2s !important;
+                transition: all 0.1s !important;
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
             } .noted {
                 background-color: #0ff2 !important;
                 border: 4px solid #0ff8 !important;
-                transition: all 0.05s !important;
+                transition: all 0.1s !important;
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
@@ -525,6 +525,8 @@ ___________________
                         elem.classList.add("toggle")
                         return
                     }
+                    if(layered_coord(currentcell, $("#grid")).className.includes("preset"))
+                        return
                     if(noting) {
                         cell = layered_coord(currentcell, $("#notes"));
                         cell.innerHTML = "";
@@ -542,6 +544,7 @@ ___________________
                             b.classList.remove("toggle")
                         currentval = elem.id.slice(1);
                         elem.classList.add("toggle")
+                        highlight_number(currentval)
                         return
                     }
                     for(var c of $$(".red"))
@@ -782,7 +785,7 @@ ___________________
                     }
                     [x, y, cX, cY] = get_coord(cell)
                     ls = $$("#highlighting > tbody > tr")
-                    for(var d of $$(".cyan, .white, .seafoam, .black, .highlighted"))
+                    for(var d of $$(".cyan, .white, .seafoam, .black"))
                         d.className = ""
                     for(var c of ls[cY].cells) {
                         for(var d of c.children[0].rows[y].cells) {
@@ -830,15 +833,21 @@ ___________________
                         donthighlight = true;
                     } if(color == "seafoam") {
                         h = layered_coord(cell, $("#grid")).innerHTML
-                        if(!h)
-                            return
-                        for(var d of $$("#notes .block td, #grid .block td")) {
-                            dd = layered_coord(d, $("#highlighting"))
-                            if(dd.className.includes("white") || dd.className.includes("seafoam") || d.className.includes("darker"))
-                                continue
-                            if(d.innerHTML.includes(h)) {
-                                dd.classList.add("highlighted")
-                            }
+                        highlight_number(h);
+                    }
+                }
+
+                function highlight_number(h) {
+                    if(!h)
+                        return
+                    for(var d of $$(".highlighted"))
+                        d.className = ""
+                    for(var d of $$("#notes .block td, #grid .block td")) {
+                        dd = layered_coord(d, $("#highlighting"))
+                        if(dd.className.includes("white") || dd.className.includes("seafoam") || d.className.includes("darker"))
+                            continue
+                        if(d.innerHTML.includes(h)) {
+                            dd.classList.add("highlighted")
                         }
                     }
                 }
@@ -1100,7 +1109,7 @@ ___________________
                     new_board();
                 }
                 refresh_numbers()
-                var t = Number(localStorage.setItem("__sudoku__time", t)) || 0;
+                var t = Number(localStorage.getItem("__sudoku__time")) || 0;
             </script>
         </div>
 
