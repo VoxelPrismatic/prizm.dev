@@ -84,6 +84,20 @@
             } .red {
                 background-color: #f004 !important;
                 border: 4px solid #f00 !important;
+                transition: all 0.2s !important;
+                opacity: 1 !important;
+                width: 28px !important;
+                height: 28px !important;
+            } .highlighted {
+                background-color: #0ff4 !important;
+                border: 4px solid #0ff !important;
+                transition: all 0.2s !important;
+                opacity: 1 !important;
+                width: 28px !important;
+                height: 28px !important;
+            } .noted {
+                background-color: #0ff2 !important;
+                border: 4px solid #0ff8 !important;
                 transition: all 0.05s !important;
                 opacity: 1 !important;
                 width: 28px !important;
@@ -768,7 +782,7 @@ ___________________
                     }
                     [x, y, cX, cY] = get_coord(cell)
                     ls = $$("#highlighting > tbody > tr")
-                    for(var d of $$("#highlighting .cyan, #highlighting .white, #highlighting .seafoam, #highlighting .black"))
+                    for(var d of $$(".cyan, .white, .seafoam, .black, .highlighted"))
                         d.className = ""
                     for(var c of ls[cY].cells) {
                         for(var d of c.children[0].rows[y].cells) {
@@ -806,16 +820,27 @@ ___________________
                             r.cells[x].className += " noopac"
                     }
                     cell.classList.remove("semiopac")
+                    currentcell = cell;
                     if(digit_first && color == "seafoam") {
-                        currentcell = cell;
-                        if($(".toggle").innerHTML == "Clear")
+                        if($(".toggle") && $(".toggle").innerHTML == "Clear")
                             clear_cell($(".toggle"), true)
-                        else
+                        else if($(".toggle"))
                             write_cell($("#n" + currentval), true)
                     } else if(color == "seafoam") {
                         donthighlight = true;
+                    } if(color == "seafoam") {
+                        h = layered_coord(cell, $("#grid")).innerHTML
+                        if(!h)
+                            return
+                        for(var d of $$("#notes .block td, #grid .block td")) {
+                            dd = layered_coord(d, $("#highlighting"))
+                            if(dd.className.includes("white") || dd.className.includes("seafoam") || d.className.includes("darker"))
+                                continue
+                            if(d.innerHTML.includes(h)) {
+                                dd.classList.add("highlighted")
+                            }
+                        }
                     }
-                    currentcell = cell;
                 }
 
 
