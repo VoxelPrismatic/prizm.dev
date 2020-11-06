@@ -53,8 +53,8 @@
             } #notes .block td, .block td.filled {
                 background-color: #233 !important;
             } .block td {
-                height: 32px !important;
-                width: 32px !important;
+                height: 32px;
+                width: 32px;
                 text-align: center;
                 color: #fff;
             } #notes .block td {
@@ -83,9 +83,11 @@
                 transition: none !important;
             } .red {
                 background-color: #f004 !important;
-                border: 2px solid #f00 !important;
+                border: 4px solid #f00 !important;
                 transition: all 0.05s !important;
                 opacity: 1 !important;
+                width: 28px !important;
+                height: 28px !important;
             } h1, h3, details {
                 color: #0ff;
                 text-align: center;
@@ -132,6 +134,11 @@
                 opacity: .6;
             } .noopac {
                 opacity: 0.25;
+            } .white:not(.semiopac) {
+                opacity: 1;
+                border-width: 4px !important;
+                width: 28px !important;
+                height: 28px !important;
             }
         </style>
     </head>
@@ -180,12 +187,20 @@ ___________________
                         <td>Write to cell<br><i>*Only works with "Digit first" enabled</i></td>
                     </tr>
                     <tr>
-                        <td>1, 2, 3, 4, 5, 6, 7, 8, 9</td>
+                        <td>1-9</td>
                         <td>Select a number, write to cell if "Cells first" is enabled</td>
                     </tr>
                     <tr>
-                        <td>BKSP, DEL</td>
+                        <td>BKSP, DEL, 0</td>
                         <td>Clear cell</td>
+                    </tr>
+                    <tr>
+                        <td>SHIFT, *, .</td>
+                        <td>Toggle notes</td>
+                    </tr>
+                    <tr>
+                        <td>CTRL, /</td>
+                        <td>Toggle cells first or digit first mode</td>
                     </tr>
                 </table>
             </details>
@@ -437,8 +452,9 @@ ___________________
                 <button onclick="write_cell(this)" id="n1">1<sup>0</sup></button><button onclick="write_cell(this)" id="n2">2<sup>0</sup></button><button onclick="write_cell(this)" id="n3">3<sup>0</sup></button><br>
                 <button onclick="write_cell(this)" id="n4">4<sup>0</sup></button><button onclick="write_cell(this)" id="n5">5<sup>0</sup></button><button onclick="write_cell(this)" id="n6">6<sup>0</sup></button><br>
                 <button onclick="write_cell(this)" id="n7">7<sup>0</sup></button><button onclick="write_cell(this)" id="n8">8<sup>0</sup></button><button onclick="write_cell(this)" id="n9">9<sup>0</sup></button><br>
-                <button onclick="clear_cell(this)" style="width: auto">Clear</button><br>
-                <button onclick="taking_notes(this)" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" id="cell_toggle" style="width: auto;" title="Choose a cell, then a number">Cells first</button>
+                <button onclick="clear_cell(this)" id="n0" style="width: auto">Clear</button><br>
+                <button onclick="taking_notes(this)" id="notes_toggle" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" id="cell_toggle" style="width: auto;" title="Choose a cell, then a number">Cells first</button><br>
+                <button onclick="new_board()" id="n0" style="width: auto">New board</button><br>
 
             </div>
 
@@ -495,14 +511,18 @@ ___________________
                         elem.classList.add("toggle")
                         return
                     }
-                    if(noting)
-                        layered_coord(currentcell, $("#notes")).innerHTML = "";
-                    else
+                    if(noting) {
+                        cell = layered_coord(currentcell, $("#notes"));
+                        cell.innerHTML = "";
+                        for(var x = 1; x <= 9; x += 1)
+                            cell.classList.remove(x + "")
+                    } else {
                         layered_coord(currentcell, $("#grid")).innerHTML = "";
+                        layered_coord(currentcell, $("#notes")).classList.remove("darker")
+                    }
                     refresh_numbers();
                 }
                 function write_cell(elem, forced = false) {
-                    console.log(elem, forced)
                     if(digit_first && !forced) {
                         for(var b of $$("button.toggle"))
                             b.classList.remove("toggle")
@@ -692,6 +712,12 @@ ___________________
                         ls[n].className = ""
                         ls[n].innerHTML = ""
                     }
+                    refresh_numbers();
+                    for(var n of $$("#notes .block td")) {
+                        n.className = "";
+                        n.innerHTML = "";
+                    }
+                    t = 0;
                 }
 
                 function fill_it(cell, cell_name, check_fn) {
@@ -716,7 +742,6 @@ ___________________
                     return false
                 }
 
-                new_board();
                 donthighlight = false
 
                 function get_coord(cell) {
@@ -734,6 +759,13 @@ ___________________
                 }
                 function highlight(cell, color = "cyan") {
                     var x, y, cX, cY
+                    s = cell.getBoundingClientRect()
+                    sY = s.y
+                    sX = s.x
+                    sH = s.height
+                    if(sX < 0 || sY < 0 || sX + sH > innerWidth || sY + sH > innerHeight) {
+                        $("#grid").scrollIntoView();
+                    }
                     [x, y, cX, cY] = get_coord(cell)
                     ls = $$("#highlighting > tbody > tr")
                     for(var d of $$("#highlighting .cyan, #highlighting .white, #highlighting .seafoam, #highlighting .black"))
@@ -776,11 +808,19 @@ ___________________
                     cell.classList.remove("semiopac")
                     if(digit_first && color == "seafoam") {
                         currentcell = cell;
-                        write_cell($("#n" + currentval), true)
+                        if($(".toggle").innerHTML == "Clear")
+                            clear_cell($(".toggle"), true)
+                        else
+                            write_cell($("#n" + currentval), true)
                     } else if(color == "seafoam") {
                         donthighlight = true;
-                        currentcell = cell;
                     }
+                    currentcell = cell;
+                }
+
+
+                function highlight_coord(x, y, cX, cY) {
+                    highlight($("#highlighting").rows[cY].cells[cX].children[0].rows[y].cells[x]);
                 }
 
                 function refresh_numbers() {
@@ -798,23 +838,244 @@ ___________________
                     }
                     for(var c of $$("#grid .block td"))
                         nums[c.innerHTML] += 1
-                    console.log(nums)
                     for(var x = 1; x <= 9; x += 1)
                         $(`#n${x} sup`).innerHTML = nums[String(x)]
+
+                    table = {
+                        "notes": {},
+                        "grid": {}
+                    }
+
+                    for(var map of ["notes", "grid"]) {
+                        var cY = -1;
+                        for(var tR of $("#" + map).rows) {
+                            cY += 1
+                            var cX = -1;
+                            table[map][cY] = {}
+                            for(var tC of tR.cells) {
+                                cX += 1
+                                var y = -1
+                                table[map][cY][cX] = {}
+                                for(var r of tC.children[0].rows) {
+                                    y += 1
+                                    var x = -1;
+                                    table[map][cY][cX][y] = {}
+                                    for(var c of r.cells) {
+                                        x += 1;
+                                        if(map == "grid") {
+                                            table[map][cY][cX][y][x] = c.innerHTML
+                                            if(c.className.includes("preset"))
+                                                table[map][cY][cX][y][x] += "!"
+                                        } else {
+                                            table[map][cY][cX][y][x] = ""
+                                            for(var n = 1; n <= 9; n += 1)
+                                                if(c.className.includes(n + ""))
+                                                    table[map][cY][cX][y][x] += n;
+                                            if(c.className.includes("darker"))
+                                                table[map][cY][cX][y][x] += "!";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    localStorage.setItem("__sudoku__board", JSON.stringify(table))
                 }
 
-                currentcell = null
+                highlight_coord(1, 1, 1, 1)
                 for(var c of $$("#highlighting .block td")) {
                     c.onmouseover = function() { if(!donthighlight) { highlight(this, "cyan") } }
                     c.onclick = function() { highlight(this, "seafoam"); }
                 }
                 $("#highlighting").onmouseenter = function() { donthighlight = false }
 
-                refresh_numbers()
                 if(Number(localStorage.getItem("__sudoku__digits")))
                     cell_first($("#cell_toggle"))
-                alert("Check back soon for a full version, it's not done yet!")
-
+                window.onkeydown = (evt) => {
+                    switch(evt.key) {
+                        case "1":
+                            write_cell($("#n1"))
+                            evt.preventDefault();
+                            break;
+                        case "2":
+                            write_cell($("#n2"))
+                            evt.preventDefault();
+                            break;
+                        case "3":
+                            write_cell($("#n3"))
+                            evt.preventDefault();
+                            break;
+                        case "4":
+                            write_cell($("#n4"))
+                            evt.preventDefault();
+                            break;
+                        case "5":
+                            write_cell($("#n5"))
+                            evt.preventDefault();
+                            break;
+                        case "6":
+                            write_cell($("#n6"))
+                            evt.preventDefault();
+                            break;
+                        case "7":
+                            write_cell($("#n7"))
+                            evt.preventDefault();
+                            break;
+                        case "8":
+                            write_cell($("#n8"))
+                            evt.preventDefault();
+                            break;
+                        case "9":
+                            write_cell($("#n9"))
+                            evt.preventDefault();
+                            break;
+                        case "ArrowLeft":
+                            var x, y, cX, xY
+                            [x, y, cX, cY] = get_coord(currentcell)
+                            if(x == 0) {
+                                x = 2
+                                if(cX == 0)
+                                    cX = 2
+                                else
+                                    cX -= 1
+                            } else {
+                                x -= 1
+                            }
+                            highlight_coord(x, y, cX, cY)
+                            evt.preventDefault();
+                            break;
+                        case "ArrowRight":
+                            var x, y, cX, xY
+                            [x, y, cX, cY] = get_coord(currentcell)
+                            if(x == 2) {
+                                x = 0
+                                if(cX == 2)
+                                    cX = 0
+                                else
+                                    cX += 1
+                            } else {
+                                x += 1
+                            }
+                            highlight_coord(x, y, cX, cY)
+                            evt.preventDefault();
+                            break;
+                        case "ArrowDown":
+                            var x, y, cX, xY
+                            [x, y, cX, cY] = get_coord(currentcell)
+                            if(y == 2) {
+                                y = 0
+                                if(cY == 2)
+                                    cY = 0
+                                else
+                                    cY += 1
+                            } else {
+                                y += 1
+                            }
+                            highlight_coord(x, y, cX, cY)
+                            evt.preventDefault();
+                            break;
+                        case "ArrowUp":
+                            var x, y, cX, xY
+                            [x, y, cX, cY] = get_coord(currentcell)
+                            if(y == 0) {
+                                y = 2
+                                if(cY == 0)
+                                    cY = 2
+                                else
+                                    cY -= 1
+                            } else {
+                                y -= 1
+                            }
+                            highlight_coord(x, y, cX, cY)
+                            evt.preventDefault();
+                            break;
+                        case "Enter":
+                            currentcell.click();
+                            evt.preventDefault();
+                            break;
+                        case "Control":
+                        case "/":
+                            $("#cell_toggle").click();
+                            evt.preventDefault();
+                            break;
+                        case "Shift":
+                        case "*":
+                        case ".":
+                            $("#notes_toggle").click();
+                            evt.preventDefault();
+                            break;
+                        case "0":
+                        case "Delete":
+                        case "Backspace":
+                            clear_cell($("#n0"))
+                            evt.preventDefault();
+                            break;
+                    }
+                }
+                window.setInterval(() => {
+                    t += 1;
+                    localStorage.setItem("__sudoku__time", t)
+                    if(!Number(localStorage.getItem("__sudoku__timer"))) {
+                        $("#time").innerHTML = "0:00"
+                        return;
+                    }
+                    s = t;
+                    m = Math.floor(s / 60);
+                    s %= 60;
+                    h = Math.floor(m / 60);
+                    m %= 60;
+                    if(h) {
+                        st = `${h}:${(m + "").padStart(2, "0")}:${(s + "").padStart(2, "")}`
+                    } else {
+                        st = `${m}:${(s + "").padStart(2, "0")}`
+                    }
+                    $("#time").innerHTML = st;
+                }, 1000);
+                $("#level").value = localStorage.getItem("__sudoku__level") || "0"
+                $("#timer").checked = Number(localStorage.getItem("__sudoku__timer")) || 0
+                table = JSON.parse(localStorage.getItem("__sudoku__board"))
+                if(table != null) {
+                    for(var map of Object.keys(table)) {
+                        for(var cY of "012") {
+                            for(var cX of "012") {
+                                for(var y of "012") {
+                                    for(var x of "012") {
+                                        d = table[map][cY][cX][y][x]
+                                        cls = ""
+                                        htm = ""
+                                        if(map == "grid") {
+                                            htm = d.split("!")[0]
+                                            if(d.endsWith("!"))
+                                                cls = "preset"
+                                        } else {
+                                            for(var n = 1; n <= 9; n += 1) {
+                                                if(d.includes("" + n)) {
+                                                    htm += n
+                                                    cls += n + " "
+                                                } else {
+                                                    htm += "&nbsp;"
+                                                }
+                                                if(n == 3 || n == 6)
+                                                    htm += "<br>"
+                                                else
+                                                    htm += " "
+                                            }
+                                            if(d.endsWith("!"))
+                                                cls += "darker"
+                                        }
+                                        e = $("#" + map).rows[cY].cells[cX].children[0].rows[y].cells[x]
+                                        e.innerHTML = htm;
+                                        e.className = cls;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    new_board();
+                }
+                refresh_numbers()
+                var t = Number(localStorage.setItem("__sudoku__time", t)) || 0;
             </script>
         </div>
 
