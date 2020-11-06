@@ -44,7 +44,7 @@
                 height: 18px;
                 width: 18px;
                 border: 2px #0000 solid;
-                transition: all 0.25s cubic-bezier(0, 0.5, 0, 1);
+                transition: all 0.1s cubic-bezier(0, 0.5, 0, 1);
             } .board.main td {
                 background-color: #233;
                 border: 2px #122 solid;
@@ -260,6 +260,9 @@ ______________________
             </table>
 
             <table class='board ed mid' style='opacity: 50%' id="predict">
+            </table>
+
+            <table class='board ed mid' id="dropping">
             </table>
 
             <table class='board ed' style='position: relative; z-index: 100;' id="floating">
@@ -598,7 +601,8 @@ ______________________
                     tables = [
                         $("#grid"),
                         $("#predict"),
-                        $("#floating")
+                        $("#floating"),
+                        $("#dropping")
                     ]
                     board_st = ""
                     for(y = 0; y < maxY; y += 1) {
@@ -626,8 +630,10 @@ ______________________
                     h = $("#floating").clientHeight + "px";
                     $("#grid").style.width = w;
                     $("#predict").style.width = w;
+                    $("#dropping").style.width = w;
                     $("#grid").style.height = h;
                     $("#predict").style.height = h;
+                    $("#dropping").style.height = h;
 
                 }
 
@@ -664,14 +670,14 @@ ______________________
                 var preY = 0 // Predict Y position
                 var level = 1;
 
-                function redraw_piece(table = $("#floating")) {
+                function redraw_piece(table = $("#floating"), curY = posY, curX = posX, curR = posR, curQ = current_piece) {
                     for(var elem of table.querySelectorAll("td[class]"))
                         elem.className = ""
-                    grid = pieces[current_piece][posR]
-                    color = colors[current_piece]
+                    grid = pieces[curQ][curR]
+                    color = colors[curQ]
                     for(var y = 0; y < grid.length; y += 1) {
                         for(var x = 0; x < grid[0].length; x += 1) {
-                            table.rows[posY + y].cells[posX + x].className = (grid[y][x] == " " ? "" : color)
+                            table.rows[curY + y].cells[curX + x].className = (grid[y][x] == " " ? "" : color)
                         }
                     }
                 }
@@ -718,36 +724,39 @@ ______________________
                     $("#level").innerHTML = level;
                 }
 
-                function conflicting(table1 = $("#floating")) {
+                function conflicting(table1 = $("#floating"), curY = posY, curX = posX, curR = posR, curQ = current_piece) {
                     table2 = $("#grid")
                     try {
-                        redraw_piece(table1)
+                        redraw_piece(table1, curY, curX, curR, curQ)
                     } catch(err) {
                         return true;
                     }
-                    grid = pieces[current_piece][posR]
+                    grid = pieces[curQ][curR]
                     var st = ""
                     invalidX = [0, 1, 2, 3, maxX - 4, maxX - 3, maxX - 2, maxX - 1]
                     invalidY = [0, 1, 2, 3, maxY - 4, maxY - 3, maxY - 2, maxY - 1]
-                    for(var y = posY; y < posY + grid.length; y += 1) {
-                        for(var x = posX; x < posX + grid[0].length; x += 1) {
+                    for(var y = curY; y < curY + grid.length; y += 1) {
+                        for(var x = curX; x < curX + grid[0].length; x += 1) {
                             s = table1.rows[y].cells[x].className
                             if(invalidX.includes(x) || invalidY.includes(y)) {
                                 if(s) {
                                     if(invalidY.includes(y)) {
                                         if([0, 1, 2, 3].includes(y))
-                                            posY += (4 - y);
+                                            curY += (4 - y);
                                         else
                                             return true;
                                     }
                                     if(invalidX.includes(x)) {
                                         if([0, 1, 2, 3].includes(x))
-                                            posX += (4 - x);
+                                            curX += (4 - x);
                                         else
-                                            posX -= (5 - (maxX - x))
+                                            curX -= (5 - (maxX - x))
                                     }
-                                    redraw_piece(table1);
-                                    return false;
+                                    if(table1 == $("#floating")) {
+                                        posY = curY;
+                                        posX = curX
+                                    }
+                                    return conflicting(table1, curY, curX, curR, curQ);
                                 }
                             } else if(table2.rows[y].cells[x].className && s) {
                                 return true;
@@ -859,6 +868,7 @@ ______________________
                         posY = ogY + t[1];
                         redraw_piece();
                         if(!conflicting()) {
+                            console.log(t, ogR, current_piece)
                             predict();
                             return
                         }
@@ -866,13 +876,14 @@ ______________________
                     posR -= dir;
                     posY = ogY;
                     posX = ogX;
+                    console.log("failed to rotate")
                     redraw_piece();
                     predict();
                 }
 
                 function game_over() {
                     alert("Game over!\nScore: " + score)
-                    for(table of [$("#grid"), $("#floating"), $("#predict")]) {
+                    for(table of [$("#grid"), $("#floating"), $("#predict"), $("#dropping")]) {
                         for(var elem of table.querySelectorAll("td[class]"))
                             elem.className = ""
                     }
@@ -1005,9 +1016,61 @@ ______________________
                     predict();
                 }
 
+                thisX = 0;
+                thisY = 0;
+                thisR = 0;
+                thisP = 0;
+                thisQ = 0;
+                blocking_enter = false
                 function drop_piece() {
-                    for(var x = 0; x <= preY - posY; x += 1)
-                        window.setTimeout(move_piece_down, 10 * x)
+                    thisX = posX;
+                    thisY = posY;
+                    thisR = posR;
+                    thisP = preY;
+                    thisQ = current_piece;
+                    timed = 0;
+                    blocking_enter = true;
+                    next_piece_on_board();
+                    predict();
+                    for(var x = 0; x <= thisP - thisY; x += 1) {
+                        window.setTimeout(() => {
+                            thisY += 1;
+                            if(conflicting($("#dropping"), thisY, thisX, thisR, thisQ)) {
+                                thisY -= 1
+                                redraw_piece($("#dropping"), thisY, thisX, thisR, thisQ);
+                            }
+                        }, 7 * x)
+                        timed = x;
+                    }
+                    window.setTimeout(() => {
+                        table1 = $("#dropping")
+                        table2 = $("#grid")
+                        for(var y = thisY; y < thisY + pieces[thisQ][thisR].length; y += 1) {
+                            for(var x = thisX; x < thisX + pieces[thisQ][thisR][0].length; x += 1) {
+                                c = table1.rows[y].cells[x]
+                                if(c.className)
+                                    table2.rows[y].cells[x].className = c.className;
+                            }
+                        }
+                        predict();
+                        for(var row of table2.rows) {
+                            cleared = 0;
+                            for(var cell of row.cells) {
+                                if(cell.className)
+                                    cleared += 1;
+                            }
+                            if(cleared == maxX - 8)
+                                row.className = "cleared"
+    //                             else if(cleared)
+    //                                 console.log(cleared)
+                        }
+                        window.setTimeout(fix_cleared, 500)
+                        for(var elem of $("#dropping").querySelectorAll("td[class]"))
+                            elem.className = ""
+                        if(conflicting())
+                            game_over();
+                        blocking_enter = false
+                    }, (timed + 1) * 7)
                 }
 
                 window.onkeydown = (evt) => {
@@ -1049,6 +1112,8 @@ ______________________
                             break;
                         case "Enter":
                         case " ":
+                            if(blocking_enter)
+                                break;
                             drop_piece();
                             evt.preventDefault();
                             break;
