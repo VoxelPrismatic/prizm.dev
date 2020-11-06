@@ -832,7 +832,9 @@ ___________________
                             write_cell($("#n" + currentval), true)
                     } else if(color == "seafoam") {
                         donthighlight = true;
-                    } if(color == "seafoam") {
+                    } if(currentval && digit_first) {
+                        highlight_number(currentval)
+                    } else if(color == "seafoam") {
                         h = layered_coord(cell, $("#grid")).innerHTML
                         highlight_number(h);
                     }
