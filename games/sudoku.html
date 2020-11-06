@@ -447,7 +447,14 @@ ___________________
                 function $(q, o = document) { return o.querySelector(q) }
                 function $$(q, o = document) { return o.querySelectorAll(q) }
                 noting = false;
-                digit_first = false
+                digit_first = false;
+
+                h = $("#highlighting").clientHeight;
+                w = $("#highlighting").clientWidth
+                $("#notes").style.height = h + "px";
+                $("#grid").style.height = h + "px";
+                $("#notes").style.width = w + "px";
+                $("#grid").style.height = w + "px";
 
                 function cell_first(elem) {
                     digit_first = !digit_first
