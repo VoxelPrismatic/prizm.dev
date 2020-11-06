@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <!-- DYNAMIC BETWEEN PAGES -->
+        <meta property="og:title" content="SUDOKU ;]" id="title" />
+        <meta property="og:description" content="A simple game of sudoku" />
+        <meta name="description" content="A simple game of sudoku" />
+
+        <!-- STATIC BETWEEN PAGES -->
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/prizm.dev/assets/image/favicon.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
+        <title>SUDOKU ;]</title>
+        <link rel="icon" type="image/png" href="/prizm.dev/assets/image/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
+        <meta name="author" content="PRIZ ;]" />
+        <style type="text/css">
+            * {
+                font-family: "Ubuntu Mono";
+            } #head {
+                top: -100px !important;
+            } #keys tr:nth-child(odd) {
+                background-color: #233;
+            } #keys tr:first-child {
+                background-color: #344;
+            } #keys td, #keys th {
+                margin: 5px;
+                padding: 5px;
+            } pre#logo {
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+                font-size: 24px;
+                color: #0ff;
+            } .board {
+                margin: auto;
+                border-spacing: 0px;
+            } .board td {
+                height: 128px;
+                width: 128px;
+                border: 2px #122 solid;
+                transition: all 0.25s cubic-bezier(0, 0.5, 0, 1);
+            } table.block {
+                margin: auto;
+            } .board.main > tbody > tr > td {
+                background-color: #122 !important;
+            } #notes .block td, .block td.filled {
+                background-color: #233 !important;
+            } .block td {
+                height: 32px !important;
+                width: 32px !important;
+                text-align: center;
+                color: #fff;
+            } #notes .block td {
+                font-size: 66% !important;
+                line-height: 10px;
+            } .board.main td {
+                background-color: #233;
+                border: 2px #122 solid;
+            } .cyan {
+                background-color: #0ff1;
+                border: 2px solid #0ff !important;
+                transition: none !important;
+                opacity: 0.5;
+            } .black {
+                background-color: #000;
+                margin: 2px;
+                transition: none !important;
+            } .seafoam {
+                background-color: #0f81;
+                border: 2px solid #0f8 !important;
+                transition: none !important;
+                opacity: 0.5;
+            } .white {
+                background-color: #fff3;
+                border: 2px solid #fff !important;
+                transition: none !important;
+            } .red {
+                background-color: #f001 !important;
+                border: 2px solid #f00 !important;
+                transition: all 0.05s !important;
+                opacity: 1 !important;
+            } h1, h3, details {
+                color: #0ff;
+                text-align: center;
+            } .mid {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            } summary h3 {
+                display: inline-block;
+            } button {
+                background-color: #0ff4;
+                border: 2px solid #0ff;
+                color: #0ff;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 10px;
+                height: 37px;
+                width: 37px;
+                font-size: 18px;
+                font-weight: bold;
+                padding-top: 4px;
+            } .preset {
+                background-color: #011;
+                font-weight: bold;
+                font-style: italic;
+            } .block td:not(.preset) {
+                font-weight: bold;
+                font-size: x-large;
+            } .darker {
+                color: #666 !important;
+            } button.toggle, button.toggled {
+                background-color: #0f84;
+                border-color: #0f8;
+            }
+            #fuckme {
+                line-height: 8px;
+                font-size: 75%;
+                height: 20px;
+            } .noted {
+                font-size: 60%;
+                line-height: 60%;
+            } .semiopac {
+                opacity: .6;
+            } .noopac {
+                opacity: 0.25;
+            }
+        </style>
+    </head>
+    <body class="bgcolor" style="background-color: #122">
+        <pre id="logo">
+
+___________________
+|     |     |     |
+|  S  |  U  |  D  |
+|_____|_____|_____|
+|     |     |     |
+|  O  |  K  |  U  |
+|_____|_____|_____|
+|     |     |     |
+|  L  |  O  |  L  |
+|_____|_____|_____|
+
+<i>~priz edition~</i>
+        </pre>
+        <div style="text-align: center">
+            <details>
+                <summary><h3>Key map</h3></summary>
+                <table style="color: #ccc; margin: auto;" id="keys">
+                    <tr>
+                        <th>Key</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>&Alpha;</td>
+                        <td>Rotate piece right</td>
+                    </tr>
+                    <tr>
+                        <td>/, Q, Z</td>
+                        <td>Rotate piece left</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;, A</td>
+                        <td>Move piece right</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;, D</td>
+                        <td>Move piece left</td>
+                    </tr>
+                    <tr>
+                        <td>V, S</td>
+                        <td>Move piece down</td>
+                    </tr>
+                    <tr>
+                        <td>Space, Enter</td>
+                        <td>Drop piece to bottom</td>
+                    </tr>
+                    <tr>
+                        <td>C, CTRL</td>
+                        <td>Swap piece</td>
+                    </tr>
+                    <tr>
+                        <td>G</td>
+                        <td>Add garbage</td>
+                </table>
+            </details>
+            <details>
+                <summary><h3>Settings</h3></summary>
+                <table style='color: #ccc; margin: auto;' id="keys">
+                    <tr>
+                        <th>Option</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Garbage</td>
+                        <td><input type="checkbox" id="garbage" onchange="garbage_enabled = this.value;localStorage.getItem('garbage', Number(this.value))"></input></td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td><input type="range" id="speed" min="0" max="10" value="5"
+                                   onchange="interval=this.value;change_interval();localStorage.setItem('speed', this.value)"></input></td>
+                    </tr>
+                    <tr>
+                        <td>Ghost tetrimino</td>
+                        <td><input type="checkbox" id="ghost" onchange="localStorage.setItem('ghost', Number($('#predict').classList.toggle('noopac')))" checked=''></input></td>
+                    </tr>
+                    <tr>
+                        <td>Funky tetriminos</td>
+                        <td><input type="checkbox" id="extras" onchange="extra_bits=this.checked;localStorage.setItem('extras', Number(extra_bits))"></input></td>
+                    </tr>
+                    <tr>
+                        <td>Width<br><sub><i>*Will reset the game</i></sub></td>
+                        <td><input type="number" id="width" min="5" value="10" onchange="maxX=Number(this.value)+8;board_size()"></input></td>
+                    </tr>
+                    <tr>
+                        <td>Height<br><sub><i>*Will reset the game</i></sub></td>
+                        <td><input type="number" id="height" min="10" value="20" onchange="maxY=Number(this.value)+8;board_size()"></input></td>
+                    </tr>
+                </table>
+            </details>
+        </div>
+        <div>
+            <h3>Time: <span id='time'>0:00</span></h3>
+            <h1>-- Board --</h1>
+            <table class='board main ed mid' id="notes">
+                <tr>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table class='board ed mid' id="grid">
+                <tr>
+                    <td>
+                        <table class="block" id="grid0">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block" id="grid1">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block" id="grid2">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="block" id="grid3">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block" id="grid4">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block" id="grid5">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="block" id="grid6">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block" id="grid7">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block" id="grid8">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table class='board ed' style='position: relative; z-index: 100;' id="highlighting">
+                <tr>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="block">
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                            <tr> <td></td> <td></td> <td></td> </tr>
+                        </table>
+                    </td>
+            </table>
+
+            <div style="text-align: center;">
+                <button onclick="write_cell(this)" id="n1">1<sup>0</sup></button><button onclick="write_cell(this)" id="n2">2<sup>0</sup></button><button onclick="write_cell(this)" id="n3">3<sup>0</sup></button><br>
+                <button onclick="write_cell(this)" id="n4">4<sup>0</sup></button><button onclick="write_cell(this)" id="n5">5<sup>0</sup></button><button onclick="write_cell(this)" id="n6">6<sup>0</sup></button><br>
+                <button onclick="write_cell(this)" id="n7">7<sup>0</sup></button><button onclick="write_cell(this)" id="n8">8<sup>0</sup></button><button onclick="write_cell(this)" id="n9">9<sup>0</sup></button><br>
+                <button onclick="clear_cell(this)" style="width: auto">Clear</button><br>
+                <button onclick="taking_notes(this)" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" style="width: auto;" title="Choose a cell, then a number">Cells first</button>
+
+            </div>
+
+        </div>
+        <div id="content">
+            <script type="text/javascript">
+                alert("Note: This game is NOT finished yet. Check back in an hour if the full version has been released yet.")
+                function $(q, o = document) { return o.querySelector(q) }
+                function $$(q, o = document) { return o.querySelectorAll(q) }
+                noting = false;
+                digit_first = false
+
+                function cell_first(elem) {
+                    digit_first = !digit_first
+                    if(digit_first) {
+                        elem.innerHTML = "Digit first"
+                        elem.title = "Choose a digit, then touch the cells"
+                        elem.classList.add("toggled")
+                    } else {
+                        elem.innerHTML = "Cells first"
+                        elem.title = "Choose a cell, then a number"
+                        elem.classList.remove("toggled")
+                        for(var b of $$("button.toggle"))
+                            b.classList.remove("toggle")
+
+                    }
+                }
+
+                function taking_notes(elem) {
+                    noting = !noting
+                    if(noting) {
+                        elem.innerHTML = "[n]"
+                        elem.title = "Fill tiles"
+                        elem.classList.add("toggled")
+                    } else {
+                        elem.innerHTML = "123"
+                        elem.title = "Take notes"
+                        elem.classList.remove("toggled")
+                    }
+                }
+                currentval = "0"
+                function write_cell(elem, forced = false) {
+                    console.log(elem, forced)
+                    if(digit_first && !forced) {
+                        for(var b of $$("button.toggle"))
+                            b.classList.remove("toggle")
+                        currentval = elem.id.slice(1);
+                        elem.classList.add("toggle")
+                        return
+                    }
+                    for(var c of $$(".red"))
+                        c.classList.remove("red");
+                    if(layered_coord(currentcell, $("#grid")).className == "preset") {
+                        return
+                    } else if(noting) {
+                        c = layered_coord(currentcell, $("#notes"))
+                        c.classList.toggle(elem.id.slice(1))
+                        st = ""
+                        for(var x = 1; x <= 9; x += 1) {
+                            if(c.className.includes(x + ""))
+                                st += x
+                            else
+                                st += "&nbsp;"
+                            if(x == 3 || x == 6)
+                                st += "<br>"
+                            else
+                                st += " "
+                        }
+                        c.innerHTML = st;
+                    } else {
+                        val = elem.id.slice(1)
+                        for(var c of $$(".cyan, .seafoam, .white")) {
+                            if(c == currentcell)
+                                continue
+                            d = layered_coord(c, $("#grid"))
+                            if(d.innerHTML == val)
+                                c.classList.add("red")
+                        }
+                        if(!$(".red")) {
+                            layered_coord(currentcell, $("#notes")).classList.add("darker")
+                            layered_coord(currentcell, $("#grid")).innerHTML = val
+                            for(var c of $$(".cyan, .seafoam, .white")) {
+                                d = layered_coord(c, $("#notes"));
+                                d.classList.remove(val)
+                                st = ""
+                                for(var x = 1; x <= 9; x += 1) {
+                                    if(d.className.includes(x + ""))
+                                        st += x
+                                    else
+                                        st += "&nbsp;"
+                                    if(x == 3 || x == 6)
+                                        st += "<br>"
+                                    else
+                                        st += " "
+                                }
+                                d.innerHTML = st;
+                            }
+                        }
+                        refresh_numbers();
+                    }
+                }
+
+                cell0 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell1 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell2 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell3 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell4 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell5 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell6 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell7 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+                cell8 = [
+                    [0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0],
+                ]
+
+                function fill_it(cell, cell_name, check_fn) {
+                    var und = true;
+                    choices = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                    for(var y = 0; y < 3; y += 1) {
+                        for(var x = 0; x < 3; x += 1) {
+                            allowed = []
+                            for(var n of choices)
+                                if(check_fn(x, y, n))
+                                    allowed.push(n)
+                            n = allowed[Math.floor(Math.random() * allowed.length)]
+                            cell[y][x] = n
+                            choices = choices.filter((i) => i != n)
+                            c = $(cell_name).rows[y].cells[x]
+                            c.innerHTML = n == undefined ? "?" : n
+                            c.className = "preset"
+                            if(n == undefined)
+                                return true
+                        }
+                    }
+                    return false
+                }
+
+                var und = true
+                while(und) {
+                    und = false;
+                    und = fill_it(cell0, "#grid0", (x, y, n) => true);
+                    if(und) continue;
+                    und = fill_it(cell1, "#grid1", (x, y, n) => !cell0[y].includes(n));
+                    if(und) continue;
+                    und = fill_it(cell2, "#grid2", (x, y, n) => {
+                        return !cell0[y].includes(n) && !cell1[y].includes(n)
+                    });
+                    if(und) continue;
+                    und = fill_it(cell3, "#grid3", (x, y, n) => {
+                        for(var y = 0; y < 3; y += 1) {
+                            if(cell0[y][x] == n)
+                                return false
+                        }
+                        return true
+                    });
+                    if(und) continue;
+                    und = fill_it(cell4, "#grid4", (x, y, n) => {
+                        if(cell3[y].includes(n))
+                            return false
+                        for(var y = 0; y < 3; y += 1) {
+                            if(cell1[y][x] == n)
+                                return false
+                        }
+                        return true
+                    });
+                    if(und) continue;
+                    und = fill_it(cell5, "#grid5", (x, y, n) => {
+                        if(cell3[y].includes(n) || cell4[y].includes(n))
+                            return false
+                        for(var y = 0; y < 3; y += 1) {
+                            if(cell2[y][x] == n)
+                                return false
+                        }
+                        return true
+                    });
+                    if(und) continue;
+                    und = fill_it(cell6, "#grid6", (x, y, n) => {
+                        for(var y = 0; y < 3; y += 1) {
+                            if(cell0[y][x] == n || cell3[y][x] == n)
+                                return false
+                        }
+                        return true
+                    });
+                    if(und) continue;
+                    und = fill_it(cell7, "#grid7", (x, y, n) => {
+                        if(cell6[y].includes(n))
+                            return false
+                        for(var y = 0; y < 3; y += 1) {
+                            if(cell1[y][x] == n || cell4[y][x] == n)
+                                return false
+                        }
+                        return true
+                    });
+                    if(und) continue;
+                    und = fill_it(cell8, "#grid8", (x, y, n) => {
+                        if(cell6[y].includes(n) || cell7[y].includes(n))
+                            return false
+                        for(var y = 0; y < 3; y += 1) {
+                            if(cell2[y][x] == n || cell5[y][x] == n)
+                                return false
+                        }
+                        return true
+                    });
+                }
+
+
+                donthighlight = false
+
+                function get_coord(cell) {
+                    var x = cell.cellIndex;
+                    var y = cell.parentElement.rowIndex;
+                    var cX = cell.parentElement.parentElement.parentElement.parentElement.cellIndex
+                    var cY = cell.parentElement.parentElement.parentElement.parentElement.parentElement.rowIndex
+                    return [x, y, cX, cY]
+                }
+
+                function layered_coord(cell, target) {
+                    var x, y, cX, cY
+                    [x, y, cX, cY] = get_coord(cell)
+                    return target.rows[cY].cells[cX].children[0].rows[y].cells[x]
+                }
+                function highlight(cell, color = "cyan") {
+                    var x, y, cX, cY
+                    [x, y, cX, cY] = get_coord(cell)
+                    ls = $$("#highlighting > tbody > tr")
+                    for(var d of $$("#highlighting .cyan, #highlighting .white, #highlighting .seafoam, #highlighting .black"))
+                        d.className = ""
+                    for(var c of ls[cY].cells) {
+                        for(var d of c.children[0].rows[y].cells) {
+                            d.className = color;
+                            dd = layered_coord(d, $("#grid"))
+                            if(dd.className == "preset")
+                                d.className += " noopac"
+                        }
+                    }
+                    for(var e of ls) {
+                        c = e.cells[cX]
+                        for(var d of c.children[0].rows) {
+                            d.cells[x].className = color;
+                            dd = layered_coord(d.cells[x], $("#grid"))
+                            if(dd.className == "preset")
+                                d.cells[x].className += " noopac"
+                        }
+                    }
+                    for(var d of $$("td", cell.parentElement.parentElement)) {
+                        d.className = color
+                        dd = layered_coord(d, $("#grid"))
+                        if(dd.className == "preset")
+                            d.className += " noopac"
+                    }
+                    for(var d of cell.parentElement.cells) {
+                        d.className = "white semiopac"
+                        dd = layered_coord(d, $("#grid"))
+                        if(dd.className == "preset")
+                            d.className += " noopac"
+                    }
+                    for(var r of cell.parentElement.parentElement.rows) {
+                        r.cells[x].className = "white semiopac"
+                        dd = layered_coord(r.cells[x], $("#grid"))
+                        if(dd.className == "preset")
+                            r.cells[x].className += " noopac"
+                    }
+                    cell.classList.remove("semiopac")
+                    if(digit_first && color == "seafoam") {
+                        currentcell = cell;
+                        write_cell($("#n" + currentval), true)
+                    } else if(color == "seafoam") {
+                        donthighlight = true;
+                        currentcell = cell;
+                    }
+                }
+
+                function refresh_numbers() {
+                    nums = {
+                        "1": 0,
+                        "2": 0,
+                        "3": 0,
+                        "4": 0,
+                        "5": 0,
+                        "6": 0,
+                        "7": 0,
+                        "8": 0,
+                        "9": 0,
+                        "": 0
+                    }
+                    for(var c of $$("#grid .block td"))
+                        nums[c.innerHTML] += 1
+                    console.log(nums)
+                    for(var x = 1; x <= 9; x += 1)
+                        $(`#n${x} sup`).innerHTML = nums[String(x)]
+                }
+
+                currentcell = null
+                for(var c of $$("#highlighting .block td")) {
+                    c.onmouseover = function() { if(!donthighlight) { highlight(this, "cyan") } }
+                    c.onclick = function() { highlight(this, "seafoam"); }
+                }
+                $("#highlighting").onmouseenter = function() { donthighlight = false }
+
+                for(var x = 0; x < Math.floor(Math.random() * 20) + 40; x += 1) {
+                    ls = $$("#grid .block td")
+                    n = Math.floor(Math.random() * ls.length)
+                    while(ls[n].className == "")
+                        n = Math.floor(Math.random() * ls.length)
+                    ls[n].className = ""
+                    ls[n].innerHTML = ""
+                }
+                refresh_numbers()
+
+            </script>
+        </div>
+
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i&amp;display=swap" />
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700,700i&amp;display=swap" />
+        </div>
+    </body>
+</html>
