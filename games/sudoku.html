@@ -601,9 +601,9 @@ ___________________
 
                 function new_board() {
                     cell0 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
                     ]
                     cell1 = [
                         [0, 0, 0],
@@ -711,6 +711,7 @@ ___________________
                             }
                             return true
                         });
+                        highlight_coord(1, 1, 1, 1)
                     }
                     levels = {
                         "0": [5, 5],
@@ -844,7 +845,7 @@ ___________________
                         d.className = ""
                     for(var d of $$("#notes .block td, #grid .block td")) {
                         dd = layered_coord(d, $("#highlighting"))
-                        if(dd.className.includes("white") || dd.className.includes("seafoam") || d.className.includes("darker"))
+                        if(d.className.includes("darker"))
                             continue
                         if(d.innerHTML.includes(h)) {
                             dd.classList.add("highlighted")
