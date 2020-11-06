@@ -45,10 +45,11 @@
                 transition: all 0.25s cubic-bezier(0, 0.5, 0, 1);
             } table.block {
                 margin: auto;
-            } .board.main > tbody > tr > td {
-                background-color: #122 !important;
+            } .board > tbody > tr > td {
                 height: 128px;
                 width: 128px;
+            } .board.main > tbody > tr > td {
+                background-color: #122 !important;
             } #notes .block td, .block td.filled {
                 background-color: #233 !important;
             } .block td {
@@ -454,7 +455,7 @@ ___________________
                 $("#notes").style.height = h + "px";
                 $("#grid").style.height = h + "px";
                 $("#notes").style.width = w + "px";
-                $("#grid").style.height = w + "px";
+                $("#grid").style.width = w + "px";
 
                 function cell_first(elem) {
                     digit_first = !digit_first
