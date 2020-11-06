@@ -41,14 +41,14 @@
                 margin: auto;
                 border-spacing: 0px;
             } .board td {
-                height: 128px;
-                width: 128px;
                 border: 2px #122 solid;
                 transition: all 0.25s cubic-bezier(0, 0.5, 0, 1);
             } table.block {
                 margin: auto;
             } .board.main > tbody > tr > td {
                 background-color: #122 !important;
+                height: 128px;
+                width: 128px;
             } #notes .block td, .block td.filled {
                 background-color: #233 !important;
             } .block td {
@@ -81,7 +81,7 @@
                 border: 2px solid #fff !important;
                 transition: none !important;
             } .red {
-                background-color: #f001 !important;
+                background-color: #f004 !important;
                 border: 2px solid #f00 !important;
                 transition: all 0.05s !important;
                 opacity: 1 !important;
@@ -118,6 +118,7 @@
             } button.toggle, button.toggled {
                 background-color: #0f84;
                 border-color: #0f8;
+                color: #0f8;
             }
             #fuckme {
                 line-height: 8px;
@@ -159,35 +160,32 @@ ___________________
                     </tr>
                     <tr>
                         <td>&Alpha;</td>
-                        <td>Rotate piece right</td>
+                        <td>Move cursor up</td>
                     </tr>
                     <tr>
-                        <td>/, Q, Z</td>
-                        <td>Rotate piece left</td>
+                        <td>&lt;</td>
+                        <td>Move cursor left</td>
                     </tr>
                     <tr>
-                        <td>&lt;, A</td>
-                        <td>Move piece right</td>
+                        <td>&gt;</td>
+                        <td>Move cursor right</td>
                     </tr>
                     <tr>
-                        <td>&gt;, D</td>
-                        <td>Move piece left</td>
+                        <td>V</td>
+                        <td>Move cursor down</td>
                     </tr>
                     <tr>
-                        <td>V, S</td>
-                        <td>Move piece down</td>
+                        <td>Enter</td>
+                        <td>Write to cell<br><i>*Only works with "Digit first" enabled</i></td>
                     </tr>
                     <tr>
-                        <td>Space, Enter</td>
-                        <td>Drop piece to bottom</td>
+                        <td>1, 2, 3, 4, 5, 6, 7, 8, 9</td>
+                        <td>Select a number, write to cell if "Cells first" is enabled</td>
                     </tr>
                     <tr>
-                        <td>C, CTRL</td>
-                        <td>Swap piece</td>
+                        <td>BKSP, DEL</td>
+                        <td>Clear cell</td>
                     </tr>
-                    <tr>
-                        <td>G</td>
-                        <td>Add garbage</td>
                 </table>
             </details>
             <details>
@@ -198,29 +196,20 @@ ___________________
                         <th>Value</th>
                     </tr>
                     <tr>
-                        <td>Garbage</td>
-                        <td><input type="checkbox" id="garbage" onchange="garbage_enabled = this.value;localStorage.getItem('garbage', Number(this.value))"></input></td>
+                        <td>Level<br><i>*Will reset board</i></td>
+                        <td>
+                            <select id="level" value="0" onchange="localStorage.setItem('__sudoku__level', this.value); new_board()">
+                                <option value="0">Noob [5-10 blank cells]</option>
+                                <option value="1">Easy [10-20 blank cells]</option>
+                                <option value="2">Intermediate [30-40 blank cells]</option>
+                                <option value="3">Hard [50-60 blank cells]</option>
+                                <option value="4">Pro [60-70 blank cells]</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Speed</td>
-                        <td><input type="range" id="speed" min="0" max="10" value="5"
-                                   onchange="interval=this.value;change_interval();localStorage.setItem('speed', this.value)"></input></td>
-                    </tr>
-                    <tr>
-                        <td>Ghost tetrimino</td>
-                        <td><input type="checkbox" id="ghost" onchange="localStorage.setItem('ghost', Number($('#predict').classList.toggle('noopac')))" checked=''></input></td>
-                    </tr>
-                    <tr>
-                        <td>Funky tetriminos</td>
-                        <td><input type="checkbox" id="extras" onchange="extra_bits=this.checked;localStorage.setItem('extras', Number(extra_bits))"></input></td>
-                    </tr>
-                    <tr>
-                        <td>Width<br><sub><i>*Will reset the game</i></sub></td>
-                        <td><input type="number" id="width" min="5" value="10" onchange="maxX=Number(this.value)+8;board_size()"></input></td>
-                    </tr>
-                    <tr>
-                        <td>Height<br><sub><i>*Will reset the game</i></sub></td>
-                        <td><input type="number" id="height" min="10" value="20" onchange="maxY=Number(this.value)+8;board_size()"></input></td>
+                        <td>Timer</td>
+                        <td><input type="checkbox" id="timer" onchange="localStorage.setItem('__sudoku__timer', Number(this.checked))"></input></td>
                     </tr>
                 </table>
             </details>
@@ -448,14 +437,13 @@ ___________________
                 <button onclick="write_cell(this)" id="n4">4<sup>0</sup></button><button onclick="write_cell(this)" id="n5">5<sup>0</sup></button><button onclick="write_cell(this)" id="n6">6<sup>0</sup></button><br>
                 <button onclick="write_cell(this)" id="n7">7<sup>0</sup></button><button onclick="write_cell(this)" id="n8">8<sup>0</sup></button><button onclick="write_cell(this)" id="n9">9<sup>0</sup></button><br>
                 <button onclick="clear_cell(this)" style="width: auto">Clear</button><br>
-                <button onclick="taking_notes(this)" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" style="width: auto;" title="Choose a cell, then a number">Cells first</button>
+                <button onclick="taking_notes(this)" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" id="cell_toggle" style="width: auto;" title="Choose a cell, then a number">Cells first</button>
 
             </div>
 
         </div>
         <div id="content">
             <script type="text/javascript">
-                alert("Note: This game is NOT finished yet. Check back in an hour if the full version has been released yet.")
                 function $(q, o = document) { return o.querySelector(q) }
                 function $$(q, o = document) { return o.querySelectorAll(q) }
                 noting = false;
@@ -463,6 +451,7 @@ ___________________
 
                 function cell_first(elem) {
                     digit_first = !digit_first
+                    localStorage.setItem("__sudoku__digits", Number(digit_first))
                     if(digit_first) {
                         elem.innerHTML = "Digit first"
                         elem.title = "Choose a digit, then touch the cells"
@@ -490,6 +479,20 @@ ___________________
                     }
                 }
                 currentval = "0"
+                function clear_cell(elem, forced = false) {
+                    if(digit_first && !forced) {
+                        for(var b of $$("button.toggle"))
+                            b.classList.remove("toggle")
+                        currentval = elem.id.slice(1);
+                        elem.classList.add("toggle")
+                        return
+                    }
+                    if(noting)
+                        layered_coord(currentcell, $("#notes")).innerHTML = "";
+                    else
+                        layered_coord(currentcell, $("#grid")).innerHTML = "";
+                    refresh_numbers();
+                }
                 function write_cell(elem, forced = false) {
                     console.log(elem, forced)
                     if(digit_first && !forced) {
@@ -551,51 +554,137 @@ ___________________
                     }
                 }
 
-                cell0 = [
+                function new_board() {
+                    cell0 = [
                     [0, 0, 0],
                     [0, 0, 0],
                     [0, 0, 0],
-                ]
-                cell1 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
-                cell2 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
-                cell3 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
-                cell4 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
-                cell5 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
-                cell6 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
-                cell7 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
-                cell8 = [
-                    [0, 0, 0],
-                    [0, 0, 0],
-                    [0, 0, 0],
-                ]
+                    ]
+                    cell1 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    cell2 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    cell3 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    cell4 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    cell5 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    cell6 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    cell7 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    cell8 = [
+                        [0, 0, 0],
+                        [0, 0, 0],
+                        [0, 0, 0],
+                    ]
+                    var und = true
+                    while(und) {
+                        und = false;
+                        und = fill_it(cell0, "#grid0", (x, y, n) => true);
+                        if(und) continue;
+                        und = fill_it(cell1, "#grid1", (x, y, n) => !cell0[y].includes(n));
+                        if(und) continue;
+                        und = fill_it(cell2, "#grid2", (x, y, n) => {
+                            return !cell0[y].includes(n) && !cell1[y].includes(n)
+                        });
+                        if(und) continue;
+                        und = fill_it(cell3, "#grid3", (x, y, n) => {
+                            for(var y = 0; y < 3; y += 1) {
+                                if(cell0[y][x] == n)
+                                    return false
+                            }
+                            return true
+                        });
+                        if(und) continue;
+                        und = fill_it(cell4, "#grid4", (x, y, n) => {
+                            if(cell3[y].includes(n))
+                                return false
+                            for(var y = 0; y < 3; y += 1) {
+                                if(cell1[y][x] == n)
+                                    return false
+                            }
+                            return true
+                        });
+                        if(und) continue;
+                        und = fill_it(cell5, "#grid5", (x, y, n) => {
+                            if(cell3[y].includes(n) || cell4[y].includes(n))
+                                return false
+                            for(var y = 0; y < 3; y += 1) {
+                                if(cell2[y][x] == n)
+                                    return false
+                            }
+                            return true
+                        });
+                        if(und) continue;
+                        und = fill_it(cell6, "#grid6", (x, y, n) => {
+                            for(var y = 0; y < 3; y += 1) {
+                                if(cell0[y][x] == n || cell3[y][x] == n)
+                                    return false
+                            }
+                            return true
+                        });
+                        if(und) continue;
+                        und = fill_it(cell7, "#grid7", (x, y, n) => {
+                            if(cell6[y].includes(n))
+                                return false
+                            for(var y = 0; y < 3; y += 1) {
+                                if(cell1[y][x] == n || cell4[y][x] == n)
+                                    return false
+                            }
+                            return true
+                        });
+                        if(und) continue;
+                        und = fill_it(cell8, "#grid8", (x, y, n) => {
+                            if(cell6[y].includes(n) || cell7[y].includes(n))
+                                return false
+                            for(var y = 0; y < 3; y += 1) {
+                                if(cell2[y][x] == n || cell5[y][x] == n)
+                                    return false
+                            }
+                            return true
+                        });
+                    }
+                    levels = {
+                        "0": [5, 5]
+                        "1": [10, 10],
+                        "2": [30, 10],
+                        "3": [50, 10],
+                        "4": [60, 10]
+                    }
+                    var start, offset
+                    [start, offset] = levels[localStorage.getItem("__sudoku__level") || "0"]
+                    for(var x = 0; x < Math.floor(Math.random() * offset) + start; x += 1) {
+                        ls = $$("#grid .block td")
+                        n = Math.floor(Math.random() * ls.length)
+                        while(ls[n].className == "")
+                            n = Math.floor(Math.random() * ls.length)
+                        ls[n].className = ""
+                        ls[n].innerHTML = ""
+                    }
+                }
 
                 function fill_it(cell, cell_name, check_fn) {
                     var und = true;
@@ -619,75 +708,7 @@ ___________________
                     return false
                 }
 
-                var und = true
-                while(und) {
-                    und = false;
-                    und = fill_it(cell0, "#grid0", (x, y, n) => true);
-                    if(und) continue;
-                    und = fill_it(cell1, "#grid1", (x, y, n) => !cell0[y].includes(n));
-                    if(und) continue;
-                    und = fill_it(cell2, "#grid2", (x, y, n) => {
-                        return !cell0[y].includes(n) && !cell1[y].includes(n)
-                    });
-                    if(und) continue;
-                    und = fill_it(cell3, "#grid3", (x, y, n) => {
-                        for(var y = 0; y < 3; y += 1) {
-                            if(cell0[y][x] == n)
-                                return false
-                        }
-                        return true
-                    });
-                    if(und) continue;
-                    und = fill_it(cell4, "#grid4", (x, y, n) => {
-                        if(cell3[y].includes(n))
-                            return false
-                        for(var y = 0; y < 3; y += 1) {
-                            if(cell1[y][x] == n)
-                                return false
-                        }
-                        return true
-                    });
-                    if(und) continue;
-                    und = fill_it(cell5, "#grid5", (x, y, n) => {
-                        if(cell3[y].includes(n) || cell4[y].includes(n))
-                            return false
-                        for(var y = 0; y < 3; y += 1) {
-                            if(cell2[y][x] == n)
-                                return false
-                        }
-                        return true
-                    });
-                    if(und) continue;
-                    und = fill_it(cell6, "#grid6", (x, y, n) => {
-                        for(var y = 0; y < 3; y += 1) {
-                            if(cell0[y][x] == n || cell3[y][x] == n)
-                                return false
-                        }
-                        return true
-                    });
-                    if(und) continue;
-                    und = fill_it(cell7, "#grid7", (x, y, n) => {
-                        if(cell6[y].includes(n))
-                            return false
-                        for(var y = 0; y < 3; y += 1) {
-                            if(cell1[y][x] == n || cell4[y][x] == n)
-                                return false
-                        }
-                        return true
-                    });
-                    if(und) continue;
-                    und = fill_it(cell8, "#grid8", (x, y, n) => {
-                        if(cell6[y].includes(n) || cell7[y].includes(n))
-                            return false
-                        for(var y = 0; y < 3; y += 1) {
-                            if(cell2[y][x] == n || cell5[y][x] == n)
-                                return false
-                        }
-                        return true
-                    });
-                }
-
-
+                new_board();
                 donthighlight = false
 
                 function get_coord(cell) {
@@ -781,15 +802,10 @@ ___________________
                 }
                 $("#highlighting").onmouseenter = function() { donthighlight = false }
 
-                for(var x = 0; x < Math.floor(Math.random() * 20) + 40; x += 1) {
-                    ls = $$("#grid .block td")
-                    n = Math.floor(Math.random() * ls.length)
-                    while(ls[n].className == "")
-                        n = Math.floor(Math.random() * ls.length)
-                    ls[n].className = ""
-                    ls[n].innerHTML = ""
-                }
                 refresh_numbers()
+                if(Number(localStorage.getItem("__sudoku__digits")))
+                    cell_first($("#cell_toggle"))
+                alert("Check back soon for a full version, it's not done yet!")
 
             </script>
         </div>

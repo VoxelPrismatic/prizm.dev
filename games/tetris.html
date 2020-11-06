@@ -210,6 +210,7 @@ ______________________
                     <tr>
                         <td>G</td>
                         <td>Add garbage</td>
+                    </tr>
                 </table>
             </details>
             <details>
@@ -221,20 +222,20 @@ ______________________
                     </tr>
                     <tr>
                         <td>Garbage</td>
-                        <td><input type="checkbox" id="garbage" onchange="garbage_enabled = this.value;localStorage.getItem('garbage', Number(this.value))"></input></td>
+                        <td><input type="checkbox" id="garbage" onchange="garbage_enabled = this.value;localStorage.getItem('__tetris__garbage', Number(this.value))"></input></td>
                     </tr>
                     <tr>
                         <td>Speed</td>
                         <td><input type="range" id="speed" min="0" max="10" value="5"
-                                   onchange="interval=this.value;change_interval();localStorage.setItem('speed', this.value)"></input></td>
+                                   onchange="interval=this.value;change_interval();localStorage.setItem('__tetris__speed', this.value)"></input></td>
                     </tr>
                     <tr>
                         <td>Ghost tetrimino</td>
-                        <td><input type="checkbox" id="ghost" onchange="localStorage.setItem('ghost', Number($('#predict').classList.toggle('noopac')))" checked=''></input></td>
+                        <td><input type="checkbox" id="ghost" onchange="localStorage.setItem('__tetris__ghost', Number($('#predict').classList.toggle('noopac')))" checked=''></input></td>
                     </tr>
                     <tr>
                         <td>Funky tetriminos</td>
-                        <td><input type="checkbox" id="extras" onchange="extra_bits=this.checked;localStorage.setItem('extras', Number(extra_bits))"></input></td>
+                        <td><input type="checkbox" id="extras" onchange="extra_bits=this.checked;localStorage.setItem('__tetris__extras', Number(extra_bits))"></input></td>
                     </tr>
                     <tr>
                         <td>Width<br><sub><i>*Will reset the game</i></sub></td>
@@ -615,8 +616,8 @@ ______________________
                         t.innerHTML = board_st;
                     }
 
-                    localStorage.setItem("width", maxX)
-                    localStorage.setItem("height", maxY)
+                    localStorage.setItem("__tetris__width", maxX)
+                    localStorage.setItem("__tetris__height", maxY)
                     score = 0;
                     fillbag();
                     draw_next_piece();
@@ -1065,40 +1066,40 @@ ______________________
                     }
                 }
 
-                if(Number(localStorage.getItem("garbage"))) {
+                if(Number(localStorage.getItem("__tetris__garbage"))) {
                     $("#garbage").checked = true;
                     garbage_enabled = true;
                 } else {
                     $("#garbage").checked = false;
                     garbage_enabled = false;
-                } if(localStorage.getItem("speed")) {
-                    interval = Number(localStorage.getItem("speed")) || 0
+                } if(localStorage.getItem("__tetris__speed")) {
+                    interval = Number(localStorage.getItem("__tetris__speed")) || 0
                     $("#speed").value = interval;
                 } else {
                     var interval = 5
                     $("#speed").value = interval;
-                } if(localStorage.getItem('ghost')) {
+                } if(localStorage.getItem('__tetris__ghost')) {
                     $("#ghost").checked = true;
-                    if(Number(localStorage.getItem('ghost')) || 0) {
+                    if(Number(localStorage.getItem('__tetris__ghost')) || 0) {
                         $("#ghost").checked = !$("#predict").classList.toggle("noopac")
                     }
                 } else {
                     $("#ghost").checked = true;
-                } if(Number(localStorage.getItem("height"))) {
-                    maxY = Number(localStorage.getItem("height"))
+                } if(Number(localStorage.getItem("__tetris__height"))) {
+                    maxY = Number(localStorage.getItem("__tetris__height"))
                     $("#height").value = maxY - 8;
                 } else {
                     maxY = 28;
                     $("#height").value = maxY - 8;
-                } if(Number(localStorage.getItem("width"))) {
-                    maxX = Number(localStorage.getItem("width"))
+                } if(Number(localStorage.getItem("__tetris__width"))) {
+                    maxX = Number(localStorage.getItem("__tetris__width"))
                     console.log(maxX)
                     $("#width").value = maxX - 8;
                 } else {
                     maxX = 18;
                     $("#width").value = maxX - 8;
-                } if(Number(localStorage.getItem("extras"))) {
-                    extra_bits = Number(localStorage.getItem("extras"));
+                } if(Number(localStorage.getItem("__tetris__extras"))) {
+                    extra_bits = Number(localStorage.getItem("__tetris__extras"));
                     $("#extras").checked = extra_bits;
                 } else {
                     extra_bits = false;
