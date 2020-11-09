@@ -95,7 +95,7 @@
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
-            } .highlighted:not(:hover) {
+            } .highlighted:not(:hover):not(.red) {
                 background-color: #0ff4 !important;
                 border: 4px solid #0ff !important;
                 transition: all 0.1s !important;
@@ -814,7 +814,7 @@ ___________________
                     }
                     [x, y, cX, cY] = get_coord(cell)
                     ls = $$("#highlighting > tbody > tr")
-                    for(var d of $$(".cyan, .white, .seafoam, .black"))
+                    for(var d of $$(".cyan, .white, .seafoam, .black, .highlighted"))
                         d.className = ""
                     for(var c of ls[cY].cells) {
                         for(var d of c.children[0].rows[y].cells) {
@@ -875,9 +875,9 @@ ___________________
                         d.className = ""
                     for(var d of $$("#notes .block td, #grid .block td")) {
                         dd = layered_coord(d, $("#highlighting"))
-                        if(d.className.includes("darker"))
+                        if(d.className.includes("darker") || d.className.includes("red")) {
                             continue
-                        if(d.innerHTML.includes(h)) {
+                        } else if(d.innerHTML.includes(h)) {
                             dd.classList.add("highlighted")
                         }
                     }
