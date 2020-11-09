@@ -77,8 +77,15 @@
                 border: 2px solid #0f8 !important;
                 transition: none !important;
                 opacity: 0.5;
+            } .noted {
+                background-color: #0ff2 !important;
+                border: 4px solid #0ff8 !important;
+                transition: all 0.1s !important;
+                opacity: 1 !important;
+                width: 28px !important;
+                height: 28px !important;
             } .white {
-                background-color: #fff3;
+                background-color: #fff3 !important;
                 border: 2px solid #fff !important;
                 transition: none !important;
             } .red {
@@ -88,16 +95,9 @@
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
-            } .highlighted {
+            } .highlighted:not(:hover) {
                 background-color: #0ff4 !important;
                 border: 4px solid #0ff !important;
-                transition: all 0.1s !important;
-                opacity: 1 !important;
-                width: 28px !important;
-                height: 28px !important;
-            } .noted {
-                background-color: #0ff2 !important;
-                border: 4px solid #0ff8 !important;
                 transition: all 0.1s !important;
                 opacity: 1 !important;
                 width: 28px !important;
@@ -153,6 +153,22 @@
                 border-width: 4px !important;
                 width: 28px !important;
                 height: 28px !important;
+            } #cover {
+                background-color: #233;
+                height: 400px;
+                width: 400px;
+                position: absolute;
+                left: 50%;
+                z-index: 1000;
+                transform: translateX(-50%);
+                transition: opacity 0.1s cubic-bezier(0, 0.5, 0, 1);
+            } #cover h1 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-14deg);
+                font-size: 400%;
+                margin-top: 0px;
             }
         </style>
     </head>
@@ -229,11 +245,12 @@ ___________________
                         <td>Level<br><i>*Will reset board</i></td>
                         <td>
                             <select id="level" value="0" onchange="localStorage.setItem('__sudoku__level', this.value); new_board()">
-                                <option value="0">Noob [5-10 blank cells]</option>
-                                <option value="1">Easy [10-20 blank cells]</option>
-                                <option value="2">Intermediate [30-40 blank cells]</option>
-                                <option value="3">Hard [50-60 blank cells]</option>
-                                <option value="4">Pro [60-70 blank cells]</option>
+                                <option value="0">Noob</option>
+                                <option value="1">Easy</option>
+                                <option value="2">Intermediate</option>
+                                <option value="3">Hard</option>
+                                <option value="4">Pro</option>
+                                <option value="5"><b><i>NANI!?!?</b></i></option>
                             </select>
                         </td>
                     </tr>
@@ -247,6 +264,7 @@ ___________________
         <div>
             <h3>Time: <span id='time'>0:00</span></h3>
             <h1>-- Board --</h1>
+            <div id="cover"><h1><i>GENERATING</i></h1></div>
             <table class='board main ed mid' id="notes">
                 <tr>
                     <td>
@@ -468,7 +486,7 @@ ___________________
                 <button onclick="write_cell(this)" id="n7">7<sup>0</sup></button><button onclick="write_cell(this)" id="n8">8<sup>0</sup></button><button onclick="write_cell(this)" id="n9">9<sup>0</sup></button><br>
                 <button onclick="clear_cell(this)" id="n0" style="width: auto">Clear</button><br>
                 <button onclick="taking_notes(this)" id="notes_toggle" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" id="cell_toggle" style="width: auto;" title="Choose a cell, then a number">Cells first</button><br>
-                <button onclick="new_board()" id="n0" style="width: auto">New board</button><br>
+                <button onclick="$('#cover').style.opacity = '1';$('#cover').style.zIndex='1000';window.setTimeout(new_board, 100)" style="width: auto">New board</button><br>
 
             </div>
 
@@ -481,10 +499,12 @@ ___________________
                 digit_first = false;
 
                 h = $("#highlighting").clientHeight;
-                w = $("#highlighting").clientWidth
+                w = $("#highlighting").clientWidth;
                 $("#notes").style.height = h + "px";
+                $("#cover").style.height = h + "px";
                 $("#grid").style.height = h + "px";
                 $("#notes").style.width = w + "px";
+                $("#cover").style.width = w + "px";
                 $("#grid").style.width = w + "px";
 
                 function cell_first(elem) {
@@ -600,6 +620,8 @@ ___________________
                 }
 
                 function new_board() {
+                    $("#cover").style.zIndex = "1000"
+                    $("#cover").style.opacity = "1"
                     cell0 = [
                         [0, 0, 0],
                         [0, 0, 0],
@@ -711,24 +733,26 @@ ___________________
                             }
                             return true
                         });
-                        highlight_coord(1, 1, 1, 1)
                     }
                     levels = {
-                        "0": [5, 5],
-                        "1": [10, 10],
-                        "2": [30, 10],
-                        "3": [50, 10],
-                        "4": [60, 10]
+                        "0": [2, 1],
+                        "1": [3, 2],
+                        "2": [3, 3],
+                        "3": [4, 3],
+                        "4": [5, 3],
+                        "5": [6, 2]
                     }
                     var start, offset
                     [start, offset] = levels[localStorage.getItem("__sudoku__level") || "0"]
-                    for(var x = 0; x < Math.floor(Math.random() * offset) + start; x += 1) {
-                        ls = $$("#grid .block td")
-                        n = Math.floor(Math.random() * ls.length)
-                        while(ls[n].className == "")
+                    for(var c = 0; c < 9; c += 1) {
+                        for(var x = 0; x < Math.round(Math.random() * offset) + start; x += 1) {
+                            ls = $$("#grid .block")[c].querySelectorAll("td")
                             n = Math.floor(Math.random() * ls.length)
-                        ls[n].className = ""
-                        ls[n].innerHTML = ""
+                            while(ls[n].className == "")
+                                n = Math.floor(Math.random() * ls.length)
+                            ls[n].className = ""
+                            ls[n].innerHTML = ""
+                        }
                     }
                     refresh_numbers();
                     for(var n of $$("#notes .block td")) {
@@ -736,6 +760,9 @@ ___________________
                         n.innerHTML = "";
                     }
                     t = 0;
+                    highlight_coord(1, 1, 1, 1)
+                    window.setTimeout(() => $("#cover").style.opacity = "0", 10);
+                    window.setTimeout(() => $("#cover").style.zIndex = 0, 110)
                 }
 
                 function fill_it(cell, cell_name, check_fn) {
@@ -1112,6 +1139,8 @@ ___________________
                     new_board();
                 }
                 refresh_numbers()
+                $("#cover").style.opacity = "0"
+                window.setTimeout(() => $("#cover").style.zIndex = "0", 100)
                 var t = Number(localStorage.getItem("__sudoku__time")) || 0;
             </script>
         </div>
