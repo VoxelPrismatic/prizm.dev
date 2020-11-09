@@ -95,7 +95,7 @@
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
-            } .highlighted:not(:hover):not(.red) {
+            } .highlighted:not(.white), .highlighted.semiopac {
                 background-color: #0ff4 !important;
                 border: 4px solid #0ff !important;
                 transition: all 0.1s !important;
@@ -498,15 +498,17 @@ ___________________
                 noting = false;
                 digit_first = false;
 
-                h = $("#highlighting").clientHeight;
-                w = $("#highlighting").clientWidth;
-                $("#notes").style.height = h + "px";
-                $("#cover").style.height = h + "px";
-                $("#grid").style.height = h + "px";
-                $("#notes").style.width = w + "px";
-                $("#cover").style.width = w + "px";
-                $("#grid").style.width = w + "px";
-
+                window.onresize = () => {
+                    h = $("#highlighting").clientHeight;
+                    w = $("#highlighting").clientWidth;
+                    $("#notes").style.height = h + "px";
+                    $("#cover").style.height = h + "px";
+                    $("#grid").style.height = h + "px";
+                    $("#notes").style.width = w + "px";
+                    $("#cover").style.width = w + "px";
+                    $("#grid").style.width = w + "px";
+                }
+                window.onresize();
                 function cell_first(elem) {
                     digit_first = !digit_first
                     localStorage.setItem("__sudoku__digits", Number(digit_first))
