@@ -1,8 +1,19 @@
+#] dec 24, 2020
+> Added twitter integration
+  > You can have up to 20 tweeters to listen to per server.
+  > The more people using this integration, the slower it will be to update. Accurate up to 15s
+> Starboard updates
+  > If you send a message containing only a link to an image such that discord will embed the \
+image and hide the link, that image will show up as an attachment in the starboard.
+
+-~-
+
 #] nov 2, 2020
 > Help command formatting is largely fixed
 > Graph bug fixed
 > Triangle solving big fixed
 
+-~-
 
 #] aug 25, 2020
 ###] MODERATION
