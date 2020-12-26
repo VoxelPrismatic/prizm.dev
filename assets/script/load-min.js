@@ -115,6 +115,7 @@ async function loadNow() {
     }
     var h1 = $("h1#head");
     var fS = getComputedStyle(h1).fontSize
+    h1.style.transition = "none"
     if(fS != "48px") {
         if(navigator.userAgent.includes("Android")) {
             var scales = {
@@ -134,7 +135,7 @@ async function loadNow() {
         var fN = Number(fS.slice(0, -2))
         if(fN < 48 || fN > 52) {
             n = Math.round(fS.slice(0, -2));
-            while(Number(getComputedStyle(h1).fontSize.slice(0, -2)) < 48) {
+            while(Number(getComputedStyle(h1).fontSize.slice(0, -2)) < 48 && n < 100) {
                 n += 1;
                 h1.style.fontSize = n + "px";
             }
@@ -144,6 +145,7 @@ async function loadNow() {
             }
         }
     }
+    h1.style.transition = ""
     //window.setInterval(flickery_element, 15000, $("h1#head"));
 }
 
