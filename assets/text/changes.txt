@@ -2,7 +2,7 @@
 > Fixed twitter integration
   > Images in retweets should be shown
   > Threads involving multiple people should have the correct author
-  > Known issue: Links don't display properly
+  > Links should display properly, so `google.com` would appear instead of `https://t.co/some_garbage`
 
 -~-
 
