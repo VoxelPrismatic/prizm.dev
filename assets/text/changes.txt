@@ -1,3 +1,11 @@
+#] jan 05, 2021
+> Fixed twitter integration
+  > Images in retweets should be shown
+  > Threads involving multiple people should have the correct author
+  > Known issue: Links don't display properly
+
+-~-
+
 #] dec 24, 2020
 > Added twitter integration
   > You can have up to 20 tweeters to listen to per server.
