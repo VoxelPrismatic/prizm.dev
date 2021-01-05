@@ -5,7 +5,7 @@
         <meta property="og:title" content="LONELY SIMULATOR ;]" id="title" />
         <meta property="og:description" content="The simulator that allows you to make real life connections" />
         <meta name="description" content="The simulator that allows you to make real life connections" />
-        
+
         <!-- STATIC BETWEEN PAGES -->
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/prizm.dev/assets/image/favicon.png" />
@@ -28,24 +28,24 @@
             } .lonely-message * {
                 font-family: "Ubuntu Mono" !important;
             } .lonely-chat {
-                border: 2px solid #0ff; 
+                border: 2px solid #0ff;
                 border-radius: 5px;
-                max-height: 50vh; 
-                height: 50vh; 
+                max-height: 50vh;
+                height: 50vh;
                 padding: 5px 10px;
                 overflow: auto;
             } .lonely-text {
-                border-radius: 5px; 
-                border: 2px solid #0ff; 
-                width: 95%; 
-                max-width: 95%; 
+                border-radius: 5px;
+                border: 2px solid #0ff;
+                width: 95%;
+                max-width: 95%;
                 min-width: 95%;
                 display: inline-block;
                 color: #ccc;
                 padding: 5px 10px;
                 height: 100% !important;
             } .lonely-submit {
-                border-radius: 5px; 
+                border-radius: 5px;
                 border: 2px solid #0f0;
                 display: flex;
                 align-items: center;
@@ -65,7 +65,7 @@
                 border-color: #008800;
                 background-color: #112211;
             } .lonely-fn {
-                border-radius: 5px; 
+                border-radius: 5px;
                 border: 2px solid #f08;
                 display: flex;
                 align-items: center;
@@ -98,7 +98,7 @@
                     <div class="lonely-message" style="color: #0ff;">
                         <b>--> You joined the chat ;]</b>
                     </div><br>
-                    
+
                     <div class="lonely-message" style="color: #0ff;">
                         <div style="color: #fff;">
                             <b>SYSTEM [jan-01-1970 12:00:00]</b>
@@ -186,7 +186,7 @@
                             <a href="/prizm.dev/" target="" tabindex="0">Home page</a> //
                             <a id="page_source_about" target="_blank" rel="noreferrer" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/lonely-simulator/index.html" tabindex="0">View source</a>
                         <br />
-                        <span id="copyright">© PRIZ ;], 2020</span>
+                        <span id="copyright">© PRIZ ;], 2021</span>
                         <br>
                         <span id="funnytextthing" tabindex="-1">*loading funny text thing</span><br />
                         <br />
@@ -236,7 +236,7 @@
                     thing.value = "";
                     document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
                 }
-                
+
                 function fake_key_press(key, shift, ctrl) {
                     evt = {}
                     evt.code = "Key" + key;
@@ -244,10 +244,10 @@
                     evt.ctrlKey = ctrl;
                     listen_to_keypress(evt)
                 }
-                
+
                 text_history = ""
                 lastEnd = 0;
-                
+
                 function listen_to_keypress(evt) {
                     offset = 0;
                     thing = document.getElementById("text");
@@ -295,11 +295,11 @@
                         evt.preventDefault();
                     }
                 }
-                
+
                 document.getElementById("text").onkeydown = (evt) => listen_to_keypress(evt);
-                
+
                 mobile = false;
-                
+
                 if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent)) {
                     document.getElementById("mobile-keys").style.display = "";
                     mobile = true;

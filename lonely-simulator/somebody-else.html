@@ -5,7 +5,7 @@
         <meta property="og:title" content="LONELY SIMULATOR ;]" id="title" />
         <meta property="og:description" content="The simulator that allows you to make real life connections" />
         <meta name="description" content="The simulator that allows you to make real life connections" />
-        
+
         <!-- STATIC BETWEEN PAGES -->
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/prizm.dev/assets/image/favicon.png" />
@@ -28,24 +28,24 @@
             } .lonely-message * {
                 font-family: "Ubuntu Mono" !important;
             } .lonely-chat {
-                border: 2px solid #0ff; 
+                border: 2px solid #0ff;
                 border-radius: 5px;
-                max-height: 50vh; 
-                height: 50vh; 
+                max-height: 50vh;
+                height: 50vh;
                 padding: 5px 10px;
                 overflow: auto;
             } .lonely-text {
-                border-radius: 5px; 
-                border: 2px solid #0ff; 
-                width: 95%; 
-                max-width: 95%; 
+                border-radius: 5px;
+                border: 2px solid #0ff;
+                width: 95%;
+                max-width: 95%;
                 min-width: 95%;
                 display: inline-block;
                 color: #ccc;
                 padding: 5px 10px;
                 height: 100% !important;
             } .lonely-submit {
-                border-radius: 5px; 
+                border-radius: 5px;
                 border: 2px solid #0f0;
                 display: flex;
                 align-items: center;
@@ -65,7 +65,7 @@
                 border-color: #008800;
                 background-color: #112211;
             } .lonely-fn {
-                border-radius: 5px; 
+                border-radius: 5px;
                 border: 2px solid #f08;
                 display: flex;
                 align-items: center;
@@ -98,7 +98,7 @@
                     <div class="lonely-message" style="color: #0ff;">
                         <b>--> <u>You</u> joined the chat ;]</b>
                     </div><br>
-                    
+
                     <div class="lonely-message" id="sys-message" style="color: #0ff;">
                         <div style="color: #fff;">
                             <b>SYSTEM [jan-01-1970 12:00:00]</b>
@@ -198,7 +198,7 @@
                             <a href="/prizm.dev/" target="" tabindex="0">Home page</a> //
                             <a id="page_source_about" target="_blank" rel="noreferrer" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/lonely-simulator/somebody-else.html" tabindex="0">View source</a>
                         <br />
-                        <span id="copyright">© PRIZ ;], 2020</span>
+                        <span id="copyright">© PRIZ ;], 2021</span>
                         <br>
                         <span id="funnytextthing" tabindex="-1">*loading funny text thing</span><br />
                         <br />
@@ -256,7 +256,7 @@
                     last_typed = 0;
                     time_typed = Number(new Date());
                 }
-                
+
                 function fake_key_press(key, shift, ctrl) {
                     evt = {}
                     evt.code = "Key" + key;
@@ -264,10 +264,10 @@
                     evt.ctrlKey = ctrl;
                     listen_to_keypress(evt)
                 }
-                
+
                 text_history = ""
                 lastEnd = 0;
-                
+
                 function listen_to_keypress(evt) {
                     offset = 0;
                     thing = document.getElementById("text");
@@ -338,20 +338,20 @@
                         evt.preventDefault();
                     }
                 }
-                
+
                 document.getElementById("text").onkeydown = (evt) => listen_to_keypress(evt);
-                
+
                 mobile = false;
-                
+
                 if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent)) {
                     document.getElementById("mobile-keys").style.display = "";
                     mobile = true;
                 } else {
                     document.getElementById("shortcut-keys").style.display = "";
                 }
-                
+
                 joined = [];
-                
+
                 words = [
                     "hello",
                     "bye",
@@ -369,10 +369,10 @@
                     "am",
                     "biking",
                 ];
-                
+
                 last_typed = 0;
                 time_typed = 0;
-                
+
                 the_roll = [
                     "never gonna give you up!",
                     "never gonna let you down!",
@@ -381,50 +381,50 @@
                     "never gonna say good bye!",
                     "never gonna tell a lie, and, hurt you!"
                 ]
-                
+
                 never_gonna_give_you_up = [
                     "we're no stangers... to love...",
                     "you know the rules, and, so do i!",
                     "a full commitment's what im thinking of",
                     "you wouldn't get this from any other guy!",
-                    
+
                     "iiiiiii just wanna tell you how im feelin'",
                     "gotta make you understand!",
-                    
+
                     ...the_roll,
-                    
+
                     "we've known each other, for so long",
                     "your heart's been achin' but you're too shy to say it",
                     "inside we both know what's been going on",
                     "we know the game, and we're gonna play it!",
-                    
+
                     "aaaaand if you ask me how im feelin'",
                     "don't tell me you're too blind to see!",
-                    
+
                     ...the_roll,
                     ...the_roll,
-                    
+
                     "never gonna give, never gonna give!",
                     "[give you up!]",
                     "[ooh] never gonna give, never gonna give!",
                     "[give you up!]",
-                    
+
                     "we've known each other, for so long",
                     "your heart's been achin' but you're too shy to say it",
                     "inside we both know what's been going on",
                     "we know the game, and we're gonna play it!",
-                    
+
                     "iiiiiii just wanna tell you how im feelin'",
                     "gotta make you understand!",
-                    
+
                     ...the_roll,
                     ...the_roll,
                 ];
-                
+
                 the_song = never_gonna_give_you_up.concat([]);
-                
+
                 clrs = [
-                    "#f00", "#f08", "#f80", "#f0f", "#ff0", 
+                    "#f00", "#f08", "#f80", "#f0f", "#ff0",
                     "#0f0", "#8f0", "#0f8", "#ff0",
                     "#44f", "#80f", "#08f"
                 ];
@@ -459,7 +459,7 @@
                     11: "i need lamp",
                     12: "rick astley."
                 }
-                
+
                 function toggle_typing(other) {
                     if(other != 12 || never_gonna_give_you_up.length == 0)
                         window.setTimeout(toggle_typing, Math.random() * 30000, other);
@@ -474,7 +474,7 @@
                     //    console.log(chat.scrollTop, chat.scrollTopMax);
                     if(!joined.includes(other)) {
                         joined.push(other);
-                        document.getElementById("chat").innerHTML += 
+                        document.getElementById("chat").innerHTML +=
                             `<div class="lonely-message" style="color: ${colors[other]};"><b>--> <u>${names[other]}</u> joined the chat ;]</b></div><br>`;
                         if(scroll)
                             chat.scrollTop = chat.scrollTopMax;
@@ -483,7 +483,7 @@
                     }
                     if(Math.floor(Math.random() * 10) == 0 && !document.getElementById("other-" + other + "-typing") && other != 12) {
                         joined = joined.filter((t) => t != other)
-                        document.getElementById("chat").innerHTML += 
+                        document.getElementById("chat").innerHTML +=
                             `<div class="lonely-message" style="color: ${colors[other]};"><b><-- <u>${names[other]}</u> left the chat ;[</b></div><br>`;
                         if(scroll)
                             chat.scrollTop = chat.scrollTopMax;
@@ -539,9 +539,9 @@
                     if(scroll)
                         chat.scrollTop = chat.scrollHeight;
                 }
-                
+
                 other_players = []
-                
+
                 if(document.URL.includes("?others=")) {
                     others = Number(document.URL.split("?others=")[1].split("&")[0]);
                     for(var x = 0; x < others; x += 1) {
