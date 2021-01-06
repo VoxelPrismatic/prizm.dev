@@ -1,3 +1,9 @@
+#] jan 06, 2021
+> Fixed twitter integration... again
+  > Now if, say I, delete my most recent tweet after PRIZM starts up, it will not post the new "most recent" tweet
+
+-~-
+
 #] jan 05, 2021
 > Fixed twitter integration
   > Images in retweets should be shown
