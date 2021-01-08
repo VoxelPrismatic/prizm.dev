@@ -48,14 +48,14 @@ var footTag = {
         "<2>": {
             "tag": "span",
             "id": "copyright",
-            "#": "© PRIZ ;] 2020"
+            "#": "© PRIZ ;] 2021"
         },
-        "br2": 1,
+        "br3": 1,
         "<3>": {
             "tag": "span",
             "id": "funnytextthing"
         },
-        "br3": 2
+        "br4": 2
     }
 }
 
