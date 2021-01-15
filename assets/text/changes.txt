@@ -1,3 +1,11 @@
+#] jan 15, 2021
+> Twitter integration updated
+  > Now shows the full thread!
+> Help command updated
+  > If you type `;]help twitter` or `;]help starboard`, it will help you out to set those up
+
+-~-
+
 #] jan 06, 2021
 > Fixed twitter integration... again
   > Now if, say I, delete my most recent tweet after PRIZM starts up, it will not post the new "most recent" tweet
