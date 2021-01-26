@@ -1,3 +1,12 @@
+#] jan 26, 2021
+> Fixed a dual tweet bug
+  > It was a coincidence it never happened before
+> Twitter now only shows 5 tweets in a thread rather than showing the full thread
+  > Less scrolling and wasted space ;]
+> Images and thumbnails fixed for threads
+
+-~-
+
 #] jan 15, 2021
 > Twitter integration updated
   > Now shows the full thread!
