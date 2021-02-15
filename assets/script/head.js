@@ -1,5 +1,3 @@
-let fonts = "https://fonts.googleapis.com/css?family=";
-
 try {
     window.parent.location.host;
 } catch(err) {
@@ -43,12 +41,7 @@ var elements = [
         "tag": "link",
         "rel": "stylesheet",
         "type": "text/css",
-        "href": fonts + "Ubuntu+Mono:400,400i,700,700i&display=swap"
-    }, {
-        "tag": "link",
-        "rel": "stylesheet",
-        "type": "text/css",
-        "href": fonts + "Ubuntu:400,400i,500,500i,700,700i&display=swap"
+        "href": "/prizm.dev/assets/css/fonts.css"
     }, {
         "tag": "meta",
         "property": "og:url",
