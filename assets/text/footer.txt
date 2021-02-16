@@ -88,3 +88,4 @@ craigpod<sup>tm</sup>
 na-no
 call me ishmail!
 <s>sponsored by linux</s>
+site built from scratch featuring exclusively of my own code
