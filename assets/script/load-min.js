@@ -80,7 +80,7 @@ async function loadNow() {
     }
     if(find("jumper")) {
         if(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile)/i.test(window.navigator.userAgent)) {
-            window.onscroll = changeScrollingThingy;
+            //window.onscroll = changeScrollingThingy;
             $("#jumper").style.fontSize = "200%";
             window.setInterval(checkScrollPosition, 100);
         } else {
@@ -100,7 +100,7 @@ async function loadNow() {
     }
     window.onclick = changeFunnyTextThing;
     window.onauxclick = changeFunnyTextThing;
-    window.ontouchend = changeFunnyTextThing;
+    //window.ontouchend = changeFunnyTextThing;
     changeFunnyTextThing();
     window.onresize = function() {sub_styles(false)};
     for(var thing of [1, 2, 3, 4, 5, 6]) {
