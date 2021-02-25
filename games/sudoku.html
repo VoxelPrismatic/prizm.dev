@@ -911,8 +911,19 @@ ___________________
                     }
                     for(var c of $$("#grid .block td"))
                         nums[c.innerHTML] += 1
-                    for(var x = 1; x <= 9; x += 1)
+                    var complete = 0;
+                    for(var x = 1; x <= 9; x += 1) {
                         $(`#n${x} sup`).innerHTML = nums[String(x)]
+                        if(nums[String(x)] == 9) {
+                            complete += 1;
+                            $(`#n${x}`).style.opacity = "50%";
+                        } else {
+                            $(`#n${x}`).style.opacity = "100%";
+                        }
+                    }
+                    if(complete == 9) {
+                        alert("GG!");
+                    }
 
                     table = {
                         "notes": {},
