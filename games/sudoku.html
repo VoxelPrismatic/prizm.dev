@@ -913,7 +913,8 @@ ___________________
                         nums[c.innerHTML] += 1
                     var complete = 0;
                     for(var x = 1; x <= 9; x += 1) {
-                        $(`#n${x} sup`).innerHTML = nums[String(x)]
+                        $(`#n${x} sup`).innerHTML = nums[String(x)];
+                        $(`#n${x} sup`).title = `${nums[String(x)]} filled; ${9 - nums[String(x)]} remaining`;
                         if(nums[String(x)] == 9) {
                             complete += 1;
                             $(`#n${x}`).style.opacity = "50%";
@@ -922,7 +923,7 @@ ___________________
                         }
                     }
                     if(complete == 9) {
-                        alert("GG!");
+                        alert(`Good game! Completed in ${$("#time").innerHTML}`);
                     }
 
                     table = {
