@@ -580,22 +580,22 @@ ___________________
                 function undo_move() {
                     if(!undo_stack.length)
                         return
+                    redo_stack.push([$("#notes").innerHTML, $("#grid").innerHTML])
                     var state = undo_stack.pop()
                     $("#notes").innerHTML = state[0]
                     $("#grid").innerHTML = state[1]
                     $("#redo").style.opacity = "100%"
-                    redo_stack.push([state[0], state[1]])
                     if(!undo_stack.length)
                         $("#undo").style.opacity = "50%"
                 }
                 function redo_move() {
                     if(!redo_stack.length)
                         return
+                    undo_stack.push([$("#notes").innerHTML, $("#grid").innerHTML])
                     var state = redo_stack.pop()
                     $("#notes").innerHTML = state[0]
                     $("#grid").innerHTML = state[1]
                     $("#undo").style.opacity = "100%"
-                    undo_stack.push([state[0], state[1]])
                     if(!redo_stack.length)
                         $("#redo").style.opacity = "50%"
                 }
