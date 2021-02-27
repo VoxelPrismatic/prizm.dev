@@ -584,7 +584,7 @@ ___________________
                     $("#notes").innerHTML = state[0]
                     $("#grid").innerHTML = state[1]
                     $("#redo").style.opacity = "100%"
-                    redo_stack.push(state)
+                    redo_stack.push([state[0], state[1]])
                     if(!undo_stack.length)
                         $("#undo").style.opacity = "50%"
                 }
@@ -595,7 +595,7 @@ ___________________
                     $("#notes").innerHTML = state[0]
                     $("#grid").innerHTML = state[1]
                     $("#undo").style.opacity = "100%"
-                    undo_stack.push(state)
+                    undo_stack.push([state[0], state[1]])
                     if(!redo_stack.length)
                         $("#redo").style.opacity = "50%"
                 }
