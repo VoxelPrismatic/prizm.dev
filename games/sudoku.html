@@ -608,6 +608,7 @@ ___________________
                     if(layered_coord(currentcell, $("#grid")).className == "preset") {
                         return
                     } else if(noting) {
+                        push_board()
                         c = layered_coord(currentcell, $("#notes"))
                         c.classList.toggle(elem.id.slice(1))
                         st = ""
@@ -623,7 +624,6 @@ ___________________
                         }
                         c.innerHTML = st;
                         refresh_numbers()
-                        push_board()
                     } else {
                         val = elem.id.slice(1)
                         for(var c of $$(".cyan, .seafoam, .white")) {
@@ -634,6 +634,7 @@ ___________________
                                 c.classList.add("red")
                         }
                         if(!$(".red")) {
+                            push_board()
                             layered_coord(currentcell, $("#notes")).classList.add("darker")
                             layered_coord(currentcell, $("#grid")).innerHTML = val
                             for(var c of $$(".cyan, .seafoam, .white")) {
@@ -654,7 +655,6 @@ ___________________
                             }
                         }
                         refresh_numbers();
-                        push_board()
                     }
                 }
 
