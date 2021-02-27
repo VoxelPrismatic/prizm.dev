@@ -1016,39 +1016,15 @@ ___________________
                 window.onkeydown = (evt) => {
                     switch(evt.key) {
                         case "1":
-                            write_cell($("#n1"))
-                            evt.preventDefault();
-                            break;
                         case "2":
-                            write_cell($("#n2"))
-                            evt.preventDefault();
-                            break;
                         case "3":
-                            write_cell($("#n3"))
-                            evt.preventDefault();
-                            break;
                         case "4":
-                            write_cell($("#n4"))
-                            evt.preventDefault();
-                            break;
                         case "5":
-                            write_cell($("#n5"))
-                            evt.preventDefault();
-                            break;
                         case "6":
-                            write_cell($("#n6"))
-                            evt.preventDefault();
-                            break;
                         case "7":
-                            write_cell($("#n7"))
-                            evt.preventDefault();
-                            break;
                         case "8":
-                            write_cell($("#n8"))
-                            evt.preventDefault();
-                            break;
                         case "9":
-                            write_cell($("#n9"))
+                            write_cell($("#n" + evt.key))
                             evt.preventDefault();
                             break;
                         case "ArrowLeft":
@@ -1056,7 +1032,7 @@ ___________________
                             [x, y, cX, cY] = get_coord(currentcell)
                             if(x == 0) {
                                 x = 2
-                                if(cX == 0)
+                                if(!cX)
                                     cX = 2
                                 else
                                     cX -= 1
@@ -1101,7 +1077,7 @@ ___________________
                             [x, y, cX, cY] = get_coord(currentcell)
                             if(y == 0) {
                                 y = 2
-                                if(cY == 0)
+                                if(!cY)
                                     cY = 2
                                 else
                                     cY -= 1
