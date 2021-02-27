@@ -488,7 +488,7 @@ ___________________
                     </td>
             </table>
 
-            <div style="text-align: center;">
+            <div style="text-align: center; width: 100%">
                 <button onclick="write_cell(this)" id="n1">1<sup>0</sup></button><button onclick="write_cell(this)" id="n2">2<sup>0</sup></button><button onclick="write_cell(this)" id="n3">3<sup>0</sup></button><br>
                 <button onclick="write_cell(this)" id="n4">4<sup>0</sup></button><button onclick="write_cell(this)" id="n5">5<sup>0</sup></button><button onclick="write_cell(this)" id="n6">6<sup>0</sup></button><br>
                 <button onclick="write_cell(this)" id="n7">7<sup>0</sup></button><button onclick="write_cell(this)" id="n8">8<sup>0</sup></button><button onclick="write_cell(this)" id="n9">9<sup>0</sup></button><br>
@@ -570,7 +570,7 @@ ___________________
                 }
                 function push_board() {
                     redo_stack = []
-                    undo_stack.push([$("#notes").innerHTML, $("#grid").innerHTML])]
+                    undo_stack.push([$("#notes").innerHTML, $("#grid").innerHTML])
                     $("#redo").style.opacity = "50%"
                     $("#undo").style.opacity = "100%"
                 }
@@ -623,6 +623,7 @@ ___________________
                         }
                         c.innerHTML = st;
                         refresh_numbers()
+                        push_board()
                     } else {
                         val = elem.id.slice(1)
                         for(var c of $$(".cyan, .seafoam, .white")) {
@@ -653,6 +654,7 @@ ___________________
                             }
                         }
                         refresh_numbers();
+                        push_board()
                     }
                 }
 
