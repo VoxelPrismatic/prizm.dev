@@ -494,8 +494,7 @@ ___________________
                 <button onclick="write_cell(this)" id="n7">7<sup>0</sup></button><button onclick="write_cell(this)" id="n8">8<sup>0</sup></button><button onclick="write_cell(this)" id="n9">9<sup>0</sup></button><br>
                 <button onclick="clear_cell(this)" id="n0" style="width: auto">Clear</button><br>
                 <button onclick="taking_notes(this)" id="notes_toggle" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" id="cell_toggle" style="width: auto;" title="Choose a cell, then a number">Cells first</button><br>
-                <button onclick="$('#cover').style.opacity = '1';$('#cover').style.zIndex='1000';window.setTimeout(new_board, 100)" style="width: auto">New board</button><br>
-
+                <button id="undo" onclick="undo_move()">Undo</button><button onclick="$('#cover').style.opacity = '1';$('#cover').style.zIndex='1000';window.setTimeout(new_board, 100)" style="width: auto">New board</button><button id="redo" onclick="redo_move()">Redo</button><br>
             </div>
 
         </div>
@@ -503,9 +502,10 @@ ___________________
             <script type="text/javascript">
                 function $(q, o = document) { return o.querySelector(q) }
                 function $$(q, o = document) { return o.querySelectorAll(q) }
-                noting = false;
-                digit_first = false;
-
+                var noting = false;
+                var digit_first = false;
+                var undo_stack = [];
+                var redo_stack = [];
                 window.onresize = () => {
                     h = $("#highlighting").clientHeight;
                     w = $("#highlighting").clientWidth;
@@ -567,6 +567,32 @@ ___________________
                         layered_coord(currentcell, $("#notes")).classList.remove("darker")
                     }
                     refresh_numbers();
+                }
+                function push_board() {
+                    redo_stack = []
+                    undo_stack.push([$("#notes").innerHTML, $("#grid").innerHTML])]
+                    $("#redo").style.opacity = "50%"
+                    $("#undo").style.opacity = "100%"
+                }
+                function undo_move() {
+                    if(!undo_stack.length)
+                        return
+                    var state = undo_stack.pop()
+                    $("#notes").innerHTML = state[0]
+                    $("#grid").innerHTML = state[1]
+                    $("#redo").style.opacity = "100%"
+                    if(!undo_stack.length)
+                        $("#undo").style.opacity = "50%"
+                }
+                function redo_move() {
+                    if(!redo_stack.length)
+                        return
+                    var state = redo_stack.pop()
+                    $("#notes").innerHTML = state[0]
+                    $("#grid").innerHTML = state[1]
+                    $("#undo").style.opacity = "100%"
+                    if(!redo_stack.length)
+                        $("#redo").style.opacity = "50%"
                 }
                 function write_cell(elem, forced = false) {
                     if(digit_first && !forced) {
@@ -633,6 +659,8 @@ ___________________
                 function new_board() {
                     $("#cover").style.zIndex = "1000"
                     $("#cover").style.opacity = "1"
+                    $("#undo").style.opacity = "50%"
+                    $("#redo").style.opacity = "50%"
                     cell0 = [
                         [0, 0, 0],
                         [0, 0, 0],
@@ -930,7 +958,7 @@ ___________________
 
                     table = {
                         "notes": {},
-                        "grid": {}
+                        "grid": {},
                     }
 
                     for(var map of ["notes", "grid"]) {
