@@ -275,4 +275,3 @@ function toggleDrop(elem) {
     elem.scrollIntoView({behavior: "smooth"});
     lastPosition = window.scrollMaxY + 10;
 }
-alert("hi");
