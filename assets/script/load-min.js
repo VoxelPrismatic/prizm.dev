@@ -15,7 +15,6 @@ function checkScrollPosition() {
 }
 
 async function loadNow() {
-    alert("hi");
     globalThis.texts = await load("/prizm.dev/assets/text/footer.txt", {list: true});
     if(document.URL.split("#")[0].split("?")[0].endsWith("/prizm.dev/")) {
         var d = new Date();
@@ -276,3 +275,4 @@ function toggleDrop(elem) {
     elem.scrollIntoView({behavior: "smooth"});
     lastPosition = window.scrollMaxY + 10;
 }
+alert("hi");
