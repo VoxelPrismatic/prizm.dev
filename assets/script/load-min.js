@@ -129,7 +129,7 @@ async function loadNow() {
             }
             if(scales[fS]) {
                 h1.style.fontSize = scales[fS];
-            } 
+            }
             fS = getComputedStyle(h1).fontSize;
         }
         var fN = Number(fS.slice(0, -2))
@@ -275,3 +275,5 @@ function toggleDrop(elem) {
     elem.scrollIntoView({behavior: "smooth"});
     lastPosition = window.scrollMaxY + 10;
 }
+
+document.head.insertAdjacentHTML("beforeend", "<style>a{text-decoration:underline}</style>")
