@@ -143,6 +143,9 @@
             } #undo, #redo {
                 width: auto !important;
                 opacity: 50%;
+            } #board {
+                white-space: pre;
+                text-align: center;
             } .pac.spooked {
                 animation: pac-power 0.5s infinite ease-in-out;
             } .blinky.spooked {
@@ -169,20 +172,6 @@
                 margin: auto;
                 left: 0;
                 right: 0;
-            } div.board {
-                position: absolute;
-                /*chrome doesn't like 100%*/
-                width: 99%;
-            } div.board#last-board {
-                position: relative;
-                /*fixes misalignment between relative and absolute divs*/
-                width: 100%;
-            } div.board > table {
-                white-space: pre;
-                margin: auto;
-                text-align: center;
-                position: relative;
-                z-index: 10;
             } .pac.running-out {
                 animation: pac-power 0.1s infinite ease-in-out;
             } .spooked.running-out {
@@ -401,23 +390,23 @@ ___________________
         <div>
             <h3>Time: <span id='time'>0:00</span></h3>
             <h1>-- Board --</h1>
-            <div class="board"><table id="sprites-pac" class="board-table">
+            <table id="sprites-pac" style="position: absolute; z-index: 10;">
                 <tr><td><span class="pac">C</span></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-bli" class="board-table">
+            </table>
+            <table id="sprites-bli" style="position: absolute; z-index: 10;">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-ink" class="board-table">
+            </table>
+            <table id="sprites-ink" style="position: absolute; z-index: 10;">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-pin" class="board-table">
+            </table>
+            <table id="sprites-pin" style="position: absolute; z-index: 10;">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-cly" class="board-table">
+            </table>
+            <table id="sprites-cly" style="position: absolute; z-index: 10;">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="targets" class="board-table" style="display: none; left: 0; right: 0; z-index: 100;"></table></div>
-            <div class="board" id="last-board"><table id="board" class="board-table"></table></div>
+            </table>
+            <table id="targets" style="display: none; left: 0; right: 0; position: absolute; z-index: 100;"></table>
+            <table id="board"></table>
 
             <div style="text-align: center;">
                 ><button onclick='face_up()' title="Face up">&Lambda;</button> <br>
