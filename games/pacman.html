@@ -169,26 +169,17 @@
                 margin: auto;
                 left: 0;
                 right: 0;
-            } div.board {
-                position: absolute;
-                /*chrome doesn't like 100%*/
-                width: 99%;
-            } div.board#last-board {
-                position: relative;
-                /*fixes misalignment between relative and absolute divs*/
-                width: 100%;
-            } div.board > table {
-                white-space: pre;
-                margin: auto;
-                text-align: center;
-                position: relative;
-                z-index: 10;
             } .pac.running-out {
                 animation: pac-power 0.1s infinite ease-in-out;
             } .spooked.running-out {
                 animation-duration: 0.25s;
             } .darker {
                 opacity: 0;
+            } table:not(#board) {
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
             }
             @keyframes pac-power {
                 0% {
@@ -401,27 +392,27 @@ ___________________
         <div>
             <h3>Time: <span id='time'>0:00</span></h3>
             <h1>-- Board --</h1>
-            <div class="board"><table id="sprites-pac" class="board-table">
+            <table id="sprites-pac">
                 <tr><td><span class="pac">C</span></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-bli" class="board-table">
+            </table>
+            <table id="sprites-bli">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-ink" class="board-table">
+            </table>
+            <table id="sprites-ink">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-pin" class="board-table">
+            </table>
+            <table id="sprites-pin">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="sprites-cly" class="board-table">
+            </table>
+            <table id="sprites-cly">
                 <tr><td></td></tr>
-            </table></div>
-            <div class="board"><table id="targets" class="board-table" style="display: none; left: 0; right: 0; z-index: 100;"></table></div>
-            <div class="board" id="last-board"><table id="board" class="board-table"></table></div>
+            </table>
+            <table id="targets" style="display: none; left: 0; right: 0; z-index: 100;"></table>
+            <table id="board"></table>
 
             <div style="text-align: center;">
-                ><button onclick='face_up()' title="Face up">&Lambda;</button> <br>
-                <button onclick='face_left()' title="Face left">&lt;</button><button onclick='face_down()' title="Face down">V</button><button onclick='face_right()' title="Face right">&gt;</button> <br>
+                <button id="ArrowUp" onclick='window.onkeydown(event)' title="Move up">&Lambda;</button> <br>
+                <button id="ArrowLeft" onclick='window.onkeydown(event)' title="Move left">&lt;</button><button id="ArrowDown" onclick='window.onkeydown(event)' title="Move down">V</button><button id="ArrowRight" onclick='window.onkeydown(event)' title="Move right">&gt;</button> <br>
                 <button onclick='pause()' title="Pause game">||</button>
             </div>
 
@@ -464,6 +455,30 @@ ___________________
 ║ - - - - - - - - - - - - - - - - - - - - - - - - - - ║.
 ╚═════════════════════════════════════════════════════╝`
                 var grid = []
+                var tables = [
+                    "#board",
+                    "#targets",
+                    "#sprites-pac",
+                    "#sprites-bli",
+                    "#sprites-pin",
+                    "#sprites-ink",
+                    "#sprites-cly",
+                ];
+
+                function fix_size() {
+                    $("#sprites-pac").style.width = "";
+                    $("#sprites-pac").style.height = "";
+                    font_h = $("#sprites-pac span").getClientRects()[0].height,
+                    font_w = $("#sprites-pac span").getClientRects()[0].width;
+                    var grid_w = grid[0].length * font_w + "px";
+                    var grid_h = grid.length * font_h + "px";
+                    for(var table of tables) {
+                        var e = $(table)
+                        e.style.width = grid_w;
+                        e.style.height = grid_h;
+                    }
+                }
+
                 function gen_grid() {
                     console.info("Generating Grid")
                     // Set up the grid
@@ -471,15 +486,7 @@ ___________________
                         grid.push(s.split(''))
                     }
                     var html = ("<tr>" + "<td> </td>".repeat(grid[0].length) + "</tr>").repeat(grid.length)
-                    var tables = [
-                        "#board",
-                        "#targets",
-                        "#sprites-pac",
-                        "#sprites-bli",
-                        "#sprites-pin",
-                        "#sprites-ink",
-                        "#sprites-cly",
-                    ]
+
                     for(var table of tables)
                         $(table).innerHTML = html;
                     $("#sprites-pac td").innerHTML = `<span class="pac">C</span>`
@@ -487,60 +494,58 @@ ___________________
                     $("#sprites-ink td").innerHTML = `<span class="inky">M</span>`
                     $("#sprites-pin td").innerHTML = `<span class="pinky">M</span>`
                     $("#sprites-cly td").innerHTML = `<span class="clyde">M</span>`
+                    fix_size();
+
+                    // Set up variables. I could use a class but I'm too lazy
+                    blinky_y = 11; blinky_x = 26;
+                    blinky_tX = 0; blinky_tY = 0;
+                    blinky_face = [0, 1]; blinky_alive = true;
+
+                    pinky_y = 14; pinky_x = 26;
+                    pinky_tX = 0; pinky_tY = 0;
+                    pinky_face = [0, 1]; pinky_alive = true;
+
+                    inky_y = 14; inky_x = 22;
+                    inky_tX = 0; inky_tY = 0;
+                    inky_face = [0, 1]; inky_alive = true;
+
+                    clyde_y = 14; clyde_x = 30;
+                    clyde_tX = 0; clyde_tY = 0;
+                    clyde_face = [0, 1]; clyde_alive = true;
+                    clyde_scatter = false;
+
+                    pac_x = 26; pac_y = 23; pac_face = [-2, 0];
+
+                    char = 0; ghosts_eaten = [0, 0, 0, 0];
+                    powers_eaten = -1; powered = false;
+                    running_out = false; scatter = false;
+
+                    draw_grid();
                 }
 
                 // Static
-                PACMAN = 0;
-                BLINKY = 1;
-                INKY = 2;
-                PINKY = 3;
-                CLYDE = 4;
+                var PACMAN = 0,
+                    BLINKY = 1,
+                    INKY = 2,
+                    PINKY = 3,
+                    CLYDE = 4,
+                    home_x = 26, home_y = 14,
+                    exit_x = 26, exit_y = 11,
+                    font_h = $("#sprites-pac tr").getClientRects()[0].height,
+                    font_w = $("#sprites-pac td").getClientRects()[0].height;
 
                 // Position variables
-                var blinky_y = 11;
-                var blinky_x = 26;
-                var inky_y = 14;
-                var inky_x = 22;
-                var pinky_y = 14;
-                var pinky_x = 26;
-                var clyde_y = 14;
-                var clyde_x = 30;
-                var pac_y = 23;
-                var pac_x = 26;
-                var home_x = 26;
-                var home_y = 14;
-                var exit_x = 26;
-                var exit_y = 11;
 
-                // Targets
-                var blinky_tX = 0;
-                var blinky_tY = 0;
-                var pinky_tX = 0;
-                var pinky_tY = 0;
-                var inky_tX = 0;
-                var inky_tY = 0;
-                var clyde_tX = 0;
-                var clyde_tY = 0;
+                var blinky_y, blinky_x, blinky_tY, blinky_tX, blinky_face, blinky_alive,
+                    pinky_y,  pinky_x,  pinky_tY,  pinky_tX,  pinky_face,  pinky_alive,
+                    inky_y,   inky_x,   inky_tY,   inky_tX,   inky_face,   inky_alive,
+                    clyde_y,  clyde_x,  clyde_tY,  clyde_tX,  clyde_face,  clyde_alive,
+                    pac_y,    pac_x,                          pac_face,
 
-                // Facing
-                var pac_face = [-2, 0];
-                var blinky_face = [0, 1];
-                var pinky_face = [0, 1];
-                var inky_face = [0, 1];
-                var clyde_face = [0, 1];
+                    score = 0, char, ghosts_eaten, powers_eaten, powered, running_out,
+                    scatter, clyde_scatter;
 
-                // Other states
-                var char = 0;
-                var powered = false;
-                var blinky_alive = true;
-                var pinky_alive = true;
-                var inky_alive = true;
-                var clyde_alive = true;
-                var running_out = false;
-                var scatter = false;
-                var font_h = $("#sprites-pac tr").getClientRects()[0].height;
-                var font_w = $("#sprites-pac").clientWidth;
-                var clyde_scatter = false;
+
                 var last_grid = grid.toString();
 
                 function draw_grid() {
@@ -604,23 +609,22 @@ ___________________
                     reposition();
                 }
                 gen_grid();
-                draw_grid();
 
                 function reposition() {
                     $(".pac").style.top = font_h * pac_y + "px";
                     $(".pac").style.left = font_w * pac_x + "px";
 
-                    $(".blinky").style.top = font_h * blinky_y + "px";
-                    $(".blinky").style.left = font_w * blinky_x + "px";
+                    $(".blinky").style.top = font_h * blinky_y + 2 + "px";
+                    $(".blinky").style.left = font_w * blinky_x + 2 + "px";
 
-                    $(".pinky").style.top = font_h * pinky_y + "px";
-                    $(".pinky").style.left = font_w * pinky_x + "px";
+                    $(".pinky").style.top = font_h * pinky_y + 2 + "px";
+                    $(".pinky").style.left = font_w * pinky_x - 2 + "px";
 
-                    $(".inky").style.top = font_h * inky_y + "px";
-                    $(".inky").style.left = font_w * inky_x + "px";
+                    $(".inky").style.top = font_h * inky_y - 2 + "px";
+                    $(".inky").style.left = font_w * inky_x + 2 + "px";
 
-                    $(".clyde").style.top = font_h * clyde_y + "px";
-                    $(".clyde").style.left = font_w * clyde_x + "px";
+                    $(".clyde").style.top = font_h * clyde_y - 2 + "px";
+                    $(".clyde").style.left = font_w * clyde_x - 2 + "px";
 
                 }
 
@@ -663,22 +667,30 @@ ___________________
                         vX += dX;
                         vY += dY;
                         if(char == 0) { // Is the selected sprite pacman?
-                            if(c == "O") { // Set the powerup
-                                powered = true;
-                                running_out = false;
-                                window.setTimeout(() => {
-                                    running_out = true;
-                                    console.log("Running out!")
-                                    draw_grid();
+                            switch(c) {
+                                case "-":
+                                    score += 10;
+                                    grid[vY][vX] = " "; // Clear the current space
+                                    break;
+                                case "O":
+                                    powered = true;
+                                    powers_eaten += 1;
+                                    running_out = false;
+                                    grid[vY][vX] = " "; // Clear the current space
                                     window.setTimeout(() => {
-                                        powered = false;
-                                        console.log("End")
-                                        running_out = false;
+                                        running_out = true;
+                                        console.log("Running out!")
                                         draw_grid();
-                                    }, 5000);
-                                }, 15000);
+                                        window.setTimeout(() => {
+                                            powered = false;
+                                            console.log("End")
+                                            running_out = false;
+                                            draw_grid();
+                                        }, 5000);
+                                    }, 15000);
+                                    break;
                             }
-                            grid[vY][vX] = " "; // Clear the current space
+
                             last_face = [dX, dY];
                         }
                     }
@@ -977,7 +989,7 @@ ___________________
                 }
 
                 window.onkeydown = (evt) => {
-                    switch(evt.key) {
+                    switch(evt.key || evt.target.id) {
                         case "ArrowDown":
                             move_pac(0, 1, evt);
                             target();
@@ -1006,10 +1018,18 @@ ___________________
                     $("#targets").style.display = "";
                 }
                 console.warn("Type `show_targets()' to show each ghost's target")
+
+                function pause() {
+                    alert("PACMAN ;] is paused. Click 'Ok' to continue.")
+                }
+                function font_loaded() {
+                    console.log("Fixing size");
+                    fix_size();
+                    draw_grid();
+                }
             </script>
         </div>
-
-            <link rel="stylesheet" type="text/css" href="/prizm.dev/assets/css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="https://voxelprismatic.github.io/prizm.dev/assets/css/fonts.css" onload="window.setTimeout(font_loaded,500)">
         </div>
     </body>
 </html>
