@@ -863,64 +863,27 @@ ___________________
                         }
                     }
                     
-                    on_blinky = false;
-                    on_inky = false;
-                    on_pinky = false;
-                    on_clyde = false;
                     switch(char) { // Set X/Y vars
                         case PACMAN:
                             [pac_x, pac_y] = [vX, vY];
                             pac_face = [dX, dY];
-                            var pf = pac_face.toString();
-                            on_blinky = blinky_alive && blinky_x == pac_x && blinky_y == pac_y && blinky_face.toString() != pf;
-                            on_inky = inky_alive && inky_x == pac_x && inky_y == pac_y && inky_face.toString() != pf;
-                            on_pinky = pinky_alive && pinky_x == pac_x && pinky_y == pac_y && pinky_face.toString() != pf;
-                            on_clyde = clyde_alive && clyde_x == pac_x && clyde_y == pac_y && clyde_face.toString() != pf;
                             break;
                         case BLINKY:
                             [blinky_x, blinky_y] = [vX, vY];
                             blinky_face = [dX, dY];
-                            on_blinky = blinky_alive && blinky_x == pac_x && blinky_y == pac_y;
                             break;
                         case INKY:
                             [inky_x, inky_y] = [vX, vY];
                             inky_face = [dX, dY];
-                            on_inky = inky_alive && inky_x == pac_x && inky_y == pac_y;
                             break;
                         case PINKY:
                             [pinky_x, pinky_y] = [vX, vY];
                             pinky_face = [dX, dY];
-                            on_pinky = pinky_alive && pinky_x == pac_x && pinky_y == pac_y;
                             break;
                         case CLYDE:
                             [clyde_x, clyde_y] = [vX, vY];
                             clyde_face = [dX, dY];
-                            on_clyde = clyde_alive && clyde_x == pac_x && clyde_y == pac_y;
                             break;
-                    }
-//                     var pf = pac_face.toString();
-
-                    if(powered) { // Kill a ghost
-                        if(on_pinky) {
-                            pinky_alive = false;
-                            ghosts_eaten[powers_eaten] += 1;
-                            score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
-                        } else if(on_inky) {
-                            inky_alive = false;
-                            ghosts_eaten[powers_eaten] += 1;
-                            score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
-                        } else if(on_clyde) {
-                            clyde_alive = false;
-                            ghosts_eaten[powers_eaten] += 1;
-                            score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
-                        } else if(on_blinky) {
-                            blinky_alive = false;
-                            ghosts_eaten[powers_eaten] += 1;
-                            score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
-                        } if(powers_eaten == 3 && eval(ghosts_eaten.join("+")) == 16 ) {
-                            score += 12000;
-                            powers_eaten = -1;
-                        }
                     }
                     if(evt)
                         evt.preventDefault();
@@ -1347,6 +1310,11 @@ ___________________
                 function target() {
                     console.groupCollapsed("Move");
                     var temp_char = Number(char);
+                    var pf = pac_face.toString();
+                    on_blinky = blinky_alive && blinky_x == pac_x && blinky_y == pac_y && blinky_face.toString() != pf;
+                    on_inky = inky_alive && inky_x == pac_x && inky_y == pac_y && inky_face.toString() != pf;
+                    on_pinky = pinky_alive && pinky_x == pac_x && pinky_y == pac_y && pinky_face.toString() != pf;
+                    on_clyde = clyde_alive && clyde_x == pac_x && clyde_y == pac_y && clyde_face.toString() != pf;
                     blinky_target();
                     pinky_target();
                     inky_target();
