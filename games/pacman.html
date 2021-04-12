@@ -821,6 +821,10 @@ ___________________
                             last_face = [dX, dY];
                         }
                     }
+                    var on_pinky = false;
+                    var on_inky = false;
+                    var on_clyde = false;
+                    var on_blinky = false;
                     switch(char) { // Set X/Y vars
                         case PACMAN:
                             [pac_x, pac_y] = [vX, vY];
@@ -829,41 +833,40 @@ ___________________
                         case BLINKY:
                             [blinky_x, blinky_y] = [vX, vY];
                             blinky_face = [dX, dY];
+                            on_blinky = blinky_alive && blinky_x == pac_x && blinky_y == pac_y;
                             break;
                         case INKY:
                             [inky_x, inky_y] = [vX, vY];
                             inky_face = [dX, dY];
+                            on_inky = inky_alive && inky_x == pac_x && inky_y == pac_y;
                             break;
                         case PINKY:
                             [pinky_x, pinky_y] = [vX, vY];
                             pinky_face = [dX, dY];
+                            on_pinky = pinky_alive && pinky_x == pac_x && pinky_y == pac_y;
                             break;
                         case CLYDE:
                             [clyde_x, clyde_y] = [vX, vY];
                             clyde_face = [dX, dY];
+                            on_clyde = clyde_alive && clyde_x == pac_x && clyde_y == pac_y;
                             break;
                     }
 //                     var pf = pac_face.toString();
-
-                    var on_pinky = pinky_alive && pinky_x == pac_x && pinky_y == pac_y;
-                    var on_inky = inky_alive && inky_x == pac_x && inky_y == pac_y;
-                    var on_clyde = clyde_alive && clyde_x == pac_x && clyde_y == pac_y;
-                    var on_blinky = blinky_alive && blinky_x == pac_x && blinky_y == pac_y;
 
                     if(powered && char) { // Kill a ghost
                         if(on_pinky) {
                             pinky_alive = false;
                             ghosts_eaten[powers_eaten] += 1;
                             score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
-                        } if(on_inky) {
+                        } else if(on_inky) {
                             inky_alive = false;
                             ghosts_eaten[powers_eaten] += 1;
                             score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
-                        } if(on_clyde) {
+                        } else if(on_clyde) {
                             clyde_alive = false;
                             ghosts_eaten[powers_eaten] += 1;
                             score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
-                        } if(on_blinky) {
+                        } else if(on_blinky) {
                             blinky_alive = false;
                             ghosts_eaten[powers_eaten] += 1;
                             score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
@@ -908,12 +911,12 @@ ___________________
                           global_counter = true;
                           lives -= 1;
                           if(lives == 0)
-                              alert("Game Over!");
+                              return message("GAME OVER", "#f00");
                           for(var x = 0; x < 4250; x += 250) {
                               window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
                           }
                           window.clearInterval(move_interval);
-                          //window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250);
+                          window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250);
                     }, 2500);
                 }
 
