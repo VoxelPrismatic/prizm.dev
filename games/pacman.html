@@ -1266,7 +1266,7 @@ ___________________
                     on_pinky |= pac_x == pinky_x && pac_y == pinky_y;
                     on_inky |= pac_x == inky_x && pac_y == inky_y;
                     on_clyde |= pac_x == clyde_x && pac_y == clyde_y;
-                    if(powered) {
+                    if(!powered) {
                         if(on_blinky || on_inky || on_pinky || on_clyde)
                             die();
                     } else if(on_pinky) {
