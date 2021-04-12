@@ -955,8 +955,13 @@ ___________________
                         pac_rot = 0;
                         draw_grid();
                         global_counter = true;
-                        if(lives == 0)
+                        if(lives == 0) {
+                            var style = document.createElement("STYLE");
+                            style.innerHTML = ".grid { color: #f00 }";
+                            style.id = "custom-css";
+                            document.head.appendChild(style);
                             return message("GAME OVER", "#f00");
+                        }
                         for(var x = 0; x < 4250; x += 250) {
                             window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
                         }
