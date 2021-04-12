@@ -729,7 +729,7 @@ ___________________
                     tab.rows[blinky_tY].cells[blinky_tX].innerHTML = `<span class="target" style="color: #f00">X</span>`
                     tab.rows[inky_tY].cells[inky_tX].innerHTML = `<span class="target" style="color: #0ff">X</span>`
                     tab.rows[pinky_tY].cells[pinky_tX].innerHTML = `<span class="target" style="color: #f08">X</span>`
-                    $("#lives").innerHTML = "C ".repeat(lives - 1);
+                    $("#lives").innerHTML = "C ".repeat(Math.max(lives - 1, 0));
                     reposition();
                 }
                 gen_grid();
@@ -1352,6 +1352,8 @@ ___________________
                     } if(powers_eaten == 3 && eval(ghosts_eaten.join("+")) == 16 ) {
                         score += 12000;
                         powers_eaten = -1;
+                    } if(dots == 240) {
+                        win();
                     }
                 }
                 var last_last_move = "ArrowRight"
