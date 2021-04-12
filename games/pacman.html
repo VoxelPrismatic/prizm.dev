@@ -905,40 +905,104 @@ ___________________
                 }
 
                 function die() {
-                      window.clearInterval(move_interval);
-                      draw_grid();
-                      window.setTimeout(() => {
-                          $(".pac").innerHTML = "<";
-                      }, 1000);
-                      window.setTimeout(() => {
-                          $(".pac").innerHTML = "=";
-                      }, 1250);
-                      window.setTimeout(() => {
-                          $(".pac").innerHTML = "¦";
-                      }, 1500);
-                      window.setTimeout(() => {
-                          $(".pac").innerHTML = ":";
-                      }, 1750);
-                      window.setTimeout(() => {
-                          $(".pac").innerHTML = ".";
-                      }, 2000);
-                      window.setTimeout(() => {
-                          $(".pac").innerHTML = " ";
-                      }, 2250);
-
-                      window.setTimeout(() => {
-                          semigen_grid();
-                          last_move = "ArrowRight"
-                          draw_grid();
-                          global_counter = true;
-                          lives -= 1;
-                          if(lives == 0)
-                              return message("GAME OVER", "#f00");
-                          for(var x = 0; x < 4250; x += 250) {
-                              window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
-                          }
-                          window.clearInterval(move_interval);
-                          window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250);
+                    window.clearInterval(move_interval);
+                    draw_grid();
+                    var style = document.createElement("STYLE");
+                    style.innerHTML = ".blinky, .clyde, .inky, .pinky { display: none; }";
+                    style.id = "custom-css";
+                    document.head.appendChild(style);
+                    window.setTimeout(() => {
+                        $(".pac").innerHTML = "<";
+                    }, 1000);
+                    window.setTimeout(() => {
+                        $(".pac").innerHTML = "=";
+                    }, 1250);
+                    window.setTimeout(() => {
+                        $(".pac").innerHTML = "¦";
+                    }, 1500);
+                    window.setTimeout(() => {
+                        $(".pac").innerHTML = ":";
+                    }, 1750);
+                    window.setTimeout(() => {
+                        $(".pac").innerHTML = ".";
+                    }, 2000);
+                    window.setTimeout(() => {
+                        $(".pac").innerHTML = " ";
+                    }, 2250);
+                    window.setTimeout(() => {
+                        $("#custom-css").remove();
+                        semigen_grid();
+                        last_move = "ArrowRight"
+                        lives -= 1;
+                        last_last_move = "ArrowRight";
+                        pac_rot = 0;
+                        draw_grid();
+                        global_counter = true;
+                        if(lives == 0)
+                            return message("GAME OVER", "#f00");
+                        for(var x = 0; x < 4250; x += 250) {
+                            window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
+                        }
+                        window.clearInterval(move_interval);
+                        window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250);
+                    }, 2500);
+                }
+                
+                function win() {
+                    window.clearInterval(move_interval);
+                    draw_grid();
+                    window.setTimeout(() => {
+                        var style = document.createElement("STYLE");
+                        style.innerHTML = ".grid { color: #0f0 }";
+                        style.id = "custom-css";
+                        document.head.appendChild(style);
+                    }, 1000);
+                    window.setTimeout(() => {
+                        $("#custom-css").remove();
+                        var style = document.createElement("STYLE");
+                        style.innerHTML = ".grid { color: #08f }";
+                        style.id = "custom-css";
+                        document.head.appendChild(style);
+                    }, 1250);
+                    window.setTimeout(() => {
+                        $("#custom-css").remove();
+                        var style = document.createElement("STYLE");
+                        style.innerHTML = ".grid { color: #0f0 }";
+                        style.id = "custom-css";
+                        document.head.appendChild(style);
+                    }, 1500);
+                    window.setTimeout(() => {
+                        $("#custom-css").remove();
+                        var style = document.createElement("STYLE");
+                        style.innerHTML = ".grid { color: #08f }";
+                        style.id = "custom-css";
+                        document.head.appendChild(style);
+                    }, 1750);
+                    window.setTimeout(() => {
+                        $("#custom-css").remove();
+                        var style = document.createElement("STYLE");
+                        style.innerHTML = ".grid { color: #0f0 }";
+                        style.id = "custom-css";
+                        document.head.appendChild(style);
+                    }, 2000);
+                    window.setTimeout(() => {
+                        $("#custom-css").remove();
+                        var style = document.createElement("STYLE");
+                        style.innerHTML = ".grid { color: #08f }";
+                        style.id = "custom-css";
+                        document.head.appendChild(style);
+                    }, 2250);
+                    window.setTimeout(() => {
+                        $("#custom-css").remove();
+                        semigen_grid();
+                        last_move = "ArrowRight"
+                        last_last_move = "ArrowRight";
+                        gen_grid();
+                        for(var x = 0; x < 4250; x += 250) {
+                            window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
+                        }
+                        window.clearInterval(move_interval);
+                        window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250);
                     }, 2500);
                 }
 
@@ -1405,7 +1469,7 @@ ___________________
                     for(var e of $$(".msg"))
                         e.parentElement.innerHTML = "";
                     for(var x of msg) {
-                        r[i].innerHTML = `<span class="grid msg" style="color: ${color}">${x}</span>`;
+                        r[i].innerHTML = `<span class="grid msg" style="color: ${color}; font-weight: bold;">${x}</span>`;
                         i += 1;
                     }
                 }
