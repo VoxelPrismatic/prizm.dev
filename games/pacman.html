@@ -862,14 +862,20 @@ ___________________
                             last_face = [dX, dY];
                         }
                     }
-                    on_pinky = false;
-                    on_inky = false;
-                    on_clyde = false;
+                    
                     on_blinky = false;
+                    on_inky = false;
+                    on_pinky = false;
+                    on_clyde = false;
                     switch(char) { // Set X/Y vars
                         case PACMAN:
                             [pac_x, pac_y] = [vX, vY];
                             pac_face = [dX, dY];
+                            var pf = pac_face.toString();
+                            on_blinky = blinky_alive && blinky_x == pac_x && blinky_y == pac_y && blinky_face.toString() != pf;
+                            on_inky = inky_alive && inky_x == pac_x && inky_y == pac_y && inky_face.toString() != pf;
+                            on_pinky = pinky_alive && pinky_x == pac_x && pinky_y == pac_y && pinky_face.toString() != pf;
+                            on_clyde = clyde_alive && clyde_x == pac_x && clyde_y == pac_y && clyde_face.toString() != pf;
                             break;
                         case BLINKY:
                             [blinky_x, blinky_y] = [vX, vY];
@@ -894,7 +900,7 @@ ___________________
                     }
 //                     var pf = pac_face.toString();
 
-                    if(powered && char) { // Kill a ghost
+                    if(powered) { // Kill a ghost
                         if(on_pinky) {
                             pinky_alive = false;
                             ghosts_eaten[powers_eaten] += 1;
