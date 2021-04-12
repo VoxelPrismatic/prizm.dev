@@ -420,10 +420,10 @@ ___________________
             </table>
             <table id="targets" style="display: none; left: 0; right: 0; z-index: 100;"></table>
             <table id="board"></table>
-            <div id="status" style="margin: auto;">
+            <!-- <div id="status" style="margin: auto;">
                 <span style="float: left; display: inline;" id="lives">C C C</span>
                 <span style="float: right;" id="level"><span style="color: #f00;">O</span></span>
-            </div><br><br>
+            </div><br><br> -->
             <div style="display: none;">
                 <span id="cherry" style="transform: scale(50%); text-align: center;">
                     <span style="color: #282;">&Alpha;</span><br>
@@ -579,7 +579,7 @@ ___________________
                     char = 0; ghosts_eaten = [0, 0, 0, 0];
                     powers_eaten = -1; powered = false;
                     running_out = false; scatter = false;
-                    dots = 0; global_counter = true; lives = 4;
+                    dots = 0; global_counter = true;
 
                     // Set scatter times, from https://pacman.holenet.info/#CH2_Scatter_Chase_Repeat
                     if(level == 1) {
@@ -669,7 +669,8 @@ ___________________
                     scatter, clyde_scatter, level = 0, pac_speed, ghost_speed, dots = 0,
                     dot_counter, inky_dots, pinky_dots, clyde_dots, global_counter,
 
-                    pac_rot = 0, pac_inv = 0, running_out_t_o, finished_t_o;
+                    pac_rot = 0, pac_inv = 0, running_out_t_o, finished_t_o, 
+                    lives = 4;
 
 
                 var last_grid = grid.toString();
@@ -744,8 +745,8 @@ ___________________
                     $("#lives").innerHTML = "C ".repeat(Math.max(lives - 1, 0));
                     $("#level").innerHTML = levels.slice(Math.max(0, Math.min(level, 21) - 7), Math.min(level, 21)).join(" ");
                     $("#score").innerHTML = score;
-                    $("#dots").innerHTML = dots;
-                    $("#ghost-mode").innerHTML = scatter ? "SCATTER" : powered ? "SPOOK" : "CHASE";
+                    //$("#dots").innerHTML = dots;
+                    //$("#ghost-mode").innerHTML = scatter ? "SCATTER" : powered ? "SPOOK" : "CHASE";
                     reposition();
                 }
                 gen_grid();
