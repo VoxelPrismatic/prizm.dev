@@ -511,6 +511,7 @@ ___________________
                         e.style.height = grid_h;
                     }
                     $("#status").style.width = grid_w;
+                    $("#status2").style.width = grid_w;
                 }
 
                 function lets_scatter() {
@@ -1504,6 +1505,7 @@ ___________________
                     draw_grid();
                     for(var x = 0; x < 4250; x += 250) {
                         window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
+                        window.setTimeout(fix_size, x);
                     }
                     window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250)
                 }
