@@ -741,7 +741,7 @@ ___________________
                     tab.rows[inky_tY].cells[inky_tX].innerHTML = `<span class="target" style="color: #0ff">X</span>`
                     tab.rows[pinky_tY].cells[pinky_tX].innerHTML = `<span class="target" style="color: #f08">X</span>`
                     $("#lives").innerHTML = "C ".repeat(Math.max(lives - 1, 0));
-                    $("#level").innerHTML = levels.slice(Math.max(0, Math.min(level, 21) - 7), Math.min(level, 21));
+                    $("#level").innerHTML = levels.slice(Math.max(0, Math.min(level, 21) - 7), Math.min(level, 21)).join(" ");
                     $("#score").innerHTML = score;
                     $("#dots").innerHTML = dots;
                     $("#ghost-mode").innerHTML = scatter ? "SCATTER" : powered ? "SPOOK" : "CHASE";
