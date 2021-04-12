@@ -394,8 +394,14 @@ ___________________
             <h3>Time: <span id='time'>0:00</span></h3>
             <h1>-- Board --</h1>
             <div id="status2" style="margin: auto; color: #fff; font-weight: bold;">
-                <span id="score-status">SCORE </span>
-                <span id="score" style="text-shadow: 0px 0px 8px;">0</span>
+                <span style="float: left">
+                    <span id="score-status">SCORE </span>
+                    <span id="score" style="text-shadow: 0px 0px 8px;">0</span>
+                </span>
+                <span style="float: right; font-size: smaller">
+                    <span id="ghost-mode">SCATTER</span> / DOTS
+                    <span id="dots">0</span>
+                </span>
             </div><br>
             <table id="sprites-bli">
                 <tr><td></td></tr>
@@ -736,6 +742,8 @@ ___________________
                     $("#lives").innerHTML = "C ".repeat(Math.max(lives - 1, 0));
                     $("#level").innerHTML = levels.slice(Math.max(0, Math.min(level, 21) - 7), Math.min(level, 21));
                     $("#score").innerHTML = score;
+                    $("#dots").innerHTML = dots;
+                    $("#ghost-mode").innerHTML = scatter ? "SCATTER" : powered ? "SPOOK" : "CHASE";
                     reposition();
                 }
                 gen_grid();
