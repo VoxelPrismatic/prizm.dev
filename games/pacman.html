@@ -1342,10 +1342,10 @@ ___________________
                     window.setTimeout(draw_grid, 100)
                     char = temp_char;
                     console.groupEnd("Move");
-                    on_blinky |= pac_x == blinky_x && pac_y == blinky_y;
-                    on_pinky |= pac_x == pinky_x && pac_y == pinky_y;
-                    on_inky |= pac_x == inky_x && pac_y == inky_y;
-                    on_clyde |= pac_x == clyde_x && pac_y == clyde_y;
+                    on_blinky |= pac_x == blinky_x && pac_y == blinky_y && blinky_alive;
+                    on_pinky |= pac_x == pinky_x && pac_y == pinky_y && pinky_alive;
+                    on_inky |= pac_x == inky_x && pac_y == inky_y && inky_alive;
+                    on_clyde |= pac_x == clyde_x && pac_y == clyde_y && clyde_alive;
                     if(!powered) {
                         if(on_blinky || on_inky || on_pinky || on_clyde)
                             die();
