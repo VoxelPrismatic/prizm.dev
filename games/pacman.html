@@ -554,6 +554,7 @@ ___________________
 
                 function gen_grid(still_playing = 0) {
                     if(!still_playing) {
+                        grid = [];
                         console.info("Generating Grid")
                         level += 1
                         // Set up the grid
@@ -1368,7 +1369,7 @@ ___________________
                     } if(powers_eaten == 3 && eval(ghosts_eaten.join("+")) == 16 ) {
                         score += 12000;
                         powers_eaten = -1;
-                    } if(dots == 240) {
+                    } if(dots == 244) {
                         win();
                     }
                 }
