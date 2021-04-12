@@ -393,6 +393,10 @@ ___________________
         <div>
             <h3>Time: <span id='time'>0:00</span></h3>
             <h1>-- Board --</h1>
+            <div id="status2" style="margin: auto; color: #fff; font-weight: bold;">
+                <span id="score-status">SCORE </span>
+                <span id="score" style="text-shadow: 0px 0px 8px;">0</span>
+            </div><br>
             <table id="sprites-bli">
                 <tr><td></td></tr>
             </table>
@@ -731,6 +735,7 @@ ___________________
                     tab.rows[pinky_tY].cells[pinky_tX].innerHTML = `<span class="target" style="color: #f08">X</span>`
                     $("#lives").innerHTML = "C ".repeat(Math.max(lives - 1, 0));
                     $("#level").innerHTML = levels.slice(Math.max(0, Math.min(level, 21) - 7), Math.min(level, 21));
+                    $("#score").innerHTML = score;
                     reposition();
                 }
                 gen_grid();
