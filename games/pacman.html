@@ -393,9 +393,6 @@ ___________________
         <div>
             <h3>Time: <span id='time'>0:00</span></h3>
             <h1>-- Board --</h1>
-            <table id="sprites-pac">
-                <tr><td><span class="pac">C</span></td></tr>
-            </table>
             <table id="sprites-bli">
                 <tr><td></td></tr>
             </table>
@@ -408,11 +405,14 @@ ___________________
             <table id="sprites-cly">
                 <tr><td></td></tr>
             </table>
+            <table id="sprites-pac">
+                <tr><td><span class="pac">C</span></td></tr>
+            </table>
             <table id="targets" style="display: none; left: 0; right: 0; z-index: 100;"></table>
             <table id="board"></table>
-            <div>
+            <div id="status" style="margin: auto;">
                 <span style="float: left; color: #ff0" id="lives">C C C</span>
-                <span style="float: right;" id="level">O</span>
+                <span style="float: right;" id="level"><span style="color: #f00;">O</span></span>
             </div>
 
             <div style="text-align: center;">
@@ -483,6 +483,7 @@ ___________________
                         e.style.width = grid_w;
                         e.style.height = grid_h;
                     }
+                    $("#status").style.width = grid_w;
                 }
 
                 function lets_scatter() {
@@ -549,7 +550,7 @@ ___________________
                     char = 0; ghosts_eaten = [0, 0, 0, 0];
                     powers_eaten = -1; powered = false;
                     running_out = false; scatter = false;
-                    dots = 0; global_counter = true;
+                    dots = 0; global_counter = true; lives = 4;
 
                     // Set scatter times, from https://pacman.holenet.info/#CH2_Scatter_Chase_Repeat
                     if(level == 1) {
@@ -643,6 +644,11 @@ ___________________
 
 
                 var last_grid = grid.toString();
+                var on_pinky = false;
+                var on_inky = false;
+                var on_clyde = false;
+                var on_blinky = false;
+                    
 
                 function draw_grid() {
                     var tab = $("#board")
@@ -706,6 +712,7 @@ ___________________
                     tab.rows[blinky_tY].cells[blinky_tX].innerHTML = `<span class="target" style="color: #f00">X</span>`
                     tab.rows[inky_tY].cells[inky_tX].innerHTML = `<span class="target" style="color: #0ff">X</span>`
                     tab.rows[pinky_tY].cells[pinky_tX].innerHTML = `<span class="target" style="color: #f08">X</span>`
+                    $("#lives").innerHTML = "C ".repeat(lives - 1);
                     reposition();
                 }
                 gen_grid();
@@ -821,10 +828,10 @@ ___________________
                             last_face = [dX, dY];
                         }
                     }
-                    var on_pinky = false;
-                    var on_inky = false;
-                    var on_clyde = false;
-                    var on_blinky = false;
+                    on_pinky = false;
+                    on_inky = false;
+                    on_clyde = false;
+                    on_blinky = false;
                     switch(char) { // Set X/Y vars
                         case PACMAN:
                             [pac_x, pac_y] = [vX, vY];
@@ -874,8 +881,6 @@ ___________________
                             score += 12000;
                             powers_eaten = -1;
                         }
-                    } else if(on_blinky || on_inky || on_pinky || on_clyde) {
-                        die();
                     }
                     if(evt)
                         evt.preventDefault();
@@ -1193,14 +1198,8 @@ ___________________
                         inky_tX = 0;
                         inky_tY = 0;
                     } else {
-                        if(blinky_x > pac_x)
-                            inky_tX = pac_x + (pac_x - blinky_x);
-                        else
-                            inky_tX = pac_x - (blinky_x - pac_x);
-                        if(blinky_y > pac_y)
-                            inky_tY = pac_y + (pac_y - blinky_y);
-                        else
-                            inky_tY = pac_y - (blinky_y - pac_y);
+                        inky_tX = pac_x + (pac_x - blinky_x);
+                        inky_tY = pac_y + (pac_y - blinky_y);
                         [inky_tX, inky_tY] = fix_target(inky_tX, inky_tY)
                     }
                     console.groupEnd("Inky");
@@ -1246,6 +1245,8 @@ ___________________
                     window.setTimeout(draw_grid, 100)
                     char = temp_char;
                     console.groupEnd("Move");
+                    if(!powered && (on_blinky || on_inky || on_pinky || on_clyde))
+                        die();
                 }
                 var last_last_move = "ArrowRight"
                 var last_move = "ArrowRight"
