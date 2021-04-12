@@ -1421,34 +1421,34 @@ ___________________
                     last_last_move = last_move;
                     lets_scatter();
                 }
-                window.onkeydown = (evt, tg, again = 1) => {
+                window.onkeydown = (evt, tg, again = 0) => {
                     switch(evt.key || tg || evt.target.id) {
                         case "ArrowDown":
                             if(" -O".includes(grid[pac_y + 1][pac_x]))
                                 last_move = "ArrowDown"
-                            else if(again)
-                                window.setTimeout(onkeydown, 250, evt, tg, 0)
+                            else if(again < 3)
+                                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
                             evt.preventDefault();
                             break;
                         case "ArrowLeft":
                             if(pac_x <= 0 || " -O".includes(grid[pac_y][pac_x - 2]))
                                 last_move = "ArrowLeft"
-                            else if(again)
-                                window.setTimeout(onkeydown, 250, evt, tg, 0)
+                            else if(again < 3)
+                                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
                             evt.preventDefault();
                             break;
                         case "ArrowRight":
-                        if(pac_x >= 53 || " -O".includes(grid[pac_y][pac_x + 2]))
+                            if(pac_x >= 53 || " -O".includes(grid[pac_y][pac_x + 2]))
                                 last_move = "ArrowRight"
-                            else if(again)
-                                window.setTimeout(onkeydown, 250, evt, tg, 0)
+                            else if(again < 3)
+                                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
                             evt.preventDefault();
                             break;
                         case "ArrowUp":
                             if(" -O".includes(grid[pac_y - 1][pac_x]))
                                 last_move = "ArrowUp"
-                            else if(again)
-                                window.setTimeout(onkeydown, 250, evt, tg, 0)
+                            else if(again < 3)
+                                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
                             evt.preventDefault();
                             break;
                         case "Alt":
