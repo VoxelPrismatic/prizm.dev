@@ -410,6 +410,10 @@ ___________________
             </table>
             <table id="targets" style="display: none; left: 0; right: 0; z-index: 100;"></table>
             <table id="board"></table>
+            <div>
+                <span style="float: left; color: #ff0" id="lives">C C C</span>
+                <span style="float: right;" id="level">O</span>
+            </div>
 
             <div style="text-align: center;">
                 <button id="ArrowUp" onclick='window.onkeydown(event)' title="Move up">&Lambda;</button> <br>
@@ -482,13 +486,41 @@ ___________________
                 }
 
                 function lets_scatter() {
+                    if(!scatter_times.length)
+                        return
+                    if(scatter_times[0] != 0) {
+                        scatter_times[0] -= 250;
+                        return
+                    }
+
                     scatter = !scatter
                     console.log("Scattering:", scatter)
                     console.log("Times:", scatter_times)
                     change_direction();
-                    if(!scatter_times.length)
-                        return
-                    window.setTimeout(lets_scatter, scatter_times.pop())
+                    scatter_times = scatter_times.slice(1);
+                }
+
+                function semigen_grid() {
+                    blinky_y = 11; blinky_x = 26;
+                    blinky_tX = 0; blinky_tY = 0;
+                    blinky_face = [0, 1]; blinky_alive = true;
+
+                    pinky_y = 14; pinky_x = 26;
+                    pinky_tX = 0; pinky_tY = 0;
+                    pinky_face = [0, 1]; pinky_alive = true;
+                    pinky_dots = 0;
+
+                    inky_y = 14; inky_x = 22;
+                    inky_tX = 0; inky_tY = 0;
+                    inky_face = [0, 1]; inky_alive = true;
+                    inky_dots = 0;
+
+                    clyde_y = 14; clyde_x = 30;
+                    clyde_tX = 0; clyde_tY = 0;
+                    clyde_face = [0, 1]; clyde_alive = true;
+                    clyde_scatter = false; clyde_dots = 0;
+
+                    pac_x = 26; pac_y = 23; pac_face = [2, 0];
                 }
 
                 function gen_grid(still_playing = 0) {
@@ -512,35 +544,17 @@ ___________________
                     }
 
                     // Set up variables. I could use a class but I'm too lazy
-                    blinky_y = 11; blinky_x = 26;
-                    blinky_tX = 0; blinky_tY = 0;
-                    blinky_face = [0, 1]; blinky_alive = true;
 
-                    pinky_y = 14; pinky_x = 26;
-                    pinky_tX = 0; pinky_tY = 0;
-                    pinky_face = [0, 1]; pinky_alive = true;
-                    pinky_dots = 0;
-
-                    inky_y = 14; inky_x = 22;
-                    inky_tX = 0; inky_tY = 0;
-                    inky_face = [0, 1]; inky_alive = true;
-                    inky_dots = 0;
-
-                    clyde_y = 14; clyde_x = 30;
-                    clyde_tX = 0; clyde_tY = 0;
-                    clyde_face = [0, 1]; clyde_alive = true;
-                    clyde_scatter = false; clyde_dots = 0;
-
-                    pac_x = 26; pac_y = 23; pac_face = [2, 0];
-
+                    semigen_grid();
                     char = 0; ghosts_eaten = [0, 0, 0, 0];
                     powers_eaten = -1; powered = false;
                     running_out = false; scatter = false;
-                    dots = 0; global_counter = false;
+                    dots = 0; global_counter = true;
 
                     // Set scatter times, from https://pacman.holenet.info/#CH2_Scatter_Chase_Repeat
                     if(level == 1) {
                         scatter_times = [
+                            0,
                             7000,  // 7s scatter
                             20000, // 20s chase
                             7000,  // 7s scatter
@@ -551,26 +565,27 @@ ___________________
                         ];
                     } else if(level < 5) {
                         scatter_times = [
+                            0,
                             7000,    // 7s scatter
                             20000,   // 20s chase
                             7000,    // 7s scatter
                             20000,   // 20s chase
                             5000,    // 5s scatter
                             1033000, // 1033s chase
-                            16,      // 1/60s scatter
+                            250,      // 1/4s scatter
                         ];
                     } else {
                         scatter_times = [
+                            0,
                             5000,    // 5s scatter
                             20000,   // 20s chase
                             5000,    // 5s scatter
                             20000,   // 20s chase
                             5000,    // 5s scatter
                             1037000, // 1037s chase
-                            16,      // 1/60s scatter
+                            250,      // 1/4s scatter
                         ];
                     }
-                    scatter_times.reverse(); // easy popping
 
                     // Set speeds, from https://pacman.holenet.info/#CH2_Speed
                     if(level == 1) {
@@ -864,7 +879,43 @@ ___________________
                     reposition();
                 }
 
-                function die() {}
+                function die() {
+                      window.clearInterval(move_interval);
+                      draw_grid();
+                      window.setTimeout(() => {
+                          $(".pac").innerHTML = "<";
+                      }, 1000);
+                      window.setTimeout(() => {
+                          $(".pac").innerHTML = "=";
+                      }, 1250);
+                      window.setTimeout(() => {
+                          $(".pac").innerHTML = "¦";
+                      }, 1500);
+                      window.setTimeout(() => {
+                          $(".pac").innerHTML = ":";
+                      }, 1750);
+                      window.setTimeout(() => {
+                          $(".pac").innerHTML = ".";
+                      }, 2000);
+                      window.setTimeout(() => {
+                          $(".pac").innerHTML = " ";
+                      }, 2250);
+
+                      window.setTimeout(() => {
+                          semigen_grid();
+                          last_move = "ArrowRight"
+                          draw_grid();
+                          global_counter = true;
+                          lives -= 1;
+                          if(lives == 0)
+                              alert("Game Over!");
+                          for(var x = 0; x < 4250; x += 250) {
+                              window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
+                          }
+                          window.clearInterval(move_interval);
+                          //window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250);
+                    }, 2500);
+                }
 
                 function next_ghost() {
                     if(!pinky_dots)
@@ -903,8 +954,8 @@ ___________________
                         pinky_dots = 1;
                     else if(dots == 17)
                         inky_dots = 1;
-                    else if(dots == 32)
-                        clyde_dots = 1;
+                    if(dots == 32 && in_base(CLYDE))
+                        global_counter = false;
                 }
 
                 function can_release(c = null) {
@@ -918,7 +969,7 @@ ___________________
                         case PINKY:
                             return global_counter ? pinky_dots : false;
                         case CLYDE:
-                            return global_counter ? clyde_dots : dots >= dot_counter[1];
+                            return dots >= dot_counter[1];
                     }
                 }
 
@@ -1259,6 +1310,7 @@ ___________________
                             break;
                     }
                     last_last_move = last_move;
+                    lets_scatter();
                 }
                 window.onkeydown = (evt, tg, again = 1) => {
                     switch(evt.key || tg || evt.target.id) {
@@ -1327,7 +1379,7 @@ ___________________
                     for(var x = 0; x < 4250; x += 250) {
                         window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
                     }
-                    window.setTimeout(() => window.setInterval(lets_move, 250), 4250)
+                    window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250)
                 }
             </script>
         </div>
