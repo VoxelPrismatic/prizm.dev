@@ -1269,7 +1269,7 @@ ___________________
                     if(powered) {
                         if(on_blinky || on_inky || on_pinky || on_clyde)
                             die();
-                    } if(on_pinky) {
+                    } else if(on_pinky) {
                         pinky_alive = false;
                         ghosts_eaten[powers_eaten] += 1;
                         score += 200 * Math.pow(2, ghosts_eaten[powers_eaten] - 1);
