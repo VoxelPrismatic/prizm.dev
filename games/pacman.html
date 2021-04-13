@@ -761,7 +761,7 @@ ___________________
                 function draw_grid() {
                     var tab = $("#board")
                     if(last_grid != grid.toString()) {
-                        for(var y = 0; y < grid.length; y += 1) {
+                        for(var y = pac_y - 1; y < pac_y + 1; y += 1) {
                             var r = tab.rows[y];
                             var grid_y = grid[y]
                             for(var x = 0; x < grid_y.length; x += 1) {
