@@ -17,18 +17,25 @@ function resetUpdate() {
 shouldUpdate = true;
 
 function changeScrollingThingy(evt = null) {
+    var elem = $("#jumper");
     if(evt == null || evt.deltaY == undefined) {
         if(window.scrollY % 2)
             return;
-        if(window.scrollY / window.scrollMaxY >= 0.5)
-            setHtml("jumper", "[\u039b]");
-        else
-            setHtml("jumper", "[V]");
+        if(window.scrollY / window.scrollMaxY >= 0.5) {
+            elem.innerHTML = "[\u039b]";
+            $("#nav").style.bottom = "-100px";
+        } else{
+            elem.innerHTML = "[V]";
+            $("#nav").style.bottom = "0px";
+        }
     } else {
-        if(evt.deltaY < 0)
-            setHtml("jumper", "[\u039b]");
-        else
-            setHtml("jumper", "[V]");
+        if(evt.deltaY < 0) {
+            elem.innerHTML = "[\u039b]";
+            $("#nav").style.bottom = "-100px";
+        } else{
+            elem.innerHTML = "[V]";
+            $("#nav").style.bottom = "0px";
+        }
     }
     if(shouldUpdate) {
         updateSpacer();
