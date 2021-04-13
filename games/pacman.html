@@ -932,13 +932,13 @@ ___________________
                                         running_out_t_o = window.setTimeout(() => {
                                             running_out = true;
 //                                             console.log("Running out!")
-                                            draw_grid();
+                                            draw_grid(1);
                                             window.clearTimeout(finished_t_o);
                                             finished_t_o = window.setTimeout(() => {
                                                 powered = false;
 //                                                 console.log("End")
                                                 running_out = false;
-                                                draw_grid();
+                                                draw_grid(1);
                                             }, 5000);
                                         }, 15000);
                                     }
@@ -982,7 +982,7 @@ ___________________
 
                 function die() {
                     window.clearInterval(move_interval);
-                    draw_grid();
+                    draw_grid(1);
                     var style = document.createElement("STYLE");
                     style.innerHTML = ".blinky, .clyde, .inky, .pinky { display: none; }";
                     style.id = "custom-css";
@@ -1012,7 +1012,7 @@ ___________________
                         lives -= 1;
                         last_last_move = "ArrowRight";
                         pac_rot = 0;
-                        draw_grid(0);
+                        draw_grid(1);
                         global_counter = true;
                         if(lives == 0) {
                             var style = document.createElement("STYLE");
@@ -1031,7 +1031,7 @@ ___________________
 
                 function win() {
                     window.clearInterval(move_interval);
-                    draw_grid(0);
+                    draw_grid(1);
                     window.setTimeout(() => {
                         var style = document.createElement("STYLE");
                         style.innerHTML = ".grid { color: #0f0 }";
@@ -1605,7 +1605,7 @@ ___________________
                 function font_loaded() {
                     console.log("Fixing size");
                     fix_size();
-                    draw_grid(0);
+                    draw_grid(1);
                     for(var x = 0; x < 4250; x += 250) {
                         window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
                         window.setTimeout(fix_size, x);
