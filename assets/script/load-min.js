@@ -157,16 +157,16 @@ nav {
     position: fixed;
     left: 0;
     right: 0;
-    text-align: center;
+    text-align: center !important;
     background: inherit;
     box-shadow: 0px 0px 1vw 0.5vw ${$("body").style.backgroundColor};
     bottom: -100px;
     z-index: 1000;
-    margin-bottom: 0px;
-    padding: 5px 10px;
+    margin-bottom: 0px !important;
+    padding: 10px 20px !important;
 }
 sub#footer {
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
 }
 </style>`)
     document.body.insertAdjacentHTML("beforeend", patreon_nav)
