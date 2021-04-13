@@ -5,12 +5,16 @@ function checkScrollPosition() {
     if(y == lastPosition)
         return;
     var elem = $("#jumper");
-    if(y >= window.scrollMaxY - 75)
+    if(y >= window.scrollMaxY - 75) {
         elem.innerHTML = "[\u039b]";
-    else if(y > lastPosition || y <= 10)
+        $("#nav").style.bottom = "-100px";
+    } else if(y > lastPosition || y <= 10) {
         elem.innerHTML = "[V]";
-    else
+        $("#nav").style.bottom = "0px";
+    } else {
         elem.innerHTML = "[\u039b]";
+        $("#nav").style.bottom = "-100px";
+    }
     lastPosition = y;
 }
 
@@ -158,6 +162,11 @@ nav {
     box-shadow: 0px 0px 1vw 0.5vw ${$("body").style.backgroundColor};
     bottom: -100px;
     z-index: 1000;
+    margin-bottom: 0px;
+    padding: 5px 10px;
+}
+sub#footer {
+    margin-bottom: 30px;
 }
 </style>`)
     document.body.insertAdjacentHTML("beforeend", patreon_nav)
