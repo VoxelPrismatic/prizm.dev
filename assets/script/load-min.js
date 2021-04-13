@@ -163,7 +163,6 @@ nav {
     bottom: -100px;
     z-index: 1000;
     margin-bottom: 0px !important;
-    padding: 10px 20px !important;
 }
 sub#footer {
     margin-bottom: 30px !important;
