@@ -720,7 +720,7 @@ ___________________
                         dot_counter = [0, 0];
                     }
                     lets_scatter();
-                    draw_grid();
+                    draw_grid(1);
                 }
 
                 // Static
@@ -758,10 +758,10 @@ ___________________
                 var on_blinky = false;
 
 
-                function draw_grid() {
+                function draw_grid(complete = 0) {
                     var tab = $("#board")
                     if(last_grid != grid.toString()) {
-                        for(var y = pac_y - 1; y < pac_y + 1; y += 1) {
+                        for(var y = complete ? 0 : pac_y - 1; y < complete ? grid.length : pac_y + 2; y += 1) {
                             var r = tab.rows[y];
                             var grid_y = grid[y]
                             for(var x = 0; x < grid_y.length; x += 1) {
@@ -1001,7 +1001,7 @@ ___________________
                         lives -= 1;
                         last_last_move = "ArrowRight";
                         pac_rot = 0;
-                        draw_grid();
+                        draw_grid(0);
                         global_counter = true;
                         if(lives == 0) {
                             var style = document.createElement("STYLE");
@@ -1020,7 +1020,7 @@ ___________________
 
                 function win() {
                     window.clearInterval(move_interval);
-                    draw_grid();
+                    draw_grid(0);
                     window.setTimeout(() => {
                         var style = document.createElement("STYLE");
                         style.innerHTML = ".grid { color: #0f0 }";
@@ -1067,6 +1067,7 @@ ___________________
                         semigen_grid();
                         last_move = "ArrowRight"
                         last_last_move = "ArrowRight";
+                        pac_rot = 0;
                         gen_grid();
                         for(var x = 0; x < 4250; x += 250) {
                             window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
@@ -1593,7 +1594,7 @@ ___________________
                 function font_loaded() {
                     console.log("Fixing size");
                     fix_size();
-                    draw_grid();
+                    draw_grid(0);
                     for(var x = 0; x < 4250; x += 250) {
                         window.setTimeout(message, x, x % 500 ? "GAME  START" : "", "#ff0");
                         window.setTimeout(fix_size, x);
