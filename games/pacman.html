@@ -761,10 +761,21 @@ ___________________
                 function draw_grid(complete = 0) {
                     var tab = $("#board")
                     if(last_grid != grid.toString()) {
-                        for(var y = complete ? 0 : pac_y - 1; y < complete ? grid.length : pac_y + 2; y += 1) {
+                        if(complete) {
+                            var mx_y = grid.length;
+                            var mx_x = grid[0].length;
+                            var mn_y = 0;
+                            var mn_x = 0;
+                        } else { // Only refresh by pacman to save cpu time
+                            var mx_y = pac_y + 2;
+                            var mx_x = Math.min(53, pac_x + 2)
+                            var mn_y = pac_y - 1;
+                            var mn_x = Math.max(0, pac_y - 1)
+                        }
+                        for(var y = mn_y; y < mx_y; y += 1) {
                             var r = tab.rows[y];
-                            var grid_y = grid[y]
-                            for(var x = 0; x < grid_y.length; x += 1) {
+                            var grid_y = grid[y];
+                            for(var x = mn_x; x < mx_x x += 1) {
                                 var c = grid_y[x];
                                 var s = r.cells[x];
                                 if(c == s.textContent)
