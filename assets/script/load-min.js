@@ -164,7 +164,7 @@ nav {
     z-index: 1000;
     margin-bottom: 0px !important;
 }
-sub#footer {
+div.sect:last-child > div:last-child  {
     margin-bottom: 30px !important;
 }
 </style>`)
