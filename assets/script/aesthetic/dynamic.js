@@ -26,15 +26,15 @@ function changeScrollingThingy(evt = null) {
             $("#nav").style.bottom = "-100px";
         } else{
             elem.innerHTML = "[V]";
-            $("#nav").style.bottom = "0px";
+            $("nav").style.bottom = "0px";
         }
     } else {
         if(evt.deltaY < 0) {
             elem.innerHTML = "[\u039b]";
-            $("#nav").style.bottom = "-100px";
+            $("nav").style.bottom = "-100px";
         } else{
             elem.innerHTML = "[V]";
-            $("#nav").style.bottom = "0px";
+            $("nav").style.bottom = "0px";
         }
     }
     if(shouldUpdate) {

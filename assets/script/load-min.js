@@ -7,13 +7,13 @@ function checkScrollPosition() {
     var elem = $("#jumper");
     if(y >= window.scrollMaxY - 75) {
         elem.innerHTML = "[\u039b]";
-        $("#nav").style.bottom = "-100px";
+        $("nav").style.bottom = "-100px";
     } else if(y > lastPosition || y <= 10) {
         elem.innerHTML = "[V]";
-        $("#nav").style.bottom = "0px";
+        $("nav").style.bottom = "0px";
     } else {
         elem.innerHTML = "[\u039b]";
-        $("#nav").style.bottom = "-100px";
+        $("nav").style.bottom = "-100px";
     }
     lastPosition = y;
 }
