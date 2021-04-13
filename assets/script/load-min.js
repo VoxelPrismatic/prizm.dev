@@ -147,6 +147,20 @@ async function loadNow() {
     }
     h1.style.transition = ""
     //window.setInterval(flickery_element, 15000, $("h1#head"));
+    document.head.insertAdjacentHTML("beforeend", `<style>
+a { text-decoration:underline; }
+nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: inherit;
+    box-shadow: 0px 0px 1vw 0.5vw ${$("body").style.backgroundColor};
+    bottom: -100px;
+    z-index: 1000;
+}
+</style>`)
+    document.body.insertAdjacentHTML("beforeend", patreon_nav)
 }
 
 async function load(filename, strip = false, json = false, list = false) {
@@ -276,4 +290,7 @@ function toggleDrop(elem) {
     lastPosition = window.scrollMaxY + 10;
 }
 
-document.head.insertAdjacentHTML("beforeend", "<style>a{text-decoration:underline}</style>")
+var patreon_nav = `
+<nav class="sect">
+    Consider supporting me on <a href="/prizm.dev/re/patreon" target="_blank">Patreon</a>!
+</nav>`
