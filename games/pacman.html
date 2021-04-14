@@ -1652,11 +1652,13 @@ var easteregg = 0;
 window.onkeydown = (evt, tg, again = 0) => {
     try {
         $(".waiting").classList.remove("waiting");
-    } catch(err) {}
-    ìf(again < 3) {
+    } catch(err) {
+    }
+    if(again < 3) {
         try {
             $("#" + (evt.key || tg || evt.target.id)).classList.add("waiting");
-        } catch(err) {}
+        } catch(err) {
+        }
     }
     switch(evt.key || tg || evt.target.id) {
         case "ArrowDown":
