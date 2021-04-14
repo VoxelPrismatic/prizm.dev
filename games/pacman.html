@@ -902,7 +902,7 @@ function draw_grid(complete = 0) {
     sprite.innerHTML = clyde_alive ? "M" : "~"
 
     sprite = $("#sprites-pac span")
-    sprite.className = `pac${powered ? ' spooked' + r : ''}`
+    sprite.className = `pac${powered >= 0 ? ' spooked' + r : ''}`
     sprite.innerHTML = (pac_y + pac_x/2) % 2 ? 'c' : 'C'
     if(pac_inv != pac_rot) {
         pac_inv = pac_rot;
