@@ -1186,7 +1186,7 @@ function can_release(c = null) {
         case INKY:
             return global_counter ? inky_dots : dots >= dot_counter[0];
         case PINKY:
-            return global_counter ? pinky_dots : false;
+            return global_counter ? pinky_dots : true;
         case CLYDE:
             return dots >= dot_counter[1];
     }
