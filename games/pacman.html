@@ -993,22 +993,19 @@ function move_pac(dX, dY, evt) {
                     score += 10;
                     window.clearTimeout(last_dot_timeout);
                     last_dot_timeout = window.setTimeout(next_ghost, level >= 5 ? 3000 : 4000)
-                    if(grid[vY][vX]) {
-                        grid[vY][vX] = " "; // Clear the current space
-                        $("#board").rows[vY].cells[vX].innerHTML = ""
-                        last_grid = grid.toString()
-                    }
+                    grid[vY][vX] = " "; // Clear the current space
+                    $("#board").rows[vY].cells[vX].innerHTML = ""
+                    last_grid = grid.toString()
                     break;
                 case "O":
                     window.clearTimeout(last_dot_timeout);
                     last_dot_timeout = window.setTimeout(next_ghost, level >= 5 ? 3000 : 4000)
                     score += 50;
                     preferred_dot()
-                    if(grid[vY][vX]) {
-                        grid[vY][vX] = " "; // Clear the current space
-                        $("#board").rows[vY].cells[vX].innerHTML = ""
-                        last_grid = grid.toString()
-                    }                    if(spook_time) {
+                    grid[vY][vX] = " "; // Clear the current space
+                    $("#board").rows[vY].cells[vX].innerHTML = ""
+                    last_grid = grid.toString()
+                    if(spook_time) {
                         powered = spook_time;
                         blinky_spook = true;
                         pinky_spook = true;
@@ -1355,8 +1352,10 @@ function do_move() {
 function blinky_target() {
     char = BLINKY;
     console.group("Blinky");
-    if(blinky_x == home_x && blinky_y == home_y)
-        blinky_alive = true; blinky_spook = false;
+    if(blinky_x == home_x && blinky_y == home_y) {
+        blinky_alive = true; 
+        blinky_spook = false;
+    }
     if(!blinky_alive) {
         blinky_tX = home_x;
         blinky_tY = home_y;
