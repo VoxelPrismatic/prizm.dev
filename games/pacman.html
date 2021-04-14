@@ -178,137 +178,71 @@
                 margin: auto;
             }
             @keyframes pac-power {
-                0% {
-                    color: #ff0;
-                } 33% {
-                    color: #fff;
-                } 66% {
-                    color: #880;
-                } 100% {
-                    color: #ff0;
-                }
+                0% { color: #ff0; }
+                33% { color: #fff; }
+                66% { color: #880; }
+                100% { color: #ff0; }
             } @keyframes power-blink {
-                0% {
-                    color: #ff8;
-                } 10% {
-                    color: #fff;
-                } 20% {
-                    color: #cca;
-                } 30% {
-                    color: #ff8;
-                } 100% {
-                    color: #ff8;
-                }
+                0% { color: #ff8; }
+                10% { color: #fff; }
+                20% { color: #cca; }
+                30% { color: #ff8; }
+                100% { color: #ff8; }
             } @keyframes blinky-spooked {
-                0% {
-                    color: #f00;
-                } 25% {
-                    color: #08f;
-                } 60% {
-                    color: #00f;
-                } 75% {
-                    color: #00f;
-                } 100% {
-                    color: #f00;
-                }
+                0% { color: #f00; }
+                25% { color: #08f; }
+                60% { color: #00f; }
+                75% { color: #00f; }
+                100% { color: #f00; }
             } @keyframes pinky-spooked {
-                0% {
-                    color: #f08;
-                } 25% {
-                    color: #08f;
-                } 60% {
-                    color: #00f;
-                } 75% {
-                    color: #00f;
-                } 100% {
-                    color: #f08;
-                }
+                0% { color: #f08; }
+                25% { color: #08f; }
+                60% { color: #00f; }
+                75% { color: #00f; }
+                100% { color: #f08; }
             } @keyframes inky-spooked {
-                0% {
-                    color: #0ff;
-                } 25% {
-                    color: #08f;
-                } 60% {
-                    color: #00f;
-                } 75% {
-                    color: #00f;
-                } 100% {
-                    color: #0ff;
-                }
+                0% { color: #0ff; }
+                25% { color: #08f; }
+                60% { color: #00f; }
+                75% { color: #00f; }
+                100% { color: #0ff; }
             } @keyframes clyde-spooked {
-                0% {
-                    color: #f80;
-                } 25% {
-                    color: #08f;
-                } 60% {
-                    color: #00f;
-                } 75% {
-                    color: #00f;
-                } 100% {
-                    color: #f80;
-                }
+                0% { color: #f80; }
+                25% { color: #08f; }
+                60% { color: #00f; }
+                75% { color: #00f; }
+                100% { color: #f80; }
             }  @keyframes blinky-ded {
-                0% {
-                    color: #f00;
-                } 25% {
-                    color: #fff;
-                } 60% {
-                    color: #ccc;
-                } 75% {
-                    color: #ccc;
-                } 100% {
-                    color: #f00;
-                }
+                0% { color: #f00; }
+                25% { color: #fff; }
+                60% { color: #ccc; }
+                75% { color: #ccc; }
+                100% { color: #f00; }
             } @keyframes pinky-ded {
-                0% {
-                    color: #f08;
-                } 25% {
-                    color: #fff;
-                } 60% {
-                    color: #ccc;
-                } 75% {
-                    color: #ccc;
-                } 100% {
-                    color: #f08;
-                }
+                0% { color: #f08; }
+                25% { color: #fff; }
+                60% { color: #ccc; }
+                75% { color: #ccc; }
+                100% { color: #f08; }
             } @keyframes inky-ded {
-                0% {
-                    color: #0ff;
-                } 25% {
-                    color: #fff;
-                } 60% {
-                    color: #ccc;
-                } 75% {
-                    color: #ccc;
-                } 100% {
-                    color: #0ff;
-                }
+                0% { color: #0ff; }
+                25% { color: #fff; }
+                60% { color: #ccc; }
+                75% { color: #ccc; }
+                100% { color: #0ff; }
             } @keyframes clyde-ded {
-                0% {
-                    color: #f80;
-                } 25% {
-                    color: #fff;
-                } 60% {
-                    color: #ccc;
-                } 75% {
-                    color: #ccc;
-                } 100% {
-                    color: #f80;
-                }
+                0% { color: #f80; }
+                25% { color: #fff; }
+                60% { color: #ccc; }
+                75% { color: #ccc; }
+                100% { color: #f80; }
             } @keyframes glow {
-                0% {
-                    text-shadow: 0px 0px 8px;
-                } 10% {
-                    text-shadow: 0px 0px 16px;
-                } 30% {
-                    text-shadow: 0px 0px 8px;
-                } 70% {
-                    text-shadow: 0px 0px 8px;
-                } 90% {
-                    text-shadow: 0px 0px 4px;
-                } 100% {
-                    text-shadow: 0px 0px 8px;
-                }
+                0% { text-shadow: 0px 0px 8px; }
+                10% { text-shadow: 0px 0px 16px; }
+                30% { text-shadow: 0px 0px 8px; }
+                70% { text-shadow: 0px 0px 8px; }
+                90% { text-shadow: 0px 0px 4px; }
+                100% { text-shadow: 0px 0px 8px; }
             }
         </style>
     </head>
@@ -760,7 +694,7 @@ function gen_grid(still_playing = 0) {
 
     // Spook variables
     switch(level) {
-        case 1: 
+        case 1:
             spook_time = 6000;
             break;
         case 2:
@@ -792,7 +726,6 @@ function gen_grid(still_playing = 0) {
         default:
             spook_time = 0;
     }
-        
 
     // Dot counter limits, from https://pacman.holenet.info/#CH2_Home_Sweet_Home
 
@@ -1551,8 +1484,8 @@ function target() {
         }
     } if(dots == 244) {
         win();
-    } if(!powered || dots == 244) {
-        if(on_blinky || on_inky || on_pinky || on_clyde)
+    } if(powered < 0 || dots == 244) {
+        if(dots != 244 && (on_blinky || on_inky || on_pinky || on_clyde))
             die();
     } else if(on_pinky) {
         pinky_alive = false;
@@ -1653,7 +1586,7 @@ window.onkeydown = (evt, tg, again = 0) => {
         $(".waiting").classList.remove("waiting");
     } catch(err) {
     }
-    if(again < 3) {
+    if(again < 7) {
         try {
             $("#" + (evt.key || tg || evt.target.id)).classList.add("waiting");
         } catch(err) {
@@ -1671,7 +1604,7 @@ window.onkeydown = (evt, tg, again = 0) => {
             }
             if(" -O".includes(grid[pac_y + 1][pac_x]))
                 last_move = "ArrowDown"
-            else if(again < 3)
+            else if(again < 7)
                 window.setTimeout(onkeydown, 250, evt, tg, again + 1)
             evt.preventDefault();
             break;
@@ -1685,7 +1618,7 @@ window.onkeydown = (evt, tg, again = 0) => {
 
             if(pac_x <= 0 || " -O".includes(grid[pac_y][pac_x - 2]))
                 last_move = "ArrowLeft"
-            else if(again < 3)
+            else if(again < 7)
                 window.setTimeout(onkeydown, 250, evt, tg, again + 1)
             evt.preventDefault();
             break;
@@ -1699,7 +1632,7 @@ window.onkeydown = (evt, tg, again = 0) => {
 
             if(pac_x >= 53 || " -O".includes(grid[pac_y][pac_x + 2]))
                 last_move = "ArrowRight"
-            else if(again < 3)
+            else if(again < 7)
                 window.setTimeout(onkeydown, 250, evt, tg, again + 1)
             evt.preventDefault();
             break;
@@ -1713,7 +1646,7 @@ window.onkeydown = (evt, tg, again = 0) => {
 
             if(" -O".includes(grid[pac_y - 1][pac_x]))
                 last_move = "ArrowUp"
-            else if(again < 3)
+            else if(again < 7)
                 window.setTimeout(onkeydown, 250, evt, tg, again + 1)
             evt.preventDefault();
             break;
