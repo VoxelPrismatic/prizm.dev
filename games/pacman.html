@@ -471,7 +471,7 @@ ___________________
             <div style="text-align: center;">
                 <button id="ArrowUp" onclick='window.onkeydown(event)' title="Move up">&Lambda;</button> <br>
                 <button id="ArrowLeft" onclick='window.onkeydown(event)' title="Move left">&lt;</button><button id="ArrowDown" onclick='window.onkeydown(event)' title="Move down">V</button><button id="ArrowRight" onclick='window.onkeydown(event)' title="Move right" class="toggle">&gt;</button> <br>
-                <button onclick='pause()' title="Pause game">||</button>
+                <button onclick='pause()' title="Pause game" style="font-size: smaller;">||</button>
             </div>
 
         </div>
@@ -902,7 +902,7 @@ function draw_grid(complete = 0) {
     sprite.innerHTML = clyde_alive ? "M" : "~"
 
     sprite = $("#sprites-pac span")
-    sprite.className = `pac${s + r}`
+    sprite.className = `pac${powered ? ' spooked' + r : ''}`
     sprite.innerHTML = (pac_y + pac_x/2) % 2 ? 'c' : 'C'
     if(pac_inv != pac_rot) {
         pac_inv = pac_rot;
@@ -1650,6 +1650,14 @@ function lets_move() {
 }
 var easteregg = 0;
 window.onkeydown = (evt, tg, again = 0) => {
+    try {
+        $(".waiting").classList.remove("waiting");
+    } catch(err) {}
+    ìf(again < 3) {
+        try {
+            $("#" + (evt.key || tg || evt.target.id)).classList.add("waiting");
+        } catch(err) {}
+    }
     switch(evt.key || tg || evt.target.id) {
         case "ArrowDown":
             if(!again) {
@@ -1660,7 +1668,6 @@ window.onkeydown = (evt, tg, again = 0) => {
                 else
                     easteregg = 0;
             }
-
             if(" -O".includes(grid[pac_y + 1][pac_x]))
                 last_move = "ArrowDown"
             else if(again < 3)
