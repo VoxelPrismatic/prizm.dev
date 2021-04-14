@@ -29,10 +29,10 @@
             * {
  
             } #head {
-                top: -100px !important;
-            } #keys tr:nth-child(odd) {
-                background-color: #233;
-            } #keys tr:first-child {
+ 
+ 
+ 
+ 
                 background-color: #344;
             } #keys td, #keys th {
                 margin: 5px;
@@ -580,7 +580,7 @@ function fix_size() {
 function lets_scatter() {
     if(bonus_fruit == 10000) {
         $("#sprites-fruit").rows[17].cells[26].innerHTML = levels[Math.min(level, 14) - 1];
-    } else if(bonus_fruit > 0) {
+    } else if(bonus_fruit > 250) {
         bonus_fruit -= 250;
     } else if(bonus_fruit == 0) {
         bonus_fruit -= 250;
@@ -1502,7 +1502,7 @@ function target() {
     on_pinky |= pac_x == pinky_x && pac_y == pinky_y && pinky_alive;
     on_inky |= pac_x == inky_x && pac_y == inky_y && inky_alive;
     on_clyde |= pac_x == clyde_x && pac_y == clyde_y && clyde_alive;
-    if(bonus_fruit && pac_y == 17 && pac_x == 26) {
+    if(bonus_fruit >= 0 && pac_y == 17 && pac_x == 26) {
         $("#sprites-fruit").rows[17].cells[26].innerHTML = " ";
         bonus_fruit = -250;
         switch(level) {
