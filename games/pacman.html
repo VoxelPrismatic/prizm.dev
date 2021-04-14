@@ -993,7 +993,7 @@ function move_pac(dX, dY, evt) {
                     score += 10;
                     window.clearTimeout(last_dot_timeout);
                     last_dot_timeout = window.setTimeout(next_ghost, level >= 5 ? 3000 : 4000)
-                    if(grid(vY][vX]) {
+                    if(grid[vY][vX]) {
                         grid[vY][vX] = " "; // Clear the current space
                         $("#board").rows[vY].cells[vX].innerHTML = ""
                         last_grid = grid.toString()
@@ -1004,7 +1004,7 @@ function move_pac(dX, dY, evt) {
                     last_dot_timeout = window.setTimeout(next_ghost, level >= 5 ? 3000 : 4000)
                     score += 50;
                     preferred_dot()
-                    if(grid(vY][vX]) {
+                    if(grid[vY][vX]) {
                         grid[vY][vX] = " "; // Clear the current space
                         $("#board").rows[vY].cells[vX].innerHTML = ""
                         last_grid = grid.toString()
