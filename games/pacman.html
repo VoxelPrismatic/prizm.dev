@@ -363,6 +363,13 @@ ___________________
                     </tr>
                 </table>
             </details>
+            <details>
+                <summary><h3>Notes</h3></summary>
+                <ul>
+                    <li>The ghosts occasionally do not move. This is intentional, it simulates speed in the full game.</li>
+                    <li>Blinky, the red ghost, may occasionally skip a tile later in the game. In the original, Blinky would move at 105% speed, in this version there is a 5% chance he'll move twice.</li>
+                </ul>
+            </details>
         </div>
         <div>
             <h1>-- Grid --</h1>
@@ -1465,10 +1472,15 @@ function target() {
     on_clyde = clyde_alive && clyde_x == pac_x && clyde_y == pac_y && clyde_face.toString() != pf;
     if(dots <= elroy_dots[0]) {
         var p = dots <= elroy_dots[1] ? elroy_speed[1] : elroy_speed[0];
-            if(p > 1 && Math.random() < p - 1)
-                blinky_target();
+        if(p > 1 && Math.random() < p - 1) {
+            blinky_target();
+            blinky_target();
+        } else if(p >= 1 || Math.random() > p) {
+            blinky_target();
+        }            
+    } else {
+        blinky_target();
     }
-    blinky_target();
     pinky_target();
     inky_target();
     clyde_target();
