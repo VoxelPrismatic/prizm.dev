@@ -6,7 +6,7 @@
         <meta property="og:description" content="A simple game of pacman" />
         <meta name="description" content="A simple game of pacman" />
 
- 
+        <!-- STATIC BETWEEN PAGES -->
         <meta property="og:type" content="website" />
         <meta name="twitter:site" content="@VoxelPrismatic">
         <meta name="twitter:creator" content="@VoxelPrismatic">
@@ -19,20 +19,20 @@
         <meta property="og:image:width" content="256" />
         <meta property="og:image:height" content="256" />
         <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
- 
+        <title>PACMAN ;]</title>
         <link rel="icon" type="image/png" href="/prizm.dev/assets/image/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- 
+        <meta charset="utf-8"/>
         <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/" />
         <meta name="author" content="PRIZ ;]" />
         <style type="text/css">
             * {
- 
+                font-family: "Ubuntu Mono";
             } #head {
- 
- 
- 
- 
+                top: -100px;
+            } #keys tr:nth-child(odd) {
+                background-color: #233;
+            } #keys tr:first-child {
                 background-color: #344;
             } #keys td, #keys th {
                 margin: 5px;
@@ -100,10 +100,14 @@
                 font-size: x-large;
             } .darker {
                 color: #666 !important;
-            } button.toggle, button.toggled {
+            } button.toggle {
                 background-color: #0f84;
                 border-color: #0f8;
                 color: #0f8;
+            } button.waiting {
+                background-color: #0a63;
+                border-color: #0a6;
+                color: #0a6;
             }
             #fuckme {
                 line-height: 8px;
@@ -112,15 +116,6 @@
             } .noted {
                 font-size: 60%;
                 line-height: 60%;
-            } .semiopac {
-                opacity: .6;
-            } .noopac {
-                opacity: 0.25;
-            } .white:not(.semiopac) {
-                opacity: 1;
-                border-width: 4px !important;
-                width: 28px !important;
-                height: 28px !important;
             } #cover {
                 background-color: #233;
                 height: 400px;
@@ -580,12 +575,22 @@ function fix_size() {
 function lets_scatter() {
     if(bonus_fruit == 10000) {
         $("#sprites-fruit").rows[17].cells[26].innerHTML = levels[Math.min(level, 14) - 1];
-    } else if(bonus_fruit > 250) {
+    } else if(bonus_fruit >= 250) {
         bonus_fruit -= 250;
     } else if(bonus_fruit == 0) {
         bonus_fruit -= 250;
         $("#sprites-fruit").rows[17].cells[26].innerHTML = " ";
     }
+    if(powered >= 250) {
+        powered -= 250;
+    } else if(powered == 0) {
+        blinky_spook = false;
+        pinky_spook = false;
+        inky_spook = false;
+        clyde1_spook = false;
+        powered -= 250;
+    }
+
     if(!scatter_times.length)
         return
     if(scatter_times[0] != 0) {
@@ -653,7 +658,7 @@ function gen_grid(still_playing = 0) {
 
     semigen_grid();
     char = 0; ghosts_eaten = [0, 0, 0, 0];
-    powers_eaten = -1; powered = false;
+    powers_eaten = -1; powered = -250;
     running_out = false; scatter = false;
     dots = 0; global_counter = true;
 
@@ -753,6 +758,42 @@ function gen_grid(still_playing = 0) {
             break;
     }
 
+    // Spook variables
+    switch(level) {
+        case 1: 
+            spook_time = 6000;
+            break;
+        case 2:
+        case 6:
+        case 10:
+            spook_time = 5000;
+            break;
+        case 3:
+            spook_time = 4000;
+            break;
+        case 4:
+        case 14:
+            spook_time = 3000;
+            break;
+        case 5:
+        case 7:
+        case 8:
+        case 11:
+            spook_time = 2000;
+            break;
+        case 9:
+        case 12:
+        case 13:
+        case 15:
+        case 16:
+        case 18:
+            spook_time = 1000;
+            break;
+        default:
+            spook_time = 0;
+    }
+        
+
     // Dot counter limits, from https://pacman.holenet.info/#CH2_Home_Sweet_Home
 
     if(level == 1) {
@@ -790,9 +831,8 @@ var blinky_y, blinky_x, blinky_tY, blinky_tX, blinky_face, blinky_alive,
     scatter, clyde_scatter, level = 0, pac_speed, ghost_speed, dots = 0,
     dot_counter, inky_dots, pinky_dots, clyde_dots, global_counter,
 
-    pac_rot = 0, pac_inv = 0, running_out_t_o, finished_t_o,
-    lives = 4, elroy_speed, elroy_dots, bonus_fruit, inky_spook,
-    blinky_spook, pinky_spook, clyde_spook;
+    pac_rot = 0, lives = 4, elroy_speed, elroy_dots, bonus_fruit, pac_inv,
+    inky_spook, blinky_spook, pinky_spook, clyde_spook, spook_time;
 
 
 var last_grid = grid.toString();
@@ -844,9 +884,8 @@ function draw_grid(complete = 0) {
     tab.rows[inky_y].cells[inky_x].classList.add("darker")
     tab.rows[pinky_y].cells[pinky_x].classList.add("darker")
     tab.rows[clyde_y].cells[clyde_x].classList.add("darker")
-    var s = powered ? ' spooked' : ''
-    var r = running_out ? ' running-out' : ''
-    var sprite = $("#sprites-bli span")
+    var r = powered <= 1500 ? ' running-out' : ''
+    var sprite = $("#sprites-bli td")
     sprite.className = `blinky${blinky_alive ? blinky_spook ? ' spooked' + r : '' + r : ' ded'}`;
     sprite.innerHTML = blinky_alive ? "M" : "~"
 
@@ -950,59 +989,36 @@ function move_pac(dX, dY, evt) {
         if(char == 0) { // Is the selected sprite pacman?
             switch(c) {
                 case "-":
-//                                     if(Math.random() > (powered ? pac_speed[3] : pac_speed[1]))
-//                                         return
                     preferred_dot();
                     score += 10;
                     window.clearTimeout(last_dot_timeout);
                     last_dot_timeout = window.setTimeout(next_ghost, level >= 5 ? 3000 : 4000)
-                    grid[vY][vX] = " "; // Clear the current space
+                    if(grid(vY][vX]) {
+                        grid[vY][vX] = " "; // Clear the current space
+                        $("#board").rows[vY].cells[vX].innerHTML = ""
+                        last_grid = grid.toString()
+                    }
                     break;
                 case "O":
-//                                     if(Math.random() > (powered ? pac_speed[3] : pac_speed[1]))
-//                                         return
                     window.clearTimeout(last_dot_timeout);
                     last_dot_timeout = window.setTimeout(next_ghost, level >= 5 ? 3000 : 4000)
                     score += 50;
                     preferred_dot()
-                    grid[vY][vX] = " "; // Clear the current space
-                    if(level < 19) {
-                        powered = true;
+                    if(grid(vY][vX]) {
+                        grid[vY][vX] = " "; // Clear the current space
+                        $("#board").rows[vY].cells[vX].innerHTML = ""
+                        last_grid = grid.toString()
+                    }                    if(spook_time) {
+                        powered = spook_time;
                         blinky_spook = true;
                         pinky_spook = true;
                         inky_spook = true;
                         clyde_spook = true;
                         powers_eaten += 1;
-                        running_out = false;
                         change_direction();
-                        window.clearTimeout(running_out_t_o);
-                        window.clearTimeout(finished_t_o);
-                        running_out_t_o = window.setTimeout(() => {
-                            running_out = true;
-//                                             console.log("Running out!")
-                            draw_grid(1);
-                            window.clearTimeout(finished_t_o);
-                            finished_t_o = window.setTimeout(() => {
-                                powered = false;
-//                                                 console.log("End")
-                                running_out = false;
-                                blinky_spook = false;
-                                pinky_spook = false;
-                                inky_spook = false;
-                                clyde1_spook = false;
-
-                                draw_grid(1);
-                            }, 5000);
-                        }, 15000);
-                    }
-                    break;
-//                                 default:
-//                                     if(Math.random() > (powered ? pac_speed[2] : pac_speed[0]))
-//                                         return
-
+                   }
+                   break;
             }
-
-            last_face = [dX, dY];
         }
     }
 
@@ -1075,10 +1091,9 @@ function die() {
             $("#lives").innerHTML = "Consider supporting on <a href='/prizm.dev/re/patreon' style='color: #48f;' target='_blank'>Patreon</a>!"
             return message("GAME OVER", "#f00");
         }
-        for(var x = 0; x < 4250; x += 250) {
+        for(var x = 0; x < 4250; x += 250)
             window.setTimeout(message, x, x % 500 ? "READY!" : "", "#ff0");
-        }
-        window.clearInterval(move_interval);
+          window.clearInterval(move_interval);
         window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250);
     }, 2500);
 }
