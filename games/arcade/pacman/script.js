@@ -463,19 +463,20 @@ function draw_grid(complete = 0) {
 gen_grid();
 
 function reposition() {
-    $(".pac").style.top = font_h * pac_y + "px";
+    var offs = font_h / 2;
+    $(".pac").style.top = font_h * pac_y - offs + "px";
     $(".pac").style.left = font_w * pac_x + "px";
 
-    $(".blinky").style.top = font_h * blinky_y + 2 + "px";
+    $(".blinky").style.top = font_h * blinky_y + 2 - offs  + "px";
     $(".blinky").style.left = font_w * blinky_x + 2 + "px";
 
-    $(".pinky").style.top = font_h * pinky_y + 2 + "px";
+    $(".pinky").style.top = font_h * pinky_y + 2 - offs + "px";
     $(".pinky").style.left = font_w * pinky_x - 2 + "px";
 
-    $(".inky").style.top = font_h * inky_y - 2 + "px";
+    $(".inky").style.top = font_h * inky_y - 2 - offs + "px";
     $(".inky").style.left = font_w * inky_x + 2 + "px";
 
-    $(".clyde").style.top = font_h * clyde_y - 2 + "px";
+    $(".clyde").style.top = font_h * clyde_y - 2 - offs + "px";
     $(".clyde").style.left = font_w * clyde_x - 2 + "px";
 
 }
