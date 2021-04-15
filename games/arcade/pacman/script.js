@@ -79,8 +79,8 @@ var levels = [
 function fix_size() {
     $("#sprites-pac").style.width = "";
     $("#sprites-pac").style.height = "";
-    font_h = $("#sprites-pac span").getClientRects()[0].height,
-    font_w = $("#sprites-pac span").getClientRects()[0].width;
+    font_h = $("#sprites-pac span").getClientRects()[0].height/2,
+    font_w = $("#sprites-pac span").getClientRects()[0].width/2;
     var grid_w = grid[0].length * font_w + "px";
     var grid_h = grid.length * font_h + "px";
     for(var table of tables) {
