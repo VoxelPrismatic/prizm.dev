@@ -455,10 +455,13 @@ ___________________
                 <button id="ArrowLeft" onclick='window.onkeydown(event)' title="Move left">&lt;</button><button id="ArrowDown" onclick='window.onkeydown(event)' title="Move down">V</button><button id="ArrowRight" onclick='window.onkeydown(event)' title="Move right" class="toggle">&gt;</button> <br>
                 <button onclick='pause()' title="Pause game" style="font-size: smaller;">||</button>
             </div>
-
+            <div id="error"></div>
         </div>
         <script>
-            window.onerror = (m,s,l,c,e) { alert(`${l}:${c}, ${s}\n\n${m}\n\n${e}`);
+            window.onerror = (m,s,l,c,e) { 
+                document.getElementById("error").innerHTML = `${l}:${c}, ${s}\n\n${m}\n\n${e}`
+                alert(`${l}:${c}, ${s}\n\n${m}\n\n${e}`);
+            }
         </script>
         <script type="text/javascript" src="script.js"></script>
         <link rel="stylesheet" type="text/css" href="https://voxelprismatic.github.io/prizm.dev/assets/css/fonts.css" onload="window.setTimeout(font_loaded,500)">
