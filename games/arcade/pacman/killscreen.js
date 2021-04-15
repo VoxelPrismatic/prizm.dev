@@ -72,3 +72,5 @@ for(var y = 0; y < grid.length; y += 1)
         grid[y][x + 1] = grid[y][x]
 
 gen_grid(1)
+last_grid = ""
+draw_grid(1)
