@@ -1108,11 +1108,14 @@ function target() {
 }
 var last_last_move = "ArrowRight"
 var last_move = "ArrowRight"
+var debug = false;
 function lets_move() {
     if(!$("#" + last_move).className.includes("toggle")) {
         $(".toggle").classList.remove("toggle")
         $("#" + last_move).classList.add("toggle")
     }
+    if(!debug)
+        char = PACMAN
     switch(last_move) {
         case "ArrowDown":
             switch(last_last_move) {

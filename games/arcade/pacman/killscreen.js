@@ -1,7 +1,3 @@
-grid = [];
-for(var line of grid_st.split(".\n"))
-    grid.push(line.split(""))
-
 var z = 0
 grid[z][22] = "<span style='color:#ff0;font-weight:bold'>Q</span>"
 grid[z][24] = "<span style='color:#ff0;font-weight:bold'>O</span>"
@@ -75,4 +71,4 @@ for(var y = 0; y < grid.length; y += 1)
     for(var x = 22; x < grid[y].length; x += 2)
         grid[y][x + 1] = grid[y][x]
 
-
+gen_grid(1)
