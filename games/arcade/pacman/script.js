@@ -178,8 +178,8 @@ function gen_grid(still_playing = 0) {
         fix_size();
         if(level == 256) {
             var killscreen = document.createElement("SCRIPT");
-            var killscreen.type = "text/javascript";
-            var killscreen.src = "killscreen.js";
+            killscreen.type = "text/javascript";
+            killscreen.src = "killscreen.js";
             document.body.appendChild(killscreen);
             return;
         }
