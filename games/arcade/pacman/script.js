@@ -401,7 +401,10 @@ function draw_grid(complete = 0) {
                         s.innerHTML = `<span class="power">${c}</span>`;
                         break;
                     default:
-                        s.innerHTML = `<span class="grid">${c}</span>`;
+                        if(c.length == 1)
+                            s.innerHTML = `<span class="grid">${c}</span>`;
+                        else
+                            s.innerHTML = c
                 }
             }
         }
