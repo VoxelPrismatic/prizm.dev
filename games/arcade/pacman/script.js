@@ -79,8 +79,8 @@ var levels = [
 function fix_size() {
     $("#sprites-pac").style.width = "";
     $("#sprites-pac").style.height = "";
-    font_h = $("#board td").getClientRects()[0].height;
-    font_w = $("#board td").getClientRects()[0].width;
+    font_h = $("#sprites-pac tr").getClientRects()[0].height/2;
+    font_w = $("#aprites-pac td").getClientRects()[0].width/2;
     var grid_w = grid[0].length * font_w + "px";
     var grid_h = grid.length * font_h + "px";
     for(var table of tables) {
@@ -345,8 +345,8 @@ var PACMAN = 0,
     CLYDE = 4,
     home_x = 26, home_y = 14,
     exit_x = 26, exit_y = 11,
-    font_h = $("#sprites-pac tr").getClientRects()[0].height,
-    font_w = $("#sprites-pac td").getClientRects()[0].height,
+    font_h = $("#sprites-pac tr").getClientRects()[0].height/2,
+    font_w = $("#sprites-pac td").getClientRects()[0].width/2,
     last_dot_timeout = 0, move_interval = 0;
 
 // Position variables

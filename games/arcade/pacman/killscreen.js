@@ -1,7 +1,7 @@
 var z = 0;
 var k = 23;
 var w = k;
-var s = ` style="top: ${font_h/3}px; left: ${font_w/3}px"`
+var s = ` style="top: ${-font_h/3}px; left: ${font_w/3}px"`
 
 grid[z][w] = `<span class="kill o"${s}>Q</span>`; w += 2;
 grid[z][w] = `<span class='kill o'${s}>O</span>`; w += 2;
