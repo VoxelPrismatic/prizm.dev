@@ -308,7 +308,7 @@ ___________________
                     </tr>
                     <tr>
                         <td>Level<br><sub><i>*Will reset game</i></td>
-                        <td><input type="number" min="1" max="256" onchange="level=this.value-1;win()"></input></td>
+                        <td><input id="lvlin" type="number" min="1" max="256" onchange="localStorage.setItem('pac_level',this.value);window.location.reload()"></input></td>
                    </tr>
                     <tr>
                         <td>Show ghost targets</td>

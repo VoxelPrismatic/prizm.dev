@@ -67,10 +67,16 @@ grid[z][48] = " "
 grid[z][50] = " "
 grid[z][52] = " "
 
-for(var y = 0; y < z; y += 1)
-    for(var x = 22; x < grid[y].length; x += 2)
-        grid[y][x + 1] = grid[y][x]
+var kill_rows = $("#board").rows
+for(var y = 0; y < z; y += 1) {
+    var kill_cells = kill_rows[y]
+    for(var x = 22; x < grid[y].length; x += 2) {
+        grid[y][x + 1] = grid[y][x];
+        kill_cells[x] = grid[y][x];
+        kill_cells[x + 1] = grid[y][x];
+    }
+}
 
-gen_grid(1)
-last_grid = ""
-draw_grid(1)
+//gen_grid(1)
+//last_grid = ""
+//draw_grid(1)

@@ -160,6 +160,8 @@ function gen_grid(still_playing = 0) {
         grid = [];
         console.info("Generating Grid")
         level += 1
+        $("#lvlin").value = level
+        localStorage.setItem("pac_level", level)
         // Set up the grid
         for(var s of grid_st.split(".\n")) {
             grid.push(s.split(''))
@@ -356,12 +358,17 @@ var blinky_y, blinky_x, blinky_tY, blinky_tX, blinky_face, blinky_alive,
     pac_y,    pac_x,                          pac_face,
 
     score = 0, char, ghosts_eaten, powers_eaten, powered, running_out,
-    scatter, clyde_scatter, level = 0, pac_speed, ghost_speed, dots = 0,
+    scatter, clyde_scatter, level, pac_speed, ghost_speed, dots = 0,
     dot_counter, inky_dots, pinky_dots, clyde_dots, global_counter,
 
     pac_rot = 0, lives = 4, elroy_speed, elroy_dots, bonus_fruit, pac_inv,
     inky_spook, blinky_spook, pinky_spook, clyde_spook, spook_time;
 
+if(Number(new Date()) - (localStorage.getItem("pac_time") || 0) > 3600000)
+    level = 0
+else
+    level = (localStorage.getItem("pac_level") || 1) - 1
+$("#lvlin").value = level + 1
 
 var last_grid = grid.toString();
 var on_pinky = false;
@@ -451,6 +458,7 @@ function draw_grid(complete = 0) {
     //$("#dots").innerHTML = dots;
     //$("#ghost-mode").innerHTML = scatter ? "SCATTER" : powered ? "SPOOK" : "CHASE";
     reposition();
+    localStorage.setItem("pac_time", Number(new Date()))
 }
 gen_grid();
 
