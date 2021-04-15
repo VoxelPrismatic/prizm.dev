@@ -361,7 +361,7 @@ var blinky_y, blinky_x, blinky_tY, blinky_tX, blinky_face, blinky_alive,
     scatter, clyde_scatter, level, pac_speed, ghost_speed, dots = 0,
     dot_counter, inky_dots, pinky_dots, clyde_dots, global_counter,
 
-    pac_rot = 0, lives = 4, elroy_speed, elroy_dots, bonus_fruit, pac_inv,
+    pac_rot = 0, lives = 6, elroy_speed, elroy_dots, bonus_fruit, pac_inv,
     inky_spook, blinky_spook, pinky_spook, clyde_spook, spook_time;
 
 if(Number(new Date()) - (localStorage.getItem("pac_time") || 0) > 3600000)
@@ -1283,7 +1283,7 @@ function message(msg, color) {
     for(var e of $$(".msg"))
         e.parentElement.innerHTML = "";
     for(var x of msg) {
-        r[i].innerHTML = `<span class="grid msg kill" style="color: ${color};">${x}</span>`;
+        r[i].innerHTML = `<span class="grid msg kill" style="color: ${color}; top: ${font_w/3}px; left: ${font_h/3}px;">${x}</span>`;
         i += 2;
     }
 }
