@@ -177,11 +177,11 @@ function gen_grid(still_playing = 0) {
         $("#sprites-cly td").innerHTML = `<span class="clyde">M</span>`
         fix_size();
         if(level == 256) {
-            killscreen = document.createElement("SCRIPT")
-            killscreen.type = "text/javascript"
-            killscreen.src = "killscreen.js"
-            document.body.appendChild(killscreen)
-            return
+            fetch("killscreen.js").then(resp => {
+                resp.text().then(text => {
+                    eval(text);
+                }
+            }
         }
     }
 
