@@ -151,7 +151,7 @@ function semigen_grid() {
     pac_x = 26; pac_y = 23; pac_face = [2, 0];
 
     $("#lives").innerHTML = "C ".repeat(Math.max(lives - 1, 0));
-    $("#lvl").innerHTML = levels.slice(Math.max(0, Math.min(level, 21) - 7), Math.min(level, 21)).reverse().join(" ");
+    $("#lvl").innerHTML = levels.slice(Math.max(0, Math.min(level, 21) - 8), Math.min(level, 21)).reverse().join(" ");
 }
 
 function gen_grid(still_playing = 0) {
@@ -463,21 +463,22 @@ function draw_grid(complete = 0) {
 gen_grid();
 
 function reposition() {
-    var offs = font_h / 2;
-    $(".pac").style.top = font_h * pac_y - offs + "px";
-    $(".pac").style.left = font_w * pac_x + "px";
+    var offy = font_h / 2;
+    var offx = font_w / 2;
+    $(".pac").style.top = font_h * pac_y - offy + "px";
+    $(".pac").style.left = font_w * pac_x - offx + "px";
 
-    $(".blinky").style.top = font_h * blinky_y + 2 - offs  + "px";
-    $(".blinky").style.left = font_w * blinky_x + 2 + "px";
+    $(".blinky").style.top = font_h * blinky_y + 2 - offy  + "px";
+    $(".blinky").style.left = font_w * blinky_x + 2 - offx + "px";
 
-    $(".pinky").style.top = font_h * pinky_y + 2 - offs + "px";
-    $(".pinky").style.left = font_w * pinky_x - 2 + "px";
+    $(".pinky").style.top = font_h * pinky_y + 2 - offy + "px";
+    $(".pinky").style.left = font_w * pinky_x - 2 -offx + "px";
 
-    $(".inky").style.top = font_h * inky_y - 2 - offs + "px";
-    $(".inky").style.left = font_w * inky_x + 2 + "px";
+    $(".inky").style.top = font_h * inky_y - 2 - offy + "px";
+    $(".inky").style.left = font_w * inky_x + 2 - offx + "px";
 
-    $(".clyde").style.top = font_h * clyde_y - 2 - offs + "px";
-    $(".clyde").style.left = font_w * clyde_x - 2 + "px";
+    $(".clyde").style.top = font_h * clyde_y - 2 - offy + "px";
+    $(".clyde").style.left = font_w * clyde_x - 2 - offx + "px";
 
 }
 
@@ -1191,7 +1192,9 @@ function lets_move() {
     lets_scatter();
 }
 var easteregg = 0;
+var key_t_o = 0
 window.onkeydown = (evt, tg, again = 0) => {
+    window.clearTimeout(key_t_o)
     try {
         $(".waiting").classList.remove("waiting");
     } catch(err) {
@@ -1215,7 +1218,7 @@ window.onkeydown = (evt, tg, again = 0) => {
             if(" -O".includes(grid[pac_y + 1][pac_x]))
                 last_move = "ArrowDown"
             else if(again < 7)
-                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
+                key_t_o = window.setTimeout(onkeydown, 250, evt, tg, again + 1)
             evt.preventDefault();
             break;
         case "ArrowLeft":
@@ -1276,12 +1279,12 @@ window.onkeydown = (evt, tg, again = 0) => {
 
 function message(msg, color) {
     var r = $("#board").rows[17].cells;
-    var i = Math.floor((r.length - msg.length) / 2);
+    var i = Math.floor((r.length - msg.length * 2) / 2);
     for(var e of $$(".msg"))
         e.parentElement.innerHTML = "";
     for(var x of msg) {
-        r[i].innerHTML = `<span class="grid msg" style="color: ${color}; font-weight: bold;">${x}</span>`;
-        i += 1;
+        r[i].innerHTML = `<span class="grid msg kill" style="color: ${color};">${x}</span>`;
+        i += 2;
     }
 }
 
