@@ -56,6 +56,42 @@ grid[z][w] = ` `;                                 w += 2;
 grid[z][w] = ` `;                                 w += 2;
 grid[z][w] = ` `;
 
+z += 1; w = k;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill y'${s}>F</span>`; w += 2;
+grid[z][w] = `<span class='kill y'${s}>N</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>J</span>`; w += 2;
+grid[z][w] = `<span class='kill s'${s}>.</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>G</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>3</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>)</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;
+
+z += 1; w = k;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill y'${s}>G</span>`; w += 2;
+grid[z][w] = `<span class='kill y'${s}>O</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>K</span>`; w += 2;
+grid[z][w] = `<span class='kill s'${s}>.</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>H</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>5</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>(</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;
+
 
 for(var y = 0; y <= z; y += 1)
     for(var x = k; x <= w; x += 2)

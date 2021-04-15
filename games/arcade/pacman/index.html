@@ -336,6 +336,9 @@ ___________________
                         <td>Show ghost targets</td>
                         <td><input type="checkbox" onchange="$('#targets').style.display=this.value?'':'none'"></input></td>
                     </tr>
+                    <tr>
+                        <td>debug</td>
+                        <td><textarea onkeydown="if(event.key=='Enter'){alert(eval(this.value));this.value=''"></textarea></td>
 <!--                    <tr>-->
 <!--                        <td>Show ghost modes</td>-->
 <!--                        <td><input type="checkbox" onchange="$('#modes').style.display=this.value?'':'none'"></input></td>-->
