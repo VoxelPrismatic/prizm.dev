@@ -59,7 +59,7 @@ grid[z][w] = ` `;
 
 for(var y = 0; y <= z; y += 1)
     for(var x = k; x <= w; x += 2)
-        grid[y][x + 1] = " ";
+        grid[y][x + 1] = "<span style='opacity:0'>.</span>";
 gen_grid(1)
 last_grid = ""
 draw_grid(1)
