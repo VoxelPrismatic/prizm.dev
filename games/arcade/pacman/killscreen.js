@@ -67,7 +67,7 @@ grid[z][48] = " "
 grid[z][50] = " "
 grid[z][52] = " "
 
-for(var y = 0; y < grid.length; y += 1)
+for(var y = 0; y < z; y += 1)
     for(var x = 22; x < grid[y].length; x += 2)
         grid[y][x + 1] = grid[y][x]
 
