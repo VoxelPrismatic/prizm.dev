@@ -180,8 +180,8 @@ function gen_grid(still_playing = 0) {
             fetch("killscreen.js").then(resp => {
                 resp.text().then(text => {
                     eval(text);
-                }
-            }
+                })
+            })
         }
     }
 
