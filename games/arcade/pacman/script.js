@@ -449,10 +449,10 @@ function draw_grid(complete = 0) {
 
     tab = $("#targets")
     if(tab.style.display != "none") {
-        tab.rows[clyde_tY].cells[clyde_tX].innerHTML = `<span class="target" style="color: #f80">X</span>`
-        tab.rows[blinky_tY].cells[blinky_tX].innerHTML = `<span class="target" style="color: #f00">X</span>`
-        tab.rows[inky_tY].cells[inky_tX].innerHTML = `<span class="target" style="color: #0ff">X</span>`
-        tab.rows[pinky_tY].cells[pinky_tX].innerHTML = `<span class="target" style="color: #f08">X</span>`
+        tab.innerHTML = `<span class="target" style="color: #f80; top: ${font_h * clyde_tY}; left: ${font_w * clyde_tX};">X</span>`
+        tab.innerHTML += `<span class="target" style="color: #f00; top: ${font_h * blinky_tY}; left: ${font_w * blinky_tX};">X</span>`
+        tab.innerHTML += `<span class="target" style="color: #f08; top: ${font_h * pinky_tY}; left: ${font_w * pinky_tX};">X</span>`
+        tab.innerHTML += `<span class="target" style="color: #0ff; top: ${font_h * inky_tY}; left: ${font_w * inky_tX};">X</span>`
     }
     $("#score").innerHTML = score;
     //$("#dots").innerHTML = dots;
@@ -906,8 +906,8 @@ function blinky_target() {
         blinky_tX = exit_x;
         blinky_tY = exit_y;
     } else if(scatter) {
-        blinky_tX = 53;
-        blinky_tY = 0;
+        blinky_tX = 49;
+        blinky_tY = -4;
     } else {
         blinky_tX = pac_x;
         blinky_tY = pac_y;
@@ -931,8 +931,8 @@ function pinky_target() {
         pinky_tX = exit_x;
         pinky_tY = exit_y;
     } else if(scatter) {
-        pinky_tX = 53;
-        pinky_tY = 30;
+        pinky_tX = 4;
+        pinky_tY = -4;
     } else {
         switch(pac_face[1] || pac_face[0]) {
             case 1:
@@ -973,8 +973,8 @@ function inky_target() {
         inky_tX = exit_x;
         inky_tY = exit_y;
     } else if(scatter) {
-        inky_tX = 0;
-        inky_tY = 0;
+        inky_tX = 53;
+        inky_tY = 31;
     } else {
         switch(pac_face[1] || pac_face[0]) {
             case 1:
@@ -1018,7 +1018,7 @@ function clyde_target() {
         clyde_tY = exit_y;
     } else if(scatter || clyde_scatter) {
         clyde_tX = 0;
-        clyde_tY = 30;
+        clyde_tY = 31;
     } else {
         clyde_tX = pac_x;
         clyde_tY = pac_y;
