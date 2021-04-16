@@ -165,7 +165,7 @@ function gen_grid(still_playing = 0) {
         level += 1
         $("#lvlin").value = level
         localStorage.setItem("pac_level", level)
-        localStorage.setIten("pac_score", score)
+        localStorage.setItem("pac_score", score)
         // Set up the grid
         for(var s of grid_st.split(".\n")) {
             grid.push(s.split(''))
