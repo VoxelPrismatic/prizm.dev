@@ -1235,7 +1235,7 @@ window.onkeydown = (evt, tg, again = 0) => {
                 last_move = "ArrowDown"
             else
                 next_move = "ArrowDown"
-            evt.preventDefault();
+            if(evt) { evt.preventDefault(); }
             break;
         case "ArrowLeft":
             if(!again) {
@@ -1249,7 +1249,7 @@ window.onkeydown = (evt, tg, again = 0) => {
                 last_move = "ArrowLeft"
             else
                 next_move = "ArrowLeft"
-            evt.preventDefault();
+            if(evt) { evt.preventDefault(); }
             break;
         case "ArrowRight":
             if(!again) {
@@ -1263,7 +1263,7 @@ window.onkeydown = (evt, tg, again = 0) => {
                 last_move = "ArrowRight"
             else
                 next_move = "ArrowRight"
-            evt.preventDefault();
+            if(evt) { evt.preventDefault(); }
             break;
         case "ArrowUp":
             if(!again) {
@@ -1277,19 +1277,19 @@ window.onkeydown = (evt, tg, again = 0) => {
                 last_move = "ArrowUp"
             else
                 next_move = "ArrowUp"
-            evt.preventDefault();
+            if(evt) { evt.preventDefault(); }
             break;
         case "Alt":
             char = char + 1 == 5 ? 0 : char + 1;
+            if(evt) { evt.preventDefault(); }
             break;
         case "Space":
             pause();
+            if(evt) { evt.preventDefault(); }
             break;
         case "Shift":
             if(evt.ctrl && evt.alt)
                 show_targets();
-//                         default:
-//                             console.log(evt.key);
     }
 }
 
