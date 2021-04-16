@@ -455,10 +455,10 @@ function draw_grid(complete = 0) {
 
     tab = $("#targets")
     if(tab.style.display != "none") {
-        tab.innerHTML = `<span class="target" style="color: #f80; top: ${font_h * clyde_tY}; left: ${font_w * clyde_tX};">X</span>`
-        tab.innerHTML += `<span class="target" style="color: #f00; top: ${font_h * blinky_tY}; left: ${font_w * blinky_tX};">X</span>`
-        tab.innerHTML += `<span class="target" style="color: #f08; top: ${font_h * pinky_tY}; left: ${font_w * pinky_tX};">X</span>`
-        tab.innerHTML += `<span class="target" style="color: #0ff; top: ${font_h * inky_tY}; left: ${font_w * inky_tX};">X</span>`
+        tab.innerHTML = `<span class="target" style="color: #f80; top: ${font_h * clyde_tY}px; left: ${font_w * clyde_tX}px;">X</span>`
+        tab.innerHTML += `<span class="target" style="color: #f00; top: ${font_h * blinky_tY}px; left: ${font_w * blinky_tX}px;">X</span>`
+        tab.innerHTML += `<span class="target" style="color: #f08; top: ${font_h * pinky_tY}px; left: ${font_w * pinky_tX}px;">X</span>`
+        tab.innerHTML += `<span class="target" style="color: #0ff; top: ${font_h * inky_tY}px; left: ${font_w * inky_tX}px;">X</span>`
     }
     $("#score").innerHTML = score;
     //$("#dots").innerHTML = dots;
@@ -862,8 +862,13 @@ function do_move() {
         if(powered && alive) {
             var ls = [right_dist, left_dist, up_dist, down_dist];
             min_dist = ls[Math.floor(Math.random() * 4)]
-            while(min_dist >= 10000)
+            var attempts = 0;
+            while(min_dist >= 10000 && attempts < 6) {
                 min_dist = ls[Math.floor(Math.random() * 4)]
+                attempts += 1;
+            }
+            if(attempts == 6)
+                min_dist = 0;
         }
         switch(min_dist) {
             case up_dist:
@@ -1303,11 +1308,6 @@ function message(msg, color) {
         i += 2;
     }
 }
-
-function show_targets() {
-    $("#targets").style.display = "";
-}
-console.warn("Type `show_targets()' to show each ghost's target")
 
 function pause() {
     alert("PACMAN ;] is paused. Click 'Ok' to continue.")
