@@ -1208,9 +1208,9 @@ var easteregg = 0;
 var next_move = "";
 window.setInterval(() => {
     if(next_move)
-        window.onkeydown(0, next_move);
+        window.onkeydown(0, next_move, 1);
 }, 250);
-window.onkeydown = (evt, tg) => {
+window.onkeydown = (evt, tg, again = 0) => {
 //    window.clearTimeout(key_t_o)
     try {
         $(".waiting").classList.remove("waiting");
