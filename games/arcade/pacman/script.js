@@ -530,7 +530,7 @@ function move_pac(dX, dY, evt) {
     base_allowed |= in_base()
     base_allowed &= (((vY == 11 && dY == 1) || (vY == 13 && dY == -1)) && vX <= 29 && vX >= 25)
 //                     console.log(base_allowed)
-    if(" -O".includes(c) || base_allowed) {
+    if(" -O<".includes(c[0]) || base_allowed) {
         vX += dX;
         vY += dY;
         if(char == 0) { // Is the selected sprite pacman?
@@ -781,7 +781,7 @@ function get_distance(cX, cY, tX, tY, face, base_allowed, dX, dY) {
         cX = 56
     base_allowed &= (((cY == 11 && dY == 1) || (cY == 13 && dY == -1)) && cX <= 29 && cX >= 25)
 //                     console.log(base_allowed)
-    if(" -O".includes(grid[cY + dY][cX + dX]) || base_allowed)
+    if(" -O<".includes(grid[cY + dY][cX + dX][0]) || base_allowed)
         return Math.round(
             Math.sqrt(Math.abs(cX - tX + dX)/2) ** 2 +
             Math.sqrt(Math.abs(cY - tY + dY)) ** 2
@@ -859,7 +859,7 @@ function do_move() {
         console.log("Down:", down_dist);
         console.log("Right:", right_dist);
         var min_dist = Math.min(right_dist, left_dist, up_dist, down_dist)
-        if(powered && alive) {
+        if(powered >= 0 && alive) {
             var ls = [right_dist, left_dist, up_dist, down_dist];
             min_dist = ls[Math.floor(Math.random() * 4)]
             var attempts = 0;
@@ -1236,7 +1236,7 @@ window.onkeydown = (evt, tg, again = 0) => {
                 else
                     easteregg = 0;
             }
-            if(" -O".includes(grid[pac_y + 1][pac_x]))
+            if(" -O<".includes(grid[pac_y + 1][pac_x][0]))
                 last_move = "ArrowDown"
             else
                 next_move = "ArrowDown"
@@ -1250,7 +1250,7 @@ window.onkeydown = (evt, tg, again = 0) => {
                     easteregg = 0;
             }
 
-            if(pac_x <= 0 || " -O".includes(grid[pac_y][pac_x - 2]))
+            if(pac_x <= 0 || " -O<".includes(grid[pac_y][pac_x - 2][0]))
                 last_move = "ArrowLeft"
             else
                 next_move = "ArrowLeft"
@@ -1264,7 +1264,7 @@ window.onkeydown = (evt, tg, again = 0) => {
                     easteregg = 0;
             }
 
-            if(pac_x >= 53 || " -O".includes(grid[pac_y][pac_x + 2]))
+            if(pac_x >= 53 || " -O<".includes(grid[pac_y][pac_x + 2][0]))
                 last_move = "ArrowRight"
             else
                 next_move = "ArrowRight"
@@ -1278,7 +1278,7 @@ window.onkeydown = (evt, tg, again = 0) => {
                     easteregg = 1;
             }
 
-            if(" -O".includes(grid[pac_y - 1][pac_x]))
+            if(" -O<".includes(grid[pac_y - 1][pac_x][0]))
                 last_move = "ArrowUp"
             else
                 next_move = "ArrowUp"
