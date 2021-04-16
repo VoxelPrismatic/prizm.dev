@@ -267,6 +267,8 @@
                 color: #fa4;
             } #board td {
                 position: relative;
+            } .target {
+                position: absolute;
             }
         </style>
     </head>
@@ -339,24 +341,27 @@ ___________________
                         <td><input type="checkbox" onchange="$('#targets').style.display=this.value?'':'none'"></input></td>
                     </tr>
                     <tr>
-                        <td>debug</td>
-                        <td><textarea onchange="alert(eval(this.value));this.value=''"></textarea></td>
-<!--                    <tr>-->
-<!--                        <td>Show ghost modes</td>-->
-<!--                        <td><input type="checkbox" onchange="$('#modes').style.display=this.value?'':'none'"></input></td>-->
-<!--                    </tr>-->
+<!--                        <td>debug</td>-->
+<!--                        <td><textarea onchange="alert(eval(this.value));this.value=''"></textarea></td>-->
+                    <tr>
+                        <td>Show ghost modes</td>
+                        <td><input type="checkbox" onchange="$('#modes').style.display=this.value?'':'none'"></input></td>
+                    </tr>
                 </table>
             </details>
         </div>
         <div>
             <h1>-- Grid --</h1>
+            <div id="cheats" style="margim: auto; color; #fff; font-weight: bold;">
+                <span id="modes" style="float: left"></span>
+            </div>
             <div id="status2" style="margin: auto; color: #fff; font-weight: bold;">
                 <span style="float: left">
                     <span id="score-status">SCORE </span>
                     <span id="score" style="text-shadow: 0px 0px 8px;">0</span>
                 </span>
                 <span id="easteregg" style="display: none; font-weight: 400; float: right;">
-                    made by <b>PRIZ ;]</b>
+                    made by <b style="text-shadow: 0px 0px 8px;">PRIZ ;]</b>
                 </span>
             </div><br>
             <table id="sprites-bli">
@@ -377,7 +382,7 @@ ___________________
             <table id="sprites-pac">
                 <tr><td><span class="pac">C</span></td></tr>
             </table>
-            <div id="targets" style="position: absolute;"></div>
+            <div id="targets" style="position: absolute; display: none; margin: auto; left: 0; right: 0"></div>
             <table id="board"><tr><td>-</td></tr></table>
             <div id="status" style="margin: auto;">
                 <span style="float: left; display: inline;" id="lives">C C C C C</span>

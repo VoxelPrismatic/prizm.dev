@@ -90,7 +90,9 @@ function fix_size() {
     }
     $("#status").style.width = grid_w;
     $("#status2").style.width = grid_w;
-    $("#lvl").style.height = font_h + 4 + "px";
+    $("#targets").style.width = grid_w;
+    $("#cheats").style.width = grid_w;
+    $("#lvl").style.height = font_h * 1.5 + "px";
 }
 
 function lets_scatter() {
@@ -104,6 +106,7 @@ function lets_scatter() {
     }
     if(powered >= 250) {
         powered -= 250;
+        return
     } else if(powered == 0) {
         blinky_spook = false;
         pinky_spook = false;
@@ -162,6 +165,7 @@ function gen_grid(still_playing = 0) {
         level += 1
         $("#lvlin").value = level
         localStorage.setItem("pac_level", level)
+        localStorage.setIten("pac_score", score)
         // Set up the grid
         for(var s of grid_st.split(".\n")) {
             grid.push(s.split(''))
@@ -364,10 +368,12 @@ var blinky_y, blinky_x, blinky_tY, blinky_tX, blinky_face, blinky_alive,
     pac_rot = 0, lives = 6, elroy_speed, elroy_dots, bonus_fruit, pac_inv,
     inky_spook, blinky_spook, pinky_spook, clyde_spook, spook_time;
 
-if(Number(new Date()) - (localStorage.getItem("pac_time") || 0) > 3600000)
-    level = 0
-else
-    level = (localStorage.getItem("pac_level") || 1) - 1
+if(Number(new Date()) - (localStorage.getItem("pac_time") || 0) > 3600000) {
+    level = 0;
+} else {
+    level = (localStorage.getItem("pac_level") || 1) - 1;
+    score = Number(localStorage.getItem("pac_score") || 0)
+}
 $("#lvlin").value = level + 1
 
 var last_grid = grid.toString();
@@ -456,7 +462,7 @@ function draw_grid(complete = 0) {
     }
     $("#score").innerHTML = score;
     //$("#dots").innerHTML = dots;
-    //$("#ghost-mode").innerHTML = scatter ? "SCATTER" : powered ? "SPOOK" : "CHASE";
+    $("#modes").innerHTML = scatter ? "SCATTER" : powered ? "SPOOK" : "CHASE";
     reposition();
     localStorage.setItem("pac_time", Number(new Date()))
 }
@@ -588,6 +594,10 @@ function move_pac(dX, dY, evt) {
 }
 
 function die() {
+    if(lives - 1 == 0) {
+        localStorage.setItem("pac_level", 1);
+        localStorage.setItem("pac_score", 0);
+    }
     window.clearInterval(move_interval);
     draw_grid(1);
     var style = document.createElement("STYLE");
@@ -622,10 +632,7 @@ function die() {
         draw_grid(1);
         global_counter = true;
         if(lives == 0) {
-            var style = document.createElement("STYLE");
-            style.innerHTML = ".grid { color: #f00 }";
-            style.id = "custom-css";
-            document.head.appendChild(style);
+            grid_color("#f00");
             $("#lives").innerHTML = "Consider supporting on <a href='/prizm.dev/re/patreon' style='color: #48f;' target='_blank'>Patreon</a>!"
             return message("GAME OVER", "#f00");
         }
@@ -636,51 +643,55 @@ function die() {
     }, 2500);
 }
 
-function win() {
-    window.clearInterval(move_interval);
-    draw_grid(1);
-    window.setTimeout(() => {
+function grid_color(c) {
+    window.setTimeout((c) => {
         var style = document.createElement("STYLE");
-        style.innerHTML = ".grid { color: #0f0 }";
+        style.innerHTML = `.grid { color: ${c} }`;
         style.id = "custom-css";
         document.head.appendChild(style);
-    }, 1000);
+    }, 1000, c);
     window.setTimeout(() => {
         $("#custom-css").remove();
     }, 1250);
     window.setTimeout(() => {
         var style = document.createElement("STYLE");
-        style.innerHTML = ".grid { color: #0f0 }";
+        style.innerHTML = `.grid { color: ${c} }`;
         style.id = "custom-css";
         document.head.appendChild(style);
-    }, 1500);
+    }, 1500, c);
     window.setTimeout(() => {
         $("#custom-css").remove();
     }, 1750);
     window.setTimeout(() => {
         var style = document.createElement("STYLE");
-        style.innerHTML = ".grid { color: #0f0 }";
+        style.innerHTML = `.grid { color: ${c} }`;
         style.id = "custom-css";
         document.head.appendChild(style);
-    }, 2000);
+    }, 2000, c);
     window.setTimeout(() => {
         $("#custom-css").remove();
     }, 2250);
     window.setTimeout(() => {
         var style = document.createElement("STYLE");
-        style.innerHTML = ".grid { color: #0f0 }";
+        style.innerHTML = `.grid { color: ${c} }`;
         style.id = "custom-css";
         document.head.appendChild(style);
-    }, 2500);
+    }, 2500, c);
     window.setTimeout(() => {
         $("#custom-css").remove();
     }, 2750);
     window.setTimeout(() => {
         var style = document.createElement("STYLE");
-        style.innerHTML = ".grid { color: #0f0 }";
+        style.innerHTML = `.grid { color: ${c} }`;
         style.id = "custom-css";
         document.head.appendChild(style);
-    }, 3000);
+    }, 3000, c);
+}
+
+function win() {
+    window.clearInterval(move_interval);
+    draw_grid(1);
+    grid_color("#0f0");
     window.setTimeout(() => {
         $("#custom-css").remove();
         last_move = "ArrowRight"
@@ -1199,18 +1210,16 @@ window.setInterval(() => {
     if(next_move)
         window.onkeydown(0, next_move);
 }, 250);
-window.onkeydown = (evt, tg, again = 0) => {
-    window.clearTimeout(key_t_o)
+window.onkeydown = (evt, tg) => {
+//    window.clearTimeout(key_t_o)
     try {
         $(".waiting").classList.remove("waiting");
     } catch(err) {
     }
     next_move = ""
-    if(again < 7) {
-        try {
-            $("#" + (evt.key || tg || evt.target.id)).classList.add("waiting");
-        } catch(err) {
-        }
+    try {
+        $("#" + (evt.key || tg || evt.target.id)).classList.add("waiting");
+    } catch(err) {
     }
     switch(evt.key || tg || evt.target.id) {
         case "ArrowDown":
@@ -1314,3 +1323,8 @@ function font_loaded() {
     window.setTimeout(() => move_interval = window.setInterval(lets_move, 250), 4250)
 }
 
+function set_level(n) {
+    localStorage.setItem("pac_level", n);
+    localStorage.setItem("pac_score", 0);
+    window.location.reload();
+}
