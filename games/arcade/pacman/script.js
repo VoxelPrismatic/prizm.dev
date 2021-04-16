@@ -778,7 +778,7 @@ function get_distance(cX, cY, tX, tY, face, base_allowed, dX, dY) {
     return 10000;
 }
 
-function fix_target(tX, tY) {
+/*function fix_target(tX, tY) {
     if(tY > 30)
         tY -= 30;
     else if(tY < 0)
@@ -788,7 +788,7 @@ function fix_target(tX, tY) {
     else if(tX < 0)
         tX += 54;
     return [tX, tY];
-}
+}*/
 
 function do_move() {
     var cX, cY;
@@ -952,7 +952,7 @@ function pinky_target() {
                 pinky_tX = pac_x - 8;
                 break;
         }
-        [pinky_tX, pinky_tY] = fix_target(pinky_tX, pinky_tY)
+//        [pinky_tX, pinky_tY] = fix_target(pinky_tX, pinky_tY)
     }
     console.groupEnd("Pinky");
     do_move();
@@ -994,7 +994,7 @@ function inky_target() {
                 inky_tY = pac_y + (pac_y - blinky_y);
                 break;
         }
-        [inky_tX, inky_tY] = fix_target(inky_tX, inky_tY)
+//        [inky_tX, inky_tY] = fix_target(inky_tX, inky_tY)
     }
     console.groupEnd("Inky");
     do_move();
