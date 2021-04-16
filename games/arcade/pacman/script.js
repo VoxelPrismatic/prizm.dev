@@ -77,10 +77,10 @@ var levels = [
     fruit_key,
 ];
 function fix_size() {
-    $("#sprites-pac").style.width = "";
-    $("#sprites-pac").style.height = "";
-    font_h = $("#sprites-pac tr").getClientRects()[0].height/2;
-    font_w = $("#aprites-pac td").getClientRects()[0].width/2;
+    $("#board").style.width = "";
+    $("#board").style.height = "";
+    font_h = $("#board td").getClientRects()[0].height;
+    font_w = $("#board td").getClientRects()[0].width;
     var grid_w = grid[0].length * font_w + "px";
     var grid_h = grid.length * font_h + "px";
     for(var table of tables) {
@@ -96,7 +96,7 @@ function fix_size() {
 function lets_scatter() {
     if(bonus_fruit == 10000) {
         $("#sprites-fruit").rows[17].cells[26].innerHTML = levels[Math.min(level, 14) - 1];
-    } else if(bonus_fruit >= 250) {
+    } if(bonus_fruit >= 250) {
         bonus_fruit -= 250;
     } else if(bonus_fruit == 0) {
         bonus_fruit -= 250;
@@ -345,8 +345,8 @@ var PACMAN = 0,
     CLYDE = 4,
     home_x = 26, home_y = 14,
     exit_x = 26, exit_y = 11,
-    font_h = $("#sprites-pac tr").getClientRects()[0].height/2,
-    font_w = $("#sprites-pac td").getClientRects()[0].width/2,
+    font_h = $("#board td").getClientRects()[0].height,
+    font_w = $("#board td").getClientRects()[0].width,
     last_dot_timeout = 0, move_interval = 0;
 
 // Position variables
@@ -466,19 +466,19 @@ function reposition() {
     var offy = font_h / 2;
     var offx = font_w / 2;
     $(".pac").style.top = font_h * pac_y - offy + "px";
-    $(".pac").style.left = font_w * pac_x - offx + "px";
+    $(".pac").style.left = font_w * pac_x + offx + "px";
 
     $(".blinky").style.top = font_h * blinky_y + 2 - offy  + "px";
-    $(".blinky").style.left = font_w * blinky_x + 2 - offx + "px";
+    $(".blinky").style.left = font_w * blinky_x + 2 + offx + "px";
 
     $(".pinky").style.top = font_h * pinky_y + 2 - offy + "px";
-    $(".pinky").style.left = font_w * pinky_x - 2 -offx + "px";
+    $(".pinky").style.left = font_w * pinky_x - 2 + offx + "px";
 
     $(".inky").style.top = font_h * inky_y - 2 - offy + "px";
-    $(".inky").style.left = font_w * inky_x + 2 - offx + "px";
+    $(".inky").style.left = font_w * inky_x + 2 + offx + "px";
 
     $(".clyde").style.top = font_h * clyde_y - 2 - offy + "px";
-    $(".clyde").style.left = font_w * clyde_x - 2 - offx + "px";
+    $(".clyde").style.left = font_w * clyde_x - 2 + offx + "px";
 
 }
 

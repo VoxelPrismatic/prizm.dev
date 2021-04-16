@@ -378,9 +378,9 @@ ___________________
                 <tr><td><span class="pac">C</span></td></tr>
             </table>
             <table id="targets" style="display: none; left: 0; right: 0; z-index: 100;"></table>
-            <table id="board"></table>
+            <table id="board"><tr><td>-</td></tr></table>
             <div id="status" style="margin: auto;">
-                <span style="float: left; display: inline;" id="lives">C C C</span>
+                <span style="float: left; display: inline;" id="lives">C C C C C</span>
                 <span style="float: right;" id="lvl"><span style="color: #f00;">O</span></span>
             </div><br><br>
             <div style="display: none;">
@@ -458,7 +458,7 @@ ___________________
             <div id="error"></div>
         </div>
         <script>
-            window.onerror = (m,s,l,c,e) { 
+            window.onerror = (m,s,l,c,e) => {
                 document.getElementById("error").innerHTML = `${l}:${c}, ${s}\n\n${m}\n\n${e}`
                 alert(`${l}:${c}, ${s}\n\n${m}\n\n${e}`);
             }
