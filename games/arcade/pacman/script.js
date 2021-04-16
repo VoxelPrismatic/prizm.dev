@@ -635,7 +635,7 @@ function die() {
             grid_color("#f00");
             $("#lives").innerHTML = "Consider supporting on <a href='/prizm.dev/re/patreon' style='color: #48f;' target='_blank'>Patreon</a>!"
             message("GAME OVER", "#f00");
-            window.setTimeout(() => { message("PLAY AGAIN?", "#f00"); game_over = true; }, 5000);
+            window.setTimeout(() => { message("NEW GAME?", "#f00"); game_over = true; }, 5000);
             return;
         }
         for(var x = 0; x < 4250; x += 250)
@@ -1230,6 +1230,8 @@ window.onkeydown = (evt, tg, again = 0) => {
         score = 0;
         gen_grid();
         font_loaded();
+        $("#custom-css").remove();
+        return;
     }
     try {
         $(".waiting").classList.remove("waiting");
