@@ -776,11 +776,16 @@ function get_distance(cX, cY, tX, tY, face, base_allowed, dX, dY) {
     else if(!base_allowed && dY == -1 && (cY == 23 || cY == 11) && (cX == 24 || cX == 30))
         return 30000;
     if(cX == 54 && dX == 2)
-        cX = -2
+        cX = -2;
     else if(cX == 0 && dX == -2)
-        cX = 56
+        cX = 56;
+    if(cY == 0 && dY == -1)
+        cY = 31;
+    else if(cY == 30 && dY == 1)
+        cY = -1;
     base_allowed &= (((cY == 11 && dY == 1) || (cY == 13 && dY == -1)) && cX <= 29 && cX >= 25)
 //                     console.log(base_allowed)
+    console.log(cY, cX, dY, dX);
     if(" -O<".includes(grid[cY + dY][cX + dX][0]) || base_allowed)
         return Math.round(
             Math.sqrt(Math.abs(cX - tX + dX)/2) ** 2 +
