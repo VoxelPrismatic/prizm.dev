@@ -466,19 +466,19 @@ function reposition() {
     var offy = font_h / 2;
     var offx = font_w / 2;
     $(".pac").style.top = font_h * pac_y - offy + "px";
-    $(".pac").style.left = font_w * pac_x - offx + "px";
+    $(".pac").style.left = font_w * pac_x + offx + "px";
 
     $(".blinky").style.top = font_h * blinky_y + 2 - offy  + "px";
-    $(".blinky").style.left = font_w * blinky_x + 2 - offx + "px";
+    $(".blinky").style.left = font_w * blinky_x + 2 + offx + "px";
 
     $(".pinky").style.top = font_h * pinky_y + 2 - offy + "px";
-    $(".pinky").style.left = font_w * pinky_x - 2 -offx + "px";
+    $(".pinky").style.left = font_w * pinky_x - 2 + offx + "px";
 
     $(".inky").style.top = font_h * inky_y - 2 - offy + "px";
-    $(".inky").style.left = font_w * inky_x + 2 - offx + "px";
+    $(".inky").style.left = font_w * inky_x + 2 + offx + "px";
 
     $(".clyde").style.top = font_h * clyde_y - 2 - offy + "px";
-    $(".clyde").style.left = font_w * clyde_x - 2 - offx + "px";
+    $(".clyde").style.left = font_w * clyde_x - 2 + offx + "px";
 
 }
 
@@ -832,6 +832,8 @@ function do_move() {
             really_move = false
         else if(cY == 14 && (cX <= 10 || cX >= 44) && Math.random() > ghost_speed[2])
             really_move = false
+        else if(!alive)
+            really_move = true
         else if(Math.random() > ghost_speed[0])
             really_move = false
     }
@@ -1192,13 +1194,18 @@ function lets_move() {
     lets_scatter();
 }
 var easteregg = 0;
-var key_t_o = 0
+var next_move = "";
+window.setInterval(() => {
+    if(next_move)
+        window.onkeydown(0, next_move);
+}, 250);
 window.onkeydown = (evt, tg, again = 0) => {
     window.clearTimeout(key_t_o)
     try {
         $(".waiting").classList.remove("waiting");
     } catch(err) {
     }
+    next_move = ""
     if(again < 7) {
         try {
             $("#" + (evt.key || tg || evt.target.id)).classList.add("waiting");
@@ -1217,8 +1224,8 @@ window.onkeydown = (evt, tg, again = 0) => {
             }
             if(" -O".includes(grid[pac_y + 1][pac_x]))
                 last_move = "ArrowDown"
-            else if(again < 7)
-                key_t_o = window.setTimeout(onkeydown, 250, evt, tg, again + 1)
+            else
+                next_move = "ArrowDown"
             evt.preventDefault();
             break;
         case "ArrowLeft":
@@ -1231,8 +1238,8 @@ window.onkeydown = (evt, tg, again = 0) => {
 
             if(pac_x <= 0 || " -O".includes(grid[pac_y][pac_x - 2]))
                 last_move = "ArrowLeft"
-            else if(again < 7)
-                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
+            else
+                next_move = "ArrowLeft"
             evt.preventDefault();
             break;
         case "ArrowRight":
@@ -1245,8 +1252,8 @@ window.onkeydown = (evt, tg, again = 0) => {
 
             if(pac_x >= 53 || " -O".includes(grid[pac_y][pac_x + 2]))
                 last_move = "ArrowRight"
-            else if(again < 7)
-                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
+            else
+                next_move = "ArrowRight"
             evt.preventDefault();
             break;
         case "ArrowUp":
@@ -1259,8 +1266,8 @@ window.onkeydown = (evt, tg, again = 0) => {
 
             if(" -O".includes(grid[pac_y - 1][pac_x]))
                 last_move = "ArrowUp"
-            else if(again < 7)
-                window.setTimeout(onkeydown, 250, evt, tg, again + 1)
+            else
+                next_move = "ArrowUp"
             evt.preventDefault();
             break;
         case "Alt":
