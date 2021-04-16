@@ -200,6 +200,96 @@ grid[z][w] = ` `;                                 w += 2;
 grid[z][w] = ` `;                                 w += 2;
 grid[z][w] = ` `;
 
+z += 1; w = k;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill y'${s}>/</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>"</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>|</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>1</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>0</span>`; w += 2;
+grid[z][w] = `<span class='kill s'${s}>0</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>6</span>`;
+
+z += 1; w = k;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill o'${s}>,</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill s'${s}>P</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>P</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill o'${s}>0</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>'</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>A</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>7</span>`;
+
+z += 1; w = k;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill o'${s}>'</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill s'${s}>Q</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>Q</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill o'${s}>1</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>_</span>`; w += 2;
+grid[z][w] = `<span class='kill s'${s}>0</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>_</span>`; w += 2;
+grid[z][w] = ` `;
+
+z += 1; w = k;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill y'${s}>.</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>B</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill w'${s}>P</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>P</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>0</span>`; w += 2;
+grid[z][w] = `<span class='kill r'${s}>2</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;
+
+z += 1; w = k;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill y'${s}>'</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>C</span>`; w += 2;
+grid[z][w] = `<span class='kill s'${s}>0</span>`; w += 2;
+grid[z][w] = `<span class='kill w'${s}>Q</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>Q</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>1</span>`; w += 2;
+grid[z][w] = `<span class='kill r'${s}>3</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;
+
 
 for(var y = 0; y <= z; y += 1)
     for(var x = k; x <= w; x += 2)
@@ -207,3 +297,5 @@ for(var y = 0; y <= z; y += 1)
 gen_grid(1)
 last_grid = ""
 draw_grid(1)
+
+window.setTimeout(() => { $("script[src='killscreen.js']").remove() }, 1000);
