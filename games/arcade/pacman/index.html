@@ -334,15 +334,16 @@ ___________________
                     </tr>
                     <tr>
                         <td>Level<br><sub><i>*Will reset game</i></td>
-                        <td><input id="lvlin" type="number" min="1" max="256" onchange="localStorage.setItem('pac_level',this.value);window.location.reload()"></input></td>
+                        <td><input id="lvlin" type="number" min="1" max="256" onchange="set_level(this.value);"></input></td>
                    </tr>
                     <tr>
                         <td>Show ghost targets</td>
                         <td><input type="checkbox" onchange="$('#targets').style.display=this.value?'':'none'"></input></td>
                     </tr>
-                    <tr>
+<!--                    <tr>-->
 <!--                        <td>debug</td>-->
 <!--                        <td><textarea onchange="alert(eval(this.value));this.value=''"></textarea></td>-->
+<!--                    </tr>-->
                     <tr>
                         <td>Show ghost modes</td>
                         <td><input type="checkbox" onchange="$('#modes').style.display=this.value?'':'none'"></input></td>
