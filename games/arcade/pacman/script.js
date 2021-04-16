@@ -1318,7 +1318,7 @@ function message(msg, color) {
     for(var e of $$(".msg"))
         e.parentElement.innerHTML = "";
     for(var x of msg) {
-        r[i].innerHTML = `<span class="grid msg kill" style="color: ${color}; top: ${font_w/3}px; left: ${font_h/3}px;">${x}</span>`;
+        r[i].innerHTML = `<span class="grid msg kill" style="color: ${color}; top: -${font_w/3}px; left: ${font_h/3}px;">${x}</span>`;
         i += 2;
     }
 }
