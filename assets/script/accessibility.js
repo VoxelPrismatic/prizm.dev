@@ -59,6 +59,7 @@ var focus_timeout = false;
 var focusing = 0;
 
 function addFocus(evt, elem) {
+    console.log(evt, elem)
     if(focus_timeout)
         return;
     focus_timeout = true;
@@ -68,7 +69,7 @@ function addFocus(evt, elem) {
         thing.classList.remove("focusing");
     try {
         elem.classList.add("focusing");
-        window.setTimeout(removeFocus, 1000, elem);
+        window.setTimeout(removeFocus, 5000, elem);
         if(evt.key == "Enter" || elem.nodeName.startsWith("H") && evt.key == "Tab")
             elem.click();
     } catch(err) {
