@@ -1,11 +1,18 @@
+var is_IE = /(MSIE|Trident\/)/.test(window.navigator.userAgent);
 function jumpToEdge(delayed = 0) {
     window.navigator.vibrate([50]);
     window.setTimeout((e) => {globalThis.lastPosition = e}, 2000, window.scrollY);
     if(find("jumper").innerHTML == "[\u039b]") {
-        window.scroll({top: 0, behavior: "smooth"});
+        if(is_IE)
+            window.scrollTo(0, 0);
+        else
+            window.scrollTo({top: 0, behavior: "smooth"});
         setHtml("jumper", "[V]");
     } else {
-        window.scroll({top: window.scrollMaxY, behavior: "smooth"});
+        if(is_IE)
+            window.scrollTo(0, window.scrollMaxY);
+        else
+            window.scrollTo({top: window.scrollMaxY, behavior: "smooth"});
         setHtml("jumper", "[\u039b]");
     }
 }
