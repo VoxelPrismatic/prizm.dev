@@ -32,7 +32,7 @@ function changeScrollingThingy(evt = null) {
         if(evt.deltaY < 0) {
             elem.innerHTML = "[\u039b]";
             $("nav").style.bottom = "-100px";
-        } else{
+        } else {
             elem.innerHTML = "[V]";
             $("nav").style.bottom = "0px";
         }

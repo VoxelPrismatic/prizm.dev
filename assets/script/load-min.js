@@ -5,10 +5,10 @@ function checkScrollPosition() {
     if(y == lastPosition)
         return;
     var elem = $("#jumper");
-    if(y >= window.scrollMaxY - 75) {
+    if(y >= window.scrollMaxY - 95) {
         elem.innerHTML = "[\u039b]";
         $("nav").style.bottom = "0px";
-    } else if(y > lastPosition || y <= 10) {
+    } else if(y > lastPosition || y <= 32) {
         elem.innerHTML = "[V]";
         $("nav").style.bottom = "0px";
     } else {
