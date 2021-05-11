@@ -167,8 +167,12 @@ nav {
 div.sect:last-child > div:last-child  {
     margin-bottom: 30px !important;
 }
+.focusing {
+    outline: currentcolor dotted medium;
+}
 </style>`)
     document.body.insertAdjacentHTML("beforeend", patreon_nav)
+    a11y();
 }
 
 async function load(filename, strip = false, json = false, list = false) {
