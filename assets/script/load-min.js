@@ -161,7 +161,7 @@ nav {
     background: inherit;
     box-shadow: 0px 0px 1vw 1vw ${$("body").style.backgroundColor};
     bottom: -100px;
-    z-index: 99;
+    z-index: 50;
     margin-bottom: 0px !important;
 }
 div.sect:last-child > div:last-child  {
