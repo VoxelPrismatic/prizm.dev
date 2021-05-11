@@ -36,12 +36,17 @@ function changeScrollingThingy(evt = null) {
             $("nav").style.bottom = "0px";
         }
     } else {
-        if(evt.deltaY < 0) {
+        var y = window.scrollY;
+        var elem = $("#jumper");
+        if(y >= window.scrollMaxY - 95) {
             elem.innerHTML = "[\u039b]";
-            $("nav").style.bottom = "-100px";
-        } else {
+            $("nav").style.bottom = "0px";
+        } else if(evt.deltaY > 0 || y <= 32) {
             elem.innerHTML = "[V]";
             $("nav").style.bottom = "0px";
+        } else {
+            elem.innerHTML = "[\u039b]";
+            $("nav").style.bottom = "-100px";
         }
     }
     if(shouldUpdate) {
