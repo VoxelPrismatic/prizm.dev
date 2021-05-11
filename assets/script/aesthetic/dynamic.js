@@ -14,7 +14,7 @@ function jumpToEdge(delayed = 0) {
         if(is_IE)
             window.scrollTo(0, window.scrollMaxY);
         else if(is_Chrome)
-            $("#footer").scrollIntoView({block: "start", inline: "nearest", behavior: "smooth"});
+            $("#footer").scrollIntoView({block: "start", inline: "end", behavior: "smooth"});
         else
             window.scrollTo({top: window.scrollMaxY, behavior: "smooth"});
         setHtml("jumper", "[\u039b]");
