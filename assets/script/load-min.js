@@ -168,7 +168,7 @@ div.sect:last-child > div:last-child  {
     margin-bottom: 30px !important;
 }
 .focusing {
-    outline: currentcolor dotted medium;
+    outline: currentcolor dashed medium;
 }
 </style>`)
     document.body.insertAdjacentHTML("beforeend", patreon_nav)
