@@ -5,7 +5,7 @@ function jumpToEdge(delayed = 0) {
         find("truelogo").scrollIntoView({behavior: "smooth"});
         setHtml("jumper", "[V]");
     } else {
-        find("footer").scrollIntoView({behavior: "smooth"});
+        window.scroll({top: window.scrollMaxY, behavior: "smooth"});
         setHtml("jumper", "[\u039b]");
     }
 }
