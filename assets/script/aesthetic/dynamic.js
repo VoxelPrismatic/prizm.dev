@@ -1,6 +1,8 @@
 var is_IE = /(MSIE|Trident\/)/.test(window.navigator.userAgent);
+var is_Chrome = /Chrome\//.test(window.navigator.userAgent);
+
 function jumpToEdge(delayed = 0) {
-    window.navigator.vibrate([15, 15, 15]);
+    window.navigator.vibrate([5]);
     window.setTimeout((e) => {globalThis.lastPosition = e}, 2000, window.scrollY);
     if(find("jumper").innerHTML == "[\u039b]") {
         if(is_IE)
@@ -11,8 +13,10 @@ function jumpToEdge(delayed = 0) {
     } else {
         if(is_IE)
             window.scrollTo(0, window.scrollMaxY);
+        else if(is_Chrome)
+            $("#footer").scrollIntoView({block: "end", inline: "nearest", behavior: "smooth"});
         else
-            window.scrollTo({top: window.scrollMaxY - 15, behavior: "smooth"});
+            window.scrollTo({top: window.scrollMaxY, behavior: "smooth"});
         setHtml("jumper", "[\u039b]");
     }
 }
