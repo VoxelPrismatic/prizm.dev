@@ -93,7 +93,7 @@ bum ba dum, bam bum song! you'll be humming that forever, mate!
 <s>sponsored by DreamWeaver</s>
 that was not advanced
 you shall be advanced!!!
-this website is filled with jank! <img src="/prizm.dev/assets/image/jankman.png" height="16px"/>
+this website is filled with jank! <img src="/prizm.dev/assets/image/jankman.png" style="height: 16px; vertical-align: middle;"/>
 sibelius crashed
 the page successfully failed to load
 i use arch btw
