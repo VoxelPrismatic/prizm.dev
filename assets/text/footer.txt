@@ -106,4 +106,4 @@ can i have that <codeline>Quit Sibelius</codeline> button agin?
 Sponsored by DreamWeaver<br><i>~not really~</i>
 <b><i>~advanced~</i></b>
 <img src="/prizm.dev/assets/image/jankman.png" style="height: 16px; vertical-align: middle;"/>
-<img src="https://media.discordapp.net/attachments/755113197161283664/842830761022980146/emoji.png" style="height: 16px; vertical-align: middle;"/><img src="https://media.discordapp.net/attachments/755113197161283664/842830882187509800/emoji.png" style="height: 16px; vertical-align: middle;"/>
+<img src="https://media.discordapp.net/attachments/755113197161283664/842830761022980146/emoji.png" style="height: 32px; vertical-align: middle;"/><img src="https://media.discordapp.net/attachments/755113197161283664/842830882187509800/emoji.png" style="height: 32px; vertical-align: middle;"/>
