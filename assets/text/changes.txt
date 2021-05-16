@@ -1,3 +1,42 @@
+#] may 16, 2021
+> Reaction roles are now a thing!!
+
+-~-
+
+#] may 06, 2021
+> Reformatted the reddit embed so it looks nicer
+
+-~-
+
+#] may 05, 2021
+> The starboard now supports embeds. Now you can star tweets!
+
+-~-
+
+#] may 01, 2021
+> Cleaned up twitter embeds
+  > `@user sent:` --> `Tweeted:`
+  > `@main retweeted @other:` --> `Retweeted @other:`
+  > Better threading support for longer threds
+> Janky commands!
+  > You can now run `;]twitter` and `;]starboard`
+    > It just runs `;]mng` and simulates a reaction lol
+> Twitter embeds should now spoil possibly NSFW tweets
+> Posts should now come in faster
+
+-~-
+
+#] apr 19, 2021
+> Fixed some starboard bug
+
+-~-
+
+#] mar 18, 2021
+> Many bug fixes with the meta/discord commands
+> Now asks you to submit a bug request
+
+-~-
+
 #] jan 26, 2021
 > Fixed a dual tweet bug
   > It was a coincidence it never happened before
