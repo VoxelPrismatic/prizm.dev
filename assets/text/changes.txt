@@ -1,5 +1,9 @@
 #] may 16, 2021
 > Reaction roles are now a thing!!
+> Graph command is speedier
+  > All equations are graphed at the same time instead of one after another
+  > Using it no longer blocks other commands from running
+> Chat no longer blocks other commands from functioning
 
 -~-
 
