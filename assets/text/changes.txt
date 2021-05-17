@@ -1,3 +1,12 @@
+#] may 17, 2021
+> Fixed major big with reaction roles
+  > I'm an idiot and only applied it to the message author
+> Reaction role command updated
+  > If no message link or ID is provided, it will automatically mark the message right above the command as the reaction role board
+  > Now can only be run by mods
+
+-~-
+
 #] may 16, 2021
 > Reaction roles are now a thing!!
 > Graph command is speedier
