@@ -1,9 +1,23 @@
+#] may 20, 2021
+> Triangle solver update
+  > It now longer throws an error when the input period has timed out
+> Starboard/Twitter update
+  > Now `;]starboard` and `;]twitter` tell you when PRIZM cannot send messages in that channel
+> Role reaction comamnd update
+  > Now asks you to raise PRIZM's role above others when needed
+
+-~-
+
 #] may 17, 2021
 > Fixed major big with reaction roles
   > I'm an idiot and only applied it to the message author
 > Reaction role command updated
   > If no message link or ID is provided, it will automatically mark the message right above the command as the reaction role board
   > Now can only be run by mods
+> Cleaned starboard error messages
+  > `-] YOU CAN'T STAR YOUR OWN MESSAGES` --> Don't star your own messages
+  > `-] YOU CAN'T STAR A MESSAGE MULTIPLE TIMES` --> Don't star the same message with multiple stars
+  > Removed `-] YOU CAN'T STAR THE STARBOARD` because ghost notifs are annoying
 
 -~-
 
