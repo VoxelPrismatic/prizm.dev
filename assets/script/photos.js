@@ -58,14 +58,14 @@ function img_zoom() {
         if(this.src.includes("-med.webp"))
             this.src = this.src.slice(0, -9);
     } else {
-        img.style.transform = "";
+        this.style.transform = "";
     }
 }
 
 function get_pic() {
     for(var img of $all("img[data-src]")) {
         pic_src.push(img.getAttribute("data-src"));
-        img.onclick = img_zoom;
+        img.onclick = () => img_zoom();
     }
 }
 get_pic();

@@ -12,7 +12,7 @@ args = parser.parse_args()
 ls = []
 for t in args.target:
     for f in os.listdir(t):
-        if f.endswith("-smol.webp") or f.endswith("-med.webp")
+        if f.endswith("-smol.webp") or f.endswith("-med.webp"):
             continue
         ls.append(t + "/" + f)
 m = 0
@@ -35,4 +35,4 @@ for f in ls:
     print(f"\x1b[1A\x1b[K{f} [{m}/{l} {(m*3+1)/(l*3)*100:.2f}%] :")
     os.system(f"ffmpeg -i \"{f}\" -vf scale={w/n:.0f}:{h/n:.0f} \"{f}-smol.webp\" -{y} 2> /dev/null")
     print(f"\x1b[1A\x1b[K{f} [{m}/{l} {(m*3+2)/(l*3)*100:.2f}%] |")
-    os.system(f"ffmpeg -i \"{f}\" -vf scale={w/n:.0f}:{h/n:.0f} \"{f}-med.webp\" -{y} 2> /dev/null")
+    os.system(f"ffmpeg -i \"{f}\" \"{f}-med.webp\" -{y} 2> /dev/null")
