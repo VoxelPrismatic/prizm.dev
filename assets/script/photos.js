@@ -23,4 +23,4 @@ function get_pic() {
     }
 }
 get_pic();
-snol_pic();
+smol_pic();
