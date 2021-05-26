@@ -17,7 +17,7 @@ img[data-src] {
     }
 }
 img.loaded.clicked {
-    box-shadow: 0px 0px 100vw 20vw #110008;
+    box-shadow: 0px 0px 768px 240px #110008;
     z-index: 2;
     top: var(--top);
 }
