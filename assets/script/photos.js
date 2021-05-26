@@ -64,6 +64,8 @@ function no_zoom(img) {
         if(i != img) {
             i.classList.remove("clicked")
             i.style.transform = ""
+            if(!img.src.includes("-med.webp"))
+                img.src += "-med.webp"
         }
     }
 }
