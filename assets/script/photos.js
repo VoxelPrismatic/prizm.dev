@@ -1,6 +1,7 @@
 document.head.insertAdjacentHTML("beforeend", `<style type="text/css">
 img[src*="-smol.webp"] {
     animation: cubic-bezier(0.5,0,0.25,1) img-load 2.5s alternate infinite;
+    width: 100%;
 }
 @keyframes img-load {
     0% {
