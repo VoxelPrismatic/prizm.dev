@@ -66,7 +66,7 @@ function img_zoom(img) {
         return
     if(img.classList.toggle("clicked")) {
         no_zoom(img)
-        img.style.setProperty("--top", $("nav").clientHeight);
+        img.style.setProperty("--top", $("nav").clientHeight + innerWidth / 100);
         n = img.getAttribute("data-scale")
         if(!n) {
             var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
