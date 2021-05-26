@@ -1,19 +1,16 @@
 document.head.insertAdjacentHTML("beforeend", `<style type="text/css">
-img[src*="-smol.webp"], img.loaded.clicked[src*="-med.webp"] {
+img[src*="-smol.webp"], img.blur {
     animation: cubic-bezier(0.5,0,0.25,1) img-load 2.5s alternate infinite;
 }
 img[data-src] {
-    width: 100%;
     z-index: 1;
     position: relative;
 }
 @keyframes img-load {
     0% {
-        opacity: 50%;
         filter: blur(0px) saturate(0);
     } 100% {
-        opacity: 75%;
-        filter: blur(5px) saturate(1);
+        filter: blur(2.5px) saturate(1);
     }
 }
 img.loaded.clicked {
@@ -28,8 +25,11 @@ img.loaded:hover, img.loaded:active, img.loaded:focus {
 </style>`);
 
 var pic_src = []
+var last_src = ""
 function next_pic() {
     var src = pic_src[0];
+    $(`img[src="${last_src}"]`).classList.remove("blur");
+    $(`img[src="${last_src}"]`).classList.add("loaded");
     if(!src)
         return
     console.log(src)
@@ -37,10 +37,15 @@ function next_pic() {
     var img = $(`img[data-src="${src}"]`)
     img.onload = next_pic;
     img.src = src + "-med.webp";
-    img.classList.add("loaded");
+    last_src = img.src
+    img.classList.add("blur");
 }
 function smol_pic() {
     var src = pic_src[0];
+    if(last_src) {
+        $(`img[src="${last_src}"]`).classList.remove("blur");
+        $(`img[src="${last_src}"]`).classList.add("loaded");
+    }
     if(!src) {
         get_pic();
         next_pic();
@@ -51,6 +56,7 @@ function smol_pic() {
     var img = $(`img[data-src="${src}"]`)
     img.onload = smol_pic;
     img.src = src + "-smol.webp";
+    last_src = img.src
 }
 
 function no_zoom(img) {
@@ -67,6 +73,8 @@ function img_zoom(img) {
         return
     if(img.classList.toggle("clicked")) {
         no_zoom(img)
+        img.classList.add("blur");
+        img.onload = (evt) => evt.target.classList.remove("blur");
         img.scrollIntoView({
             behavior: "smooth",
             block: "center",
