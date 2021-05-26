@@ -71,11 +71,6 @@ function img_zoom(img) {
             var w = img.width, h = img.height
             if(h > iH)
                 n = 0
-            while((w * n < iW) && (h * n < iH))
-                n += 1
-            n -= 1
-            while((w * n < iW) && (h * n < iH))
-                n += 0.5
             n -= 0.5
             while((w * n < iW) && (h * n < iH))
                 n += 0.1
