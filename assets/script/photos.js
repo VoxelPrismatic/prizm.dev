@@ -72,7 +72,7 @@ function img_zoom(img) {
     if(!img.className.includes("loaded"))
         return
     if(img.classList.toggle("clicked")) {
-        if(!img.style.getProperty("--top")) {
+        if(!img.style.getPropertyValue("--top")) {
             img.onload = (evt) => evt.target.classList.remove("blur");
             img.classList.add("blur");
         }
