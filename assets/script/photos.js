@@ -100,6 +100,7 @@ function img_zoom(img) {
     } else {
         img.style.transform = "";
         img.src += "-med.webp" // Save ram
+        img.classList.remove("blur");
     }
 }
 
