@@ -72,9 +72,13 @@ function img_zoom(img) {
     if(!img.className.includes("loaded"))
         return
     if(img.classList.toggle("clicked")) {
+        if(!img.style.getProperty("--top")) {
+            img.onload = (evt) => evt.target.classList.remove("blur");
+            img.classList.add("blur");
+        }
+        if(img.src.includes("-med.webp"))
+            img.src = img.src.slice(0, -9);
         no_zoom(img)
-        img.classList.add("blur");
-        img.onload = (evt) => evt.target.classList.remove("blur");
         img.scrollIntoView({
             behavior: "smooth",
             block: "center",
@@ -93,8 +97,6 @@ function img_zoom(img) {
             img.setAttribute("data-scale", n);
         }
         img.style.transform = "scale(" + n + ")";
-        if(img.src.includes("-med.webp"))
-            img.src = img.src.slice(0, -9);
     } else {
         img.style.transform = "";
         img.src += "-med.webp" // Save ram
