@@ -10,7 +10,12 @@ img[src*="-smol.webp"] {
         opacity: 75%;
         filter: blur(5px) saturate(1);
     }
-}`);
+}
+img.loaded.clicked {
+    position: relative;
+    box-shadow: 0px 0px 30px 20px #110008;
+}
+</style>`);
 
 var pic_src = []
 function next_pic() {
@@ -21,7 +26,8 @@ function next_pic() {
     pic_src = pic_src.slice(1);
     var img = $(`img[data-src="${src}"]`)
     img.onload = next_pic;
-    img.src = src;
+    img.src = src + "-med.webp";
+    img.classList.add("loaded");
 }
 function smol_pic() {
     var src = pic_src[0];
@@ -36,9 +42,30 @@ function smol_pic() {
     img.onload = smol_pic;
     img.src = src + "-smol.webp";
 }
+
+function img_zoom() {
+    if(!this.className.includes("loaded"))
+        return
+    if(this.classList.toggle("clicked")) {
+        for(var i of $all("img.clicked"))
+            if(i != this)
+                i.classList.remove("clicked")
+        var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
+        while((this.width * n < iW) && (this.height * n < iH))
+            n += 0.1
+        img.style.transform = "scale(" + n + ")";
+        if(this.src.includes("-med.webp"))
+            this.src = this.src.slice(0, -9);
+    } else {
+        img.style.transform = "";
+    }
+}
+
 function get_pic() {
-    for(var img of $all("img[data-src]"))
+    for(var img of $all("img[data-src]")) {
         pic_src.push(img.getAttribute("data-src"));
+        img.onclick = img_zoom;
+    }
 }
 get_pic();
 smol_pic();
