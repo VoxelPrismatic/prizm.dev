@@ -4,7 +4,7 @@ function next_pic() {
     pic_src = pic_src.slice(1);
     $(`img[data-src="${src}"]`).src = src;
 }
-for(var img of $("img[data-src]")) {
+for(var img of $all("img[data-src]")) {
     img.onload = next_pic;
     pic_src.push(img.getAttribute("data-src"));
 }
