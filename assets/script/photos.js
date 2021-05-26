@@ -16,7 +16,7 @@ img[data-src] {
 }
 img.loaded.clicked {
     position: relative;
-    box-shadow: 0px 0px 30px 20px #110008;
+    box-shadow: 0px 0px 100vw 20vw #110008;
 }
 </style>`);
 
@@ -46,13 +46,20 @@ function smol_pic() {
     img.src = src + "-smol.webp";
 }
 
+function no_zoom(img) {
+    for(var i of $all("img.clicked")) {
+        if(i != img) {
+            i.classList.remove("clicked")
+            i.style.transform = ""
+        }
+    }
+}
+
 function img_zoom(img) {
     if(!img.className.includes("loaded"))
         return
     if(img.classList.toggle("clicked")) {
-        for(var i of $all("img.clicked"))
-            if(i != img)
-                i.classList.remove("clicked")
+        no_zoom(img)
         var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
         while((img.width * n < iW) && (img.height * n < iH))
             n += 0.1
@@ -72,3 +79,7 @@ function get_pic() {
 }
 get_pic();
 smol_pic();
+window.addEventListener("click", (evt) => {
+    if(evt.target.nodeName != "IMG")
+        no_zoom()
+})
