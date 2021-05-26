@@ -1,5 +1,5 @@
 document.head.insertAdjacentHTML("beforeend", `<style type="text/css">
-img[src*="-smol.webp"] {
+img[src*="-smol.webp"], img.loaded.clicked[src*="-med.webp"] {
     animation: cubic-bezier(0.5,0,0.25,1) img-load 2.5s alternate infinite;
 }
 img[data-src] {
@@ -18,11 +18,12 @@ img[data-src] {
 }
 img.loaded.clicked {
     box-shadow: 0px 0px 768px 240px #110008;
-    z-index: 2;
+    z-index: 20;
     top: var(--top);
 }
-img.loaded:hover {
+img.loaded:hover, img.loaded:active, img.loaded:focus {
     cursor: pointer;
+    z-index: 10;
 }
 </style>`);
 
