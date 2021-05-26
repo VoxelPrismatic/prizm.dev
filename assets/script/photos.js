@@ -37,7 +37,7 @@ function next_pic() {
     var img = $(`img[data-src="${src}"]`)
     img.onload = next_pic;
     img.src = src + "-med.webp";
-    last_src = img.src
+    last_src = src + "-med.webp";
     img.classList.add("blur");
 }
 function smol_pic() {
@@ -56,7 +56,7 @@ function smol_pic() {
     var img = $(`img[data-src="${src}"]`)
     img.onload = smol_pic;
     img.src = src + "-smol.webp";
-    last_src = img.src
+    last_src = src + "-smol.webp";
 }
 
 function no_zoom(img) {
