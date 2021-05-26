@@ -85,7 +85,8 @@ function img_zoom(img) {
             img.setAttribute("data-scale", n);
         }
         img.style.transform = "scale(" + n + ")";
-        img.src = img.src.slice(0, -9);
+        if(img.src.includes("-med.webp"))
+            img.src = img.src.slice(0, -9);
     } else {
         img.style.transform = "";
         img.src += "-med.webp" // Save ram
