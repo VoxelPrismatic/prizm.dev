@@ -66,6 +66,7 @@ function get_pic() {
     for(var img of $all("img[data-src]")) {
         pic_src.push(img.getAttribute("data-src"));
         img.onclick = () => img_zoom();
+        img.className = " "
     }
 }
 get_pic();
