@@ -54,7 +54,7 @@ function img_zoom() {
         var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
         while((this.width * n < iW) && (this.height * n < iH))
             n += 0.1
-        img.style.transform = "scale(" + n + ")";
+        this.style.transform = "scale(" + n + ")";
         if(this.src.includes("-med.webp"))
             this.src = this.src.slice(0, -9);
     } else {
