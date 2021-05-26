@@ -3,7 +3,9 @@ img[src*="-smol.webp"] {
     animation: cubic-bezier(0.5,0,0.25,1) img-load 2.5s alternate infinite;
 }
 img[data-src] {
-    width: 100%
+    width: 100%;
+    z-index: 1;
+    position: relative;
 }
 @keyframes img-load {
     0% {
@@ -15,8 +17,11 @@ img[data-src] {
     }
 }
 img.loaded.clicked {
-    position: relative;
     box-shadow: 0px 0px 100vw 20vw #110008;
+    z-index: 2;
+}
+img.loaded:hover {
+    cursor: pointer;
 }
 </style>`);
 
