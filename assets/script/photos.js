@@ -1,14 +1,14 @@
 document.head.insertAdjacentHTML("beforeend", `<style type="text/css">
 img[src*="-smol.webp"] {
-    animation: cubic-bezier(0.5,0,0.25,1) img-load 5s alternate infinite;
+    animation: cubic-bezier(0.5,0,0.25,1) img-load 2.5s alternate infinite;
 }
 @keyframes img-load {
     0% {
         opacity: 50%;
-        filter: blur(5px);
+        filter: blur(0px) saturate(0);
     } 100% {
-        opacity: 100%;
-        filter: blur(0px);
+        opacity: 75%;
+        filter: blur(5px) saturate(1);
     }
 }`);
 
