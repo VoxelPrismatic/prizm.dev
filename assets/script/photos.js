@@ -44,28 +44,28 @@ function smol_pic() {
     img.src = src + "-smol.webp";
 }
 
-function img_zoom() {
-    if(!this.className.includes("loaded"))
+function img_zoom(img) {
+    if(!img.className.includes("loaded"))
         return
-    if(this.classList.toggle("clicked")) {
+    if(img.classList.toggle("clicked")) {
         for(var i of $all("img.clicked"))
-            if(i != this)
+            if(i != img)
                 i.classList.remove("clicked")
         var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
-        while((this.width * n < iW) && (this.height * n < iH))
+        while((img.width * n < iW) && (img.height * n < iH))
             n += 0.1
-        this.style.transform = "scale(" + n + ")";
-        if(this.src.includes("-med.webp"))
-            this.src = this.src.slice(0, -9);
+        img.style.transform = "scale(" + n + ")";
+        if(img.src.includes("-med.webp"))
+            img.src = img.src.slice(0, -9);
     } else {
-        this.style.transform = "";
+        img.style.transform = "";
     }
 }
 
 function get_pic() {
     for(var img of $all("img[data-src]")) {
         pic_src.push(img.getAttribute("data-src"));
-        img.onclick = () => img_zoom();
+        img.onclick = () => img_zoom(this);
         img.className = " "
     }
 }
