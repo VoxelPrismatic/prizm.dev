@@ -19,6 +19,7 @@ img[data-src] {
 img.loaded.clicked {
     box-shadow: 0px 0px 100vw 20vw #110008;
     z-index: 2;
+    top: var(--top);
 }
 img.loaded:hover {
     cursor: pointer;
@@ -65,6 +66,7 @@ function img_zoom(img) {
         return
     if(img.classList.toggle("clicked")) {
         no_zoom(img)
+        img.style.setProperty("--top", $("nav").clientHeight);
         n = img.getAttribute("data-scale")
         if(!n) {
             var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
