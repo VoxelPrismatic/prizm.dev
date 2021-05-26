@@ -3,6 +3,7 @@ function next_pic() {
     var src = pic_src[0];
     if(!src)
         return
+    console.log(src)
     pic_src = pic_src.slice(1);
     $(`img[data-src="${src}"]`).src = src;
 }
@@ -13,6 +14,7 @@ function smol_pic() {
         next_pic();
         return
     }
+    console.log(src + "-smol.webp")
     pic_src = pic_src.slice(1);
     $(`img[data-src="${src}"]`).src = src + "-smol.webp";
 }
