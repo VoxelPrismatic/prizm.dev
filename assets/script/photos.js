@@ -60,9 +60,22 @@ function img_zoom(img) {
         return
     if(img.classList.toggle("clicked")) {
         no_zoom(img)
-        var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
-        while((img.width * n < iW) && (img.height * n < iH))
-            n += 0.1
+        n = img.getAttribute("data-scale")
+        if(!n) {
+            var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
+            var w = img.width, h = img.height
+            if(h > iH)
+                n = 0
+            while((w * n < iW) && (h * n < iH))
+                n += 1
+            n -= 1
+            while((w * n < iW) && (h * n < iH))
+                n += 0.5
+            n -= 0.5
+            while((w * n < iW) && (h * n < iH))
+                n += 0.1
+            img.setAttribute("data-scale", n);
+        }
         img.style.transform = "scale(" + n + ")";
         if(img.src.includes("-med.webp"))
             img.src = img.src.slice(0, -9);
@@ -82,4 +95,8 @@ smol_pic();
 window.addEventListener("click", (evt) => {
     if(evt.target.nodeName != "IMG")
         no_zoom()
+})
+window.addEventListener("resize", () => {
+    for(var i of $all("img[data-src]"))
+        i.setAttribute("data-scale", "");
 })
