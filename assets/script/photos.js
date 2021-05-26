@@ -15,7 +15,7 @@ img[data-src] {
 }
 img.loaded.clicked {
     box-shadow: 0px 0px 768px 240px #110008;
-    z-index: 20;
+    z-index: 20 !important;
     top: var(--top);
 }
 img.loaded:hover, img.loaded:active, img.loaded:focus {
