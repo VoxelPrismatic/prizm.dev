@@ -1,3 +1,26 @@
+document.head.insertAdjacentHTML("beforeend", `<style type="text/css">
+img[src*="-smol.webp"] {
+    animation: linear img-load 5s infinite;
+}
+@keyframes img-load {
+    0% {
+        opacity: 50%;
+        filter: blur(0px);
+    } 25% {
+        opacity: 100%;
+        filter: blur(2.5px);
+    } 50% {
+        opacity: 50%;
+        filter: blur(5px);
+    } 75% {
+        opacity: 100%;
+        filter: blur(2.5px);
+    } 100% {
+        opacity: 50%;
+        filter: blur(0px);
+    }
+}`);
+
 var pic_src = []
 function next_pic() {
     var src = pic_src[0];
