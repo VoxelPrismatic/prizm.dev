@@ -29,27 +29,26 @@ img.loaded:hover, img.loaded:active, img.loaded:focus {
 
 var pic_src = []
 
-function med_pic() {
-    for(var i of $$("img[src*='-smol.webp']")) {
-        r = i.getBoundingClientRect();
-        if(r.bottom < 0)
-            return
-        if(r.top > 0)
-            continue
-        i.classList.add("blur");
-        i.onload = (evt) => {
-            evt.target.classList.remove("blur");
-            evt.target.classList.add("loaded");
-        }
-        i.src = i.src.slice(0, -9) + "med.webp";
+function next_pic() {
+    src = pic_src[0];
+    if(!src)
         return
-    }
+    console.log(src + "-med.webp")
+    pic_src = pic_src.slice(1);
+    var img = $(`img[data-src="${src}"]`)
+    img.onload = (evt) => { smol_pic(); evt.target.classList.remove("blur");  };
+    img.classList.add("blur");
+    img.src = src + "-med.webp";
+    last_src = src + "-med.webp";
 }
 
 function smol_pic() {
     src = pic_src[0];
-    if(!src)
+    if(!src) {
+        get_pic()
+        next_pic()
         return
+    }
     console.log(src + "-smol.webp")
     pic_src = pic_src.slice(1);
     var img = $(`img[data-src="${src}"]`)
