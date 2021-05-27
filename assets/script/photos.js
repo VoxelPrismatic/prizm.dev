@@ -8,6 +8,7 @@ img[src*="-smol.webp"] {
 img[data-src] {
     z-index: 1;
     position: relative;
+    width: 100%;
 }
 @keyframes img-load {
     0% {
