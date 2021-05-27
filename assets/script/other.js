@@ -65,9 +65,9 @@ var texts = [];
 
 function changeFunnyTextThing() {
     var theText = texts[Math.floor(Math.random() * texts.length)];
-    while(theText == "" || theText == findHtml("funnytextthing"))
+    while(theText == "" || theText == $("#funnytextthing").innerHTML)
         theText = texts[Math.floor(Math.random() * texts.length)];
-    setHtml("funnytextthing", theText);
+    $("#funnytextthing").innerHTML = theText;
     delayUpdateSpacer();
 }
 
@@ -75,10 +75,6 @@ function compSty(elem) {
     try {
         return window.getComputedStyle(elem);
     } catch(err) {
-        try {
-            return window.getComputedStyle(find(elem));
-        } catch(err) {
-            return window.getComputedStyle(find(elem)[0]);
-        }
+        return window.getComputedStyle($$(elem)[0]);
     }
 }

@@ -52,3 +52,6 @@ function styler(element, styles) {
     for(var property of styles.constructor.keys(styles))
         element.style.setProperty(property, styles[property]);
 }
+
+function $(q, e = document) { return e.querySelector(q); }
+function $$(q, e = document) { return e.querySelectorAll(q); }

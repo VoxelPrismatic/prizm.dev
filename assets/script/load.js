@@ -1,10 +1,10 @@
 function loadFooter() {
     if(!document.URL.includes("/error")) {
         try {
-            find("footer").parentElement.remove();
+            $("#footer").parentElement.remove();
         } catch(err) {
         }
-        var blocks = find("content").children;
+        var blocks = $("#content").children;
         var section = blocks[0];
         for(var child of blocks)
             if(child.className.includes("sect"))
@@ -18,7 +18,7 @@ async function startLoading() {
     console.groupCollapsed("Loading page");
     try {
         delaySetTransitions();
-        find("head").innerHTML = document.title;
+        $("#head").innerHTML = document.title;
         await loadPage();
         if(document.URL.includes("#"))
             for(var x = 0; x < 500; x += 100)
@@ -45,7 +45,7 @@ async function startLoading() {
             console.groupCollapsed("Loading page");
             var html = await load("/prizm.dev/error.html");
             html = html.replace(/(\n|.)*\<div id="content"\>((\n|.)*?(<\/div>){2})(\n|.)*/gm, "$2");
-            find("content").innerHTML = html;
+            $("#content").innerHTML = html;
         }
     }
     sub_styles();
@@ -53,7 +53,7 @@ async function startLoading() {
     window.setTimeout(sub_styles, 1000, false);
     delayFunction(function() {
         console.log("Updating listeners");
-        if(find("jumper")) {
+        if($("#jumper")) {
             window.onscroll = changeScrollingThingy;
             window.ontouchmove = changeScrollingThingy;
         }
@@ -72,9 +72,9 @@ function queue_links() {
     link_queue_ready = false;
     try {
         page = link_queue[0];
-        if(!find("page_source_" + page)) {
+        if(!$("#page_source_" + page)) {
             link = ` // <a id="page_source_${page}" target="_blank" href="https://github.com/VoxelPrismatic/prizm.dev/blob/master/assets/text/${page}.txt">View source [${page}]</a>`
-            find("links_and_sources").innerHTML += link;
+            $("#links_and_sources").innerHTML += link;
         }
         link_queue = link_queue.slice(1);
         link_queue_ready = !link_queue.length;
@@ -98,9 +98,9 @@ async function textPage(...pages) {
 
 async function load(filename, strip = false, json = false, list = false) {
     if(!filename.endsWith("error.html"))
-        find("head").innerHTML = document.title;
+        $("#head").innerHTML = document.title;
     else
-        find("head").innerHTML = "ERROR ;[";
+        $("#head").innerHTML = "ERROR ;[";
     console.log("Reading " + filename);
     if(strip.list)
         list = true;

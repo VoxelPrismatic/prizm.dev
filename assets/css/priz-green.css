@@ -1,0 +1,183 @@
+.mono-font { font-family: "Ubuntu Mono", mono; transition: all 1s ease 0s; }
+* { font-family: "Ubuntu"; transition: all 1s ease 0s; }
+div { line-height: 1.5; transition: all 1s ease 0s; }
+a { color: rgb(136, 255, 136); text-decoration: none; white-space: nowrap; transition: all 1s ease 0s; }
+a:hover, a:focus { color: rgb(170, 255, 170); }
+textarea { background-color: rgba(5, 17, 0, 0.133); caret-color: rgb(145, 153, 153); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgba(0, 255, 0, 0.133) rgba(0, 255, 0, 0.133) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; padding: 5px; color: rgb(255, 255, 255); margin: 5px 0px; min-width: 100%; max-width: 100%; width: 100%; transition: all 1s ease 0s; }
+body { text-align: center; margin: auto; color: rgb(170, 170, 170); transition: all 1s ease 0s; }
+h1, h2, h3, h4, h5, h6 { color: rgb(0, 255, 0); margin-top: 5px; margin-bottom: 5px; text-align: left; transition: all 1s ease 0s; }
+th { color: rgb(0, 255, 0); background-color: rgba(0, 255, 0, 0.267); caret-color: rgb(128, 196, 255); border-style: solid; border-width: 2px 2px 0px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(0, 255, 0) rgb(0, 255, 0) rgba(0, 0, 0, 0); margin: 5px; padding: 5px; border-radius: 0px; text-shadow: 0px 0px 5px; transition: all 1s ease 0s; }
+th:hover, th:focus { text-shadow: 0px 0px 10px; }
+th:nth-child(1) { border-top-left-radius: 5px; transition: all 1s ease 0s; }
+th:nth-last-child(1) { border-top-right-radius: 5px; transition: all 1s ease 0s; }
+tr:nth-child(2n) { background-color: rgba(0, 255, 255, 0.02); transition: all 1s ease 0s; }
+td, tr { margin: 5px; padding: 5px; border-width: 0px 2px; border-color: rgba(0, 0, 0, 0) rgb(0, 255, 0); border-style: solid; transition: all 1s ease 0s; }
+table { width: 100%; border-spacing: 0px; transition: all 1s ease 0s; }
+blockquote { margin: 0px 5px -5px; padding: 5px; border-left: 2px solid rgb(0, 255, 0); transition: all 1s ease 0s; }
+al { display: block; list-style-type: lower-alpha; margin: 1em 0px; padding-left: 40px; transition: all 1s ease 0s; }
+ol, ul, al { margin: 0px; padding-top: 0px; transition: all 1s ease 0s; }
+ul { list-style-type: "> "; transition: all 1s ease 0s; }
+ul > li::marker, ol > li::marker, al > li::marker { font-family: "Ubuntu Mono", mono; color: rgba(136, 136, 136, 0.533); transition: all 1s ease 0s; }
+spoil { border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(51, 68, 68) rgb(51, 68, 68) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; background-color: rgb(34, 51, 51); font-size: smaller; margin: 2px; padding: 2px; color: rgb(34, 51, 51); transition: all 1s ease 0s; }
+spoil:hover, spoil:focus { color: rgb(255, 255, 255); }
+codeblock, codeline { border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgba(0, 255, 0, 0.133) rgba(0, 255, 0, 0.133) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; background-color: rgba(0, 17, 0, 0.4); margin: 5px; padding: 5px; color: rgb(170, 170, 170); font-family: "Ubuntu Mono", mono; cursor: auto; white-space: pre-wrap; display: block; transition: all 1s ease 0s; }
+codeblock *, codeline * { font-family: "Ubuntu Mono", mono; transition: all 1s ease 0s; }
+codeline { margin: 2px; padding: 2px; font-size: smaller; display: inline-block; transition: all 1s ease 0s; }
+a-l { display: block; text-align: left; transition: all 1s ease 0s; }
+a-r { display: block; text-align: right; transition: all 1s ease 0s; }
+a-c { display: block; text-align: center; transition: all 1s ease 0s; }
+a-j { display: block; transition: all 1s ease 0s; }
+f-l { float: left; transition: all 1s ease 0s; }
+f-r { float: right; transition: all 1s ease 0s; }
+line { height: 5px; border: 2px solid rgb(0, 255, 0); border-radius: 5px; width: 80%; margin: auto; box-shadow: rgb(0, 255, 0) 0px 0px 5px, rgb(0, 255, 0) 0px 0px 5px inset; display: block; transition: all 1s ease 0s; }
+line:hover, line:focus { box-shadow: rgb(0, 255, 0) 0px 0px 10px, rgb(0, 255, 0) 0px 0px 10px inset; border-color: rgb(0, 255, 0); }
+accent { position: relative; transition: all 1s ease 0s; }
+div.dict-good { display: flex; transition: all 1s ease 0s; }
+div.dict-good dict { flex-grow: 1; width: unset !important; transition: all 1s ease 0s; }
+div.dict-smol { display: block; transition: all 1s ease 0s; }
+div.dict-smol dict { width: 100% !important; transition: all 1s ease 0s; }
+#footer { font-size: x-small; transition: all 1s ease 0s; }
+#logo, #head { width: 100%; text-align: center; font-size: xxx-large; transition: all 1s ease 0s; }
+#jumper { color: rgb(0, 255, 0); caret-color: rgb(128, 255, 255); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(0, 255, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgb(0, 255, 0); border-radius: 5px 0px 0px; padding: 5px; position: fixed; bottom: 0px; right: 0px; font-family: "Ubuntu Mono", mono; background-color: inherit; box-shadow: rgb(0, 255, 0) 0px 0px 4px; transition: all 1s ease 0s; margin: 0px; z-index: 100; }
+#jumper:hover, #jumper:focus { text-shadow: 0px 0px 5px; }
+.list { max-height: 30vh; overflow-y: auto; text-align: center !important; transition: all 1s ease 0s; }
+.margin { margin: 5px auto; transition: all 1s ease 0s; }
+.sect, .tab { width: 90vw; transition: all 1s ease 0s; }
+.loading { text-align: center; margin-top: 10px; margin-bottom: 10px; padding: 5px; transition: all 1s ease 0s; }
+.invis { display: none; transition: all 1s ease 0s; }
+.bgcolor { background-color: rgb(17, 34, 34); transition: all 1s ease 0s; }
+.mono { font-family: "Ubuntu Mono", mono; transition: all 1s ease 0s; }
+.hidden-marker::marker { color: rgba(0, 0, 0, 0); transition: all 1s ease 0s; }
+.flip-h { transform: scaleX(-1); display: inline-block; transition: all 1s ease 0s; }
+.flip-v { transform: scaleY(-1); display: inline-block; transition: all 1s ease 0s; }
+.flip-h.flip-v { transform: scale(-1); transition: all 1s ease 0s; }
+.dropper-closed > div { display: none; transition: all 1s ease 0s; }
+.h-dropper { font-weight: bold; font-family: "Ubuntu Mono", mono; float: right; cursor: alias; transition: all 1s ease 0s; }
+.h-dropper-closed { font-weight: bold; font-family: "Ubuntu Mono", mono; float: right; transition: all 1s ease 0s; }
+.neon { border-radius: 5px; border: 2px solid rgb(0, 255, 0); box-shadow: rgb(0, 255, 0) 0px 0px 5px 1px; transition: all 1s ease 0s; }
+.neon:hover, .neon:focus { box-shadow: rgb(0, 255, 0) 0px 0px 10px 1px; }
+.emoji { height: 18.75px; display: inline-block; position: relative; top: 2px; transition: all 1s ease 0s; }
+h1, h2, h3, h4, h5, h6 { text-shadow: 0px 0px 5px; color: rgb(0, 255, 0); transition: all 1s ease 0s; }
+a:hover, a:focus { text-shadow: 0px 0px 10px; color: rgb(170, 255, 170); }
+h1:hover, h1:focus { text-shadow: 0px 0px 10px; }
+h2:hover, h2:focus { text-shadow: 0px 0px 10px; }
+h3:hover, h3:focus { text-shadow: 0px 0px 10px; }
+h4:hover, h4:focus { text-shadow: 0px 0px 10px; }
+h5:hover, h5:focus { text-shadow: 0px 0px 10px; }
+h6:hover, h6:focus { text-shadow: 0px 0px 10px; }
+.unhide { color: rgb(255, 255, 255) !important; transition: all 1s ease 0s; }
+#logo { position: relative; top: 20px; transition: all 1s ease 0s; }
+#logo:hover, #logo:focus { filter: drop-shadow(rgb(0, 255, 0) 0px 0px 5px); }
+#head { position: relative; top: -80px; transform: rotate(-14deg); text-shadow: 0px 0px 5px, black 0px 0px 20px; font-style: italic; transition: all 1s ease 0s; }
+#head:hover, #head:focus { text-shadow: 0px 0px 10px, black 0px 0px 40px; }
+.lnk { border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(0, 255, 0) rgb(0, 255, 0) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 5px; padding: 5px; color: rgb(0, 255, 0); display: block; text-align: left; min-height: 3vh; transition: all 1s ease 0s; }
+.lnk:hover, .lnk:focus { color: rgb(136, 255, 136); background-color: rgba(136, 255, 136, 0.133); caret-color: rgb(128, 255, 128); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(136, 255, 136) rgb(136, 255, 136) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 5px; padding: 5px; text-shadow: 0px 0px 5px; }
+.sel { display: block; text-align: left; min-height: 3vh; color: rgb(170, 255, 170); background-color: rgba(170, 255, 170, 0.133); caret-color: rgb(128, 255, 255); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(170, 255, 170) rgb(170, 255, 170) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 5px; padding: 5px; text-shadow: 0px 0px 10px; transition: all 1s ease 0s; }
+.sel:hover, .sel:focus { color: rgb(0, 255, 0); background-color: rgba(0, 255, 0, 0.133); caret-color: rgb(128, 255, 128); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(0, 255, 0) rgb(0, 255, 0) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 5px; padding: 5px; text-shadow: 0px 0px 5px; }
+.sel:hover, .sel:focus { color: rgb(0, 255, 0); background-color: rgba(0, 255, 0, 0.133); caret-color: rgb(255, 128, 196); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(0, 255, 0) rgb(0, 255, 0) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 5px; padding: 5px; text-shadow: 0px 0px 15px; }
+.collapser { background-color: rgba(170, 170, 170, 0.067); caret-color: rgba(241, 241, 241, 0.77); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-radius: 5px 5px 0px 0px; margin: 5px; padding: 5px; color: rgb(204, 204, 204); display: block; text-align: left; min-height: 3vh; border-color: rgb(170, 170, 170) rgb(170, 170, 170) rgba(204, 204, 204, 0.533); transition: all 1s ease 0s; }
+.collapser:hover, .collapser:focus { text-shadow: 0px 0px 10px; background-color: rgba(255, 255, 255, 0.133); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); }
+.collapser::before { content: "[V]  "; font-weight: bold; font-family: "Ubuntu Mono", mono; transition: all 1s ease 0s; }
+.collopen { display: block; text-align: left; min-height: 3vh; background-color: rgba(255, 255, 255, 0); caret-color: rgba(255, 255, 255, 0.77); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-radius: 5px 5px 0px 0px; margin: 5px; padding: 5px; color: rgb(170, 170, 170); border-color: rgb(170, 170, 170) rgb(170, 170, 170) rgba(255, 255, 255, 0.533); text-shadow: 0px 0px 10px; transition: all 1s ease 0s; }
+.collopen:hover, .collopen:focus { text-shadow: 0px 0px 10px; background-color: rgba(255, 255, 255, 0.133); color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); }
+.collopen::before { content: "[V]  "; font-weight: bold; font-family: "Ubuntu Mono", mono; transition: all 1s ease 0s; }
+.collopen::before { content: "[Λ]  "; font-weight: bold; font-family: "Ubuntu Mono", mono; transition: all 1s ease 0s; }
+.tab { text-align: center; padding: 5px; color: rgb(170, 170, 170); border-color: rgb(0, 255, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-radius: 0px; border-width: 2px; text-shadow: 0px 0px 10px; background-color: rgba(0, 0, 0, 0); transition: all 1s ease 0s; }
+.tab.tabbed { background-color: rgba(0, 255, 255, 0.267); color: rgb(0, 255, 255); border-color: rgb(0, 255, 255) rgb(0, 255, 255) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; transition: all 1s ease 0s; }
+.tab.tabbed:hover, .tab.tabbed:focus { text-shadow: 0px 0px 15px; background-color: rgba(255, 0, 136, 0.267); color: rgb(255, 0, 136); border-color: rgb(255, 0, 136) rgb(255, 0, 136) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; }
+.tab:hover, .tab:focus { text-shadow: 0px 0px 10px; background-color: rgba(0, 255, 0, 0.267); color: rgb(0, 255, 0); border-color: rgb(0, 255, 0) rgb(0, 255, 0) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; }
+.sect { border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(0, 255, 0) rgb(0, 255, 0) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 5px auto; text-align: justify; padding: 10px; transition: all 1s ease 0s; }
+.btn { color: rgb(0, 255, 0); background-color: rgba(0, 255, 0, 0.267); caret-color: rgb(128, 196, 255); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(0, 255, 0) rgb(0, 255, 0) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 2px; padding: 2px; transition: all 1s ease 0s; }
+.btn:hover, .btn:focus { color: rgb(170, 255, 170); background-color: rgba(170, 255, 170, 0.267); caret-color: rgb(128, 255, 255); border-style: solid; border-width: 2px; border-image: none 100% / 1 / 0 stretch; border-color: rgb(170, 255, 170) rgb(170, 255, 170) rgba(0, 0, 0, 0); border-radius: 5px 5px 0px 0px; margin: 2px; padding: 2px; }
+.dropped { border-left: 2px solid rgba(136, 136, 136, 0.267); margin-left: 2px; padding-left: 4px; transition: all 1s ease 0s; }
+dict { display: inline-block; width: 0px; border: 2px solid rgb(68, 68, 68); border-radius: 2px; height: 0px !important; position: relative; top: 10px; transition: all 1s ease 0s; margin: 0px 5px; }
+.smol-dict { margin: auto; transition: all 1s ease 0s; }
+.tr-l { border-right-color: rgba(0, 0, 0, 0); border-right-width: 0px; transition: all 1s ease 0s; }
+.tr-r { border-left-color: rgba(0, 0, 0, 0); border-left-width: 0px; transition: all 1s ease 0s; }
+@media only screen and (min-width: 480px) {
+  .sect, .tab { width: 90vw; }
+  img { max-width: 90vw; }
+}
+@media only screen and (min-width: 640px) {
+  .sect, .tab { width: 80vw; }
+  img { max-width: 80vw; }
+}
+@media only screen and (min-width: 720px) {
+  .sect, .tab { width: 70vw; }
+  img { max-width: 70vw; }
+}
+@media only screen and (min-width: 1000px) {
+  .sect, .tab { width: 60vw; }
+  img { max-width: 60vw; }
+}
+@media only screen and (min-width: 1080px) {
+  .sect, .tab { width: 50vw; }
+  img { max-width: 50vw; }
+}
+@media only screen and (min-width: 1280px) {
+  .sect, .tab { width: 45vw; }
+  img { max-width: 45vw; }
+}
+@media only screen and (min-width: 1366px) {
+  .sect, .tab { width: 40vw; }
+  img { max-width: 40vw; }
+}
+@media only screen and (min-width: 1600px) {
+  .sect, .tab { width: 35vw; }
+  img { max-width: 35vw; }
+}
+@media only screen and (min-width: 1920px) {
+  .sect, .tab { width: 30vw; }
+  img { max-width: 30vw; }
+}
+:focus, :hover { outline: currentcolor none medium; }
+.focusing { outline: currentcolor dotted thin; }
+nah { cursor: auto; transition: all 1s ease 0s; }
+#head { cursor: default; transition: all 1s ease 0s; }
+div { cursor: default; transition: all 1s ease 0s; }
+span { cursor: default; transition: all 1s ease 0s; }
+img { cursor: default; transition: all 1s ease 0s; }
+nah { cursor: none; transition: all 1s ease 0s; }
+nah { cursor: context-menu; transition: all 1s ease 0s; }
+def { cursor: help; transition: all 1s ease 0s; }
+a { cursor: pointer; color: rgb(136, 255, 136); transition: all 1s ease 0s; }
+h1 { cursor: pointer; transition: all 1s ease 0s; }
+h2 { cursor: pointer; transition: all 1s ease 0s; }
+h3 { cursor: pointer; transition: all 1s ease 0s; }
+h4 { cursor: pointer; transition: all 1s ease 0s; }
+h5 { cursor: pointer; transition: all 1s ease 0s; }
+h6 { cursor: pointer; transition: all 1s ease 0s; }
+spoil { cursor: pointer; transition: all 1s ease 0s; }
+button { cursor: pointer; transition: all 1s ease 0s; }
+.collapser { cursor: pointer; background-color: rgba(170, 170, 170, 0.067); border-left-color: rgb(170, 170, 170); border-right-color: rgb(170, 170, 170); border-top-color: rgb(170, 170, 170); transition: all 1s ease 0s; }
+.lnk { cursor: pointer; border-left-color: rgb(0, 255, 0); border-right-color: rgb(0, 255, 0); border-top-color: rgb(0, 255, 0); color: rgb(0, 255, 0); transition: all 1s ease 0s; }
+#jumper { cursor: pointer; border-left-color: rgb(0, 255, 0); border-top-color: rgb(0, 255, 0); color: rgb(0, 255, 0); box-shadow: rgb(0, 255, 0) 0px 0px 4px; transition: all 1s ease 0s; }
+nah { cursor: progress; transition: all 1s ease 0s; }
+nah { cursor: wait; transition: all 1s ease 0s; }
+nah { cursor: cell; transition: all 1s ease 0s; }
+nah { cursor: crosshair; transition: all 1s ease 0s; }
+nah { cursor: text; transition: all 1s ease 0s; }
+nah { cursor: vertical-text; transition: all 1s ease 0s; }
+nah { cursor: alias; transition: all 1s ease 0s; }
+nah { cursor: copy; transition: all 1s ease 0s; }
+nah { cursor: no-drop; transition: all 1s ease 0s; }
+nah { cursor: not-allowed; transition: all 1s ease 0s; }
+nah { cursor: grab; transition: all 1s ease 0s; }
+nah { cursor: grabbing; transition: all 1s ease 0s; }
+nah { cursor: all-scroll; transition: all 1s ease 0s; }
+nah { cursor: col-resize; transition: all 1s ease 0s; }
+nah { cursor: row-resize; transition: all 1s ease 0s; }
+nah { cursor: n-resize; transition: all 1s ease 0s; }
+nah { cursor: s-resize; transition: all 1s ease 0s; }
+nah { cursor: e-resize; transition: all 1s ease 0s; }
+nah { cursor: w-resize; transition: all 1s ease 0s; }
+nah { cursor: ne-resize; transition: all 1s ease 0s; }
+nah { cursor: sw-resize; transition: all 1s ease 0s; }
+nah { cursor: se-resize; transition: all 1s ease 0s; }
+nah { cursor: nw-resize; transition: all 1s ease 0s; }
+nah { cursor: ew-resize; transition: all 1s ease 0s; }
+nah { cursor: ns-resize; transition: all 1s ease 0s; }
+nah { cursor: nesw-resize; transition: all 1s ease 0s; }
+nah { cursor: nwse-resize; transition: all 1s ease 0s; }
+nah { cursor: zoom-in; transition: all 1s ease 0s; }
+nah { cursor: zoom-out; transition: all 1s ease 0s; }

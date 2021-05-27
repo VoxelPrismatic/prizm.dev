@@ -10,24 +10,20 @@ function allowKeyboard(elem, more = doNothing) {
 }
 
 function allowKeyboardBulk(thing, more = doNothing) {
-    try {
-        for(var elem of find(thing))
+    for(var elem of $$(thing)) {
+        try {
             allowKeyboard(elem, more);
-    } catch(err) {
-        console.error(err);
+        } catch(err) {
+            console.error(err);
+        }
     }
 }
 
 function a11y() {
-    for(var header of ["1", "2", "3", "4", "5", "6"]) {
-        allowKeyboardBulk(">h" + header, function(elem){elem.onfocus = flickery});
-    }
+    allowKeyboard("h1, h2, h3, h4, h5, h6", function(elem) { elem.onfocus = flickery });
+    allowKeyboard("a, img, .lnk, button, .collapser, .dropper");
 
-    for(var thing of [">a", ">img", ".lnk", ">button", ".collapser", ".dropper"]) {
-        allowKeyboardBulk(thing);
-    }
-
-    for(var elem of find(">span")) {
+    for(var elem of $$("span")) {
         try {
             if(elem.className.match(/(hide|dropper)/gm)) {
                 allowKeyboard(elem);
@@ -39,19 +35,9 @@ function a11y() {
         }
     }
 
-    for(var thing of ["head", "truelogo", ".dropper"]) {
-        try {
-            for(var elem of find(thing)) {
-                elem.tabIndex = "-1";
-                elem.onkeyup = null;
-            }
-        } catch(err) {
-            try {
-                find(thing).tabIndex = "-1";
-            } catch(err) {
-                console.error(err);
-            }
-        }
+    for(var elem of $("#head #truelogo .dropper")) {
+        elem.tabIndex = "-1";
+        elem.onkeyup = null;
     }
 }
 
@@ -65,7 +51,7 @@ function addFocus(evt, elem) {
     focus_timeout = true;
     window.setTimeout(function(){focus_timeout = false}, 100)
     focusing += 1;
-    for(var thing of find(".focusing"))
+    for(var thing of $$(".focusing"))
         thing.classList.remove("focusing");
     try {
         elem.classList.add("focusing");

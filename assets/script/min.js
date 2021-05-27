@@ -1,3 +1,49 @@
+try {
+    window.parent.location.host;
+} catch(err) {
+    if(!document.referrer.includes("top.gg")) {
+        url = "https://voxelprismatic.github.io/prizm.dev/" + document.referrer.split("/").slice(3).join("/");
+        window.parent.location = url;
+        window.location = url;
+    }
+}
+
+function $(q, e = document) { return e.querySelector(q); }
+function $$(q, e = document) { return e.querySelectorAll(q); }
+
+// delay.js
+function delayFunction(n,t,e,r,...o){for(var c=[],u=t;u<e;u+=r)c.push(window.setTimeout(n,u,...o));return c}function delaySwapColor(n,...t){try{return delayFunction(swapColor,0,3e3,100,n,...t)}catch(n){return[]}}function delaySetTransitions(){try{return delayFunction(setTransitions,1e3,4e3,100)}catch(n){return[]}}function delayUpdateSpacer(){try{return delayFunction(updateSpacer,0,100,25)}catch(n){return[]}}function delayResizeDicts(){try{return delayFunction(resizeDicts,0,100,25,!1)}catch(n){return[]}}function stopDelay(n){if(null!=n)for(var t of n)window.clearTimeout(t)}function logFunc(n,...t){if(null!=n)try{n(...t)}catch(n){console.error(n)}}
+
+// accessibility.js
+function doNothing(...o){}function allowKeyboard(o,e=doNothing){o.tabIndex="0",o.onkeyup=function(o){addFocus(o,this)},e(o)}function allowKeyboardBulk(o,e=doNothing){for(var t of $$(o))try{allowKeyboard(t,e)}catch(o){console.error(o)}}function a11y(){for(var o of(allowKeyboard("h1, h2, h3, h4, h5, h6",function(o){o.onfocus=flickery}),allowKeyboard("a, img, .lnk, button, .collapser, .dropper"),$$("span")))try{o.className.match(/(hide|dropper)/gm)?allowKeyboard(o):o.tabIndex="-1"}catch(o){console.error(o)}for(var o of $("#head #truelogo .dropper"))o.tabIndex="-1",o.onkeyup=null}var focus_timeout=!1,focusing=0;function addFocus(o,e){if(console.log(o,e),!focus_timeout){for(var t of(focus_timeout=!0,window.setTimeout(function(){focus_timeout=!1},100),focusing+=1,$$(".focusing")))t.classList.remove("focusing");try{e.classList.add("focusing"),window.setTimeout(removeFocus,5e3,e),("Enter"==o.key||e.nodeName.startsWith("H")&&"Tab"==o.key)&&e.click()}catch(o){}}}function removeFocus(o){if(!(focusing-=1))try{o.classList.remove("focusing")}catch(o){console.log(o)}}
+
+// aesthetic/flicker.js
+function flickery_element(n){n==$("h1#head")&&n.clientHeight>54&&(console.log(n.clientHeight),console.log(n),n.style.setProperty("top",-n.clientHeight/2-54+"px","important")),delayFunction(function(n){n.style.transition="none"},1e3,1001,1e3,n);var t=!0,e=compSty(n).color;e="rgba("+e.split("(")[1].slice(0,-1)+", 0.7)";for(var o=1500;o<=3e3;o+=Math.floor(200*Math.random())+25)(t=!t)?delayFunction(function(n){n.style.color=""},o,o+1,o,n):delayFunction(function(n){n.style.color=e},o,o+1,o,n);delayFunction(function(n){n.style.transition=""},o-25,o,5,n),delayFunction(function(n){n.style.color=e},o-50,o-49,o,n),delayFunction(function(n){n.style.color=""},o,o+1,o,n)}function flickery(){flickery_element(this)}window.setInterval(function(){flickery_element($("#head"))},15e3);
+
+// aesthetic/dynamic.js
+var is_IE=/(MSIE|Trident\/)/.test(window.navigator.userAgent),is_Chrome=/Chrome\//.test(window.navigator.userAgent);function jumpToEdge(e=0){window.navigator.vibrate([5]),window.setTimeout(e=>{globalThis.lastPosition=e},2e3,window.scrollY),"[Λ]"==$("#jumper").innerHTML?(is_IE?window.scrollTo(0,0):window.scrollTo({top:0,behavior:"smooth"}),$("#jumper").innerHTML="[V]"):(is_IE?window.scrollTo(0,window.scrollMaxY):is_Chrome?$("#footer").scrollIntoView({block:"start",inline:"end",behavior:"smooth"}):window.scrollTo({top:window.scrollMaxY,behavior:"smooth"}),$("#jumper").innerHTML="[Λ]")}function resetUpdate(){shouldUpdate=!0}function changeScrollingThingy(e=null){var o=$("#jumper");if(null==e||null==e.deltaY){if(window.scrollY%2)return;window.scrollY/window.scrollMaxY>=.5?(o.innerHTML="[Λ]",$("#nav").style.bottom="-100px"):(o.innerHTML="[V]",$("nav").style.bottom="0px")}else{var t=window.scrollY;o=$("#jumper");t>=window.scrollMaxY-95?(o.innerHTML="[Λ]",$("nav").style.bottom="0px"):e.deltaY>0||t<=32?(o.innerHTML="[V]",$("nav").style.bottom="0px"):(o.innerHTML="[Λ]",$("nav").style.bottom="-100px")}shouldUpdate&&(updateSpacer(),shouldUpdate=!1,window.setTimeout(resetUpdate,500))}function getHeight(e){let o=compSty(e);var t=Number(o.height.slice(0,-2));return t+=Number(o.marginTop.slice(0,-2)),t+=Number(o.marginBottom.slice(0,-2))}function updateSpacer(e=!1){e||loadFooter(),spacer=$("#spacer"),spacer.style.transition="none",spacer.style.height="0px";for(var o=window.innerHeight,t=0;Number(compSty("body").height.slice(0,-2))+7<o;)spacer.style.height=t+"px",t+=1}shouldUpdate=!0;var sub_styles_timeout=!1;function sub_styles(e=!0){globalThis.sub_styles_timeout||(globalThis.sub_styles_timeout=!0,console.groupCollapsed("Reformatting page"),e&&$("#spacer")&&(console.log("Resizing spacer"),logFunc(updateSpacer)),e&&$("table")&&(console.log("Styling tables"),logFunc(styleTables)),e&&$(".accent")&&(console.log("Moving accents"),logFunc(style_accents)),$(".dict")&&logFunc(resizeDicts),$("#spacer")&&(console.log("Resizing spacer"),logFunc(updateSpacer)),console.groupEnd("Reformatting page"),window.setTimeout(()=>globalThis.sub_styles_timeout=!1,100))}
+
+// aesthetic/colors.js
+function swapColor(colorName, swapImg = true) {
+    var q = $$("link[rel='stylesheet']")
+    if(!q[q.length - 1].href.endsWith("priz-" + colorName + ".css")
+        document.head.insertAdjacentHTML("beforeend", `<link rel="stylesheet" type="text/css" href="/prizm.dev/assets/css/priz-${colorName}.css"/>`)
+    if(!$("#truelogo").src.endsWith("priz_" + colorName + ".webp"))
+        $("#truelogo").src = `/prizm.dev/assets/image/webp/priz_${colorName}.webp`
+    try {
+        resizeDicts(false);
+    } catch(err) {
+        // Not important
+    } try {
+        setTransitions(false);
+    } catch(err) {
+        // Not important
+    }
+}
+
+
+// load-min.js
+
 var lastPosition = 0;
 
 function checkScrollPosition() {

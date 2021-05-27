@@ -30,7 +30,7 @@ img.loaded:hover, img.loaded:active, img.loaded:focus {
 var pic_src = []
 
 function med_pic() {
-    for(var i of $("img[src*='-smol.webp']") {
+    for(var i of $$("img[src*='-smol.webp']")) {
         r = i.getBoundingClientRect();
         if(r.bottom < 0)
             return
@@ -47,6 +47,7 @@ function med_pic() {
 }
 
 function smol_pic() {
+    src = pic_src[0];
     if(!src)
         return
     console.log(src + "-smol.webp")
@@ -58,7 +59,7 @@ function smol_pic() {
 }
 
 function no_zoom(img) {
-    for(var i of $all("img.clicked")) {
+    for(var i of $$("img.clicked")) {
         if(i != img) {
             i.classList.remove("clicked")
             i.style.transform = ""
@@ -105,7 +106,7 @@ function img_zoom(img) {
 }
 
 function get_pic() {
-    for(var img of $all("img[data-src]")) {
+    for(var img of $$("img[data-src]")) {
         pic_src.push(img.getAttribute("data-src"));
         img.onclick = (evt) => img_zoom(evt.target);
     }
@@ -117,7 +118,7 @@ window.addEventListener("click", (evt) => {
         no_zoom()
 })
 window.addEventListener("resize", () => {
-    for(var i of $all("img[data-src]"))
+    for(var i of $$("img[data-src]"))
         i.setAttribute("data-scale", "");
 })
 window.addEventListener("scroll", med_pic);

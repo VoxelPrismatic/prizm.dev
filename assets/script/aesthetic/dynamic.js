@@ -4,12 +4,12 @@ var is_Chrome = /Chrome\//.test(window.navigator.userAgent);
 function jumpToEdge(delayed = 0) {
     window.navigator.vibrate([5]);
     window.setTimeout((e) => {globalThis.lastPosition = e}, 2000, window.scrollY);
-    if(find("jumper").innerHTML == "[\u039b]") {
+    if($("#jumper").innerHTML == "[\u039b]") {
         if(is_IE)
             window.scrollTo(0, 0);
         else
             window.scrollTo({top: 0, behavior: "smooth"});
-        setHtml("jumper", "[V]");
+        $("#jumper").innerHTML = "[V]";
     } else {
         if(is_IE)
             window.scrollTo(0, window.scrollMaxY);
@@ -17,7 +17,7 @@ function jumpToEdge(delayed = 0) {
             $("#footer").scrollIntoView({block: "start", inline: "end", behavior: "smooth"});
         else
             window.scrollTo({top: window.scrollMaxY, behavior: "smooth"});
-        setHtml("jumper", "[\u039b]");
+        $("#jumper").innerHTML = "[\u039b]";
     }
 }
 
@@ -71,12 +71,12 @@ function getHeight(elem) {
 function updateSpacer(dontLoad = false) {
     if(!dontLoad)
         loadFooter();
-    spacer = find("spacer");
+    spacer = $("#spacer");
     spacer.style.transition = "none";
     spacer.style.height = "0px";
     var height = window.innerHeight;
     var x = 0;
-    while(Number(compSty(">BODY").height.slice(0, -2)) + 7 < height) {
+    while(Number(compSty("body").height.slice(0, -2)) + 7 < height) {
         spacer.style.height = x + "px";
         x += 1;
     }
@@ -89,18 +89,18 @@ function sub_styles(all = true) {
         return;
     globalThis.sub_styles_timeout = true;
     console.groupCollapsed("Reformatting page");
-    if(all && find("spacer")) {
+    if(all && $("#spacer")) {
         console.log("Resizing spacer");
         logFunc(updateSpacer);
-    } if(all && find(">table")) {
+    } if(all && $("table")) {
         console.log("Styling tables");
         logFunc(styleTables);
-    } if(all && find(".accent")) {
+    } if(all && $(".accent")) {
         console.log("Moving accents");
         logFunc(style_accents);
-    } if(find(".dict")) {
+    } if($(".dict")) {
         logFunc(resizeDicts);
-    } if(find("spacer")) {
+    } if($("#spacer")) {
         console.log("Resizing spacer");
         logFunc(updateSpacer);
     }
