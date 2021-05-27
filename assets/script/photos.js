@@ -1,6 +1,9 @@
 document.head.insertAdjacentHTML("beforeend", `<style type="text/css">
-img[src*="-smol.webp"], img.blur {
+img.blur {
     animation: cubic-bezier(0.5,0,0.25,1) img-load 2.5s alternate infinite;
+}
+img[src*="-smol.webp"] {
+    filter: blur(0px) saturate(0);
 }
 img[data-src] {
     z-index: 1;
@@ -25,36 +28,31 @@ img.loaded:hover, img.loaded:active, img.loaded:focus {
 </style>`);
 
 var pic_src = []
-var last_src = ""
-function next_pic() {
-    var src = pic_src[0];
-    $(`img[src="${last_src}"]`).classList.remove("blur");
-    $(`img[src="${last_src}"]`).classList.add("loaded");
+
+function med_pic() {
+    for(var i of $("img[src*='-smol.webp']") {
+        r = i.getBoundingClientRect();
+        if(r.bottom < 0)
+            return
+        if(r.top > 0)
+            continue
+        i.classList.add("blur");
+        i.onload = (evt) => {
+            evt.target.classList.remove("blur");
+            evt.target.classList.add("loaded");
+        }
+        i.src = i.src.slice(0, -9) + "med.webp";
+        return
+    }
+}
+
+function smol_pic() {
     if(!src)
         return
-    console.log(src)
-    pic_src = pic_src.slice(1);
-    var img = $(`img[data-src="${src}"]`)
-    img.onload = next_pic;
-    img.src = src + "-med.webp";
-    last_src = src + "-med.webp";
-    img.classList.add("blur");
-}
-function smol_pic() {
-    var src = pic_src[0];
-    if(last_src) {
-        $(`img[src="${last_src}"]`).classList.remove("blur");
-        $(`img[src="${last_src}"]`).classList.add("loaded");
-    }
-    if(!src) {
-        get_pic();
-        next_pic();
-        return
-    }
     console.log(src + "-smol.webp")
     pic_src = pic_src.slice(1);
     var img = $(`img[data-src="${src}"]`)
-    img.onload = smol_pic;
+    img.onload = () => { smol_pic() };
     img.src = src + "-smol.webp";
     last_src = src + "-smol.webp";
 }
@@ -122,3 +120,4 @@ window.addEventListener("resize", () => {
     for(var i of $all("img[data-src]"))
         i.setAttribute("data-scale", "");
 })
+window.addEventListener("scroll", med_pic);
