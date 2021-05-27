@@ -103,7 +103,8 @@ function img_zoom(img) {
         img.style.transform = "scale(" + n + ")";
     } else {
         img.style.transform = "";
-        img.src += "-med.webp" // Save ram
+        if(!img.src.includes("-med.webp"))
+            img.src += "-med.webp" // Save ram
         img.classList.remove("blur");
     }
 }
