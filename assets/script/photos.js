@@ -36,7 +36,11 @@ function next_pic() {
     console.log(src + "-med.webp")
     pic_src = pic_src.slice(1);
     var img = $(`img[data-src="${src}"]`)
-    img.onload = (evt) => { next_pic(); evt.target.classList.remove("blur");  };
+    img.onload = (evt) => { 
+        next_pic(); 
+        evt.target.classList.remove("blur");
+        evt.target.classList.add("loaded");
+    };
     img.classList.add("blur");
     img.src = src + "-med.webp";
     last_src = src + "-med.webp";
