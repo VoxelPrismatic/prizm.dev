@@ -90,7 +90,7 @@ function img_zoom(img) {
             block: "center",
             inline: "center"
         })
-        img.style.setProperty("--top", - ($("nav").clientHeight + innerWidth / 100)) + "px");
+        img.style.setProperty("--top", - ($("nav").clientHeight + innerWidth / 100) + "px");
         n = img.getAttribute("data-scale")
         if(!n) {
             var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
