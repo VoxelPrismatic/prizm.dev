@@ -37,8 +37,8 @@ function next_pic() {
     console.log(src + "-med.webp")
     pic_src = pic_src.slice(1);
     var img = $(`img[data-src="${src}"]`)
-    img.onload = (evt) => { 
-        next_pic(); 
+    img.onload = (evt) => {
+        next_pic();
         evt.target.classList.remove("blur");
         evt.target.classList.add("loaded");
     };
@@ -90,7 +90,7 @@ function img_zoom(img) {
             block: "center",
             inline: "center"
         })
-        img.style.setProperty("--top", $("nav").clientHeight + innerWidth / 100);
+        img.style.setProperty("--top", - ($("nav").clientHeight + innerWidth / 100)) + "px");
         n = img.getAttribute("data-scale")
         if(!n) {
             var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
