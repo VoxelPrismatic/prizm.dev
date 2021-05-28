@@ -29,10 +29,13 @@ for f in ls:
     p = ffmpeg.probe(f)
     h = p["streams"][0]["height"]
     w = p["streams"][0]["width"]
-    n = 6
-    while h/n > 640 or w/n > 640:
+    n = 8
+    o = 2
+    while h/n > 480 or w/n > 480:
         n += 1
+    while h/o > 2048 or w/o > 2048:
+        o += 1
     print(f"\x1b[1A\x1b[K{f} [{m}/{l} {(m*3+1)/(l*3)*100:.2f}%] :")
     os.system(f"ffmpeg -i \"{f}\" -vf scale={w/n:.0f}:{h/n:.0f} \"{f}-smol.webp\" -{y} 2> /dev/null")
     print(f"\x1b[1A\x1b[K{f} [{m}/{l} {(m*3+2)/(l*3)*100:.2f}%] |")
-    os.system(f"ffmpeg -i \"{f}\" \"{f}-med.webp\" -{y} 2> /dev/null")
+    os.system(f"ffmpeg -i \"{f}\" -vf scale={w/o:.0f}:{h/o:.0f} \"{f}-med.webp\" -{y} 2> /dev/null")

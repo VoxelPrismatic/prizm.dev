@@ -64,34 +64,32 @@ function smol_pic() {
 }
 
 function no_zoom(img) {
-    for(var i of $$("img.clicked")) {
-        if(i != img) {
-            i.classList.remove("clicked")
-            i.style.transform = ""
-            if(!img.src.includes("-med.webp"))
-                img.src += "-med.webp"
-            i.classList.remove("blur")
-        }
+    for(var i of $$(`img.clicked:not([data-src="${img.getAttribute('data-src')}"])`)) {
+        i.classList.remove("clicked")
+        i.style.transform = ""
+        if(!img.src.includes("-med.webp"))
+            img.src += "-med.webp"
+        i.classList.remove("blur")
     }
 }
 
 function img_zoom(img) {
     if(!img.className.includes("loaded"))
         return
+    img.style.setProperty("--top", - ($("nav").clientHeight + innerWidth / 100) + "px");
     if(img.classList.toggle("clicked")) {
-        if(!img.style.getPropertyValue("--top")) {
+        if(!img.getAttribute("data-scale")) {
             img.onload = (evt) => evt.target.classList.remove("blur");
             img.classList.add("blur");
         }
         if(img.src.includes("-med.webp"))
-            img.src = img.src.slice(0, -9);
+            img.src = img.getAttribute("data-src");
         no_zoom(img)
         img.scrollIntoView({
             behavior: "smooth",
             block: "center",
             inline: "center"
         })
-        img.style.setProperty("--top", - ($("nav").clientHeight + innerWidth / 100) + "px");
         n = img.getAttribute("data-scale")
         if(!n) {
             var n = 1, iW = innerWidth * 0.9, iH = innerHeight * 0.9
