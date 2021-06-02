@@ -77,6 +77,14 @@ async function loadNow() {
                 break;
             case 5: // June
                 swapColor("cyan");
+                $("#truelogo").src = "/prizm.dev/assets/image/webp/holi/priz_heart.webp";
+                $("#head").innerHTML = "<span style='color:#f00'>P</span>" +
+                                       "<span style='color:#f80'>R</span>" +
+                                       "<span style='color:#ff0'>I</span>" +
+                                       "<span style='color:#0f0'>D</span>" +
+                                       "<span style='color:#0ff'>E</span>" +
+                                       "<span style='color:#80f'> ;]</span>";
+
                 break;
             case 6: // July
                 swapColor("cyan");
