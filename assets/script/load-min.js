@@ -52,7 +52,7 @@ async function loadNow() {
                                        "<span style='color:#f80'>R</span>" +
                                        "<span style='color:#ff0'>I</span>" +
                                        "<span style='color:#0f0'>D</span>" +
-                                       "<span style='color:#0ff'>E</span>" +
+                                       "<span style='color:#08f'>E</span>" +
                                        "<span style='color:#80f'> ;]</span>";
                 break;
             case 6: // July
