@@ -10,6 +10,7 @@ try {
 
 function $(q, e = document) { return e.querySelector(q); }
 function $$(q, e = document) { return e.querySelectorAll(q); }
+function loadPage() {}
 
 // delay.js
 function delayFunction(n,t,e,r,...o){for(var c=[],u=t;u<e;u+=r)c.push(window.setTimeout(n,u,...o));return c}function delaySwapColor(n,...t){try{return delayFunction(swapColor,0,3e3,100,n,...t)}catch(n){return[]}}function delaySetTransitions(){try{return delayFunction(setTransitions,1e3,4e3,100)}catch(n){return[]}}function delayUpdateSpacer(){try{return delayFunction(updateSpacer,0,100,25)}catch(n){return[]}}function delayResizeDicts(){try{return delayFunction(resizeDicts,0,100,25,!1)}catch(n){return[]}}function stopDelay(n){if(null!=n)for(var t of n)window.clearTimeout(t)}function logFunc(n,...t){if(null!=n)try{n(...t)}catch(n){console.error(n)}}
