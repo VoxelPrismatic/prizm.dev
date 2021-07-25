@@ -209,6 +209,9 @@ div.sect:last-child > div:last-child  {
 .focusing {
     outline: currentcolor dashed medium;
 }
+#head {
+    top: unset !important;
+}
 </style>`)
     document.body.insertAdjacentHTML("beforeend", patreon_nav)
     a11y();
