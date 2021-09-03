@@ -216,6 +216,10 @@ nav > span {
     opacity: 50%;
     top: 2px;
     position: relative;
+    cursor: pointer;
+}
+nav > span:hover {
+    opacity: 60%;
 }
 </style>`)
     document.body.insertAdjacentHTML("beforeend", patreon_nav)
