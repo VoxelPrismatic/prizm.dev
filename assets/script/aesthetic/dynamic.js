@@ -98,7 +98,7 @@ function sub_styles(all = true) {
     } if(all && $(".accent")) {
         console.log("Moving accents");
         logFunc(style_accents);
-    } if($(".dict")) {
+    } if($("dict")) {
         logFunc(resizeDicts);
     } if($("#spacer")) {
         console.log("Resizing spacer");
