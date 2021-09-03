@@ -216,6 +216,7 @@ div.sect:last-child > div:last-child  {
 
 var patreon_nav = `
 <nav class="sect">
+    <span onclick="this.parentElement.display='none';" style="float:right;height:0px;display:block;opacity:50%">X</span>
     Consider supporting me on <a href="/prizm.dev/re/patreon" target="_blank">Patreon</a>!
 </nav>`
 
