@@ -244,7 +244,7 @@ function resizeDicts(log = true, element = document) {
     var n = (2 * height + 20) + "px";
     var n2 = (height + 6) + "px";
     var n3 = height + "px";
-    for(var thing of $(element, $("dict"))) {
+    for(var thing of $("dict", element)) {
         var parent = thing.parentElement;
         if(parent.clientWidth == 0)
             continue;
@@ -263,7 +263,7 @@ function resizeDicts(log = true, element = document) {
         var func = dictsPerfect;
     }
     if(tooSmol) {
-        for(var thing of $all("dict")) {
+        for(var thing of $$("dict")) {
             thing.classList.add("smol-dict");
             thing.style.top = n2;
             thing.parentElement.style.minHeight = n;
