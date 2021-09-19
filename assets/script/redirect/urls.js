@@ -6,7 +6,7 @@ var urls = {
   "github": "https://github.com/voxelprismatic",
   "discord": "https://discord.gg/Z84Nm6n",
   "dm_dis": "https://discordapp.com/channels/@me/481591703959240706",
-  "bot": "https://discordapp.com/oauth2/authorize?client_id=555862187403378699&permissions=473296118&scope=bot",
+  "bot": "https://discord.com/oauth2/authorize?client_id=555862187403378699&permissions=473296118&redirect_uri=https%3A%2F%2Fdiscord.gg%2FZ84Nm6n&response_type=code&scope=bot%20applications.commands%20messages.read",
   "reddit": "https://reddit.com/r/u_UltimateRedditCat",
   "github": "https://github.com/VoxelPrismatic",
   "bandcamp": "https://przm.bandcamp.com",
