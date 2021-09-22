@@ -1,7 +1,7 @@
 try {
     window.parent.location.host;
 } catch(err) {
-    if(!document.referrer.includes("top.gg")) {
+    if(!document.referrer.includes("top.gg") && !document.referrer.includes("discordextremelist.xyz")) {
         url = "https://voxelprismatic.github.io/prizm.dev/" + document.referrer.split("/").slice(3).join("/");
         window.parent.location = url;
         window.location = url;
