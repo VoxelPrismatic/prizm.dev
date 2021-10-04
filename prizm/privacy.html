@@ -59,34 +59,65 @@
                 <h1 onclick="linkMe(this);" id="PRIVACY" tabindex="0">#] PRIVACY ;]</h1>
                 <br />
                 Very simple privacy policy.
+                <h2 onclick="linkMe(this);" id="Definitions" tabindex="0">#] Definitions</h2>
+                <ul>
+                    <li><b id="data-removal">"data removal"</b> is the guild ID used for deleting the data corresponding to your server when you kick PRIZM from your server. Guild name is never stored</li>
+                    <li><b>"guild"</b> is referred to as "server" in the app but "guild" in the API. <sub><i>Frankly, I like the way "guild" sounds better so I'll use that.</i></sub></li>
+                    <li><b>"[...] name/content NOT stored"</b> means that the name or content is quite literally not stored. I don't have a need to store it, and I want to keep your data anonymous</li>
+                </ul>
                 <h2 onclick="linkMe(this);" id="Whats-Stored" tabindex="0">#] What's Stored</h2>
                 <ul>
                     <li>
                         Reaction Roles
                         <ul>
-                            <li>Emoji string [&lt;:emoji_name:123456789012345678&gt;]</li>
-                            <li>Role ID [role name is NOT stored]</li>
-                            <li>Message ID [message content is NOT stored]</li>
+                            <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li>
+                            <li>Emoji string <sub><i>&lt;:emoji_name:123456789012345678&gt;</i></sub></li>
+                            <li>Role ID <sub><i>role name is NOT stored</i></sub></li>
+                            <li>Message ID <sub><i>message content is NOT stored</i></sub></li>
                         </ul>
                     </li>
                     <li>
-                        Guild info
+                        Guild info <sub><i>Will be removed in the rewrite</i></sub>
                         <ul>
                             <li>Guild ID</li>
                             <li>Guild name</li>
                         </ul>
                     </li>
                     <li>
-                        Starboard
+                        Starboard [Starred Messages]
                         <ul>
-                            <li>Message ID [message content is NOT stored]</li>
+                            <li>Starboard ID <sub><i>message content is NOT stored</i></sub></li>
+                            <li>Message ID <sub><i>message content is NOT stored</i></sub></li>
+                            <li>Guild ID is NOT stored since this stuff is never deleted. It would be annoying for all the messages to be restarred</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Starboard [Settings]
+                        <ul>
+                            <li>Channel ID <sub><i>channel name is NOT stored</i></sub></li>
+                            <li>Emoji string <sub><i>any emojis used to star a message</i></sub></li>
+                            <li>Star count <sub><i>just a number</i></sub></li>
+                            <li>Whether or not users can use multiple stars ['multi stars']</li>
+                            <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li> 
+                        </ul>
+                    </li>
+                    <li>
+                        Starboard [Users]
+                        <ul>
+                            <li>User ID <sub><i>user names are NOT stored</i></sub></li>
+                            <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li>
+                            <li>Received stars <sub><i>just a number, total stars</i></sub></li>
+                            <li>Given stars <sub><i>just a number, total stars</i></sub></li>
+                            <li>Messages starred <sub><i>how many messages made it on the starboard, just a number</i></sub></li>
                         </ul>
                     </li>
                     <li>
                         Twitter
                         <ul>
-                            <li>Tweeters</li>
-                            <li>Channel IDs [channel names are NOT stored]</li>
+                            <li>Tweeters <sub><i>tweeter names are NOT stored, only tweeter IDs as provided by the twitter API</i></sub></li>
+                            <li>Channel IDs <sub><i>channel names are NOT stored</i></sub></li>
+                            <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li>
+                            <li>Watch/publish settings for tweets, replies, retweets or quote tweets</li>
                         </ul>
                     </li>
                     <li>
@@ -97,13 +128,21 @@
                         </ul>
                     </li>
                     <li>
-                        Polls
+                        <b>FUTURE:</b> Polls <sub><i>will be converted to interactions in the future</i></sub>
                         <ul>
-                            <li>Message ID [message content is NOT stored]</li>
+                            <li>Message ID <sub><i>message content is NOT stored</i></sub></li>
                             <li>User ID to prevent spamming the up/downvote buttons. Your user ID just assigns your vote. User name is NOT stored.</li>
                         </ul>
                     </li>
-                </ul>
+                    <li>
+                        Logging settings
+                        <ul>
+                            <li>Whether or not a certain logging type is enabled</li>
+                            <li>Channel ID <sub><i>channel name is NOT stored</i></sub></li>
+                            <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li>
+                        </ul>
+                    </li> 
+                </ul>   
                
                 <h2 onclick="linkMe(this);" id="How-to-delete-data" tabindex="0">#] How to delete data</h2>
                 All your data is deleted once PRIZM ;] leaves your server. When PRIZM ;] rejoins, you have to set everything back up
@@ -115,7 +154,7 @@
                 If you want more information, feel free to <a href="mailto:prizmdev@outlook.com">email me</a> with any questions.<br><br>
                 <b>IMPORTANT NOTICE:</b> PRIZM ;] is currently being rewritten to use /commands, so this privacy policy is subject to change to be more transparent 
                 about what data is being collected. Frankly, PRIZM ;] has so many commands that I forget what commands do what, but I assure you all data is
-                anonymous other than server ID and server name. After the rewrite, server ID and server name won't be stored either.
+                anonymous other than the guild ID attached to guild name. After the rewrite, the guild name won't be stored either.
                 <br />
                 <div style="text-align: center;">
                     <div style="height: 0px; transition: none 0s ease 0s;" id="spacer"></div>
