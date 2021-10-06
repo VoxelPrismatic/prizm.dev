@@ -181,3 +181,4 @@ nah { cursor: nesw-resize; transition: all 1s ease 0s; }
 nah { cursor: nwse-resize; transition: all 1s ease 0s; }
 nah { cursor: zoom-in; transition: all 1s ease 0s; }
 nah { cursor: zoom-out; transition: all 1s ease 0s; }
+body { background-color: #222222 !important; }
