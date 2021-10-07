@@ -198,7 +198,7 @@ nav {
     right: 0;
     text-align: center !important;
     background: inherit;
-    box-shadow: 0px 0px 1vw 1vw ${$("body").style.backgroundColor};
+    box-shadow: 0px 0px 1vw 1vw ${getComputedStyle($("body")).backgroundColor};
     bottom: -100px;
     z-index: 50;
     margin-bottom: 0px !important;
