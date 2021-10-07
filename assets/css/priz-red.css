@@ -182,3 +182,9 @@ nah { cursor: nwse-resize; transition: all 1s ease 0s; }
 nah { cursor: zoom-in; transition: all 1s ease 0s; }
 nah { cursor: zoom-out; transition: all 1s ease 0s; }
 body { background-color: #221111 !important; }
+a { text-decoration: underline; }
+nav { position: fixed; left: 0; right: 0; text-align: center !important; background: inherit; box-shadow: 0px 0px 1vw 1vw #221111; bottom: -100px; z-index: 50; margin-bottom: 0px !important; }
+div.sect:last-child > div:last-child  { margin-bottom: 30px !important; }
+.focusing { outline: currentcolor dashed medium; }
+nav > span { float: right; height: 0px; display: block; opacity: 50%; top: 2px; position: relative; cursor: pointer; }
+nav > span:hover { opacity: 60%; }
