@@ -190,38 +190,6 @@ async function loadNow() {
     }
     h1.style.transition = ""
     //window.setInterval(flickery_element, 15000, $("h1#head"));
-    document.head.insertAdjacentHTML("beforeend", `<style>
-a { text-decoration:underline; }
-nav {
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center !important;
-    background: inherit;
-    box-shadow: 0px 0px 1vw 1vw ${getComputedStyle($("body")).backgroundColor};
-    bottom: -100px;
-    z-index: 50;
-    margin-bottom: 0px !important;
-}
-div.sect:last-child > div:last-child  {
-    margin-bottom: 30px !important;
-}
-.focusing {
-    outline: currentcolor dashed medium;
-}
-nav > span {
-    float: right;
-    height: 0px;
-    display: block;
-    opacity: 50%;
-    top: 2px;
-    position: relative;
-    cursor: pointer;
-}
-nav > span:hover {
-    opacity: 60%;
-}
-</style>`)
     document.body.insertAdjacentHTML("beforeend", patreon_nav)
     a11y();
 }
