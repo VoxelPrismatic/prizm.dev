@@ -108,6 +108,9 @@
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
+            } .highlighted.noted {
+                background-color: #08f4 !important;
+                border-color: #08f !important;
             } h1, h3, details {
                 color: #0ff;
                 text-align: center;
@@ -927,6 +930,8 @@ ___________________
                             continue
                         } else if(d.innerHTML.includes(h)) {
                             dd.classList.add("highlighted")
+                            if(d.parentElement.parentElement.parentElement.id == "notes")
+                                dd.classList.add("noted")
                         }
                     }
                 }
@@ -1111,6 +1116,12 @@ ___________________
                             clear_cell($("#n0"))
                             evt.preventDefault();
                             break;
+                        case "z":
+                        case "Z":
+                            undo_move();
+                        case "y":
+                        case "Y":
+                            redo_mode();
                     }
                 }
                 window.setInterval(() => {
