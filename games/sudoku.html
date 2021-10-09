@@ -1141,9 +1141,11 @@ ___________________
                         case "z":
                         case "Z":
                             undo_move();
+                            break;
                         case "y":
                         case "Y":
-                            redo_mode();
+                            redo_move();
+                            break;
                     }
                 }
                 window.setInterval(() => {
