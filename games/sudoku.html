@@ -90,9 +90,9 @@
                 opacity: 1 !important;
                 width: 28px !important;
                 height: 28px !important;
-            } .white {
+            } .board td .white {
                 background-color: #fff3 !important;
-                border: 2px solid #fff !important;
+                border: 2px solid #fff;
                 transition: none !important;
             } .red {
                 background-color: #f004 !important;
@@ -163,11 +163,9 @@
                 opacity: 0.25;
             } .white:not(.semiopac) {
                 opacity: 1;
-                border-width: 5px !important;
-                width: 29px !important;
-                height: 29px !important;
-                margin: -1px;
-                display: block;
+                border-width: 4px !important;
+                width: 28px !important;
+                height: 28px !important;
                 animation: white 5s infinite ease-in-out;
             } #cover {
                 background-color: #233;
@@ -195,15 +193,15 @@
             } 
             @keyframes white {
                 0% {
-                    border-color: #fff !important;
+                    border-color: #fff;
                 } 25% {
-                    border-color: #aff !important;
+                    border-color: #aff;
                 } 50% {
-                    border-color: #afa !important;
+                    border-color: #afa;
                 } 75% {
-                    border-color: #fac !important;
+                    border-color: #fac;
                 } 100% {
-                    border-color: #fff !important;
+                    border-color: #fff;
                 }
             }
         </style>
