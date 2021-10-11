@@ -167,6 +167,8 @@
                 width: 28px !important;
                 height: 28px !important;
                 animation: white 1s infinite ease-in-out;
+            } .white.highlighted.only {
+                animation: white-highlight 1s infinite ease-in-out;
             } #cover {
                 background-color: #233;
                 height: 400px;
@@ -194,6 +196,13 @@
             @keyframes white {
                 0% { border-color: #fff; }
                 25% { border-color: #aff; }
+                50% { border-color: #afa; }
+                75% { border-color: #fac; }
+                100% { border-color: #fff; }
+            }
+            @keyframes white-highlight {
+                0% { border-color: #fff; }
+                25% { border-color: #0af; }
                 50% { border-color: #afa; }
                 75% { border-color: #fac; }
                 100% { border-color: #fff; }
@@ -632,11 +641,13 @@ ___________________
                 }
                 function write_cell(elem, forced = false) {
                     if(digit_first && !forced) {
+                        var cursor = $(".white:not(.semiopac)")
                         for(var b of $$("button.toggle"))
                             b.classList.remove("toggle")
                         currentval = elem.id.slice(1);
                         elem.classList.add("toggle")
                         highlight_number(currentval)
+                        highlight(cursor, "cyan")
                         return
                     }
                     for(var c of $$(".red"))
@@ -1161,11 +1172,11 @@ ___________________
                             evt.preventDefault();
                             break;
                         case "Home":
-                            highlight(get_cell(4, 4), "cyan");
+                            highlight(get_cell(4, 4, $("#highlighting")), "cyan");
                             evt.preventDefault();
                             break;
                         case "End":
-                            highlight(get_cell(0, 0), "cyan");
+                            highlight(get_cell(0, 0, $("#highlighting")), "cyan");
                             evt.preventDefault();
                             break;
                         case "n":
@@ -1282,11 +1293,202 @@ ___________________
                                     continue
                                 var rN = 3 * Math.floor(row / 3);
                                 for(var col = 0; col < 9; col += 1) {
-                                    if(cols[col].includes(key) || cells[Math.floor(col / 3) + rN].includes(key))
+                                    var cN = Math.floor(col / 3)
+                                    if(cols[col].includes(key) || cells[cN + rN].includes(key))
                                         continue
-                                    get_cell(col, row, $("#highlighting")).click()
+                                    get_cell(col, row, $("#highlighting")).click();
                                 }
                             }
+                        }
+                        for(var adv = 0; adv < 5; adv += 1) {
+                            var advanced_rows = [
+                                ["", "", ""], ["", "", ""], ["", "", ""],
+                                ["", "", ""], ["", "", ""], ["", "", ""],
+                                ["", "", ""], ["", "", ""], ["", "", ""]
+                            ]
+                            var advanced_cols = [
+                                ["", "", ""], ["", "", ""], ["", "", ""],
+                                ["", "", ""], ["", "", ""], ["", "", ""],
+                                ["", "", ""], ["", "", ""], ["", "", ""]
+                            ]
+                            var adv_r = ["", "", "", "", "", "", "", "", ""]
+                            var adv_c = ["", "", "", "", "", "", "", "", ""]
+                            var cl = 0
+                            for(var cell of $$("#notes .block")) {
+                                var r = 0
+                                for(var row of cell.rows) {
+                                    var c = 0
+                                    for(var col of row.cells) {
+                                        advanced_rows[cl][r] += col.className
+                                        advanced_cols[cl][c] += col.className
+                                        c += 1
+                                    }
+                                    r += 1
+                                }
+                                cl += 1
+                            }
+                            for(var k of "123456789") {
+                                write_cell($("#n" + key));
+                                var r = 0
+                                for(var row of advanced_rows) {
+                                    var only = ""
+                                    for(var n = 0; n < 3; n += 1) {
+                                        if(row[n].includes(k))
+                                            only += n
+                                    }
+                                    var only_prev = ""
+                                    var only_next = ""
+                                    switch(r % 3) {
+                                        case 0:
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_rows[r+1][n].includes(k))
+                                                    only_prev += n
+                                            }
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_rows[r+2][n].includes(k))
+                                                    only_next += n
+                                            }
+                                            break;
+                                        case 1:
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_rows[r+1][n].includes(k))
+                                                    only_prev += n
+                                            }
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_rows[r-1][n].includes(k))
+                                                    only_next += n
+                                            }
+                                            break;
+                                        case 2:
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_rows[r-1][n].includes(k))
+                                                    only_prev += n
+                                            }
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_rows[r-2][n].includes(k))
+                                                    only_next += n
+                                            }
+                                            break;
+                                    }
+                                    if(only_next && only_prev && only)
+                                        for(var n of "012") {
+                                            if(k == 9)
+                                                console.log(r, only_prev, only_next, only, !only_prev.includes(n), !only_next.includes(n) , only.includes(n), n, !only_prev.includes(n) && !only_next.includes(n) && only.includes(n))
+                                            if(!only_prev.includes(n) && !only_next.includes(n) && only.includes(n)) {
+                                                console.log(`cell ${r} row ${n}: release ${k}`)
+                                                for(var m of "012") {
+                                                    if(n == m)
+                                                        continue
+                                                    for(var note_cell of $("#highlighting").rows[Math.floor(r / 3)].cells[r % 3].children[0].rows[m].cells) {
+                                                        var noted = layered_coord(note_cell, $("#notes"))
+                                                        if(noted.className.includes(k)) {
+                                                            console.log(note_cell)
+                                                            noted.classList.remove(k)
+                                                            noted.innerHTML = noted.innerHTML.replace(k, "&nbsp;")
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    if(only.length == 1) {
+                                        console.log(`cell ${r} row ${only[0]}: only ${k}`)
+                                        for(var this_cell of $("#highlighting").rows[Math.floor(r / 3)].cells) {
+                                            if(this_cell.cellIndex == r % 3)
+                                                continue
+                                            for(var note_cell of this_cell.children[0].rows[only].cells) {
+                                                var noted = layered_coord(note_cell, $("#notes"))
+                                                if(noted.className.includes(k)) {
+                                                    noted.classList.remove(k)
+                                                    noted.innerHTML = noted.innerHTML.replace(k, "&nbsp;")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    r += 1
+                                }
+                                var c = 0
+                                for(var col of advanced_cols) {
+                                    var only = ""
+                                    for(var n = 0; n < 3; n += 1) {
+                                        if(col[n].includes(k))
+                                            only += n
+                                    }
+                                    var only_prev = ""
+                                    var only_next = ""
+                                    switch(Math.floor(c / 3)) {
+                                        case 0:
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_cols[c+3][n].includes(k))
+                                                    only_prev += n
+                                            }
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_cols[c+6][n].includes(k))
+                                                    only_next += n
+                                            }
+                                            break;
+                                        case 1:
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_cols[c+3][n].includes(k))
+                                                    only_prev += n
+                                            }
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_cols[c-3][n].includes(k))
+                                                    only_next += n
+                                            }
+                                            break;
+                                        case 2:
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_cols[c-3][n].includes(k))
+                                                    only_prev += n
+                                            }
+                                            for(var n = 0; n < 3; n += 1) {
+                                                if(advanced_cols[c-6][n].includes(k))
+                                                    only_next += n
+                                            }
+                                            break;
+                                    }
+                                    if(only_next && only_prev && only)
+                                        for(var n of "012") {
+                                            if(k == 9)
+                                                console.log(r, only_prev, only_next, only, !only_prev.includes(n), !only_next.includes(n) , only.includes(n), n, !only_prev.includes(n) && !only_next.includes(n) && only.includes(n))
+                                            if(!only_prev.includes(n) && !only_next.includes(n) && only.includes(n)) {
+                                                console.log(`cell ${r} col ${n}: release ${k}`)
+                                                for(var m of "012") {
+                                                    if(n == m)
+                                                        continue
+                                                    for(var note_cell of $("#highlighting").rows[Math.floor(c / 3)].cells[c % 3].children[0].rows) {
+                                                        note_cell = note_cell.cells[m]
+                                                        var noted = layered_coord(note_cell, $("#notes"))
+                                                        if(noted.className.includes(k)) {
+                                                            console.log(note_cell)
+                                                            noted.classList.remove(k)
+                                                            noted.innerHTML = noted.innerHTML.replace(k, "&nbsp;")
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    if(only.length == 1) {
+                                        console.log(`cell ${c} col ${only[0]}: only ${k}`)
+                                        for(var this_cell of $("#highlighting").rows) {
+                                            if(this_cell.rowIndex == Math.floor(c / 3))
+                                                continue
+                                            for(var this_row of this_cell.cells[c % 3].children[0].rows) {
+                                                for(var note_cell of this_row.cells) {
+                                                    var noted = layered_coord(note_cell, $("#notes"))
+                                                    if(note_cell.cellIndex == only && noted.className.includes(k)) {
+                                                        noted.classList.remove(k)
+                                                        noted.innerHTML = noted.innerHTML.replace(k, "&nbsp;")
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    c += 1
+                                }
+                            }
+                            console.log(advanced_rows)
+                            console.log(advanced_cols)
                         }
                         if(toggle_note)
                             taking_notes($("#notes_toggle"));
@@ -1295,10 +1497,10 @@ ___________________
                         else
                             write_cell($("#n1"));
                         $("#cover").style.opacity = "0"
-                        highlight(get_cell(4, 4), "cyan")
                         setTimeout(() => {
                             $("#cover").style.zIndex = "0"
                             $("#cover i").innerHTML = "GENERATING"
+                            highlight(get_cell(4, 4, $("#highlighting")), "cyan");
                         }, 100);
                     }, 100);
                 }
