@@ -1263,6 +1263,8 @@ ___________________
                 var t = Number(localStorage.getItem("__sudoku__time")) || 0;
 
                 function fill_notes() {
+                    push_board();
+                    var undo_temp = undo_stack.concat()
                     $("#cover i").innerHTML = "NOTING"
                     $("#cover").style.zIndex = "1000"
                     $("#cover").style.opacity = "1"
@@ -1533,6 +1535,7 @@ ___________________
                             $("#cover i").innerHTML = "GENERATING"
                             highlight(get_cell(4, 4, $("#highlighting")), "cyan");
                         }, 100);
+                        undo_stack = undo_temp;
                     }, 100);
                 }
             </script>
