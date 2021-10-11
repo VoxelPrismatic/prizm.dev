@@ -190,12 +190,12 @@
             } #undo, #redo {
                 width: auto !important;
                 opacity: 50%;
-            } 
+            }
             @keyframes white {
-                0% { border-color: #fff; } 
-                25% { border-color: #aff; } 
-                50% { border-color: #afa; } 
-                75% { border-color: #fac; } 
+                0% { border-color: #fff; }
+                25% { border-color: #aff; }
+                50% { border-color: #afa; }
+                75% { border-color: #fac; }
                 100% { border-color: #fff; }
             }
         </style>
@@ -259,6 +259,18 @@ ___________________
                     <tr>
                         <td>CTRL, /</td>
                         <td>Toggle cells first or digit first mode</td>
+                    </tr>
+                    <tr>
+                        <td>N</td>
+                        <td>Generate a new board</td>
+                    </tr>
+                    <tr>
+                        <td>Home</td>
+                        <td>Move cursor to the center of the board</td>
+                    </tr>
+                    <tr>
+                        <td>End</td>
+                        <td>Move cursor to the top right of the board</td>
                     </tr>
                 </table>
             </details>
@@ -515,7 +527,8 @@ ___________________
                 <button onclick="write_cell(this)" id="n7">7<sup>0</sup></button><button onclick="write_cell(this)" id="n8">8<sup>0</sup></button><button onclick="write_cell(this)" id="n9">9<sup>0</sup></button><br>
                 <button onclick="clear_cell(this)" id="n0" style="width: auto">Clear</button><br>
                 <button onclick="taking_notes(this)" id="notes_toggle" style="width: auto" title="Take notes">123</button><button onclick="cell_first(this)" id="cell_toggle" style="width: auto;" title="Choose a cell, then a number">Cells first</button><br>
-                <button id="undo" onclick="undo_move()">Undo</button><button onclick="$('#cover').style.opacity = '1';$('#cover').style.zIndex='1000';window.setTimeout(new_board, 100)" style="width: auto">New board</button><button id="redo" onclick="redo_move()">Redo</button><br>
+                <button id="undo" onclick="undo_move()">Undo</button><button onclick="alert('Paused')" style="width: auto">Pause</button><button id="redo" onclick="redo_move()">Redo</button><br>
+                <button onclick="$('#cover').style.opacity = '1';$('#cover').style.zIndex='1000';window.setTimeout(new_board, 100)" style="width: auto">New board</button><button onclick="fill_notes()" style="width: auto">Fill notes</button>
             </div>
 
         </div>
@@ -862,6 +875,13 @@ ___________________
                     var cY = cell.parentElement.parentElement.parentElement.parentElement.parentElement.rowIndex
                     return [x, y, cX, cY]
                 }
+                function get_cell(x, y, grid = $("#grid")) {
+                    var cX = x % 3;
+                    var cY = y % 3;
+                    var x = Math.floor(x / 3);
+                    var y = Math.floor(y / 3);
+                    return grid.rows[y].cells[x].children[0].rows[cY].cells[cX];
+                }
 
                 function layered_coord(cell, target) {
                     var x, y, cX, cY
@@ -1133,10 +1153,25 @@ ___________________
                         case "z":
                         case "Z":
                             undo_move();
+                            evt.preventDefault();
                             break;
                         case "y":
                         case "Y":
                             redo_move();
+                            evt.preventDefault();
+                            break;
+                        case "Home":
+                            highlight(get_cell(4, 4), "cyan");
+                            evt.preventDefault();
+                            break;
+                        case "End":
+                            highlight(get_cell(0, 0), "cyan");
+                            evt.preventDefault();
+                            break;
+                        case "n":
+                        case "N":
+                            new_board();
+                            evt.preventDefault();
                             break;
                     }
                 }
@@ -1206,6 +1241,67 @@ ___________________
                 $("#cover").style.opacity = "0"
                 window.setTimeout(() => $("#cover").style.zIndex = "0", 100)
                 var t = Number(localStorage.getItem("__sudoku__time")) || 0;
+
+                function fill_notes() {
+                    $("#cover i").innerHTML = "NOTING"
+                    $("#cover").style.zIndex = "1000"
+                    $("#cover").style.opacity = "1"
+
+                    setTimeout(() => {
+                        var toggle_note = false;
+                        var toggle_cell = false;
+                        if ($("#notes_toggle").className != "toggled") {
+                            toggle_note = true;
+                            taking_notes($("#notes_toggle"));
+                        }
+                        if ($("#cell_toggle").className != "toggled") {
+                            toggle_cell = true;
+                            cell_first($("#cell_toggle"));
+                        }
+
+                        var rows = ["", "", "", "", "", "", "", "", ""]
+                        var cols = ["", "", "", "", "", "", "", "", ""]
+                        var cells = ["", "", "", "", "", "", "", "", ""]
+                        clear_cell($("#n0"))
+                        for(var row = 0; row < 9; row += 1) {
+                            var rN = 3 * Math.floor(row / 3);
+                            for(var col = 0; col < 9; col += 1) {
+                                var td = get_cell(col, row).innerHTML;
+                                rows[row] += td;
+                                cols[col] += td;
+                                cell = Math.floor(col / 3) + rN
+                                cells[cell] += td
+                                get_cell(col, row, $("#highlighting")).click();
+                            }
+                        }
+                        console.log(rows, cols, cells)
+                        for(var key of "123456789") {
+                            write_cell($("#n" + key));
+                            for(var row = 0; row < 9; row += 1) {
+                                if(rows[row].includes(key))
+                                    continue
+                                var rN = 3 * Math.floor(row / 3);
+                                for(var col = 0; col < 9; col += 1) {
+                                    if(cols[col].includes(key) || cells[Math.floor(col / 3) + rN].includes(key))
+                                        continue
+                                    get_cell(col, row, $("#highlighting")).click()
+                                }
+                            }
+                        }
+                        if(toggle_note)
+                            taking_notes($("#notes_toggle"));
+                        if(toggle_cell)
+                            cell_first($("#cell_toggle"));
+                        else
+                            write_cell($("#n1"));
+                        $("#cover").style.opacity = "0"
+                        highlight(get_cell(4, 4), "cyan")
+                        setTimeout(() => {
+                            $("#cover").style.zIndex = "0"
+                            $("#cover i").innerHTML = "GENERATING"
+                        }, 100);
+                    }, 100);
+                }
             </script>
         </div>
 
