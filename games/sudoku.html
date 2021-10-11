@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
+        <meta charset="utf-8" />
         <!-- DYNAMIC BETWEEN PAGES -->
         <meta property="og:title" content="SUDOKU ;]" id="title" />
         <meta property="og:description" content="A simple game of sudoku" />
@@ -22,7 +23,6 @@
         <title>SUDOKU ;]</title>
         <link rel="icon" type="image/png" href="/prizm.dev/assets/image/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta charset="utf-8" />
         <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/games/sudoku" />
         <meta name="author" content="PRIZ ;]" />
         <style type="text/css">
@@ -280,6 +280,10 @@ ___________________
                     <tr>
                         <td>End</td>
                         <td>Move cursor to the top right of the board</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>Fill in the board with notes. This will take a while since these are advanced notes</td>
                     </tr>
                 </table>
             </details>
@@ -1184,6 +1188,11 @@ ___________________
                             new_board();
                             evt.preventDefault();
                             break;
+                        case "f":
+                        case "F":
+                            fill_notes();
+                            evt.preventDefault();
+                            break;
                     }
                 }
                 window.setInterval(() => {
@@ -1293,10 +1302,25 @@ ___________________
                                     continue
                                 var rN = 3 * Math.floor(row / 3);
                                 for(var col = 0; col < 9; col += 1) {
+                                    if(get_cell(col, row).innerHTML)
+                                        continue
                                     var cN = Math.floor(col / 3)
                                     if(cols[col].includes(key) || cells[cN + rN].includes(key))
                                         continue
-                                    get_cell(col, row, $("#highlighting")).click();
+                                    var td = get_cell(col, row, $("#notes"));
+                                    td.classList.add(key);
+                                    var st = ""
+                                    for(var x = 1; x <= 9; x += 1) {
+                                        if(td.className.includes(x + ""))
+                                            st += x
+                                        else
+                                            st += "&nbsp;"
+                                        if(x == 3 || x == 6)
+                                            st += "<br>"
+                                        else
+                                            st += " "
+                                    }
+                                    td.innerHTML = st;
                                 }
                             }
                         }
@@ -1372,14 +1396,14 @@ ___________________
                                     }
                                     if(only_next && only_prev && only)
                                         for(var n of "012") {
-                                            if(k == 9)
-                                                console.log(r, only_prev, only_next, only, !only_prev.includes(n), !only_next.includes(n) , only.includes(n), n, !only_prev.includes(n) && !only_next.includes(n) && only.includes(n))
                                             if(!only_prev.includes(n) && !only_next.includes(n) && only.includes(n)) {
                                                 console.log(`cell ${r} row ${n}: release ${k}`)
                                                 for(var m of "012") {
                                                     if(n == m)
                                                         continue
                                                     for(var note_cell of $("#highlighting").rows[Math.floor(r / 3)].cells[r % 3].children[0].rows[m].cells) {
+                                                        if(layered_coord(note_cell, $("#grid")).innerHTML)
+                                                            continue
                                                         var noted = layered_coord(note_cell, $("#notes"))
                                                         if(noted.className.includes(k)) {
                                                             console.log(note_cell)
@@ -1396,6 +1420,8 @@ ___________________
                                             if(this_cell.cellIndex == r % 3)
                                                 continue
                                             for(var note_cell of this_cell.children[0].rows[only].cells) {
+                                                if(layered_coord(note_cell, $("#grid")).innerHTML)
+                                                        continue
                                                 var noted = layered_coord(note_cell, $("#notes"))
                                                 if(noted.className.includes(k)) {
                                                     noted.classList.remove(k)
@@ -1449,7 +1475,7 @@ ___________________
                                     }
                                     if(only_next && only_prev && only)
                                         for(var n of "012") {
-                                            if(k == 9)
+                                            if(k == 6)
                                                 console.log(r, only_prev, only_next, only, !only_prev.includes(n), !only_next.includes(n) , only.includes(n), n, !only_prev.includes(n) && !only_next.includes(n) && only.includes(n))
                                             if(!only_prev.includes(n) && !only_next.includes(n) && only.includes(n)) {
                                                 console.log(`cell ${r} col ${n}: release ${k}`)
@@ -1458,6 +1484,8 @@ ___________________
                                                         continue
                                                     for(var note_cell of $("#highlighting").rows[Math.floor(c / 3)].cells[c % 3].children[0].rows) {
                                                         note_cell = note_cell.cells[m]
+                                                        if(layered_coord(note_cell, $("#grid")).innerHTML)
+                                                            continue
                                                         var noted = layered_coord(note_cell, $("#notes"))
                                                         if(noted.className.includes(k)) {
                                                             console.log(note_cell)
@@ -1475,9 +1503,12 @@ ___________________
                                                 continue
                                             for(var this_row of this_cell.cells[c % 3].children[0].rows) {
                                                 for(var note_cell of this_row.cells) {
+                                                    if(layered_coord(note_cell, $("#grid")).innerHTML)
+                                                        continue
                                                     var noted = layered_coord(note_cell, $("#notes"))
                                                     if(note_cell.cellIndex == only && noted.className.includes(k)) {
                                                         noted.classList.remove(k)
+                                                        console.log(noted)
                                                         noted.innerHTML = noted.innerHTML.replace(k, "&nbsp;")
                                                     }
                                                 }
