@@ -1196,6 +1196,8 @@ ___________________
                     }
                 }
                 window.setInterval(() => {
+                    if(blurred)
+                        return
                     t += 1;
                     localStorage.setItem("__sudoku__time", t)
                     if(!Number(localStorage.getItem("__sudoku__timer"))) {
@@ -1538,9 +1540,9 @@ ___________________
                         undo_stack = undo_temp;
                     }, 100);
                 }
-                onblur = (evt) => {
-                    alert("Paused");
-                }
+                window.onblur = (evt) => { blurred = true; }
+                window.onfocus = (evt) => { blurred = false; }
+                blurred = false;
             </script>
         </div>
 
