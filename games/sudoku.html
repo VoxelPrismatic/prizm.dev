@@ -1271,13 +1271,13 @@ ___________________
 
                     setTimeout(() => {
                         var toggle_note = false;
-                        var toggle_cell = false;
+                        var toggle_cell = currentval;
                         if ($("#notes_toggle").className != "toggled") {
                             toggle_note = true;
                             taking_notes($("#notes_toggle"));
                         }
                         if ($("#cell_toggle").className != "toggled") {
-                            toggle_cell = true;
+                            toggle_cell = false;
                             cell_first($("#cell_toggle"));
                         }
 
@@ -1525,10 +1525,10 @@ ___________________
                         }
                         if(toggle_note)
                             taking_notes($("#notes_toggle"));
-                        if(toggle_cell)
+                        if(!toggle_cell)
                             cell_first($("#cell_toggle"));
                         else
-                            write_cell($("#n1"));
+                            write_cell($("#n" + toggle_cell));
                         $("#cover").style.opacity = "0"
                         setTimeout(() => {
                             $("#cover").style.zIndex = "0"
@@ -1537,6 +1537,9 @@ ___________________
                         }, 100);
                         undo_stack = undo_temp;
                     }, 100);
+                }
+                onblur = (evt) => {
+                    alert("Paused");
                 }
             </script>
         </div>
