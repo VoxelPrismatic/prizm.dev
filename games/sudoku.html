@@ -285,6 +285,13 @@ ___________________
                         <td>F</td>
                         <td>Fill in the board with notes</td>
                     </tr>
+                    <tr>
+                        <td>Y</td>
+                        <td>Redo move</td>
+                    </tr>
+                    <tr>
+                        <td>Z</td>
+                        <td>Undo move</td>
                 </table>
             </details>
             <details>
@@ -621,6 +628,7 @@ ___________________
                 function push_board() {
                     redo_stack = []
                     undo_stack.push([$("#notes").innerHTML, $("#grid").innerHTML])
+                    undo_stack = undo_stack.slice(-100);
                     $("#redo").style.opacity = "50%"
                     $("#undo").style.opacity = "100%"
                 }
