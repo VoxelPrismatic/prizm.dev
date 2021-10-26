@@ -607,17 +607,20 @@ ___________________
                         $("#times").rows[1].delete();
                     }
                     var s_ = 0;
-                    for(var s of (scores[localStorage.getItem("__sudoku__level") || "0"] || [])) {
+                    for(var x = 1; x < $("#times").rows.length; x += 1) {
+                        $("#times").rows[1].remove();
+                    }
+                    for(var score of (scores[localStorage.getItem("__sudoku__level") || "0"] || [])) {
                         var dl = `<td><b onclick='delete_time(${s_})'><i>Delete</i></b></td>`
-                        switch(s.slice(-1)) {
+                        switch(score.slice(-1)) {
                             case "*":
-                                $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>Yes</td><td>Yes</td>${dl}</tr>`;
+                                $("#times tbody").innerHTML += `<tr><td>${score.slice(0,-1)}</td><td>Yes</td><td>Yes</td>${dl}</tr>`;
                                 break;
                             case "+":
-                                $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>-</td><td>Yes</td>${dl}</tr>`;
+                                $("#times tbody").innerHTML += `<tr><td>${score.slice(0,-1)}</td><td>-</td><td>Yes</td>${dl}</tr>`;
                                 break;
                             default:
-                                $("#times tbody").innerHTML += `<tr><td>${s}</td><td>-</td><td>-</td>${dl}</tr>`;
+                                $("#times tbody").innerHTML += `<tr><td>${score}</td><td>-</td><td>-</td>${dl}</tr>`;
                                 break;
                         }
                         s_ += 1;
