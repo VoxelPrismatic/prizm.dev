@@ -588,6 +588,7 @@ ___________________
                 window.onfocus = (evt) => { blurred = false; }
                 blurred = false;
                 scores = eval(localStorage.getItem("__sudoku__times")) || {};
+                var t = Number(localStorage.getItem("__sudoku__time")) || 0;
                 for(var s of scores[localStorage.getItem("__sudoku__level") || "0"] || []) {
                     switch(s.slice(-1)) {
                         case "*":
@@ -1336,7 +1337,6 @@ ___________________
                 $("#cover").style.opacity = "0"
                 completed = false;
                 window.setTimeout(() => $("#cover").style.zIndex = "0", 100)
-                var t = Number(localStorage.getItem("__sudoku__time")) || 0;
 
                 function fill_notes() {
                     if(completed)
