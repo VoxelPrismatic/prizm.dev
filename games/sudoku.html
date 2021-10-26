@@ -593,13 +593,13 @@ ___________________
                 for(var s of (scores[localStorage.getItem("__sudoku__level") || "0"] || [])) {
                     switch(s.slice(-1)) {
                         case "*":
-                            $("#times").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>Yes</td><td>Yes</td></tr>`;
+                            $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>Yes</td><td>Yes</td></tr>`;
                             break;
                         case "+":
-                            $("#times").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>-</td><td>Yes</td></tr>`;
+                            $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>-</td><td>Yes</td></tr>`;
                             break;
                         default:
-                            $("#times").innerHTML += `<tr><td>${s}</td><td>-</td><td>-</td></tr>`;
+                            $("#times tbody").innerHTML += `<tr><td>${s}</td><td>-</td><td>-</td></tr>`;
                             break;
                     }
                 }
