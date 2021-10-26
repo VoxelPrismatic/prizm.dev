@@ -574,6 +574,12 @@ ___________________
                     $("#grid").style.width = w + "px";
                 }
                 window.onresize();
+                window.onblur = (evt) => { blurred = true; }
+                window.onfocus = (evt) => { blurred = false; }
+                blurred = false;
+                scores = localStorage.getItem("__sudoku__times") || {};
+                used_notes = localStorage.getItem("__sudoku__used_notes") || false;
+                used_help = localStorage.getItem("__sudoku__used_help") || false;
                 function cell_first(elem) {
                     digit_first = !digit_first
                     localStorage.setItem("__sudoku__digits", Number(digit_first))
@@ -1578,12 +1584,6 @@ ___________________
                         undo_stack = undo_temp;
                     }, 100);
                 }
-                window.onblur = (evt) => { blurred = true; }
-                window.onfocus = (evt) => { blurred = false; }
-                blurred = false;
-                scores = localStorage.getItem("__sudoku__times") || {};
-                used_notes = localStorage.getItem("__sudoku__used_notes") || false;
-                used_help = localStorage.getItem("__sudoku__used_help") || false;
             </script>
         </div>
 
