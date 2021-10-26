@@ -1066,7 +1066,7 @@ ___________________
                         }
                     }
                     if(complete == 9) {
-                        var s = t;
+                        var s = Number(localStorage.getItem("__sudoku__time")) || 0;
                         var m = Math.floor(s / 60);
                         s %= 60;
                         var h = Math.floor(m / 60);
@@ -1278,10 +1278,10 @@ ___________________
                         $("#time").innerHTML = "0:00"
                         return;
                     }
-                    s = t;
-                    m = Math.floor(s / 60);
+                    var s = t;
+                    var m = Math.floor(s / 60);
                     s %= 60;
-                    h = Math.floor(m / 60);
+                    var h = Math.floor(m / 60);
                     m %= 60;
                     if(h) {
                         st = `${h}:${(m + "").padStart(2, "0")}:${(s + "").padStart(2, "")}`
