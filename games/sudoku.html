@@ -598,7 +598,8 @@ ___________________
                     if(n == -2) {
                         //pass
                     } else if(n == -1) {
-                        scores[localStorage.getItem("__sudoku__level") || "0"] = [];
+                        if(confirm("Are you sure you want to delete all times?"))                           
+                           scores[localStorage.getItem("__sudoku__level") || "0"] = [];
                     } else {
                         delete scores[localStorage.getItem("__sudoku__level") || "0"][n];
                     }
@@ -623,6 +624,7 @@ ___________________
                     }
                     localStorage.setItem("__sudoku__times", JSON.stringify(scores));
                 }
+                delete_time(-2);
                 
                 function cell_first(elem) {
                     digit_first = !digit_first
@@ -920,6 +922,7 @@ ___________________
                         n.innerHTML = ""
                         n.className = ""
                     }
+                    delete_time(-2);
                     refresh_numbers();
                     t = 0;
                     highlight_coord(1, 1, 1, 1)
