@@ -872,13 +872,12 @@ ___________________
                             ls[n].innerHTML = ""
                         }
                     }
-                    refresh_numbers();
-                    for(var n of "123456789") {
-                        for(var e of $("#notes ." + n)) {
-                            e.innerHTML = "";
-                            e.classList.remove(n);
-                        }
+                    
+                    for(var n of $$("#notes .block td")) {
+                        n.innerHTML = ""
+                        n.className = ""
                     }
+                    refresh_numbers();
                     t = 0;
                     highlight_coord(1, 1, 1, 1)
                     window.setTimeout(() => $("#cover").style.opacity = "0", 10);
