@@ -595,20 +595,21 @@ ___________________
                 used_help = eval(localStorage.getItem("__sudoku__used_help")) || false;
                 
                 function delete_time(n) {
-                    var ls = scores[localStorage.getItem("__sudoku__level") || "0"]
+                    var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || []
                     if(n == -2) {
                         //pass
                     } else if(n == -1) {
                         if(confirm("Are you sure you want to delete all times?"))                           
                            ls = [];
                     } else {
-                        ls = ls.slice(0, n).concat(ls.slice(n + 1)) 
+                        ls = ls.slice(0, n).concat(ls.slice(n + 1));
+                        console.log(ls)
                     }
                     var s_ = 0;
                     for(var x = 1; x < $("#times").rows.length; x += 1) {
                         $("#times").rows[1].remove();
                     }
-                    for(var score of (scores[localStorage.getItem("__sudoku__level") || "0"] || [])) {
+                    for(var score of ls) {
                         var dl = `<td><b onclick='delete_time(${s_})'><i>Delete</i></b></td>`
                         switch(score.slice(-1)) {
                             case "*":
@@ -623,6 +624,7 @@ ___________________
                         }
                         s_ += 1;
                     }
+                    scores[localStorage.getItem("__sudoku__level") || "0"] = ls;
                     localStorage.setItem("__sudoku__times", JSON.stringify(scores));
                 }
                 delete_time(-2);
