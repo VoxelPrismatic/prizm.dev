@@ -671,6 +671,7 @@ ___________________
                         return
                     } else if(noting) {
                         push_board()
+                        used_notes = true
                         c = layered_coord(currentcell, $("#notes"))
                         c.classList.toggle(elem.id.slice(1))
                         st = ""
@@ -721,6 +722,8 @@ ___________________
                 }
 
                 function new_board() {
+                    used_notes = false;
+                    used_help = false;
                     $("#cover").style.zIndex = "1000"
                     $("#cover").style.opacity = "1"
                     $("#undo").style.opacity = "50%"
@@ -864,9 +867,11 @@ ___________________
                         }
                     }
                     refresh_numbers();
-                    for(var n of $$("#notes .block td")) {
-                        n.className = "";
-                        n.innerHTML = "";
+                    for(var n of "123456789") {
+                        for(var e of $("#notes ." + n)) {
+                            e.innerHTML = "";
+                            e.classList.remove(n);
+                        }
                     }
                     t = 0;
                     highlight_coord(1, 1, 1, 1)
@@ -1033,6 +1038,16 @@ ___________________
                     }
                     if(complete == 9) {
                         alert(`Good game! Completed in ${$("#time").innerHTML}`);
+                        completed = true;
+                        var t = $("#time").innerHTML + used_help ? "*" : used_notes ? "\u200b" : "+" // \u200b makes the string a higher value
+                        var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || [""]
+                        for(var x = 0; x < ls.length; x += 1) {
+                            if(t > ls[x]) {
+                                ls[x] = t;
+                                break;
+                            }
+                        }
+                        scores[localStorage.getItem("__sudoku__level") || "0"] = ls;
                     }
 
                     table = {
@@ -1073,7 +1088,10 @@ ___________________
                             }
                         }
                     }
-                    localStorage.setItem("__sudoku__board", JSON.stringify(table))
+                    localStorage.setItem("__sudoku__board", JSON.stringify(table));
+                    localStorage.setItem("__sudoku__used_notes", used_notes);
+                    localStorage.setItem("__sudoku__used_help", used_help);
+                    localStorage.setItem("__sudoku__times", JSON.stringify(scores));
                 }
 
                 highlight_coord(1, 1, 1, 1)
@@ -1276,11 +1294,16 @@ ___________________
                 }
                 refresh_numbers()
                 $("#cover").style.opacity = "0"
+                completed = false;
                 window.setTimeout(() => $("#cover").style.zIndex = "0", 100)
                 var t = Number(localStorage.getItem("__sudoku__time")) || 0;
 
                 function fill_notes() {
+                    if(completed)
+                        return
                     push_board();
+                    used_notes = true;
+                    used_help = true;
                     var undo_temp = undo_stack.concat()
                     $("#cover i").innerHTML = "NOTING"
                     $("#cover").style.zIndex = "1000"
@@ -1558,6 +1581,9 @@ ___________________
                 window.onblur = (evt) => { blurred = true; }
                 window.onfocus = (evt) => { blurred = false; }
                 blurred = false;
+                scores = localStorage.getItem("__sudoku__times") || {};
+                used_notes = localStorage.getItem("__sudoku__used_notes") || false;
+                used_help = localStorage.getItem("__sudoku__used_help") || false;
             </script>
         </div>
 
