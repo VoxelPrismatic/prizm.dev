@@ -1112,7 +1112,7 @@ ___________________
                             if(ls.length) {
                                 for(var x = 0; x < ls.length; x += 1) {
                                     if(t < ls[x]) {
-                                        ls[x] = t;
+                                        ls = ls.slice(0, x).concat([t]).concat(ls.slice(x))
                                         break;
                                     }
                                 }
