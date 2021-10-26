@@ -1045,10 +1045,10 @@ ___________________
                     if(complete == 9) {
                         alert(`Good game! Completed in ${$("#time").innerHTML}`);
                         completed = true;
-                        var t = $("#time").innerHTML + used_help ? "*" : used_notes ? "\u200b" : "+" // \u200b makes the string a higher value
-                        var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || [""]
+                        var t = $("#time").innerHTML + used_help ? "*" : used_notes ? "" : "+"
+                        var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || [t]
                         for(var x = 0; x < ls.length; x += 1) {
-                            if(t > ls[x]) {
+                            if(t < ls[x]) {
                                 ls[x] = t;
                                 break;
                             }
