@@ -323,6 +323,9 @@ ___________________
                     </tr>
                 </table>
             </details>
+            <details>
+                <summary><h3>Best times</h3></summary>
+            </details>
         </div>
         <div>
             <h3>Time: <span id='time'>0:00</span></h3>
@@ -1042,9 +1045,20 @@ ___________________
                         }
                     }
                     if(complete == 9) {
+                        var s = t;
+                        var m = Math.floor(s / 60);
+                        s %= 60;
+                        var h = Math.floor(m / 60);
+                        m %= 60;
+                        if(h) {
+                            var st = `${h}:${(m + "").padStart(2, "0")}:${(s + "").padStart(2, "")}`
+                        } else {
+                            var st = `${m}:${(s + "").padStart(2, "0")}`
+                        }
+                        $("#time").innerHTML = st;
                         alert(`Good game! Completed in ${$("#time").innerHTML}`);
                         completed = true;
-                        var t = $("#time").innerHTML + used_help ? "*" : used_notes ? "" : "+"
+                        var t = $("#time").innerHTML + used_help ? "*" : (used_notes ? "" : "+")
                         var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || [t]
                         for(var x = 0; x < ls.length; x += 1) {
                             if(t < ls[x]) {
@@ -1052,6 +1066,7 @@ ___________________
                                 break;
                             }
                         }
+                        ls = ls.slice(0, 25);
                         scores[localStorage.getItem("__sudoku__level") || "0"] = ls;
                     }
 
