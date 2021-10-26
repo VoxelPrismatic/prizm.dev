@@ -577,9 +577,9 @@ ___________________
                 window.onblur = (evt) => { blurred = true; }
                 window.onfocus = (evt) => { blurred = false; }
                 blurred = false;
-                scores = localStorage.getItem("__sudoku__times") || {};
-                used_notes = localStorage.getItem("__sudoku__used_notes") || false;
-                used_help = localStorage.getItem("__sudoku__used_help") || false;
+                scores = eval(localStorage.getItem("__sudoku__times")) || {};
+                used_notes = eval(localStorage.getItem("__sudoku__used_notes")) || false;
+                used_help = eval(localStorage.getItem("__sudoku__used_help")) || false;
                 function cell_first(elem) {
                     digit_first = !digit_first
                     localStorage.setItem("__sudoku__digits", Number(digit_first))
