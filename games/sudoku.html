@@ -330,6 +330,7 @@ ___________________
                         <th>Time</th>
                         <th>Used help</th>
                         <th>Used notes</th>
+                        <th><b onclick='delete_time(-1)'><i>Clear</i></b></th>
                     </tr>
                 </table>
             </details>
@@ -590,21 +591,39 @@ ___________________
                 blurred = false;
                 scores = JSON.parse(localStorage.getItem("__sudoku__times")) || {};
                 var t = Number(localStorage.getItem("__sudoku__time")) || 0;
-                for(var s of (scores[localStorage.getItem("__sudoku__level") || "0"] || [])) {
-                    switch(s.slice(-1)) {
-                        case "*":
-                            $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>Yes</td><td>Yes</td></tr>`;
-                            break;
-                        case "+":
-                            $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>-</td><td>Yes</td></tr>`;
-                            break;
-                        default:
-                            $("#times tbody").innerHTML += `<tr><td>${s}</td><td>-</td><td>-</td></tr>`;
-                            break;
-                    }
-                }
                 used_notes = eval(localStorage.getItem("__sudoku__used_notes")) || false;
                 used_help = eval(localStorage.getItem("__sudoku__used_help")) || false;
+                
+                function delete_time(n) {
+                    if(n == -2) {
+                        //pass
+                    } else if(n == -1) {
+                        scores[localStorage.getItem("__sudoku__level") || "0"] = [];
+                    } else {
+                        delete scores[localStorage.getItem("__sudoku__level") || "0"][n];
+                    }
+                    for(var x = 1; x < $("#times").rows.length - 1; x += 1) {
+                        $("#times").rows[1].delete();
+                    }
+                    var s_ = 0;
+                    for(var s of (scores[localStorage.getItem("__sudoku__level") || "0"] || [])) {
+                        var dl = `<td><b onclick='delete_time(${s_})'><i>Delete</i></b></td>`
+                        switch(s.slice(-1)) {
+                            case "*":
+                                $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>Yes</td><td>Yes</td>${dl}</tr>`;
+                                break;
+                            case "+":
+                                $("#times tbody").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>-</td><td>Yes</td>${dl}</tr>`;
+                                break;
+                            default:
+                                $("#times tbody").innerHTML += `<tr><td>${s}</td><td>-</td><td>-</td>${dl}</tr>`;
+                                break;
+                        }
+                        s_ += 1;
+                    }
+                    localStorage.setItem("__sudoku__times", JSON.stringify(scores));
+                }
+                
                 function cell_first(elem) {
                     digit_first = !digit_first
                     localStorage.setItem("__sudoku__digits", Number(digit_first))
@@ -618,7 +637,6 @@ ___________________
                         elem.classList.remove("toggled")
                         for(var b of $$("button.toggle"))
                             b.classList.remove("toggle")
-
                     }
                 }
 
