@@ -587,9 +587,9 @@ ___________________
                 window.onblur = (evt) => { blurred = true; }
                 window.onfocus = (evt) => { blurred = false; }
                 blurred = false;
-                scores = eval(localStorage.getItem("__sudoku__times")) || {};
+                scores = JSON.parse(localStorage.getItem("__sudoku__times")) || {};
                 var t = Number(localStorage.getItem("__sudoku__time")) || 0;
-                for(var s of scores[localStorage.getItem("__sudoku__level") || "0"] || []) {
+                for(var s of (scores[localStorage.getItem("__sudoku__level") || "0"] || [])) {
                     switch(s.slice(-1)) {
                         case "*":
                             $("#times").innerHTML += `<tr><td>${s.slice(0,-1)}</td><td>Yes</td><td>Yes</td></tr>`;
