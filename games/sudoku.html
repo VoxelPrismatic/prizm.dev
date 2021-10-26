@@ -30,11 +30,11 @@
                 font-family: "Ubuntu Mono";
             } #head {
                 top: -100px !important;
-            } #keys tr:nth-child(odd) {
+            } #keys tr:nth-child(odd), #times tr:nth-child(odd) {
                 background-color: #233;
-            } #keys tr:first-child {
+            } #keys tr:first-child, #times tr:first-child {
                 background-color: #344;
-            } #keys td, #keys th {
+            } #keys td, #keys th, #times td, #times th {
                 margin: 5px;
                 padding: 5px;
             } pre#logo {
@@ -325,7 +325,7 @@ ___________________
             </details>
             <details>
                 <summary><h3>Best times</h3></summary>
-                <table id="times">
+                <table id="times" table style="color: #ccc; margin: auto;">
                     <tr>
                         <th>Time</th>
                         <th>Used help</th>
@@ -573,6 +573,7 @@ ___________________
                 var digit_first = false;
                 var undo_stack = [];
                 var redo_stack = [];
+                var just_loaded = true;
                 window.onresize = () => {
                     h = $("#highlighting").clientHeight;
                     w = $("#highlighting").clientWidth;
@@ -1078,17 +1079,20 @@ ___________________
                         }
                         $("#time").innerHTML = st;
                         alert(`Good game! Completed in ${$("#time").innerHTML}`);
-                        completed = true;
-                        var t = $("#time").innerHTML + (used_help ? "*" : (used_notes ? "" : "+"))
-                        var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || [t]
-                        for(var x = 0; x < ls.length; x += 1) {
-                            if(t < ls[x]) {
-                                ls[x] = t;
-                                break;
+                        
+                        if(!just_loaded && !completed) {
+                            var t = $("#time").innerHTML + (used_help ? "*" : (used_notes ? "" : "+"))
+                            var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || [t]
+                            for(var x = 0; x < ls.length; x += 1) {
+                                if(t < ls[x]) {
+                                    ls[x] = t;
+                                    break;
+                                }
                             }
+                            ls = ls.slice(0, 25);
+                            scores[localStorage.getItem("__sudoku__level") || "0"] = ls;
                         }
-                        ls = ls.slice(0, 25);
-                        scores[localStorage.getItem("__sudoku__level") || "0"] = ls;
+                        completed = true;
                     }
 
                     table = {
@@ -1278,6 +1282,7 @@ ___________________
                         $("#time").innerHTML = "0:00"
                         return;
                     }
+                    just_loaded = false;
                     var s = t;
                     var m = Math.floor(s / 60);
                     s %= 60;
