@@ -1110,7 +1110,7 @@ ___________________
                             var t = $("#time").innerHTML + (used_help ? "*" : (used_notes ? "+" : ""))
                             var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || []
                             if(ls.length) {
-                                if(t > ls.slice(-1)[0]) {
+                                if(t < ls.slice(-1)[0]) {
                                     for(var x = 0; x < ls.length; x += 1) {
                                         if(t < ls[x]) {
                                             ls = ls.slice(0, x).concat([t]).concat(ls.slice(x));
