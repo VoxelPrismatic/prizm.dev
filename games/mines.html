@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!-- DYNAMIC BETWEEN PAGES -->
+        <meta property="og:title" content="MINES ;]" id="title">
+        <meta property="og:description" content="A simple game of minesweeper">
+        <meta name="description" content="A simple game of mineseeper">
+
+        <!-- STATIC BETWEEN PAGES -->
+        <meta property="og:type" content="website">
+        <meta name="twitter:site" content="@VoxelPrismatic">
+        <meta name="twitter:creator" content="@VoxelPrismatic">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:image" content="https://voxelprismatic.github.io/prizm.dev/assets/image/webp/favi/priz_blurple.webp">
+        <meta property="og:image" content="https://voxelprismatic.github.io/prizm.dev/assets/image/favicon.png">
+        <meta name="theme-color" content="#0088FF">
+        <meta property="og:site_name" content="PRIZ ;]">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="256">
+        <meta property="og:image:height" content="256">
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/">
+        <title>MINES ;]</title>
+        <link rel="icon" type="image/png" href="https://voxelprismatic.github.io/prizm.dev/assets/image/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/games/mines">
+        <meta name="author" content="PRIZ ;]">
+        <style type="text/css">
+            * {
+                font-family: "Ubuntu Mono";
+            } #head {
+                top: -100px !important;
+            } #keys tr:nth-child(odd) {
+                background-color: #233;
+            } #keys tr:first-child {
+                background-color: #344;
+            } #keys td, #keys th {
+                margin: 5px;
+                padding: 5px;
+            } pre#logo {
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+                font-size: 24px;
+                color: #0ff;
+            } .board {
+                margin: auto;
+                border-spacing: 0px;
+            } .board td {
+                height: 18px;
+                width: 18px;
+                border: 2px #0000 solid;
+                transition: all 0.1s cubic-bezier(0, 0.5, 0, 1);
+            } .board.main td {
+                background-color: #233;
+                border: 2px #122 solid;
+            }  .cyan {
+                background-color: #0ff !important;
+                border: 2px #0ff solid !important;
+                transition: none !important;
+            } .nuclear {
+                background-color: #8f0 !important;
+                border: 2px #8f0 solid !important;
+                transition: none !important;
+            } .magenta {
+                background-color: #f0f !important;
+                border: 2px #f0f solid !important;
+                transition: none !important;
+            } .purple {
+                background-color: #80f !important;
+                border: 2px #80f solid !important;
+                transition: none !important;
+            } .seafoam {
+                background-color: #0f8 !important;
+                border: 2px #0f8 solid !important;
+                transition: none !important;
+            } .seawater {
+                background-color: #08f !important;
+                border: 2px #08f solid !important;
+                transition: none !important;
+            } .blue {
+                background-color: #00f !important;
+                border: 2px #00f solid !important;
+                transition: none !important;
+            } .orange {
+                background-color: #f80 !important;
+                border: 2px #f80 solid !important;
+                transition: none !important;
+            } .yellow {
+                background-color: #ff0 !important;
+                border: 2px #ff0 solid !important;
+                transition: none !important;
+            } .green {
+                background-color: #0f0 !important;
+                border: 2px #0f0 solid !important;
+                transition: none !important;
+            } .red {
+                background-color: #f00 !important;
+                border: 2px #f00 solid !important;
+                transition: none !important;
+            } .pink {
+                background-color: #f08 !important;
+                border: 2px #f08 solid !important;
+                transition: none !important;
+            } .garbage {
+                background-color: #666 !important;
+                border: 2px #666 solid !important;
+                transition: none !important;
+            } .cleared td {
+                background-color: #fff !important;
+                border: 2px #fff solid !important;
+                transition: none !important;
+            } h1, h3, details {
+                color: #0ff;
+                text-align: center;
+            } .mid {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            } .noopac {
+                opacity: 0 !important;
+            } summary h3 {
+                display: inline-block;
+            } button {
+                background-color: #0ff4;
+                border: 2px solid #0ff;
+                color: #0ff;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 10px;
+                height: 37px;
+                width: 37px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .board.ed td:first-child,
+            .board.ed td:last-child,
+            .board.ed tr:first-child td,
+            .board.ed tr:last-child td {
+                height: 0px;
+                width: 0px;
+                padding: 0px;
+                border: none !important;
+                background-color: #0000 !important;
+                display: none;
+            }
+
+            #fuckme {
+                line-height: 8px;
+                font-size: 75%;
+                height: 20px;
+            } #logo:hover {
+                cursor: pointer;
+            } button[onclick]:hover {
+                cursor: pointer;
+            }
+            .white {
+                opacity: 1;
+                border: 4px solid #00ffff;
+            } .white.highlighted {
+                animation: white 1s infinite ease-in-out;
+            }
+            @keyframes white {
+                0% { border-color: #fff; }
+                25% { border-color: #8ff; }
+                50% { border-color: #afa; }
+                75% { border-color: #fac; }
+                100% { border-color: #fff; }
+            }
+        </style>
+    </head>
+    <body class="bgcolor" style="background-color: #122">
+        <pre id="logo" onclick="location='/prizm.dev/games/'">
+_  ___  ___
+\  \ | | /  /
+\  \| |/  /
+---] MINES [---
+/  /| |\  \
+/__/ |_| \__\
+<i>~priz edition~</i>
+        </pre>
+        <div style="text-align: center">
+            <details>
+                <summary><h3>Key map</h3></summary>
+                <table style="color: #ccc; margin: auto;" id="keys">
+                    <tbody><tr>
+                        <th>Key</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>&Lambda;</td>
+                        <td>Move cursor up</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;</td>
+                        <td>Move cursor left</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;</td>
+                        <td>Move cursor right</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>Move cursor down</td>
+                    </tr>
+                    <tr>
+                        <td>Enter</td>
+                        <td>Reveal cell</td>
+                    </tr>
+                    <tr>
+                        <td>Shift</td>
+                        <td>Mark as a mine</td>
+                    </tr></tbody></table>
+            </details>
+            <details>
+                <summary><h3>Settings</h3></summary>
+                <table style="color: #ccc; margin: auto;" id="keys">
+                    <tbody><tr>
+                        <th>Option</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Width<br><i>*Will reset board</i></td>
+                        <td>
+                            <input id="width" type="number" min="10" max="100" value="10"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Height<br><i>*Will reset board</i></td>
+                        <td>
+                            <input id="height" type="number" min="10" max="100" value="10"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mines<br><i>*Will reset board</i></td>
+                        <td>
+                            <input id="mines" type="number" min="10" max="100000" value="10"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Timer</td>
+                        <td><input type="checkbox" id="timer" onchange="localStorage.setItem('__mines__timer', Number(this.checked))" checked="checked"></td>
+                    </tr>
+                </tbody></table>
+            </details>
+        </div>
+        <div>
+            <h3>Score: <span id="score">0</span> // Level: <span id="level">1</span></h3>
+            <h1>-- Board --</h1>
+            <table class="board main ed mid" id="grid" style="width: 240px; height: 240px;"><tbody></tbody></table>
+
+            <table class="board ed mid" id="cover" style="width: 240px; height: 240px;"><tbody></tbody></table>
+
+            <table class="board ed" style="position: relative; z-index: 100;" id="highlight"><tbody></tbody></table>
+
+            <div style="text-align: center;">
+                <div style="color:#ccc">Consider supporting me on <a href="https://voxelprismatic.github.io/prizm.dev/re/patreon" style="color:#0ff" target="_blank">Patreon</a>!</div>
+                <button onclick="rotate_piece(-1)" title="Rotate left">&lt;O</button><button onclick="rotate_piece()" title="Rotate right">Λ</button><button onclick="rotate_piece()" title="Rotate right">O&gt;</button> <br>
+                <button onclick="move_piece_left()" title="Move left">&lt;</button><button onclick="move_piece_down()" title="Move down">V</button><button onclick="move_piece_right()" title="Move right">&gt;</button> <br>
+                <button onclick="add_garbage()" title="Add garbage">.:</button><button onclick="drop_piece()" title="Drop piece">VV</button><button onclick="swap_piece()"><div id="fuckme">&lt;-<br>-&gt;</div></button><br>
+                <button onclick="alert('Game paused')" style="width: unset">Pause</button>
+            </div>
+
+        </div>
+        <div id="content">
+            <script type="text/javascript">
+                function $(...a) { return document.querySelector(...a); }
+                function $$(...a) { return document.querySelectorAll(...a); }
+
+                let colors = {
+                    "1": "cyan",
+                    "2": "blue",
+                    "3": "yellow",
+                    "4": "green",
+                    "5": "orange",
+                    "6": "pink",
+                    "*": "red",
+                    "7": "seafoam",
+                    "8": "seawater"
+                }
+
+                var curX, curY
+                var board_st = ""
+
+                function board_size() {
+                    tables = [
+                        $("#grid"),
+                        $("#cover"),
+                        $("#highlight")
+                    ]
+                    board_st = ""
+                    for(y = 0; y < maxY; y += 1) {
+                        board_st += "<tr> "
+                        for(var x = 0; x < maxX; x += 1)
+                            board_st += "<td></td> "
+                        board_st += "</tr>\n"
+                    }
+                    for(var t of tables) {
+                        try {
+                            for(var y = 0; y < maxY; y += 1)
+                                t.rows[0].remove();
+                        } catch(err) {
+                        }
+                        t.innerHTML = board_st;
+                    }
+
+                    localStorage.setItem("__mines__width", maxX)
+                    localStorage.setItem("__mines__height", maxY)
+                    score = 0;
+                    w = $("#highlight").clientWidth + "px";
+                    h = $("#highlight").clientHeight + "px";
+                    $("#grid").style.width = w;
+                    $("#cover").style.width = w;
+                    $("#grid").style.height = h;
+                    $("#cover").style.height = h;
+                    curX = Math.floor(maxX / 2);
+                    curY = Math.floor(maxY / 2);
+
+                }
+
+                function get_coord(cell) {
+                    var x = cell.cellIndex;
+                    var y = cell.parentElement.rowIndex;
+                    return [x, y]
+                }
+                function get_cell(x, y, grid = $("#grid")) {
+                    return grid.rows[y].cells[x];
+                }
+
+                function layered_coord(cell, target) {
+                    var x, y
+                    [x, y] = get_coord(cell)
+                    return target.rows[cY].cells[cX]
+                }
+
+                function cursor(dX, dY) {
+                    curX += dX
+                    curY += dY
+                    for(var cursor of $$(".white"))
+                        cursor.className = "";
+                    get_cell(curX - 1, curY - 1, $("#highlight")).className = "white"
+                    get_cell(curX - 1, curY, $("#highlight")).className = "white"
+                    get_cell(curX - 1, curY + 1, $("#highlight")).className = "white"
+                    get_cell(curX, curY - 1, $("#highlight")).className = "white"
+                    get_cell(curX, curY, $("#highlight")).className = "white highlighted"
+                    get_cell(curX, curY + 1, $("#highlight")).className = "white"
+                    get_cell(curX + 1 , curY - 1, $("#highlight")).className = "white"
+                    get_cell(curX + 1, curY, $("#highlight")).className = "white"
+                    get_cell(curX + 1, curY + 1, $("#highlight")).className = "white"
+                }
+
+                function game_over() {
+                    alert("Game over!\nScore: " + score)
+                    for(table of [$("#grid"), $("#floating"), $("#predict"), $("#dropping")]) {
+                        for(var elem of table.querySelectorAll("td[class]"))
+                            elem.className = ""
+                    }
+                    score = 0;
+                    fillbag();
+                    draw_next_piece();
+                    next_piece_on_board();
+                }
+
+                window.onkeydown = (evt) => {
+                    switch(evt.key) {
+                        case "ArrowUp":
+                        case "w":
+                        case "W":
+                        case "e":
+                        case "E":
+                            rotate_piece();
+                            evt.preventDefault();
+                            break;
+                        case "/":
+                        case "?":
+                        case "q":
+                        case "Q":
+                        case "Z":
+                        case "z":
+                            rotate_piece(-1);
+                            evt.preventDefault();
+                            break;
+                        case "ArrowLeft":
+                        case "a":
+                        case "A":
+                            move_piece_left();
+                            evt.preventDefault();
+                            break;
+                        case "ArrowRight":
+                        case "d":
+                        case "D":
+                            move_piece_right();
+                            evt.preventDefault();
+                            break;
+                        case "ArrowDown":
+                        case "s":
+                        case "S":
+                            move_piece_down();
+                            evt.preventDefault();
+                            break;
+                        case "Enter":
+                        case " ":
+                            if(blocking_enter)
+                                break;
+                            drop_piece();
+                            evt.preventDefault();
+                            break;
+                        case "C":
+                        case "c":
+                        case "Control":
+                            swap_piece();
+                            evt.preventDefault();
+                            break;
+                        case "g":
+                        case "G":
+                            add_garbage();
+                            evt.preventDefault();
+                            break;
+                        case "p":
+                        case "P":
+                            alert("Paused");
+                            break;
+                    }
+                }
+
+                if(Number(localStorage.getItem("__mines__height"))) {
+                    maxY = Number(localStorage.getItem("__mines__height"))
+                    $("#height").value = maxY - 2;
+                } else {
+                    maxY = 12;
+                    $("#height").value = maxY - 2;
+                } if(Number(localStorage.getItem("__mines__width"))) {
+                    maxX = Number(localStorage.getItem("__mines__width"))
+                    console.log(maxX)
+                    $("#width").value = maxX - 2;
+                } else {
+                    maxX = 12;
+                    $("#width").value = maxX - 2;
+                }
+
+                $("#height").onchange = (evt) => {
+                    maxY = evt.target.value - -2
+                    console.log(evt.target.value, maxY)
+                    board_size();
+                }
+                $("#width").onchange = (evt) => {
+                    maxX = evt.target.value - -2
+                    board_size();
+                }
+                board_size();
+            </script>
+        </div>
+
+            <link rel="stylesheet" type="text/css" href="TETRIS_files/fonts.css">
+        
+    
+
+</body></html>
