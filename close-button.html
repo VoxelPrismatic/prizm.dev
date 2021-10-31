@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- PRELOAD -->
+        <link rel="preload" src="/prizm.dev/assets/css/fonts.css" type="text/css" as="stylesheet"/>
+        <link rel="preload" src="/prizm.dev/assets/css/ubuntu/Ubuntu-BI.ttf" type="font/sfnt" as="font"/>
+        <link rel="preload" src="/prizm.dev/assets/css/ubuntu/Ubuntu-RI.ttf" type="font/sfnt" as="font"/>
+        <link rel="preload" src="/prizm.dev/assets/css/ubuntu/Ubuntu-B.ttf" type="font/sfnt" as="font"/>
+        <link rel="preload" src="/prizm.dev/assets/css/ubuntu/Ubuntu-R.ttf" type="font/sfnt" as="font"/>
+        <link rel="preload" src="/prizm.dev/assets/image/webp/priz_cyan.webp" type="image/webp" as="image"/>
+
+        <!-- STATIC BETWEEN PAGES -->
+        <meta name="theme-color" content="#00FFFF">
+        <meta name="author" content="PRIZ ;]" />
+
+        <meta name="twitter:site" content="@VoxelPrismatic">
+        <meta name="twitter:creator" content="@VoxelPrismatic">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:image" content="https://voxelprismatic.github.io/prizm.dev/assets/image/webp/favi/priz_cyan.webp" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://voxelprismatic.github.io/prizm.dev/close-button" />
+        <meta property="og:site_name" content="PRIZ ;]">
+
+        <meta property="og:image" content="https://voxelprismatic.github.io/prizm.dev/assets/image/webp/favi/priz_cyan.webp" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="icon" type="image/png" href="/prizm.dev/assets/image/favicon.png" />
+        <link rel="stylesheet" type="text/css" id="priz_neon_css" href="/prizm.dev/assets/css/priz-cyan.css" />
+
+        <!-- DYNAMIC BETWEEN PAGES -->
+        <meta property="og:title" content="Close Button" id="title" />
+        <meta property="og:description" content="What if you saw a button labeled 'Close Button'?" />
+        <meta name="description" content="What if you saw a button labeled 'Close Button'?" />
+        <title>Close Button</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style type="text/css">
+            body {
+                background-color: #eeeeee;
+                font-family: Ubuntu, Roboto, Sans-serif;
+            }
+            #turn-off, #cb {
+                background-color: #000000;
+                opacity: 0;
+                width: 100%;
+                height: 100vh;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            #cb {
+                background-color: #eeeeee;
+                height: unset;
+            }
+            #menu, .menu, #cb.menu {
+                width: 648px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: 2px #cccccc solid;
+                border-radius: 16px;
+                background-color: #ffffff;
+                box-shadow: 0px 0px 10px #888;
+                overflow: hidden;
+            }
+            #your-mac {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 648px;
+                position: relative;
+            }
+            h1 {
+                padding: 16px;
+                margin: 0px;
+                background: #dddddd;
+                text-align: right;
+                user-select: none;
+                -moz-user-select: none;
+            }
+            #x {
+                font-size: x-large;
+                color: #888888;
+                font-family: monospace;
+                vertical-align: middle;
+                transform: scale(1.5, 1);
+                display: inline-block;
+                cursor: pointer;
+            }
+            #contents {
+                margin: 16px;
+                color: #333333;
+                line-height: 1.5;
+                text-align: justify;
+            }
+            c {
+                color: #000000;
+                padding: 2px;
+                border: 2px solid #cccccc;
+                border-radius: 8px;
+                font-size: smaller;
+                background: #f8f8f8;
+                display: inline-block;
+                break-inside: avoid;
+            }
+            button {
+                background: #0088ff;
+                border: #0000ff 2px solid;
+                box-shadow: 0px 0px 2px #448888;
+                border-radius: 32px;
+                padding: 8px;
+                font-size: large;
+                font-weight: bold;
+                color: #ffffff;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+            button.hide {
+                cursor: default;
+                opacity: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function $(q, e = document) { return e.querySelector(q); }
+
+            function turn_off() {
+                $("#menu").style.display = 'none';
+                if($("#closed").className.includes("hide")) {
+                    $("#cb").style.opacity = '0';
+                    $("#cb").style.zIndex = '0';
+                    if(Math.random() > 0.75) {
+                        $('#turn-off').style.opacity = '1';
+                        $("#turn-off").style.zIndex = '2';
+                    }
+                } else if($("#close").className.includes("hide")) {
+                    $("#cb").style.opacity = '1';
+                    $("#cb").style.zIndex = '3';
+                }
+            }
+        </script>
+        <div id="turn-off">
+            <img id="your-mac" src="https://media.discordapp.net/attachments/613157686329999363/846105831689945118/turn-off.png"/>
+        </div>
+        <div id="cb" class="menu">
+            <h1>
+                <span style="float: left;">Close Button</span>
+                <span id="x" onclick="turn_off()">X</span>
+            </h1>
+            <div id="contents">
+                <p>Oh, did you think I was joking?</p>
+                <img style="width: 100%" src="https://media.discordapp.net/attachments/738146860765806672/846096124125511782/20210523_132738.jpg"/>
+            </div>
+            <h1>
+                <button id="closed" onclick="this.classList.add('hide')">bruh</button>
+            </h1>
+        </div>
+        <div id="menu">
+            <h1>
+                <span style="float: left;">Close Button</span>
+                <span id="x" onclick="turn_off()">X</span>
+            </h1>
+            <div id="contents">
+                <p>This is a brand new revolutionary design element which closes the <c>Close Button</c> once it has been pressed.</p>
+                <p>You see, we all laugh at the <c>Quit Sibelius</c> button found on Avid's sibelius. But now what if you unironically
+                saw a <c>Close Button</c> button out in the wild?</p>
+                <p>Well this page answers that question. The <c>Close Button</c> simply closes the close button!</p>
+            </div>
+            <h1>
+                <button id="close" onclick="this.classList.add('hide')">Close Button</button>
+            </h1>
+        </div>
+    </body>
+</html>
