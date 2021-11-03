@@ -45,67 +45,59 @@
                 color: #0ff;
             } .board {
                 margin: auto;
-                border-spacing: 0px;
+                border-spacing: 4px;
             } .board td {
-                height: 18px;
-                width: 18px;
-                border: 2px #0000 solid;
+/*                 height: 24px; */
+/*                 width: 24px; */
                 transition: all 0.1s cubic-bezier(0, 0.5, 0, 1);
             } .board.main td {
                 background-color: #233;
-                border: 2px #122 solid;
-            }  .cyan {
-                background-color: #0ff !important;
-                border: 2px #0ff solid !important;
+/*                 border: 3px #122 solid; */
+            }
+            .cyan, .nuclear, .magenta, .purple, .seafoam, .seawater,
+            .blue, .orange, .yellow, .green, .red, .garbage {
                 transition: none !important;
+                text-align: center;
+            }
+            .cyan {
+                background-color: #244 !important;
+                color: #0ff;
             } .nuclear {
-                background-color: #8f0 !important;
-                border: 2px #8f0 solid !important;
-                transition: none !important;
+                background-color: #342 !important;
+                color: #f80;
             } .magenta {
-                background-color: #f0f !important;
-                border: 2px #f0f solid !important;
-                transition: none !important;
+                background-color: #424 !important;
+                color: #f0f.
             } .purple {
-                background-color: #80f !important;
-                border: 2px #80f solid !important;
-                transition: none !important;
+                background-color: #324 !important;
+                color: #80f;
             } .seafoam {
-                background-color: #0f8 !important;
-                border: 2px #0f8 solid !important;
-                transition: none !important;
+                background-color: #243 !important;
+                color: #0f8;
             } .seawater {
-                background-color: #08f !important;
-                border: 2px #08f solid !important;
-                transition: none !important;
+                background-color: #234 !important;
+                color: #08f;
             } .blue {
-                background-color: #00f !important;
-                border: 2px #00f solid !important;
-                transition: none !important;
+                background-color: #114 !important;
+                color: #44f;
             } .orange {
-                background-color: #f80 !important;
-                border: 2px #f80 solid !important;
-                transition: none !important;
+                background-color: #432 !important;
+                color: #f80;
             } .yellow {
-                background-color: #ff0 !important;
-                border: 2px #ff0 solid !important;
-                transition: none !important;
+                background-color: #442 !important;
+                color: #ff0;
             } .green {
-                background-color: #0f0 !important;
-                border: 2px #0f0 solid !important;
-                transition: none !important;
+                background-color: #242 !important;
+                color: #0f0;
             } .red {
-                background-color: #f00 !important;
-                border: 2px #f00 solid !important;
-                transition: none !important;
+                background-color: #422 !important;
+                color: #f00;
             } .pink {
-                background-color: #f08 !important;
-                border: 2px #f08 solid !important;
-                transition: none !important;
+                background-color: #f088 !important;
+                color: #f08;
             } .garbage {
-                background-color: #666 !important;
-                border: 2px #666 solid !important;
-                transition: none !important;
+                background-color: #233 !important;
+                color: #233;
             } .cleared td {
                 background-color: #fff !important;
                 border: 2px #fff solid !important;
@@ -146,6 +138,14 @@
                 display: none;
             }
 
+            #cover td {
+                background-color: #344;
+            } #cover td.clicked {
+                background-color: #0000;
+            } #cover td.marked {
+                background-color: #ff0;
+            }
+
             #fuckme {
                 line-height: 8px;
                 font-size: 75%;
@@ -155,11 +155,24 @@
             } button[onclick]:hover {
                 cursor: pointer;
             }
-            .white {
+            #highlight td.white {
                 opacity: 1;
-                border: 4px solid #00ffff;
-            } .white.highlighted {
+                border: 2px solid #0ff8;
+                height: 16px;
+                width: 16px;
+            } #highlight td.white.highlighted {
                 animation: white 1s infinite ease-in-out;
+                border-width: 4px;
+                height: 14px;
+                width: 14px;
+            }
+            #highlight {
+                border-spacing: 2px;
+            }
+            #highlight td {
+                width: 20px;
+                height: 20px;
+                border: #0000 solid 2px;
             }
             @keyframes white {
                 0% { border-color: #fff; }
@@ -238,15 +251,15 @@ _  ___  ___
                             <input id="mines" type="number" min="10" max="100000" value="10"/>
                         </td>
                     </tr>
-                    <tr>
+                    <!--<tr>
                         <td>Timer</td>
                         <td><input type="checkbox" id="timer" onchange="localStorage.setItem('__mines__timer', Number(this.checked))" checked="checked"></td>
-                    </tr>
+                    </tr>-->
                 </tbody></table>
             </details>
         </div>
         <div>
-            <h3>Score: <span id="score">0</span> // Level: <span id="level">1</span></h3>
+            <!--<h3>Score: <span id="score">0</span> // Level: <span id="level">1</span></h3>-->
             <h1>-- Board --</h1>
             <table class="board main ed mid" id="grid" style="width: 240px; height: 240px;"><tbody></tbody></table>
 
@@ -256,10 +269,9 @@ _  ___  ___
 
             <div style="text-align: center;">
                 <div style="color:#ccc">Consider supporting me on <a href="https://voxelprismatic.github.io/prizm.dev/re/patreon" style="color:#0ff" target="_blank">Patreon</a>!</div>
-                <button onclick="rotate_piece(-1)" title="Rotate left">&lt;O</button><button onclick="rotate_piece()" title="Rotate right">Λ</button><button onclick="rotate_piece()" title="Rotate right">O&gt;</button> <br>
-                <button onclick="move_piece_left()" title="Move left">&lt;</button><button onclick="move_piece_down()" title="Move down">V</button><button onclick="move_piece_right()" title="Move right">&gt;</button> <br>
-                <button onclick="add_garbage()" title="Add garbage">.:</button><button onclick="drop_piece()" title="Drop piece">VV</button><button onclick="swap_piece()"><div id="fuckme">&lt;-<br>-&gt;</div></button><br>
-                <button onclick="alert('Game paused')" style="width: unset">Pause</button>
+                <button onclick="window.onkeydown(0, 'x')" title="Mark as mine">X</button><button onclick="window.onkeydown(0, 'w')" title="Move up">Λ</button><button onclick="window.onkeydown(0, 'Enter')" title="Reveal cell">#</button> <br>
+                <button onclick="window.onkeydown(0, 'a')" title="Move left">&lt;</button><button onclick="window.onkeydown(0, 's')" title="Move down">V</button><button onclick="window.onkeydown(0, 'd')" title="Move right">&gt;</button> <br>
+                <button onclick="board_size()" style="width: unset">New game</button>
             </div>
 
         </div>
@@ -268,20 +280,60 @@ _  ___  ___
                 function $(...a) { return document.querySelector(...a); }
                 function $$(...a) { return document.querySelectorAll(...a); }
 
-                let colors = {
-                    "1": "cyan",
-                    "2": "blue",
-                    "3": "yellow",
-                    "4": "green",
-                    "5": "orange",
-                    "6": "pink",
-                    "*": "red",
-                    "7": "seafoam",
-                    "8": "seawater"
-                }
-
                 var curX, curY
                 var board_st = ""
+
+                var revealed = {}
+
+                function reveal(x, y) {
+                    if(!revealed[x])
+                        revealed[x] = []
+                    else if(revealed[x].includes(y))
+                        return
+                    var e = get_cell(x, y, $("#cover"))
+                    if(e.className.includes("marked"))
+                        return e.classList.remove("marked")
+                    e.classList.add("clicked");
+                    try {
+                        var val = get_cell(x, y).innerHTML
+                        if(val == "0") {
+                            get_cell(x, y, $("#cover")).classList.add("clicked");
+                            revealed[x].push(y);
+                            reveal(x + 1, y - 1);
+                            reveal(x + 1, y);
+                            reveal(x + 1, y + 1);
+                            reveal(x, y - 1);
+                            reveal(x, y + 1);
+                            reveal(x - 1, y - 1);
+                            reveal(x - 1, y);
+                            reveal(x - 1, y + 1);
+                        } else if(val == "X") {
+                            for(var mine of $$(".red")) {
+                                layered_coord(mine, $("#cover")).classList.add("clicked");
+                            }
+                            alert("You lost ;n;");
+                        }
+                    } catch(err) {
+//                         console.error(err)
+                    }
+                }
+
+                function potential(evt, target) {
+                    var x, y;
+                    if(target) {
+                        [x, y] = get_coord(target);
+                    } else {
+                        [x, y] = get_coord(evt.target);
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                        evt.cancelBubble = true;
+                        target = evt.target
+                    }
+                    if(revealed[x] && revealed[x].includes(y))
+                        return false;
+                    layered_coord(target, $("#cover")).classList.add("marked");
+                    return false;
+                }
 
                 function board_size() {
                     tables = [
@@ -289,7 +341,8 @@ _  ___  ___
                         $("#cover"),
                         $("#highlight")
                     ]
-                    board_st = ""
+                    revealed = {};
+                    board_st = "";
                     for(y = 0; y < maxY; y += 1) {
                         board_st += "<tr> "
                         for(var x = 0; x < maxX; x += 1)
@@ -307,6 +360,7 @@ _  ___  ___
 
                     localStorage.setItem("__mines__width", maxX)
                     localStorage.setItem("__mines__height", maxY)
+                    localStorage.setItem("__mines__count", maxN)
                     score = 0;
                     w = $("#highlight").clientWidth + "px";
                     h = $("#highlight").clientHeight + "px";
@@ -316,6 +370,100 @@ _  ___  ___
                     $("#cover").style.height = h;
                     curX = Math.floor(maxX / 2);
                     curY = Math.floor(maxY / 2);
+                    for(var cell of $$("#highlight td")) {
+                        cell.onmouseover = (evt) => {
+                            cursor(...get_coord(evt.target));
+                        }
+                        cell.onclick = (evt) => {
+                            reveal(...get_coord(evt.target));
+                        }
+                        cell.oncontextmenu = (evt) => {
+                            potential(evt);
+                        }
+
+                    }
+
+                    var grid = []
+                    for(var x = 0; x < maxX; x += 1) {
+                        var row = [];
+                        for(var y = 0; y < maxY; y += 1) {
+                            row.push("");
+                        }
+                        grid.push(row);
+                    }
+                    for(var n = 0; n < maxN; n += 1) {
+                        var x = Math.floor(Math.random() * (maxX - 2)) + 1;
+                        var y = Math.floor(Math.random() * (maxY - 2)) + 1;
+                        while(grid[y][x]) {
+                            x = Math.floor(Math.random() * (maxX - 2)) + 1;
+                            y = Math.floor(Math.random() * (maxY - 2)) + 1;
+                        }
+                        grid[y][x] = "X"
+                    }
+
+                    for(var x = 0; x < maxX; x += 1) {
+                        for(var y = 0; y < maxY; y += 1) {
+                            if(!grid[y][x]) {
+                                grid[y][x] = 0;
+                                if(grid[y - 1]) {
+                                    if(grid[y - 1][x - 1] == "X")
+                                        grid[y][x] += 1;
+                                    if(grid[y - 1][x] == "X")
+                                        grid[y][x] += 1;
+                                    if(grid[y - 1][x + 1] == "X")
+                                        grid[y][x] += 1;
+                                }
+                                if(grid[y][x - 1] == "X")
+                                    grid[y][x] += 1;
+                                if(grid[y][x + 1] == "X")
+                                    grid[y][x] += 1;
+                                if(grid[y + 1]) {
+                                    if(grid[y + 1][x - 1] == "X")
+                                        grid[y][x] += 1;
+                                    if(grid[y + 1][x] == "X")
+                                        grid[y][x] += 1;
+                                    if(grid[y + 1][x + 1] == "X")
+                                        grid[y][x] += 1;
+                                }
+                            }
+
+                            var cell = get_cell(y, x);
+                            cell.innerHTML = grid[y][x]
+                            switch(grid[y][x]) {
+                                case "X":
+                                    cell.className = "red";
+                                    break;
+                                case 0:
+                                    cell.className = "garbage";
+                                    break;
+                                case 1:
+                                    cell.className = "cyan";
+                                    break;
+                                case 2:
+                                    cell.className = "seawater";
+                                    break;
+                                case 3:
+                                    cell.className = "seafoam";
+                                    break;
+                                case 4:
+                                    cell.className = "green";
+                                    break;
+                                case 5:
+                                    cell.className = "yellow";
+                                    break;
+                                case 6:
+                                    cell.className = "nuclear";
+                                    break;
+                                case 7:
+                                    cell.className = "magenta";
+                                    break;
+                                case 8:
+                                    cell.className = "pink";
+                                    break;
+                            }
+
+                        }
+                    }
 
                 }
 
@@ -331,12 +479,12 @@ _  ___  ___
                 function layered_coord(cell, target) {
                     var x, y
                     [x, y] = get_coord(cell)
-                    return target.rows[cY].cells[cX]
+                    return target.rows[y].cells[x]
                 }
 
-                function cursor(dX, dY) {
-                    curX += dX
-                    curY += dY
+                function cursor(nX, nY) {
+                    curX = nX
+                    curY = nY
                     for(var cursor of $$(".white"))
                         cursor.className = "";
                     get_cell(curX - 1, curY - 1, $("#highlight")).className = "white"
@@ -362,64 +510,48 @@ _  ___  ___
                     next_piece_on_board();
                 }
 
-                window.onkeydown = (evt) => {
-                    switch(evt.key) {
+                window.onkeydown = (evt, key) => {
+                    switch(evt.key || key) {
                         case "ArrowUp":
                         case "w":
                         case "W":
-                        case "e":
-                        case "E":
-                            rotate_piece();
-                            evt.preventDefault();
-                            break;
-                        case "/":
-                        case "?":
-                        case "q":
-                        case "Q":
-                        case "Z":
-                        case "z":
-                            rotate_piece(-1);
-                            evt.preventDefault();
+                            cursor(curX, Math.max(1, curY - 1));
+                            if(evt) evt.preventDefault();
                             break;
                         case "ArrowLeft":
                         case "a":
                         case "A":
-                            move_piece_left();
-                            evt.preventDefault();
+                            cursor(Math.max(curX -1, 1), curY);
+                            if(evt) evt.preventDefault();
                             break;
                         case "ArrowRight":
                         case "d":
                         case "D":
-                            move_piece_right();
-                            evt.preventDefault();
+                            cursor(Math.min(curX + 1, maxX - 1), curY);
+                            if(evt) evt.preventDefault();
                             break;
                         case "ArrowDown":
                         case "s":
                         case "S":
-                            move_piece_down();
-                            evt.preventDefault();
+                            cursor(curX, Math.min(maxY - 1, curY + 1));
+                            if(evt) evt.preventDefault();
                             break;
                         case "Enter":
                         case " ":
-                            if(blocking_enter)
-                                break;
-                            drop_piece();
-                            evt.preventDefault();
+                            get_cell(curX, curY, $("#highlight")).click();
+                            if(evt) evt.preventDefault();
                             break;
-                        case "C":
-                        case "c":
+                        case "Shift":
                         case "Control":
-                            swap_piece();
-                            evt.preventDefault();
+                        case "x":
+                        case "X":
+                            potential(null, get_cell(curX, curY, $("#highlight")));
+                            if(evt) evt.preventDefault();
                             break;
-                        case "g":
-                        case "G":
-                            add_garbage();
-                            evt.preventDefault();
-                            break;
-                        case "p":
-                        case "P":
-                            alert("Paused");
+                        case "n":
+                        case "N":
+                            board_size();
+                            if(evt) evt.preventDefault();
                             break;
                     }
                 }
@@ -432,27 +564,36 @@ _  ___  ___
                     $("#height").value = maxY - 2;
                 } if(Number(localStorage.getItem("__mines__width"))) {
                     maxX = Number(localStorage.getItem("__mines__width"))
-                    console.log(maxX)
                     $("#width").value = maxX - 2;
                 } else {
                     maxX = 12;
                     $("#width").value = maxX - 2;
+                } if(Number(localStorage.getItem("__mines__count"))) {
+                    maxN = Number(localStorage.getItem("__mines__count"));
+                    $("#mines").value = maxN
+                } else {
+                    maxN = 10;
+                    $("#mines").value = 10;
                 }
 
                 $("#height").onchange = (evt) => {
-                    maxY = evt.target.value - -2
-                    console.log(evt.target.value, maxY)
+                    maxY = evt.target.value - -2;
                     board_size();
                 }
                 $("#width").onchange = (evt) => {
-                    maxX = evt.target.value - -2
+                    maxX = evt.target.value - -2;
+                    board_size();
+                }
+                $("#mines").onchange = (evt) => {
+                    maxN = evt.target.value;
                     board_size();
                 }
                 board_size();
+                cursor(Math.floor(maxX / 2), Math.floor(maxY / 2))
             </script>
         </div>
 
-            <link rel="stylesheet" type="text/css" href="TETRIS_files/fonts.css">
+            <link rel="stylesheet" type="text/css" href="/prizm.dev/assets/css/fonts.css">
         
     
 
