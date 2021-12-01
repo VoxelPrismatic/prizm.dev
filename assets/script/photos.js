@@ -102,6 +102,7 @@ function img_zoom(img) {
             img.setAttribute("data-scale", n);
         }
         img.style.transform = "scale(" + n + ")";
+        window.setTimeout((img) => img.src = img.src.replace("-med.webp", ""), 200, img)
     } else {
         img.style.transform = "";
         if(!img.src.includes("-med.webp"))
@@ -126,4 +127,4 @@ window.addEventListener("resize", () => {
     for(var i of $$("img[data-src]"))
         i.setAttribute("data-scale", "");
 })
-window.addEventListener("scroll", med_pic);
+// window.addEventListener("scroll", med_pic);
