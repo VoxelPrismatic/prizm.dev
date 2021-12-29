@@ -500,6 +500,40 @@ grid[z][w] = `<span class='kill y'${s}>C</span>`; w += 2;
 grid[z][w] = ` `;
 
 
+z += 1; w = k;
+grid[z][w] = `<span class='kill w'${s}>D</span>`; w += 2;
+grid[z][w] = `<span class='kill w'${s}>B</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill w'${s}>'</span>`; w += 2;
+grid[z][w] = `<span class='kill y'${s}>N</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>N</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>N</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill o'${s}>0</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>5</span>`; w += 2;
+grid[z][w] = `<span class='kill s'${s}>*</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;
+
+
+z += 1; w = k;
+grid[z][w] = `<span class='kill w'${s}>E</span>`; w += 2;
+grid[z][w] = `<span class='kill w'${s}>C</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill w'${s}>_</span>`; w += 2;
+grid[z][w] = `<span class='kill y'${s}>O</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>O</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>O</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill o'${s}>1</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>7</span>`; w += 2;
+grid[z][w] = `<span class='kill s'${s}>*</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;
 
 for(var y = Z; y <= z; y += 1)
     for(var x = k; x <= w; x += 2)
@@ -508,4 +542,35 @@ gen_grid(1)
 last_grid = ""
 draw_grid(1)
 
+var kill_lvl = `<span style="float: right; height: 0px;" id="lvl2">
+    <span id="pear" class="fruit">
+        <div style="color: #0a0; font-size: large; margin-top: -8px; margin-bottom: 4px; transform: scale(-1, 1);">,</div>
+        <span style="color: #4f4; font-size: x-large;">O</span>
+    </span> <span id="pear" class="fruit">
+        <div style="color: #0a0; font-size: large; margin-top: -8px; margin-bottom: 4px; transform: scale(-1, 1);">,</div>
+        <span style="color: #4f4; font-size: x-large;">O</span>
+    </span> <span id="apple" class="fruit">
+        <div style="color: #0a0; font-size: large; margin-top: -8px; margin-bottom: 4px;">,</div>
+        <span style="color: #f44; font-size: x-large;">O</span>
+    </span> <span id="apple" class="fruit">
+        <div style="color: #0a0; font-size: large; margin-top: -8px; margin-bottom: 4px;">,</div>
+        <span style="color: #f44; font-size: x-large;">O</span>
+    </span> <span id="peach" class="fruit">
+        <div style="color: #0a0; font-size: large; margin-top: -8px; margin-bottom: 4px;">,</div>
+        <span style="color: #fa4; font-size: x-large;">O</span>
+    </span> <span id="peach" class="fruit">
+        <div style="color: #0a0; font-size: large; margin-top: -8px; margin-bottom: 4px;">,</div>
+        <span style="color: #fa4; font-size: x-large;">O</span>
+    </span> <span id="strawberry" class="fruit">
+        <div style="color: #0a0; font-size: x-small; margin-top: -4px">v</div>
+        <span style="color: #f48; font-size: x-large">V</span>
+    </span> <span id="cherry" class="fruit">
+        <div style="color: #0a0; font-size: x-small; margin-top: -4px;margin-bottom: -6px;">Λ</div>
+        <span style="color: #f44; font-size: x-large;">O<sup style="margin-left: -4px;">o</sup></span>
+    </span>
+</span>`
+
+$("#lvl").style.top = "8px"
+$("#lvl").style.position = "relative"
+$("#lvl").insertAdjacentHTML("beforebegin", kill_lvl);
 window.setTimeout(() => { $("script[src='killscreen.js']").remove() }, 1000);
