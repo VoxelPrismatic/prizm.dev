@@ -530,6 +530,7 @@ function move_pac(dX, dY, evt) {
     base_allowed |= in_base()
     base_allowed &= (((vY == 11 && dY == 1) || (vY == 13 && dY == -1)) && vX <= 29 && vX >= 25)
 //                     console.log(base_allowed)
+
     if(" -O<".includes(c[0]) || base_allowed) {
         vX += dX;
         vY += dY;
@@ -1242,6 +1243,7 @@ window.onkeydown = (evt, tg, again = 0) => {
         $("#" + (evt.key || tg || evt.target.id)).classList.add("waiting");
     } catch(err) {
     }
+    pac_x = Math.abs(pac_x)
     switch(evt.key || tg || evt.target.id) {
         case "ArrowDown":
             if(!again) {
