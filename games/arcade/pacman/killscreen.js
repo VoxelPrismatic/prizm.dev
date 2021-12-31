@@ -3,6 +3,24 @@ var k = 23;
 var w = k;
 var s = ` style="top: ${-font_h/3}px; left: ${font_w/3}px"`
 
+grid[z][w] = `<span class="kill o"${s}>P</span>`; w += 2;
+grid[z][w] = `<span class='kill o'${s}>N</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>G</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill b'${s}>I</span>`; w += 2;
+grid[z][w] = `<span class='kill b'${s}>M</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill o'${s}>0</span>`; w += 2;
+grid[z][w] = `<span class='kill w'${s}>.</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = `<span class='kill r'${s}>0</span>`; w += 2;
+grid[z][w] = ` `;                                 w += 2;
+grid[z][w] = ` `;
+
+z += 1; w = k;
 grid[z][w] = `<span class="kill o"${s}>Q</span>`; w += 2;
 grid[z][w] = `<span class='kill o'${s}>O</span>`; w += 2;
 grid[z][w] = ` `;                                 w += 2;
