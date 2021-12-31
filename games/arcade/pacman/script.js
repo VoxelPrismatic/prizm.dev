@@ -526,7 +526,15 @@ function move_pac(dX, dY, evt) {
         vX = -2
     else if(vX == 0 && dX == -2)
         vX = 56
-    var c = grid[vY + dY][vX + dX]
+    try {
+        var c = grid[vY + dY][vX + dX]
+    } catch(err) {
+        if(dY == 1)
+            vY = 0
+        else
+            vY = grid.length
+        var c = grid[vY + dY][vX + dX]
+    }
     base_allowed |= in_base()
     base_allowed &= (((vY == 11 && dY == 1) || (vY == 13 && dY == -1)) && vX <= 29 && vX >= 25)
 //                     console.log(base_allowed)
@@ -1313,6 +1321,7 @@ window.onkeydown = (evt, tg, again = 0) => {
         case "Shift":
             if(evt.ctrl && evt.alt)
                 show_targets();
+            break;
     }
 }
 

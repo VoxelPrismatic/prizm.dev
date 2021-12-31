@@ -464,12 +464,15 @@ ___________________
             </div>
             <div id="error"></div>
         </div>
-        <script>
+<!--        <script>
+            debugging_ = false;
             window.onerror = (m,s,l,c,e) => {
-                document.getElementById("error").innerHTML = `${l}:${c}, ${s}\n\n${m}\n\n${e}`
-                alert(`${l}:${c}, ${s}\n\n${m}\n\n${e}`);
+                if(debugging_) {
+                    document.getElementById("error").innerHTML = `${l}:${c}, ${s}\n\n${m}\n\n${e}`
+                    alert(`${l}:${c}, ${s}\n\n${m}\n\n${e}`);
+                }
             }
-        </script>
+        </script>-->
         <script type="text/javascript" src="script.js"></script>
         <link rel="stylesheet" type="text/css" href="https://voxelprismatic.github.io/prizm.dev/assets/css/fonts.css" onload="window.setTimeout(font_loaded,500)">
     </body>
