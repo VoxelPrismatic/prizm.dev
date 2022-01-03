@@ -308,8 +308,9 @@ ___  ___  ___
                             reveal(x - 1, y);
                             reveal(x - 1, y + 1);
                         } else if(val == "X") {
-                            for(var mine of $$(".red")) {
-                                layered_coord(mine, $("#cover")).classList.add("clicked");
+                            for(var mine of $$("#cover td:not(.clicked)")) {
+                                mine.style.opacity = "0.25"
+                                mine.style.backgroundColor = "#fff"
                             }
                             alert("You lost ;n;");
                         }
@@ -334,7 +335,16 @@ ___  ___  ___
                     layered_coord(target, $("#cover")).classList.add("marked");
                     return false;
                 }
-
+                window.onresize = (evt) => {
+                    w = $("#highlight").clientWidth + "px";
+                    h = $("#highlight").clientHeight + "px";
+                    $("#grid").style.width = w;
+                    $("#cover").style.width = w;
+                    $("#grid").style.height = h;
+                    $("#cover").style.height = h;
+                    if(evt)
+                        window.setTimeout(window.onresize, 100)
+                }
                 function board_size() {
                     tables = [
                         $("#grid"),
@@ -362,12 +372,7 @@ ___  ___  ___
                     localStorage.setItem("__mines__height", maxY)
                     localStorage.setItem("__mines__count", maxN)
                     score = 0;
-                    w = $("#highlight").clientWidth + "px";
-                    h = $("#highlight").clientHeight + "px";
-                    $("#grid").style.width = w;
-                    $("#cover").style.width = w;
-                    $("#grid").style.height = h;
-                    $("#cover").style.height = h;
+                    window.onresize();
                     curX = Math.floor(maxX / 2);
                     curY = Math.floor(maxY / 2);
                     for(var cell of $$("#highlight td")) {
@@ -384,9 +389,9 @@ ___  ___  ___
                     }
 
                     var grid = []
-                    for(var x = 0; x < maxX; x += 1) {
+                    for(var y = 0; y < maxY; y += 1) {
                         var row = [];
-                        for(var y = 0; y < maxY; y += 1) {
+                        for(var x = 0; x < maxX; x += 1) {
                             row.push("");
                         }
                         grid.push(row);
@@ -400,6 +405,7 @@ ___  ___  ___
                         }
                         grid[y][x] = "X"
                     }
+                    console.log(grid)
 
                     for(var x = 0; x < maxX; x += 1) {
                         for(var y = 0; y < maxY; y += 1) {
@@ -427,7 +433,7 @@ ___  ___  ___
                                 }
                             }
 
-                            var cell = get_cell(y, x);
+                            var cell = get_cell(x, y);
                             cell.innerHTML = grid[y][x]
                             switch(grid[y][x]) {
                                 case "X":
@@ -594,7 +600,7 @@ ___  ___  ___
         </div>
 
             <link rel="stylesheet" type="text/css" href="/prizm.dev/assets/css/fonts.css">
-        
-    
+
+
 
 </body></html>
