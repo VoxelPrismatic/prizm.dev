@@ -318,7 +318,7 @@ function death_screen() {
     console.log(died, "died");
     if(pX > 35 || pY < 5) {
         pX -= (pX > 35);
-        pY -= (pY < 5);
+        pY += (pY < 5);
         draw_screen();
         window.setTimeout(death_screen, 25)
     } else if( (pX + dpX != 39) || (pY + dpY) ) {
