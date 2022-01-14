@@ -354,7 +354,7 @@ Press any key to play again`);
 function level_side_to_side(dont, direction) {
     if(changed_level) {
         changed_level = false;
-        for(var x = 0; x < 30; x += 1) {
+        for(var x = 0; x < (direction < 2 ? 30 : 40); x += 1) {
             window.setTimeout(() => {
                 level_side_to_side(1, direction);
                 blocked = true
@@ -372,19 +372,19 @@ function level_side_to_side(dont, direction) {
     if(direction >= 2) {
         switch(Math.floor(Math.random() * 30)) {
             case 0:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VVO   \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
+                var st = "-----------------------------VVO   \u039b\u039b-----------------------------";
                 break;
             case 1:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV O  \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
+                var st = "-----------------------------VV O  \u039b\u039b-----------------------------";
                 break;
             case 2:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV  O \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
+                var st = "-----------------------------VV  O \u039b\u039b-----------------------------";
                 break;
             case 3:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV   O\u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
+                var st = "-----------------------------VV   O\u039b\u039b-----------------------------";
                 break;
             default:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV    \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
+                var st = "-----------------------------VV    \u039b\u039b-----------------------------";
         }
     } else {
         switch(Math.floor(Math.random() * 30)) {
