@@ -271,7 +271,8 @@ function level_select() {
     }
     if(transitioning)
         return
-    switch(on_lvl + died * 100) {
+    on_lvl += 1
+    switch(set_lvl + died * 100) {
         case 0:
             level_side_to_side(0, 0);
             break;
