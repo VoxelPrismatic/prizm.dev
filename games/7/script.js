@@ -115,7 +115,7 @@ function draw_screen() {
     }
     if(died != 100 && died != 200)
         grid2[pY][pX] = "7"
-    if(grid[pY][pX] == "O") {
+    if(grid[pY][pX] == "~") {
         coins_collected += 1
         grid[pY][pX] = " "
     }
@@ -139,8 +139,8 @@ function draw_screen() {
                 case "7/":
                     scr.rows[y].cells[x].innerHTML = `<span class='player'>${s.slice(-1)[0]}</span>`;
                     break;
-                case "O":
-                    scr.rows[y].cells[x].innerHTML = "<span class='coin'>O</span>";
+                case "~":
+                    scr.rows[y].cells[x].innerHTML = "<span class='coin'>~</span>";
                     break;
                 case "]":
                 case "[":
@@ -232,6 +232,11 @@ function welcome(x = 0) {
         }, 25, x);
         return
     }
+    if(welcomed) {
+        level_select();
+        start_time = new Date();
+        return
+    }
     wtime(0, 0, `============] Welcome to 7 [============
 A game based on Undertale's fight system
 
@@ -241,7 +246,7 @@ Move around with arrow keys, or WASD
 
 Pause with [SPACE]
 
-Collect coins [O]
+Collect sparks [~]
 Start by collecting that one!`)
     draw_screen();
     welcome_t_o = window.setInterval(() => {
@@ -249,6 +254,7 @@ Start by collecting that one!`)
             window.clearInterval(welcome_t_o);
             level_select();
             start_time = new Date();
+            welcomed = true
         }
     }, 50);
 }
@@ -345,7 +351,7 @@ function death_screen() {
         wtime(0, 0, `==============] You died [==============
 You survived for ${m}:${(s + "").padStart(2, '0')}
 
-You collected ${coins_collected} coin${coins_collected == 1 ? '' : 's'}
+You collected ${coins_collected} sparks${coins_collected == 1 ? '' : 's'} [~]
 
 Press any key to play again`);
     }
@@ -368,21 +374,21 @@ function level_side_to_side(dont, direction) {
         s2s_offset = Math.floor(Math.random() * 2) + 17
     } else {
         s2s_offset += 2 - Math.floor(Math.random() * 5)
-        s2s_offset = Math.min(35, Math.max(5, s2s_offset))
+        s2s_offset = Math.min(direction < 2 ? 35 : 25 , Math.max(5, s2s_offset))
     }
     if(direction >= 2) {
         switch(Math.floor(Math.random() * 30)) {
             case 0:
-                var st = "-----------------------------VVO   \u039b\u039b-----------------------------";
+                var st = "-----------------------------VV~   \u039b\u039b-----------------------------";
                 break;
             case 1:
-                var st = "-----------------------------VV O  \u039b\u039b-----------------------------";
+                var st = "-----------------------------VV ~  \u039b\u039b-----------------------------";
                 break;
             case 2:
-                var st = "-----------------------------VV  O \u039b\u039b-----------------------------";
+                var st = "-----------------------------VV  ~ \u039b\u039b-----------------------------";
                 break;
             case 3:
-                var st = "-----------------------------VV   O\u039b\u039b-----------------------------";
+                var st = "-----------------------------VV   ~\u039b\u039b-----------------------------";
                 break;
             default:
                 var st = "-----------------------------VV    \u039b\u039b-----------------------------";
@@ -390,16 +396,16 @@ function level_side_to_side(dont, direction) {
     } else {
         switch(Math.floor(Math.random() * 30)) {
             case 0:
-                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>O   <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>~   <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
                 break;
             case 1:
-                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>> O  <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>> ~  <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
                 break;
             case 2:
-                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>  O <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>  ~ <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
                 break;
             case 3:
-                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>   O<<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>   ~<<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
                 break;
             default:
                 var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>    <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
@@ -445,6 +451,10 @@ function level_particles(dont, direction) {
         var n = Math.floor(Math.random() * st.length)
         st = st.slice(0, n) + "-.,*+"[Math.floor(Math.random() * 5)] + st.slice(n + 1)
     }
+    for(var z = 0; z < Math.floor(Math.random() * 3); z += 1) {
+        var n = Math.floor(Math.random() * st.length)
+        st = st.slice(0, n) + "~" + st.slice(n + 1)
+    }
     for(var z = 0; z < Math.floor(Math.random() * 4) + 3; z += 1) {
         var n = Math.floor(Math.random() * st.length)
         while(dont && n > 13 && n < 17)
@@ -460,4 +470,5 @@ function level_particles(dont, direction) {
 
 }
 
+welcomed = false
 welcome()
