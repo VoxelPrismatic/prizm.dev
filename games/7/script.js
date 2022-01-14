@@ -342,12 +342,12 @@ Press any key to play again`);
 
 }
 
-function level_side_to_side_up(dont, direction) {
+function level_side_to_side(dont, direction) {
     if(changed_level) {
         changed_level = false;
         for(var x = 0; x < 30; x += 1) {
             window.setTimeout(() => {
-                level_side_to_side_up(1, direction);
+                level_side_to_side(1, direction);
                 blocked = true
             }, 25 * x);
         }
