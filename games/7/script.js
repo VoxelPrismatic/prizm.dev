@@ -265,6 +265,7 @@ function level_select() {
 
 function death_screen() {
     if(died == 1) {
+        blocking = true;
         dpY = 0
         dpX = 0
         for(var x = 0; x < 25; x += 1) {
@@ -272,7 +273,7 @@ function death_screen() {
                 $(".player").innerHTML = n ? "*%X#;/"[Math.floor(Math.random() * 6)] : grid[pY][pX];
             }, 50 * x, x % 2)
         }
-        window.setTimeout(transition, x * 50, 1);
+        window.setTimeout(() => { blocking = false; transition() }, x * 50, 1);
         return
     }
     console.log(died, "died");
