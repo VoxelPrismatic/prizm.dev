@@ -283,16 +283,16 @@ function level_select() {
     on_lvl += 1
     switch(sel_lvl + died * 100) {
         case 0:
-            level_side_to_side(0, 0);
-            break;
         case 1:
-            level_side_to_side(0, 1);
-            break;
         case 2:
-            level_side_to_side(0, 2);
-            break;
         case 3:
-            level_side_to_side(0, 3);
+            level_side_to_side(0, 3 - sel_lvl);
+            break;
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+            level_particles(0, 7 - sel_lvl);
             break;
         default:
             pX = diX
