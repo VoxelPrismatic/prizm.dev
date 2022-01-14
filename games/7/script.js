@@ -275,6 +275,7 @@ function level_select() {
         transition();
         sel_lvl = Math.floor(Math.random() * 3)
         on_lvl = 0;
+        changed_level = true;
         return
     }
     if(transitioning)
