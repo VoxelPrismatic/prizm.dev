@@ -32,6 +32,7 @@ var died = 0;
 var start_time = 0;
 var transitioning = false;
 var coins_collected = 0;
+var last_direction = 0
 
 function player_blink(thing = 0) {
     for(var player of $$(".player"))
@@ -72,6 +73,7 @@ function write(x, y, st) {
 }
 
 function wscroll(st, d = 0) {
+    st = st.replace(/\&Lambda\;/g, "\u039b");
     switch(d) {
         case 0: // Scroll up
             scr.append(scr.rows[0]);
@@ -94,10 +96,7 @@ function wscroll(st, d = 0) {
             }
             break;
     }
-    /*scr.insertRow()
-    scr.rows[0].remove();
-    for(var x = 0; x < 40; x += 1)
-        scr.rows[29].insertCell();*/
+    last_direction = d
     draw_screen();
 }
 
@@ -130,6 +129,7 @@ function draw_screen() {
                 case ">":
                 case "<":
                 case "^":
+                case "\u039b":
                 case "&Lambda;":
                 case "V":
                     scr.rows[y].cells[x].innerHTML = "<span class='death'>" + s + "</span>";
@@ -248,7 +248,7 @@ Start by collecting that one!`)
 function transition(dont = 0) {
     transitioning = true
     if(grid.toString().replace(/ *, */g,'')) {
-        wscroll("                                        ");
+        wscroll("                                        ", last_direction);
         return window.setTimeout(transition, 25, dont);
     }
     if(pX != 20 && pY != 15 && !dont) {
@@ -265,7 +265,7 @@ function transition(dont = 0) {
 function level_select() {
     if(on_lvl > Math.random() * 60 + 30) {
         transition();
-        sel_lvl = Math.floor(Math.random() * 0)
+        sel_lvl = Math.floor(Math.random() * 3)
         on_lvl = 0;
         return
     }
@@ -273,7 +273,16 @@ function level_select() {
         return
     switch(on_lvl + died * 100) {
         case 0:
-            level_side_to_side();
+            level_side_to_side(0, 0);
+            break;
+        case 1:
+            level_side_to_side(0, 1);
+            break;
+        case 2:
+            level_side_to_side(0, 2);
+            break;
+        case 3:
+            level_side_to_side(0, 3);
             break;
         default:
             pX = diX
@@ -333,12 +342,12 @@ Press any key to play again`);
 
 }
 
-function level_side_to_side(dont) {
+function level_side_to_side_up(dont, direction) {
     if(changed_level) {
         changed_level = false;
         for(var x = 0; x < 30; x += 1) {
             window.setTimeout(() => {
-                level_side_to_side(1);
+                level_side_to_side_up(1, direction);
                 blocked = true
             }, 25 * x);
         }
@@ -351,23 +360,42 @@ function level_side_to_side(dont) {
         s2s_offset += 2 - Math.floor(Math.random() * 5)
         s2s_offset = Math.min(35, Math.max(5, s2s_offset))
     }
-    switch(Math.floor(Math.random() * 30)) {
-        case 0:
-            var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>O   <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
-            break;
-        case 1:
-            var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>> O  <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
-            break;
-        case 2:
-            var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>  O <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
-            break;
-        case 3:
-            var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>   O<<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
-            break;
-        default:
-            var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>    <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+    if(direction >= 2) {
+        switch(Math.floor(Math.random() * 30)) {
+            case 0:
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VVO   &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                break;
+            case 1:
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV O  &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                break;
+            case 2:
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV  O &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                break;
+            case 3:
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV   O&Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                break;
+            default:
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV    &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+        }
+    } else {
+        switch(Math.floor(Math.random() * 30)) {
+            case 0:
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>O   <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                break;
+            case 1:
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>> O  <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                break;
+            case 2:
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>  O <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                break;
+            case 3:
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>   O<<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+                break;
+            default:
+                var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>    <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
+        }
     }
-    wscroll(st.slice(s2s_offset, s2s_offset + 40))
+    wscroll(st.slice(s2s_offset, s2s_offset + 40), direction)
     if(!dont) {
         window.setTimeout(level_select, 500);
         window.setTimeout(() => blocked = false, 500);
