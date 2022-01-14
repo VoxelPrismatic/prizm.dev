@@ -168,21 +168,29 @@ window.onkeydown = (evt) => {
         welcome()
     switch(evt.key) {
         case "ArrowUp":
+        case "w":
+        case "W":
             if(pY > 0)
                 pY -= 1;
             draw_screen();
             break;
         case "ArrowDown":
+        case "d":
+        case "D":
             if(pY < grid.length - 1)
                 pY += 1;
             draw_screen();
             break;
         case "ArrowLeft":
+        case "a":
+        case "A":
             if(pX > 0)
                 pX -= 1;
             draw_screen();
             break;
         case "ArrowRight":
+        case "d":
+        case "D":
             if(pX < grid[0].length - 1)
                 pX += 1;
             draw_screen();
@@ -229,7 +237,7 @@ A game based on Undertale's fight system
 
 Don't touch any sharp things [<^>&Lambda;V]
 
-Move around with arrow keys
+Move around with arrow keys, or WASD
 
 Pause with [SPACE]
 
