@@ -79,7 +79,16 @@ function wscroll(st, d = 1) {
             scr.append(scr.rows[0]);
             break;
         case 1:
-            scr.insertAdjacentElement("afterstart", scr.rows[29])
+            scr.insertAdjacentElement("afterbegin", scr.rows[29]);
+            break;
+        case 2:
+            for(var row of scr.rows)
+                row.append(row.cells[0])
+            break;
+        case 3:
+            for(var row of scr.rows)
+                row.insertAdjacentElement("afterbegin", row.cells[39]);
+            break;
     }
     /*scr.insertRow()
     scr.rows[0].remove();
