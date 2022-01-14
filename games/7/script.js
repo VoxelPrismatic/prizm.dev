@@ -142,7 +142,7 @@ function draw_screen() {
 draw_screen()
 
 window.onkeydown = (evt) => {
-    if(blocked || transitioning)
+    if(blocked || transitioning || died && died != 200)
         return;
     if(died == 200)
         welcome()
@@ -265,7 +265,7 @@ function level_select() {
 
 function death_screen() {
     if(died == 1) {
-        blocking = true;
+        transitioning = true;
         dpY = 0
         dpX = 0
         for(var x = 0; x < 25; x += 1) {
