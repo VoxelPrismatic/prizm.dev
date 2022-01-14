@@ -81,7 +81,7 @@ function wscroll(st, d = 0) {
             break;
         case 1: // Scroll down
             scr.insertAdjacentElement("afterbegin", scr.rows[29]);
-            grid = grid.concat([st.split("")]).slice(0, -1)
+            grid = [st.split("")].concat(grid.slice(1))
             break;
         case 2: // Scroll left
             for(var row of scr.rows) {
@@ -92,7 +92,7 @@ function wscroll(st, d = 0) {
         case 3: // Scroll right
             for(var row of scr.rows) {
                 row.insertAdjacentElement("afterbegin", row.cells[39]);
-                grid[row.rowIndex] = grid[row.rowIndex].concat([st[row.rowIndex]]).slice(0, -1);
+                grid[row.rowIndex] = [st[row.rowIndex]].concat(grid[row.rowIndex].slice(1));
             }
             break;
     }
