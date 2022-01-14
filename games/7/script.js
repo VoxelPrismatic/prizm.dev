@@ -71,14 +71,14 @@ function write(x, y, st) {
     return [x, y]
 }
 
-function wscroll(st, d = 1) {
+function wscroll(st, d = 2) {
     grid = grid.slice(1);
     grid.push(st.split(""));
     switch(d) {
-        case 0:
+        case 0: // Scroll down
             scr.append(scr.rows[0]);
             break;
-        case 1:
+        case 1: // Scroll up
             scr.insertAdjacentElement("afterbegin", scr.rows[29]);
             break;
         case 2:
