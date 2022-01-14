@@ -372,19 +372,19 @@ function level_side_to_side(dont, direction) {
     if(direction >= 2) {
         switch(Math.floor(Math.random() * 30)) {
             case 0:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VVO   &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VVO   \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
                 break;
             case 1:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV O  &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV O  \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
                 break;
             case 2:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV  O &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV  O \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
                 break;
             case 3:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV   O&Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV   O\u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
                 break;
             default:
-                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_VV    &Lambda;&Lambda;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_";
+                var st = "-_-_-_-_-_-_-_-_-_-_-_-_-_-_-VV    \u039b\u039b-_-_-_-_-_-_-_-_-_-_-_-_-_-_-";
         }
     } else {
         switch(Math.floor(Math.random() * 30)) {
@@ -404,7 +404,7 @@ function level_side_to_side(dont, direction) {
                 var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>    <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
         }
     }
-    wscroll(st.slice(s2s_offset, s2s_offset + 40), direction)
+    wscroll(st.slice(s2s_offset, s2s_offset + (direction < 2 ? 40 : 30)), direction)
     if(!dont) {
         window.setTimeout(level_select, 500);
         window.setTimeout(() => blocked = false, 500);
