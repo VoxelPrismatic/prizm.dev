@@ -273,7 +273,7 @@ function transition(dont = 0) {
 function level_select() {
     if(!died && on_lvl > Math.random() * 60 + 30) {
         transition();
-        sel_lvl = Math.floor(Math.random() * 3)
+        sel_lvl = Math.floor(Math.random() * 7)
         on_lvl = 0;
         changed_level = true;
         return
@@ -406,6 +406,53 @@ function level_side_to_side(dont, direction) {
         }
     }
     wscroll(st.slice(s2s_offset, s2s_offset + (direction < 2 ? 40 : 30)), direction)
+    if(!dont) {
+        window.setTimeout(level_select, 500);
+        window.setTimeout(() => blocked = false, 500);
+    }
+
+}
+
+function level_particles(dont, direction) {
+    if(changed_level) {
+        changed_level = false;
+        for(var x = 0; x < (direction < 2 ? 30 : 40); x += 1) {
+            window.setTimeout(() => {
+                level_particles(1, direction);
+                blocked = true
+            }, 25 * x);
+        }
+        window.setTimeout(level_select, 25 * x);
+        return
+    }
+    var st = " ".repeat(direction < 2 ? 40 : 30)
+    var q = ""
+    switch(direction) {
+        case 0:
+            q = "\u039b";
+            break;
+        case 1:
+            q = "V";
+            break;
+        case 2:
+            q = "<";
+            break;
+        case 3:
+            q = ">";
+            break;
+    }
+    for(var z = 0; z < Math.floor(Math.random() * 12) + 8; z += 1) {
+        var n = Math.floor(Math.random() * st.length)
+        st = st.slice(0, n - 1) + "-.,*+"[Math.floor(Math.random() * 5)] + st.slice(n + 1)
+    }
+    for(var z = 0; z < Math.floor(Math.random() * 6) + 4; z += 1) {
+        var n = Math.floor(Math.random() * st.length)
+        while(dont && n > 13 && n < 17)
+            n = Math.floor(Math.random() * st.length)
+        st = st.slice(0, n - 1) + q + st.slice(n + 1)
+    }
+        
+    wscroll(st, direction)
     if(!dont) {
         window.setTimeout(level_select, 500);
         window.setTimeout(() => blocked = false, 500);
