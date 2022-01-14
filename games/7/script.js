@@ -72,22 +72,26 @@ function write(x, y, st) {
 }
 
 function wscroll(st, d = 2) {
-    grid = grid.slice(1);
-    grid.push(st.split(""));
     switch(d) {
-        case 0: // Scroll down
+        case 0: // Scroll up
             scr.append(scr.rows[0]);
+            grid = grid.slice(1).concat(st.split(""))
             break;
-        case 1: // Scroll up
+        case 1: // Scroll down
             scr.insertAdjacentElement("afterbegin", scr.rows[29]);
+            grid = grid.concat(st.split("")).slice(0, -1)
             break;
-        case 2:
-            for(var row of scr.rows)
+        case 2: // Scroll right
+            for(var row of scr.rows) {
                 row.append(row.cells[0])
+                grid[row.rowIndex] = grid[row.rowIndex].slice(1).concat(st[row.rowIndex]);
+            }
             break;
-        case 3:
-            for(var row of scr.rows)
+        case 3: // Scroll left
+            for(var row of scr.rows) {
                 row.insertAdjacentElement("afterbegin", row.cells[39]);
+                grid[row.rowIndex] = grid[row.rowIndex].concat(st[row.rowIndex]).slice(0, -1);
+            }
             break;
     }
     /*scr.insertRow()
