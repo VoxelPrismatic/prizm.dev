@@ -71,13 +71,20 @@ function write(x, y, st) {
     return [x, y]
 }
 
-function wscroll(st) {
+function wscroll(st, d = 1) {
     grid = grid.slice(1);
     grid.push(st.split(""));
-    scr.insertRow()
+    switch(d) {
+        case 0:
+            scr.append(scr.rows[0]);
+            break;
+        case 1:
+            scr.insertAdjacentElement("afterstart", scr.rows[29])
+    }
+    /*scr.insertRow()
     scr.rows[0].remove();
     for(var x = 0; x < 40; x += 1)
-        scr.rows[29].insertCell();
+        scr.rows[29].insertCell();*/
     draw_screen();
 }
 
