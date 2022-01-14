@@ -250,7 +250,7 @@ Start by collecting that one!`)
             level_select();
             start_time = new Date();
         }
-    }, 100);
+    }, 50);
 }
 
 function transition(dont = 0) {
