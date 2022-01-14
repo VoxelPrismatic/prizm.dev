@@ -443,13 +443,13 @@ function level_particles(dont, direction) {
     }
     for(var z = 0; z < Math.floor(Math.random() * 12) + 8; z += 1) {
         var n = Math.floor(Math.random() * st.length)
-        st = st.slice(0, n - 1) + "-.,*+"[Math.floor(Math.random() * 5)] + st.slice(n + 1)
+        st = st.slice(0, n) + "-.,*+"[Math.floor(Math.random() * 5)] + st.slice(n + 1)
     }
-    for(var z = 0; z < Math.floor(Math.random() * 6) + 4; z += 1) {
+    for(var z = 0; z < Math.floor(Math.random() * 4) + 3; z += 1) {
         var n = Math.floor(Math.random() * st.length)
         while(dont && n > 13 && n < 17)
             n = Math.floor(Math.random() * st.length)
-        st = st.slice(0, n - 1) + q + st.slice(n + 1)
+        st = st.slice(0, n) + q + st.slice(n + 1)
     }
         
     wscroll(st, direction)
