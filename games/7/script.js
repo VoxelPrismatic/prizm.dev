@@ -271,7 +271,7 @@ function transition(dont = 0) {
 
 
 function level_select() {
-    if(on_lvl > Math.random() * 60 + 30) {
+    if(!died && on_lvl > Math.random() * 60 + 30) {
         transition();
         sel_lvl = Math.floor(Math.random() * 3)
         on_lvl = 0;
