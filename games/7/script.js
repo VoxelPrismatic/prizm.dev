@@ -152,7 +152,7 @@ function draw_screen() {
             }
         }
     }
-    if(!transitioning && "<>^&Lambda;V".includes(grid[pY][pX]) && on_lvl != 100) {
+    if(!transitioning && "<>^&Lambda;V\u039b".includes(grid[pY][pX]) && on_lvl != 100) {
         died = 1;
         diX = pX
         diY = pY
