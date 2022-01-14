@@ -215,9 +215,11 @@ function welcome(x = 0) {
     coins_collected = 0;
     if(x < 15) {
         window.setTimeout((x) => {
+            died = 2
             write(0, x, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
             write(0, -x - 1, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
             draw_screen();
+            died = 0
             welcome(x + 1);
         }, 25, x);
         return
@@ -237,20 +239,28 @@ function welcome(x = 0) {
         start_time = new Date();
         return
     }
-    wtime(0, 0, `============] Welcome to 7 [============
+    pX = 25
+    pY = 0
+    wtime(0, 0, `============] Welcome to   [============
 A game based on Undertale's fight system
+
+-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-
+          In an endless world,
+          you are the only one
+            WITH ENDLESS FUN
+=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=
 
 Don't touch any sharp things [<^>&Lambda;V]
 
 Move around with arrow keys, or WASD
-
 Pause with [SPACE]
 
 Collect sparks [~]
-Start by collecting that one!`)
+Start by collecting that one!
+`)
     draw_screen();
     welcome_t_o = window.setInterval(() => {
-        if(pX == 15 && pY == 9) {
+        if(pX == 15 && pY == 15) {
             window.clearInterval(welcome_t_o);
             level_select();
             start_time = new Date();
@@ -351,7 +361,7 @@ function death_screen() {
         wtime(0, 0, `==============] You died [==============
 You survived for ${m}:${(s + "").padStart(2, '0')}
 
-You collected ${coins_collected} sparks${coins_collected == 1 ? '' : 's'} [~]
+You collected ${coins_collected} spark${coins_collected == 1 ? '' : 's'} [~]
 
 Press any key to play again`);
     }
