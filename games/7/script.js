@@ -259,7 +259,7 @@ function transition(dont = 0) {
         wscroll("                                        ", last_direction);
         return window.setTimeout(transition, 25, dont);
     }
-    if(pX != 20 && pY != 15 && !dont) {
+    if((pX != 20 || pY != 15) && !dont) {
         pX += Math.sign(20 - pX);
         pY += Math.sign(15 - pY);
         draw_screen();
