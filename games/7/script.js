@@ -23,6 +23,7 @@ var dpX = 0;
 var dpY = 0;
 var diX = 0;
 var diY = 0;
+var diP = "";
 var blocked = false;
 var changed_level = true;
 var s2s_offset = 17;
@@ -74,30 +75,33 @@ function write(x, y, st) {
 
 function wscroll(st, d = 0) {
     st = st.replace(/\&Lambda\;/g, "\u039b");
+    last_direction = d
     switch(d) {
         case 0: // Scroll up
             scr.append(scr.rows[0]);
             grid = grid.slice(1).concat([st.split("")])
+            draw_screen([29])
             break;
         case 1: // Scroll down
             scr.insertAdjacentElement("afterbegin", scr.rows[29]);
             grid = [st.split("")].concat(grid.slice(0, -1))
+            draw_screen([0])
             break;
         case 2: // Scroll left
             for(var row of scr.rows) {
                 row.append(row.cells[0])
                 grid[row.rowIndex] = grid[row.rowIndex].slice(1).concat([st[row.rowIndex]]);
             }
+            draw_screen([], [39])
             break;
         case 3: // Scroll right
             for(var row of scr.rows) {
                 row.insertAdjacentElement("afterbegin", row.cells[39]);
                 grid[row.rowIndex] = [st[row.rowIndex]].concat(grid[row.rowIndex].slice(0, -1));
             }
+            draw_screen([], [0])
             break;
     }
-    last_direction = d
-    draw_screen();
 }
 
 function wtime(x, y, st) {
@@ -105,14 +109,16 @@ function wtime(x, y, st) {
         return
     [x, y] = write(x, y, st.split("\n")[0] + "\n")
     draw_screen()
-    window.setTimeout((x, y, st) => wtime(x, y, st), 25, x, y, st.split("\n").slice(1).join("\n"))
+    window.setTimeout((x, y, st) => wtime(x, y, st), st.split("\n")[0] ? 25 : 0, x, y, st.split("\n").slice(1).join("\n"))
 }
 
-function draw_screen() {
+function draw_screen(do_rows = [], do_cols = []) {
     var grid2 = []
     for(var y of grid) {
         grid2.push(y.slice())
     }
+    pY = Math.min(29, Math.max(0, pY)); // 0 <= pY <= 29
+    pX = Math.min(39, Math.max(0, pX))
     if(died != 100 && died != 200)
         grid2[pY][pX] = "7"
     if(grid[pY][pX] == "~") {
@@ -120,9 +126,28 @@ function draw_screen() {
         grid[pY][pX] = " "
     }
 //     console.log(grid2, pX, pY)
-    for(var y = 0; y < grid2.length; y += 1) {
-        for(var x = 0; x < grid2[y].length; x += 1) {
-            var s = grid2[y][x]
+    if(!do_rows.length)
+        for(var y = 0; y < grid2.length; y += 1)
+            do_rows.push(y)
+    do_rows.push(pY, pY - 1, pY + 1)
+    if(!do_cols.length)
+        for(var x = 0; x < grid2[0].length; x += 1)
+            do_cols.push(x)
+    do_cols.push(pX, pX + 1, pX - 1)
+
+    for(var y of do_rows) {
+        if(y == -1 || y == 30)
+            continue
+        for(var x of do_cols) {
+            if(x == -1 || x == 40)
+                continue
+            try {
+                var s = grid2[y][x]
+            } catch(err) {
+                console.log(y, x)
+                console.error(err)
+                continue
+            }
             if(s == scr.rows[y].cells[x].textContent)
                 continue
             switch(s) {
@@ -145,6 +170,8 @@ function draw_screen() {
                 case "]":
                 case "[":
                 case ":":
+                case "-":
+                case "=":
                     scr.rows[y].cells[x].innerHTML = "<span class='blank'>" + s + "</span>"
                     break;
                 default:
@@ -156,6 +183,7 @@ function draw_screen() {
         died = 1;
         diX = pX
         diY = pY
+        diP = grid[pY][pX]
     }
 }
 
@@ -200,6 +228,27 @@ window.onkeydown = (evt) => {
 
 welcome_t_o = 0;
 function welcome(x = 0) {
+    if(x < 15) {
+        died = 100
+        window.setTimeout((x) => {
+            write(0, x, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
+            write(0, -x - 1, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
+            draw_screen();
+            welcome(x + 1);
+        }, 25, x);
+        return
+    }
+    if(x < 30) {
+        died = 100
+        window.setTimeout((x) => {
+            x -= 15
+            write(0, x, "                                        ");
+            write(0, -x - 1, "                                        ");
+            draw_screen();
+            welcome(x + 16);
+        }, 25, x);
+        return
+    }
     pX = 20;
     pY = 15;
     dpX = 0;
@@ -213,54 +262,48 @@ function welcome(x = 0) {
     start_time = 0;
     transitioning = false;
     coins_collected = 0;
-    if(x < 15) {
-        window.setTimeout((x) => {
-            died = 2
-            write(0, x, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
-            write(0, -x - 1, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
-            draw_screen();
-            died = 0
-            welcome(x + 1);
-        }, 25, x);
-        return
-    }
-    if(x < 30) {
-        window.setTimeout((x) => {
-            x -= 15
-            write(0, x, "                                        ");
-            write(0, -x - 1, "                                        ");
-            draw_screen();
-            welcome(x + 16);
-        }, 25, x);
-        return
-    }
     if(welcomed) {
+        died = 0
         level_select();
         start_time = new Date();
         return
     }
     pX = 25
     pY = 0
-    wtime(0, 0, `============] Welcome to   [============
+    wtime(0, 0, `============] WELCOME TO   [============
 A game based on Undertale's fight system
 
--=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-
+
+
+]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
           In an endless world,
           you are the only one
             WITH ENDLESS FUN
-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=
+]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+
+
+
+
 
 Don't touch any sharp things [<^>&Lambda;V]
 
 Move around with arrow keys, or WASD
 Pause with [SPACE]
 
-Collect sparks [~]
-Start by collecting that one!
+Collect sparks [~] they're cute
+
+Also, epilepsy warning, lots of blinking
+
+
+
+
+
+===========] GO AND COLLECT [===========
+==========] YOUR FIRST SPARK [==========
 `)
     draw_screen();
     welcome_t_o = window.setInterval(() => {
-        if(pX == 15 && pY == 15) {
+        if(pX == 16 && pY == 20) {
             window.clearInterval(welcome_t_o);
             level_select();
             start_time = new Date();
@@ -288,10 +331,10 @@ function transition(dont = 0) {
 
 function level_select() {
     if(!died && on_lvl > Math.random() * 60 + 30) {
-        transition();
         sel_lvl = Math.floor(Math.random() * 7)
         on_lvl = 0;
         changed_level = true;
+        transition();
         return
     }
     if(transitioning)
@@ -358,12 +401,36 @@ function death_screen() {
         var m = Math.floor(s / 60);
         s = s % 60;
         died = 200
-        wtime(0, 0, `==============] You died [==============
+        wtime(0, 0, `==============] YOU DIED [==============
 You survived for ${m}:${(s + "").padStart(2, '0')}
+
+
+
+
+]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+          All good things must
+          come to an end, even
+            YOUR ENDLESS FUN
+]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+
+
+
+
+
+
+
+You touched a sharp thing [${diP}] ouch
 
 You collected ${coins_collected} spark${coins_collected == 1 ? '' : 's'} [~]
 
-Press any key to play again`);
+
+
+
+
+
+
+==========] PRESS ANY KEY TO [==========
+=============] PLAY AGAIN [=============`);
     }
 
 }
@@ -387,7 +454,7 @@ function level_side_to_side(dont, direction) {
         s2s_offset = Math.min(direction < 2 ? 35 : 25 , Math.max(5, s2s_offset))
     }
     if(direction >= 2) {
-        switch(Math.floor(Math.random() * 30)) {
+        switch(Math.floor(Math.random() * 20)) {
             case 0:
                 var st = "-----------------------------VV~   \u039b\u039b-----------------------------";
                 break;
@@ -404,7 +471,7 @@ function level_side_to_side(dont, direction) {
                 var st = "-----------------------------VV    \u039b\u039b-----------------------------";
         }
     } else {
-        switch(Math.floor(Math.random() * 30)) {
+        switch(Math.floor(Math.random() * 20)) {
             case 0:
                 var st = "]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]>>~   <<[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[";
                 break;
@@ -467,11 +534,11 @@ function level_particles(dont, direction) {
     }
     for(var z = 0; z < Math.floor(Math.random() * 4) + 3; z += 1) {
         var n = Math.floor(Math.random() * st.length)
-        while(dont && n > 13 && n < 17)
+        while(dont && ((n > 13 && n < 17 && direction > 1) || (n > 18 && n < 22 && direction < 2)))
             n = Math.floor(Math.random() * st.length)
         st = st.slice(0, n) + q + st.slice(n + 1)
     }
-        
+
     wscroll(st, direction)
     if(!dont) {
         window.setTimeout(level_select, 500);
