@@ -294,7 +294,7 @@ Collect sparks [~] they're cute
 
 Also, epilepsy warning, lots of blinking
 
-
+*game still in dev
 
 
 
