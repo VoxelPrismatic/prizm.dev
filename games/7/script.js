@@ -33,7 +33,7 @@ var died = 0;
 var start_time = 0;
 var transitioning = false;
 var coins_collected = 0;
-var last_direction = 0
+var last_direction = 0;
 
 function player_blink(thing = 0) {
     for(var player of $$(".player"))
