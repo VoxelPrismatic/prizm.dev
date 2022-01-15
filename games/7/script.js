@@ -203,8 +203,8 @@ window.onkeydown = (evt) => {
             draw_screen();
             break;
         case "ArrowDown":
-        case "d":
-        case "D":
+        case "s":
+        case "S":
             if(pY < grid.length - 1)
                 pY += 1;
             draw_screen();
