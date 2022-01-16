@@ -37,6 +37,7 @@ var coins_collected = 0;
 var last_direction = 0;
 var game_paused = false;
 var pause_grid = []
+var block_space = false
 
 function bg_music(val) {
     music.play();
@@ -225,8 +226,11 @@ window.onkeydown = (evt) => {
                 draw_screen();
                 break;
             case " ":
-                game_paused = !game_paused
-                pause_screen();
+                if(!block_space) {
+                    game_paused = !game_paused
+                    pause_screen();
+                    block_space = true
+                }
                 break;
             default:
                 return
@@ -237,7 +241,8 @@ window.onkeydown = (evt) => {
 
 welcome_t_o = 0;
 function welcome(x = 0) {
-    transitioning = true
+    transitioning = true;
+    block_space = true;
     if(!welcomed) {
         died = 100
         if(x < 30) {
@@ -319,6 +324,7 @@ function welcome(x = 0) {
         music.currentTime = 0
         start_time = new Date();
         level_select();
+        block_space = false;
         return
     }
     pX = 25
@@ -363,11 +369,13 @@ Also, epilepsy warning, lots of blinking
             welcomed = true
             music.src = "chiptune.mp3"
             music.currentTime = 0
+            block_space = false;
         }
     }, 25);
 }
 
 function pause_screen(x = 0) {
+    block_space = true
     if(!transitioning) {
         transitioning = true
         died = 100
@@ -433,8 +441,8 @@ function pause_screen(x = 0) {
 
 ========] HIT SPACE TO UNPAUSE [========
 `)
+        block_space = false;
     } else {
-
         for(var x = 0; x < grid.length / 2; x += 1) {
             window.setTimeout((n) => {
                 m = grid.length - 1 - n
@@ -446,7 +454,8 @@ function pause_screen(x = 0) {
         window.setTimeout(() => {
             start_time += Number(new Date())
             level_select()
-        }, 25 * (x + 1))
+            block_space = false;
+        }, 25 * (x + 5))
     }
 }
 
@@ -500,6 +509,7 @@ function level_select() {
 }
 
 function death_screen() {
+    block_space = true
     if(died == 1) {
         transitioning = true;
         dpY = 0
