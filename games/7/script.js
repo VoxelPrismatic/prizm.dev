@@ -330,7 +330,7 @@ function welcome(x = 0) {
     pX = 25
     pY = 0
     wtime(0, 0, `============] WELCOME TO   [============
-A game based on Undertale's fight system
+A simple, yet endlessly addicting game
 
 
 
@@ -340,7 +340,7 @@ A game based on Undertale's fight system
             WITH ENDLESS FUN
 ]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
 
-
+----------] EPILEPSY WARNING [----------
 
 
 
@@ -351,7 +351,7 @@ Pause with [SPACE]
 
 Collect sparks [~] they're cute
 
-Also, epilepsy warning, lots of blinking
+
 
 *game still in dev
 
