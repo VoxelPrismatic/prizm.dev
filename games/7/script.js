@@ -38,15 +38,15 @@ var last_direction = 0;
 var game_paused = false;
 var pause_grid = [];
 var block_space = false;
-var allowX = [];
-var allowY = [];
+var allowedX = [];
+var allowedY = [];
 
 function reset_allowed() {
     for(var z = 0; z < 40; z += 1) {
-        allowX.push(z);
-        allowY.push(z);
+        allowedX.push(z);
+        allowedY.push(z);
     }
-    allowY = allowY.slice(0, -10);
+    allowedY = allowedY.slice(0, -10);
 }
 reset_allowed();
 
