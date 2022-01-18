@@ -47,7 +47,9 @@ function reset_allowed() {
         allowY.push(z);
     }
     allowY = allowY.slice(0, -10);
-} 
+}
+reset_allowed();
+
 function bg_music(val) {
     music.play();
     music.volume = val
@@ -209,28 +211,28 @@ window.onkeydown = (evt) => {
             case "ArrowUp":
             case "w":
             case "W":
-                if(pY > 0)
+                if(allowedY.includes(pY - 1))
                     pY -= 1;
                 draw_screen();
                 break;
             case "ArrowDown":
             case "s":
             case "S":
-                if(pY < grid.length - 1)
+                if(allowedY.includes(pY + 1))
                     pY += 1;
                 draw_screen();
                 break;
             case "ArrowLeft":
             case "a":
             case "A":
-                if(pX > 0)
+                if(allowedX.includes(pX - 1))
                     pX -= 1;
                 draw_screen();
                 break;
             case "ArrowRight":
             case "d":
             case "D":
-                if(pX < grid[0].length - 1)
+                if(allowedX.includes(pX + 1))
                     pX += 1;
                 draw_screen();
                 break;
@@ -240,6 +242,12 @@ window.onkeydown = (evt) => {
                     pause_screen();
                     block_space = true
                 }
+                break;
+            case "Enter":
+                if(welcomed)
+                    return
+                pX = 16
+                pY = 20
                 break;
             default:
                 return
@@ -271,7 +279,7 @@ function welcome(x = 0) {
             return
         }
     } if(dpX || dpY) {
-        console.log(pX, pY, dpX, dpY, diX, diY)
+//         console.log(pX, pY, dpX, dpY, diX, diY)
         if(x < 30) {
             died = 100
             pX = diX
@@ -472,13 +480,13 @@ function transition(dont = 0, tX = 20, tY = 15, scr = 1) {
     transitioning = true
     if(scr && grid.toString().replace(/ *, */g,'')) {
         wscroll("                                        ", last_direction);
-        return window.setTimeout(transition, 25, dont, tX, tY);
+        return window.setTimeout(transition, 25, dont, tX, tY, scr);
     }
     if((pX != tX || pY != tY) && !dont) {
         pX += Math.sign(tX - pX);
         pY += Math.sign(tY - pY);
         draw_screen();
-        return window.setTimeout(transition, 25, dont, tX, tY);
+        return window.setTimeout(transition, 25, dont, tX, tY, scr);
     }
     transitioning = false;
     level_select();
@@ -489,7 +497,8 @@ function level_select() {
     if(transitioning)
         return
     if(!died && on_lvl > Math.random() * 60 + 30) {
-        sel_lvl = Math.floor(Math.random() * 8)
+        reset_allowed();
+        sel_lvl = Math.floor(Math.random() * 12)
         on_lvl = 0;
         changed_level = true;
         transition();
@@ -715,27 +724,27 @@ function level_particles(dont, direction) {
 function level_lasers(dont, direction) {
     if(changed_level) {
         changed_level = false;
-        
-        for(var x = 0; x < (direction < 2 ? 12 : 17); x += 1) {
-            window.setTimeout((n) => {
-                if(direction > 2) {
-                    if(x == 17)
-                        var st = "]]]]]]]]]]]]]]][[[[[[[[[[[[[["
+
+        for(var x = 0; x < (direction < 2 ? 17 : 12); x += 1) {
+            window.setTimeout((x, direction) => {
+                if(direction < 2) {
+                    if(x == 16)
+                        var st = "]["
                     else
-                        var st = "============================="
+                        var st = "=="
                     var k = grid[0].length - x - 1
                     for(var z = 0; z < grid.length; z += 1) {
-                        grid[z][k] = st[z];
-                        grid[z][x] = st[z];
+                        grid[z][k] = st[1];
+                        grid[z][x] = st[0];
                     }
                     draw_screen([], [x, k]);
                 } else {
-                    if(x == 12)
-                        var st = "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[["
+                    if(x == 11)
+                        var st = "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[["
                     else
-                        var st = "======================================="
+                        var st = "========================================"
                     grid[x] = st.split("")
-                    grid[grid.length - x - 1]
+                    grid[grid.length - x - 1] = st.split("")
                     draw_screen([x, grid.length - x - 1]);
                 }
                 blocked = true
@@ -744,13 +753,21 @@ function level_lasers(dont, direction) {
         window.setTimeout((direction) => {
             switch(direction) {
                 case 0:
-                    return transition(0, 39, 15, 0);
-                case 1:
-                    return transition(0, 0, 15, 0);
-                case 2:
+                    allowedX = [17, 18, 19, 20, 21, 22];
+                    allowedY = [29];
                     return transition(0, 20, 29, 0);
-                case 3:
+                case 1:
+                    allowedX = [17, 18, 19, 20, 21, 22];
+                    allowedY = [0];
                     return transition(0, 20, 0, 0);
+                case 2:
+                    allowedY = [12, 13, 14, 15, 16, 17];
+                    allowedX = [29];
+                    return transition(0, 39, 15, 0);
+                case 3:
+                    allowedY = [12, 13, 14, 15, 16, 17];
+                    allowedX = [0];
+                    return transition(0, 0, 15, 0);
             }
         }, 25 * x, direction);
         return
@@ -760,27 +777,100 @@ function level_lasers(dont, direction) {
         window.setTimeout((k, d, z) => {
             switch(d) {
                 case 0:
-                    grid[12 + k][0] = z % 2 ? ">" : " ";
-                    draw_screen([12 + k], [0]);
-                    break;
-                case 1:
-                    grid[12 + k][grid.length - 1] = z % 2 ? "<" : " ";
-                    draw_screen([12 + k], [grid.length - 1]);
-                    break;
-                case 2:
                     grid[0][17 + k] = z % 2 ? "V" : " ";
                     draw_screen([0], [17 + k]);
                     break;
-                case 3:
+                case 1:
                     grid[grid.length - 1][17 + k] = z % 2 ? "\u039b" : " ";
                     draw_screen([grid.length - 1], [17 + k]);
                     break;
+                case 2:
+                    grid[12 + k][0] = z % 2 ? ">" : " ";
+                    draw_screen([12 + k], [0]);
+                    break;
+                case 3:
+                    grid[12 + k][grid[0].length - 1] = z % 2 ? "<" : " ";
+                    draw_screen([12 + k], [grid[0].length - 1]);
+                    break;
             }
-        }, 50 * z, k, direction, z);
+        }, 75 * z, k, direction, z);
     }
-            
+    var q = Math.floor(Math.random() * 12)
+    if(q < 6) {
+        switch(direction) {
+            case 1:
+                grid[0][17 + q] = "~"
+                draw_screen([0], [17 + q]);
+                break;
+            case 0:
+                grid[grid.length - 1][17 + q] = "~"
+                draw_screen([grid.length - 1], [17 + q]);
+                break;
+            case 3:
+                grid[12 + q][0] = "~"
+                draw_screen([12 + q], [0]);
+                break;
+            case 2:
+                grid[12 + q][grid.length - 1] = "~"
+                draw_screen([12 + q], [grid.length - 1]);
+                break;
+        }
+    }
+    window.setTimeout((k, d) => {
+        switch(d) {
+            case 0:
+                for(var w = 0; w < 30; w += 1) {
+                    window.setTimeout((w, k) => {
+                        grid[w][17 + k] = "V"
+                        draw_screen([w], [17 + k])
+                    }, w * 7, w, k)
+                    window.setTimeout((w, k) => {
+                        grid[w][17 + k] = " "
+                        draw_screen([w], [17 + k])
+                    }, (w + 5)* 7, w, k)
+                }
+                break;
+            case 1:
+                for(var w = 0; w < 30; w += 1) {
+                    window.setTimeout((w, k) => {
+                        grid[w][17 + k] = "\u039b"
+                        draw_screen([w], [17 + k])
+                    }, w * 7, 30 - w - 1, k)
+                    window.setTimeout((w, k) => {
+                        grid[w][17 + k] = " "
+                        draw_screen([w], [17 + k])
+                    }, (w + 5) * 7, 30 - w - 1, k)
+                }
+                break;
+            case 2:
+                for(var w = 0; w < 40; w += 1) {
+                    window.setTimeout((w, k) => {
+                        grid[12 + k][w] = ">"
+                        draw_screen([12 + k], [w])
+                    }, w * 5, w, k)
+                    window.setTimeout((w, k) => {
+                        grid[12 + k][w] = " "
+                        draw_screen([12 + k], [w])
+                    }, (w + 5) * 5,  w, k)
+                }
+                break;
+            case 3:
+                for(var w = 0; w < 40; w += 1) {
+                    window.setTimeout((w, k) => {
+                        grid[12 + k][w] = "<"
+                        draw_screen([12 + k], [w])
+                    }, w * 5, 40 - w - 1, k)
+                    window.setTimeout((w, k) => {
+                        grid[12 + k][w] = " "
+                        draw_screen([12 + k], [w])
+                    }, (w + 5) * 5, 40 - w - 1, k)
+                }
+                break;
+        }
+    }, 75 * (z + 1), k, direction);
+
     if(!dont) {
-        window.setTimeout(level_select, 750);
+        window.setTimeout(level_select, 1000);
         window.setTimeout(() => blocked = false, 250);
     }
 }
