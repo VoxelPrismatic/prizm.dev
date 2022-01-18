@@ -772,7 +772,7 @@ function level_lasers(dont, direction) {
                     draw_screen([0], [17 + k]);
                     break;
                 case 3:
-                    grid[grid.length - 1][17 + k] = z % 2 ? "\u03b" : " ";
+                    grid[grid.length - 1][17 + k] = z % 2 ? "\u039b" : " ";
                     draw_screen([grid.length - 1], [17 + k]);
                     break;
             }
