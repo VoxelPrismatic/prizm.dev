@@ -36,9 +36,18 @@ var transitioning = false;
 var coins_collected = 0;
 var last_direction = 0;
 var game_paused = false;
-var pause_grid = []
-var block_space = false
+var pause_grid = [];
+var block_space = false;
+var allowX = [];
+var allowY = [];
 
+function reset_allowed() {
+    for(var z = 0; z < 40; z += 1) {
+        allowX.push(z);
+        allowY.push(z);
+    }
+    allowY = allowY.slice(0, -10);
+} 
 function bg_music(val) {
     music.play();
     music.volume = val
@@ -459,9 +468,9 @@ function pause_screen(x = 0) {
     }
 }
 
-function transition(dont = 0, tX = 20, tY = 15) {
+function transition(dont = 0, tX = 20, tY = 15, scr = 1) {
     transitioning = true
-    if(grid.toString().replace(/ *, */g,'')) {
+    if(scr && grid.toString().replace(/ *, */g,'')) {
         wscroll("                                        ", last_direction);
         return window.setTimeout(transition, 25, dont, tX, tY);
     }
@@ -480,7 +489,7 @@ function level_select() {
     if(transitioning)
         return
     if(!died && on_lvl > Math.random() * 60 + 30) {
-        sel_lvl = Math.floor(Math.random() * 7)
+        sel_lvl = Math.floor(Math.random() * 8)
         on_lvl = 0;
         changed_level = true;
         transition();
@@ -499,6 +508,12 @@ function level_select() {
         case 6:
         case 7:
             level_particles(0, 7 - sel_lvl);
+            break;
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+            level_lasers(0, 11 - sel_lvl);
             break;
         default:
             pX = diX
@@ -695,6 +710,79 @@ function level_particles(dont, direction) {
         window.setTimeout(() => blocked = false, 500);
     }
 
+}
+
+function level_lasers(dont, direction) {
+    if(changed_level) {
+        changed_level = false;
+        
+        for(var x = 0; x < (direction < 2 ? 12 : 17); x += 1) {
+            window.setTimeout((n) => {
+                if(direction > 2) {
+                    if(x == 17)
+                        var st = "]]]]]]]]]]]]]]][[[[[[[[[[[[[["
+                    else
+                        var st = "============================="
+                    var k = grid[0].length - x - 1
+                    for(var z = 0; z < grid.length; z += 1) {
+                        grid[z][k] = st[z];
+                        grid[z][x] = st[z];
+                    }
+                    draw_screen([], [x, k]);
+                } else {
+                    if(x == 12)
+                        var st = "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[["
+                    else
+                        var st = "======================================="
+                    grid[x] = st.split("")
+                    grid[grid.length - x - 1]
+                    draw_screen([x, grid.length - x - 1]);
+                }
+                blocked = true
+            }, 25 * x, x, direction);
+        }
+        window.setTimeout((direction) => {
+            switch(direction) {
+                case 0:
+                    return transition(0, 39, 15, 0);
+                case 1:
+                    return transition(0, 0, 15, 0);
+                case 2:
+                    return transition(0, 20, 29, 0);
+                case 3:
+                    return transition(0, 20, 0, 0);
+            }
+        }, 25 * x, direction);
+        return
+    }
+    var k = Math.floor(Math.random() * 6)
+    for(var z = 0; z < 10; z += 1) {
+        window.setTimeout((k, d, z) => {
+            switch(d) {
+                case 0:
+                    grid[12 + k][0] = z % 2 ? ">" : " ";
+                    draw_screen([12 + k], [0]);
+                    break;
+                case 1:
+                    grid[12 + k][grid.length - 1] = z % 2 ? "<" : " ";
+                    draw_screen([12 + k], [grid.length - 1]);
+                    break;
+                case 2:
+                    grid[0][17 + k] = z % 2 ? "V" : " ";
+                    draw_screen([0], [17 + k]);
+                    break;
+                case 3:
+                    grid[grid.length - 1][17 + k] = z % 2 ? "\u03b" : " ";
+                    draw_screen([grid.length - 1], [17 + k]);
+                    break;
+            }
+        }, 50 * z, k, direction, z);
+    }
+            
+    if(!dont) {
+        window.setTimeout(level_select, 750);
+        window.setTimeout(() => blocked = false, 250);
+    }
 }
 
 welcomed = false
