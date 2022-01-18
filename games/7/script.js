@@ -812,7 +812,7 @@ function level_lasers(dont, direction) {
                 break;
             case 2:
                 grid[12 + q][grid.length - 1] = "~"
-                draw_screen([12 + q], [grid.length - 1]);
+                draw_screen([12 + q], [grid[0].length - 1]);
                 break;
         }
     }
@@ -825,7 +825,8 @@ function level_lasers(dont, direction) {
                         draw_screen([w], [17 + k])
                     }, w * 7, w, k)
                     window.setTimeout((w, k) => {
-                        grid[w][17 + k] = " "
+                        if(pX != 17 + k || w < 24)
+                            grid[w][17 + k] = " "
                         draw_screen([w], [17 + k])
                     }, (w + 5)* 7, w, k)
                 }
@@ -837,7 +838,8 @@ function level_lasers(dont, direction) {
                         draw_screen([w], [17 + k])
                     }, w * 7, 30 - w - 1, k)
                     window.setTimeout((w, k) => {
-                        grid[w][17 + k] = " "
+                        if(pX != 17 + k || w > 5)
+                            grid[w][17 + k] = " "
                         draw_screen([w], [17 + k])
                     }, (w + 5) * 7, 30 - w - 1, k)
                 }
@@ -849,7 +851,8 @@ function level_lasers(dont, direction) {
                         draw_screen([12 + k], [w])
                     }, w * 5, w, k)
                     window.setTimeout((w, k) => {
-                        grid[12 + k][w] = " "
+                        if(pY != 12 + k || w < 34)
+                            grid[12 + k][w] = " "
                         draw_screen([12 + k], [w])
                     }, (w + 5) * 5,  w, k)
                 }
@@ -861,16 +864,17 @@ function level_lasers(dont, direction) {
                         draw_screen([12 + k], [w])
                     }, w * 5, 40 - w - 1, k)
                     window.setTimeout((w, k) => {
-                        grid[12 + k][w] = " "
+                        if(pY != 12 + k || w > 5)
+                            grid[12 + k][w] = " "
                         draw_screen([12 + k], [w])
                     }, (w + 5) * 5, 40 - w - 1, k)
                 }
                 break;
         }
     }, 75 * (z + 1), k, direction);
-
+    on_lvl += 1
     if(!dont) {
-        window.setTimeout(level_select, 1000);
+        window.setTimeout(level_select, 1075);
         window.setTimeout(() => blocked = false, 250);
     }
 }
