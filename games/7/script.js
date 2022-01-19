@@ -546,7 +546,7 @@ function death_screen() {
         window.setTimeout(() => { blocking = false; transition(1) }, x * 50, 1);
         return
     }
-    console.log(died, "died");
+//     console.log(died, "died");
     if(pX > 35 || pY < 5) {
         pX -= (pX > 35);
         pY += (pY < 5);
