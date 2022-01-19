@@ -724,7 +724,6 @@ function level_particles(dont, direction) {
 function level_lasers(dont, direction) {
     if(changed_level) {
         changed_level = false;
-
         for(var x = 0; x < (direction < 2 ? 17 : 12); x += 1) {
             window.setTimeout((x, direction) => {
                 if(direction < 2) {
@@ -775,6 +774,8 @@ function level_lasers(dont, direction) {
     var k = Math.floor(Math.random() * 6)
     for(var z = 0; z < 10; z += 1) {
         window.setTimeout((k, d, z) => {
+            if(game_paused)
+                return
             switch(d) {
                 case 0:
                     grid[0][17 + k] = z % 2 ? "V" : " ";
@@ -817,6 +818,8 @@ function level_lasers(dont, direction) {
         }
     }
     window.setTimeout((k, d) => {
+        if(game_paused)
+            return
         switch(d) {
             case 0:
                 for(var w = 0; w < 30; w += 1) {
