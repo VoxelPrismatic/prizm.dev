@@ -811,7 +811,7 @@ function level_lasers(dont, direction) {
                 draw_screen([12 + q], [0]);
                 break;
             case 2:
-                grid[12 + q][grid.length - 1] = "~"
+                grid[12 + q][grid[0].length - 1] = "~"
                 draw_screen([12 + q], [grid[0].length - 1]);
                 break;
         }
