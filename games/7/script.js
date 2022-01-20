@@ -908,15 +908,17 @@ function handle_joystick(evt) {
     $("#touches").innerHTML += `${evt.type}: ${touchX}x${touchY} @ ${rect.x}:${rect.y} <b>${st}</b><br>`;
 }
 window.onresize = () => {
-    if(window.clientWidth > window.clientHeight)
-        $("#screen").after($("#joystick"))
-    else
-        $("#joycontainer").appendChild("#joystick")
+    if(window.clientWidth > window.clientHeight) {
+        $("#joystick").style.top = ($("#screen").getBoundingClientRect().height / 2 - $("joystick").getBoundingClientRect().height / 2) + "px")
+        $("#joystick").style.left = $("#screen").getBoundingClientRect().width + 16 + "px"
+        $("#joystick").style.float = "none"
+        $("#joystick").style.position = "absolute"
+    } else {
+        $("#joystick").style.float = "left"
+        $("#joystick").style.position = "revert"
+    }
 }
 onresize()
-//window.ontouchstart = handle_joystick
-//window.ontouchmove = handle_joystick
-//window.ontouchend = handle_joystick
-$("#joystick").ontouchstart = handle_joystick
-$("#joystick").ontouchmove = handle_joystick
-$("#joystick").ontouchend = handle_joystick
+window.ontouchstart = handle_joystick
+window.ontouchmove = handle_joystick
+window.ontouchend = handle_joystick
