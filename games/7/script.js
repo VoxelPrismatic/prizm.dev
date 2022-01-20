@@ -900,11 +900,11 @@ function handle_joystick(evt) {
         stick.style.transform = ""
         return
     }
-    if(evt.type == "touchstart")
-        $("#touches").innerHTML = ""
     var rect = $("#joystick").getBoundingClientRect();
     var touchY = evt.touches[0].clientY
     var touchX = evt.touches[0].clientX
+    if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0)
+        return
     if(touchX - rect.left >= 0 && touchX - rect.left <= rect.width / 4)
         joystick_direction += "a"
     else if(rect.right - touchX >= 0 && rect.right - touchX <= rect.width / 4)
@@ -915,39 +915,40 @@ function handle_joystick(evt) {
         joystick_direction += "s"
     switch(joystick_direction) {
         case "a":
-            stick.style.transform = "translate(-80px, 0px)";
+            stick.style.transform = "translate(-60px, 0px)";
             stick.innerHTML = "<";
             break;
         case "aw":
-            stick.style.transform = "translate(-80px, -80px) rotate(45deg)";
+            stick.style.transform = "translate(-60px, -60px) rotate(45deg)";
             stick.innerHTML = "<";
             break;
         case "w":
-            stick.style.transform = "translate(0px, -80px)";
+            stick.style.transform = "translate(0px, -60px)";
             stick.innerHTML = "\u039b";
             break;
         case "dw":
-            stick.style.transform = "translate(80px, -80px) rotate(-45deg)";
+            stick.style.transform = "translate(60px, -60px) rotate(-45deg)";
             stick.innerHTML = ">";
             break;
         case "d":
-            stick.style.transform = "translate(80px, 0px)";
+            stick.style.transform = "translate(60px, 0px)";
             stick.innerHTML = ">";
             break;
         case "ds":
-            stick.style.transform = "translate(80px, 80px) rotate(45deg)";
+            stick.style.transform = "translate(60px, 60px) rotate(45deg)";
             stick.innerHTML = ">";
             break;
         case "s":
-            stick.style.transform = "translate(0px, 80px)";
+            stick.style.transform = "translate(0px, 60px)";
             stick.innerHTML = "V";
             break;
         case "as":
-            stick.style.transform = "translate(-80px, 80px) rotate(-45deg)";
+            stick.style.transform = "translate(-60px, 60px) rotate(-45deg)";
             stick.innerHTML = "<";
             break;
     }
-    //$("#touches").innerHTML += `${evt.type}: ${touchX}x${touchY} @ ${rect.x}:${rect.y} <b>${st}</b><br>`;
+    evt.passive = false
+    evt.preventDefault();
 }
 window.onresize = () => {
     if(window.clientWidth > window.clientHeight) {
