@@ -887,7 +887,23 @@ welcome()
 $("#bg").value = "0"
 $("audio").volume = 0
 function handle_joystick(evt) {
-    $("#touches").innerHTML += `${evt.type}: ${evt.touches[0].pageX}x${evt.touches[0].pageY}<br>`;
+    if(evt.type == "touchend")
+        return $("#touches").innerHTML = ""
+    var rect = $("#joystick").getBoundingClientRect();
+    var touchY = evt.touches[0].pageY
+    var touchX = evt.touches[0].pageX
+    var st = ""
+    if(touchX - rect.x >= 0 && touchX - rect.x <= 60)
+        st += "left; "
+    else if(touchX - rect.x >= 180 && touchX - rect.x <= 240)
+        st += "right; "
+    if(touchY - rect.y >= 0 && touchY - rect.y <= 60)
+        st += "up; "
+    else if(touchY - rect.y >= 180 && touchY - rect.y <= 240)
+        st += "down; "
+    if(!st)
+        st = "null; "
+    $("#touches").innerHTML += `${evt.type}: ${evt.touches[0].pageX}x${evt.touches[0].pageY} <b>${st}</b><br>`;
 }
 window.ontouchstart = handle_joystick
 window.ontouchmove = handle_joystick
