@@ -913,7 +913,7 @@ function handle_joystick(evt) {
         joystick_direction += "u"
     else if(rect.bottom - touchY >= 0 && rect.bottom - touchY <= rect.height / 4)
         joystick_direction += "d"
-    switch(st) {
+    switch(joystick_direction) {
         case "l":
             stick.style.transform = "translate(-40px, 0px)";
             stick.innerHTML = "<";
