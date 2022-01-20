@@ -891,7 +891,7 @@ var joystick_direction = ""
 window.setInterval(() => {
     for(var s of joystick_direction)
         window.onkeydown(null, s)
-}, 200)
+}, 100)
 function handle_joystick(evt) {
     joystick_direction = "";
     var stick = $("#stick");
@@ -906,44 +906,44 @@ function handle_joystick(evt) {
     var touchY = evt.touches[0].clientY
     var touchX = evt.touches[0].clientX
     if(touchX - rect.left >= 0 && touchX - rect.left <= rect.width / 4)
-        joystick_direction += "l"
+        joystick_direction += "a"
     else if(rect.right - touchX >= 0 && rect.right - touchX <= rect.width / 4)
-        joystick_direction += "r"
-    if(touchY - rect.top >= 0 && touchY - rect.top <= rect.height / 4)
-        joystick_direction += "u"
-    else if(rect.bottom - touchY >= 0 && rect.bottom - touchY <= rect.height / 4)
         joystick_direction += "d"
+    if(touchY - rect.top >= 0 && touchY - rect.top <= rect.height / 4)
+        joystick_direction += "w"
+    else if(rect.bottom - touchY >= 0 && rect.bottom - touchY <= rect.height / 4)
+        joystick_direction += "s"
     switch(joystick_direction) {
-        case "l":
-            stick.style.transform = "translate(-40px, 0px)";
+        case "a":
+            stick.style.transform = "translate(-80px, 0px)";
             stick.innerHTML = "<";
             break;
-        case "lu":
-            stick.style.transform = "translate(-40px, -40px) rotate(45deg)";
+        case "aw":
+            stick.style.transform = "translate(-80px, -80px) rotate(45deg)";
             stick.innerHTML = "<";
             break;
-        case "u":
-            stick.style.transform = "translate(0px, -40px)";
+        case "w":
+            stick.style.transform = "translate(0px, -80px)";
             stick.innerHTML = "\u039b";
             break;
-        case "ru":
-            stick.style.transform = "translate(40px, -40px) rotate(-45deg)";
-            stick.innerHTML = ">";
-            break;
-        case "r":
-            stick.style.transform = "translate(40px, 0px)";
-            stick.innerHTML = ">";
-            break;
-        case "rd":
-            stick.style.transform = "translate(40px, 40px) rotate(45deg)";
+        case "dw":
+            stick.style.transform = "translate(80px, -80px) rotate(-45deg)";
             stick.innerHTML = ">";
             break;
         case "d":
-            stick.style.transform = "translate(0px, 40px)";
+            stick.style.transform = "translate(80px, 0px)";
+            stick.innerHTML = ">";
+            break;
+        case "ds":
+            stick.style.transform = "translate(80px, 80px) rotate(45deg)";
+            stick.innerHTML = ">";
+            break;
+        case "s":
+            stick.style.transform = "translate(0px, 80px)";
             stick.innerHTML = "V";
             break;
-        case "ld":
-            stick.style.transform = "translate(-40px, 40px) rotate(-45deg)";
+        case "as":
+            stick.style.transform = "translate(-80px, 80px) rotate(-45deg)";
             stick.innerHTML = "<";
             break;
     }
