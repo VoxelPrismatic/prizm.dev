@@ -201,13 +201,13 @@ function draw_screen(do_rows = [], do_cols = []) {
 
 draw_screen()
 
-window.onkeydown = (evt) => {
+window.onkeydown = (evt, k = "") => {
     if(blocked || transitioning || died && died != 200)
         return;
     if(died == 200) {
         welcome()
     } else {
-        switch(evt.key) {
+        switch(evt.key || k) {
             case "ArrowUp":
             case "w":
             case "W":
@@ -253,7 +253,8 @@ window.onkeydown = (evt) => {
                 return
         }
     }
-    evt.preventDefault();
+    if(evt)
+        evt.preventDefault();
 }
 
 welcome_t_o = 0;
@@ -886,26 +887,67 @@ welcomed = false
 welcome()
 $("#bg").value = "0"
 $("audio").volume = 0
+var joystick_direction = ""
+window.setInterval(() => {
+    for(var s of joystick_direction)
+        window.onkeydown(null, s)
+}, 200)
 function handle_joystick(evt) {
-    if(evt.type == "touchend")
+    joystick_direction = "";
+    var stick = $("#stick");
+    if(evt.type == "touchend") {
+        stick.innerHTML = "O"
+        stick.style.transform = ""
         return
+    }
     if(evt.type == "touchstart")
         $("#touches").innerHTML = ""
     var rect = $("#joystick").getBoundingClientRect();
     var touchY = evt.touches[0].clientY
     var touchX = evt.touches[0].clientX
-    var st = ""
     if(touchX - rect.left >= 0 && touchX - rect.left <= rect.width / 4)
-        st += "left; "
+        joystick_direction += "l"
     else if(rect.right - touchX >= 0 && rect.right - touchX <= rect.width / 4)
-        st += "right; "
+        joystick_direction += "r"
     if(touchY - rect.top >= 0 && touchY - rect.top <= rect.height / 4)
-        st += "up; "
+        joystick_direction += "u"
     else if(rect.bottom - touchY >= 0 && rect.bottom - touchY <= rect.height / 4)
-        st += "down; "
-    if(!st)
-        st = "null; "
-    $("#touches").innerHTML += `${evt.type}: ${touchX}x${touchY} @ ${rect.x}:${rect.y} <b>${st}</b><br>`;
+        joystick_direction += "d"
+    switch(st) {
+        case "l":
+            stick.style.transform = "translate(-40px, 0px)";
+            stick.innerHTML = "<";
+            break;
+        case "lu":
+            stick.style.transform = "translate(-40px, -40px) rotate(45deg)";
+            stick.innerHTML = "<";
+            break;
+        case "u":
+            stick.style.transform = "translate(0px, -40px)";
+            stick.innerHTML = "\u039b";
+            break;
+        case "ru":
+            stick.style.transform = "translate(40px, -40px) rotate(-45deg)";
+            stick.innerHTML = ">";
+            break;
+        case "r":
+            stick.style.transform = "translate(40px, 0px)";
+            stick.innerHTML = ">";
+            break;
+        case "rd":
+            stick.style.transform = "translate(40px, 40px) rotate(45deg)";
+            stick.innerHTML = ">";
+            break;
+        case "d":
+            stick.style.transform = "translate(0px, 40px)";
+            stick.innerHTML = "V";
+            break;
+        case "ld":
+            stick.style.transform = "translate(-40px, 40px) rotate(-45deg)";
+            stick.innerHTML = "<";
+            break;
+    }
+    //$("#touches").innerHTML += `${evt.type}: ${touchX}x${touchY} @ ${rect.x}:${rect.y} <b>${st}</b><br>`;
 }
 window.onresize = () => {
     if(window.clientWidth > window.clientHeight) {
@@ -914,7 +956,7 @@ window.onresize = () => {
         $("#joystick").style.float = "none"
         $("#joystick").style.position = "absolute"
     } else {
-        $("#joystick").style.float = "left"
+        $("#joystick").style.float = "right"
         $("#joystick").style.position = "revert"
     }
 }
