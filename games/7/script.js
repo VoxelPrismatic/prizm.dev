@@ -961,7 +961,7 @@ window.onresize = () => {
     }
 }
 onresize()
-$("#joystick").hidden = true
-window.ontouchstart = (evt) => { $("joystick").hidden = false; window.ontouchstart = handle_joystick; handle_joystick(evt) }
+$("#joystick").style.display = "none"
+window.ontouchstart = (evt) => { window.ontouchstart = handle_joystick; handle_joystick(evt); $("joystick").style.display = "" }
 window.ontouchmove = handle_joystick
 window.ontouchend = handle_joystick
