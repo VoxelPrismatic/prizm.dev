@@ -888,7 +888,9 @@ $("#bg").value = "0"
 $("audio").volume = 0
 function handle_joystick(evt) {
     if(evt.type == "touchend")
-        return $("#touches").innerHTML = ""
+        return
+    if(evt.type == "touchstart")
+        $("#touches").innerHTML = ""
     var rect = $("#joystick").getBoundingClientRect();
     var touchY = evt.touches[0].pageY
     var touchX = evt.touches[0].pageX
