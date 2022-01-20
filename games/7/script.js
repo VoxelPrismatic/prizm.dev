@@ -207,7 +207,7 @@ window.onkeydown = (evt, k = "") => {
     if(died == 200) {
         welcome()
     } else {
-        switch(evt.key || k) {
+        switch(k || evt.key) {
             case "ArrowUp":
             case "w":
             case "W":
@@ -962,6 +962,6 @@ window.onresize = () => {
 }
 onresize()
 $("#joystick").style.display = "none"
-window.ontouchstart = (evt) => { window.ontouchstart = handle_joystick; handle_joystick(evt); $("joystick").style.display = "" }
+window.ontouchstart = (evt) => { window.ontouchstart = handle_joystick; handle_joystick(evt); $("#joystick").style.display = "" }
 window.ontouchmove = handle_joystick
 window.ontouchend = handle_joystick
