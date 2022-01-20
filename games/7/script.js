@@ -888,13 +888,14 @@ welcome()
 $("#bg").value = "0"
 $("audio").volume = 0
 var joystick_direction = ""
-window.setInterval(() => {
+window.setInterval(joystick_handler, 150)
+function joystick_handler() { 
     for(var s of joystick_direction)
         window.onkeydown(null, s)
-}, 100)
+}
 function handle_joystick(evt) {
-    joystick_direction = "";
     var stick = $("#stick");
+    joystick_direction = "";
     if(evt.type == "touchend") {
         stick.innerHTML = "~"
         stick.style.transform = ""
@@ -923,8 +924,8 @@ function handle_joystick(evt) {
             stick.innerHTML = "<";
             break;
         case "w":
-            stick.style.transform = "translate(0px, -60px)";
-            stick.innerHTML = "\u039b";
+            stick.style.transform = "translate(0px, -60px) rotate(90deg)";
+            stick.innerHTML = "<";
             break;
         case "dw":
             stick.style.transform = "translate(60px, -60px) rotate(-45deg)";
@@ -939,8 +940,8 @@ function handle_joystick(evt) {
             stick.innerHTML = ">";
             break;
         case "s":
-            stick.style.transform = "translate(0px, 60px)";
-            stick.innerHTML = "V";
+            stick.style.transform = "translate(0px, 60px) rotate(90deg)";
+            stick.innerHTML = ">";
             break;
         case "as":
             stick.style.transform = "translate(-60px, 60px) rotate(-45deg)";
@@ -952,6 +953,7 @@ function handle_joystick(evt) {
     }
     evt.passive = false
     evt.preventDefault();
+    joystick_handler();
 }
 window.onresize = () => {
     if(window.clientWidth > window.clientHeight) {
