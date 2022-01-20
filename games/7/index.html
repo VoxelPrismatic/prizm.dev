@@ -125,6 +125,19 @@
             } #logo:hover {
                 cursor: pointer;
             }
+            
+            #joystick {
+                width: 240px;
+                height: 240px;
+                border: 2px solid #0f8;
+                border-radius: 8px;
+                text-align: center;
+            } #stick {
+                font-size: 72px;
+                font-weight: bold;
+                vertical-align: middle;
+                display: inline-block;
+            }
         </style>
     </head>
     <body>
@@ -135,6 +148,14 @@
             <table id="screen"></table>
             <input type="range" id="bg" onchange="bg_music(this.value)" min="0" max="1" step="0.01" value="0"/>
         </div>
+        <details><summary>Joystick [testing]</summary>
+        <div style="text-align:center;">
+            <div id="joystick">
+                <div id="stick">O</div>
+            </div>
+            <div id="touches"></div>
+        </div>
+        </details>
         <audio loop src="chiptune.mp3" type="audio/mp3" autoplay/>
         <script src="script.js" type="text/javascript"></script>
     </body>
