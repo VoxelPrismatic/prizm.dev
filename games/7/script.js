@@ -886,4 +886,9 @@ welcomed = false
 welcome()
 $("#bg").value = "0"
 $("audio").volume = 0
-
+function handle_joystick(evt) {
+    $("#touches").innerHTML += `${evt.type}: ${evt.touches[0].pageX}x${evt.touches[0].pageY}<br>`;
+}
+$("#touches").ontouchstart = handle_joystick
+$("#touches").ontouchmove = handle_joystick
+$("#touches").ontouchend = handle_joystick
