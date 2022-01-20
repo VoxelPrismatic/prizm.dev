@@ -909,7 +909,7 @@ function handle_joystick(evt) {
 }
 window.onresize = () => {
     if(window.clientWidth > window.clientHeight) {
-        $("#joystick").style.top = ($("#screen").getBoundingClientRect().height / 2 - $("joystick").getBoundingClientRect().height / 2) + "px")
+        $("#joystick").style.top = ($("#screen").getBoundingClientRect().height / 2 - $("joystick").getBoundingClientRect().height / 2) + "px"
         $("#joystick").style.left = $("#screen").getBoundingClientRect().width + 16 + "px"
         $("#joystick").style.float = "none"
         $("#joystick").style.position = "absolute"
