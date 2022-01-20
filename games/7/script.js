@@ -896,7 +896,7 @@ function handle_joystick(evt) {
     joystick_direction = "";
     var stick = $("#stick");
     if(evt.type == "touchend") {
-        stick.innerHTML = "O"
+        stick.innerHTML = "~"
         stick.style.transform = ""
         return
     }
@@ -946,6 +946,9 @@ function handle_joystick(evt) {
             stick.style.transform = "translate(-60px, 60px) rotate(-45deg)";
             stick.innerHTML = "<";
             break;
+        default:
+            stick.style.transform = "";
+            stick.innerHTML = "~";
     }
     evt.passive = false
     evt.preventDefault();
