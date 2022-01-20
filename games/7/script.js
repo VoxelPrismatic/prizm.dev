@@ -892,21 +892,24 @@ function handle_joystick(evt) {
     if(evt.type == "touchstart")
         $("#touches").innerHTML = ""
     var rect = $("#joystick").getBoundingClientRect();
-    var touchY = evt.touches[0].pageY
-    var touchX = evt.touches[0].pageX
+    var touchY = evt.touches[0].clientY
+    var touchX = evt.touches[0].clientX
     var st = ""
-    if(touchX - rect.x >= 0 && touchX - rect.x <= 60)
+    if(touchX - rect.left >= 0 && touchX - rect.left <= rect.width / 4)
         st += "left; "
-    else if(touchX - rect.x >= 180 && touchX - rect.x <= 240)
+    else if(rect.right - touchX >= 0 && rect.right - touchX <= rect.width / 4)
         st += "right; "
-    if(touchY - rect.y >= 0 && touchY - rect.y <= 60)
+    if(touchY - rect.top >= 0 && touchY - rect.top <= rect.height / 4)
         st += "up; "
-    else if(touchY - rect.y >= 180 && touchY - rect.y <= 240)
+    else if(rect.bottom - touchY >= 0 && rect.bottom - touchY <= rect.height / 4)
         st += "down; "
     if(!st)
         st = "null; "
-    $("#touches").innerHTML += `${evt.type}: ${evt.touches[0].pageX}x${evt.touches[0].pageY} <b>${st}</b><br>`;
+    $("#touches").innerHTML += `${evt.type}: ${touchX}x${touchY} @ ${rect.x}:${rect.y} <b>${st}</b><br>`;
 }
 window.ontouchstart = handle_joystick
 window.ontouchmove = handle_joystick
 window.ontouchend = handle_joystick
+//$("#joystick").ontouchstart = handle_joystick
+//$("#joystick").ontouchmove = handle_joystick
+//$("#joystick").ontouchend = handle_joystick
