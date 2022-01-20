@@ -907,9 +907,16 @@ function handle_joystick(evt) {
         st = "null; "
     $("#touches").innerHTML += `${evt.type}: ${touchX}x${touchY} @ ${rect.x}:${rect.y} <b>${st}</b><br>`;
 }
-window.ontouchstart = handle_joystick
-window.ontouchmove = handle_joystick
-window.ontouchend = handle_joystick
-//$("#joystick").ontouchstart = handle_joystick
-//$("#joystick").ontouchmove = handle_joystick
-//$("#joystick").ontouchend = handle_joystick
+window.onresize = () => {
+    if(window.clientWidth > window.clientHeight)
+        $("#screen").after($("#joystick"))
+    else
+        $("#joycontainer").appendChild("#joystick")
+}
+onresize()
+//window.ontouchstart = handle_joystick
+//window.ontouchmove = handle_joystick
+//window.ontouchend = handle_joystick
+$("#joystick").ontouchstart = handle_joystick
+$("#joystick").ontouchmove = handle_joystick
+$("#joystick").ontouchend = handle_joystick
