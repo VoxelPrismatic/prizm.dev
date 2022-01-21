@@ -128,24 +128,34 @@
             } #logo:hover {
                 cursor: pointer;
             }
-            
+
             #joystick {
-                width: 240px;
-                height: 240px;
+                max-width: 240px;
+                max-height: 240px;
+                width: 33vw;
+                height: 33vw;
                 border: 2px solid #0f8;
                 border-radius: 8px;
                 text-align: center;
                 display: inline-block;
-                left: 0px;
-                right: 0px;
-                margin: auto;
-                position: relative;
+                position: absolute;
+                bottom: 16px;
+                right: 16px;
+                user-select: none;
+                transform: scale(0%);
+                transition: transform cubic-bezier(0.75, 0.25, 0.25, 1) 0.25s;
             } #stick {
-                font-size: 72px;
+                font-size: 5vw;
                 font-weight: bold;
                 display: inline-block;
-                top: 84px;
+                top: calc(50% - 2.5vw);
                 position: relative;
+            }
+            @media screen and (max-width: 500px) {
+                body { font-size: 10px; }
+            }
+            @media screen and (max-width: 400px) {
+                body { font-size: 8px; }
             }
         </style>
     </head>
@@ -155,10 +165,10 @@
         </span>
         <div style="margin:auto;left:0px;right:0px;position:relative;width:min-content">
             <table id="screen"></table>
-            <div id="joystick">
-                <div id="stick">O</div>
-            </div>
             <input type="range" id="bg" onchange="bg_music(this.value)" min="0" max="1" step="0.01" value="0"/>
+        </div>
+        <div id="joystick">
+            <div id="stick">O</div>
         </div>
         <audio loop src="chiptune.mp3" type="audio/mp3" autoplay/>
         <script src="script.js" type="text/javascript"></script>

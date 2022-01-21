@@ -253,8 +253,10 @@ window.onkeydown = (evt, k = "") => {
                 return
         }
     }
-    if(evt)
+    if(evt) {
         evt.preventDefault();
+        $("#joystick").style.transform = "scale(0)"
+    }
 }
 
 welcome_t_o = 0;
@@ -889,16 +891,16 @@ $("#bg").value = "0"
 $("audio").volume = 0
 var joystick_direction = ""
 window.setInterval(joystick_handler, 150)
-function joystick_handler() { 
+function joystick_handler() {
     for(var s of joystick_direction)
         window.onkeydown(null, s)
 }
 function handle_joystick(evt) {
     var stick = $("#stick");
-    joystick_direction = "";
     if(evt.type == "touchend") {
-        stick.innerHTML = "~"
-        stick.style.transform = ""
+        stick.innerHTML = "O";
+        stick.style.transform = "";
+        joystick_direction = "";
         return
     }
     var rect = $("#joystick").getBoundingClientRect();
@@ -906,45 +908,47 @@ function handle_joystick(evt) {
     var touchX = evt.touches[0].clientX
     if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0)
         return
-    if(touchX - rect.left >= 0 && touchX - rect.left <= rect.width / 4)
+    joystick_direction = "";
+    var w = Math.round(rect.width / 4);
+    if(touchX - rect.left >= 0 && touchX - rect.left <= w)
         joystick_direction += "a"
-    else if(rect.right - touchX >= 0 && rect.right - touchX <= rect.width / 4)
+    else if(rect.right - touchX >= 0 && rect.right - touchX <= w)
         joystick_direction += "d"
-    if(touchY - rect.top >= 0 && touchY - rect.top <= rect.height / 4)
+    if(touchY - rect.top >= 0 && touchY - rect.top <= w)
         joystick_direction += "w"
-    else if(rect.bottom - touchY >= 0 && rect.bottom - touchY <= rect.height / 4)
+    else if(rect.bottom - touchY >= 0 && rect.bottom - touchY <= w)
         joystick_direction += "s"
     switch(joystick_direction) {
         case "a":
-            stick.style.transform = "translate(-60px, 0px)";
+            stick.style.transform = `translate(-${w}px, 0px)`;
             stick.innerHTML = "<";
             break;
         case "aw":
-            stick.style.transform = "translate(-60px, -60px) rotate(45deg)";
+            stick.style.transform = `translate(-${w}px, -${w}px) rotate(45deg)`;
             stick.innerHTML = "<";
             break;
         case "w":
-            stick.style.transform = "translate(0px, -60px) rotate(90deg)";
+            stick.style.transform = `translate(0px, -${w}px) rotate(90deg)`;
             stick.innerHTML = "<";
             break;
         case "dw":
-            stick.style.transform = "translate(60px, -60px) rotate(-45deg)";
+            stick.style.transform = `translate(${w}px, -${w}px) rotate(-45deg)`;
             stick.innerHTML = ">";
             break;
         case "d":
-            stick.style.transform = "translate(60px, 0px)";
+            stick.style.transform = `translate(${w}px, 0px)`;
             stick.innerHTML = ">";
             break;
         case "ds":
-            stick.style.transform = "translate(60px, 60px) rotate(45deg)";
+            stick.style.transform = `translate(${w}px, ${w}px) rotate(45deg)`;
             stick.innerHTML = ">";
             break;
         case "s":
-            stick.style.transform = "translate(0px, 60px) rotate(90deg)";
+            stick.style.transform = `translate(0px, ${w}px) rotate(90deg)`;
             stick.innerHTML = ">";
             break;
         case "as":
-            stick.style.transform = "translate(-60px, 60px) rotate(-45deg)";
+            stick.style.transform = `translate(-${w}px, ${w}px) rotate(-45deg)`;
             stick.innerHTML = "<";
             break;
         default:
@@ -953,21 +957,9 @@ function handle_joystick(evt) {
     }
     evt.passive = false
     evt.preventDefault();
-    joystick_handler();
+    if(evt.type == "touchstart")
+        joystick_handler();
 }
-window.onresize = () => {
-    if(window.clientWidth > window.clientHeight) {
-        $("#joystick").style.top = ($("#screen").getBoundingClientRect().height / 2 - $("joystick").getBoundingClientRect().height / 2) + "px"
-        $("#joystick").style.left = $("#screen").getBoundingClientRect().width + 16 + "px"
-        $("#joystick").style.float = "none"
-        $("#joystick").style.position = "absolute"
-    } else {
-        $("#joystick").style.float = "right"
-        $("#joystick").style.position = "revert"
-    }
-}
-onresize()
-$("#joystick").style.display = "none"
-window.ontouchstart = (evt) => { window.ontouchstart = handle_joystick; handle_joystick(evt); $("#joystick").style.display = "" }
+window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
 window.ontouchmove = handle_joystick
 window.ontouchend = handle_joystick
