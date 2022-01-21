@@ -985,7 +985,8 @@ function handle_joystick(evt) {
     evt.preventDefault();
     if(evt.type == "touchstart") {
         joystick_handler();
-        joystick_invterval = window.setInterval(joystick_handler, 150)
+        window.clearInterval(joystick_invterval);
+        joystick_invterval = window.setInterval(joystick_handler, 200);
     }
 }
 window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
