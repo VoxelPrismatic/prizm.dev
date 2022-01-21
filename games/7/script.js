@@ -992,3 +992,5 @@ function handle_joystick(evt) {
 window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
 window.ontouchmove = handle_joystick
 window.ontouchend = handle_joystick
+$("#joystick").onclick = (evt) => evt.preventDefault();
+$("#joystick").ondblclick = (evt) => evt.preventDefault();
