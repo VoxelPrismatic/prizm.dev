@@ -889,11 +889,8 @@ welcomed = false
 welcome()
 $("#bg").value = "0"
 $("audio").volume = 0
-var joystick_direction = ""
-0window.setInterval(joystick_handler, 150)
+var joystick_invterval = 0
 function joystick_handler() {
-    if(skip_next_joystick)
-        return skip_next_joystick = false // prevents the double click when the 150ms timer lines up with the click
     for(var s of joystick_direction)
         window.onkeydown(null, s)
 }
@@ -903,6 +900,7 @@ function handle_joystick(evt) {
         stick.innerHTML = "O";
         stick.style.transform = "";
         joystick_direction = "";
+        window.clearInterval(joystick_invterval)
         return
     }
     var rect = $("#joystick").getBoundingClientRect();
@@ -961,7 +959,7 @@ function handle_joystick(evt) {
     evt.preventDefault();
     if(evt.type == "touchstart") {
         joystick_handler();
-        skip_next_joystick = true;
+        joystick_invterval = window.setInterval(joystick_handler, 150)
     }
 }
 window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
