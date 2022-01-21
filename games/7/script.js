@@ -551,6 +551,7 @@ function death_screen() {
     }
 //     console.log(died, "died");
     if(pX > 35 || pY < 5) {
+        transitioning = true;
         pX -= (pX > 35);
         pY += (pY < 5);
         draw_screen();
@@ -570,6 +571,7 @@ function death_screen() {
         draw_screen();
         window.setTimeout(death_screen, 150 - 7 * Math.max(40 - pX - dpX, pY + dpY))
     } else {
+        transitioning = true;
         grid[pY + dpY][pX] = " "
         grid[pY][pX + dpX] = " "
         diX = pX
@@ -608,6 +610,7 @@ You collected ${coins_collected} spark${coins_collected == 1 ? '' : 's'} [~]
 
 ==========] PRESS ANY KEY TO [==========
 =============] PLAY AGAIN [=============`);
+        window.setTimeout(() => transitioning = false, 1000)
     }
 
 }
