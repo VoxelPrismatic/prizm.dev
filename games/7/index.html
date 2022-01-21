@@ -159,6 +159,7 @@
                 bottom: 32px;
                 right: 32px;
                 user-select: none;
+                overflow: scroll;
                 -webkit-user-select: none;
                 -moz-user-select: none;
                 transform: scale(0);
@@ -170,8 +171,10 @@
                 top: calc(50% - 2.5vw);
                 position: relative;
             } #scroller {
-                width: 3000px;
-                height: 3000px;
+                max-width: 245px;
+                max-height: 245px;
+                width: 33.1vw;
+                height: 33.1vw;
                 position: absolute;
                 background-color: #223325;
             }
@@ -197,7 +200,7 @@
             <div style="font-family:Ubuntu;float:right">Consider supporting on <a href="/prizm.dev/re?p=patreon">Patreon</a> or <a href="/prizm.dev/re?p=kofi">Ko-fi</a></div>
         </div>
         <div id="joystick">
-            <div id="scroller"></div>
+            <div id="scroller" onscroll="this.scrollTo(0,0)"></div>
             <div id="stick">O</div>
         </div>
         <audio loop src="chiptune.mp3" type="audio/mp3" autoplay/>
