@@ -935,7 +935,7 @@ function handle_joystick(evt) {
     if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0)
         return
     joystick_direction = "";
-    var w = Math.round(rect.width / 4);
+    var w = Math.round(rect.width / 3);
     if(touchX - rect.left >= 0 && touchX - rect.left <= w)
         joystick_direction += "a"
     else if(rect.right - touchX >= 0 && rect.right - touchX <= w)
