@@ -916,6 +916,7 @@ welcome()
 $("#bg").value = "0"
 $("audio").volume = 0
 var joystick_invterval = 0
+var joystick_timeout = 0
 function joystick_handler() {
     for(var s of joystick_direction)
         window.onkeydown(null, s)
@@ -926,7 +927,8 @@ function handle_joystick(evt) {
         stick.innerHTML = "O";
         stick.style.transform = "";
         joystick_direction = "";
-        window.clearInterval(joystick_invterval)
+        window.clearTimeout(joystick_timeout);
+        window.clearInterval(joystick_invterval);
         return
     }
     var rect = $("#joystick").getBoundingClientRect();
@@ -935,7 +937,7 @@ function handle_joystick(evt) {
     if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0)
         return
     joystick_direction = "";
-    var w = Math.round(rect.width / 3);
+    var w = Math.round(rect.width / 2.5);
     if(touchX - rect.left >= 0 && touchX - rect.left <= w)
         joystick_direction += "a"
     else if(rect.right - touchX >= 0 && rect.right - touchX <= w)
@@ -985,8 +987,13 @@ function handle_joystick(evt) {
     evt.preventDefault();
     if(evt.type == "touchstart") {
         joystick_handler();
+        window.clearTimeout(joystick_timeout);
         window.clearInterval(joystick_invterval);
-        joystick_invterval = window.setInterval(joystick_handler, 150);
+        joystick_timeout = window.setTimeout(() => {
+            if(joystick_direction)
+                joystick_interval = window.setInterval(joystick_handler, 100)
+        }, 200);
+            
     }
 }
 window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
