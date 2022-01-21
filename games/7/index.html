@@ -159,7 +159,9 @@
                 bottom: 32px;
                 right: 32px;
                 user-select: none;
-                transform: scale(0%);
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                transform: scale(0);
                 transition: transform cubic-bezier(0.75, 0.25, 0.25, 1) 0.25s;
             } #stick {
                 font-size: 5vw;
@@ -167,6 +169,9 @@
                 display: inline-block;
                 top: calc(50% - 2.5vw);
                 position: relative;
+            } #scroller {
+                width: 300px;
+                height: 300px;
             }
             @media screen and (max-width: 500px) {
                 body { font-size: 10px; }
@@ -190,6 +195,7 @@
             <div style="font-family:Ubuntu;float:right">Consider supporting on <a href="/prizm.dev/re?p=patreon">Patreon</a> or <a href="/prizm.dev/re?p=kofi">Ko-fi</a></div>
         </div>
         <div id="joystick">
+            <div id="scroller"></div>
             <div id="stick">O</div>
         </div>
         <audio loop src="chiptune.mp3" type="audio/mp3" autoplay/>
