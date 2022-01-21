@@ -892,6 +892,8 @@ $("audio").volume = 0
 var joystick_direction = ""
 window.setInterval(joystick_handler, 150)
 function joystick_handler() {
+    if(skip_next_joystick)
+        return skip_next_joystick = false // prevents the double click when the 150ms timer lines up with the click
     for(var s of joystick_direction)
         window.onkeydown(null, s)
 }
@@ -957,8 +959,10 @@ function handle_joystick(evt) {
     }
     evt.passive = false
     evt.preventDefault();
-    if(evt.type == "touchstart")
+    if(evt.type == "touchstart") {
         joystick_handler();
+        skip_next_joystick = true;
+    }
 }
 window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
 window.ontouchmove = handle_joystick
