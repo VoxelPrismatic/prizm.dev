@@ -34,10 +34,10 @@
                 font-weight: bold;
                 animation: death-anim infinite 0.5s ease-in-out;
             }
-            #death {
+            .troll {
                 font-weight: bold;
-                animation: death-anim infinite 5s ease-in-out;
-                font-family: 'Ubuntu';
+                animation: troll-anim infinite 0.5s ease-in-out;
+                display: inline-block;
             }
             .player {
                 font-weight: bold;
@@ -98,6 +98,13 @@
                 75% { color: #f80; text-shadow: 0px 0px 4px #f0f; }
                 100% { color: #f00; text-shadow: 0px 0px 4px #44f; }
             }
+            @keyframes troll-anim {
+                0% { color: #48f; text-shadow: 0px 0px 4px #f00; }
+                25% { color: #80f; text-shadow: 0px 0px 4px #f08; }
+                50% { color: #88f; text-shadow: 0px 0px 4px #f00; }
+                75% { color: #44f; text-shadow: 0px 0px 4px #0f0; }
+                100% { color: #48f; text-shadow: 0px 0px 4px #f00; }
+            }
             .blank {
                 font-weight: bold;
                 color: #888;
@@ -116,6 +123,14 @@
                 border: 2px solid #0ff;
                 border-radius: 8px;
                 padding: 4px;
+            }
+            #score {
+                line-height: 85%;
+                border: 2px solid #4dd;
+                background-color: #233;
+                border-radius: 8px;
+                padding: 4px;
+                margin: 4px 0px;
             }
 
             span#logo {
@@ -165,6 +180,10 @@
         </span>
         <div style="margin:auto;left:0px;right:0px;position:relative;width:min-content">
             <table id="screen"></table>
+            <div id="score">
+                <span id="coin">~</span> <span id="coin_counter">0</span>
+                <span id="alive" style="float:right">0:00</span>
+            </div>
             <input type="range" id="bg" onchange="bg_music(this.value)" min="0" max="1" step="0.01" value="0"/>
         </div>
         <div id="joystick">

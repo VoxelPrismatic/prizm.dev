@@ -31,7 +31,7 @@ var s2s_offset = 17;
 var on_lvl = 100;
 var sel_lvl = 0;
 var died = 0;
-var start_time = 0;
+var start_time = new Date();
 var transitioning = false;
 var coins_collected = 0;
 var last_direction = 0;
@@ -169,6 +169,18 @@ function draw_screen(do_rows = [], do_cols = []) {
                 case "V":
                     scr.rows[y].cells[x].innerHTML = "<span class='death'>" + s + "</span>";
                     break;
+                case "\u221d":
+                    scr.rows[y].cells[x].innerHTML = "<span class='troll' style='transform:scale(-1,1)'>C</span>";
+                    break;
+                case "\u221c":
+                    scr.rows[y].cells[x].innerHTML = "<span class='troll'>C</span>";
+                    break;
+                case "\u221b":
+                    scr.rows[y].cells[x].innerHTML = "<span class='troll'>U</span>";
+                    break;
+                case "\u221a":
+                    scr.rows[y].cells[x].innerHTML = "<span class='troll' style='transform:scale(1,-1)'>U</span>";
+                    break;
                 case "7":
                 case "7_":
                 case "7/":
@@ -200,6 +212,16 @@ function draw_screen(do_rows = [], do_cols = []) {
 }
 
 draw_screen()
+
+window.setInterval(() => {
+    if(game_paused || died)
+        return
+    var s = Math.floor(Number(new Date() - start_time) / 1000);
+    var m = Math.floor(s / 60);
+    s = s % 60;
+    $("#coin_counter").innerHTML = coins_collected;
+    $("#alive").innerHTML = `${m}:${(s + "").padStart(2, '0')}`;
+}, 1000)
 
 window.onkeydown = (evt, k = "") => {
     if(blocked || transitioning || died && died != 200)
@@ -336,7 +358,7 @@ function welcome(x = 0) {
     on_lvl = 100;
     sel_lvl = 0;
     died = 0;
-    start_time = 0;
+    start_time = new Date();
     transitioning = false;
     coins_collected = 0;
     if(welcomed) {
@@ -350,8 +372,8 @@ function welcome(x = 0) {
     pX = 25
     pY = 0
     wtime(0, 0, `============] WELCOME TO   [============
-A simple, yet endlessly addicting game
 
+A simple, yet endlessly addicting game
 
 
 ]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
@@ -364,7 +386,7 @@ A simple, yet endlessly addicting game
 
 
 
-Don't touch any sharps [<^>&Lambda;V]
+Don't touch any sharps [<>&Lambda;V]
 
 Move around with arrow keys, or WASD
 Pause with [SPACE]
@@ -576,13 +598,10 @@ function death_screen() {
         grid[pY][pX + dpX] = " "
         diX = pX
         diY = pY
-        var s = Math.floor(Number(new Date() - start_time) / 1000);
-        var m = Math.floor(s / 60);
-        s = s % 60;
         died = 200
         wtime(0, 0, `==============] YOU DIED [==============
-You survived for ${m}:${(s + "").padStart(2, '0')}
 
+You survived for ${$("#alive").innerHTML}
 
 
 ]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
@@ -692,16 +711,16 @@ function level_particles(dont, direction) {
     var q = ""
     switch(direction) {
         case 0:
-            q = "\u039b";
+            q = "\u039b\u221a";
             break;
         case 1:
-            q = "V";
+            q = "V\u221b";
             break;
         case 2:
-            q = "<";
+            q = "<\u221c";
             break;
         case 3:
-            q = ">";
+            q = ">\u221d";
             break;
     }
     for(var z = 0; z < Math.floor(Math.random() * 12) + 8; z += 1) {
@@ -716,7 +735,7 @@ function level_particles(dont, direction) {
         var n = Math.floor(Math.random() * st.length)
         while(dont && ((n > 13 && n < 17 && direction > 1) || (n > 18 && n < 22 && direction < 2)))
             n = Math.floor(Math.random() * st.length)
-        st = st.slice(0, n) + q + st.slice(n + 1)
+        st = st.slice(0, n) + (Math.floor(Math.random() * 16) ? q[0] : q[1]) + st.slice(n + 1)
     }
 
     wscroll(st, direction)
@@ -778,29 +797,32 @@ function level_lasers(dont, direction) {
         return
     }
     var k = Math.floor(Math.random() * 6)
+    var t = !Math.floor(Math.random() * 4)
     for(var z = 0; z < 10; z += 1) {
-        window.setTimeout((k, d, z) => {
+        window.setTimeout((k, d, z, t) => {
             if(game_paused)
                 return
+            var s = t ? "\u221b\u221a\u221d\u221c" : "V\u039b><"
+            var s = z % 2 ? s[d] : " "
             switch(d) {
                 case 0:
-                    grid[0][17 + k] = z % 2 ? "V" : " ";
+                    grid[0][17 + k] = s;
                     draw_screen([0], [17 + k]);
                     break;
                 case 1:
-                    grid[grid.length - 1][17 + k] = z % 2 ? "\u039b" : " ";
+                    grid[grid.length - 1][17 + k] = s;
                     draw_screen([grid.length - 1], [17 + k]);
                     break;
                 case 2:
-                    grid[12 + k][0] = z % 2 ? ">" : " ";
+                    grid[12 + k][0] = s;
                     draw_screen([12 + k], [0]);
                     break;
                 case 3:
-                    grid[12 + k][grid[0].length - 1] = z % 2 ? "<" : " ";
+                    grid[12 + k][grid[0].length - 1] = s;
                     draw_screen([12 + k], [grid[0].length - 1]);
                     break;
             }
-        }, 75 * z, k, direction, z);
+        }, 75 * z, k, direction, z, t);
     }
     var q = Math.floor(Math.random() * 12)
     if(q < 6) {
@@ -823,64 +845,65 @@ function level_lasers(dont, direction) {
                 break;
         }
     }
-    window.setTimeout((k, d) => {
+    window.setTimeout((k, d, t) => {
         if(game_paused)
             return
+        var s = t ? "\u221b\u221a\u221d\u221c" : "V\u039b><"
         switch(d) {
             case 0:
                 for(var w = 0; w < 30; w += 1) {
-                    window.setTimeout((w, k) => {
-                        grid[w][17 + k] = "V"
+                    window.setTimeout((w, k, s) => {
+                        grid[w][17 + k] = s
                         draw_screen([w], [17 + k])
-                    }, w * 7, w, k)
-                    window.setTimeout((w, k) => {
-                        if(pX != 17 + k || w < 24)
+                    }, w * 7, w, k, s[d])
+                    window.setTimeout((w, k, t) => {
+                        if(pX != 17 + k || w < 24 || t)
                             grid[w][17 + k] = " "
                         draw_screen([w], [17 + k])
-                    }, (w + 5)* 7, w, k)
+                    }, (w + 5)* 7, w, k, t)
                 }
                 break;
             case 1:
                 for(var w = 0; w < 30; w += 1) {
-                    window.setTimeout((w, k) => {
-                        grid[w][17 + k] = "\u039b"
+                    window.setTimeout((w, k, s) => {
+                        grid[w][17 + k] = s
                         draw_screen([w], [17 + k])
-                    }, w * 7, 30 - w - 1, k)
+                    }, w * 7, 30 - w - 1, k, s[d])
                     window.setTimeout((w, k) => {
-                        if(pX != 17 + k || w > 5)
+                        if(pX != 17 + k || w > 5 || t)
                             grid[w][17 + k] = " "
                         draw_screen([w], [17 + k])
-                    }, (w + 5) * 7, 30 - w - 1, k)
+                    }, (w + 5) * 7, 30 - w - 1, k, t)
                 }
                 break;
             case 2:
                 for(var w = 0; w < 40; w += 1) {
-                    window.setTimeout((w, k) => {
-                        grid[12 + k][w] = ">"
+                    window.setTimeout((w, k, s) => {
+                        grid[12 + k][w] = s
                         draw_screen([12 + k], [w])
-                    }, w * 5, w, k)
+                    }, w * 5, w, k, s[d])
                     window.setTimeout((w, k) => {
-                        if(pY != 12 + k || w < 34)
+                        if(pY != 12 + k || w < 34 || t)
                             grid[12 + k][w] = " "
                         draw_screen([12 + k], [w])
-                    }, (w + 5) * 5,  w, k)
+                    }, (w + 5) * 5,  w, k, t)
                 }
                 break;
             case 3:
                 for(var w = 0; w < 40; w += 1) {
-                    window.setTimeout((w, k) => {
-                        grid[12 + k][w] = "<"
+                    window.setTimeout((w, k, s) => {
+                        grid[12 + k][w] = s
                         draw_screen([12 + k], [w])
-                    }, w * 5, 40 - w - 1, k)
+                    }, w * 5, 40 - w - 1, k, s[d])
                     window.setTimeout((w, k) => {
-                        if(pY != 12 + k || w > 5)
+                        if(pY != 12 + k || w > 5 || t)
                             grid[12 + k][w] = " "
                         draw_screen([12 + k], [w])
-                    }, (w + 5) * 5, 40 - w - 1, k)
+                    }, (w + 5) * 5, 40 - w - 1, k, t)
                 }
                 break;
         }
-    }, 75 * (z + 1), k, direction);
+    }, 75 * (z + 1), k, direction, t);
     on_lvl += 1
     if(!dont) {
         window.setTimeout(level_select, 1075);
