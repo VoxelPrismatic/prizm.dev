@@ -890,7 +890,7 @@ welcome()
 $("#bg").value = "0"
 $("audio").volume = 0
 var joystick_direction = ""
-window.setInterval(joystick_handler, 150)
+0window.setInterval(joystick_handler, 150)
 function joystick_handler() {
     if(skip_next_joystick)
         return skip_next_joystick = false // prevents the double click when the 150ms timer lines up with the click
