@@ -917,7 +917,11 @@ $("#bg").value = "0"
 $("audio").volume = 0
 var joystick_invterval = 0
 var joystick_timeout = 0
-function joystick_handler() {
+var joystick_id = {};
+var joy_id = 0
+function joystick_handler(j_id) {
+    if(j_id != joy_id)
+        return window.clearInterval(joystick_id[j_id])
     for(var s of joystick_direction)
         window.onkeydown(null, s)
 }
@@ -990,9 +994,12 @@ function handle_joystick(evt) {
         window.clearTimeout(joystick_timeout);
         window.clearInterval(joystick_invterval);
         joystick_timeout = window.setTimeout(() => {
-            if(joystick_direction)
-                joystick_interval = window.setInterval(joystick_handler, 100)
-        }, 200);
+            if(joystick_direction) {
+                joy_id = Math.floor(Math.random() * 65535)
+                joystick_interval = window.setInterval(joystick_handler, 100, joy_id)
+                joystick_id[joy_id] = joystick_interval;
+            }
+        }, 350);
             
     }
 }
