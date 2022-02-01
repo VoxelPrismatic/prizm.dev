@@ -197,6 +197,7 @@ function draw_screen(do_rows = [], do_cols = []) {
                 case "ǁ":
                 case "|":
                 case "+":
+                case "—":
                     scr.rows[y].cells[x].innerHTML = "<span class='blank'>" + s + "</span>"
                     break;
                 default:
@@ -383,7 +384,7 @@ A simple, yet endlessly addicting game
             WITH ENDLESS FUN
 ]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
 
-----------] EPILEPSY WARNING [----------
+——————————] EPILEPSY WARNING [——————————
 
 
 
@@ -663,19 +664,19 @@ function level_side_to_side(dont, direction) {
     if(direction >= 2) {
         switch(Math.floor(Math.random() * 20)) {
             case 0:
-                var st = "-----------------------------VV~   \u039b\u039b-----------------------------";
+                var st = "—————————————————————————————VV~   \u039b\u039b—————————————————————————————";
                 break;
             case 1:
-                var st = "-----------------------------VV ~  \u039b\u039b-----------------------------";
+                var st = "—————————————————————————————VV ~  \u039b\u039b—————————————————————————————";
                 break;
             case 2:
-                var st = "-----------------------------VV  ~ \u039b\u039b-----------------------------";
+                var st = "—————————————————————————————VV  ~ \u039b\u039b—————————————————————————————";
                 break;
             case 3:
-                var st = "-----------------------------VV   ~\u039b\u039b-----------------------------";
+                var st = "—————————————————————————————VV   ~\u039b\u039b—————————————————————————————";
                 break;
             default:
-                var st = "-----------------------------VV    \u039b\u039b-----------------------------";
+                var st = "—————————————————————————————VV    \u039b\u039b—————————————————————————————";
         }
     } else {
         switch(Math.floor(Math.random() * 20)) {
@@ -936,14 +937,14 @@ function level_boxed_lasers(dont) {
                     grid[8][10] = "+";
                 } else if(x == 19) {
                     grid[8][30] = "+";
-                    grid[8][29] = "-";
+                    grid[8][29] = "—";
                     grid[22][10] = "+";
-                    grid[22][11] = "-";
+                    grid[22][11] = "—";
                 } else {
                     grid[22 - Math.ceil(x * 14 / 20)][30] = "|";
-                    grid[22][30 - x] = "-";
+                    grid[22][30 - x] = "—";
                     grid[8 + Math.ceil(x * 14 / 20)][10] = "|";
-                    grid[8][10 + x] = "-";
+                    grid[8][10 + x] = "—";
                 }
                 draw_screen()
                 blocked = true
