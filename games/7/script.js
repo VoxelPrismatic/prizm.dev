@@ -964,7 +964,7 @@ function level_boxed_lasers(dont) {
         else if(sel_places[d].includes(k))
             continue
         sel_places[d].push(k)
-        for(var z = 0; z < 10; z += 1) {
+        for(var z = 0; z < 20; z += 1) {
             window.setTimeout((d, k, z, t) => {
                 if(game_paused)
                     return
@@ -1069,7 +1069,7 @@ function level_boxed_lasers(dont) {
     }
     on_lvl += 1
     if(!dont) {
-        window.setTimeout(level_select, 1400);
+        window.setTimeout(level_select, 2150);
         window.setTimeout(() => blocked = false, 250);
     }
 }
