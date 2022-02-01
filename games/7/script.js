@@ -525,7 +525,7 @@ function level_select() {
     if(!died && on_lvl > Math.random() * 60 + 30) {
         reset_allowed();
         sel_lvl = Math.floor(Math.random() * 16)
-        sel_lvl = 15
+//         sel_lvl = 15
         on_lvl = 0;
         changed_level = true;
         transition();
