@@ -654,7 +654,7 @@ You survived for ${$("#alive").innerHTML}
 
         +====] CREDITS TO [====+
         ǁ Game: PRIZ ;]        ǁ
-        ǁ Music: Björken       ǁ
+        ǁ Music: PRIZ ;]       ǁ
         +======================+
 
 
