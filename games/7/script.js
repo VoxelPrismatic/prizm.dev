@@ -548,7 +548,7 @@ function transition(dont = 0, tX = 20, tY = 15, scr = 1) {
 
 
 function level_select() {
-    if(transitioning)
+    if(transitioning || game_paused)
         return
     if(!died && on_lvl > Math.random() * 60 + 30) {
         reset_allowed();
