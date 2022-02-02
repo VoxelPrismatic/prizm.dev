@@ -74,7 +74,8 @@ reset_allowed();
 
 function bg_music(val) {
     music.play();
-    music.volume = val
+    music.volume = Number(val);
+    localStorage.setItem("7_volume", val);
 }
 
 function write(x, y, st) {
@@ -236,15 +237,25 @@ function draw_screen(do_rows = [], do_cols = []) {
 }
 
 draw_screen()
-
+var max_sparks = Number(localStorage.getItem("7_max_sparks") || 0);
+var max_time = Number(localStorage.getItem("7_max_time") || 0);
 window.setInterval(() => {
-    if(game_paused || died)
+    if(game_paused || died || !welcomed)
         return
     var s = Math.floor(Number(new Date() - start_time) / 1000);
     var m = Math.floor(s / 60);
     s = s % 60;
     $("#coin_counter").innerHTML = coins_collected;
     $("#alive").innerHTML = `${m}:${(s + "").padStart(2, '0')}`;
+    if(coins_collected > max_sparks) {
+        max_sparks = coins_collected;
+        localStorage.setItem("7_max_sparks", max_sparks);
+        $("#coin_counter").innerHTML += " [+]";
+    } if(m * 60 + s > max_time) {
+        max_rims = m * 60 + s;
+        localStorage.setItem("7_max_time", max_time);
+        $("#alive").innerHTML += " [+]";
+    }
 }, 1000)
 
 window.onkeydown = (evt, k = "") => {
@@ -1110,8 +1121,8 @@ function level_boxed_lasers(dont) {
 
 welcomed = false
 welcome()
-$("#bg").value = "0"
-$("audio").volume = 0
+$("#bg").value = localStorage.getItem("7_volume") || "0";
+$("audio").volume = Number(localStorage.getItem("7_volume") || 0);
 var joystick_invterval = 0
 var joystick_timeout = 0
 var joystick_id = {};
@@ -1203,5 +1214,6 @@ function handle_joystick(evt) {
 window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
 window.ontouchmove = handle_joystick
 window.ontouchend = handle_joystick
+window.onclick = (evt) => { $("audio").play(); window.onclick = null; }
 $("#joystick").onclick = (evt) => evt.preventDefault();
 $("#joystick").ondblclick = (evt) => evt.preventDefault();
