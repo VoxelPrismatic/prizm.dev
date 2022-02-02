@@ -252,7 +252,7 @@ window.setInterval(() => {
         localStorage.setItem("7_max_sparks", max_sparks);
         $("#coin_counter").innerHTML += " [+]";
     } if(m * 60 + s > max_time) {
-        max_rims = m * 60 + s;
+        max_time = m * 60 + s;
         localStorage.setItem("7_max_time", max_time);
         $("#alive").innerHTML += " [+]";
     }
