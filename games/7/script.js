@@ -2,6 +2,28 @@ function $(q, e = document) { return e.querySelector(q) }
 function $$(q, e = document) { return e.querySelectorAll(q) }
 var scr = $("#screen");
 var music = $("audio");
+music.src = "music/7 - Born.mp3"
+music.onended = () => {
+    var music = $("audio");
+    switch(music.src.split("7%20-%20")[1]) {
+        case "Died.mp3":
+            break;
+        case "Born.mp3":
+        case "Spike.mp3":
+            music.currentTime = 0;
+            music.play();
+            break;
+        default:
+            var ost = [
+                "Spark.mp3",
+                "Alive.mp3"
+            ];
+            music.src = "music/7 - " + ost[Math.floor(Math.random() * ost.length)]
+            music.currentTime = 0;
+            music.play();
+            break;
+    }
+}
 
 var grid = []
 var st = ""
@@ -364,8 +386,8 @@ function welcome(x = 0) {
     transitioning = false;
     coins_collected = 0;
     if(welcomed) {
-        music.src = "chiptune.mp3"
-        music.currentTime = 0
+        music.src = "hi.mp3"
+        music.onended();
         start_time = new Date();
         level_select();
         block_space = false;
@@ -411,7 +433,8 @@ Collect sparks [~] they're cute
             level_select();
             start_time = new Date();
             welcomed = true
-            music.src = "chiptune.mp3"
+            music.src = "hi.mp3"
+            music.onended();
             music.currentTime = 0
             block_space = false;
         }
@@ -421,6 +444,8 @@ Collect sparks [~] they're cute
 function pause_screen(x = 0) {
     block_space = true
     if(!transitioning) {
+        music.src = "music/7 - Spike.mp3";
+        music.currentTime = 0;
         transitioning = true
         died = 100
         if(game_paused) {
@@ -497,7 +522,9 @@ function pause_screen(x = 0) {
         }
         window.setTimeout(() => {
             start_time += Number(new Date())
-            level_select()
+            level_select();
+            music.src = "hi.mp3";
+            music.onended();
             block_space = false;
         }, 25 * (x + 5))
     }
@@ -569,9 +596,11 @@ function level_select() {
 function death_screen() {
     block_space = true
     if(died == 1) {
+        music.src = "music/7 - Died.mp3";
+        music.currentTime = 0;
         transitioning = true;
-        dpY = 0
-        dpX = 0
+        dpY = 0;
+        dpX = 0;
         for(var x = 0; x < 25; x += 1) {
             window.setTimeout((n) => {
                 $(".player").innerHTML = n ? "*%X#;/"[Math.floor(Math.random() * 6)] : grid[pY][pX];
@@ -582,12 +611,14 @@ function death_screen() {
     }
 //     console.log(died, "died");
     if(pX > 35 || pY < 5) {
+        music.src = "music/7 - Died.mp3";
         transitioning = true;
         pX -= (pX > 35);
         pY += (pY < 5);
         draw_screen();
         window.setTimeout(death_screen, 25)
     } else if( (pX + dpX < 39) || (pY + dpY) ) {
+        music.src = "music/7 - Died.mp3";
         died = 100
         grid[pY + dpY][pX] = " "
         grid[pY][pX + dpX] = " "
@@ -602,6 +633,8 @@ function death_screen() {
         draw_screen();
         window.setTimeout(death_screen, 150 - 7 * Math.max(40 - pX - dpX, pY + dpY))
     } else {
+        music.src = "music/7 - Spike.mp3";
+        music.currentTime = 0;
         transitioning = true;
         grid[pY + dpY][pX] = " "
         grid[pY][pX + dpX] = " "
