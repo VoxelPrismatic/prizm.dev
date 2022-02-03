@@ -223,6 +223,9 @@ function draw_screen(do_rows = [], do_cols = []) {
                 case "V":
                     scr.rows[y].cells[x].innerHTML = "<span class='death'>" + s + "</span>";
                     break;
+                case "SX":
+                    scr.rows[y].cells[x].innerHTML = "<span class='death'>X</span>";
+                    break;
                 case "\u221d":
                     scr.rows[y].cells[x].innerHTML = "<span class='troll' style='transform:scale(-1,1)'>C</span>";
                     break;
@@ -234,6 +237,9 @@ function draw_screen(do_rows = [], do_cols = []) {
                     break;
                 case "\u221a":
                     scr.rows[y].cells[x].innerHTML = "<span class='troll' style='transform:scale(1,-1)'>U</span>";
+                    break;
+                case "CX":
+                    scr.rows[y].cells[x].innerHTML = "<span class='troll'>O</span>";
                     break;
                 case "7":
                 case "7_":
@@ -589,8 +595,8 @@ function level_select() {
         return
     if(!died && on_lvl > Math.random() * 60 + 30) {
         reset_allowed();
-        sel_lvl = Math.floor(Math.random() * 16)
-//         sel_lvl = 15
+        sel_lvl = Math.floor(Math.random() * 20)
+//          sel_lvl = 19
         on_lvl = 0;
         changed_level = true;
         transition();
@@ -621,6 +627,12 @@ function level_select() {
         case 14:
         case 15:
             level_boxed_lasers(0);
+            break;
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+            level_ball(0);
             break;
         default:
             pX = diX
@@ -885,8 +897,7 @@ function level_lasers(dont, direction) {
             window.setTimeout((k, d, z, t) => {
                 if(game_paused)
                     return
-                var s = t ? "\u221b\u221a\u221d\u221c" : "V\u039b><"
-                var s = z % 2 ? s[d] : " "
+                var s = z % 2 ? (t ? "\u221b\u221a\u221d\u221c"[d] : "V\u039b><"[d]) : " "
                 switch(d) {
                     case 0:
                         grid[0][17 + k] = s;
@@ -940,8 +951,9 @@ function level_lasers(dont, direction) {
                             draw_screen([w], [17 + k])
                         }, w * 7, w, k, s[d])
                         window.setTimeout((w, k, t) => {
-                            if(pX != 17 + k || w < 24 || t)
-                                grid[w][17 + k] = " "
+                            if(!(pX != 17 + k || w < 24 || t))
+                                return
+                            grid[w][17 + k] = " "
                             draw_screen([w], [17 + k])
                         }, (w + 5)* 7, w, k, t)
                     }
@@ -953,8 +965,9 @@ function level_lasers(dont, direction) {
                             draw_screen([w], [17 + k])
                         }, w * 7, grid.length - w - 1, k, s[d])
                         window.setTimeout((w, k, t) => {
-                            if(pX != 17 + k || w > 5 || t)
-                                grid[w][17 + k] = " "
+                            if(!(pX != 17 + k || w > 5 || t))
+                                return
+                            grid[w][17 + k] = " "
                             draw_screen([w], [17 + k])
                         }, (w + 5) * 7, grid.length - w - 1, k, t)
                     }
@@ -966,8 +979,9 @@ function level_lasers(dont, direction) {
                             draw_screen([12 + k], [w])
                         }, w * 5, w, k, s[d])
                         window.setTimeout((w, k, t) => {
-                            if(pY != 12 + k || w < 34 || t)
-                                grid[12 + k][w] = " "
+                            if(!(pY != 12 + k || w < 34 || t))
+                                return
+                            grid[12 + k][w] = " "
                             draw_screen([12 + k], [w])
                         }, (w + 5) * 5, w, k, t)
                     }
@@ -1023,7 +1037,8 @@ function level_boxed_lasers(dont) {
         return window.setTimeout(level_select, 25 * (x + 1))
     }
     var sel_places = {}
-    for(var tx = 0; tx < Math.random() * 5 + 1; tx += 1) {
+    var tm = Math.ceil((Number(new Date()) - start_time) / 300000);
+    for(var tx = 0; tx < Math.random() * 5 + tm; tx += 1) {
         var d = Math.floor(Math.random() * 4)
 //         alert(d)
         var k = Math.floor(Math.random() * (d > 1 ? 11 : 18))
@@ -1037,8 +1052,7 @@ function level_boxed_lasers(dont) {
             window.setTimeout((d, k, z, t) => {
                 if(game_paused)
                     return
-                var s = t ? "\u221b\u221a\u221d\u221c" : "V\u039b><"
-                var s = z % 2 ? s[d] : " "
+                var s = z % 2 ? (t ? "\u221b\u221a\u221d\u221c"[d] : "V\u039b><"[d]) : " "
                 switch(d) {
                     case 0:
                         grid[7][11 + k] = s;
@@ -1076,8 +1090,9 @@ function level_boxed_lasers(dont) {
                             draw_screen([w], [11 + k])
                         }, w * 15, w + 9, k, s[d])
                         window.setTimeout((w, k, t) => {
-                            if(pX != 11 + k || pY > w + 2 || t)
-                                grid[w][11 + k] = " "
+                            if(!(pX != 11 + k || pY > w + 2 || t))
+                                return
+                            grid[w][11 + k] = " "
                             draw_screen([w], [11 + k])
                         }, (w + 5) * 15, w + 9, k, t)
                     }
@@ -1092,8 +1107,9 @@ function level_boxed_lasers(dont) {
                             draw_screen([w], [11 + k])
                         }, w * 15, grid.length - w - 9, k, s[d])
                         window.setTimeout((w, k, t) => {
-                            if(pX != 11 + k || pY < w - 2 || t)
-                                grid[w][11 + k] = " "
+                            if(!(pX != 11 + k || pY < w - 2 || t))
+                                return
+                            grid[w][11 + k] = " "
                             draw_screen([w], [11 + k])
                         }, (w + 5) * 15, grid.length - w - 9, k, t)
                     }
@@ -1108,8 +1124,9 @@ function level_boxed_lasers(dont) {
                             draw_screen([11 + k], [w])
                         }, w * 12, w + 11, k, s[d])
                         window.setTimeout((w, k, t) => {
-                            if(pY != 11 + k || pX > w + 2 || t)
-                                grid[11 + k][w] = " "
+                            if(!(pY != 11 + k || pX > w + 2 || t))
+                                return
+                            grid[11 + k][w] = " "
                             draw_screen([11 + k], [w])
                         }, (w + 5) * 12, w + 11, k, t)
                     }
@@ -1124,8 +1141,9 @@ function level_boxed_lasers(dont) {
                             draw_screen([11 + k], [w])
                         }, w * 12, grid[0].length - w - 11, k, s[d])
                         window.setTimeout((w, k, t) => {
-                            if(pY != 11 + k || pX < w - 2 || t)
-                                grid[11 + k][w] = " "
+                            if(!(pY != 11 + k || pX < w - 2 || t))
+                                return
+                            grid[11 + k][w] = " "
                             draw_screen([11 + k], [w])
                         }, (w + 5) * 12, grid[0].length - w - 11, k, t)
                     }
@@ -1135,6 +1153,124 @@ function level_boxed_lasers(dont) {
                     break;
             }
         }, 75 * (z + 1), k, d, t);
+    }
+    on_lvl += 1
+    if(!dont) {
+        window.setTimeout(level_select, 2150);
+        window.setTimeout(() => blocked = false, 250);
+    }
+}
+
+function level_ball(dont) {
+    if(changed_level) {
+        changed_level = false;
+        for(var x = 0; x < 20; x += 1) {
+            window.setTimeout((x) => {
+                if(x == 0) {
+                    grid[22][30] = "+";
+                    grid[8][10] = "+";
+                } else if(x == 19) {
+                    grid[8][30] = "+";
+                    grid[8][29] = "—";
+                    grid[22][10] = "+";
+                    grid[22][11] = "—";
+                } else {
+                    grid[22 - Math.ceil(x * 14 / 20)][30] = "|";
+                    grid[22][30 - x] = "—";
+                    grid[8 + Math.ceil(x * 14 / 20)][10] = "|";
+                    grid[8][10 + x] = "—";
+                }
+                draw_screen()
+                blocked = true
+            }, 25 * x, x);
+        }
+        allowedX = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
+        allowedY = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+        return window.setTimeout(level_select, 25 * (x + 1))
+    }
+    var sel_places = {}
+    var tm = Math.ceil((Number(new Date()) - start_time) / 300000);
+    for(var tx = 0; tx < Math.random() * 2 + tm; tx += 1) {
+        var kx = Math.floor(Math.random() * 18) + 11;
+        var ky = Math.floor(Math.random() * 12) + 9;
+        while(kx == pX && ky == pY) {
+            kx = Math.floor(Math.random() * 18) + 11;
+            ky = Math.floor(Math.random() * 12) + 9;
+        }
+        var t = !Math.floor(Math.random() * 2)
+        if(!sel_places[kx])
+            sel_places[kx] = [ky]
+        else if(sel_places[kx].includes(ky))
+            continue
+        sel_places[kx].push(ky)
+        for(var z = 0; z < 20; z += 1) {
+            window.setTimeout((kx, ky, z, t) => {
+                if(game_paused)
+                    return
+                grid[ky][kx] = z % 2 ? (t ? "CX" : "SX") : " ";
+                draw_screen([ky], [kx])
+            }, 75 * z, kx, ky, z, t);
+        }
+        var q = Math.floor(Math.random() * 18)
+        if(q < 4) {
+            grid[Math.floor(Math.random() * 12) + 9][Math.floor(Math.random() * 18) + 11] = "~"
+        }
+        draw_screen()
+        window.setTimeout((kx, ky, t) => {
+            if(game_paused)
+                return
+            var s = t ? "\u221b\u221a\u221d\u221c" : "V\u039b><"
+            for(var z = 0; z < 30 - kx; z += 1) {
+                window.setTimeout((z, kx, ky, s) => {
+                    grid[ky][kx + z] = s;
+//                     console.warn(ky, kx + z)
+                    draw_screen([ky], [kx + z]);
+                }, z * 100 / (30 - kx), z, kx, ky, s[2]);
+                window.setTimeout((z, kx, ky, t) => {
+                    if(!(pY != ky || pX > kx + z + 2 || t))
+                        return
+                    grid[ky][kx + z] = " ";
+                    draw_screen([ky], [kx + z]);
+                }, (z + 5) * 100 / (30 - kx), z, kx, ky, t);
+            }
+            for(var z = 0; z < kx - 10; z += 1) {
+                window.setTimeout((z, kx, ky, s) => {
+                    grid[ky][kx - z] = s;
+//                     console.log(ky, kx - z)
+                    draw_screen([ky], [kx - z]);
+                }, z * 100 / (kx - 10), z, kx, ky, s[3]);
+                window.setTimeout((z, kx, ky, t) => {
+                    if(!(pY != ky || pX < kx - z - 2 || t))
+                        return
+                    grid[ky][kx - z] = " ";
+                    draw_screen([ky], [kx - z]);
+                }, (z + 5) * 100 / (kx - 10), z, kx, ky, t);
+            }
+            for(var z = 0; z < ky - 8; z += 1) {
+                window.setTimeout((z, kx, ky, s) => {
+                    grid[ky - z][kx] = s;
+                    draw_screen([ky - z], [kx]);
+                }, z * 100 / (ky - 8), z, kx, ky, s[1]);
+                window.setTimeout((z, kx, ky, t) => {
+                    if(!(pX != kx || pY > ky - z + 2|| t))
+                        return
+                    grid[ky - z][kx] = " ";
+                    draw_screen([ky - z], [kx]);
+                }, (z + 5) * 100 / (ky - 8), z, kx, ky, t);
+            }
+            for(var z = 0; z < 22 - ky; z += 1) {
+                window.setTimeout((z, kx, ky, s) => {
+                    grid[ky + z][kx] = s;
+                    draw_screen([ky + z], [kx]);
+                }, z * 100 / (22 - ky), z, kx, ky, s[0]);
+                window.setTimeout((z, kx, ky, t) => {
+                    if(!(pX != kx || pY < ky + z - 2 || t))
+                        return
+                    grid[ky + z][kx] = " ";
+                    draw_screen([ky + z], [kx]);
+                }, (z + 5) * 100 / (22 - ky), z, kx, ky, t);
+            }
+        }, 75 * (z + 1), kx, ky, t);
     }
     on_lvl += 1
     if(!dont) {
