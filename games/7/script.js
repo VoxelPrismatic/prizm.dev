@@ -180,7 +180,13 @@ function draw_screen(do_rows = [], do_cols = []) {
     if(died != 100 && died != 200)
         grid2[pY][pX] = "7"
     if(grid[pY][pX] == "~") {
-        coins_collected += 1
+        coins_collected += 1;
+        $("#coin_counter").innerHTML = coins_collected;
+        if(coins_collected > max_sparks) {
+            max_sparks = coins_collected;
+            localStorage.setItem("7_max_sparks", max_sparks);
+            $("#coin_counter").innerHTML += " [+]";
+        }
         grid[pY][pX] = " "
     }
 //     console.log(grid2, pX, pY)
@@ -270,13 +276,8 @@ window.setInterval(() => {
     var s = Math.floor(Number(new Date() - start_time) / 1000);
     var m = Math.floor(s / 60);
     s = s % 60;
-    $("#coin_counter").innerHTML = coins_collected;
     $("#alive").innerHTML = `${m}:${(s + "").padStart(2, '0')}`;
-    if(coins_collected > max_sparks) {
-        max_sparks = coins_collected;
-        localStorage.setItem("7_max_sparks", max_sparks);
-        $("#coin_counter").innerHTML += " [+]";
-    } if(m * 60 + s > max_time) {
+    if(m * 60 + s > max_time) {
         max_time = m * 60 + s;
         localStorage.setItem("7_max_time", max_time);
         $("#alive").innerHTML += " [+]";
@@ -480,7 +481,7 @@ Collect sparks [~] they're cute
 function pause_screen(x = 0) {
     block_space = true
     if(!transitioning) {
-        music.src = "music/7 - Spike.mp3";
+        music.src = "music/7 - Spike" + music_fmt;
         music.currentTime = 0;
         transitioning = true
         died = 100
@@ -632,7 +633,7 @@ function level_select() {
 function death_screen() {
     block_space = true
     if(died == 1) {
-        music.src = "music/7 - Died.mp3";
+        music.src = "music/7 - Died" + music_fmt;
         music.currentTime = 0;
         transitioning = true;
         dpY = 0;
@@ -647,14 +648,12 @@ function death_screen() {
     }
 //     console.log(died, "died");
     if(pX > 35 || pY < 5) {
-        music.src = "music/7 - Died.mp3";
         transitioning = true;
         pX -= (pX > 35);
         pY += (pY < 5);
         draw_screen();
         window.setTimeout(death_screen, 25)
     } else if( (pX + dpX < 39) || (pY + dpY) ) {
-        music.src = "music/7 - Died.mp3";
         died = 100
         grid[pY + dpY][pX] = " "
         grid[pY][pX + dpX] = " "
@@ -669,7 +668,7 @@ function death_screen() {
         draw_screen();
         window.setTimeout(death_screen, 150 - 7 * Math.max(40 - pX - dpX, pY + dpY))
     } else {
-        music.src = "music/7 - Spike.mp3";
+        music.src = "music/7 - Spike" + music_fmt;
         music.currentTime = 0;
         transitioning = true;
         grid[pY + dpY][pX] = " "
