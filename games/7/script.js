@@ -14,6 +14,9 @@ music.onerror = (evt) => {
     }
     evt.target.onerror = null
 }
+music.onplay = (evt) => {
+    evt.target.onerror = null
+}
 if(music.canPlayType("audio/ogg;codecs=vorbis")) {
     music_fmt = ".ogg"
     for(var file of files)
