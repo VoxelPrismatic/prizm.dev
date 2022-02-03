@@ -2,21 +2,43 @@ function $(q, e = document) { return e.querySelector(q) }
 function $$(q, e = document) { return e.querySelectorAll(q) }
 var scr = $("#screen");
 var music = $("audio");
-music.src = "music/7 - Born.mp3"
+var music_fmt = ".mp3"
+var files = [
+    "Born", "Died", "Spike", "Spark", "Alive", "Struggle", "Survived"
+]
+music.onerror = (evt) => {
+    if(evt.target.src.endsWith(".ogg")) {
+        music_fmt = ".mp3"
+        for(var file of files)
+            fetch("music/7 - " + file + ".ogg")
+    }
+    evt.target.onerror = null
+}
+if(music.canPlayType("audio/ogg;codecs=vorbis")) {
+    music_fmt = ".ogg"
+    for(var file of files)
+        fetch("music/7 - " + file + ".ogg")
+}
+music.src = "music/7 - Born" + music_fmt
 music.onended = () => {
     var music = $("audio");
     switch(music.src.split("7%20-%20")[1]) {
         case "Died.mp3":
+        case "Died.ogg":
             break;
         case "Born.mp3":
+        case "Born.ogg":
         case "Spike.mp3":
+        case "Spike.ogg":
             music.currentTime = 0;
             music.play();
             break;
         default:
             var ost = [
-                "Spark.mp3",
-                "Alive.mp3"
+                "Spark" + music_fmt,
+                "Alive" + music_fmt,
+                "Struggle" + music_fmt,
+                "Survived" + music_fmt
             ];
             music.src = "music/7 - " + ost[Math.floor(Math.random() * ost.length)]
             music.currentTime = 0;
