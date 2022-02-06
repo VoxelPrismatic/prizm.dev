@@ -4,15 +4,15 @@ var scr = $("#screen");
 var music = $("audio");
 var music_fmt = ".mp3"
 var files = [
-    "Born", "Died", "Spike", "Spark", "Alive", "Struggle", "Survived"
+    "Born", "Died", "Spike", "Spark", "Alive", "Struggle", "Survived", "Retro"
 ]
 music.onerror = (evt) => {
     if(evt.target.src.endsWith(".ogg")) {
         music_fmt = ".mp3"
         for(var file of files)
             fetch("music/7 - " + file + ".ogg")
+        evt.target.onerror = null
     }
-    evt.target.onerror = null
 }
 music.onplay = (evt) => {
     evt.target.onerror = null
@@ -41,7 +41,8 @@ music.onended = () => {
                 "Spark" + music_fmt,
                 "Alive" + music_fmt,
                 "Struggle" + music_fmt,
-                "Survived" + music_fmt
+                "Survived" + music_fmt,
+                "Retro" + music_fmt
             ];
             music.src = "music/7 - " + ost[Math.floor(Math.random() * ost.length)]
             music.currentTime = 0;
