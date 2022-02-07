@@ -700,10 +700,10 @@ You survived for ${$("#alive").innerHTML}
             YOUR ENDLESS FUN
 ]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
 
-        +====] CREDITS TO [====+
-        ǁ Game: PRIZ ;]        ǁ
-        ǁ Music: PRIZ ;]       ǁ
-        +======================+
+      +======] CREDITS TO [======+
+      ǁ Game: PRIZ ;]            ǁ
+      ǁ Music: PRIZ ;] & Björken ǁ
+      +==========================+
 
 
 
@@ -1093,7 +1093,7 @@ function level_boxed_lasers(dont) {
                         }, w * 15, w + 9, k, s[d])
                         window.setTimeout((w, k, t) => {
                             if(!(pX != 11 + k || pY > w + 2 || t))
-                                return
+                                return died = 1
                             grid[w][11 + k] = " "
                             draw_screen([w], [11 + k])
                         }, (w + 5) * 15, w + 9, k, t)
@@ -1110,7 +1110,7 @@ function level_boxed_lasers(dont) {
                         }, w * 15, grid.length - w - 9, k, s[d])
                         window.setTimeout((w, k, t) => {
                             if(!(pX != 11 + k || pY < w - 2 || t))
-                                return
+                                return died = 1
                             grid[w][11 + k] = " "
                             draw_screen([w], [11 + k])
                         }, (w + 5) * 15, grid.length - w - 9, k, t)
@@ -1127,7 +1127,7 @@ function level_boxed_lasers(dont) {
                         }, w * 12, w + 11, k, s[d])
                         window.setTimeout((w, k, t) => {
                             if(!(pY != 11 + k || pX > w + 2 || t))
-                                return
+                                return died = 1
                             grid[11 + k][w] = " "
                             draw_screen([11 + k], [w])
                         }, (w + 5) * 12, w + 11, k, t)
@@ -1230,7 +1230,7 @@ function level_ball(dont) {
                 }, z * 100 / (30 - kx), z, kx, ky, s[2]);
                 window.setTimeout((z, kx, ky, t) => {
                     if(!(pY != ky || pX > kx + z + 2 || t))
-                        return
+                        return died = 1
                     grid[ky][kx + z] = " ";
                     draw_screen([ky], [kx + z]);
                 }, (z + 5) * 100 / (30 - kx), z, kx, ky, t);
@@ -1243,7 +1243,7 @@ function level_ball(dont) {
                 }, z * 100 / (kx - 10), z, kx, ky, s[3]);
                 window.setTimeout((z, kx, ky, t) => {
                     if(!(pY != ky || pX < kx - z - 2 || t))
-                        return
+                        return died = 1
                     grid[ky][kx - z] = " ";
                     draw_screen([ky], [kx - z]);
                 }, (z + 5) * 100 / (kx - 10), z, kx, ky, t);
@@ -1255,7 +1255,7 @@ function level_ball(dont) {
                 }, z * 100 / (ky - 8), z, kx, ky, s[1]);
                 window.setTimeout((z, kx, ky, t) => {
                     if(!(pX != kx || pY > ky - z + 2|| t))
-                        return
+                        return died = 1
                     grid[ky - z][kx] = " ";
                     draw_screen([ky - z], [kx]);
                 }, (z + 5) * 100 / (ky - 8), z, kx, ky, t);
@@ -1267,7 +1267,7 @@ function level_ball(dont) {
                 }, z * 100 / (22 - ky), z, kx, ky, s[0]);
                 window.setTimeout((z, kx, ky, t) => {
                     if(!(pX != kx || pY < ky + z - 2 || t))
-                        return
+                        return died = 1
                     grid[ky + z][kx] = " ";
                     draw_screen([ky + z], [kx]);
                 }, (z + 5) * 100 / (22 - ky), z, kx, ky, t);
