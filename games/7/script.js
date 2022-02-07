@@ -821,7 +821,8 @@ function level_particles(dont, direction) {
         var n = Math.floor(Math.random() * st.length)
         st = st.slice(0, n) + "~" + st.slice(n + 1)
     }
-    for(var z = 0; z < Math.floor(Math.random() * 4) + 3; z += 1) {
+    var tm = Math.ceil((Number(new Date()) - start_time) / 60000) + 4;
+    for(var z = 0; z < Math.floor(Math.random() * tm) + 3; z += 1) {
         var n = Math.floor(Math.random() * st.length)
         while(dont && ((n > 13 && n < 17 && direction > 1) || (n > 18 && n < 22 && direction < 2)))
             n = Math.floor(Math.random() * st.length)
