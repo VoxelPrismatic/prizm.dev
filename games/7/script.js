@@ -702,7 +702,7 @@ You survived for ${$("#alive").innerHTML}
 
       +======] CREDITS TO [======+
       ǁ Game: PRIZ ;]            ǁ
-      ǁ Music: PRIZ ;] & Björken ǁ
+      ǁ Music: PRIZ ;] &amp; Björken ǁ
       +==========================+
 
 
