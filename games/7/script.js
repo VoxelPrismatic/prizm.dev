@@ -1282,8 +1282,8 @@ function level_ball(dont) {
 
 welcomed = false
 welcome()
-$("#bg").value = localStorage.getItem("7_volume") || "0";
-$("audio").volume = Number(localStorage.getItem("7_volume") || 0);
+$("#bg").value = localStorage.getItem("7_volume") || "0.2";
+$("audio").volume = Number(localStorage.getItem("7_volume") || 0.2);
 var joystick_invterval = 0
 var joystick_timeout = 0
 var joystick_id = {};
