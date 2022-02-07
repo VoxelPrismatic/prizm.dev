@@ -463,7 +463,7 @@ Collect sparks [~] they're cute
 
 
 
-*game still in dev
+Adjust the slider for the epic BG music
 
 
 
