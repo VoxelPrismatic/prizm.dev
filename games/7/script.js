@@ -166,9 +166,13 @@ function wscroll(st, d = 0) {
 function wtime(x, y, st) {
     if(!st)
         return
-    [x, y] = write(x, y, st.split("\n")[0] + "\n")
-    draw_screen()
-    window.setTimeout((x, y, st) => wtime(x, y, st), st.split("\n")[0] ? 25 : 0, x, y, st.split("\n").slice(1).join("\n"))
+    if(st.split("\n")[0]) {
+        [x, y] = write(x, y, st.split("\n")[0] + "\n")
+        draw_screen([y - 1])
+    } else {
+        y += 1
+    }
+    window.setTimeout((x, y, st) => wtime(x, y, st), st.split("\n")[0].trim() ? 25 : 0, x, y, st.split("\n").slice(1).join("\n"))
 }
 
 function draw_screen(do_rows = [], do_cols = []) {
@@ -295,36 +299,53 @@ window.onkeydown = (evt, k = "") => {
     if(blocked || transitioning || died && died != 200)
         return;
     if(died == 200) {
-        welcome()
+        if(evt.key == " " || evt.key == "Enter")
+            welcome()
+        else
+            return
     } else {
+        player_grid = [[Math.max(0, pY - 1), pY, Math.max(grid.length, pY + 1)], [Math.max(0, pX - 1), pX, Math.max(grid[0].length, pX + 1)]]
         switch(k || evt.key) {
             case "ArrowUp":
             case "w":
             case "W":
-                if(allowedY.includes(pY - 1))
+                if(allowedY.includes(pY - 1)) {
+                    draw_screen(...player_grid)
                     pY -= 1;
-                draw_screen();
+                    $(".player").style.top = -$(".player").getBoundingClientRect().height + "px";
+                    window.setTimeout(draw_screen, 100, [pY], [pX])
+                }
                 break;
             case "ArrowDown":
             case "s":
             case "S":
-                if(allowedY.includes(pY + 1))
+                if(allowedY.includes(pY + 1)) {
+                    draw_screen(...player_grid)
                     pY += 1;
-                draw_screen();
+                    $(".player").style.top = $(".player").getBoundingClientRect().height + "px";
+                    window.setTimeout(draw_screen, 100)
+                }
                 break;
             case "ArrowLeft":
             case "a":
             case "A":
-                if(allowedX.includes(pX - 1))
+                if(allowedX.includes(pX - 1)) {
+                    draw_screen(...player_grid)
                     pX -= 1;
-                draw_screen();
+                    $(".player").style.left = -$(".player").getBoundingClientRect().width + "px";
+                    window.setTimeout(draw_screen, 100)
+                }
                 break;
             case "ArrowRight":
             case "d":
             case "D":
-                if(allowedX.includes(pX + 1))
+                if(allowedX.includes(pX + 1)) {
+                    draw_screen(...player_grid)
                     pX += 1;
-                draw_screen();
+                    $(".player").style.left = $(".player").getBoundingClientRect().width + "px";
+                    window.setTimeout(draw_screen, 100)
+                }
+                break;
                 break;
             case " ":
                 if(!block_space) {
@@ -334,6 +355,12 @@ window.onkeydown = (evt, k = "") => {
                 }
                 break;
             case "Enter":
+                if(game_paused && !block_space) {
+                    game_paused = !game_paused
+                    pause_screen();
+                    block_space = true
+                    return
+                }
                 if(welcomed)
                     return
                 pX = 16
@@ -463,9 +490,9 @@ Collect sparks [~] they're cute
 
 
 
-Adjust the slider for the epic BG music
+Adjust the slider for the epic BG music!
 
-
+————————————] STILL IN DE&#x56; [————————————
 
 ===========] GO AND COLLECT [===========
 ==========] YOUR FIRST SPARK [==========
@@ -714,10 +741,10 @@ You collected ${coins_collected} spark${coins_collected == 1 ? '' : 's'} [~]
 
 
 
+DM me @&#x56;oxelPrismatic on Twitter for any
+suggestions
 
-
-
-==========] PRESS ANY KEY TO [==========
+===========] PRESS SPACE TO [===========
 =============] PLAY AGAIN [=============`);
         window.setTimeout(() => transitioning = false, 1000)
     }
@@ -887,6 +914,24 @@ function level_lasers(dont, direction) {
         }, 25 * x, direction);
         return
     }
+    switch(direction) {
+        case 0:
+            for(var aX of [17, 18, 19, 20, 21, 22])
+                grid[0][aX] = " "
+            break;
+        case 1:
+            for(var aX of [17, 18, 19, 20, 21, 22])
+                grid[29][aX] = " "
+            break;
+        case 2:
+            for(var aY of [12, 13, 14, 15, 16, 17])
+                grid[aY][0] = " "
+            break;
+        case 3:
+            for(var aY of [12, 13, 14, 15, 16, 17])
+                grid[aY][29] = " "
+            break;
+    }
     var tm = Math.ceil((Number(new Date()) - start_time) / 300000);
     var sel_places = []
     for(var tx = 0; tx < tm; tx += 1) {
@@ -1038,6 +1083,12 @@ function level_boxed_lasers(dont) {
         allowedY = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
         return window.setTimeout(level_select, 25 * (x + 1))
     }
+    for(var aX of allowedX.concat(9, 31)) {
+        for(var aY of allowedY.concat(7, 23)) {
+            grid[aY][aX] = grid[aY][aX] == "~" ? "~" : " "
+        }
+    }
+    draw_screen()
     var sel_places = {}
     var tm = Math.ceil((Number(new Date()) - start_time) / 300000);
     for(var tx = 0; tx < Math.random() * 5 + tm; tx += 1) {
@@ -1190,6 +1241,12 @@ function level_ball(dont) {
         allowedY = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
         return window.setTimeout(level_select, 25 * (x + 1))
     }
+    for(var aX of allowedX) {
+        for(var aY of allowedY) {
+            grid[aY][aX] = grid[aY][aX] == "~" ? "~" : " "
+        }
+    }
+    draw_screen()
     var sel_places = {}
     var tm = Math.ceil((Number(new Date()) - start_time) / 300000);
     for(var tx = 0; tx < Math.random() * 2 + tm; tx += 1) {
@@ -1305,11 +1362,17 @@ function handle_joystick(evt) {
         window.clearInterval(joystick_invterval);
         return
     }
+    console.log(evt)
     var rect = $("#joystick").getBoundingClientRect();
     var touchY = evt.touches[0].clientY
     var touchX = evt.touches[0].clientX
-    if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0)
-        return
+    if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0) {
+        var rect = $("#screen").getBoundingClientRect();
+        if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0) {
+            return
+        }
+        window.onkeydown(null, " ");
+    }
     joystick_direction = "";
     var w = Math.round(rect.width / 3.25);
     if(touchX - rect.left >= 0 && touchX - rect.left <= w)
@@ -1379,3 +1442,4 @@ window.ontouchend = handle_joystick
 window.onclick = (evt) => { $("audio").play(); window.onclick = null; }
 $("#joystick").onclick = (evt) => evt.preventDefault();
 $("#joystick").ondblclick = (evt) => evt.preventDefault();
+window.onblur = (evt) => { if(!game_paused) window.onkeydown(null, " ") }
