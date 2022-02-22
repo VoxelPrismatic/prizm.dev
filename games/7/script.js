@@ -628,7 +628,7 @@ function level_select() {
     if(!died && on_lvl > Math.random() * 60 + 30) {
         reset_allowed();
         if(debug)
-            sel_lvl = Math.floor(Math.random() * 4) + 4 * debug
+            sel_lvl = Math.floor(Math.random() * 4) + 4 * (debug - 1)
         else
             sel_lvl = Math.floor(Math.random() * 4 * num_levels)
 //          sel_lvl = 19
