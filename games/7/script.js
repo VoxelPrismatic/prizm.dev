@@ -1376,10 +1376,11 @@ function handle_joystick(evt) {
     if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0) {
         rect = $("#screen").getBoundingClientRect();
         if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0) {
-            alert(`${touchX}:[${rect.left},${rect.right}]X\n${touchY}:[${rect.top},${rect.bottom}]Y`);
+            //alert(`${touchX}:[${rect.left},${rect.right}]X\n${touchY}:[${rect.top},${rect.bottom}]Y`);
             return
         }
         window.onkeydown(null, " ");
+        return
     }
     joystick_direction = "";
     var w = Math.round(rect.width / 3.25);
