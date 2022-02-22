@@ -2,7 +2,8 @@ function $(q, e = document) { return e.querySelector(q) }
 function $$(q, e = document) { return e.querySelectorAll(q) }
 var scr = $("#screen");
 var music = $("audio");
-var music_fmt = ".mp3"
+var music_fmt = ".mp3";
+var debug = false;
 var files = [
     "Born", "Died", "Spike", "Spark", "Alive", "Struggle", "Survived", "Retro"
 ]
@@ -354,6 +355,9 @@ window.onkeydown = (evt, k = "") => {
                     block_space = true
                 }
                 break;
+            case "j":
+                debug = Number(window.prompt("Which level do you want to test?\n1] Road\n2] Particles\n3] 1-D Lasers\n4] 2-D Lasers\n5] Mines"));
+                break;
             case "Enter":
                 if(game_paused && !block_space) {
                     game_paused = !game_paused
@@ -617,13 +621,16 @@ function transition(dont = 0, tX = 20, tY = 15, scr = 1) {
     level_select();
 }
 
-
+var num_levels = 5
 function level_select() {
     if(transitioning || game_paused)
         return
     if(!died && on_lvl > Math.random() * 60 + 30) {
         reset_allowed();
-        sel_lvl = Math.floor(Math.random() * 20)
+        if(debug)
+            sel_lvl = Math.floor(Math.random() * 4) + 4 * debug
+        else
+            sel_lvl = Math.floor(Math.random() * 4 * num_levels)
 //          sel_lvl = 19
         on_lvl = 0;
         changed_level = true;
