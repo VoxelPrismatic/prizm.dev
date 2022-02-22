@@ -1374,8 +1374,9 @@ function handle_joystick(evt) {
     var touchY = evt.touches[0].clientY
     var touchX = evt.touches[0].clientX
     if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0) {
-        var rect = $("#screen").getBoundingClientRect();
+        rect = $("#screen").getBoundingClientRect();
         if(touchX - rect.left < 0 || rect.right - touchX < 0 || touchY - rect.top < 0 || rect.bottom - touchY < 0) {
+            alert(`${touchX}:[${rect.left},${rect.right}]X\n${touchY}:[${rect.top},${rect.bottom}]Y`);
             return
         }
         window.onkeydown(null, " ");
