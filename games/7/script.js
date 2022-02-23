@@ -89,6 +89,7 @@ var pause_grid = [];
 var block_space = false;
 var allowedX = [];
 var allowedY = [];
+var bird_blank = 0;
 
 function reset_allowed() {
     for(var z = 0; z < 40; z += 1) {
@@ -356,7 +357,7 @@ window.onkeydown = (evt, k = "") => {
                 }
                 break;
             case "j":
-                debug = Number(window.prompt("Which level do you want to test?\n1] Road\n2] Particles\n3] 1-D Lasers\n4] 2-D Lasers\n5] Mines"));
+                debug = Number(window.prompt("Which level do you want to test?\n1] Road\n2] Particles\n3] 1-D Lasers\n4] 2-D Lasers\n5] Mines\n6] Flappy Bird"));
                 break;
             case "Enter":
                 if(game_paused && !block_space) {
@@ -460,6 +461,7 @@ function welcome(x = 0) {
     start_time = new Date();
     transitioning = false;
     coins_collected = 0;
+    bird_blank = 0;
     if(welcomed) {
         music.src = "hi.mp3"
         music.onended();
@@ -621,7 +623,7 @@ function transition(dont = 0, tX = 20, tY = 15, scr = 1) {
     level_select();
 }
 
-var num_levels = 5
+var num_levels = 6
 function level_select() {
     if(transitioning || game_paused)
         return
@@ -668,6 +670,12 @@ function level_select() {
         case 18:
         case 19:
             level_ball(0);
+            break;
+        case 20:
+        case 21:
+        case 22:
+        case 23:
+            level_flappy_bird(0, 23 - sel_lvl);
             break;
         default:
             pX = diX
@@ -751,11 +759,10 @@ You collected ${coins_collected} spark${coins_collected == 1 ? '' : 's'} [~]
 DM me @&#x56;oxelPrismatic on Twitter for any
 suggestions
 
-===========] PRESS SPACE TO [===========
+${$('#joystick').style.transform != 'scale(1)' ? '===========] PRESS SPACE TO [===========' : '==========] TAP PLAYFIELD TO [=========='}
 =============] PLAY AGAIN [=============`);
         window.setTimeout(() => transitioning = false, 1000)
     }
-
 }
 
 function level_side_to_side(dont, direction) {
@@ -900,6 +907,7 @@ function level_lasers(dont, direction) {
             }, 25 * x, x, direction);
         }
         window.setTimeout((direction) => {
+            last_direction = direction
             switch(direction) {
                 case 0:
                     allowedX = [17, 18, 19, 20, 21, 22];
@@ -1343,6 +1351,93 @@ function level_ball(dont) {
         window.setTimeout(level_select, 2150);
         window.setTimeout(() => blocked = false, 250);
     }
+}
+
+function level_flappy_bird(dont, direction) {
+    if(changed_level) {
+        changed_level = false;
+        for(var x = 0; x < (direction < 2 ? 30 : 40); x += 1) {
+            window.setTimeout(() => {
+                level_flappy_bird(1, direction);
+                blocked = true
+            }, 25 * x);
+        }
+        window.setTimeout(level_select, 25 * x);
+        return
+    }
+    if(dont) {
+        s2s_offset = Math.floor(Math.random() * 2) + 17
+    } else {
+        switch(bird_blank) {
+            case 0:
+            case 1:
+                s2s_offset += 2 - Math.floor(Math.random() * 5);
+                break;
+            case 2:
+            case 3:
+            case 4:
+                s2s_offset += 4 - Math.floor(Math.random() * 9);
+                break;
+            default:
+                s2s_offset = Math.floor(Math.random() * (direction < 2 ? 35 : 25)) + 5;
+        }
+        s2s_offset = Math.min(direction < 2 ? 35 : 25 , Math.max(5, s2s_offset))
+    }
+    if(direction >= 2) {
+        switch(Math.floor(Math.random() * 20)) {
+            case 0:
+                var st = "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV~   " + "\u039b".repeat(31);
+                break;
+            case 1:
+                var st = "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV ~  " + "\u039b".repeat(31);
+                break;
+            case 2:
+                var st = "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV  ~ " + "\u039b".repeat(31);
+                break;
+            case 3:
+                var st = "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV   ~" + "\u039b".repeat(31);
+                break;
+            case 4:
+            case 5:
+            case 6:
+                var st = "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV    " + "\u039b".repeat(31);
+                break;
+            default:
+                var st = " ".repeat(68);
+        }
+    } else {
+        switch(Math.floor(Math.random() * 20)) {
+            case 0:
+                var st = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>~   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+                break;
+            case 1:
+                var st = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ~  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+                break;
+            case 2:
+                var st = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  ~ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+                break;
+            case 3:
+                var st = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   ~<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+                break;
+            case 4:
+            case 5:
+            case 6:
+                var st = ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+                break;
+            default:
+                var st = " ".repeat(76);
+        }
+    }
+    if(st.trim())
+        bird_blank = 0;
+    else
+        bird_blank += 1;
+    wscroll(st.slice(s2s_offset, s2s_offset + (direction < 2 ? 40 : 30)), direction)
+    if(!dont) {
+        window.setTimeout(level_select, 500);
+        window.setTimeout(() => blocked = false, 500);
+    }
+
 }
 
 welcomed = false
