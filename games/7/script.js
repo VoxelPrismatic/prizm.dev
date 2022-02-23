@@ -300,7 +300,7 @@ window.onkeydown = (evt, k = "") => {
     if(blocked || transitioning || died && died != 200)
         return;
     if(died == 200) {
-        if(evt.key == " " || evt.key == "Enter")
+        if(evt.key == " " || evt.key == "Enter" || k == " " || k == "Enter")
             welcome()
         else
             return
