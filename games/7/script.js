@@ -907,23 +907,26 @@ function level_lasers(dont, direction) {
             }, 25 * x, x, direction);
         }
         window.setTimeout((direction) => {
-            last_direction = direction
             switch(direction) {
                 case 0:
                     allowedX = [17, 18, 19, 20, 21, 22];
                     allowedY = [29];
+                    last_direction = 1;
                     return transition(0, 20, 29, 0);
                 case 1:
                     allowedX = [17, 18, 19, 20, 21, 22];
                     allowedY = [0];
+                    last_direction = 0;
                     return transition(0, 20, 0, 0);
                 case 2:
                     allowedY = [12, 13, 14, 15, 16, 17];
                     allowedX = [29];
+                    last_direction = 3;
                     return transition(0, 39, 15, 0);
                 case 3:
                     allowedY = [12, 13, 14, 15, 16, 17];
                     allowedX = [0];
+                    last_direction = 2;
                     return transition(0, 0, 15, 0);
             }
         }, 25 * x, direction);
