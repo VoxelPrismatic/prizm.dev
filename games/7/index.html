@@ -188,6 +188,10 @@
             }
             @media screen and (max-width: 400px) {
                 body { font-size: 8px; }
+            } noscript {
+                font-size: 200%;
+                display: block;
+                text-align: center;
             }
         </style>
     </head>
@@ -195,6 +199,8 @@
         <span id="logo" onclick="location='/prizm.dev/games/'">
 <span id="coin" style="position:absolute;opacity:0.75">~</span><span id="player" style="position:relative;z-index:5">7</span>
         </span>
+        
+        <noscript id="coin">Sorry, JavaScript is required for 7 to function<br><span id="player"><sup style="font-size:50%">Consider enabling JavaScript or using a competent browser, like Firefox</sup></noscript>
         <div style="margin:auto;left:0px;right:0px;position:relative;width:min-content">
             <table id="screen"></table>
             <div id="score">
@@ -207,7 +213,7 @@
             <sup style="font-family:Ubuntu;float:right">Any suggestions? <a href="https://twitter.com/voxelprismatic" target="_blank">@VoxelPrismatic</a> on Twitter</sup>
         </div>
         <div id="joystick">
-            <div id="scroller" onscroll="this.scrollTo(0,0)"></div>
+            <div id="scroller" onscroll="this.scrollTo(1,1)"></div>
             <div id="stick">O</div>
         </div>
         <audio type="audio/mp3" autoplay/>
