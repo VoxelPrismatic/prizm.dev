@@ -1431,6 +1431,8 @@ function level_flappy_bird(dont, direction) {
                 var st = " ".repeat(76);
         }
     }
+    if(Math.floor(Math.random() * 6) == 0)
+        st = st.replace(/\>/g, "\u221d").replace(/\</g, "\u221c").replace(/V/g, "\u221b").replace(RegExp("\u039b", "g"), "\u221a");
     if(st.trim())
         bird_blank = 0;
     else
@@ -1544,9 +1546,9 @@ function handle_joystick(evt) {
     }
 }
 window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
-window.ontouchmove = handle_joystick
-window.ontouchend = handle_joystick
+window.ontouchmove = handle_joystick;
+window.ontouchend = handle_joystick;
 window.onclick = (evt) => { $("audio").play(); window.onclick = null; }
 $("#joystick").onclick = (evt) => evt.preventDefault();
 $("#joystick").ondblclick = (evt) => evt.preventDefault();
-window.onblur = (evt) => { if(!game_paused) window.onkeydown(null, " ") }
+window.onblur = (evt) => { if(!game_paused && !died) window.onkeydown(null, " ") }
