@@ -298,6 +298,7 @@ window.setInterval(() => {
 }, 1000)
 
 window.onkeydown = (evt, k = "") => {
+    $("audio").play();
     if(blocked || transitioning || died && died != 200)
         return;
     if(died == 200) {
@@ -1454,6 +1455,7 @@ var joystick_timeout = 0
 var joystick_id = {};
 var joy_id = 0
 function joystick_handler(j_id) {
+    $("audio").play();
     if(j_id != joy_id)
         return window.clearInterval(joystick_id[j_id])
     for(var s of joystick_direction)
@@ -1545,7 +1547,7 @@ function handle_joystick(evt) {
 
     }
 }
-window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)" }
+window.ontouchstart = (evt) => { handle_joystick(evt); $("#joystick").style.transform = "scale(1)"; }
 window.ontouchmove = handle_joystick;
 window.ontouchend = handle_joystick;
 window.onclick = (evt) => { $("audio").play(); window.onclick = null; }
