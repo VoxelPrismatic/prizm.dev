@@ -475,11 +475,11 @@ function welcome(x = 0) {
     pY = 0
     wtime(0, 0, `============] WELCOME TO   [============
 
-A simple, yet endlessly addicting game
+ A simple, yet endlessly addicting game
 
 
 ]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
-          In an endless world,
+         In an expansive world,
           you are the only one
             WITH ENDLESS FUN
 ]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
