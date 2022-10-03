@@ -178,14 +178,14 @@ function wtime(x, y, st) {
 }
 
 function draw_screen(do_rows = [], do_cols = []) {
-    var grid2 = []
-    for(var y of grid) {
-        grid2.push(y.slice())
-    }
+    var grid2 = [];
+    for(var y of grid)
+        grid2.push(y.slice());
+    
     pY = Math.min(29, Math.max(0, pY)); // 0 <= pY <= 29
-    pX = Math.min(39, Math.max(0, pX))
+    pX = Math.min(39, Math.max(0, pX));
     if(died != 100 && died != 200)
-        grid2[pY][pX] = "7"
+        grid2[pY][pX] = "7";
     if(grid[pY][pX] == "~") {
         coins_collected += 1;
         $("#coin_counter").innerHTML = coins_collected;
@@ -194,17 +194,17 @@ function draw_screen(do_rows = [], do_cols = []) {
             localStorage.setItem("7_max_sparks", max_sparks);
             $("#coin_counter").innerHTML += " [+]";
         }
-        grid[pY][pX] = " "
+        grid[pY][pX] = " ";
     }
 //     console.log(grid2, pX, pY)
     if(!do_rows.length)
         for(var y = 0; y < grid2.length; y += 1)
-            do_rows.push(y)
+            do_rows.push(y);
     do_rows.push(pY, pY - 1, pY + 1)
     if(!do_cols.length)
         for(var x = 0; x < grid2[0].length; x += 1)
-            do_cols.push(x)
-    do_cols.push(pX, pX + 1, pX - 1)
+            do_cols.push(x);
+    do_cols.push(pX, pX + 1, pX - 1);
 
     for(var y of do_rows) {
         if(y == -1 || y == 30)
@@ -389,6 +389,7 @@ function welcome(x = 0) {
     if(!welcomed) {
         died = 100
         if(x < 30) {
+            draw_screen();
             for(var z = 10; z < 25; z += 1) {
                 window.setTimeout((n) => {
                     write(0, n,      "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
