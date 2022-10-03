@@ -478,11 +478,11 @@ function welcome(x = 0) {
 A simple, yet endlessly addicting game
 
 
-]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
           In an endless world,
           you are the only one
             WITH ENDLESS FUN
-]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
 
 ——————————] EPILEPSY WARNING [——————————
 
@@ -562,11 +562,11 @@ function pause_screen(x = 0) {
 
 
 
-]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
           In the rift of space,
           you are the only one
             CONTROLLING TIME
-]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
 
 
 
@@ -737,11 +737,11 @@ function death_screen() {
 You survived for ${$("#alive").innerHTML}
 
 
-]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
           All good things must
           come to an end, even
             YOUR ENDLESS FUN
-]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[[
+]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[
 
       +======] CREDITS TO [======+
       ǁ Game: PRIZ ;]            ǁ
