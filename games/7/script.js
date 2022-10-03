@@ -389,20 +389,19 @@ function welcome(x = 0) {
     if(!welcomed) {
         died = 100
         if(x < 30) {
-            for(var z = 0; z < 15; z += 1) {
+            for(var z = 10; z < 25; z += 1) {
                 window.setTimeout((n) => {
-                    write(0, n, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
+                    write(0, n,      "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
                     write(0, -n - 1, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
                     draw_screen([n, grid.length - n - 1]);
-                }, 25 * z, z)
+                }, 25 * z, z - 10)
                 window.setTimeout((n) => {
-                    write(0, n, "                                        ");
+                    write(0, n,      "                                        ");
                     write(0, -n - 1, "                                        ");
                     draw_screen([n, grid.length - n - 1]);
-                }, 25 * (z + 5), z)
+                }, 25 * (z + 5), z - 10)
             }
-            window.setTimeout(welcome, (z + 6) * 25, 30)
-            return
+            return window.setTimeout(welcome, (z + 6) * 25, 30);
         }
     } if(dpX || dpY) {
 //         console.log(pX, pY, dpX, dpY, diX, diY)
@@ -414,12 +413,12 @@ function welcome(x = 0) {
             diY = 0
             for(var z = 0; z < 15; z += 1) {
                 window.setTimeout((n) => {
-                    write(0, n, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
+                    write(0, n,      "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
                     write(0, -n - 1, "]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[[[[[[[");
                     draw_screen([n, grid.length - n - 1]);
                 }, 25 * z, z)
                 window.setTimeout((n) => {
-                    write(0, n, "                                        ");
+                    write(0, n,      "                                        ");
                     write(0, -n - 1, "                                        ");
                     draw_screen([n, grid.length - n - 1]);
                 }, 25 * (z + 5), z)
@@ -1447,7 +1446,7 @@ function level_flappy_bird(dont, direction) {
 }
 
 welcomed = false;
-window.setTimeout(welcome, 250);
+welcome();
 $("#bg").value = localStorage.getItem("7_volume") || "0.2";
 $("audio").volume = Number(localStorage.getItem("7_volume") || 0.2);
 var joystick_invterval = 0;
