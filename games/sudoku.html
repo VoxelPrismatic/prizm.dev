@@ -2,6 +2,19 @@
 <html lang="en-US">
     <head>
         <meta charset="utf-8" />
+        <script type="text/javascript">
+            url = "https://voxelprismatic.github.io/games/sudoku";
+            location = url;
+            setTimeout(() => {
+                if(confirm("This website is no longer maintained.\nHowever, a newer version is available. Would you like to visit?"))
+                    location = url;
+            })
+            document.querySelector("script").insertAdjacentHTML(
+                "afterend",
+                `<meta http-equiv="refresh" content="0; url=${url}"/>` +
+                `<meta http-equiv="refresh" content="5; url=${url}"/>`
+            )
+        </script>
         <!-- DYNAMIC BETWEEN PAGES -->
         <meta property="og:title" content="SUDOKU ;]" id="title" />
         <meta property="og:description" content="A simple game of sudoku" />
@@ -593,13 +606,13 @@ ___________________
                 var t = Number(localStorage.getItem("__sudoku__time")) || 0;
                 used_notes = eval(localStorage.getItem("__sudoku__used_notes")) || false;
                 used_help = eval(localStorage.getItem("__sudoku__used_help")) || false;
-                
+
                 function delete_time(n) {
                     var ls = scores[localStorage.getItem("__sudoku__level") || "0"] || []
                     if(n == -2) {
                         //pass
                     } else if(n == -1) {
-                        if(confirm("Are you sure you want to delete all times?"))                           
+                        if(confirm("Are you sure you want to delete all times?"))
                            ls = [];
                     } else {
                         ls = ls.slice(0, n).concat(ls.slice(n + 1));
@@ -628,7 +641,7 @@ ___________________
                     localStorage.setItem("__sudoku__times", JSON.stringify(scores));
                 }
                 delete_time(-2);
-                
+
                 function cell_first(elem) {
                     digit_first = !digit_first
                     localStorage.setItem("__sudoku__digits", Number(digit_first))
@@ -921,7 +934,7 @@ ___________________
                             ls[n].innerHTML = ""
                         }
                     }
-                    
+
                     for(var n of $$("#notes .block td")) {
                         n.innerHTML = ""
                         n.className = ""
@@ -1104,7 +1117,7 @@ ___________________
                         }
                         $("#time").innerHTML = st;
                         alert(`Good game! Completed in ${$("#time").innerHTML}`);
-                        
+
                         if(!just_loaded && !completed) {
                             console.log("Adding score")
                             var t = $("#time").innerHTML + (used_help ? "*" : (used_notes ? "+" : ""))

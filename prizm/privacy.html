@@ -2,6 +2,15 @@
 <html lang="en-US">
     <head>
         <meta charset="utf-8" />
+        <script type="text/javascript">
+            setTimeout(() => {
+                if(!confirm(`\
+This website is no longer maintained.
+As I grow and change, I find that this page is not worthy of migration.
+Continue to this outdated page?`))
+                    location = "https://voxelprismatic.github.io/";
+            })
+        </script>
 
         <!-- PRELOAD -->
         <link rel="preload" src="/prizm.dev/assets/script/min.js" type="text/javascript" as="script"/>
@@ -98,7 +107,7 @@
                             <li>Emoji string <sub><i>any emojis used to star a message</i></sub></li>
                             <li>Star count <sub><i>just a number</i></sub></li>
                             <li>Whether or not users can use multiple stars ['multi stars']</li>
-                            <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li> 
+                            <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li>
                         </ul>
                     </li>
                     <li>
@@ -141,9 +150,9 @@
                             <li>Channel ID <sub><i>channel name is NOT stored</i></sub></li>
                             <li>Guild ID <sub><i><a href="#data-removal">"data removal"</a></i></sub></li>
                         </ul>
-                    </li> 
-                </ul>   
-               
+                    </li>
+                </ul>
+
                 <h2 onclick="linkMe(this);" id="How-to-delete-data" tabindex="0">#] How to delete data</h2>
                 All your data is deleted once PRIZM ;] leaves your server. When PRIZM ;] rejoins, you have to set everything back up
                 <h2 onclick="linkMe(this);" id="How-can-I-see-my-data" tabindex="0">#] How can I see my data</h2>
@@ -152,7 +161,7 @@
                 It stays on PRIZM ;]'s hard drive. No data is sent anywhere, even for personalized advertising or whatever those nasty bots do.<br>
                 Your data is used to ensure proper function of the bot, it's really only preferences and stuff.<br>
                 If you want more information, feel free to <a href="mailto:prizmdev@outlook.com">email me</a> with any questions.<br><br>
-                <b>IMPORTANT NOTICE:</b> PRIZM ;] is currently being rewritten to use /commands, so this privacy policy is subject to change to be more transparent 
+                <b>IMPORTANT NOTICE:</b> PRIZM ;] is currently being rewritten to use /commands, so this privacy policy is subject to change to be more transparent
                 about what data is being collected. Frankly, PRIZM ;] has so many commands that I forget what commands do what, but I assure you all data is
                 anonymous other than the guild ID attached to guild name. After the rewrite, the guild name won't be stored either.
                 <br />

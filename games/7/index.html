@@ -2,6 +2,19 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <script type="text/javascript">
+            url = "https://voxelprismatic.github.io/games/7/";
+            location = url;
+            setTimeout(() => {
+                if(confirm("This website is no longer maintained.\nHowever, a newer version is available. Would you like to visit?"))
+                    location = url;
+            })
+            document.querySelector("script").insertAdjacentHTML(
+                "afterend",
+                `<meta http-equiv="refresh" content="0; url=${url}"/>` +
+                `<meta http-equiv="refresh" content="5; url=${url}"/>`
+            )
+        </script>
         <!-- DYNAMIC BETWEEN PAGES -->
         <meta property="og:title" content="7" id="title" />
         <meta property="og:description" content="A simple, yet endlessly addicting arcade game" />
@@ -199,7 +212,7 @@
         <span id="logo" onclick="location='/prizm.dev/games/'">
 <span id="coin" style="position:absolute;opacity:0.75">~</span><span id="player" style="position:relative;z-index:5">7</span>
         </span>
-        
+
         <noscript id="coin">Sorry, JavaScript is required for 7 to function<br><span id="player"><sup style="font-size:50%">Consider enabling JavaScript or using a competent browser, like Firefox</sup></noscript>
         <div style="margin:auto;left:0px;right:0px;position:relative;width:min-content">
             <table id="screen"></table>

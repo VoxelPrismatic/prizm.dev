@@ -2,6 +2,19 @@
 <html lang="en-US">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            url = "https://voxelprismatic.github.io/games/mines";
+            location = url;
+            setTimeout(() => {
+                if(confirm("This website is no longer maintained.\nHowever, a newer version is available. Would you like to visit?"))
+                    location = url;
+            })
+            document.querySelector("script").insertAdjacentHTML(
+                "afterend",
+                `<meta http-equiv="refresh" content="0; url=${url}"/>` +
+                `<meta http-equiv="refresh" content="5; url=${url}"/>`
+            )
+        </script>
         <!-- DYNAMIC BETWEEN PAGES -->
         <meta property="og:title" content="MINES ;]" id="title">
         <meta property="og:description" content="A simple game of minesweeper">

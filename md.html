@@ -1,6 +1,15 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <script type="text/javascript">
+            setTimeout(() => {
+                if(!confirm(`\
+This website is no longer maintained.
+As I grow and change, I find that this page is not worthy of migration.
+Continue to this outdated page?`))
+                    location = "https://voxelprismatic.github.io/";
+            })
+        </script>
 
         <!-- PRELOAD -->
         <link rel="preload" src="/prizm.dev/assets/script/min.js" type="text/javascript" as="script"/>
